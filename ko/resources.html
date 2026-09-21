@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ko" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>공식 자료실 | 고객센터 | NovaCell Therapy 노바셀</title>
+  <meta name="description" content="노바셀 통치 요법® 공식 자료실입니다. 종합 브로슈어, 사용자 매뉴얼, 생체 전기 의학 논문 및 학술 자료집, 임상 프로토콜 요약표 PDF를 다운로드하세요.">
+  
+  <!-- Icons & CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .resource-category-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .resource-tab-btn {
+      padding: 10px 22px;
+      border-radius: 30px;
+      background: var(--color-white);
+      border: 1px solid var(--color-navy-100);
+      color: var(--color-navy-800);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .resource-tab-btn:hover, .resource-tab-btn.active {
+      background: var(--color-navy-900);
+      color: var(--color-gold-400);
+      border-color: var(--color-navy-900);
+      box-shadow: var(--shadow-sm);
+    }
+    .resource-item-card {
+      background: var(--color-white);
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid var(--color-navy-100);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+      transition: all var(--transition-normal);
+    }
+    .resource-item-card:hover {
+      border-color: var(--color-gold-400);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+    .resource-info-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex: 1;
+    }
+    .resource-icon-badge {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      background: rgba(212, 163, 89, 0.12);
+      color: var(--color-gold-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .resource-text h3 {
+      font-size: 1.15rem;
+      color: var(--color-navy-900);
+      margin-bottom: 6px;
+      font-family: var(--font-display);
+    }
+    .resource-text p {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .resource-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+    }
+    .resource-tag {
+      background: #f1f5f9;
+      color: var(--color-navy-800);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .resource-download-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .resource-item-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .resource-download-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span><i class="ri-customer-service-2-line text-gold"></i> 고객지원: <strong>010-9726-7012</strong></span>
+        <span>·</span>
+        <a href="contact.html" class="text-gold">1:1 빠른 문의</a>
+      </div>
+            <div class="top-bar-right">
+        <a href="../login.html" class="text-gold" style="font-weight: 700;"><i class="ri-user-shared-line"></i> 로그인</a>
+        <a href="../register.html" style="font-weight: 600;">회원가입</a>
+        <span>·</span>
+        <a href="contact.html">노바셀 문의</a>
+        <a href="faq.html">FAQ</a>
+        <a href="videos.html">동영상</a>
+        <a href="resources.html">자료실</a>
+        <a href="events.html">교육 안내 및 일정</a>
+        <a href="index.html">홈으로</a>
+      <div id="langSwitchDropdown" class="simple-language-switch" aria-label="언어 선택"><a class="simple-lang-link active" href="resources.html" lang="ko">한국어</a><a class="simple-lang-link" href="../en/resources.html" lang="en">English</a></div></div>
+    </div>
+  </div>
+
+  <!-- 2. Main Navigation Header -->
+  <header class="header-main">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">N</div>
+        <div class="logo-text">
+          <span class="logo-title">NovaCell Therapy</span>
+          <span class="logo-sub">노바셀 통치 요법</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <ul class="nav-menu" id="primaryNavigation" aria-hidden="true">
+        <li class="nav-item">
+          <a href="how-it-works.html" class="nav-link">작동 원리 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="how-it-works.html">작동 원리 개요</a></li>
+            <li class="dropdown-item"><a href="what-is-voltage.html">치유 전압이란?</a></li>
+            <li class="dropdown-item"><a href="#science">신경 신호</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="system.html" class="nav-link">시스템 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="system.html">NovaCell 시스템 개요</a></li>
+            <li class="dropdown-item"><a href="novacell-therapy.html">NovaCell Therapy</a></li>
+            <li class="dropdown-item"><a href="why-novacell.html">왜 NovaCell인가?</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="protocols.html" class="nav-link">프로토콜 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="protocols.html">임상 프로토콜 개요</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link">적용 분야 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="chronic-pain.html">만성 통증 관리</a></li>
+            <li class="dropdown-item"><a href="energy-support.html">에너지와 활력 회복</a></li>
+            <li class="dropdown-item"><a href="nervous-system.html">신경계 균형</a></li>
+            <li class="dropdown-item"><a href="inflammation-support.html">염증 및 조직 회복</a></li>
+            <li class="dropdown-item"><a href="sleep-support.html">수면 및 스트레스 관리</a></li>
+            <li class="dropdown-item"><a href="recovery-support.html">전신 회복</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="audience-solutions.html" class="nav-link">맞춤 솔루션</a>
+        </li>
+        <li class="nav-item">
+          <a href="education.html" class="nav-link">교육 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="education.html">마스터 클래스</a></li>
+            <li class="dropdown-item"><a href="events.html">행사 일정 및 세미나</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="reflex-therapy-guide.html" class="nav-link">리플렉스 테라피 가이드</a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link">고객지원 <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="contact.html">문의하기</a></li>
+            <li class="dropdown-item"><a href="faq.html">FAQ</a></li>
+            <li class="dropdown-item"><a href="videos.html">동영상 자료실</a></li>
+            <li class="dropdown-item"><a href="resources.html">자료 및 다운로드</a></li>
+          </ul>
+        </li>
+      <li class="nav-item mobile-language-item" aria-label="언어 선택"><span class="mobile-language-label">언어 선택</span><div class="mobile-language-links"><a class="mobile-language-link active" href="resources.html" lang="ko">한국어</a><a class="mobile-language-link" href="../en/resources.html" lang="en">English</a></div></li></ul>
+
+      <!-- CTA Button & Mobile Toggle -->
+      <div class="header-cta-group">
+        <a href="contact.html" class="btn btn-gold">
+          <i class="ri-download-2-line"></i> 전체 자료 신청
+        </a>
+        <button class="mobile-menu-toggle" aria-label="메뉴 열기" type="button" aria-expanded="false" aria-controls="primaryNavigation">
+          <i class="ri-menu-line" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Subpage Hero Banner -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="subpage-breadcrumb">
+        <a href="index.html"><i class="ri-home-4-line"></i> 홈</a>
+        <span>/</span>
+        <span>고객센터</span>
+        <span>/</span>
+        <span>자료실</span>
+      </div>
+      <div class="badge-tag">
+        <i class="ri-folder-download-line"></i> 공식 문서 &amp; 자료 다운로드
+      </div>
+      <h1>노바셀 공식 자료실<br><span class="text-gold">Document &amp; Resource Library</span></h1>
+      <p class="lead">
+        노바셀 통치 요법® 종합 가이드북, 사용자 공식 매뉴얼, 6대 프로토콜 퀵 가이드, 학술 논문 요약집을 무료로 다운로드하실 수 있습니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. Resources List Section -->
+  <section class="feature-block-section" style="padding: 70px 0 90px;">
+    <div class="container" style="max-width: 960px;">
+      
+      <!-- Category Filter Tabs -->
+      <div class="resource-category-tabs">
+        <button class="resource-tab-btn active" data-category="all">전체 자료 (7)</button>
+        <button class="resource-tab-btn" data-category="book">박창혁 박사 저서</button>
+        <button class="resource-tab-btn" data-category="manual">장비 매뉴얼</button>
+        <button class="resource-tab-btn" data-category="protocol">임상 프로토콜</button>
+        <button class="resource-tab-btn" data-category="science">학술 &amp; 재생 의학</button>
+      </div>
+
+      <!-- Resource Cards Container -->
+      <div class="resource-list-container">
+        
+        <!-- Doc 1: 박창혁 박사 공식 저서 (Special Book) -->
+        <div class="resource-item-card" data-category="book" style="border: 2px solid var(--color-gold-400); background: linear-gradient(to right, #ffffff, #fffdf8);">
+          <div class="resource-info-group">
+            <div class="resource-icon-badge" style="background: rgba(212, 163, 89, 0.2); color: #b45309; width: 68px; height: 68px; font-size: 2.2rem;">
+              <i class="ri-book-read-fill"></i>
+            </div>
+            <div class="resource-text">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="background: var(--color-navy-900); color: var(--color-gold-300); font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  ⭐ 박창혁 박사 공식 저서
+                </span>
+                <span style="background: #fef3c7; color: #92400e; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  회원가입 후 메일 신청 시 다운로드
+                </span>
+              </div>
+              <h3 style="font-size: 1.25rem; color: var(--color-navy-900);">박창혁 박사 저서 : 노바셀 통치 요법 (NovaCell Therapy)</h3>
+              <p>생체 전기 의학 전문가 박창혁 박사가 집대성한 인체 전압 복원과 자가 치유 생태계의 모든 원리와 임상 지침이 수록된 정식 저서(전자책 풀버전)입니다.</p>
+              <div class="resource-meta">
+                <span class="resource-tag" style="background: #fef08a; color: #854d0e;">PDF 전자책 풀버전</span>
+                <span>용량: 114.5 MB</span>
+                <span>·</span>
+                <span>저자: 박창혁 박사</span>
+                <span>·</span>
+                <span>회원 메일 신청 전용</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-gold resource-download-btn" onclick="handleDownload('dr_park_novacell_therapy_book.pdf', '박창혁 박사 저서 노바셀 통치 요법', true)" style="box-shadow: 0 4px 14px rgba(212,163,89,0.4);">
+            <i class="ri-mail-send-fill"></i> 회원 메일 신청 &amp; 다운로드
+          </button>
+        </div>
+
+        <!-- Doc 2: 노바셀 공식 장비 사용자 매뉴얼 -->
+        <div class="resource-item-card" data-category="manual">
+          <div class="resource-info-group">
+            <div class="resource-icon-badge">
+              <i class="ri-tools-fill"></i>
+            </div>
+            <div class="resource-text">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  공식 매뉴얼
+                </span>
+              </div>
+              <h3>노바셀(NovaCell) 공식 장비 사용자 매뉴얼</h3>
+              <p>노바셀 테라피 공식 장비의 각부 명칭, 전원 및 전압 레벨 설정, 실시간 적응형 바이오피드백 모드 조작법, 전극 패드 부착 및 관리 안전 수칙 매뉴얼입니다.</p>
+              <div class="resource-meta">
+                <span class="resource-tag">PDF 매뉴얼</span>
+                <span>용량: 20.9 MB</span>
+                <span>·</span>
+                <span>정품 장비 사용자 공식 가이드</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-navy resource-download-btn" onclick="handleDownload('novacell_official_user_manual.pdf', '노바셀 공식 장비 사용자 매뉴얼')">
+            <i class="ri-lock-unlock-line text-gold"></i> 회원 다운로드
+          </button>
+        </div>
+
+        <!-- Doc 3: NovaCell Bio-Electric Regeneration -->
+        <div class="resource-item-card" data-category="science">
+          <div class="resource-info-group">
+            <div class="resource-icon-badge" style="background: rgba(34, 197, 94, 0.12); color: #16a34a;">
+              <i class="ri-microscope-fill"></i>
+            </div>
+            <div class="resource-text">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="background: #dcfce7; color: #15803d; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  학술 연구 논문
+                </span>
+              </div>
+              <h3>NovaCell Bio-Electric Regeneration (생체 전기 재생 의학과 세포 회복 메커니즘)</h3>
+              <p>생체 전기 미세전류가 손상된 신경계 및 근막 세포 매트릭스의 자가 복원에 미치는 영향과 세포 분열 항상성에 관한 최신 생체 전기 의학 연구 논문집입니다.</p>
+              <div class="resource-meta">
+                <span class="resource-tag">PDF 학술자료</span>
+                <span>용량: 2.55 MB</span>
+                <span>·</span>
+                <span>의료진 &amp; 테라피스트 연구용</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-navy resource-download-btn" onclick="handleDownload('NovaCell_Bio-Electric_Regeneration.pdf', 'NovaCell Bio-Electric Regeneration 논문집')">
+            <i class="ri-lock-unlock-line text-gold"></i> 회원 다운로드
+          </button>
+        </div>
+
+        <!-- Doc 4: NovaCell Cellular Voltage -->
+        <div class="resource-item-card" data-category="science">
+          <div class="resource-info-group">
+            <div class="resource-icon-badge" style="background: rgba(14, 165, 233, 0.12); color: #0284c7;">
+              <i class="ri-pulse-fill"></i>
+            </div>
+            <div class="resource-text">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="background: #e0f2fe; color: #0369a1; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  세포 전압 가이드
+                </span>
+              </div>
+              <h3>NovaCell Cellular Voltage (-50mV 치유 전압과 세포막 전위 복원 가이드)</h3>
+              <p>정상 세포(-25mV)와 재생 세포(-50mV)의 전기적 전위 메커니즘, 세포 내외 이온 통로 활성화 및 미토콘드리아 ATP 생성 원리를 알기 쉽게 설명한 핵심 가이드북입니다.</p>
+              <div class="resource-meta">
+                <span class="resource-tag">PDF 가이드북</span>
+                <span>용량: 1.88 MB</span>
+                <span>·</span>
+                <span>세포 전압 핵심 이론</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-navy resource-download-btn" onclick="handleDownload('NovaCell_Cellular.pdf', 'NovaCell Cellular Voltage 가이드')">
+            <i class="ri-lock-unlock-line text-gold"></i> 회원 다운로드
+          </button>
+        </div>
+
+        <!-- Doc 5: Novacell Cellular Recharge -->
+        <div class="resource-item-card" data-category="protocol">
+          <div class="resource-info-group">
+            <div class="resource-icon-badge" style="background: rgba(234, 179, 8, 0.12); color: #ca8a04;">
+              <i class="ri-battery-charge-fill"></i>
+            </div>
+            <div class="resource-text">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="background: #fef9c3; color: #854d0e; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  임상 프로토콜
+                </span>
+              </div>
+              <h3>NovaCell Cellular Recharge (전신 세포 전압 충전 및 12경락 극성 정렬 프로토콜)</h3>
+              <p>전신 12경락과 근막 회로망의 전압을 효율적으로 일괄 충전하고 체내 극성(Polarity)을 바르게 정렬하는 단계별 임상 실무 테라피 지침서입니다.</p>
+              <div class="resource-meta">
+                <span class="resource-tag">PDF 프로토콜</span>
+                <span>용량: 2.50 MB</span>
+                <span>·</span>
+                <span>극성 정렬 &amp; 전신 충전 가이드</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-navy resource-download-btn" onclick="handleDownload('Novacell_Cellular_Recharge.pdf', 'NovaCell Cellular Recharge 프로토콜')">
+            <i class="ri-lock-unlock-line text-gold"></i> 회원 다운로드
+          </button>
+        </div>
+
+        <!-- Doc 6: Novacell Recharge Protocol -->
+        <div class="resource-item-card" data-category="protocol">
+          <div class="resource-info-group">
+            <div class="resource-icon-badge" style="background: rgba(168, 85, 247, 0.12); color: #9333ea;">
+              <i class="ri-shield-cross-fill"></i>
+            </div>
+            <div class="resource-text">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="background: #f3e8ff; color: #7e22ce; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  통합 케어 가이드
+                </span>
+              </div>
+              <h3>NovaCell Recharge Protocol (만성 통증·피로·신경계 회복을 위한 통합 리차지 가이드)</h3>
+              <p>만성 통증, 만성 피로, 자율신경 실조, 염증 및 수면 장애 등 주요 6대 증상별 통합 프로토콜 적용법과 주의 사항을 체계적으로 수록한 완벽 가이드북입니다.</p>
+              <div class="resource-meta">
+                <span class="resource-tag">PDF 통합서</span>
+                <span>용량: 2.50 MB</span>
+                <span>·</span>
+                <span>6대 핵심 영역 임상 통합서</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-navy resource-download-btn" onclick="handleDownload('Novacell_Recharge.pdf', 'NovaCell Recharge Protocol 통합 가이드')">
+            <i class="ri-lock-unlock-line text-gold"></i> 회원 다운로드
+          </button>
+        </div>
+
+        <!-- Doc 7: The Bio-Electric Blueprint -->
+        <div class="resource-item-card" data-category="science">
+          <div class="resource-info-group">
+            <div class="resource-icon-badge" style="background: rgba(239, 68, 68, 0.12); color: #dc2626;">
+              <i class="ri-file-chart-fill"></i>
+            </div>
+            <div class="resource-text">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                <span style="background: #fee2e2; color: #b91c1c; font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;">
+                  특별 리포트
+                </span>
+              </div>
+              <h3>The Bio-Electric Blueprint (생체 전기 의학의 청사진과 미래 자가 치유 패러다임)</h3>
+              <p>현대 의학의 한계를 보완하는 21세기 생체 전기 의학(Bioelectric Medicine)의 발전 방향과 노바셀 통치 요법이 제시하는 혁신적 힐링 블루프린트 리포트입니다.</p>
+              <div class="resource-meta">
+                <span class="resource-tag">PDF 특별보고서</span>
+                <span>용량: 2.13 MB</span>
+                <span>·</span>
+                <span>글로벌 바이오일렉트릭 트렌드</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-navy resource-download-btn" onclick="handleDownload('The_Bio-Electric_Blueprint.pdf', 'The Bio-Electric Blueprint 리포트')">
+            <i class="ri-lock-unlock-line text-gold"></i> 회원 다운로드
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Additional Material Notice Banner -->
+      <div style="background: rgba(212, 163, 89, 0.08); border: 1px solid rgba(212, 163, 89, 0.3); border-radius: 16px; padding: 28px; text-align: center; margin-top: 50px;">
+        <h4 style="color: var(--color-navy-900); font-size: 1.15rem; margin-bottom: 8px; font-family: var(--font-display);">
+          <i class="ri-information-line text-gold"></i> 모든 자료는 노바셀 무료 회원가입 후 즉시 열람 및 다운로드가 가능합니다.
+        </h4>
+        <p style="font-size: 0.92rem; color: var(--color-text-main); margin-bottom: 16px; line-height: 1.6;">
+          아직 회원이 아니신가요? 1초 구글 간편가입으로 모든 연구 자료와 매뉴얼, 박창혁 박사의 저서 신청 권한을 바로 받아보세요.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+          <a href="../register.html" class="btn btn-gold" style="padding: 10px 22px;">
+            <i class="ri-user-add-line"></i> 무료 회원가입 하기
+          </a>
+          <a href="../login.html" class="btn btn-outline-navy" style="padding: 10px 22px;">
+            <i class="ri-login-box-line"></i> 기존 회원 로그인
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Special Modal: 박창혁 박사 저서 메일 신청 모달 -->
+  <div class="video-modal-overlay" id="bookModal">
+    <div class="video-modal-container" style="max-width: 580px; width: 95%; background: var(--color-white); border-radius: 20px; color: var(--color-navy-900); padding: 36px; position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.5);">
+      <button onclick="closeBookModal()" aria-label="닫기" style="position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; color: #94a3b8; cursor: pointer;">
+        <i class="ri-close-line"></i>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 24px;">
+        <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(212,163,89,0.18); color: #b45309; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 14px;">
+          <i class="ri-book-read-fill"></i>
+        </div>
+        <h3 style="font-size: 1.35rem; color: var(--color-navy-900); font-family: var(--font-display); margin-bottom: 6px;">
+          박창혁 박사 저서 전용 메일 신청서
+        </h3>
+        <p style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">
+          '노바셀 통치 요법(NovaCell Therapy)' 저서는 회원님의 신청 이메일로 발송 정보가 접수되며, 확인 즉시 전자책(PDF 풀버전 114.5MB) 다운로드가 시작됩니다.
+        </p>
+      </div>
+
+      <form id="bookRequestForm" onsubmit="submitBookRequest(event)">
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">신청 회원 성함 / 기관명 *</label>
+          <input type="text" id="bookUserName" required placeholder="예: 홍길동" style="width: 100%; padding: 10px 14px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.92rem;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">수신 이메일 주소 *</label>
+          <input type="email" id="bookUserEmail" required placeholder="name@domain.com" style="width: 100%; padding: 10px 14px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.92rem;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">연락처 (휴대폰)</label>
+          <input type="tel" id="bookUserPhone" placeholder="010-0000-0000" style="width: 100%; padding: 10px 14px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.92rem;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 6px;">저서 열람 목적 / 관심 분야</label>
+          <select id="bookUserPurpose" style="width: 100%; padding: 10px 14px; border: 1.5px solid #cbd5e1; border-radius: 8px; font-size: 0.92rem; background: #fff;">
+            <option value="만성통증/피로 자가치유 연구">만성통증 / 만성피로 자가치유 연구</option>
+            <option value="의료진/한의사/테라피스트 임상 도입">의료진 / 한의사 / 테라피스트 임상 도입</option>
+            <option value="생체전기 의학 및 세포전압 학술 연구">생체전기 의학 및 세포전압 학술 연구</option>
+            <option value="기기 구매 전 상세 원리 확인">기기 구매 전 상세 원리 확인</option>
+          </select>
+        </div>
+
+        <div style="background: #f8fafc; padding: 10px 14px; border-radius: 8px; margin-bottom: 20px; font-size: 0.8rem; color: #64748b;">
+          ※ 신청 내역은 노바셀 본부(emotionbrain@naver.com)로 안전하게 기록되며, 승인과 동시에 전자책(PDF)이 전달됩니다.
+        </div>
+
+        <button type="submit" class="btn btn-gold" style="width: 100%; padding: 14px; font-size: 1rem; font-weight: 700;">
+          <i class="ri-download-cloud-2-fill"></i> 메일 신청 접수 및 PDF 저서 다운로드
+        </button>
+      </form>
+    </div>
+  </div>
+
+    
+  
+
+  <!-- 5. Footer Section -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Col 1: Brand Info -->
+        <div class="footer-col footer-brand">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="logo-badge">N</div>
+            <div class="logo-text">
+              <span class="logo-title">NovaCell Therapy</span>
+              <span class="logo-sub">노바셀 통치 요법</span>
+            </div>
+          </div>
+          <p>
+            박창혁 박사의 노바셀 통치 요법®은 생체 전압(Cellular Voltage) 복원과 극성 정렬을 통해 만성 통증, 피로, 신경계 불균형, 염증 및 수면 장애를 근본적으로 치유하는 혁신적인 생체 전기 의학 시스템입니다.
+          </p>
+          <div class="footer-social-links">
+            <a href="#" class="social-btn" aria-label="유튜브"><i class="ri-youtube-fill"></i></a>
+            <a href="#" class="social-btn" aria-label="블로그"><i class="ri-article-line"></i></a>
+            <a href="#" class="social-btn" aria-label="인스타그램"><i class="ri-instagram-fill"></i></a>
+            <a href="#" class="social-btn" aria-label="페이스북"><i class="ri-facebook-fill"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links (2-Column Balanced 7x7 Layout) -->
+        <div class="footer-col footer-links-col">
+          <h4>배우기 &amp; 원리</h4>
+          <div class="footer-links-grid">
+            <ul class="footer-links">
+              <li><a href="how-it-works.html">작동 원리 개요</a></li>
+              <li><a href="what-is-voltage.html">치유 전압이란?</a></li>
+              <li><a href="system.html">NovaCell Therapy 개요</a></li>
+              <li><a href="novacell-therapy.html">노바셀 테라피</a></li>
+              <li><a href="why-novacell.html">왜 노바셀인가?</a></li>
+              <li><a href="protocols.html">프로토콜 개요</a></li>
+              <li><a href="audience-solutions.html">대상별 솔루션</a></li>
+            </ul>
+            <ul class="footer-links">
+              <li><a href="chronic-pain.html">만성 통증 완화</a></li>
+              <li><a href="energy-support.html">에너지 &amp; 피로 회복</a></li>
+              <li><a href="nervous-system.html">신경계 균형</a></li>
+              <li><a href="inflammation-support.html">염증 및 조직 복원</a></li>
+              <li><a href="sleep-support.html">수면 &amp; 스트레스 케어</a></li>
+              <li><a href="recovery-support.html">회복 지원</a></li>
+              <li><a href="events.html">교육 안내 및 일정</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Col 3: Contact & Support -->
+        <div class="footer-col">
+          <h4>고객센터 &amp; 안내</h4>
+          <ul class="contact-info-list">
+            <li>
+              <i class="ri-map-pin-2-line"></i>
+              <span>서울특별시 동대문구 전농로 31 (답십리동 487-2) knk타워 3층 306호</span>
+            </li>
+            <li>
+              <i class="ri-phone-line"></i>
+              <span>고객지원: <strong>010-9726-7012</strong></span>
+            </li>
+            <li>
+              <i class="ri-mail-line"></i>
+              <span>이메일: <strong>emotionbrain@naver.com</strong></span>
+            </li>
+            <li>
+              <i class="ri-time-line"></i>
+              <span>상담 시간: 평일 09:00 ~ 18:00</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Newsletter -->
+        <div class="footer-col footer-newsletter">
+          <h4>뉴스 및 세미나 구독</h4>
+          <p style="font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-bottom: 14px;">
+            노바셀 마스터 클래스 개강 알림, 생체 전압 임상 가이드 및 세미나 소식을 가장 먼저 받아보세요.
+          </p>
+          <form id="newsletterForm">
+            <input type="email" placeholder="이메일 주소를 입력하세요" required>
+            <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px;">
+              <i class="ri-send-plane-fill"></i> 소식 구독하기
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Business Info & Legal -->
+      <div class="footer-business-info">
+        <div class="business-info-row">
+          <span><strong>상호명 :</strong> 노바셀</span>
+          <span class="info-divider">|</span>
+          <span><strong>대표 :</strong> 김현옥</span>
+          <span class="info-divider">|</span>
+          <span><strong>사업자등록번호 :</strong> 206-30-95475</span>
+          <span class="info-divider">|</span>
+          <span><strong>통신판매업신고 :</strong> 제2026-서울 노원-1068호</span>
+        </div>
+        <div class="business-info-row">
+          <span><strong>주소 :</strong> 서울특별시 동대문구 전농로 31 (답십리동 487-2) knk타워 3층 306호</span>
+          <span class="info-divider">|</span>
+          <span><strong>고객지원 :</strong> 010-9726-7012</span>
+          <span class="info-divider">|</span>
+          <span><strong>이메일 :</strong> emotionbrain@naver.com</span>
+        </div>
+      </div>
+
+      <!-- Disclaimer & Legal -->
+      <div class="footer-disclaimer">
+        ※ 본 웹사이트의 모든 콘텐츠는 교육 및 정보 제공 목적으로 작성되었습니다. 특정 질병의 진단, 치료, 처방을 대신하지 않으며, 구체적인 치료 계획은 전문 의료진 및 상담사를 통해 확인하시기 바랍니다.
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 NovaCell (노바셀). All rights reserved.
+        </div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <a href="../privacy.html">개인정보 처리방침</a>
+          <a href="../terms.html">이용약관</a>
+          <a href="../disclaimer.html">의학적 면책 조항</a>
+          <span style="opacity: 0.4;">|</span>
+          <a href="../login.html" style="color: var(--color-gold-400); font-weight: 600;">로그인</a>
+          <a href="../register.html" style="font-weight: 600;">회원가입</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script>
+    function checkUserLoggedIn() {
+      const user = localStorage.getItem('novacell_user');
+      if (!user) return null;
+      try {
+        return JSON.parse(user);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function handleDownload(fileName, docTitle, isSpecialBook = false) {
+      const user = checkUserLoggedIn();
+
+      if (!user) {
+        if (confirm(`🔒 [회원 전용 자료 다운로드]\n\n'${docTitle}' 문서는 노바셀 정회원 전용 무료 자료입니다.\n\n회원가입 또는 로그인 후 즉시 다운로드하실 수 있습니다.\n로그인 / 회원가입 페이지로 이동하시겠습니까?`)) {
+          window.location.href = 'login.html';
+        }
+        return;
+      }
+
+      // If Special Book: open modal
+      if (isSpecialBook) {
+        openBookModal(user);
+        return;
+      }
+
+      // Direct download of document
+      triggerPdfDownload(fileName, docTitle, user);
+    }
+
+    function triggerPdfDownload(fileName, docTitle, user) {
+      const link = document.createElement('a');
+      link.href = `./documents/${fileName}`;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      alert(`✅ [회원 다운로드]\n\n${user.name || user.email} 회원님,\n'${docTitle}' 파일 다운로드가 시작되었습니다.`);
+    }
+
+    function openBookModal(user) {
+      if (user) {
+        if (user.name) document.getElementById('bookUserName').value = user.name;
+        if (user.email) document.getElementById('bookUserEmail').value = user.email;
+        if (user.phone && user.phone !== '010-****-****') document.getElementById('bookUserPhone').value = user.phone;
+      }
+      document.getElementById('bookModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeBookModal() {
+      document.getElementById('bookModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('bookModal')?.addEventListener('click', function(e) {
+      if (e.target === this) closeBookModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeBookModal();
+    });
+
+    function submitBookRequest(e) {
+      e.preventDefault();
+      const name = document.getElementById('bookUserName').value;
+      const email = document.getElementById('bookUserEmail').value;
+      const purpose = document.getElementById('bookUserPurpose').value;
+
+      // Save application record to localStorage
+      let requests = JSON.parse(localStorage.getItem('novacell_book_requests') || '[]');
+      requests.unshift({
+        name: name,
+        email: email,
+        purpose: purpose,
+        date: new Date().toLocaleString()
+      });
+      localStorage.setItem('novacell_book_requests', JSON.stringify(requests));
+
+      // Trigger download
+      const link = document.createElement('a');
+      link.href = './documents/dr_park_novacell_therapy_book.pdf';
+      link.download = '박창혁박사_저서_노바셀통치요법.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      closeBookModal();
+
+      alert(`🎉 [박창혁 박사 저서 신청 접수 완료]\n\n${name} 회원님(${email})의 저서 열람 신청이 성공적으로 접수되었습니다.\n\n‘박창혁 박사 저서 : 노바셀 통치 요법 (PDF 114.5MB)’ 다운로드를 시작합니다!`);
+    }
+
+    // Category Filter Tab Script
+    document.querySelectorAll('.resource-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.resource-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cat = btn.getAttribute('data-category');
+        document.querySelectorAll('.resource-item-card').forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-category') === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+  </body>
+</html>

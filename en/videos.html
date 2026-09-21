@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title>Video Gallery &amp; Lectures | NovaCell Therapy®</title>
+  <meta name="description" content="Watch Dr. Chang-Hyuk Park's bio-electric medicine lectures, clinical protocol demonstrations, seminar field sketches, and patient recovery case studies.">
+  <meta name="keywords" content="NovaCell videos, bioelectric lectures, microcurrent tutorial, Dr. Chang-Hyuk Park, clinical demo, master class video">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .video-category-tabs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 45px;
+    }
+    .video-tab-btn {
+      padding: 10px 22px;
+      border-radius: 30px;
+      background: var(--color-white);
+      border: 1px solid var(--color-navy-100);
+      color: var(--color-navy-800);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .video-tab-btn:hover, .video-tab-btn.active {
+      background: var(--color-navy-900);
+      color: var(--color-gold-400);
+      border-color: var(--color-navy-900);
+      box-shadow: var(--shadow-sm);
+    }
+    .video-card {
+      background: var(--color-white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--color-navy-100);
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+    }
+    .video-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--color-gold-400);
+    }
+    .video-thumbnail-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .video-thumbnail-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-smooth), opacity 0.3s;
+    }
+    .video-card:hover .video-thumbnail-wrap img {
+      transform: scale(1.04);
+      opacity: 0.88;
+    }
+    .video-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      background: rgba(212, 163, 89, 0.92);
+      color: var(--color-navy-950);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      transition: all var(--transition-fast);
+    }
+    .video-card:hover .video-play-btn {
+      background: var(--color-gold-400);
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+    .video-duration-tag {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .video-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(8, 22, 47, 0.85);
+      backdrop-filter: blur(4px);
+      color: var(--color-gold-400);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(212, 163, 89, 0.3);
+    }
+    .video-card-body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .video-card-body h3 {
+      font-size: 1.15rem;
+      color: var(--color-navy-900);
+      margin-bottom: 10px;
+      font-family: var(--font-display);
+      line-height: 1.45;
+    }
+    .video-card-body p {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin: 0;
+      flex: 1;
+    }
+    .video-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(8px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+    .video-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .video-modal-container {
+      width: 100%;
+      max-width: 900px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span><i class="ri-customer-service-2-line text-gold"></i> Global Consultation: <strong>+82-10-9726-7012</strong></span>
+        <span>·</span>
+        <a href="#consultation" class="open-consultation-modal text-gold" data-type="Video Consultation">Book Consultation</a>
+        <span>·</span>
+        <a href="education.html" class="top-bar-highlight open-consultation-modal" data-type="Master Class">
+          <i class="ri-calendar-event-line"></i> Register Now: NovaCell Master Class
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <a href="../login.html" class="text-gold" style="font-weight: 700;"><i class="ri-user-shared-line"></i> Sign In</a>
+        <a href="../register.html" style="font-weight: 600;">Register</a>
+        <span>·</span>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="videos.html" style="color: var(--color-gold-300); font-weight: 700;">Videos</a>
+        <a href="resources.html">Resources</a>
+        <a href="events.html">Events &amp; Schedule</a>
+        <a href="index.html">Home</a>
+        <!-- Language Switcher -->
+        <div id="langSwitchDropdown" class="simple-language-switch" aria-label="Language selection"><a class="simple-lang-link" href="../ko/videos.html" lang="ko">한국어</a><a class="simple-lang-link active" href="videos.html" lang="en">English</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Main Navigation Header -->
+  <header class="header-main">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-badge">N</div>
+        <div class="logo-text">
+          <span class="logo-title">NovaCell Therapy</span>
+          <span class="logo-sub">Bio-electric Voltage Medicine</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <ul class="nav-menu" id="primaryNavigation" aria-hidden="true">
+        <li class="nav-item">
+          <a href="how-it-works.html" class="nav-link">How It Works <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="how-it-works.html">Mechanism Overview</a></li>
+            <li class="dropdown-item"><a href="what-is-voltage.html">What is Healing Voltage?</a></li>
+            <li class="dropdown-item"><a href="#science">Neural Signaling</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="system.html" class="nav-link">System <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="system.html">NovaCell System Overview</a></li>
+            <li class="dropdown-item"><a href="novacell-therapy.html">NovaCell Therapy</a></li>
+            <li class="dropdown-item"><a href="why-novacell.html">Why NovaCell?</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="protocols.html" class="nav-link">Protocols <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="protocols.html">Clinical Protocol Overview</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link">Support Areas <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="chronic-pain.html">Chronic Pain Relief</a></li>
+            <li class="dropdown-item"><a href="energy-support.html">Energy &amp; Vitality Recovery</a></li>
+            <li class="dropdown-item"><a href="nervous-system.html">Nervous System Balance</a></li>
+            <li class="dropdown-item"><a href="inflammation-support.html">Inflammation &amp; Tissue Repair</a></li>
+            <li class="dropdown-item"><a href="sleep-support.html">Sleep &amp; Stress Management</a></li>
+            <li class="dropdown-item"><a href="recovery-support.html">Whole-Body Recovery</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="audience-solutions.html" class="nav-link">Solutions</a>
+        </li>
+        <li class="nav-item">
+          <a href="education.html" class="nav-link">Education <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="education.html">Master Class</a></li>
+            <li class="dropdown-item"><a href="events.html">Event Calendar &amp; Seminars</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="reflex-guide.html" class="nav-link">Reflex Therapy Guide</a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:void(0)" class="nav-link">Support <i class="ri-arrow-down-s-line"></i></a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item"><a href="contact.html">Contact Us</a></li>
+            <li class="dropdown-item"><a href="faq.html">FAQ</a></li>
+            <li class="dropdown-item"><a href="videos.html">Video Library</a></li>
+            <li class="dropdown-item"><a href="resources.html">Resources &amp; Downloads</a></li>
+          </ul>
+        </li>
+      <li class="nav-item mobile-language-item" aria-label="Language selection"><span class="mobile-language-label">Language</span><div class="mobile-language-links"><a class="mobile-language-link" href="../ko/videos.html" lang="ko">한국어</a><a class="mobile-language-link active" href="videos.html" lang="en">English</a></div></li></ul>
+
+      <!-- CTA Button & Mobile Toggle -->
+      <div class="header-cta-group">
+        <a href="#consultation" class="btn btn-gold open-consultation-modal" data-type="Video Consultation">
+          <i class="ri-play-circle-line"></i> Video Consultation
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="primaryNavigation">
+          <i class="ri-menu-line" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Subpage Hero Banner -->
+  <section class="subpage-hero">
+    <div class="container">
+      <div class="subpage-breadcrumb">
+        <a href="index.html"><i class="ri-home-4-line"></i> Home</a>
+        <span>/</span>
+        <span>Support</span>
+        <span>/</span>
+        <span>Video Library</span>
+      </div>
+      <div class="badge-tag">
+        <i class="ri-video-line"></i> NovaCell Official Media Center
+      </div>
+      <h1>Official Video Gallery<br><span class="text-gold">Lectures, Master Classes &amp; Clinical Guides</span></h1>
+      <p class="lead">
+        Explore clinical demonstrations, Dr. Chang-Hyuk Park's academic lectures, step-by-step protocol tutorials, and documented master class seminar field sketches.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. Video Filter Tabs & Grid -->
+  <section class="feature-block-section" style="padding: 70px 0 90px;">
+    <div class="container">
+      
+      <!-- Video Category Tabs (All 4 Categories Requested by User) -->
+      <div class="video-category-tabs">
+        <button class="video-tab-btn active" data-category="all">
+          <i class="ri-apps-line"></i> All Videos (전체 영상)
+        </button>
+        <button class="video-tab-btn" data-category="lecture">
+          <i class="ri-book-open-line"></i> Principles &amp; Medical Lectures (원리 &amp; 의학 특강)
+        </button>
+        <button class="video-tab-btn" data-category="demo">
+          <i class="ri-play-circle-line"></i> Protocol Demonstrations (프로토콜 실전 시연)
+        </button>
+        <button class="video-tab-btn" data-category="masterclass">
+          <i class="ri-presentation-line"></i> Seminars &amp; Field Sketches (세미나 &amp; 현장스케치)
+        </button>
+      </div>
+
+      <!-- Video Card Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px;">
+        
+        <!-- Video 1: Human Voltage & Chronic Disease -->
+        <div class="video-card" data-category="lecture">
+          <div class="video-thumbnail-wrap" onclick="openVideo('HmzqK3KAJpI', 'The Secrets of Human Voltage &amp; Healing Chronic Disease - Dr. Chang-Hyuk Park Lecture', 'https://youtu.be/HmzqK3KAJpI')">
+            <img src="../images/schedule-masterclass-dates.jpg" alt="The Secrets of Human Voltage &amp; Healing Chronic Disease">
+            <div class="video-badge">Medical Lecture</div>
+            <div class="video-play-btn"><i class="ri-play-fill"></i></div>
+            <div class="video-duration-tag">YouTube</div>
+          </div>
+          <div class="video-card-body">
+            <h3>1. The Secrets of Human Voltage &amp; Healing Chronic Disease</h3>
+            <p>Dr. Chang-Hyuk Park breaks down the biophysics of cellular membrane potential (-50mV) and the foundational principles of human self-healing ecosystems.</p>
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn btn-navy" onclick="openVideo('HmzqK3KAJpI', 'The Secrets of Human Voltage &amp; Healing Chronic Disease - Dr. Chang-Hyuk Park Lecture', 'https://youtu.be/HmzqK3KAJpI')" style="padding: 6px 14px; font-size: 0.82rem;">
+                <i class="ri-play-circle-line text-gold"></i> Watch Video
+              </button>
+              <a href="https://youtu.be/HmzqK3KAJpI" target="_blank" style="color: #ef4444; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                <i class="ri-youtube-fill"></i> YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 2: Phase 1 Polarity Alignment -->
+        <div class="video-card" data-category="demo">
+          <div class="video-thumbnail-wrap" onclick="openVideo('1heb-HmRQpY', 'Phase 1: Polarity Alignment &amp; Whole-Body Voltage Charging Guide', 'https://youtu.be/1heb-HmRQpY?si=5d5yTtrjOBq8TOyq')">
+            <img src="../images/protocol-wholebody.jpg" alt="Phase 1: Polarity Alignment &amp; Whole-Body Voltage Charging Guide">
+            <div class="video-badge">Protocol Demo</div>
+            <div class="video-play-btn"><i class="ri-play-fill"></i></div>
+            <div class="video-duration-tag">YouTube</div>
+          </div>
+          <div class="video-card-body">
+            <h3>2. Phase 1: Polarity Alignment &amp; Whole-Body Voltage Charging Guide</h3>
+            <p>A step-by-step practical clinical demonstration on detecting biological polarity reversals and conducting 12-meridian voltage charging.</p>
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn btn-navy" onclick="openVideo('1heb-HmRQpY', 'Phase 1: Polarity Alignment &amp; Whole-Body Voltage Charging Guide', 'https://youtu.be/1heb-HmRQpY?si=5d5yTtrjOBq8TOyq')" style="padding: 6px 14px; font-size: 0.82rem;">
+                <i class="ri-play-circle-line text-gold"></i> Watch Video
+              </button>
+              <a href="https://youtu.be/1heb-HmRQpY?si=5d5yTtrjOBq8TOyq" target="_blank" style="color: #ef4444; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                <i class="ri-youtube-fill"></i> YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 3: Chronic Pain & Nervous System Protocol -->
+        <div class="video-card" data-category="demo">
+          <div class="video-thumbnail-wrap" onclick="openVideo('kXzFu7-zboI', 'Chronic Pain &amp; Nervous System Recovery Intensive Protocol', 'https://youtu.be/kXzFu7-zboI?si=-uqn2gD1qn92X6R2')">
+            <img src="../images/chronic-pain-relief.jpg" alt="Chronic Pain &amp; Nervous System Recovery Protocol">
+            <div class="video-badge">Clinical Demo</div>
+            <div class="video-play-btn"><i class="ri-play-fill"></i></div>
+            <div class="video-duration-tag">YouTube</div>
+          </div>
+          <div class="video-card-body">
+            <h3>3. Chronic Pain &amp; Nervous System Recovery Intensive Protocol</h3>
+            <p>Targeted bio-electric therapy for intractable neck, shoulder, lumbar, and joint pain, recharging local cellular voltage and clearing nerve signaling stagnation.</p>
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn btn-navy" onclick="openVideo('kXzFu7-zboI', 'Chronic Pain &amp; Nervous System Recovery Intensive Protocol', 'https://youtu.be/kXzFu7-zboI?si=-uqn2gD1qn92X6R2')" style="padding: 6px 14px; font-size: 0.82rem;">
+                <i class="ri-play-circle-line text-gold"></i> Watch Video
+              </button>
+              <a href="https://youtu.be/kXzFu7-zboI?si=-uqn2gD1qn92X6R2" target="_blank" style="color: #ef4444; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                <i class="ri-youtube-fill"></i> YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 4: Vagus Nerve & Gut-Brain Axis -->
+        <div class="video-card" data-category="lecture">
+          <div class="video-thumbnail-wrap" onclick="openVideo('yCJL2NMOymU', 'Vagus Nerve &amp; Gut-Brain Axis Recovery Lecture', 'https://youtu.be/yCJL2NMOymU?si=WAvDXGvkOvTdWzhz')">
+            <img src="../images/protocol-vagus.jpg" alt="Vagus Nerve &amp; Gut-Brain Axis Recovery">
+            <div class="video-badge">Deep Science</div>
+            <div class="video-play-btn"><i class="ri-play-fill"></i></div>
+            <div class="video-duration-tag">YouTube</div>
+          </div>
+          <div class="video-card-body">
+            <h3>4. Vagus Nerve &amp; Gut-Brain Axis Recovery</h3>
+            <p>An in-depth electrophysiological lecture on vagus nerve trunk stimulation to resolve autonomic burnout, chronic indigestion, and sleep disturbances.</p>
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn btn-navy" onclick="openVideo('yCJL2NMOymU', 'Vagus Nerve &amp; Gut-Brain Axis Recovery Lecture', 'https://youtu.be/yCJL2NMOymU?si=WAvDXGvkOvTdWzhz')" style="padding: 6px 14px; font-size: 0.82rem;">
+                <i class="ri-play-circle-line text-gold"></i> Watch Video
+              </button>
+              <a href="https://youtu.be/yCJL2NMOymU?si=WAvDXGvkOvTdWzhz" target="_blank" style="color: #ef4444; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                <i class="ri-youtube-fill"></i> YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 5: Master Class Field Sketch -->
+        <div class="video-card" data-category="masterclass">
+          <div class="video-thumbnail-wrap" onclick="openVideo('zUbbZBsg288', '2026 NovaCell Master Class Field Highlights &amp; Practicum', 'https://youtu.be/zUbbZBsg288?si=jPCZiItDtaEOb6Uc')">
+            <img src="../images/education-hero-system.jpg" alt="2026 NovaCell Master Class Field Highlights">
+            <div class="video-badge">Seminar Sketch</div>
+            <div class="video-play-btn"><i class="ri-play-fill"></i></div>
+            <div class="video-duration-tag">YouTube</div>
+          </div>
+          <div class="video-card-body">
+            <h3>5. 2026 NovaCell Master Class Field Highlights &amp; Practicum</h3>
+            <p>Live seminar highlights and certified practitioner interviews from the intensive clinical workshop held at the NovaCell Education Center in Seoul.</p>
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn btn-navy" onclick="openVideo('zUbbZBsg288', '2026 NovaCell Master Class Field Highlights &amp; Practicum', 'https://youtu.be/zUbbZBsg288?si=jPCZiItDtaEOb6Uc')" style="padding: 6px 14px; font-size: 0.82rem;">
+                <i class="ri-play-circle-line text-gold"></i> Watch Video
+              </button>
+              <a href="https://youtu.be/zUbbZBsg288?si=jPCZiItDtaEOb6Uc" target="_blank" style="color: #ef4444; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                <i class="ri-youtube-fill"></i> YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video 6: 15-Minute Daily Home Reset -->
+        <div class="video-card" data-category="demo">
+          <div class="video-thumbnail-wrap" onclick="openVideo('vqYDQ2gJH7g', '15-Minute Daily Home Care Reset Routine', 'https://youtu.be/vqYDQ2gJH7g?si=A8_knyipiim6PfjO')">
+            <img src="../images/protocol-relaxation.jpg" alt="15-Minute Daily Home Care Reset Routine">
+            <div class="video-badge">Home Care</div>
+            <div class="video-play-btn"><i class="ri-play-fill"></i></div>
+            <div class="video-duration-tag">YouTube</div>
+          </div>
+          <div class="video-card-body">
+            <h3>6. 15-Minute Daily Home Care Reset Routine</h3>
+            <p>A quick, soothing bio-electric balancing sequence designed for personal and family home healthcare to relieve daily fatigue and stress.</p>
+            <div style="margin-top: 16px; display: flex; justify-content: space-between; align-items: center;">
+              <button type="button" class="btn btn-navy" onclick="openVideo('vqYDQ2gJH7g', '15-Minute Daily Home Care Reset Routine', 'https://youtu.be/vqYDQ2gJH7g?si=A8_knyipiim6PfjO')" style="padding: 6px 14px; font-size: 0.82rem;">
+                <i class="ri-play-circle-line text-gold"></i> Watch Video
+              </button>
+              <a href="https://youtu.be/vqYDQ2gJH7g?si=A8_knyipiim6PfjO" target="_blank" style="color: #ef4444; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
+                <i class="ri-youtube-fill"></i> YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsive Video Player Modal -->
+  <div class="video-modal-overlay" id="videoModal">
+    <div class="video-modal-container" style="max-width: 860px; width: 95%; background: #000; border-radius: 16px; overflow: hidden; position: relative;">
+      <button class="video-modal-close" onclick="closeVideoModal()" aria-label="Close" style="position: absolute; top: 12px; right: 16px; background: rgba(0,0,0,0.6); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 10;">
+        <i class="ri-close-line"></i>
+      </button>
+      
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000;">
+        <iframe id="videoIframe" src="" title="NovaCell YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+      </div>
+
+      <div style="padding: 20px 24px; background: var(--color-navy-950); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <h3 id="videoModalTitle" style="font-size: 1.15rem; color: #fff; margin-bottom: 4px; font-family: var(--font-display);"></h3>
+          <span style="font-size: 0.82rem; color: var(--color-gold-400);"><i class="ri-youtube-fill text-gold"></i> NovaCell Therapy® Official Video Channel</span>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a id="videoDirectLink" href="#" target="_blank" class="btn btn-gold" style="padding: 8px 16px; font-size: 0.85rem;">
+            <i class="ri-youtube-fill"></i> Watch on YouTube
+          </a>
+          <button class="btn btn-outline-white" onclick="closeVideoModal()" style="padding: 8px 16px; font-size: 0.85rem;">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Footer Section -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-brand">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="logo-badge">N</div>
+            <div class="logo-text">
+              <span class="logo-title">NovaCell Therapy</span>
+              <span class="logo-sub">Bio-electric Voltage Medicine</span>
+            </div>
+          </div>
+          <p>
+            Dr. Chang-Hyuk Park's NovaCell Tong-Chi Therapy® is an innovative bio-electric medicine system that fundamentally addresses chronic pain, fatigue, nervous system imbalance, and tissue recovery through cellular voltage (-50mV) restoration.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="system.html">System Overview</a></li>
+            <li><a href="novacell-therapy.html">NovaCell Therapy</a></li>
+            <li><a href="why-novacell.html">Why NovaCell?</a></li>
+            <li><a href="protocols.html">Clinical Protocols</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Support Areas</h4>
+          <ul class="footer-links">
+            <li><a href="chronic-pain.html">Chronic Pain Relief</a></li>
+            <li><a href="energy-support.html">Energy &amp; Fatigue Recovery</a></li>
+            <li><a href="nervous-system.html">Nervous System Balance</a></li>
+            <li><a href="inflammation-support.html">Inflammation &amp; Tissue Repair</a></li>
+            <li><a href="sleep-support.html">Sleep &amp; Stress Management</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">Academy &amp; Support</h4>
+          <ul class="footer-links">
+            <li><a href="education.html">Master Class</a></li>
+            <li><a href="events.html">Events &amp; Schedule</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 NovaCell Therapy. All rights reserved.</div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <a href="../privacy.html">Privacy Policy</a>
+          <a href="../terms.html">Terms of Service</a>
+          <a href="../disclaimer.html">Medical Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script>
+    function openVideo(youtubeId, title, directUrl) {
+      const modal = document.getElementById('videoModal');
+      const titleEl = document.getElementById('videoModalTitle');
+      const iframe = document.getElementById('videoIframe');
+      const directLink = document.getElementById('videoDirectLink');
+      
+      if (titleEl) titleEl.innerText = title;
+      if (iframe) iframe.src = 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0';
+      if (directLink) directLink.href = directUrl || ('https://youtu.be/' + youtubeId);
+      if (modal) modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoIframe');
+      if (modal) modal.classList.remove('active');
+      if (iframe) iframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('videoModal')?.addEventListener('click', function(e) {
+      if (e.target === this) closeVideoModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeVideoModal();
+    });
+
+    // Category Filter Tab Script (Matching all 4 categories requested)
+    document.querySelectorAll('.video-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.video-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const cat = btn.getAttribute('data-category');
+        document.querySelectorAll('.video-card').forEach(card => {
+          if (cat === 'all' || card.getAttribute('data-category') === cat) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
