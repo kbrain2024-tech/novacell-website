@@ -6,9 +6,9 @@
 https://healing.novacell.kr/*   https://effervescent-starship-9e56b9.netlify.app/:splat  302!
 http://healing.novacell.kr/*    https://effervescent-starship-9e56b9.netlify.app/:splat  302!
 
-# 2. Reflex Therapy Guide Dedicated Routing
-https://guide.novacell.kr/*     https://novacell.kr/ko/reflex-therapy-guide.html  302!
-http://guide.novacell.kr/*      https://novacell.kr/ko/reflex-therapy-guide.html  302!
+# 2. Reflex Therapy Guide Dedicated WebApp Routing (v18 PWA)
+https://guide.novacell.kr/*     /reflex-app/:splat  200!
+http://guide.novacell.kr/*      /reflex-app/:splat  200!
 
 # 3. Academy & Clinical Master Class Routing
 https://academy.novacell.kr/*   https://novacell.kr/ko/education.html  302!

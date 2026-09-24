@@ -1,0 +1,5 @@
+const CACHE="novacell-reflex-therapy-v18";
+const ASSETS=["./","./index.html","./styles.css?v=18","./program-data.js?v=18","./app.js?v=18","./manifest.webmanifest","./assets/reflex-hero-guide.webp","./assets/system-cardio.webp","./assets/system-digestive.webp","./assets/system-endocrine.webp","./assets/system-musculoskeletal.webp","./assets/system-nervous.webp","./assets/system-respiratory.webp","./assets/system-reproductive.webp","./assets/system-urinary.webp","./assets/reflex-split/p48-feet.webp","./assets/reflex-split/p48-hands.webp","./assets/reflex-split/p90-feet.webp","./assets/reflex-split/p91-feet.webp"];
+self.addEventListener("install",event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
+self.addEventListener("activate",event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
+self.addEventListener("fetch",event=>event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request))));

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#071426">
+  <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
+  <title>NovaCell Reflex Therapy APP</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css?v=18">
+</head>
+<body>
+  <section class="welcome-gate" id="welcomeGate" aria-labelledby="welcomeTitle">
+    <div class="welcome-shell">
+      <div class="welcome-visual">
+        <img src="./assets/reflex-hero-guide.webp" alt="손과 발 반사요법을 안내하는 NovaCell AI 가이드">
+        <div class="welcome-visual-copy"><span>NovaCell</span><strong>Reflex Therapy</strong><small>Balance begins at your hands &amp; feet.</small></div>
+        <div class="welcome-signal"><i></i> BOOK-BASED REFLEX MAP</div>
+      </div>
+      <div class="welcome-content">
+        <button class="welcome-close" id="welcomeClose" aria-label="대문 닫기">×</button>
+        <div class="welcome-badges"><span>NOVACELL CLINICAL GUIDE</span><span>REFLEX THERAPY</span></div>
+        <h1 id="welcomeTitle"><em>NovaCell</em> Reflex<br>Therapy Guide</h1>
+        <p class="welcome-subtitle">Hand &amp; Foot Reflexology Learning System</p>
+        <p class="welcome-description"><strong>손·발 반사구 지도</strong>와 교재 기반 계통별 프로그램을 연결하여<br>위치를 배우고, 작업 순서에 따라 세션을 진행할 수 있습니다.</p>
+        <div class="welcome-features">
+          <div><b>🦶</b><span><strong>8개 반사 지도</strong><small>손·발 위치를 한눈에</small></span></div>
+          <div><b>✦</b><span><strong>8개 계통별 프로그램</strong><small>교재 소분류와 작업 순서</small></span></div>
+          <div><b>⏱</b><span><strong>Guided Session</strong><small>타이머·음성 단계 안내</small></span></div>
+          <div><b>🎓</b><span><strong>NovaCell Academy</strong><small>학습·퀴즈·실기평가</small></span></div>
+        </div>
+        <button class="welcome-start" id="welcomeStart">NovaCell 반사요법 가이드 시작하기 <span>→</span></button>
+        <p class="welcome-note">교재 기반 교육·자가관리 보조 도구이며 의료적 진단과 치료를 대신하지 않습니다.</p>
+      </div>
+    </div>
+  </section>
+  <header class="topbar">
+    <a class="brand" href="#map"><span class="brand-mark">✦</span><span><strong>NovaCell</strong><small>REFLEX THERAPY APP</small></span></a>
+    <div class="top-actions">
+      <button class="home-gate-button" id="homeGateBtn" type="button" aria-label="NovaCell 메인 대문으로 돌아가기">⌂ <span>메인 대문</span></button>
+      <div class="access-switches" role="group" aria-label="언어와 음성 설정">
+        <button id="langToggle" title="한국어/English">EN</button>
+        <button id="voiceToggle" title="치료점 음성 안내">🔊 음성</button>
+        <button id="soundToggle" title="시작·완료 알림음">♪ 알림</button>
+      </div>
+      <div class="mode-switch" role="group" aria-label="이용 모드">
+        <button class="active" data-mode="self" data-i18n="selfMode">자가관리</button><button data-mode="pro" data-i18n="proMode">전문가</button>
+      </div>
+      <button class="ghost" id="safetyBtn" data-i18n="safety">안전 안내</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div><p class="eyebrow">BOOK-BASED WORKSPACE</p><h1>손·발 반사구를 선택하고<br>세션을 시작하세요</h1><p>교재 기본 지도는 보호되며, 전문가 모드에서 추가한 포인트만 이동·삭제할 수 있습니다.</p></div>
+      <div class="status-card"><span class="status-dot"></span><div><strong id="saveStatus">자동 저장 준비</strong><small>이 기기에 안전하게 저장됩니다.</small></div></div>
+    </section>
+
+    <nav class="workflow-tabs" aria-label="작업 단계">
+      <button class="active" data-view="map" data-i18n="navMap">1. 반사 지도</button>
+      <button data-view="programs" data-i18n="navPrograms">2. 프로그램</button>
+      <button data-view="session" data-i18n="navSession">3. 치료 세션</button>
+      <button data-view="records" data-i18n="navRecords">4. 기록·백업</button>
+      <button data-view="academy" data-i18n="navAcademy">5. Academy</button>
+    </nav>
+
+    <section class="view active" id="mapView">
+      <div class="map-layout">
+        <aside class="map-selector panel">
+          <div class="panel-title"><div><p class="eyebrow">8 MAPS</p><h2>지도 선택</h2></div><span id="mapCount">01 / 08</span></div>
+          <div class="map-buttons" id="mapButtons"></div>
+          <div class="legend"><span><i class="fixed-dot"></i>교재 기본 지도</span><span><i class="custom-dot"></i>사용자 추가점</span></div>
+        </aside>
+
+        <article class="map-workspace panel">
+          <div class="workspace-head"><div><p class="eyebrow" id="mapSide">RIGHT · FOOT</p><h2 id="mapTitle">오른발 발바닥</h2><p id="mapSource">교재 27쪽 · 기본 지도 보호</p></div><div class="zoom-actions"><button id="zoomOut" aria-label="축소">−</button><span id="zoomValue">100%</span><button id="zoomIn" aria-label="확대">＋</button></div></div>
+          <div class="map-stage" id="mapStage"><div class="map-canvas" id="mapCanvas"><img id="mapImage" src="./assets/foot-sole-map.webp" alt="교재 발바닥 반사 지도" draggable="false"><div id="customLayer"></div></div></div>
+          <div class="map-toolbar">
+            <button class="primary" id="addPointBtn">＋ 사용자 포인트 추가</button>
+            <button class="secondary" id="resetMapBtn">보기 초기화</button>
+            <span>마우스 휠 또는 버튼으로 확대 · 빈 공간을 끌어 이동</span>
+          </div>
+        </article>
+
+        <aside class="point-panel panel">
+          <div class="panel-title"><div><p class="eyebrow">POINTS</p><h2>반사구 정보</h2></div><span id="pointCount">0</span></div>
+          <div class="protected-note">🔒 교재 기본 반사구는 원본 지도에 고정되어 있습니다.</div>
+          <div id="pointDetail" class="point-detail empty"><strong>포인트를 선택하세요</strong><p>사용자 추가점을 선택하면 위치와 메모를 확인할 수 있습니다.</p></div>
+          <div id="customPointList" class="custom-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="programsView">
+      <div class="section-head"><div><p class="eyebrow">PROGRAM LIBRARY</p><h2>계통별 프로그램</h2><p>8개 대분류를 선택하면 교재 제3장의 29개 소분류를 확인할 수 있습니다.</p></div><label class="search-box">⌕ <input id="programSearch" placeholder="계통·소분류·작업 포인트 검색"></label></div>
+      <div class="system-grid" id="systemGrid"></div>
+      <div class="subcategory-head" id="subcategoryHead" hidden><button class="secondary" id="backToSystems">← 8개 대분류</button><div><p class="eyebrow" id="subcategoryEyebrow">TEXTBOOK PROGRAMS</p><h3 id="subcategoryTitle">소분류</h3><p id="subcategorySummary"></p></div></div>
+      <div class="program-grid" id="programGrid"></div>
+    </section>
+
+    <section class="view" id="sessionView">
+      <div class="session-layout">
+        <article class="session-card panel">
+          <p class="eyebrow">GUIDED SESSION</p><h2 id="sessionTitle">프로그램을 먼저 선택하세요</h2><p id="sessionSummary">프로그램에서 시작 버튼을 누르면 작업 순서가 나타납니다.</p>
+          <div class="session-progress"><div id="progressBar"></div></div>
+          <section class="session-map" aria-label="치료 위치 지도">
+            <div class="session-map-head"><div><span>LIVE REFLEX MAP</span><strong id="sessionMapTitle">치료 위치를 보면서 진행하세요</strong></div><div class="session-map-tabs" role="group" aria-label="손발 지도 전환"><button class="active" data-session-map="foot" data-i18n="footMap">🦶 발 지도</button><button data-session-map="hand" data-i18n="handMap">🖐️ 손 지도</button></div></div>
+            <div class="session-map-tools" aria-label="지도 보기 조절"><button id="sessionZoomOut" aria-label="지도 축소">−</button><span id="sessionZoomValue">100%</span><button id="sessionZoomIn" aria-label="지도 확대">＋</button><button id="sessionMapReset" data-i18n="fitAll">전체 보기</button></div>
+            <div class="session-map-frame" id="sessionMapFrame"><div class="session-active-point" id="sessionActivePoint">현재 1번</div><div class="session-map-canvas" id="sessionMapCanvas"><img id="sessionMapImage" src="./assets/reflex-split/p48-feet.webp" alt="번호가 표시된 발 작업점 지도" draggable="false"></div></div>
+            <p id="sessionMapCaption">전체 지도가 표시됩니다. 마우스나 손가락으로 움직일 수 있습니다.</p>
+          </section>
+          <div class="session-control-bar">
+            <div class="current-step" id="currentStep"><span>준비</span><strong>안전 안내를 확인한 뒤 시작하세요.</strong><p>통증이 생기지 않는 편안한 강도로 진행합니다.</p></div>
+            <div class="timer-panel"><div class="timer" id="timerDisplay" aria-label="남은 시간">00:20</div><div class="timer-adjust" aria-label="적용 시간 조절"><button id="timerMinus" type="button" data-i18n="minus10">−10초</button><button id="openTimerSettings" type="button" data-i18n="timeSettings">시간 설정</button><button id="timerPlus" type="button" data-i18n="plus10">+10초</button></div></div>
+            <div class="session-actions"><button class="primary" id="timerToggle">시작</button><button class="secondary" id="nextStep" data-i18n="nextPoint">다음 포인트</button><button class="secondary" id="finishSession" data-i18n="finishRecord">완료·기록</button></div>
+          </div>
+        </article>
+        <aside class="sequence panel"><div class="panel-title"><div><p class="eyebrow">SEQUENCE</p><h2>작업 순서</h2></div><span id="stepCounter">0 / 0</span></div><ol id="sequenceList"></ol></aside>
+      </div>
+    </section>
+
+    <section class="view" id="recordsView">
+      <div class="records-layout">
+        <article class="panel"><div class="panel-title"><div><p class="eyebrow">HISTORY</p><h2>치료 기록</h2></div><span id="recordCount">0회</span></div><div id="recordList" class="record-list"></div></article>
+        <aside class="panel backup-panel"><p class="eyebrow">DATA SAFETY</p><h2>백업과 복원</h2><p>사용자 추가점과 치료 기록을 하나의 JSON 파일로 저장합니다.</p><button class="primary" id="exportBtn">JSON 백업 저장</button><label class="secondary file-button">JSON 백업 불러오기<input type="file" id="importInput" accept="application/json"></label><button class="danger" id="clearBtn">내 기록 모두 지우기</button><small>교재 기본 지도는 삭제되지 않습니다.</small></aside>
+      </div>
+    </section>
+
+    <section class="view" id="academyView">
+      <div class="academy-head">
+        <div><p class="eyebrow">NOVACELL EDUCATION CENTER</p><h2 data-i18n="academyTitle">Academy 교육센터</h2><p data-i18n="academyIntro">교재 내용을 학습하고, 그림 퀴즈와 실기평가로 익혀 보세요.</p></div>
+        <div class="academy-progress-card"><span data-i18n="courseProgress">과정 진도</span><strong id="academyProgressText">0%</strong><div><i id="academyProgressBar"></i></div><small id="academyBestScore">최고점수 0점</small></div>
+      </div>
+      <div class="academy-course-picker" id="academyCoursePicker" aria-label="Academy 과정 선택"></div>
+      <div class="academy-menu" role="tablist" aria-label="Academy 학습 메뉴">
+        <button class="active" data-academy-tab="learn"><span>01</span><strong data-i18n="academyLearn">학습하기</strong><small>Learn</small></button>
+        <button data-academy-tab="quiz"><span>02</span><strong data-i18n="academyQuiz">퀴즈</strong><small>Quiz</small></button>
+        <button data-academy-tab="practice"><span>03</span><strong data-i18n="academyPractice">실기평가</strong><small>Practical</small></button>
+        <button data-academy-tab="progress"><span>04</span><strong data-i18n="academyProgress">학습 진도</strong><small>Progress</small></button>
+      </div>
+      <div class="academy-panel active" id="academyLearnPanel"><aside class="academy-course-list panel"><p class="eyebrow">ACADEMY COURSE</p><h3 id="academyCourseTitle">비뇨계 반사요법</h3><p id="academyCourseIntro">신장·방광·부신 반사구의 위치와 작업 순서를 학습합니다.</p><ol id="lessonList"></ol></aside><article class="lesson-stage panel" id="lessonStage"></article></div>
+      <div class="academy-panel" id="academyQuizPanel"><article class="academy-assessment panel"><div class="assessment-head"><div><p class="eyebrow">IMAGE QUIZ</p><h3 data-i18n="quizTitle">그림에서 반사구 찾기</h3></div><span id="quizCounter">1 / 3</span></div><div id="quizBody"></div></article></div>
+      <div class="academy-panel" id="academyPracticePanel"><article class="academy-assessment panel"><div class="assessment-head"><div><p class="eyebrow">PRACTICAL TEST</p><h3 data-i18n="practiceTitle">비뇨계 실기평가</h3></div><span id="practiceTimer">01:00</span></div><div id="practiceBody"></div></article></div>
+      <div class="academy-panel" id="academyProgressPanel"><div class="progress-dashboard" id="academyDashboard"></div></div>
+    </section>
+  </main>
+
+  <dialog id="pointDialog"><form method="dialog" id="pointForm"><div class="dialog-head"><div><p class="eyebrow">CUSTOM POINT</p><h2>사용자 포인트 추가</h2></div><button value="cancel" aria-label="닫기">×</button></div><label>포인트 명칭<input id="pointName" required maxlength="40" placeholder="예: 긴장 완화 보조점"></label><label>메모<textarea id="pointMemo" maxlength="160" placeholder="자극 반응이나 위치 설명"></textarea></label><p>확인을 누른 뒤 지도에서 위치를 선택하세요.</p><div class="dialog-actions"><button value="cancel" class="secondary">취소</button><button value="default" class="primary" id="confirmPoint">위치 선택</button></div></form></dialog>
+
+  <dialog id="safetyDialog"><div class="dialog-head"><div><p class="eyebrow">SAFETY FIRST</p><h2>안전 안내</h2></div><button id="closeSafety" aria-label="닫기">×</button></div><div class="safety-list"><p><strong>즉시 진료가 우선인 경우</strong><br>갑작스러운 마비, 흉통, 호흡곤란, 의식 변화, 고열이나 심한 감염 증상은 자가관리를 하지 않습니다.</p><p><strong>중단해야 하는 경우</strong><br>통증, 어지러움, 멍, 저림 악화 또는 불편감이 생기면 즉시 중단합니다.</p><p><strong>강도와 시간</strong><br>편안한 3–4/10 강도로 짧게 시작하고 반응을 확인합니다. 치료사는 목적과 반응에 따라 포인트별 시간을 1초~10분 범위에서 조정할 수 있으며, 의료적 진단과 치료를 대신하지 않습니다.</p></div><button class="primary" id="acceptSafety">확인했습니다</button></dialog>
+
+  <dialog id="timerSettingsDialog" class="timer-dialog"><div class="dialog-head"><div><p class="eyebrow">SESSION TIMER</p><h2 data-i18n="timerTitle">포인트 적용 시간 설정</h2></div><button id="closeTimerSettings" aria-label="닫기">×</button></div><p class="timer-dialog-help" data-i18n="timerHelp">1초부터 10분까지 설정할 수 있습니다. 사용 목적과 반응에 맞춰 편안한 범위에서 조정하세요.</p><div class="timer-presets" aria-label="빠른 시간 선택"><button type="button" data-timer-preset="20">20s</button><button type="button" data-timer-preset="30">30s</button><button type="button" data-timer-preset="60">1m</button><button type="button" data-timer-preset="180">3m</button><button type="button" data-timer-preset="300">5m</button><button type="button" data-timer-preset="600">10m</button></div><div class="timer-inputs"><label><span data-i18n="minutes">분</span><input id="timerMinutes" type="number" inputmode="numeric" min="0" max="10" value="0"></label><b>:</b><label><span data-i18n="secondsLabel">초</span><input id="timerSeconds" type="number" inputmode="numeric" min="0" max="59" value="20"></label></div><p class="timer-setting-preview"><span data-i18n="setTime">설정 시간</span> <strong id="timerSettingPreview">00:20</strong></p><div class="timer-apply-actions"><button class="secondary" id="applyCurrentTime" type="button" data-i18n="currentOnly">현재 포인트에만 적용</button><button class="primary" id="applyRemainingTime" type="button" data-i18n="remainingAll">남은 모든 포인트에 적용</button></div></dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./program-data.js?v=18"></script>
+  <script src="./app.js?v=18"></script>
+</body>
+</html>
