@@ -7,8 +7,12 @@
   <title>Bio Point | NovaCell</title>
   <meta name="description" content="노바셀 통치 요법 195~203쪽의 Bio Point 개념, 7개 차크라와 세 가지 원본 도해의 한영 병기 안내">
   <link rel="stylesheet" href="css/bio-point.css">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
+  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
 </head>
-<body>
+<body class="novacell-access-pending">
+  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
   <header class="bio-header">
     <a class="brand" href="index.html" aria-label="치료점 앱으로 돌아가기">
       <span class="brand-mark" aria-hidden="true">◇</span>
@@ -167,5 +171,8 @@
       </aside>
     </article>
   </main>
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
 </body>
 </html>

@@ -155,8 +155,8 @@
         </a>
       </div>
       <div class="top-bar-right">
-        <a href="../login.html" class="text-gold" style="font-weight: 700;"><i class="ri-user-shared-line"></i> Sign In</a>
-        <a href="../register.html" style="font-weight: 600;">Register</a>
+        <a href="../login.html?lang=en" data-member-login class="text-gold" style="font-weight: 700;"><i class="ri-user-shared-line"></i> Sign In</a>
+        <a href="../register.html?lang=en" data-member-register style="font-weight: 600;">Register</a>
         <span>·</span>
         <a href="contact.html">Contact</a>
         <a href="faq.html">FAQ</a>
@@ -164,6 +164,9 @@
         <a href="resources.html" style="color: var(--color-gold-300); font-weight: 700;">Resources</a>
         <a href="events.html">Events &amp; Schedule</a>
         <a href="index.html">Home</a>
+        <a href="../login.html?lang=en" data-member-login class="text-gold" style="font-weight:700">Sign In</a>
+        <a href="../register.html?lang=en" data-member-register style="font-weight:600">Register</a>
+        <span>·</span>
         <!-- Language Switcher -->
         <div id="langSwitchDropdown" class="simple-language-switch" aria-label="Language selection"><a class="simple-lang-link" href="../ko/resources.html" lang="ko">한국어</a><a class="simple-lang-link active" href="resources.html" lang="en">English</a></div>
       </div>
@@ -241,7 +244,7 @@
             <li class="dropdown-item"><a href="resources.html">Resources &amp; Downloads</a></li>
           </ul>
         </li>
-      <li class="nav-item mobile-language-item" aria-label="Language selection"><span class="mobile-language-label">Language</span><div class="mobile-language-links"><a class="mobile-language-link" href="../ko/resources.html" lang="ko">한국어</a><a class="mobile-language-link active" href="resources.html" lang="en">English</a></div></li></ul>
+      <li class="nav-item mobile-account-item"><span class="mobile-language-label">Member</span><div class="mobile-language-links"><a class="mobile-language-link" href="../login.html?lang=en" data-member-login>Sign In</a><a class="mobile-language-link" href="../register.html?lang=en" data-member-register>Register</a></div></li><li class="nav-item mobile-language-item" aria-label="Language selection"><span class="mobile-language-label">Language</span><div class="mobile-language-links"><a class="mobile-language-link" href="../ko/resources.html" lang="ko">한국어</a><a class="mobile-language-link active" href="resources.html" lang="en">English</a></div></li></ul>
 
       <!-- CTA Button & Mobile Toggle -->
       <div class="header-cta-group">
@@ -506,10 +509,10 @@
           Not a member yet? Create a free account in 5 seconds to unlock all scientific papers, technical user manuals, and Dr. Chang-Hyuk Park's book.
         </p>
         <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-          <a href="../register.html" class="btn btn-gold" style="padding: 10px 22px;">
+          <a href="../register.html?lang=en" class="btn btn-gold" style="padding: 10px 22px;">
             <i class="ri-user-add-line"></i> Register Free Member
           </a>
-          <a href="../login.html" class="btn btn-outline-navy" style="padding: 10px 22px;">
+          <a href="../login.html?lang=en" data-member-login class="btn btn-outline-navy" style="padding: 10px 22px;">
             <i class="ri-login-box-line"></i> Member Sign In
           </a>
         </div>
@@ -635,8 +638,8 @@
           <a href="../terms.html">Terms of Service</a>
           <a href="../disclaimer.html">Medical Disclaimer</a>
           <span style="opacity: 0.4;">|</span>
-          <a href="../login.html" style="color: var(--color-gold-400); font-weight: 600;">Sign In</a>
-          <a href="../register.html" style="font-weight: 600;">Register</a>
+          <a href="../login.html?lang=en" data-member-login style="color: var(--color-gold-400); font-weight: 600;">Sign In</a>
+          <a href="../register.html?lang=en" data-member-register style="font-weight: 600;">Register</a>
         </div>
       </div>
     </div>
@@ -754,5 +757,8 @@
       });
     });
   </script>
+  <script src="../js/novacell-auth-config.js"></script>
+  <script src="../js/novacell-auth.js"></script>
+  <script src="../js/novacell-member-nav.js"></script>
 </body>
 </html>

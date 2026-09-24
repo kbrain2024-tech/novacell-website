@@ -24,8 +24,8 @@
         <a href="education.html" class="top-bar-highlight open-consultation-modal" data-type="Master Class"><i class="ri-calendar-event-line"></i> Register Now: NovaCell Master Class</a>
       </div>
       <div class="top-bar-right">
-        <a href="../login.html" class="text-gold" style="font-weight: 700;"><i class="ri-user-shared-line"></i> Sign In</a>
-        <a href="../register.html" style="font-weight: 600;">Register</a>
+        <a href="../login.html?lang=en" data-member-login class="text-gold" style="font-weight: 700;"><i class="ri-user-shared-line"></i> Sign In</a>
+        <a href="../register.html?lang=en" data-member-register style="font-weight: 600;">Register</a>
         <span>·</span>
         <a href="contact.html">Contact</a>
         <a href="faq.html">FAQ</a>
@@ -33,6 +33,9 @@
         <a href="resources.html">Resources</a>
         <a href="events.html">Events &amp; Schedule</a>
         <a href="index.html">Home</a>
+        <a href="../login.html?lang=en" data-member-login class="text-gold" style="font-weight:700">Sign In</a>
+        <a href="../register.html?lang=en" data-member-register style="font-weight:600">Register</a>
+        <span>·</span>
         <!-- Language Switcher -->
         <div id="langSwitchDropdown" class="simple-language-switch" aria-label="Language selection"><a class="simple-lang-link" href="../ko/faq.html" lang="ko">한국어</a><a class="simple-lang-link active" href="faq.html" lang="en">English</a></div>
       </div>
@@ -109,7 +112,7 @@
             <li class="dropdown-item"><a href="resources.html">Resources &amp; Downloads</a></li>
           </ul>
         </li>
-      <li class="nav-item mobile-language-item" aria-label="Language selection"><span class="mobile-language-label">Language</span><div class="mobile-language-links"><a class="mobile-language-link" href="../ko/faq.html" lang="ko">한국어</a><a class="mobile-language-link active" href="faq.html" lang="en">English</a></div></li></ul>
+      <li class="nav-item mobile-account-item"><span class="mobile-language-label">Member</span><div class="mobile-language-links"><a class="mobile-language-link" href="../login.html?lang=en" data-member-login>Sign In</a><a class="mobile-language-link" href="../register.html?lang=en" data-member-register>Register</a></div></li><li class="nav-item mobile-language-item" aria-label="Language selection"><span class="mobile-language-label">Language</span><div class="mobile-language-links"><a class="mobile-language-link" href="../ko/faq.html" lang="ko">한국어</a><a class="mobile-language-link active" href="faq.html" lang="en">English</a></div></li></ul>
 
       <div class="header-cta-group">
         <a href="#consultation" class="btn btn-gold open-consultation-modal" data-type="FAQ Inquiry">
@@ -186,5 +189,8 @@
   </footer>
 
   <script src="../js/app.js"></script>
-  </body>
+    <script src="../js/novacell-auth-config.js"></script>
+  <script src="../js/novacell-auth.js"></script>
+  <script src="../js/novacell-member-nav.js"></script>
+</body>
 </html>

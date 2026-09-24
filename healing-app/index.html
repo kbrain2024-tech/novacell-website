@@ -27,8 +27,12 @@
   <link rel="canonical" href="https://healing.novacell.kr/">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/workspace.css">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
+  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
 </head>
-<body>
+<body class="novacell-access-pending">
+  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
   <!-- Ambient High-Tech Glow Effects -->
   <div class="ambient-glow glow-cyan"></div>
   <div class="ambient-glow glow-emerald"></div>
@@ -400,7 +404,7 @@
   </div>
 
   <!-- NovaCell Welcome Cover / Initial Gateway (초기 화면 대문) -->
-  <div id="welcome-cover-screen" class="welcome-cover-screen">
+  <div id="welcome-cover-screen" class="welcome-cover-screen closed">
     <div class="cover-backdrop"></div>
     <div class="cover-ambient-glow glow-1"></div>
     <div class="cover-ambient-glow glow-2"></div>
@@ -4298,5 +4302,8 @@ class Workspace extends NovaCellApp {
 if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{try{window.app=new Workspace();}catch(err){console.error(err);const box=document.createElement('p');box.textContent='앱 초기화 중 문제가 발생했습니다. 새로고침 후에도 반복되면 오류 화면을 전달해 주세요.';box.style.cssText='position:fixed;top:0;left:0;right:0;background:#4c2020;color:white;padding:16px;z-index:99999';document.body.append(box);}});
 
 </script>
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
 </body>
 </html>

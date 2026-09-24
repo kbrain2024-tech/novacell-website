@@ -1,5 +1,5 @@
-NovaCell Healing Points v31
-Official domain and social-sharing URL correction
+NovaCell Healing Points v32
+Member authentication and entitlement pilot gate
 Build date: 2026-09-24
 
 핵심 변경

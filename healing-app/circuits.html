@@ -7,8 +7,12 @@
   <title>생체 회로 노바셀 통치 요법 | NovaCell</title>
   <meta name="description" content="노바셀 통치 요법 책 204~217쪽의 폐 회로부터 독맥 회로까지 14개 생체 회로 안내">
   <link rel="stylesheet" href="css/circuits.css?v=28">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
+  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
 </head>
-<body>
+<body class="novacell-access-pending">
+  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
   <header class="circuit-header">
     <a class="brand" href="index.html" aria-label="치료점 앱으로 돌아가기">
       <span class="brand-mark" aria-hidden="true">◇</span>
@@ -90,5 +94,8 @@
   </main>
 
   <script src="js/circuits.js?v=28"></script>
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
 </body>
 </html>
