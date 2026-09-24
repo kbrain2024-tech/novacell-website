@@ -172,19 +172,101 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal();
     }
   });
-
-  // 4. Consultation Form Submission Handler
+  // 4. Consultation Form Submission Handler (Netlify Forms Integration)
   const consultationForm = document.getElementById('consultationForm');
   if (consultationForm) {
-    consultationForm.addEventListener('submit', (e) => {
+    consultationForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = document.getElementById('clientName').value;
-      const phone = document.getElementById('clientPhone').value;
-      const type = document.getElementById('consultationType').value;
+      const submitBtn = consultationForm.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="ri-loader-4-line"></i> 처리 중...';
+      }
 
-      alert(`[상담 신청 완료]\n\n${name}님, 노바셀 통치 요법® 무료 교육 및 데모 상담 예약이 성공적으로 접수되었습니다.\n담당 전문 연구원이 ${phone} 번호로 빠르게 안내드리겠습니다.`);
-      consultationForm.reset();
-      closeModal();
+      const formData = new FormData(consultationForm);
+      if (!formData.get('form-name')) {
+        formData.append('form-name', 'consultation');
+      }
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        });
+
+        if (response.ok) {
+          const name = document.getElementById('clientName') ? document.getElementById('clientName').value : '고객';
+          const isEn = window.location.pathname.indexOf('/en/') !== -1;
+          if (isEn) {
+            alert(`[Request Received]\n\nThank you, ${name}! Your consultation request has been successfully submitted to NovaCell.\nOur specialist will reach out to you shortly.`);
+          } else {
+            alert(`[상담 신청 완료]\n\n${name}님, 노바셀(NovaCell) 전문 상담 신청이 성공적으로 접수되었습니다.\n담당 전문가가 빠른 시일 내에 연락드리겠습니다.`);
+          }
+          consultationForm.reset();
+          if (typeof closeModal === 'function') {
+            closeModal();
+          }
+        } else {
+          throw new Error('Server returned ' + response.status);
+        }
+      } catch (err) {
+        console.error('Submission error:', err);
+        alert('신청 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해 주시거나 고객지원(010-9726-7012)으로 문의해 주세요.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalHtml;
+        }
+      }
+    });
+  }
+
+  // 4-1. Contact Page Form Submission Handler (ko/contact.html & en/contact.html)
+  const contactPageForm = document.getElementById('contactPageForm');
+  if (contactPageForm) {
+    contactPageForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const submitBtn = contactPageForm.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="ri-loader-4-line"></i> 접수 중...';
+      }
+
+      const formData = new FormData(contactPageForm);
+      if (!formData.get('form-name')) {
+        formData.append('form-name', 'contact-page');
+      }
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        });
+
+        if (response.ok) {
+          const isEn = window.location.pathname.indexOf('/en/') !== -1;
+          if (isEn) {
+            alert('[Inquiry Received]\n\nThank you! Your message has been successfully submitted to NovaCell.\nWe will respond to your inquiry promptly.');
+          } else {
+            alert('[문의 접수 완료]\n\n문의사항이 정상적으로 접수되었습니다.\n담당자가 확인 후 신속히 답변드리겠습니다.');
+          }
+          contactPageForm.reset();
+        } else {
+          throw new Error('Server returned ' + response.status);
+        }
+      } catch (err) {
+        console.error('Contact form submission error:', err);
+        alert('문의 접수 중 통신 오류가 발생했습니다. 고객센터(010-9726-7012)로 직접 연락 주시면 감사하겠습니다.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalHtml;
+        }
+      }
     });
   }
 
@@ -195,13 +277,14 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const emailInput = newsletterForm.querySelector('input[type="email"]');
       if (emailInput && emailInput.value) {
-        alert(`[구독 완료]\n${emailInput.value} 주소로 노바셀 테라피 최신 세미나 및 프로토콜 소식을 발송해 드리겠습니다.`);
+        alert(`[구독 완료]\n${emailInput.value} 주소로 노바셀 글로벌 최신 세미나 및 의학 뉴스레터를 발송해 드리겠습니다.`);
         newsletterForm.reset();
       }
     });
   }
 
-  // 6. Smooth Scroll for Anchor Links (드롭다운 상위 메뉴 제외)
+  // 6. Smooth Scroll for Anchor Links
+ (드롭다운 상위 메뉴 제외)
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       // If this anchor is a parent dropdown menu trigger, do NOT scroll down

@@ -208,41 +208,54 @@
             문의 사항을 남겨주시면 담당 전문 연구원이 확인 후 24시간 이내에 친절하게 연락드리겠습니다.
           </p>
 
-          <form id="contactPageForm">
+          <form id="contactPageForm" name="contact-page" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact-page">
+            <div style="display:none;">
+              <label>Don't fill this out if you're human: <input name="bot-field"></label>
+            </div>
+
             <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
               <div class="form-group" style="margin-bottom: 0;">
                 <label for="inqName" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">성함 / 기관명 *</label>
-                <input type="text" id="inqName" placeholder="예: 홍길동" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem;">
+                <input type="text" id="inqName" name="name" placeholder="예: 홍길동" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem;">
               </div>
               <div class="form-group" style="margin-bottom: 0;">
-                <label for="inqPhone" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">연락처 (휴대폰) *</label>
-                <input type="tel" id="inqPhone" placeholder="예: 010-9726-7012" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem;">
+                <label for="inqPhone" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">연락처 (휴대전화) *</label>
+                <input type="tel" id="inqPhone" name="phone" placeholder="예: 010-9726-7012" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem;">
+              </div>
+            </div>
+
+            <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="inqEmail" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">이메일 주소 *</label>
+                <input type="email" id="inqEmail" name="email" placeholder="예: name@domain.com" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem;">
+              </div>
+              <div class="form-group" style="margin-bottom: 0;">
+                <label for="inqCountry" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">국가 / 지역 *</label>
+                <input type="text" id="inqCountry" name="country" placeholder="예: 대한민국 / USA" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem;">
               </div>
             </div>
 
             <div class="form-group" style="margin-bottom: 16px;">
-              <label for="inqEmail" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">이메일 주소</label>
-              <input type="email" id="inqEmail" placeholder="예: name@domain.com" style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem;">
-            </div>
-
-            <div class="form-group" style="margin-bottom: 16px;">
-              <label for="inqCategory" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">문의 유형 *</label>
-              <select id="inqCategory" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem; background: #fff;">
-                <option value="기기데모">노바셀 테라피 기기 구매 및 무료 데모 체험 신청</option>
-                <option value="교육세미나">박창혁 박사 마스터 클래스 및 교육 등록 문의</option>
-                <option value="만성증상상담">만성 통증 / 피로 / 신경계 증상 1:1 맞춤 상담</option>
-                <option value="병원도입">병의원 / 한의원 / 클리닉 시스템 도입 및 제휴</option>
+              <label for="inqCategory" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">상담 / 문의 분야 *</label>
+              <select id="inqCategory" name="category" required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem; background: #fff;">
+                <option value="" disabled selected>문의 분야 선택</option>
+                <option value="의료기기 구매상담">의료기기 구매상담 (실시간 시연)</option>
+                <option value="해외 견적 요청">해외 견적 요청 (Global Inquiry)</option>
+                <option value="Reflex Therapy Guide">Reflex Therapy Guide</option>
+                <option value="Healing Points">Healing Points</option>
+                <option value="11월 마스터 클래스">11월 마스터 클래스 등록 문의</option>
                 <option value="기타">기타 일반 문의 및 A/S</option>
               </select>
             </div>
 
             <div class="form-group" style="margin-bottom: 24px;">
               <label for="inqMessage" style="display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-navy-900); margin-bottom: 6px;">문의 내용 *</label>
-              <textarea id="inqMessage" rows="4" placeholder="현재 겪고 계신 증상이나 문의하시고자 하는 내용을 자유롭게 적어주세요." required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem; resize: vertical;"></textarea>
+              <textarea id="inqMessage" name="message" rows="4" placeholder="상담받고 싶은 증상이나 문의하시고자 하는 내용을 자유롭게 적어주세요." required style="width: 100%; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.92rem; resize: vertical;"></textarea>
             </div>
 
             <div style="margin-bottom: 20px; font-size: 0.82rem; color: var(--color-text-muted); display: flex; align-items: center; gap: 8px;">
-              <input type="checkbox" id="privacyAgree" required checked style="accent-color: var(--color-gold-500);">
+              <input type="checkbox" id="privacyAgree" name="privacyAgreement" required checked style="accent-color: var(--color-gold-500);">
               <label for="privacyAgree">개인정보 수집 및 이용에 동의합니다. (<a href="../privacy.html" target="_blank" style="text-decoration: underline; color: var(--color-gold-600);">방침 보기</a>)</label>
             </div>
 
@@ -250,6 +263,7 @@
               <i class="ri-send-plane-fill"></i> 문의 접수하기
             </button>
           </form>
+
         </div>
 
         <!-- Right: Location & Directions -->

@@ -491,39 +491,64 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="consultationForm">
+        <form id="consultationForm" name="consultation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="consultation">
+          <div style="display:none;">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
-              <label for="clientName">성함 *</label>
-              <input type="text" id="clientName" placeholder="예: 홍길동" required>
+              <label for="clientName">성명 *</label>
+              <input type="text" id="clientName" name="clientName" placeholder="예: 홍길동" required>
             </div>
             <div class="form-group">
-              <label for="clientPhone">연락처 *</label>
-              <input type="tel" id="clientPhone" placeholder="예: 010-9726-7012" required>
+              <label for="clientPhone">연락처 / WhatsApp *</label>
+              <input type="tel" id="clientPhone" name="clientPhone" placeholder="예: 010-1234-5678" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientEmail">이메일 주소 *</label>
+              <input type="email" id="clientEmail" name="clientEmail" placeholder="예: name@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="clientCountry">국가 / 지역 *</label>
+              <input type="text" id="clientCountry" name="clientCountry" placeholder="예: 대한민국 / USA / Japan" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="consultationType">상담 희망 분야 *</label>
-            <select id="consultationType" required>
-              <option value="시스템상담">NovaCell Therapy 시스템 상담</option>
-              <option value="기기데모">노바셀 테라피 기기 데모 체험</option>
-              <option value="개인홈케어">개인 홈케어 / 자가 치유 상담</option>
-              <option value="클리닉도입">병의원 / 한의원 / 클리닉 도입</option>
-              <option value="마스터클래스">11월 마스터 클래스 교육 등록</option>
-              <option value="실무자교육">전문 실무자 / 테라피스트 자격 과정</option>
+            <label for="consultationType">상담 분야 *</label>
+            <select id="consultationType" name="consultationType" required>
+              <option value="" disabled selected>상담 분야 선택</option>
+              <option value="의료기기 구매상담">의료기기 구매상담 (실시간 시연)</option>
+              <option value="해외 견적 요청">해외 견적 요청 (Global Inquiry)</option>
+              <option value="Reflex Therapy Guide">Reflex Therapy Guide</option>
+              <option value="Healing Points">Healing Points</option>
+              <option value="11월 마스터 클래스">11월 마스터 클래스 등록</option>
+              <option value="기타 전문 상담">기타 전문 상담 / 클리닉 도입</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="clientMessage">문의 및 증상 내용 (선택)</label>
-            <textarea id="clientMessage" rows="3" placeholder="관심 있으신 증상(통증, 피로, 신경계 등)이나 문의 사항을 남겨주시면 더욱 맞춤 상담이 가능합니다."></textarea>
+            <label for="clientMessage">증상 또는 문의 내용(선택)</label>
+            <textarea id="clientMessage" name="clientMessage" rows="3" placeholder="만성 통증, 피로, 신경계 등 관심 증상이나 상담 내용을 입력해 주세요."></textarea>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; color: #4b5563; cursor: pointer;">
+              <input type="checkbox" name="privacyAgreement" required checked style="margin-top: 3px; accent-color: var(--color-gold-400);">
+              <span>[필수] 개인정보 수집 및 상담 안내 목적 이용에 동의합니다.</span>
+            </label>
           </div>
 
           <button type="submit" class="btn btn-gold" style="width: 100%; padding: 15px; font-size: 1.05rem;">
-            <i class="ri-check-double-line"></i> 무료 상담 및 데모 예약 완료
+            <i class="ri-check-double-line"></i> 무료 상담 신청 완료
           </button>
         </form>
+
       </div>
     </div>
   </div>
