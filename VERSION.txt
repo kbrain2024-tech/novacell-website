@@ -1,5 +1,5 @@
-NovaCell Website v27
-Member authentication and entitlement pilot
+NovaCell Website v30
+Member authentication, Toss test payment, and automatic entitlement grant
 Build date: 2026-09-24
 
-설정 전 필수 확인: SETUP_AUTH_KO.md
+설정 전 필수 확인: SETUP_PAYMENT_KO.md
