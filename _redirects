@@ -2,9 +2,9 @@
 # NovaCell Domain & Subdomain Routing Configuration
 # ===================================================
 
-# 1. Healing Points Dedicated WebApp Routing
-https://healing.novacell.kr/*   https://effervescent-starship-9e56b9.netlify.app/:splat  302!
-http://healing.novacell.kr/*    https://effervescent-starship-9e56b9.netlify.app/:splat  302!
+# 1. Healing Points Dedicated WebApp Routing (v29 Cover Screen)
+https://healing.novacell.kr/*   /healing-app/:splat  200!
+http://healing.novacell.kr/*    /healing-app/:splat  200!
 
 # 2. Reflex Therapy Guide Dedicated WebApp Routing (v18 PWA)
 https://guide.novacell.kr/*     /reflex-app/:splat  200!

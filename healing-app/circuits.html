@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070a13">
+  <title>생체 회로 노바셀 통치 요법 | NovaCell</title>
+  <meta name="description" content="노바셀 통치 요법 책 204~217쪽의 폐 회로부터 독맥 회로까지 14개 생체 회로 안내">
+  <link rel="stylesheet" href="css/circuits.css?v=28">
+</head>
+<body>
+  <header class="circuit-header">
+    <a class="brand" href="index.html" aria-label="치료점 앱으로 돌아가기">
+      <span class="brand-mark" aria-hidden="true">◇</span>
+      <span><strong>NovaCell Healing Points</strong><small>BIOLOGICAL CIRCUIT GUIDE</small></span>
+    </a>
+    <nav class="header-actions" aria-label="페이지 이동">
+      <a href="index.html">치료점 앱</a>
+      <a href="bio-point.html">Bio Point</a>
+      <a class="active" href="circuits.html" aria-current="page">생체 회로</a>
+    </nav>
+  </header>
+
+  <main class="circuit-shell">
+    <aside class="circuit-sidebar">
+      <div class="sidebar-heading">
+        <p class="eyebrow">BIOLOGICAL CIRCUIT</p>
+        <h1>생체 회로<br>노바셀 통치 요법</h1>
+        <p>폐 회로부터 임맥·독맥 회로까지 14개 회로를 선택해 확인합니다.</p>
+      </div>
+      <label class="circuit-search">
+        <span>회로·질환 검색</span>
+        <input id="circuit-search" type="search" placeholder="예: 폐, 두통, 이명, LU 7">
+      </label>
+      <div id="circuit-list" class="circuit-list" role="listbox" aria-label="생체 회로 목록"></div>
+    </aside>
+
+    <section class="circuit-detail" aria-live="polite">
+      <div class="detail-topline">
+        <div>
+          <p id="circuit-sequence" class="eyebrow">01 / 14</p>
+          <h2 id="circuit-title">폐 회로</h2>
+          <p id="circuit-title-en" class="title-en">Lung (LU) Circuit</p>
+        </div>
+        <span id="source-page" class="source-page">책 204쪽</span>
+      </div>
+
+      <div class="detail-grid">
+        <div class="circuit-copy">
+          <article class="info-card route-card">
+            <h3>회로 진행 경로</h3>
+            <p id="circuit-route"></p>
+          </article>
+
+          <div class="point-grid">
+            <article class="info-card point-card check">
+              <span>전압 체크</span>
+              <strong id="circuit-check"></strong>
+            </article>
+            <article class="info-card point-card supply">
+              <span>전압 공급</span>
+              <strong id="circuit-supply"></strong>
+            </article>
+          </div>
+
+          <article class="info-card">
+            <h3 id="circuit-uses-title">책에 기재된 적용 질환</h3>
+            <p id="circuit-uses"></p>
+          </article>
+
+          <div class="navigation-row">
+            <button id="previous-circuit" type="button">← 이전 회로</button>
+            <button id="next-circuit" type="button">다음 회로 →</button>
+          </div>
+        </div>
+
+        <figure class="circuit-figure">
+          <div class="figure-stage">
+            <img id="circuit-image" alt="">
+          </div>
+          <figcaption id="circuit-caption"></figcaption>
+        </figure>
+      </div>
+
+      <aside class="evidence-note">
+        <strong>자료 범위와 주의</strong>
+        <p>이 페이지는 박창혁 저 『노바셀 통치 요법』 인쇄 페이지 204~217의 내용을 앱에서 찾기 쉽게 옮긴 교육·작업용 화면입니다. 책에 기재된 적용 질환, 회로 설명과 포인트를 안내하며, 앱이 치료 효과나 환자별 위치를 독립적으로 검증했다는 뜻은 아닙니다. 실제 적용 전 환자 상태, 금기, 해부학적 구조와 임상 판단을 별도로 확인해 주세요.</p>
+      </aside>
+    </section>
+  </main>
+
+  <script src="js/circuits.js?v=28"></script>
+</body>
+</html>
