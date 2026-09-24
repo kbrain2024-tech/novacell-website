@@ -2291,3 +2291,87 @@ body {
   border: none !important;
   box-shadow: none !important;
 }
+
+/* ========================================================================== 
+   NovaCell Healing Points product and detail pages
+   ========================================================================== */
+.healing-home-section{padding:88px 0;background:linear-gradient(135deg,#06172d 0%,#0b3150 58%,#087687 100%);color:#fff;overflow:hidden}
+.healing-home-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(420px,1.12fr);gap:54px;align-items:center}
+.healing-home-section h2{font-family:var(--font-display);font-size:clamp(2.3rem,4.5vw,4.15rem);line-height:1.04;margin:14px 0 20px;color:#fff}
+.healing-home-section h2 span{color:#39d8e7}.healing-home-section p{max-width:620px;color:rgba(255,255,255,.8);font-size:1.03rem;line-height:1.8}
+.healing-home-actions,.healing-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.healing-home-image,.healing-hero-image{border:1px solid rgba(64,221,232,.38);border-radius:24px;padding:10px;background:rgba(5,17,36,.62);box-shadow:0 26px 60px rgba(0,0,0,.35)}
+.healing-home-image img,.healing-hero-image img{display:block;width:100%;border-radius:16px}.healing-home-points{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}.healing-home-points span{padding:7px 11px;border:1px solid rgba(63,225,235,.28);border-radius:999px;background:rgba(1,16,34,.34);color:#b9f8fb;font-size:.8rem;font-weight:700}
+.healing-detail-page{background:#f7f9fc}.healing-detail-hero{padding:92px 0 76px;background:radial-gradient(circle at 78% 40%,rgba(22,201,214,.18),transparent 38%),linear-gradient(135deg,#041225,#0a2546 58%,#0a5361);color:#fff}
+.healing-hero-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(480px,1.18fr);gap:52px;align-items:center}.healing-hero-copy h1{font-family:var(--font-display);font-size:clamp(3rem,6vw,5.5rem);line-height:.98;margin:18px 0}.healing-hero-copy h1 span{color:#42dbe6}.healing-hero-copy>p{max-width:640px;color:rgba(255,255,255,.8);font-size:1.05rem;line-height:1.8}.healing-hero-copy .healing-hero-kicker{color:#f0c85b;font-size:1.08rem;font-weight:800;letter-spacing:.04em;margin-bottom:10px}
+.healing-quick-actions{position:relative;z-index:4;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:-32px}.healing-quick-actions>a{display:flex;align-items:center;gap:15px;min-height:88px;padding:18px 20px;border:1px solid rgba(12,46,82,.13);border-radius:16px;background:#fff;color:#071c35;box-shadow:0 14px 34px rgba(6,25,47,.13);text-decoration:none}.healing-quick-actions>a:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(6,25,47,.19)}.healing-quick-actions i{font-size:1.7rem;color:#cf921e}.healing-quick-actions span{display:grid;gap:3px}.healing-quick-actions strong{font-size:1rem}.healing-quick-actions small{color:#65758a}
+.healing-metrics-section{padding:54px 0 22px}.healing-metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.healing-metrics-grid>div{text-align:center;padding:24px 12px;border:1px solid #dbe5ef;border-radius:16px;background:#fff}.healing-metrics-grid strong{display:block;color:#0aa6b5;font-family:var(--font-display);font-size:2.35rem;line-height:1}.healing-metrics-grid span{display:block;margin-top:8px;color:#53677e;font-weight:700}
+.healing-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.healing-feature-grid article{padding:28px;border:1px solid #dbe5ef;border-radius:18px;background:#fff;box-shadow:0 10px 28px rgba(8,33,60,.06)}.healing-feature-grid i{display:grid;place-items:center;width:52px;height:52px;border-radius:14px;background:#e8fbfc;color:#079cab;font-size:1.55rem}.healing-feature-grid h3{margin:18px 0 9px;color:#071c35;font-size:1.12rem}.healing-feature-grid p{color:#64748b;line-height:1.72}
+.healing-gallery-section{padding:92px 0;background:#061a33}.healing-gallery-section .section-header p{color:rgba(255,255,255,.7)}.healing-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.healing-gallery-grid article{overflow:hidden;border:1px solid rgba(72,212,224,.22);border-radius:20px;background:#0c2747;color:#fff}.healing-gallery-grid img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.healing-gallery-grid article>div{position:relative;padding:22px}.healing-gallery-grid span{position:absolute;right:20px;top:18px;color:#49dce6;font-weight:900}.healing-gallery-grid h3{font-size:1.18rem;margin:0 0 8px}.healing-gallery-grid p{color:rgba(255,255,255,.68);line-height:1.65}
+.healing-workflow-section{padding:92px 0;background:#fff}.healing-workflow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.healing-workflow-grid>div{position:relative;padding:30px;border-radius:18px;background:#edf4fa}.healing-workflow-grid b{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#d99b24;color:#081b31;font-size:1.05rem}.healing-workflow-grid h3{margin:18px 0 8px;color:#071c35}.healing-workflow-grid p{color:#65758a;line-height:1.7}
+.healing-circuit-section{padding:92px 0;background:linear-gradient(135deg,#eef7fa,#f9fbfd)}.healing-circuit-grid{display:grid;grid-template-columns:1fr 360px;gap:70px;align-items:center}.healing-circuit-grid h2{font-family:var(--font-display);font-size:clamp(2.1rem,4vw,3.35rem);color:#071c35;margin:16px 0}.healing-circuit-grid p,.healing-circuit-grid li{color:#5c6f84;line-height:1.75}.healing-circuit-grid ul{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 22px;margin-top:20px}.healing-circuit-grid img{width:100%;max-height:520px;object-fit:contain;border-radius:20px;background:#fff;box-shadow:0 20px 45px rgba(6,31,56,.15)}
+.healing-access-section{padding:88px 0 42px;background:#041327;color:#fff}.healing-access-panel{display:grid;grid-template-columns:1fr auto;gap:42px;align-items:center;padding:42px;border:1px solid rgba(68,220,231,.24);border-radius:22px;background:linear-gradient(135deg,rgba(16,56,91,.9),rgba(4,34,55,.88))}.healing-access-panel h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.15rem);margin:14px 0}.healing-access-panel p{max-width:760px;color:rgba(255,255,255,.75);line-height:1.75}.healing-access-panel .healing-access-note{color:#f2cb66;font-weight:700}.healing-access-actions{display:grid;gap:12px;min-width:230px}.healing-access-actions .btn{justify-content:center}.healing-access-section .detail-disclaimer{text-align:center;color:rgba(255,255,255,.58);margin-top:28px;font-size:.86rem;line-height:1.65}
+@media(max-width:1050px){.healing-home-grid,.healing-hero-grid{grid-template-columns:1fr}.healing-home-image,.healing-hero-image{max-width:760px}.healing-feature-grid{grid-template-columns:repeat(2,1fr)}.healing-circuit-grid{grid-template-columns:1fr 300px;gap:36px}.healing-access-panel{grid-template-columns:1fr}.healing-access-actions{display:flex;flex-wrap:wrap}}
+@media(max-width:780px){.healing-home-section,.healing-detail-hero,.healing-gallery-section,.healing-workflow-section,.healing-circuit-section,.healing-access-section{padding-top:64px;padding-bottom:64px}.healing-home-grid,.healing-hero-grid{gap:30px}.healing-quick-actions{grid-template-columns:1fr;margin-top:18px}.healing-metrics-grid{grid-template-columns:repeat(2,1fr)}.healing-feature-grid,.healing-gallery-grid,.healing-workflow-grid,.healing-circuit-grid{grid-template-columns:1fr}.healing-circuit-grid img{max-width:360px;margin:auto}.healing-circuit-grid ul{grid-template-columns:1fr}.healing-access-panel{padding:28px 20px}.healing-access-actions{display:grid;min-width:0}.healing-home-actions .btn,.healing-hero-actions .btn{width:100%;justify-content:center}}
+
+/* Healing Points v22: fixed anatomy atmosphere, visual cards and localized pricing */
+.healing-detail-page{position:relative;isolation:isolate;background:transparent}
+.healing-detail-page::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(rgba(239,247,251,.86),rgba(239,247,251,.88)),url('../images/healing-points-anatomy-bg.jpg') center 18%/cover no-repeat}
+.healing-detail-page::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle at 50% 42%,rgba(22,190,204,.11),transparent 48%)}
+.healing-detail-page>*{position:relative;z-index:1}
+.healing-detail-hero{background:radial-gradient(circle at 78% 40%,rgba(22,201,214,.18),transparent 38%),linear-gradient(135deg,rgba(4,18,37,.97),rgba(10,37,70,.96) 58%,rgba(10,83,97,.95))}
+.healing-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:22px}
+.healing-price span{color:#a9f3f7;font-weight:800}.healing-price strong{color:#fff;font-family:var(--font-display);font-size:2rem}.healing-price small{width:100%;color:rgba(255,255,255,.58)}
+.healing-home-price{display:flex;align-items:baseline;gap:12px;margin-top:22px}.healing-home-price span{color:#aef4f7;font-weight:800}.healing-home-price strong{color:#fff;font-family:var(--font-display);font-size:1.9rem}
+.healing-quick-actions>a,.healing-metrics-grid>div{background:rgba(255,255,255,.86);backdrop-filter:blur(12px)}
+.healing-metrics-grid>div{border-color:rgba(198,216,229,.9);box-shadow:0 12px 30px rgba(8,33,60,.07)}
+.healing-detail-page .science-section{background:rgba(247,251,253,.8);backdrop-filter:blur(8px)}
+.healing-feature-grid article{overflow:hidden;padding:0 24px 26px;border-color:rgba(194,215,228,.9);background:rgba(255,255,255,.88);backdrop-filter:blur(12px);box-shadow:0 14px 34px rgba(8,33,60,.1)}
+.healing-feature-visual{display:block;width:calc(100% + 48px);height:190px;margin:0 -24px 18px;object-fit:cover;object-position:center;border-bottom:1px solid #d7e4ed;background:#07172b}
+.healing-feature-visual--timer{object-fit:contain;padding:18px;background:linear-gradient(135deg,#08192d,#12304b)}
+.healing-feature-visual--contain{object-fit:contain;background:#f4f7f9}
+.healing-feature-grid i{width:46px;height:46px;font-size:1.4rem}.healing-feature-grid h3{margin:14px 0 8px}
+.healing-workflow-section{background:rgba(255,255,255,.8);backdrop-filter:blur(8px)}
+.healing-workflow-grid>div{overflow:hidden;padding:0 24px 26px;border:1px solid rgba(190,211,226,.9);background:rgba(237,244,250,.92);box-shadow:0 14px 32px rgba(8,33,60,.09)}
+.healing-workflow-grid img{display:block;width:calc(100% + 48px);height:185px;margin:0 -24px 20px;object-fit:cover;object-position:center}
+.healing-workflow-grid h3{margin:14px 0 8px}
+.healing-circuit-section{background:linear-gradient(135deg,rgba(238,247,250,.84),rgba(249,251,253,.86));backdrop-filter:blur(8px)}
+.healing-circuit-grid img{background:rgba(255,255,255,.9)}
+.healing-access-price{display:flex;align-items:baseline;gap:12px;margin:4px 0 14px}.healing-access-price span{color:#b7f4f7;font-weight:800}.healing-access-price strong{color:#f3c95d;font-family:var(--font-display);font-size:1.8rem}
+@media(max-width:780px){.healing-detail-page::before{background-position:58% top}.healing-feature-visual,.healing-workflow-grid img{height:auto;max-height:260px}.healing-access-price{flex-wrap:wrap}}
+
+/* Official medical-device price and required sales information */
+.device-purchase-section{padding:92px 0;background:linear-gradient(145deg,#f4f8fd 0%,#fff 55%,#eef5fb 100%);border-bottom:1px solid #dce5f0}
+.device-purchase-grid{display:grid;grid-template-columns:minmax(300px,.82fr) minmax(0,1.35fr);gap:58px;align-items:center}
+.device-purchase-visual{position:relative;padding:26px;border:1px solid #cedaea;border-radius:28px;background:linear-gradient(150deg,#071b35,#12355d);box-shadow:0 24px 60px rgba(12,35,66,.2)}
+.device-purchase-visual img{display:block;width:100%;max-height:520px;object-fit:contain;border-radius:18px}
+.device-approval-badge{position:absolute;left:28px;right:28px;bottom:28px;padding:12px 16px;border:1px solid rgba(244,190,55,.72);border-radius:999px;background:rgba(4,17,35,.88);color:#f7ce68;font-weight:800;text-align:center;backdrop-filter:blur(8px)}
+.device-purchase-content h2{margin:15px 0 10px;color:var(--color-navy-900);font-family:var(--font-display);font-size:clamp(2rem,4vw,3.15rem);line-height:1.08}
+.device-approved-purpose{margin:0 0 24px;color:#4a5c74;font-size:1.04rem}.device-approved-purpose strong{color:#163d68}
+.device-price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.device-price-card{padding:20px;border:1px solid #cbd8e7;border-radius:18px;background:#fff;box-shadow:0 9px 24px rgba(17,47,81,.07)}
+.device-price-card.primary{border-color:#d8a624;background:linear-gradient(145deg,#fffaf0,#fff)}
+.device-price-card span,.device-price-card small{display:block;color:#627188}.device-price-card span{font-weight:800}.device-price-card strong{display:block;margin:7px 0 3px;color:#092242;font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.35rem);line-height:1}.device-price-card.primary strong{color:#b07800}
+.device-inclusion-grid{display:grid;gap:10px;margin:22px 0}.device-inclusion-grid>div{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:12px;background:#eaf1f8;color:#384c65;line-height:1.6}.device-inclusion-grid i{margin-top:3px;color:#bd850d;font-size:1.2rem}.device-inclusion-grid strong{color:#102f55}
+.device-purchase-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}.btn-outline-dark{border:1px solid #2f4b6c;color:#173655;background:transparent}.btn-outline-dark:hover{background:#102e53;color:#fff}
+.device-legal-details{margin-top:18px;border:1px solid #ccd8e6;border-radius:16px;background:#fff;overflow:hidden}.device-legal-details summary{cursor:pointer;padding:16px 18px;color:#183b61;font-weight:800;list-style-position:inside}.device-legal-details[open] summary{border-bottom:1px solid #dce5ef;background:#f6f9fc}.device-legal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;padding:8px 18px 16px}.device-legal-grid p{display:grid;gap:4px;margin:0;padding:12px 8px;border-bottom:1px solid #e8edf3}.device-legal-grid strong{color:#17395e;font-size:.87rem}.device-legal-grid span{color:#5b6b80;font-size:.9rem;line-height:1.45}
+.device-price-note{margin:12px 2px 0;color:#68778b;font-size:.85rem;line-height:1.55}
+@media(max-width:900px){.device-purchase-grid{grid-template-columns:1fr;gap:34px}.device-purchase-visual{max-width:560px;margin:0 auto;width:100%}}
+@media(max-width:640px){.device-purchase-section{padding:62px 0}.device-purchase-visual{padding:16px;border-radius:20px}.device-approval-badge{position:static;margin-top:12px}.device-price-grid,.device-legal-grid{grid-template-columns:1fr}.device-price-card strong{font-size:1.9rem}.device-purchase-actions .btn{width:100%;justify-content:center}.device-legal-grid{padding:6px 12px 14px}}
+
+/* Keep the expanded nine-item guide navigation readable on desktop. */
+@media (min-width:1281px){
+  .nav-container{max-width:1500px}
+  .nav-menu{gap:13px}
+  .nav-link{font-size:.84rem}
+  .header-cta-group{gap:8px}
+  .header-cta-group .btn{padding:12px 16px;font-size:.86rem}
+}
+@media (max-width:1280px) and (min-width:1025px){
+  .nav-menu{gap:7px}
+  .nav-link{font-size:.76rem}
+  .brand-logo{gap:8px}
+  .logo-title{font-size:1rem}
+  .logo-sub{display:none}
+  .header-cta-group>.btn{display:none}
+  .simple-lang-link{padding-inline:6px}
+}

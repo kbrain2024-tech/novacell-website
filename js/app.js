@@ -3,6 +3,22 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Keep the official device price accessible in the System submenu on every page.
+  const systemNavLink = document.querySelector('.nav-menu .nav-link[href="system.html"]');
+  const systemDropdown = systemNavLink && systemNavLink.closest('.nav-item')
+    ? systemNavLink.closest('.nav-item').querySelector('.dropdown-menu')
+    : null;
+  if (systemDropdown && !systemDropdown.querySelector('.device-price-nav-item')) {
+    const isKorean = document.documentElement.lang === 'ko';
+    const item = document.createElement('li');
+    item.className = 'dropdown-item device-price-nav-item';
+    const link = document.createElement('a');
+    link.href = 'index.html#device-purchase';
+    link.textContent = isKorean ? '공식 의료기기 가격·구매안내' : 'Official Device Price & Purchase';
+    item.appendChild(link);
+    systemDropdown.appendChild(item);
+  }
+
   // 1. Sticky Navigation Header Scroll Effect
   const header = document.querySelector('.header-main');
   window.addEventListener('scroll', () => {
