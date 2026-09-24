@@ -70,8 +70,80 @@
 
     <section class="healing-circuit-section"><div class="container healing-circuit-grid"><div><div class="badge-tag dark">NOVACELL SYSTEM CONNECTION</div><h2>Bio Points and 14 Biological Circuits</h2><p>Healing Points connects symptom-based guidance with Bio Point and biological-circuit references in one app.</p><ul><li>Twelve primary biological circuits</li><li>13. Conception Vessel</li><li>14. Governor Vessel</li><li>Anterior and posterior Bio Point guides</li></ul></div><img src="../images/healing-points-governor.webp" alt="NovaCell Governor Vessel biological circuit guide"></div></section>
 
-    <section class="healing-access-section" id="access"><div class="container healing-access-panel"><div><div class="badge-tag">ACCESS PREPARATION</div><h2>Continue to the dedicated Healing Points app</h2><div class="healing-access-price"><span>1-Year Pass</span><strong>US$300</strong></div><p>The app and dedicated domain are prepared. Member authentication and paid-pass validation will be added in the next development phase.</p><p class="healing-access-note">The current app interface is primarily Korean. A complete English app interface is planned for the next access-control phase.</p></div><div class="healing-access-actions"><a href="https://healing.novacell.kr/" class="btn btn-gold">Open the App <i class="ri-arrow-right-line"></i></a><a href="contact.html" class="btn btn-outline-white">Request Pass Information</a></div></div><p class="container detail-disclaimer">NovaCell Healing Points is an educational and clinical reference tool. It does not replace professional diagnosis, treatment decisions or applicable clinical guidance.</p></section>
+    <section class="healing-access-section" id="access"><div class="container healing-access-panel"><div><div class="badge-tag">ACCESS PREPARATION</div><h2>Continue to the dedicated Healing Points app</h2><div class="healing-access-price"><span>1-Year Pass</span><strong>US$300</strong></div><p>The app and dedicated domain are prepared. Member authentication and paid-pass validation will be added in the next development phase.</p><p class="healing-access-note">The current app interface is primarily Korean. A complete English app interface is planned for the next access-control phase.</p></div><div class="healing-access-actions"><a href="https://healing.novacell.kr/" class="btn btn-gold">Open the App <i class="ri-arrow-right-line"></i></a><a href="#consultation" class="btn btn-gold open-consultation-modal" data-type="Healing Points"><i class="ri-ticket-2-line"></i> Request Healing Points 1-Year Pass</a></div></div><p class="container detail-disclaimer">NovaCell Healing Points is an educational and clinical reference tool. It does not replace professional diagnosis, treatment decisions or applicable clinical guidance.</p></section>
   </main>
+  
+  <div class="modal-overlay" id="consultationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="ri-stethoscope-line text-gold"></i> NovaCell Therapy® Consultation &amp; Demo</h3>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="consultationForm" name="consultation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="consultation">
+          <div style="display:none;">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientName">Full Name *</label>
+              <input type="text" id="clientName" name="clientName" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="clientPhone">Phone / WhatsApp *</label>
+              <input type="tel" id="clientPhone" name="clientPhone" placeholder="e.g. +1 555-0199 or +82-10-9726-7012" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientEmail">Email Address *</label>
+              <input type="email" id="clientEmail" name="clientEmail" placeholder="e.g. name@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="clientCountry">Country / Region *</label>
+              <input type="text" id="clientCountry" name="clientCountry" placeholder="e.g. USA / UK / Korea" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="consultationType">Consultation Category *</label>
+            <select id="consultationType" name="consultationType" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="의료기기 구매상담">NovaCell Device Inquiry &amp; Live Demo</option>
+              <option value="해외 견적 요청">International Quotation Request</option>
+              <option value="Reflex Therapy Guide">Reflex Therapy Guide</option>
+              <option value="Healing Points">Healing Points</option>
+              <option value="11월 마스터 클래스">November Master Class Registration</option>
+              <option value="기타 전문 상담">Clinical Integration &amp; Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="clientMessage">Symptoms or Inquiries (Optional)</label>
+            <textarea id="clientMessage" name="clientMessage" rows="3" placeholder="Tell us about specific symptoms (chronic pain, fatigue, nervous system) or clinical interests."></textarea>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; color: #4b5563; cursor: pointer;">
+              <input type="checkbox" name="privacyAgreement" required checked style="margin-top: 3px; accent-color: var(--color-gold-400);">
+              <span>[Required] I agree to the collection and use of personal information for consultation.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="width: 100%; padding: 15px; font-size: 1.05rem;">
+            <i class="ri-check-double-line"></i> Submit Consultation Request
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
   <script src="../js/app.js"></script>
 </body>
 </html>

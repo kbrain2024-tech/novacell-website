@@ -118,17 +118,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalOverlay = document.getElementById('consultationModal');
   const modalCloseBtn = document.getElementById('modalCloseBtn');
   const openModalBtns = document.querySelectorAll('.open-consultation-modal');
-
+  // Improved modal opening with flexible targetType matching
   const openModal = (targetType = 'all') => {
     if (modalOverlay) {
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
       const typeSelect = document.getElementById('consultationType');
       if (typeSelect && targetType !== 'all') {
-        typeSelect.value = targetType;
+        const lowerTarget = targetType.toLowerCase().trim();
+        let matchedIndex = -1;
+        for (let i = 0; i < typeSelect.options.length; i++) {
+          const opt = typeSelect.options[i];
+          const val = opt.value.toLowerCase();
+          const txt = opt.text.toLowerCase();
+          if (val === lowerTarget || txt === lowerTarget || val.includes(lowerTarget) || lowerTarget.includes(val) || txt.includes(lowerTarget)) {
+            matchedIndex = i;
+            break;
+          }
+        }
+        if (matchedIndex !== -1) {
+          typeSelect.selectedIndex = matchedIndex;
+        }
       }
     }
   };
+
 
   const closeModal = () => {
     if (modalOverlay) {

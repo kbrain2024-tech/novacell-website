@@ -124,11 +124,83 @@
     <section class="reflex-included-section" id="pass">
       <div class="container"><div class="section-header"><div class="badge-tag dark">What the pass includes</div><h2>NovaCell Reflex Therapy Guide<br>1-Year Pass</h2></div>
         <div class="included-grid"><div><i class="ri-footprint-line"></i><h3>Point Maps</h3><p>Hand and foot maps with numbered treatment-point names.</p></div><div><i class="ri-route-line"></i><h3>Guided Order</h3><p>Step-by-step work order and session support.</p></div><div><i class="ri-graduation-cap-line"></i><h3>NovaCell Academy</h3><p>Learning content, quizzes and practical evaluation.</p></div><div><i class="ri-refresh-line"></i><h3>Ongoing Updates</h3><p>Access for 365 days as new learning content is added.</p></div></div>
-        <div class="purchase-panel"><div><strong>US$100</strong><span>1 year of access</span></div><a href="#contact" class="btn btn-gold">Request purchase guidance <i class="ri-arrow-right-line"></i></a></div>
+        <div class="purchase-panel"><div><strong>US$100</strong><span>1 year of access</span></div><a href="#consultation" class="btn btn-gold open-consultation-modal" data-type="Reflex Therapy Guide"><i class="ri-ticket-2-line"></i> Request 1-Year Pass <i class="ri-arrow-right-line"></i></a></div>
       </div>
     </section>
     <section id="contact" class="cta-banner-section"><img src="../images/reflex-guide-main-gate-v2.png" alt="" class="cta-banner-bg"><div class="container"><div class="cta-content"><h2>Start with a clear Reflex Therapy Guide.</h2><p>Membership checkout is being prepared. You can request purchase guidance while secure account registration and test payment are being connected.</p><a href="contact.html" class="btn btn-gold">Request purchase guidance <i class="ri-arrow-right-line"></i></a><p class="detail-disclaimer">Educational and self-care support only. This Guide does not replace medical diagnosis or treatment.</p></div></div></section>
   </main>
+  
+  <div class="modal-overlay" id="consultationModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="ri-stethoscope-line text-gold"></i> NovaCell Therapy® Consultation &amp; Demo</h3>
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close">
+          <i class="ri-close-line"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="consultationForm" name="consultation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="consultation">
+          <div style="display:none;">
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientName">Full Name *</label>
+              <input type="text" id="clientName" name="clientName" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="clientPhone">Phone / WhatsApp *</label>
+              <input type="tel" id="clientPhone" name="clientPhone" placeholder="e.g. +1 555-0199 or +82-10-9726-7012" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientEmail">Email Address *</label>
+              <input type="email" id="clientEmail" name="clientEmail" placeholder="e.g. name@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="clientCountry">Country / Region *</label>
+              <input type="text" id="clientCountry" name="clientCountry" placeholder="e.g. USA / UK / Korea" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="consultationType">Consultation Category *</label>
+            <select id="consultationType" name="consultationType" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="의료기기 구매상담">NovaCell Device Inquiry &amp; Live Demo</option>
+              <option value="해외 견적 요청">International Quotation Request</option>
+              <option value="Reflex Therapy Guide">Reflex Therapy Guide</option>
+              <option value="Healing Points">Healing Points</option>
+              <option value="11월 마스터 클래스">November Master Class Registration</option>
+              <option value="기타 전문 상담">Clinical Integration &amp; Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="clientMessage">Symptoms or Inquiries (Optional)</label>
+            <textarea id="clientMessage" name="clientMessage" rows="3" placeholder="Tell us about specific symptoms (chronic pain, fatigue, nervous system) or clinical interests."></textarea>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 16px;">
+            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; color: #4b5563; cursor: pointer;">
+              <input type="checkbox" name="privacyAgreement" required checked style="margin-top: 3px; accent-color: var(--color-gold-400);">
+              <span>[Required] I agree to the collection and use of personal information for consultation.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="width: 100%; padding: 15px; font-size: 1.05rem;">
+            <i class="ri-check-double-line"></i> Submit Consultation Request
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
   <script src="../js/app.js"></script>
 </body>
 </html>
