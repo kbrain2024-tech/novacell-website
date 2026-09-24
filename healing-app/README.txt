@@ -1,4 +1,4 @@
-NovaCell Healing Points v29 — 기본 치료점 공개 배포판
+NovaCell Healing Points v31 — 공식 도메인 공유 수정 배포판
 
 이번 별도 작업
 - v17 백업에서 복구된 핵심점 설정 71개와 원 위치 123개를 APP의 기본 자료로 포함했습니다.
@@ -8,12 +8,12 @@ NovaCell Healing Points v29 — 기본 치료점 공개 배포판
 - v2–v29 백업을 불러올 수 있고, 새 백업은 NovaCell_Points_v29_날짜.json으로 저장됩니다.
 
 Netlify 배포
-1. 이 폴더 전체를 기존 다섯 번째 프로젝트 effervescent-starship-9e56b9의 Deploys에 올립니다.
-2. 새 프로젝트를 만들지 마세요.
+1. 이 폴더 전체를 현재 Healing Points 전용 Netlify 프로젝트의 Deploys에 올립니다.
+2. 다른 NovaCell 프로젝트에 올리거나 새 프로젝트를 만들지 마세요.
 3. 배포번호가 붙은 미리보기 주소가 아니라 아래 공식 주소로 확인하세요.
-   https://effervescent-starship-9e56b9.netlify.app/
+   https://healing.novacell.kr/
 4. 카카오톡 공유 전용 주소는 그대로 유지됩니다.
-   https://effervescent-starship-9e56b9.netlify.app/share-v26.html
+   https://healing.novacell.kr/share-v26.html
 
 중요한 확인 방법
 - 박 교수님의 현재 브라우저에는 복구한 개인 자료가 이미 있으므로 배포 후에도 그 자료가 우선 표시됩니다.

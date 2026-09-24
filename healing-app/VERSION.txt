@@ -1,6 +1,6 @@
-NovaCell Healing Points v29
-Public default healing-point preset
-Build date: 2026-09-16
+NovaCell Healing Points v31
+Official domain and social-sharing URL correction
+Build date: 2026-09-24
 
 핵심 변경
 - v17에서 복구된 핵심점 설정 71개와 원 위치 123개를 신규 사용자의 기본 자료로 포함

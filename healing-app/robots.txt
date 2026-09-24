@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://healing.novacell.kr/sitemap.xml
