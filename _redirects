@@ -2,17 +2,21 @@
 # NovaCell Domain & Subdomain Routing Configuration
 # ===================================================
 
-# 1. Healing Points Dedicated WebApp Routing (v29 Cover Screen)
+# 1. SEO Static Files (v26 SEO Fix)
+/robots.txt    /robots.txt   200
+/sitemap.xml   /sitemap.xml  200
+
+# 2. Healing Points Dedicated WebApp Routing (v29 Cover Screen)
 https://healing.novacell.kr/*   /healing-app/:splat  200!
 http://healing.novacell.kr/*    /healing-app/:splat  200!
 
-# 2. Reflex Therapy Guide Dedicated WebApp Routing (v18 PWA)
+# 3. Reflex Therapy Guide Dedicated WebApp Routing (v18 PWA)
 https://guide.novacell.kr/*     /reflex-app/:splat  200!
 http://guide.novacell.kr/*      /reflex-app/:splat  200!
 
-# 3. Academy & Clinical Master Class Routing
+# 4. Academy & Clinical Master Class Routing
 https://academy.novacell.kr/*   https://novacell.kr/ko/education.html  302!
 http://academy.novacell.kr/*    https://novacell.kr/ko/education.html  302!
 
-# 4. Main Site Fallback (Default)
+# 5. Main Site Fallback (Default)
 /*    /index.html   200

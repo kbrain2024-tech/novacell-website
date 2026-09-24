@@ -126,53 +126,32 @@
     <div class="container" style="max-width: 700px;">
       <div style="background: #fff; padding: 40px; border-radius: 16px; border: 1px solid var(--color-navy-100); box-shadow: 0 10px 30px rgba(8,22,47,0.06);">
         <h3 style="color: var(--color-navy-900); margin-bottom: 20px;">Send a Direct Message</h3>
-        <form id="contactPageForm" name="contact-page" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <form id="contactPageForm" name="contact-page" method="POST" data-netlify="true" netlify-honeypot="contact-bot-field">
           <input type="hidden" name="form-name" value="contact-page">
-          <div style="display:none;">
-            <label>Don't fill this out if you're human: <input name="bot-field"></label>
-          </div>
-
+          <input type="hidden" name="category" value="English website inquiry">
+          <p class="form-honeypot" aria-hidden="true"><label>Leave this field empty <input name="contact-bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div style="margin-bottom: 16px;">
             <label style="display:block; font-weight:600; margin-bottom:6px;">Your Name *</label>
-            <input type="text" name="name" required placeholder="John Doe" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;">
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-            <div>
-              <label style="display:block; font-weight:600; margin-bottom:6px;">Email Address *</label>
-              <input type="email" name="email" required placeholder="name@example.com" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;">
-            </div>
-            <div>
-              <label style="display:block; font-weight:600; margin-bottom:6px;">Phone / WhatsApp *</label>
-              <input type="tel" name="phone" required placeholder="+1 555-0199 or +82-10-9726-7012" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;">
-            </div>
+            <input type="text" id="inqName" name="name" required placeholder="John Doe" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;">
           </div>
           <div style="margin-bottom: 16px;">
-            <label style="display:block; font-weight:600; margin-bottom:6px;">Country / Region *</label>
-            <input type="text" name="country" required placeholder="e.g. USA / UK / Australia" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;">
+            <label style="display:block; font-weight:600; margin-bottom:6px;">Email Address *</label>
+            <input type="email" id="inqEmail" name="email" required placeholder="name@example.com" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;">
           </div>
           <div style="margin-bottom: 16px;">
-            <label style="display:block; font-weight:600; margin-bottom:6px;">Inquiry Category *</label>
-            <select name="category" required style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px; background:#fff;">
-              <option value="" disabled selected>Select Category</option>
-              <option value="의료기기 구매상담">NovaCell Device Inquiry &amp; Live Demo</option>
-              <option value="해외 견적 요청">International Quotation Request</option>
-              <option value="Reflex Therapy Guide">Reflex Therapy Guide</option>
-              <option value="Healing Points">Healing Points</option>
-              <option value="11월 마스터 클래스">November Master Class Registration</option>
-              <option value="기타">Clinical Integration &amp; General Inquiry</option>
-            </select>
+            <label style="display:block; font-weight:600; margin-bottom:6px;">Phone / WhatsApp *</label>
+            <input type="tel" id="inqPhone" name="phone" required placeholder="+1 555-0199 or +82-10-9726-7012" style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;">
           </div>
           <div style="margin-bottom: 20px;">
             <label style="display:block; font-weight:600; margin-bottom:6px;">Message / Inquiry *</label>
-            <textarea name="message" rows="4" required placeholder="Describe your questions regarding cellular voltage, devices, or protocols..." style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;"></textarea>
+            <textarea id="inqMessage" name="message" rows="4" required placeholder="Describe your questions regarding cellular voltage, devices, or protocols..." style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px;"></textarea>
           </div>
-          <div style="margin-bottom: 20px; font-size: 0.85rem; color: #555; display: flex; align-items: center; gap: 8px;">
-            <input type="checkbox" name="privacyAgreement" required checked style="accent-color: var(--color-gold-400);">
-            <label>[Required] I agree to the collection and use of personal information.</label>
+          <div style="margin-bottom:20px; font-size:.86rem; color:#53657b; display:flex; gap:8px; align-items:flex-start;">
+            <input type="checkbox" id="privacyAgree" name="privacy-consent" value="agreed" required style="margin-top:3px; accent-color:var(--color-gold-500);">
+            <label for="privacyAgree">I agree to the collection and use of my information for responding to this inquiry. <a href="../privacy.html" target="_blank" style="text-decoration:underline;">Privacy Policy</a></label>
           </div>
           <button type="submit" class="btn btn-gold" style="width:100%; padding:15px; font-size:1.05rem;">Submit Inquiry</button>
         </form>
-
       </div>
     </div>
   </section>

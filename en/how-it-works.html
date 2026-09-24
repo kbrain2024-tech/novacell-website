@@ -478,8 +478,10 @@
           <p style="font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-bottom: 14px;">
             Subscribe to receive the latest clinical whitepapers, seminar schedules, and voltage medicine updates.
           </p>
-          <form id="newsletterForm">
-            <input type="email" placeholder="Enter your email address" required>
+          <form id="newsletterForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="newsletter-bot-field">
+            <input type="hidden" name="form-name" value="newsletter">
+            <p class="form-honeypot" aria-hidden="true"><label>Leave this field empty <input name="newsletter-bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <input type="email" name="email" placeholder="Enter your email address" required>
             <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px;">
               <i class="ri-send-plane-fill"></i> Subscribe Now
             </button>
@@ -538,64 +540,41 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="consultationForm" name="consultation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+        <form id="consultationForm" name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="consultation">
-          <div style="display:none;">
-            <label>Don't fill this out if you're human: <input name="bot-field"></label>
-          </div>
-
+          <p class="form-honeypot" aria-hidden="true"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div class="form-row">
             <div class="form-group">
               <label for="clientName">Full Name *</label>
-              <input type="text" id="clientName" name="clientName" placeholder="e.g. John Doe" required>
+              <input type="text" id="clientName" name="name" placeholder="e.g. John Doe" required>
             </div>
             <div class="form-group">
-              <label for="clientPhone">Phone / WhatsApp *</label>
-              <input type="tel" id="clientPhone" name="clientPhone" placeholder="e.g. +1 555-0199 or +82-10-9726-7012" required>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="clientEmail">Email Address *</label>
-              <input type="email" id="clientEmail" name="clientEmail" placeholder="e.g. name@example.com" required>
-            </div>
-            <div class="form-group">
-              <label for="clientCountry">Country / Region *</label>
-              <input type="text" id="clientCountry" name="clientCountry" placeholder="e.g. USA / UK / Korea" required>
+              <label for="clientPhone">Contact Number / WhatsApp *</label>
+              <input type="tel" id="clientPhone" name="phone" placeholder="e.g. +1 555-0199 or 010-9726-7012" required>
             </div>
           </div>
 
           <div class="form-group">
             <label for="consultationType">Consultation Category *</label>
-            <select id="consultationType" name="consultationType" required>
-              <option value="" disabled selected>Select Category</option>
-              <option value="의료기기 구매상담">NovaCell Device Inquiry &amp; Live Demo</option>
-              <option value="해외 견적 요청">International Quotation Request</option>
-              <option value="Reflex Therapy Guide">Reflex Therapy Guide</option>
-              <option value="Healing Points">Healing Points</option>
-              <option value="11월 마스터 클래스">November Master Class Registration</option>
-              <option value="기타 전문 상담">Clinical Integration &amp; Other</option>
+            <select id="consultationType" name="category" required>
+              <option value="General Consultation">Select Category</option>
+              <option value="Device Demo">NovaCell Device Live Demonstration</option>
+              <option value="Home Care">Personal Home Care / Self-Healing Inquiry</option>
+              <option value="Clinic Implementation">Clinic / Hospital / Wellness Integration</option>
+              <option value="Master Class">Master Class Registration</option>
+              <option value="Practitioner Certification">Professional Therapist Certification Course</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="clientMessage">Symptoms or Inquiries (Optional)</label>
-            <textarea id="clientMessage" name="clientMessage" rows="3" placeholder="Tell us about specific symptoms (chronic pain, fatigue, nervous system) or clinical interests."></textarea>
-          </div>
-
-          <div class="form-group" style="margin-bottom: 16px;">
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.85rem; color: #4b5563; cursor: pointer;">
-              <input type="checkbox" name="privacyAgreement" required checked style="margin-top: 3px; accent-color: var(--color-gold-400);">
-              <span>[Required] I agree to the collection and use of personal information for consultation.</span>
-            </label>
+            <textarea id="clientMessage" name="message" rows="3" placeholder="Tell us about specific symptoms (chronic pain, fatigue, nervous system) or clinical interests."></textarea>
           </div>
 
           <button type="submit" class="btn btn-gold" style="width: 100%; padding: 15px; font-size: 1.05rem;">
             <i class="ri-check-double-line"></i> Submit Consultation Request
           </button>
         </form>
-
       </div>
     </div>
   </div>

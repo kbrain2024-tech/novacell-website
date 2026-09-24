@@ -284,21 +284,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Newsletter Form Submission Handler
+  // 5. Newsletter Form Submission Handler (Netlify Forms Integration)
   const newsletterForm = document.getElementById('newsletterForm');
   if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
+    newsletterForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const submitBtn = newsletterForm.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn ? submitBtn.innerHTML : '';
       const emailInput = newsletterForm.querySelector('input[type="email"]');
-      if (emailInput && emailInput.value) {
-        alert(`[구독 완료]\n${emailInput.value} 주소로 노바셀 글로벌 최신 세미나 및 의학 뉴스레터를 발송해 드리겠습니다.`);
+      if (!emailInput || !emailInput.value) return;
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="ri-loader-4-line"></i> 처리 중...';
+      }
+
+      const formData = new FormData(newsletterForm);
+      if (!formData.get('form-name')) formData.append('form-name', 'newsletter');
+
+      try {
+        const response = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        });
+        if (!response.ok) throw new Error('Server returned ' + response.status);
+
+        const isEn = window.location.pathname.indexOf('/en/') !== -1;
+        alert(isEn
+          ? `[Subscribed]\nNovaCell news and seminar updates will be sent to ${emailInput.value}.`
+          : `[구독 완료]\n${emailInput.value} 주소로 노바셀 최신 세미나 및 뉴스레터를 발송해 드리겠습니다.`);
         newsletterForm.reset();
+      } catch (err) {
+        console.error('Newsletter submission error:', err);
+        const isEn = window.location.pathname.indexOf('/en/') !== -1;
+        alert(isEn
+          ? 'The subscription could not be submitted. Please try again later.'
+          : '구독 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalHtml;
+        }
       }
     });
   }
 
-  // 6. Smooth Scroll for Anchor Links
- (드롭다운 상위 메뉴 제외)
+  // 6. Smooth Scroll for Anchor Links (드롭다운 상위 메뉴 제외)
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       // If this anchor is a parent dropdown menu trigger, do NOT scroll down

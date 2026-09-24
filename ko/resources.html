@@ -619,8 +619,10 @@
           <p style="font-size: 0.88rem; color: rgba(255,255,255,0.7); margin-bottom: 14px;">
             노바셀 마스터 클래스 개강 알림, 생체 전압 임상 가이드 및 세미나 소식을 가장 먼저 받아보세요.
           </p>
-          <form id="newsletterForm">
-            <input type="email" placeholder="이메일 주소를 입력하세요" required>
+          <form id="newsletterForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="newsletter-bot-field">
+            <input type="hidden" name="form-name" value="newsletter">
+            <p class="form-honeypot" aria-hidden="true"><label>Leave this field empty <input name="newsletter-bot-field" tabindex="-1" autocomplete="off"></label></p>
+            <input type="email" name="email" placeholder="이메일 주소를 입력하세요" required>
             <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px;">
               <i class="ri-send-plane-fill"></i> 소식 구독하기
             </button>
