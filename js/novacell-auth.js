@@ -3,6 +3,12 @@
 
   const cfg = window.NOVACELL_AUTH_CONFIG || {};
   const storageKey = cfg.sessionStorageKey || "novacell-auth-session-v1";
+  const oauthReturnKey = `${storageKey}-oauth-return`;
+  const oauthProviders = Object.freeze({
+    google: "google",
+    kakao: "kakao",
+    naver: "custom:naver"
+  });
 
   function configured() {
     return /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(cfg.supabaseUrl || "") &&
@@ -92,6 +98,28 @@
       body: JSON.stringify({ email, password })
     });
     return writeSession(data);
+  }
+
+  function signInWithOAuth(provider, { redirectTo, returnTo } = {}) {
+    if (!configured()) throw new Error("AUTH_NOT_CONFIGURED");
+    const providerId = oauthProviders[provider];
+    if (!providerId) throw new Error("OAUTH_PROVIDER_NOT_SUPPORTED");
+    const callback = safeReturnUrl(
+      redirectTo,
+      `${cfg.mainSiteUrl || location.origin}/login.html`
+    );
+    const fallback = `${cfg.mainSiteUrl || location.origin}/ko/`;
+    sessionStorage.setItem(oauthReturnKey, safeReturnUrl(returnTo, fallback));
+    const url = new URL(`${cfg.supabaseUrl}/auth/v1/authorize`);
+    url.searchParams.set("provider", providerId);
+    url.searchParams.set("redirect_to", callback);
+    location.assign(url.href);
+  }
+
+  function consumeOAuthReturn(fallback) {
+    const value = sessionStorage.getItem(oauthReturnKey);
+    sessionStorage.removeItem(oauthReturnKey);
+    return safeReturnUrl(value, fallback);
   }
 
   async function signOut() {
@@ -187,6 +215,8 @@
     hasEntitlement,
     signUp,
     signIn,
+    signInWithOAuth,
+    consumeOAuthReturn,
     signOut,
     sendPasswordReset,
     updatePassword,
