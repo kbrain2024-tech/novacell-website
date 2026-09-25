@@ -1,29 +1,35 @@
-# NovaCell v31 통합 패치 적용 안내
+# NovaCell v32 우선 수정 패치
 
-이 압축 파일은 기존 홈페이지 전체를 대체하는 파일이 아니라, 현재 정상 운영 중인 홈페이지에 덮어쓰는 **업데이트 패치**입니다.
+이 파일은 **전체 홈페이지가 아니라 안전한 소형 패치**입니다. 현재 운영 중인 회원가입, 로그인, 제품 가격, 이미지와 다른 페이지를 덮어쓰지 않습니다.
 
-## 포함된 변경
+## 포함된 수정
 
-1. 제품 홍보명 변경
-   - 한국어: `노바셀 미세전류 전압 치료기`
-   - 영어: `NovaCell High Voltage & Microcurrent`
-   - 식약처 허가 고지에는 공식 품목명 `2등급 의료용 조합자극기`를 유지했습니다.
-2. 로그인·회원가입 화면에 Google, 카카오, 네이버 간편 로그인 버튼을 추가했습니다.
-3. 로그인·회원가입·비밀번호 재설정 화면의 비밀번호 입력란에 보기/숨기기 버튼을 추가했습니다.
-4. 기존 `js/novacell-auth-config.js`는 포함하지 않아 현재 Supabase 연결값을 덮어쓰지 않습니다.
+1. 한국어·영어 리플렉스 테라피 상세 페이지에 앱 열기 버튼 추가
+   - 한국어: `리플렉스 테라피 앱 열기`
+   - 영어: `Open Reflex Therapy App`
+   - 연결 주소: `https://guide.novacell.kr/`
+2. 영어 상세 페이지의 표준 주소를 `/en/reflex-therapy-guide`로 통일
+3. 기존 `/en/reflex-guide` 주소는 새 표준 주소로 한 번만 이동
+4. 스마트폰에서 새 버튼이 한 줄씩 넓게 표시되도록 보완
 
-## 적용 순서
+## GitHub 적용 방법
 
-1. 현재 GitHub 저장소를 백업하거나 새 브랜치를 만듭니다.
-2. 이 압축 파일을 풀어 나온 `css`, `js`, `ko`, `en` 폴더를 저장소 최상위 폴더에 복사합니다.
-3. 같은 이름의 파일만 덮어씁니다.
-4. `SOCIAL_LOGIN_SETUP_KO.md`에 따라 Google·카카오 제공자 설정을 끝냅니다.
-5. 설정 완료 후 한 번에 커밋하고 Netlify 배포를 확인합니다.
+압축을 푼 뒤, 이 폴더 안의 파일과 폴더를 NovaCell 홈페이지 저장소의 **최상위 위치**에 그대로 업로드합니다. GitHub에서 같은 이름의 아래 파일만 교체하거나 추가합니다.
 
-## 주의
+- `_redirects`
+- `css/styles.css`
+- `ko/reflex-therapy-guide.html`
+- `en/reflex-therapy-guide.html` (새 표준 영문 페이지)
 
-- Google·카카오 로그인은 각 개발자 콘솔의 Client ID와 Client Secret 없이는 동작하지 않습니다.
-- Client Secret은 HTML, JavaScript, GitHub에 절대 넣지 말고 Supabase의 Provider 설정 화면에만 입력합니다.
-- 네이버 버튼은 코드와 디자인이 준비되어 있지만 기본값은 비활성입니다. 네이버의 중첩형 회원정보 응답과 Supabase 사용자 생성을 실제 계정으로 검증한 뒤 `novacell-auth-config.js`에 `naverOAuthEnabled: true`를 추가해 활성화합니다.
-- 네이버 이메일 주소(`@naver.com`)는 지금도 일반 이메일 회원가입으로 사용할 수 있습니다.
+기존 `en/reflex-guide.html`은 삭제하지 않아도 됩니다. `_redirects`가 새 주소로 안전하게 연결합니다.
 
+## 배포 후 확인 주소
+
+- `https://novacell.kr/ko/reflex-therapy-guide`
+- `https://novacell.kr/en/reflex-therapy-guide`
+- `https://novacell.kr/en/reflex-guide` → 위 영문 표준 주소로 1회 이동
+- 두 상세 페이지의 앱 열기 버튼 → `https://guide.novacell.kr/`
+
+## 로그인 관련 안내
+
+이 패치는 기존 로그인·회원가입 파일이나 공급자 설정을 변경하지 않습니다. Google·Kakao 실제 로그인 완료 여부는 각 공급자의 키와 허용 콜백 주소가 설정된 뒤 운영 주소에서 별도로 시험해야 합니다. Naver 로그인은 현재 준비 중 상태를 유지합니다.

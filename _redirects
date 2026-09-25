@@ -18,5 +18,13 @@ http://guide.novacell.kr/*      /reflex-app/:splat  200!
 https://academy.novacell.kr/*   https://novacell.kr/ko/education.html  302!
 http://academy.novacell.kr/*    https://novacell.kr/ko/education.html  302!
 
-# 5. Main Site Fallback (Default)
+# 5. Reflex Therapy Guide Canonical & Routing (v32 Priority Fix)
+/en/reflex-guide             /en/reflex-therapy-guide       301!
+/en/reflex-guide.html        /en/reflex-therapy-guide       301!
+/en/reflex-therapy-guide     /en/reflex-therapy-guide.html  200
+/ko/reflex-guide             /ko/reflex-therapy-guide       301!
+/ko/reflex-guide.html        /ko/reflex-therapy-guide       301!
+/ko/reflex-therapy-guide     /ko/reflex-therapy-guide.html  200
+
+# 6. Main Site Fallback (Default)
 /*    /index.html   200
