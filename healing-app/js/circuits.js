@@ -1,4 +1,4 @@
-const CIRCUITS = [
+﻿const CIRCUITS = [
   {
     id: "lung",
     order: 1,
@@ -420,11 +420,11 @@ function renderList() {
 function renderMuscles(circuit) {
   const container = $("circuit-muscles");
   if (!container) return;
-  container.innerHTML = "";
 
-  const badge = $("muscle-count-badge");
-  if (badge) {
-    badge.textContent = `${circuit.muscles.length}개 근육 배터리`;
+  container.innerHTML = "";
+  const countBadge = $("muscle-count-badge");
+  if (countBadge) {
+    countBadge.textContent = `${circuit.muscles.length}\uAC1C \uADFC\uC721`; // "媛?洹쇱쑁"
   }
 
   circuit.muscles.forEach((muscle, index) => {
@@ -444,6 +444,15 @@ function renderMuscles(circuit) {
     item.addEventListener("mouseenter", () => {
       highlightMuscle(index, true);
       showFloatingAnatomy(muscle, item, circuit);
+
+      // Keep human image card comfortably in view when scrolling down
+      const figureCard = $("circuit-figure-card");
+      if (figureCard) {
+        const cardRect = figureCard.getBoundingClientRect();
+        if (cardRect.top < 60) {
+          figureCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+      }
     });
 
     item.addEventListener("mouseleave", () => {
@@ -460,53 +469,11 @@ function renderMuscles(circuit) {
   });
 }
 
-function renderNavyTable(circuit) {
-  // 1. Render bottom table below the stage
-  const tbody = $("navy-table-tbody");
-  const circuitBadge = $("figure-table-circuit-badge");
-  if (circuitBadge) {
-    circuitBadge.textContent = `${circuit.code} CIRCUIT · ${circuit.muscles.length} Batteries`;
-  }
-
-  if (tbody) {
-    tbody.innerHTML = "";
-    circuit.muscles.forEach((muscle, index) => {
-      const tr = document.createElement("tr");
-      tr.className = "navy-table-row";
-      tr.dataset.index = index;
-      tr.dataset.num = muscle.num;
-
-      tr.innerHTML = `
-        <td class="td-num"><span class="badge-num">${muscle.num}</span></td>
-        <td class="td-ko"><strong>${muscle.ko}</strong></td>
-        <td class="td-en">${muscle.en}</td>
-        <td class="td-view"><button type="button" class="view-anatomy-btn">도해 보기</button></td>
-      `;
-
-      tr.addEventListener("mouseenter", () => {
-        highlightMuscle(index, true);
-        showFloatingAnatomy(muscle, tr, circuit);
-      });
-
-      tr.addEventListener("mouseleave", () => {
-        highlightMuscle(index, false);
-        hideFloatingAnatomy();
-      });
-
-      tr.addEventListener("click", () => {
-        highlightMuscle(index, true);
-        showFloatingAnatomy(muscle, tr, circuit);
-      });
-
-      tbody.appendChild(tr);
-    });
-  }
-
-  // 2. Render canvas overlay table
+function renderCanvasTable(circuit) {
   const canvasList = $("canvas-table-list");
   const canvasTitle = $("canvas-table-title");
   if (canvasTitle) {
-    canvasTitle.textContent = `${circuit.name} 배터리 도표 (${circuit.code})`;
+    canvasTitle.textContent = `${circuit.name} \uBC30\uD130\uB9AC \uB3C4\uD15C (${circuit.code})`; // "諛고꽣由??꾪몴"
   }
   if (canvasList) {
     canvasList.innerHTML = "";
@@ -518,8 +485,10 @@ function renderNavyTable(circuit) {
 
       row.innerHTML = `
         <span class="canvas-row-num">${muscle.num}</span>
-        <span class="canvas-row-ko">${muscle.ko}</span>
-        <span class="canvas-row-en">${muscle.en}</span>
+        <div class="canvas-row-content">
+          <span class="canvas-row-ko">${muscle.ko}</span>
+          <span class="canvas-row-en">${muscle.en}</span>
+        </div>
       `;
 
       row.addEventListener("mouseenter", () => {
@@ -542,6 +511,30 @@ function renderNavyTable(circuit) {
   }
 }
 
+// Precision sync of pins overlay to image rendered bounding box
+function syncOverlayToImage() {
+  const img = $("circuit-image");
+  const overlay = $("pins-overlay");
+  const wrap = $("stage-canvas-wrap");
+  if (!img || !overlay || !wrap) return;
+
+  const imgRect = img.getBoundingClientRect();
+  const wrapRect = wrap.getBoundingClientRect();
+
+  if (imgRect.width === 0 || imgRect.height === 0) return;
+
+  const left = imgRect.left - wrapRect.left;
+  const top = imgRect.top - wrapRect.top;
+  const width = imgRect.width;
+  const height = imgRect.height;
+
+  overlay.style.position = "absolute";
+  overlay.style.left = `${left}px`;
+  overlay.style.top = `${top}px`;
+  overlay.style.width = `${width}px`;
+  overlay.style.height = `${height}px`;
+}
+
 function renderPins(circuit) {
   const overlay = $("pins-overlay");
   if (!overlay) return;
@@ -562,7 +555,7 @@ function renderPins(circuit) {
     pin.dataset.num = muscle.num;
     pin.style.left = `${muscle.x}%`;
     pin.style.top = `${muscle.y}%`;
-    pin.setAttribute("aria-label", `${muscle.num}번 근육: ${muscle.ko} (${muscle.en})`);
+    pin.setAttribute("aria-label", `${muscle.num}\uBC88 \uADFC\uC721: ${muscle.ko} (${muscle.en})`);
 
     pin.innerHTML = `<span class="pin-inner">${muscle.num}</span>`;
 
@@ -593,7 +586,7 @@ function renderPins(circuit) {
       pin.style.top = `${pt.y}%`;
       pin.setAttribute("aria-label", pt.name);
 
-      const label = pt.type === "check" ? "체" : "공";
+      const label = pt.type === "check" ? "\uCCB4" : "\uACF5"; // "泥? : "怨?
       pin.innerHTML = `<span class="pin-inner">${label}</span>`;
 
       pin.addEventListener("mouseenter", () => {
@@ -607,6 +600,9 @@ function renderPins(circuit) {
       overlay.appendChild(pin);
     });
   }
+
+  // Ensure overlay is strictly synchronized
+  syncOverlayToImage();
 }
 
 function highlightMuscle(index, active) {
@@ -624,12 +620,6 @@ function highlightMuscle(index, active) {
     el.classList.toggle("highlight", active && elIdx === index);
   });
 
-  // Navy table rows
-  document.querySelectorAll(".navy-table-row").forEach((el) => {
-    const elIdx = parseInt(el.dataset.index, 10);
-    el.classList.toggle("active", active && elIdx === index);
-  });
-
   // Canvas table rows
   document.querySelectorAll(".canvas-table-row").forEach((el) => {
     const elIdx = parseInt(el.dataset.index, 10);
@@ -642,21 +632,22 @@ function showFloatingAnatomy(muscle, targetEl, circuit) {
   if (!tooltip) return;
 
   const imgSrc = muscle.anatomyImg || "";
+  const circuitName = circuit ? circuit.name : "\uD68C\uB85C"; // "?뚮줈"
 
   tooltip.innerHTML = `
     <div class="anatomy-pop-card">
       <div class="anatomy-pop-header">
-        <span class="anatomy-pop-tag">${circuit ? circuit.name : '회로'} 배터리 [${muscle.num}]</span>
+        <span class="anatomy-pop-tag">${circuitName} \uBC30\uD130\uB9AC [${muscle.num}]</span>
         <strong class="anatomy-pop-ko">${muscle.ko}</strong>
         <span class="anatomy-pop-en">${muscle.en}</span>
       </div>
       <div class="anatomy-pop-media">
-        ${imgSrc ? `<img src="${imgSrc}" alt="${muscle.ko} 3D 도해" onerror="this.parentElement.innerHTML='<div class=\\'no-img\\'>도해 준비 중</div>'">` : `<div class="no-img">도해 준비 중</div>`}
+        ${imgSrc ? `<img src="${imgSrc}" alt="${muscle.ko} 3D \uB3C4\uD574" onerror="this.parentElement.innerHTML='<div class=\\'no-img\\'>\uB3C4\uD574 \uC900\uBE44 \uC911</div>'">` : `<div class="no-img">\uB3C4\uD574 \uC900\uBE44 \uC911</div>`}
       </div>
     </div>
   `;
 
-  tooltip.hidden = false;
+  tooltip.hidden = false; tooltip.style.display = "block";
 
   let anchorEl = targetEl;
   if (!targetEl.classList.contains("circuit-pin") && !targetEl.classList.contains("canvas-table-row")) {
@@ -671,7 +662,7 @@ function showPointTooltip(pt, targetEl, circuit) {
   const tooltip = $("pin-floating-tooltip");
   if (!tooltip) return;
 
-  const typeName = pt.type === "check" ? "전압 체크 포인트" : "전압 공급 포인트";
+  const typeName = pt.type === "check" ? "\uC804\uC555 \uCCB4\uD06C \uD3EC\uC778\uD2B8" : "\uC804\uC555 \uACF5\uAE09 \uD3EC\uC778\uD2B8";
   const imgSrc = pt.anatomyImg || "";
 
   tooltip.innerHTML = `
@@ -682,13 +673,13 @@ function showPointTooltip(pt, targetEl, circuit) {
       </div>
       ${imgSrc ? `
       <div class="anatomy-pop-media">
-        <img src="${imgSrc}" alt="${pt.name} 도해">
+        <img src="${imgSrc}" alt="${pt.name} \uB3C4\uD574">
       </div>
       ` : ""}
     </div>
   `;
 
-  tooltip.hidden = false;
+  tooltip.hidden = false; tooltip.style.display = "block";
   positionTooltip(targetEl, tooltip);
 }
 
@@ -699,27 +690,42 @@ function positionTooltip(targetEl, tooltip) {
   const stageRect = stage.getBoundingClientRect();
   const targetRect = targetEl.getBoundingClientRect();
 
-  const tipWidth = tooltip.offsetWidth || 280;
-  const tipHeight = tooltip.offsetHeight || 280;
-
-  const pinCenterX = targetRect.left - stageRect.left + (targetRect.width / 2);
-  const pinCenterY = targetRect.top - stageRect.top + (targetRect.height / 2);
+  const tipWidth = tooltip.offsetWidth || 270;
+  const tipHeight = tooltip.offsetHeight || 260;
 
   let left;
-  if (pinCenterX > stageRect.width * 0.45) {
-    left = targetRect.left - stageRect.left - tipWidth - 14;
-    if (left < 10) left = 10;
-  } else {
-    left = targetRect.right - stageRect.left + 14;
-    if (left + tipWidth > stageRect.width - 10) {
-      left = stageRect.width - tipWidth - 10;
-    }
-  }
+  let top;
 
-  let top = pinCenterY - (tipHeight / 2);
-  if (top < 10) top = 10;
-  if (top + tipHeight > stageRect.height - 10) {
-    top = stageRect.height - tipHeight - 10;
+  const isTableRow = targetEl.classList.contains("canvas-table-row");
+  const isSidebarItem = targetEl.classList.contains("muscle-item");
+
+  if (isTableRow || isSidebarItem) {
+    // When hovering over table row or sidebar muscle:
+    // Place popup in the upper-left of the stage with generous clearance from the human body!
+    left = 16;
+    top = 16;
+  } else {
+    // Pin on model
+    const pinCenterX = targetRect.left - stageRect.left + (targetRect.width / 2);
+    const pinCenterY = targetRect.top - stageRect.top + (targetRect.height / 2);
+
+    if (pinCenterX >= stageRect.width * 0.42) {
+      // Pin is on standing human body -> Place popup to the LEFT with 24px clearance!
+      left = targetRect.left - stageRect.left - tipWidth - 24;
+      if (left < 16) left = 16;
+    } else {
+      // Pin is on left inset -> Place popup to the RIGHT with 24px clearance!
+      left = targetRect.right - stageRect.left + 24;
+      if (left + tipWidth > stageRect.width - 16) {
+        left = stageRect.width - tipWidth - 16;
+      }
+    }
+
+    // Vertically center on pin, but strictly clamp inside stage so never cut off!
+    top = pinCenterY - (tipHeight / 2);
+    const minTop = 16;
+    const maxTop = Math.max(minTop, stageRect.height - tipHeight - 16);
+    top = Math.max(minTop, Math.min(maxTop, top));
   }
 
   tooltip.style.left = `${left}px`;
@@ -730,7 +736,7 @@ function positionTooltip(targetEl, tooltip) {
 function hideFloatingAnatomy() {
   const tooltip = $("pin-floating-tooltip");
   if (tooltip) {
-    tooltip.hidden = true;
+    tooltip.hidden = true; tooltip.style.display = "none";
   }
 }
 
@@ -740,30 +746,35 @@ function renderDetail(circuit) {
   $("circuit-sequence").textContent = `${circuit.order.toString().padStart(2, "0")} / 14`;
   $("circuit-title").textContent = circuit.name;
   $("circuit-title-en").textContent = circuit.en;
-  $("source-page").textContent = `책 ${circuit.page}쪽`;
+   // "梨?N履?
+  
+  $("source-page").textContent = `\uCC45 ${circuit.page}\uCABD`; // "梨?N履?
   $("circuit-route").textContent = circuit.route;
   $("circuit-check").textContent = circuit.check;
   $("circuit-supply").textContent = circuit.supply;
 
   const usesTitle = $("circuit-uses-title");
   if (usesTitle) {
-    usesTitle.textContent = circuit.usesTitle || "책에 기재된 적용 질환";
+    usesTitle.textContent = circuit.usesTitle || "\uCC45\uC5D0 \uAE30\uC7AC\uB41C \uC801\uC6A9 \uC9C8\uD658";
   }
   $("circuit-uses").textContent = circuit.uses;
 
   const img = $("circuit-image");
   if (img) {
     img.src = circuit.image;
-    img.alt = `${circuit.name} 인체 AI 모델 상호작용 도해`;
+    img.alt = `${circuit.name} \uC778\uCCB4 AI \uBAA8\uB378 \uC0C1\uD638\uC791\uC6A9 \uB3C4\uD574`;
+    img.onload = () => {
+      syncOverlayToImage();
+    };
   }
 
   const caption = $("circuit-caption");
   if (caption) {
-    caption.textContent = `『노바셀 통치 요법』 ${circuit.page}쪽 관련 도해 · ${circuit.name} · 체크 ${circuit.check} · 공급 ${circuit.supply}`;
+    caption.textContent = `\u300E\uB178\uBC14\uC140 \uD1B5\uCE58 \uC694\uBC95\u300F ${circuit.page}\uC8FD \uAD00\uB828 \uB3C4\uD574 \u00B7 ${circuit.name} \u00B7 \uCCB4\uD06C ${circuit.check} \u00B7 \uACF5\uAE09 ${circuit.supply}`;
   }
 
   renderMuscles(circuit);
-  renderNavyTable(circuit);
+  renderCanvasTable(circuit);
   renderPins(circuit);
 
   const prevBtn = $("previous-circuit");
@@ -772,6 +783,9 @@ function renderDetail(circuit) {
   if (nextBtn) nextBtn.disabled = selected === CIRCUITS.length - 1;
 
   history.replaceState(null, "", `#${circuit.order.toString().padStart(2, "0")}`);
+
+  // Re-sync overlay after DOM paint
+  setTimeout(syncOverlayToImage, 50);
 }
 
 function selectById(id) {
@@ -852,6 +866,19 @@ document.addEventListener("DOMContentLoaded", () => {
         overlay.style.display = showPins ? "block" : "none";
       }
     });
+  }
+
+  const img = $("circuit-image");
+  if (img) {
+    img.addEventListener("load", syncOverlayToImage);
+  }
+  window.addEventListener("resize", syncOverlayToImage);
+
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => syncOverlayToImage());
+    if (img) ro.observe(img);
+    const wrap = $("stage-canvas-wrap");
+    if (wrap) ro.observe(wrap);
   }
 
   const initial = location.hash.slice(1);

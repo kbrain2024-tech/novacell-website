@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #030712;
   --panel: #0a1120;
   --panel-elevated: #0f1c34;
@@ -526,8 +526,9 @@ html, body {
   cursor: not-allowed;
 }
 
+
 /* ==========================================================================
-   Right Column: Human Model Figure Card (Rich 곤색 Palette)
+   Right Column: Human Model Figure Card (Rich 怨ㅼ깋 Palette & Sticky Auto-Track)
    ========================================================================== */
 .circuit-figure {
   margin: 0;
@@ -536,7 +537,10 @@ html, body {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0, 5, 20, 0.7), 0 0 30px rgba(14, 116, 144, 0.15);
-  position: relative;
+  position: sticky !important;
+  top: 80px !important;
+  align-self: start !important;
+  z-index: 20;
 }
 
 .figure-toolbar {
@@ -653,23 +657,24 @@ html, body {
 }
 
 /* ==========================================================================
-   1. Canvas Overlay Muscle Table (Replaces Scanned Table in Exact Location)
+   Canvas Overlay Muscle Table (Compact, Zero Jitter, No Horizontal Scroll)
    ========================================================================== */
 .canvas-muscle-table {
   position: absolute;
   left: 14px;
   bottom: 14px;
   width: 250px;
-  max-width: 46%;
-  background: rgba(8, 18, 38, 0.92);
+  max-width: 44%;
+  background: rgba(8, 18, 38, 0.94);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 12px;
   padding: 10px 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 18px rgba(14, 116, 144, 0.2);
-  z-index: 15;
+  z-index: 25;
   pointer-events: auto;
+  overflow: hidden !important; /* Strictly prevents horizontal scrollbar */
 }
 
 .canvas-table-header {
@@ -687,45 +692,66 @@ html, body {
 }
 
 .canvas-table-title {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 800;
   color: #7dd3fc;
   letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .canvas-table-list {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  max-height: 250px;
+  max-height: 240px;
   overflow-y: auto;
+  overflow-x: hidden !important; /* Absolutely no horizontal scrollbar */
+  padding-right: 2px;
+}
+
+/* Custom sleek scrollbar for canvas table list */
+.canvas-table-list::-webkit-scrollbar {
+  width: 4px;
+}
+.canvas-table-list::-webkit-scrollbar-track {
+  background: rgba(56, 189, 248, 0.05);
+  border-radius: 2px;
+}
+.canvas-table-list::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+  border-radius: 2px;
+}
+.canvas-table-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.6);
 }
 
 .canvas-table-row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 5px 7px;
+  gap: 7px;
+  padding: 5px 8px;
   border-radius: 6px;
   background: rgba(14, 30, 60, 0.55);
   border: 1px solid rgba(56, 189, 248, 0.14);
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
   line-height: 1.25;
+  /* NO transform! This permanently eliminates cursor jitter / shaking */
 }
 
 .canvas-table-row:hover, .canvas-table-row.active {
-  background: rgba(2, 132, 199, 0.28);
-  border-color: rgba(56, 189, 248, 0.8);
+  background: rgba(2, 132, 199, 0.35);
+  border-color: rgba(56, 189, 248, 0.85);
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
-  transform: translateX(2px);
 }
 
 .canvas-row-num {
   display: grid;
   place-items: center;
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   background: #0284c7;
   color: #fff;
@@ -734,152 +760,28 @@ html, body {
   flex-shrink: 0;
 }
 
+.canvas-row-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
 .canvas-row-ko {
   font-size: 11px;
   font-weight: 700;
   color: #f8fafc;
   white-space: nowrap;
-}
-
-.canvas-row-en {
-  font-size: 10px;
-  color: #93c5fd;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* ==========================================================================
-   2. Figure Bottom Table Card (Structured Navy Table with Bilingual Columns)
-   ========================================================================== */
-.figure-bottom-table-card {
-  background: linear-gradient(180deg, #091730 0%, #060f22 100%);
-  border-top: 1px solid rgba(56, 189, 248, 0.22);
-  padding: 18px 20px;
-}
-
-.figure-table-header {
-  margin-bottom: 12px;
-}
-
-.table-title-group {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
-.table-icon {
-  font-size: 15px;
-  color: #38bdf8;
-}
-
-.table-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: #f1f5f9;
-  margin: 0;
-}
-
-.table-badge {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  background: rgba(56, 189, 248, 0.16);
-  color: #38bdf8;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.table-desc {
-  font-size: 12px;
-  color: #94a3b8;
-  margin: 0;
-}
-
-.figure-table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  border-radius: 10px;
-  border: 1px solid rgba(56, 189, 248, 0.2);
-}
-
-.navy-muscle-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-  text-align: left;
-}
-
-.navy-muscle-table th {
-  background: rgba(14, 34, 70, 0.9);
-  color: #7dd3fc;
-  font-weight: 700;
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
-  letter-spacing: -0.2px;
-}
-
-.navy-muscle-table td {
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.1);
-  color: #e2e8f0;
-}
-
-.navy-table-row {
-  cursor: pointer;
-  transition: all 0.18s ease;
-  background: rgba(9, 21, 44, 0.5);
-}
-
-.navy-table-row:nth-child(even) {
-  background: rgba(13, 27, 56, 0.35);
-}
-
-.navy-table-row:hover, .navy-table-row.active {
-  background: rgba(14, 116, 144, 0.28) !important;
-  box-shadow: inset 3px 0 0 #38bdf8;
-}
-
-.navy-table-row .badge-num {
-  display: inline-grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #0284c7;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.navy-table-row .td-ko strong {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.navy-table-row .td-en {
+.canvas-row-en {
+  font-size: 9.5px;
   color: #93c5fd;
-  font-size: 12px;
-}
-
-.view-anatomy-btn {
-  padding: 4px 10px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.navy-table-row:hover .view-anatomy-btn, .navy-table-row.active .view-anatomy-btn {
-  background: #0284c7;
-  color: #ffffff;
-  border-color: #38bdf8;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .circuit-figure figcaption {
@@ -892,276 +794,234 @@ html, body {
 }
 
 /* ==========================================================================
-   3. Interactive Pins on Model
+   Interactive Pins on Model (Precision-Locked to Image Bounding Box)
    ========================================================================== */
 .pins-overlay {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
-  z-index: 20;
-  transition: opacity 0.25s ease;
+  z-index: 10;
 }
 
 .circuit-pin {
   position: absolute;
+  transform: translate(-50%, -50%);
   pointer-events: auto;
   cursor: pointer;
-  transform: translate(-50%, -50%);
-  z-index: 25;
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), z-index 0.1s;
-  background: none;
   border: none;
+  background: transparent;
   padding: 0;
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s;
 }
 
-.circuit-pin:hover, .circuit-pin.highlight, .circuit-pin.active-highlight {
-  transform: translate(-50%, -50%) scale(1.35);
-  z-index: 75;
+.circuit-pin:hover, .circuit-pin.highlight {
+  transform: translate(-50%, -50%) scale(1.3);
+  z-index: 30;
 }
 
-.pin-core, .pin-inner {
+.circuit-pin:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+/* Pin Inner Pill */
+.pin-inner {
   display: grid;
   place-items: center;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: rgba(8, 20, 42, 0.88);
-  border: 1.8px solid rgba(56, 189, 248, 0.95);
+  background: #0284c7;
   color: #ffffff;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
-  text-shadow: 0 0 3px #000, 0 1px 2px #000;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
-  transition: all 0.2s ease;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(56, 189, 248, 0.6);
   user-select: none;
+  transition: all 0.2s ease;
 }
 
-.circuit-pin:hover .pin-core, .circuit-pin:hover .pin-inner,
-.circuit-pin.highlight .pin-core, .circuit-pin.highlight .pin-inner,
-.circuit-pin.active-highlight .pin-core, .circuit-pin.active-highlight .pin-inner {
-  background: rgba(2, 132, 199, 0.85);
-  color: #ffffff;
+.circuit-pin:hover .pin-inner, .circuit-pin.highlight .pin-inner {
+  background: #38bdf8;
+  color: #070a13;
   border-color: #ffffff;
-  box-shadow: 0 0 16px rgba(56, 189, 248, 1), 0 0 28px rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.95), 0 0 24px rgba(56, 189, 248, 0.7);
 }
 
-.circuit-pin.pin-check .pin-core, .circuit-pin.pin-check .pin-inner {
-  border-color: #38bdf8;
-  color: #38bdf8;
+/* Special Pins: Voltage Check and Supply */
+.pin-point .pin-inner {
+  font-size: 9.5px;
+  border-width: 1.5px;
 }
 
-.circuit-pin.pin-supply .pin-core, .circuit-pin.pin-supply .pin-inner {
-  border-color: #ef4444;
-  color: #ef4444;
+.pin-check .pin-inner {
+  background: #d97706;
+  border-color: #fde68a;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);
+}
+
+.pin-check:hover .pin-inner, .pin-check.highlight .pin-inner {
+  background: #f59e0b;
+  color: #000;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 1);
+}
+
+.pin-supply .pin-inner {
+  background: #16a34a;
+  border-color: #bbf7d0;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.8);
+}
+
+.pin-supply:hover .pin-inner, .pin-supply.highlight .pin-inner {
+  background: #22c55e;
+  color: #000;
+  box-shadow: 0 0 16px rgba(34, 197, 94, 1);
 }
 
 /* ==========================================================================
-   4. Floating Anatomy Tooltip (User Custom Muscle Images)
+   Floating 3D Anatomy Pop-up Card (Spaced Perfectly from Human Body)
    ========================================================================== */
 .pin-floating-tooltip {
-  position: absolute !important;
-  z-index: 120 !important;
-  pointer-events: none !important;
-  transform: none !important;
-  margin: 0 !important;
-  line-height: 1.45 !important;
-  background: rgba(8, 16, 36, 0.96) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  backdrop-filter: blur(16px) !important;
-  border: 1.5px solid rgba(56, 189, 248, 0.6) !important;
-  border-radius: 14px !important;
-  padding: 12px 14px !important;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 24px rgba(22, 224, 240, 0.3) !important;
-  width: 290px !important;
-  max-width: 90vw !important;
-  box-sizing: border-box !important;
-  transition: opacity 0.15s ease !important;
+  position: absolute;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 1;
+  display: block;
+}
+
+.pin-floating-tooltip[hidden] {
+  display: none !important;
 }
 
 .anatomy-pop-card {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  line-height: 1.4 !important;
+  width: 270px;
+  max-width: 90vw;
+  background: rgba(8, 20, 42, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(56, 189, 248, 0.45);
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 24px rgba(14, 116, 144, 0.35);
+  overflow: hidden;
 }
 
 .anatomy-pop-header {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
-  padding-bottom: 6px !important;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  padding-bottom: 6px;
 }
 
 .anatomy-pop-tag {
-  font-size: 10px !important;
-  font-weight: 800 !important;
-  color: #38bdf8 !important;
-  background: rgba(56, 189, 248, 0.16) !important;
-  padding: 2px 8px !important;
-  border-radius: 4px !important;
-  display: inline-block !important;
-  align-self: flex-start !important;
-  line-height: 1.4 !important;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.3px;
 }
 
 .anatomy-pop-tag.check {
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.18);
+  color: #f59e0b;
 }
 
 .anatomy-pop-tag.supply {
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.18);
+  color: #22c55e;
 }
 
 .anatomy-pop-ko {
-  display: block !important;
-  font-size: 15px !important;
-  font-weight: 800 !important;
-  color: #ffffff !important;
-  letter-spacing: -0.3px !important;
-  line-height: 1.35 !important;
-  margin: 0 !important;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.25;
 }
 
 .anatomy-pop-en {
-  display: block !important;
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  color: #93c5fd !important;
-  letter-spacing: -0.2px !important;
-  line-height: 1.35 !important;
-  margin: 0 !important;
+  font-size: 11px;
+  color: #93c5fd;
+  font-weight: 500;
 }
 
 .anatomy-pop-media {
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
-  background: #030814;
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  min-height: 120px;
+  background: #030712;
+  border: 1px solid rgba(56, 189, 248, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 140px;
 }
 
 .anatomy-pop-media img {
   width: 100%;
-  max-height: 220px;
+  height: auto;
+  max-height: 200px;
   object-fit: contain;
   display: block;
 }
 
 .anatomy-pop-media .no-img {
-  font-size: 12px;
+  padding: 30px 10px;
   color: #64748b;
-  padding: 20px;
+  font-size: 12px;
+  text-align: center;
 }
 
 /* ==========================================================================
-   Evidence Note & Responsive Styling
+   Responsive & Mobile Adjustments
    ========================================================================== */
-.evidence-note {
-  max-width: 1320px;
-  margin: 24px auto 0;
-  border: 1px solid rgba(244, 184, 96, 0.3);
-  border-radius: 14px;
-  background: rgba(244, 184, 96, 0.07);
-  padding: 16px 18px;
-}
-
-.evidence-note strong {
-  display: block;
-  color: var(--amber);
-  font-size: 13px;
-  margin-bottom: 6px;
-}
-
-.evidence-note p {
-  margin: 0;
-  color: #c9d5e1;
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-@media (max-width: 920px) {
+@media (max-width: 1024px) {
   .circuit-shell {
     grid-template-columns: 1fr;
-    height: auto;
   }
+
   .circuit-sidebar {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-    overflow: visible;
-    height: auto;
+    max-height: 380px;
     position: static;
   }
-  .circuit-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .circuit-detail {
-    overflow: visible;
-  }
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
+
   .circuit-figure {
-    position: static;
+    position: relative !important;
+    top: 0 !important;
   }
+
   .figure-stage {
-    height: 540px;
+    height: min(65vh, 600px);
+  }
+
+  .canvas-muscle-table {
+    width: 220px;
+    max-width: 50%;
   }
 }
 
 @media (max-width: 640px) {
-  .circuit-header {
-    height: auto;
-    min-height: 64px;
-    padding: 10px 14px;
-  }
-  .brand strong {
-    font-size: 15px;
-  }
-  .header-actions a {
-    padding: 8px 10px;
-  }
-  .circuit-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .circuit-item {
-    grid-template-columns: 30px 1fr;
-    padding: 9px;
-  }
-  .circuit-code {
-    display: none;
-  }
-  .circuit-number {
-    width: 28px;
-    height: 28px;
-  }
-  .circuit-detail {
-    padding: 20px 14px 36px;
-  }
-  .detail-topline {
-    align-items: flex-end;
-  }
-  .point-grid {
+  .detail-grid {
     grid-template-columns: 1fr;
   }
+
   .figure-stage {
-    height: 460px;
+    height: 440px;
     padding: 8px;
   }
-  .source-page {
-    font-size: 10px;
-  }
+
   .canvas-muscle-table {
-    display: none; /* Hide overlay table on tiny mobile screens, user has bottom table */
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+  }
+
+  .canvas-table-list {
+    max-height: 160px;
+  }
+
+  .anatomy-pop-card {
+    width: 240px;
   }
 }
