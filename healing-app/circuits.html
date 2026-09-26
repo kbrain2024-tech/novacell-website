@@ -6,13 +6,9 @@
   <meta name="theme-color" content="#070a13">
   <title>생체 회로 노바셀 통치 요법 | NovaCell</title>
   <meta name="description" content="노바셀 통치 요법 책 204~217쪽의 폐 회로부터 독맥 회로까지 14개 생체 회로 안내">
-  <link rel="stylesheet" href="css/circuits.css?v=28">
-  <meta name="robots" content="noindex,nofollow">
-  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
-  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
+  <link rel="stylesheet" href="css/circuits.css?v=35">
 </head>
-<body class="novacell-access-pending">
-  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
+<body>
   <header class="circuit-header">
     <a class="brand" href="index.html" aria-label="치료점 앱으로 돌아가기">
       <span class="brand-mark" aria-hidden="true">◇</span>
@@ -72,16 +68,80 @@
             <p id="circuit-uses"></p>
           </article>
 
+          <article class="info-card muscle-card">
+            <div class="muscle-card-header">
+              <div class="muscle-card-title-group">
+                <span class="card-eyebrow">MUSCLE BATTERIES</span>
+                <h3>회로 배터리 근육 목록</h3>
+              </div>
+              <span id="muscle-count-badge" class="muscle-count-badge">5개 근육</span>
+            </div>
+            <p class="muscle-hint">인체 AI 모델 위의 번호 원(핀)에 커서를 올리거나 아래 근육을 선택하면 위치와 해부도가 표시됩니다.</p>
+            <div id="circuit-muscles" class="muscle-list"></div>
+          </article>
+
           <div class="navigation-row">
             <button id="previous-circuit" type="button">← 이전 회로</button>
             <button id="next-circuit" type="button">다음 회로 →</button>
           </div>
         </div>
 
-        <figure class="circuit-figure">
-          <div class="figure-stage">
-            <img id="circuit-image" alt="">
+        <figure class="circuit-figure" id="circuit-figure-card">
+          <div class="figure-toolbar">
+            <div class="toolbar-brand">
+              <span class="toolbar-pulse-dot"></span>
+              <strong>인체 AI 모델 상호작용 도해</strong>
+              <small>Interactive Muscle Batteries Guide</small>
+            </div>
+            <div class="toolbar-actions">
+              <button id="toggle-pins-btn" class="toolbar-btn active" type="button" title="번호 핀 보이기/숨기기">
+                <span class="btn-dot"></span>
+                <span>번호 핀 표시</span>
+              </button>
+            </div>
           </div>
+          <div class="figure-stage" id="figure-stage">
+            <div class="stage-canvas-wrap" id="stage-canvas-wrap">
+              <img id="circuit-image" alt="">
+              <div id="pins-overlay" class="pins-overlay" aria-label="근육 배터리 및 포인트 핀"></div>
+              <div id="pin-floating-tooltip" class="pin-floating-tooltip" role="tooltip" hidden></div>
+              
+              <!-- 곤색 캔버스 오버레이 표 (기존 스캔 도표 영역 대체) -->
+              <div id="canvas-muscle-table" class="canvas-muscle-table">
+                <div class="canvas-table-header">
+                  <span class="canvas-table-icon">⚡</span>
+                  <span id="canvas-table-title" class="canvas-table-title">배터리 도표</span>
+                </div>
+                <div id="canvas-table-list" class="canvas-table-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 하단 상세 근육 배터리 표 (곤색 계열 카드) -->
+          <div class="figure-bottom-table-card" id="figure-bottom-table-card">
+            <div class="figure-table-header">
+              <div class="table-title-group">
+                <span class="table-icon">⚡</span>
+                <h4 class="table-title">생체 회로 근육 배터리 목록</h4>
+                <span class="table-badge" id="figure-table-circuit-badge">CIRCUIT BATTERIES</span>
+              </div>
+              <p class="table-desc">각 근육 항목에 마우스를 올리거나 터치하면 AI 3D 해부도와 세부 정보를 즉시 확인할 수 있습니다.</p>
+            </div>
+            <div class="figure-table-wrap">
+              <table class="navy-muscle-table">
+                <thead>
+                  <tr>
+                    <th class="th-num">번호</th>
+                    <th class="th-ko">근육명 (한글)</th>
+                    <th class="th-en">Muscle Name (English)</th>
+                    <th class="th-view">해부도</th>
+                  </tr>
+                </thead>
+                <tbody id="navy-table-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
           <figcaption id="circuit-caption"></figcaption>
         </figure>
       </div>
@@ -93,9 +153,6 @@
     </section>
   </main>
 
-  <script src="js/circuits.js?v=28"></script>
-  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
-  <script src="https://novacell.kr/js/novacell-auth.js"></script>
-  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
+  <script src="js/circuits.js?v=35"></script>
 </body>
 </html>
