@@ -427,9 +427,11 @@ function renderMuscles(circuit) {
     countBadge.textContent = `${circuit.muscles.length}\uAC1C \uADFC\uC721`; // "媛?洹쇱쑁"
   }
 
+  const isNoHoverCircuit = (circuit.id === "conception-vessel" || circuit.id === "governor-vessel" || circuit.order === 13 || circuit.order === 14);
+
   circuit.muscles.forEach((muscle, index) => {
     const item = document.createElement("div");
-    item.className = "muscle-item";
+    item.className = "muscle-item" + (isNoHoverCircuit ? " no-hover" : "");
     item.dataset.index = index;
     item.dataset.num = muscle.num;
 
@@ -441,35 +443,46 @@ function renderMuscles(circuit) {
       </div>
     `;
 
-    item.addEventListener("mouseenter", () => {
-      highlightMuscle(index, true);
-      showFloatingAnatomy(muscle, item, circuit);
+    // Only attach cursor hover and popup on circuits 01 to 12. Circuits 13 and 14 have NO hover/popup.
+    if (!isNoHoverCircuit) {
+      item.addEventListener("mouseenter", () => {
+        highlightMuscle(index, true);
+        showFloatingAnatomy(muscle, item, circuit);
 
-      // Keep human image card comfortably in view when scrolling down
-      const figureCard = $("circuit-figure-card");
-      if (figureCard) {
-        const cardRect = figureCard.getBoundingClientRect();
-        if (cardRect.top < 60) {
-          figureCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        const figureCard = $("circuit-figure-card");
+        if (figureCard) {
+          const cardRect = figureCard.getBoundingClientRect();
+          if (cardRect.top < 60) {
+            figureCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
         }
-      }
-    });
+      });
 
-    item.addEventListener("mouseleave", () => {
-      highlightMuscle(index, false);
-      hideFloatingAnatomy();
-    });
+      item.addEventListener("mouseleave", () => {
+        highlightMuscle(index, false);
+        hideFloatingAnatomy();
+      });
 
-    item.addEventListener("click", () => {
-      highlightMuscle(index, true);
-      showFloatingAnatomy(muscle, item, circuit);
-    });
+      item.addEventListener("click", () => {
+        highlightMuscle(index, true);
+        showFloatingAnatomy(muscle, item, circuit);
+      });
+    }
 
     container.appendChild(item);
   });
 }
 
 function renderCanvasTable(circuit) {
+  const canvasTable = $("canvas-muscle-table");
+  const isNoHoverCircuit = (circuit.id === "conception-vessel" || circuit.id === "governor-vessel" || circuit.order === 13 || circuit.order === 14);
+
+  if (isNoHoverCircuit) {
+    if (canvasTable) canvasTable.style.display = "none";
+    return;
+  }
+  if (canvasTable) canvasTable.style.display = "block";
+
   const canvasList = $("canvas-table-list");
   const canvasTitle = $("canvas-table-title");
   if (canvasTitle) {
@@ -511,116 +524,23 @@ function renderCanvasTable(circuit) {
   }
 }
 
-// Precision sync of pins overlay to image rendered bounding box
-function syncOverlayToImage() {
-  const img = $("circuit-image");
-  const overlay = $("pins-overlay");
-  const wrap = $("stage-canvas-wrap");
-  if (!img || !overlay || !wrap) return;
-
-  const imgRect = img.getBoundingClientRect();
-  const wrapRect = wrap.getBoundingClientRect();
-
-  if (imgRect.width === 0 || imgRect.height === 0) return;
-
-  const left = imgRect.left - wrapRect.left;
-  const top = imgRect.top - wrapRect.top;
-  const width = imgRect.width;
-  const height = imgRect.height;
-
-  overlay.style.position = "absolute";
-  overlay.style.left = `${left}px`;
-  overlay.style.top = `${top}px`;
-  overlay.style.width = `${width}px`;
-  overlay.style.height = `${height}px`;
-}
-
+// Circle pins completely removed as requested
 function renderPins(circuit) {
   const overlay = $("pins-overlay");
-  if (!overlay) return;
-  overlay.innerHTML = "";
-
-  if (!showPins) {
+  if (overlay) {
+    overlay.innerHTML = "";
     overlay.style.display = "none";
-    return;
   }
-  overlay.style.display = "block";
-
-  // Render muscle pins
-  circuit.muscles.forEach((muscle, index) => {
-    const pin = document.createElement("button");
-    pin.type = "button";
-    pin.className = "circuit-pin pin-muscle";
-    pin.dataset.index = index;
-    pin.dataset.num = muscle.num;
-    pin.style.left = `${muscle.x}%`;
-    pin.style.top = `${muscle.y}%`;
-    pin.setAttribute("aria-label", `${muscle.num}\uBC88 \uADFC\uC721: ${muscle.ko} (${muscle.en})`);
-
-    pin.innerHTML = `<span class="pin-inner">${muscle.num}</span>`;
-
-    pin.addEventListener("mouseenter", () => {
-      highlightMuscle(index, true);
-      showFloatingAnatomy(muscle, pin, circuit);
-    });
-
-    pin.addEventListener("mouseleave", () => {
-      highlightMuscle(index, false);
-      hideFloatingAnatomy();
-    });
-
-    pin.addEventListener("click", () => {
-      highlightMuscle(index, true);
-      showFloatingAnatomy(muscle, pin, circuit);
-    });
-
-    overlay.appendChild(pin);
-  });
-
-  // Render voltage check / supply points
-  if (circuit.extraPoints) {
-    circuit.extraPoints.forEach((pt) => {
-      const pin = document.createElement("div");
-      pin.className = `circuit-pin pin-point pin-${pt.type}`;
-      pin.style.left = `${pt.x}%`;
-      pin.style.top = `${pt.y}%`;
-      pin.setAttribute("aria-label", pt.name);
-
-      const label = pt.type === "check" ? "\uCCB4" : "\uACF5"; // "泥? : "怨?
-      pin.innerHTML = `<span class="pin-inner">${label}</span>`;
-
-      pin.addEventListener("mouseenter", () => {
-        showPointTooltip(pt, pin, circuit);
-      });
-
-      pin.addEventListener("mouseleave", () => {
-        hideFloatingAnatomy();
-      });
-
-      overlay.appendChild(pin);
-    });
-  }
-
-  // Ensure overlay is strictly synchronized
-  syncOverlayToImage();
 }
 
 function highlightMuscle(index, active) {
   activeMuscleIndex = active ? index : null;
 
-  // Left card list items
-  document.querySelectorAll(".muscle-item").forEach((el) => {
+  document.querySelectorAll(".muscle-item:not(.no-hover)").forEach((el) => {
     const elIdx = parseInt(el.dataset.index, 10);
     el.classList.toggle("active", active && elIdx === index);
   });
 
-  // Model pins
-  document.querySelectorAll(".pin-muscle").forEach((el) => {
-    const elIdx = parseInt(el.dataset.index, 10);
-    el.classList.toggle("highlight", active && elIdx === index);
-  });
-
-  // Canvas table rows
   document.querySelectorAll(".canvas-table-row").forEach((el) => {
     const elIdx = parseInt(el.dataset.index, 10);
     el.classList.toggle("active", active && elIdx === index);
@@ -628,6 +548,11 @@ function highlightMuscle(index, active) {
 }
 
 function showFloatingAnatomy(muscle, targetEl, circuit) {
+  // Circuits 13 and 14: Never expose any anatomy popup images
+  if (circuit && (circuit.id === "conception-vessel" || circuit.id === "governor-vessel" || circuit.order === 13 || circuit.order === 14)) {
+    return;
+  }
+
   const tooltip = $("pin-floating-tooltip");
   if (!tooltip) return;
 
@@ -647,39 +572,8 @@ function showFloatingAnatomy(muscle, targetEl, circuit) {
     </div>
   `;
 
-  tooltip.hidden = false; tooltip.style.display = "block";
-
-  let anchorEl = targetEl;
-  if (!targetEl.classList.contains("circuit-pin") && !targetEl.classList.contains("canvas-table-row")) {
-    const pin = document.querySelector(`.pin-muscle[data-num="${muscle.num}"]`);
-    if (pin) anchorEl = pin;
-  }
-
-  positionTooltip(anchorEl, tooltip);
-}
-
-function showPointTooltip(pt, targetEl, circuit) {
-  const tooltip = $("pin-floating-tooltip");
-  if (!tooltip) return;
-
-  const typeName = pt.type === "check" ? "\uC804\uC555 \uCCB4\uD06C \uD3EC\uC778\uD2B8" : "\uC804\uC555 \uACF5\uAE09 \uD3EC\uC778\uD2B8";
-  const imgSrc = pt.anatomyImg || "";
-
-  tooltip.innerHTML = `
-    <div class="anatomy-pop-card point-pop-card">
-      <div class="anatomy-pop-header">
-        <span class="anatomy-pop-tag ${pt.type}">${typeName}</span>
-        <strong class="anatomy-pop-ko">${pt.name}</strong>
-      </div>
-      ${imgSrc ? `
-      <div class="anatomy-pop-media">
-        <img src="${imgSrc}" alt="${pt.name} \uB3C4\uD574">
-      </div>
-      ` : ""}
-    </div>
-  `;
-
-  tooltip.hidden = false; tooltip.style.display = "block";
+  tooltip.hidden = false;
+  tooltip.style.display = "block";
   positionTooltip(targetEl, tooltip);
 }
 
@@ -687,56 +581,17 @@ function positionTooltip(targetEl, tooltip) {
   const stage = $("stage-canvas-wrap");
   if (!stage) return;
 
-  const stageRect = stage.getBoundingClientRect();
-  const targetRect = targetEl.getBoundingClientRect();
-
-  const tipWidth = tooltip.offsetWidth || 270;
-  const tipHeight = tooltip.offsetHeight || 260;
-
-  let left;
-  let top;
-
-  const isTableRow = targetEl.classList.contains("canvas-table-row");
-  const isSidebarItem = targetEl.classList.contains("muscle-item");
-
-  if (isTableRow || isSidebarItem) {
-    // When hovering over table row or sidebar muscle:
-    // Place popup in the upper-left of the stage with generous clearance from the human body!
-    left = 16;
-    top = 16;
-  } else {
-    // Pin on model
-    const pinCenterX = targetRect.left - stageRect.left + (targetRect.width / 2);
-    const pinCenterY = targetRect.top - stageRect.top + (targetRect.height / 2);
-
-    if (pinCenterX >= stageRect.width * 0.42) {
-      // Pin is on standing human body -> Place popup to the LEFT with 24px clearance!
-      left = targetRect.left - stageRect.left - tipWidth - 24;
-      if (left < 16) left = 16;
-    } else {
-      // Pin is on left inset -> Place popup to the RIGHT with 24px clearance!
-      left = targetRect.right - stageRect.left + 24;
-      if (left + tipWidth > stageRect.width - 16) {
-        left = stageRect.width - tipWidth - 16;
-      }
-    }
-
-    // Vertically center on pin, but strictly clamp inside stage so never cut off!
-    top = pinCenterY - (tipHeight / 2);
-    const minTop = 16;
-    const maxTop = Math.max(minTop, stageRect.height - tipHeight - 16);
-    top = Math.max(minTop, Math.min(maxTop, top));
-  }
-
-  tooltip.style.left = `${left}px`;
-  tooltip.style.top = `${top}px`;
+  // Place popup in the upper-left of the stage with generous clearance from the human body
+  tooltip.style.left = "16px";
+  tooltip.style.top = "16px";
   tooltip.style.transform = "none";
 }
 
 function hideFloatingAnatomy() {
   const tooltip = $("pin-floating-tooltip");
   if (tooltip) {
-    tooltip.hidden = true; tooltip.style.display = "none";
+    tooltip.hidden = true;
+    tooltip.style.display = "none";
   }
 }
 
@@ -746,8 +601,6 @@ function renderDetail(circuit) {
   $("circuit-sequence").textContent = `${circuit.order.toString().padStart(2, "0")} / 14`;
   $("circuit-title").textContent = circuit.name;
   $("circuit-title-en").textContent = circuit.en;
-   // "梨?N履?
-  
   $("source-page").textContent = `\uCC45 ${circuit.page}\uCABD`; // "梨?N履?
   $("circuit-route").textContent = circuit.route;
   $("circuit-check").textContent = circuit.check;
@@ -762,15 +615,12 @@ function renderDetail(circuit) {
   const img = $("circuit-image");
   if (img) {
     img.src = circuit.image;
-    img.alt = `${circuit.name} \uC778\uCCB4 AI \uBAA8\uB378 \uC0C1\uD638\uC791\uC6A9 \uB3C4\uD574`;
-    img.onload = () => {
-      syncOverlayToImage();
-    };
+    img.alt = `${circuit.name} \uC778\uCCB4 AI \uBAA8\uB378 \uB3C4\uD574`;
   }
 
   const caption = $("circuit-caption");
   if (caption) {
-    caption.textContent = `\u300E\uB178\uBC14\uC140 \uD1B5\uCE58 \uC694\uBC95\u300F ${circuit.page}\uC8FD \uAD00\uB828 \uB3C4\uD574 \u00B7 ${circuit.name} \u00B7 \uCCB4\uD06C ${circuit.check} \u00B7 \uACF5\uAE09 ${circuit.supply}`;
+    caption.textContent = `\u300E\uB178\uBC14\uC140 \uD1B5\uCE58 \uC694\uBC95\u300F ${circuit.page}\uCABD \uAD00\uB828 \uB3C4\uD574 \u00B7 ${circuit.name} \u00B7 \uCCB4\uD06C ${circuit.check} \u00B7 \uACF5\uAE09 ${circuit.supply}`;
   }
 
   renderMuscles(circuit);
@@ -783,9 +633,6 @@ function renderDetail(circuit) {
   if (nextBtn) nextBtn.disabled = selected === CIRCUITS.length - 1;
 
   history.replaceState(null, "", `#${circuit.order.toString().padStart(2, "0")}`);
-
-  // Re-sync overlay after DOM paint
-  setTimeout(syncOverlayToImage, 50);
 }
 
 function selectById(id) {
@@ -854,31 +701,6 @@ document.addEventListener("DOMContentLoaded", () => {
         renderDetail(CIRCUITS[selected]);
       }
     });
-  }
-
-  const togglePinsBtn = $("toggle-pins-btn");
-  if (togglePinsBtn) {
-    togglePinsBtn.addEventListener("click", () => {
-      showPins = !showPins;
-      togglePinsBtn.classList.toggle("active", showPins);
-      const overlay = $("pins-overlay");
-      if (overlay) {
-        overlay.style.display = showPins ? "block" : "none";
-      }
-    });
-  }
-
-  const img = $("circuit-image");
-  if (img) {
-    img.addEventListener("load", syncOverlayToImage);
-  }
-  window.addEventListener("resize", syncOverlayToImage);
-
-  if (window.ResizeObserver) {
-    const ro = new ResizeObserver(() => syncOverlayToImage());
-    if (img) ro.observe(img);
-    const wrap = $("stage-canvas-wrap");
-    if (wrap) ro.observe(wrap);
   }
 
   const initial = location.hash.slice(1);
