@@ -3110,10 +3110,44 @@ class NovaCellApp {
     });
 
     // Timer modal controls
-    this.modalCloseBtn.addEventListener('click', () => this.closeTimerModal());
-    this.timerToggleBtn.addEventListener('click', () => this.toggleTimer());
-    this.timerResetBtn.addEventListener('click', () => this.resetTimer());
-    this.timerNextPointBtn.addEventListener('click', () => this.moveToNextPoint());
+    if (this.modalCloseBtn) this.modalCloseBtn.addEventListener('click', () => this.closeTimerModal());
+    if (this.timerToggleBtn) this.timerToggleBtn.addEventListener('click', () => this.toggleTimer());
+    if (this.timerResetBtn) this.timerResetBtn.addEventListener('click', () => this.resetTimer());
+    if (this.timerNextPointBtn) this.timerNextPointBtn.addEventListener('click', () => this.moveToNextPoint());
+
+    // 528Hz Timer Controls & Audio Listeners
+    this.timerStatusBadge = document.getElementById('timer-status-badge');
+    this.freqPulseDot = document.getElementById('freq-pulse-dot');
+    this.freqLabel = document.getElementById('freq-label');
+    this.timerBarFill = document.getElementById('timer-bar-fill');
+    this.timerSoundToggle = document.getElementById('timer-sound-toggle');
+    this.timerVolumeSlider = document.getElementById('timer-volume-slider');
+    this.volIcon = document.getElementById('vol-icon');
+    this.volPct = document.getElementById('vol-pct');
+    this.singingBowlAudio = document.getElementById('singing-bowl-audio');
+
+    if (this.timerSoundToggle) {
+      this.timerSoundToggle.addEventListener('click', () => this.toggleSound());
+    }
+    if (this.timerVolumeSlider) {
+      this.timerVolumeSlider.addEventListener('input', (e) => this.setVolume(parseInt(e.target.value, 10)));
+    }
+    const preset1 = document.getElementById('preset-1min');
+    const preset3 = document.getElementById('preset-3min');
+    const preset5 = document.getElementById('preset-5min');
+    const preset7 = document.getElementById('preset-7min');
+    const preset10 = document.getElementById('preset-10min');
+    if (preset1) preset1.onclick = () => this.setPresetMinutes(1);
+    if (preset3) preset3.onclick = () => this.setPresetMinutes(3);
+    if (preset5) preset5.onclick = () => this.setPresetMinutes(5);
+    if (preset7) preset7.onclick = () => this.setPresetMinutes(7);
+    if (preset10) preset10.onclick = () => this.setPresetMinutes(10);
+    const decBtn = document.getElementById('timer-dec-btn');
+    const incBtn = document.getElementById('timer-inc-btn');
+    if (decBtn) decBtn.onclick = () => this.adjustSeconds(-30);
+    if (incBtn) incBtn.onclick = () => this.adjustSeconds(30);
+
+    this.initAudioState();
 
     // Hide tooltip on scroll
     this.conditionsList.addEventListener('scroll', () => this.hideConditionTooltip());
@@ -4213,21 +4247,438 @@ class Workspace extends NovaCellApp {
  }
  removePoint(){const p=this.getActiveHealingPoint();if(!p?.custom)return;if(!confirm('선택한 추가 포인트를 삭제하시겠습니까?'))return;this.pauseTimer();this.state.custom=this.state.custom.filter(x=>x.id!==p.id);delete this.state.overrides[p.id];delete this.state.durations[p.id];this.persist();this.syncData();this.selectedPointId=this.currentCondition.healingPoints[0].id;this.renderConditionsList();this.renderCurrentCondition();this.openTimerModal();}
  removeSelectedPin(){const p=this.getActiveHealingPoint(),active=this.activePin,key=this.contextKey();if(!p||!active||active.id!==p.id||active.key!==key||this.displayMode==='model')return;const m=this.editableMeta(p),list=this.storedPositions(m,key);if(active.index<0||active.index>=list.length)return;if(!confirm(`${p.code}의 ${active.index+1}번 원만 삭제하시겠습니까? 같은 포인트의 다른 원은 유지됩니다.`))return;list.splice(active.index,1);m.positions[key]=list;this.state.overrides[p.id]=m;this.activePin=null;const saved=this.persist();this.syncData();this.renderCurrentCondition();if(saved)this.status(`${p.code}에서 선택한 원 1개를 삭제했습니다. 다른 원은 그대로 유지됩니다.`);}
- // Timer uses an absolute deadline; throttled background callbacks do not extend duration.
- openTimerModal(hp){if(!this.ready)return;const p=hp||this.getActiveHealingPoint();if(!p)return;this.pauseTimer();this.timerTotalSeconds=this.state.durations[p.id]||this.state.defaultDuration;this.timerSeconds=this.timerTotalSeconds;this.timerHpCode.textContent=p.code+' · '+(this.currentCondition.healingPoints.findIndex(x=>x.id===p.id)+1)+' / '+this.currentCondition.healingPoints.length;this.timerHpTitle.textContent=p.nameKo;this.timerNextPointBtn.disabled=false;this.timerNextPointBtn.textContent=this.isLastPoint()?'순서 완료':'다음 포인트';this.setDurationInputs();this.updateTimerDisplay();this.timerStatus('대기 · 기본 10분은 설정값이며 치료 권장 시간이 아닙니다.');}
- closeTimerModal(){this.pauseTimer();}
- isLastPoint(){return this.currentCondition.healingPoints.at(-1)?.id===this.selectedPointId;}
- setDurationInputs(){const whole=this.timerTotalSeconds%60===0;$('duration-unit').value=whole?'60':'1';$('duration-value').value=String(whole?this.timerTotalSeconds/60:this.timerTotalSeconds);$('duration-value').max=whole?'10':'600';$('duration-value').min='1';$('duration-value').step='1';}
- applyDuration(){const v=Number($('duration-value').value),seconds=Math.round(v*Number($('duration-unit').value));if(!Number.isFinite(v)||seconds<1||seconds>600){this.timerStatus('시간은 1초부터 10분 사이로 설정해 주세요.');return;}this.pauseTimer();this.timerTotalSeconds=seconds;this.timerSeconds=seconds;this.state.defaultDuration=seconds;this.state.durations[this.selectedPointId]=seconds;const saved=this.persist();this.timerNextPointBtn.disabled=false;this.timerNextPointBtn.textContent=this.isLastPoint()?'순서 완료':'다음 포인트';this.updateTimerDisplay();this.timerStatus(saved?`${fmt(seconds)} 설정을 저장했습니다. 시작을 누르면 진행합니다.`:'시간을 적용했지만 브라우저 저장에 실패했습니다. 포인트 백업을 이용해 주세요.');}
- updateTimerDisplay(){if(!this.ready)return;this.timerDisplay.textContent=fmt(this.timerSeconds);const elapsed=this.timerTotalSeconds-this.timerSeconds;$('timer-progress-fill').style.width=(elapsed/this.timerTotalSeconds*100)+'%';$('timer-progress').setAttribute('aria-valuemax',this.timerTotalSeconds);$('timer-progress').setAttribute('aria-valuenow',elapsed);$('timer-progress').setAttribute('aria-valuetext',`남은 시간 ${fmt(this.timerSeconds)}`);$('timer-mid-scale').textContent=fmt(Math.round(this.timerTotalSeconds/2));$('timer-max-scale').textContent=fmt(this.timerTotalSeconds);}
- timerStatus(msg,complete=false){if(!$('timer-status'))return;$('timer-status').textContent=msg;$('timer-status').classList.toggle('complete',complete);}
- startTimer(){if(!this.ready||this.isTimerRunning)return;if(this.timerSeconds<=0)this.timerSeconds=this.timerTotalSeconds;this.deadline=Date.now()+this.timerSeconds*1000;this.isTimerRunning=true;this.timerToggleBtn.textContent='일시 정지';this.timerToggleBtn.classList.remove('primary');this.timerNextPointBtn.disabled=false;this.timerNextPointBtn.textContent=this.isLastPoint()?'순서 완료':'다음 포인트';this.timerStatus('시간 측정 중 · 이 앱은 치료기기를 제어하지 않습니다.');this.timerInterval=setInterval(()=>this.tick(),200);this.updateTimerDisplay();}
- tick(){if(!this.isTimerRunning)return;this.timerSeconds=Math.max(0,Math.ceil((this.deadline-Date.now())/1000));this.updateTimerDisplay();if(this.timerSeconds===0){this.pauseTimer();this.onTimerComplete();}}
- pauseTimer(){if(this.ready&&this.isTimerRunning)this.timerSeconds=Math.max(0,Math.ceil((this.deadline-Date.now())/1000));this.isTimerRunning=false;clearInterval(this.timerInterval);this.timerInterval=null;if(this.timerToggleBtn){this.timerToggleBtn.textContent='시작';this.timerToggleBtn.classList.add('primary');}if(this.ready)this.updateTimerDisplay();}
- resetTimer(){this.pauseTimer();this.timerSeconds=this.timerTotalSeconds;this.timerNextPointBtn.disabled=false;this.timerNextPointBtn.textContent=this.isLastPoint()?'순서 완료':'다음 포인트';this.completed?.delete(this.selectedPointId);this.updateTimerDisplay();this.timerStatus('초기화했습니다. 시작을 누르면 진행합니다.');}
- toggleTimer(){if(this.isTimerRunning){this.pauseTimer();this.timerStatus('일시 정지 · 시작을 누르면 이어집니다.');}else this.startTimer();}
- onTimerComplete(){this.completed.add(this.selectedPointId);if(this.isLastPoint()){this.timerStatus('✓ 마지막 포인트 타이머 완료 · 순서 종료',true);this.timerNextPointBtn.textContent='완료됨';this.timerNextPointBtn.disabled=true;}else this.timerStatus('✓ 포인트 타이머 완료 · 다음 포인트를 선택해 주세요.',true);}
- moveToNextPoint(){this.pauseTimer();if(this.isLastPoint()){this.timerStatus('✓ 포인트 순서 종료 · 처음으로 돌아가지 않습니다.',true);this.timerNextPointBtn.textContent='완료됨';this.timerNextPointBtn.disabled=true;return;}const i=this.currentCondition.healingPoints.findIndex(p=>p.id===this.selectedPointId);this.selectHealingPoint(this.currentCondition.healingPoints[i+1]);this.timerStatus('다음 포인트 대기 · 위치를 확인하고 시작을 눌러 주세요.');}
+ // ==========================================================================
+  // 528Hz Cellular Voltage Healing Timer & Singing Bowl Audio Engine
+  // ==========================================================================
+  initAudioState() {
+    this.audioCtx = null;
+    this.timerGainNode = null;
+    this.osc528 = null;
+    this.oscSub = null;
+    this.isAudioMuted = false;
+    this.masterVolume = parseFloat(localStorage.getItem('novacell_timer_vol') || '0.65');
+    if (isNaN(this.masterVolume)) this.masterVolume = 0.65;
+    this.setVolume(Math.round(this.masterVolume * 100));
+  }
+
+  getAudioContext() {
+    if (!this.audioCtx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) this.audioCtx = new AC();
+    }
+    if (this.audioCtx && this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume();
+    }
+    return this.audioCtx;
+  }
+
+  setVolume(pct) {
+    pct = Math.max(0, Math.min(100, pct));
+    this.masterVolume = pct / 100;
+    try { localStorage.setItem('novacell_timer_vol', this.masterVolume.toString()); } catch(e){}
+    const displayPct = this.isAudioMuted ? 0 : pct;
+    if (this.timerVolumeSlider && parseInt(this.timerVolumeSlider.value, 10) !== displayPct) {
+      this.timerVolumeSlider.value = displayPct;
+    }
+    if (this.volPct) this.volPct.textContent = `${displayPct}%`;
+    if (this.volIcon) {
+      if (this.masterVolume <= 0.01 || this.isAudioMuted) this.volIcon.textContent = '?뵁';
+      else if (this.masterVolume < 0.5) this.volIcon.textContent = '?뵃';
+      else this.volIcon.textContent = '?뵄';
+    }
+    if (this.timerGainNode && this.audioCtx) {
+      try {
+        const now = this.audioCtx.currentTime;
+        this.timerGainNode.gain.cancelScheduledValues(now);
+        const targetGain = this.isAudioMuted ? 0.0001 : 0.28 * this.masterVolume;
+        this.timerGainNode.gain.linearRampToValueAtTime(Math.max(0.0001, targetGain), now + 0.08);
+      } catch(e){}
+    }
+  }
+
+  toggleSound() {
+    this.isAudioMuted = !this.isAudioMuted;
+    if (this.timerSoundToggle) {
+      const soundIcon = document.getElementById('sound-icon');
+      const soundLabel = document.getElementById('sound-label');
+      if (this.isAudioMuted) {
+        this.timerSoundToggle.classList.add('muted');
+        if (soundIcon) soundIcon.textContent = '?뵁';
+        if (soundLabel) soundLabel.textContent = '移섏쑀??爰쇱쭚';
+      } else {
+        this.timerSoundToggle.classList.remove('muted');
+        if (soundIcon) soundIcon.textContent = '?뵄';
+        if (soundLabel) soundLabel.textContent = '移섏쑀??耳쒖쭚';
+      }
+    }
+    this.setVolume(Math.round(this.masterVolume * 100));
+  }
+
+  start528HzSound() {
+    if (this.isAudioMuted || this.masterVolume <= 0.01) return;
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+      if (ctx.state === 'suspended') {
+        ctx.resume().then(() => this.doStart528(ctx));
+      } else {
+        this.doStart528(ctx);
+      }
+    } catch(e) {
+      console.warn('Audio start error:', e);
+    }
+  }
+
+  doStart528(ctx) {
+    if (this.osc528 && this.timerGainNode) return;
+    this.stop528HzSound();
+    const now = ctx.currentTime;
+    const vol = Math.max(0, Math.min(1, this.masterVolume));
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(850, now);
+    filter.connect(ctx.destination);
+
+    const masterGain = ctx.createGain();
+    masterGain.gain.cancelScheduledValues(now);
+    masterGain.gain.setValueAtTime(0.0001, now);
+    masterGain.gain.linearRampToValueAtTime(0.28 * vol, now + 0.35);
+    masterGain.connect(filter);
+    this.timerGainNode = masterGain;
+
+    const o528 = ctx.createOscillator();
+    o528.type = 'sine';
+    o528.frequency.setValueAtTime(528.0, now);
+    o528.connect(masterGain);
+    o528.start(now);
+    this.osc528 = o528;
+
+    const oSub = ctx.createOscillator();
+    oSub.type = 'sine';
+    oSub.frequency.setValueAtTime(264.0, now);
+    const subGain = ctx.createGain();
+    subGain.gain.setValueAtTime(0.12 * vol, now);
+    oSub.connect(subGain);
+    subGain.connect(masterGain);
+    oSub.start(now);
+    this.oscSub = oSub;
+  }
+
+  stop528HzSound() {
+    if (!this.timerGainNode && !this.osc528 && !this.oscSub) return;
+    const curCtx = this.audioCtx;
+    const curGain = this.timerGainNode;
+    const curOsc528 = this.osc528;
+    const curOscSub = this.oscSub;
+
+    this.timerGainNode = null;
+    this.osc528 = null;
+    this.oscSub = null;
+
+    if (curGain && curCtx) {
+      try {
+        const now = curCtx.currentTime;
+        curGain.gain.cancelScheduledValues(now);
+        curGain.gain.setValueAtTime(curGain.gain.value, now);
+        curGain.gain.linearRampToValueAtTime(0.0001, now + 0.12);
+      } catch(e){}
+    }
+
+    setTimeout(() => {
+      try { if (curOsc528) { curOsc528.stop(); curOsc528.disconnect(); } } catch(e){}
+      try { if (curOscSub) { curOscSub.stop(); curOscSub.disconnect(); } } catch(e){}
+      try { if (curGain) curGain.disconnect(); } catch(e){}
+    }, 150);
+  }
+
+  playSingingBowlBell() {
+    if (this.isAudioMuted || this.masterVolume <= 0.01) return;
+    try {
+      if (!this.singingBowlAudio) {
+        this.singingBowlAudio = document.getElementById('singing-bowl-audio') || new Audio('assets/audio/singing-bowl.mp3');
+      }
+      this.singingBowlAudio.pause();
+      this.singingBowlAudio.currentTime = 0;
+      this.singingBowlAudio.volume = Math.max(0, Math.min(1, this.masterVolume));
+      const p = this.singingBowlAudio.play();
+      if (p && typeof p.catch === 'function') {
+        p.catch((err) => {
+          console.warn('Singing bowl MP3 play error, fallback to synth:', err);
+          this.playSynthesizedSingingBowl();
+        });
+      }
+    } catch(e) {
+      console.warn('Singing bowl MP3 error, fallback to synth:', e);
+      this.playSynthesizedSingingBowl();
+    }
+  }
+
+  playSynthesizedSingingBowl() {
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+      if (ctx.state === 'suspended') {
+        ctx.resume().then(() => this.doSynthesizeBowl(ctx));
+      } else {
+        this.doSynthesizeBowl(ctx);
+      }
+    } catch(e) {
+      console.warn('Synthesized bowl error:', e);
+    }
+  }
+
+  doSynthesizeBowl(ctx) {
+    const now = ctx.currentTime;
+    const dur = 4.2;
+    const baseFreq = 528.0;
+    const vol = Math.max(0, Math.min(1, this.masterVolume));
+    const harmonics = [
+      { f: baseFreq, g: 0.85, d: dur },
+      { f: baseFreq * 2.76, g: 0.45, d: dur * 0.7 },
+      { f: baseFreq * 5.4, g: 0.22, d: dur * 0.45 },
+      { f: baseFreq * 0.5, g: 0.4, d: dur * 0.9 }
+    ];
+    harmonics.forEach(h => {
+      try {
+        const osc = ctx.createOscillator();
+        const g = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(h.f, now);
+        g.gain.setValueAtTime(0.0001, now);
+        g.gain.linearRampToValueAtTime(h.g * vol * 0.4, now + 0.05);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + h.d);
+        osc.connect(g);
+        g.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + h.d + 0.1);
+      } catch(e){}
+    });
+  }
+
+  setTimerStatusBadge(status) {
+    if (!this.timerStatusBadge) {
+      this.timerStatusBadge = document.getElementById('timer-status-badge');
+    }
+    if (!this.timerStatusBadge) return;
+    this.timerStatusBadge.textContent = status;
+    this.timerStatusBadge.className = 'timer-status-badge';
+    if (status.includes('諛쒖쭊') || status.includes('移섏쑀 以?)) {
+      this.timerStatusBadge.classList.add('running');
+      if (this.freqPulseDot) this.freqPulseDot.classList.add('pulsing');
+      if (this.freqLabel) this.freqLabel.textContent = '528Hz 移섏쑀 ?뚮룞 諛쒖쭊 以?;
+    } else if (status.includes('?꾨즺')) {
+      this.timerStatusBadge.classList.add('finished');
+      if (this.freqPulseDot) this.freqPulseDot.classList.remove('pulsing');
+      if (this.freqLabel) this.freqLabel.textContent = '移섏쑀 ?몄뀡 ?꾨즺';
+    } else if (status.includes('?쇱떆?뺤?')) {
+      if (this.freqPulseDot) this.freqPulseDot.classList.remove('pulsing');
+      if (this.freqLabel) this.freqLabel.textContent = '移섏쑀 ?뚮룞 ?쇱떆?뺤?';
+    } else {
+      if (this.freqPulseDot) this.freqPulseDot.classList.remove('pulsing');
+      if (this.freqLabel) this.freqLabel.textContent = '528Hz 移섏쑀 二쇳뙆??以鍮?;
+    }
+  }
+
+  openTimerModal(hp){
+    if(!this.ready) return;
+    const p = hp || this.getActiveHealingPoint();
+    if(!p) return;
+    this.pauseTimer();
+    this.timerTotalSeconds = this.state.durations[p.id] || this.state.defaultDuration || 300;
+    this.timerSeconds = this.timerTotalSeconds;
+    const curIdx = this.currentCondition.healingPoints.findIndex(x => x.id === p.id);
+    const totalCount = this.currentCondition.healingPoints.length;
+    if (this.timerHpCode) {
+      this.timerHpCode.textContent = `${p.code} 쨌 ${curIdx + 1} / ${totalCount}`;
+    }
+    if (this.timerHpTitle) {
+      this.timerHpTitle.textContent = p.nameKo;
+    }
+    if (this.timerNextPointBtn) {
+      this.timerNextPointBtn.disabled = false;
+      this.timerNextPointBtn.textContent = this.isLastPoint() ? '?쒖꽌 ?꾨즺' : '?ㅼ쓬 ?ъ씤????;
+    }
+    this.updatePresetButtons();
+    this.updateTimerDisplay();
+    this.setTimerStatusBadge('?湲?以?);
+  }
+
+  closeTimerModal(){ this.pauseTimer(); }
+  isLastPoint(){ return this.currentCondition.healingPoints.at(-1)?.id === this.selectedPointId; }
+
+  setPresetMinutes(min) {
+    this.pauseTimer();
+    const sec = min * 60;
+    this.timerTotalSeconds = sec;
+    this.timerSeconds = sec;
+    this.state.defaultDuration = sec;
+    if (this.selectedPointId) {
+      this.state.durations[this.selectedPointId] = sec;
+    }
+    this.persist();
+    this.updatePresetButtons();
+    this.updateTimerDisplay();
+    this.setTimerStatusBadge('?湲?以?);
+  }
+
+  adjustSeconds(delta) {
+    this.pauseTimer();
+    let sec = this.timerTotalSeconds + delta;
+    if (sec < 30) sec = 30;
+    if (sec > 1800) sec = 1800;
+    this.timerTotalSeconds = sec;
+    this.timerSeconds = sec;
+    this.state.defaultDuration = sec;
+    if (this.selectedPointId) {
+      this.state.durations[this.selectedPointId] = sec;
+    }
+    this.persist();
+    this.updatePresetButtons();
+    this.updateTimerDisplay();
+    this.setTimerStatusBadge('?湲?以?);
+  }
+
+  updatePresetButtons() {
+    const curMin = Math.round(this.timerTotalSeconds / 60);
+    const isExact = (this.timerTotalSeconds % 60 === 0);
+    const presets = document.querySelectorAll('.timer-preset-group .preset-btn');
+    presets.forEach(btn => {
+      const m = parseInt(btn.dataset.min, 10);
+      if (isExact && m === curMin) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  updateTimerDisplay(){
+    if(!this.ready) return;
+    if (this.timerDisplay) {
+      this.timerDisplay.textContent = fmt(this.timerSeconds);
+    }
+    const elapsed = this.timerTotalSeconds - this.timerSeconds;
+    const fill = document.getElementById('timer-bar-fill');
+    if (fill && this.timerTotalSeconds > 0) {
+      const pct = Math.min(100, Math.max(0, (elapsed / this.timerTotalSeconds) * 100));
+      fill.style.width = pct + '%';
+    }
+    const track = document.getElementById('timer-progress');
+    if (track) {
+      track.setAttribute('aria-valuemax', this.timerTotalSeconds);
+      track.setAttribute('aria-valuenow', elapsed);
+      track.setAttribute('aria-valuetext', `?⑥? ?쒓컙 ${fmt(this.timerSeconds)}`);
+    }
+  }
+
+  timerStatus(msg, complete = false){
+    this.setTimerStatusBadge(msg);
+  }
+
+  startTimer(){
+    if(!this.ready || this.isTimerRunning) return;
+    if(this.timerSeconds <= 0) this.timerSeconds = this.timerTotalSeconds;
+    this.deadline = Date.now() + this.timerSeconds * 1000;
+    this.isTimerRunning = true;
+    if (this.timerToggleBtn) {
+      const playIcon = document.getElementById('timer-play-icon');
+      const btnLabel = document.getElementById('timer-btn-label');
+      if (playIcon) playIcon.textContent = '??;
+      if (btnLabel) btnLabel.textContent = '?쇱떆 ?뺤?';
+      this.timerToggleBtn.classList.add('paused');
+    }
+    this.setTimerStatusBadge('528Hz 移섏쑀 ?뚮룞 諛쒖쭊 以?);
+    this.start528HzSound();
+    if (this.timerNextPointBtn) {
+      this.timerNextPointBtn.disabled = false;
+      this.timerNextPointBtn.textContent = this.isLastPoint() ? '?쒖꽌 ?꾨즺' : '?ㅼ쓬 ?ъ씤????;
+    }
+    this.timerInterval = setInterval(() => this.tick(), 200);
+    this.updateTimerDisplay();
+  }
+
+  tick(){
+    if(!this.isTimerRunning) return;
+    this.timerSeconds = Math.max(0, Math.ceil((this.deadline - Date.now()) / 1000));
+    this.updateTimerDisplay();
+    if(this.timerSeconds === 0){
+      this.pauseTimer();
+      this.onTimerComplete();
+    }
+  }
+
+  pauseTimer(){
+    if(this.ready && this.isTimerRunning) {
+      this.timerSeconds = Math.max(0, Math.ceil((this.deadline - Date.now()) / 1000));
+    }
+    this.isTimerRunning = false;
+    clearInterval(this.timerInterval);
+    this.timerInterval = null;
+    this.stop528HzSound();
+    if (this.timerToggleBtn) {
+      const playIcon = document.getElementById('timer-play-icon');
+      const btnLabel = document.getElementById('timer-btn-label');
+      if (playIcon) playIcon.textContent = '??;
+      if (btnLabel) btnLabel.textContent = '移섏쑀 ??대㉧ ?쒖옉';
+      this.timerToggleBtn.classList.remove('paused');
+    }
+    this.setTimerStatusBadge('?쇱떆?뺤?');
+    if(this.ready) this.updateTimerDisplay();
+  }
+
+  resetTimer(){
+    this.pauseTimer();
+    this.timerSeconds = this.timerTotalSeconds;
+    if (this.timerNextPointBtn) {
+      this.timerNextPointBtn.disabled = false;
+      this.timerNextPointBtn.textContent = this.isLastPoint() ? '?쒖꽌 ?꾨즺' : '?ㅼ쓬 ?ъ씤????;
+    }
+    this.completed?.delete(this.selectedPointId);
+    this.setTimerStatusBadge('?湲?以?);
+    this.updateTimerDisplay();
+  }
+
+  toggleTimer(){
+    if(this.isTimerRunning) {
+      this.pauseTimer();
+    } else {
+      this.startTimer();
+    }
+  }
+
+  onTimerComplete(){
+    this.stop528HzSound();
+    this.playSingingBowlBell();
+    this.completed.add(this.selectedPointId);
+    this.setTimerStatusBadge('移섏쑀 ?몄뀡 ?꾨즺');
+    if(this.isLastPoint()){
+      if (this.timerNextPointBtn) {
+        this.timerNextPointBtn.textContent = '?꾨즺??;
+        this.timerNextPointBtn.disabled = true;
+      }
+    } else {
+      if (this.timerNextPointBtn) {
+        this.timerNextPointBtn.textContent = '?ㅼ쓬 ?ъ씤????;
+        this.timerNextPointBtn.disabled = false;
+      }
+    }
+  }
+
+  moveToNextPoint(){
+    this.pauseTimer();
+    if(this.isLastPoint()){
+      if (this.timerNextPointBtn) {
+        this.timerNextPointBtn.textContent = '?꾨즺??;
+        this.timerNextPointBtn.disabled = true;
+      }
+      return;
+    }
+    const i = this.currentCondition.healingPoints.findIndex(p => p.id === this.selectedPointId);
+    if (i >= 0 && i < this.currentCondition.healingPoints.length - 1) {
+      this.selectHealingPoint(this.currentCondition.healingPoints[i + 1]);
+    }
+  }const i=this.currentCondition.healingPoints.findIndex(p=>p.id===this.selectedPointId);this.selectHealingPoint(this.currentCondition.healingPoints[i+1]);this.timerStatus('다음 포인트 대기 · 위치를 확인하고 시작을 눌러 주세요.');}
  editCase(i){this.editCaseKey=this.currentCondition.id+':'+i;const s=this.state.caseSources[this.editCaseKey]||{};for(const [id,key] of [['case-kind','kind'],['case-source','source'],['case-url','url'],['case-reviewer','reviewer'],['case-date','date']])$(id).value=s[key]||(key==='kind'?'unverified':'');$('case-error').textContent='';$('case-editor').showModal();}
  saveCase(){const kind=$('case-kind').value,source=$('case-source').value.trim(),url=$('case-url').value.trim();if(kind==='record'&&!source){$('case-error').textContent='실제 기록으로 표시하려면 출처나 익명 기록번호를 입력해 주세요.';return;}if(url&&!httpURL(url)){$('case-error').textContent='http 또는 https 주소를 입력해 주세요.';return;}this.state.caseSources[this.editCaseKey]={kind,source,url:httpURL(url),reviewer:$('case-reviewer').value.trim(),date:$('case-date').value};this.persist();this.renderClinicalCases(this.currentCondition);$('case-editor').close();}
  previewPointStyle(){const diameter=({small:10,medium:20,large:32})[$('point-size').value]||10;const ring=$('circle-preview-ring');ring.style.width=diameter+'px';ring.style.height=diameter+'px';ring.style.border=`${$('point-stroke').value||1}px solid ${$('point-color').value}`;}

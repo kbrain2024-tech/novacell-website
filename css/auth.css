@@ -1,4 +1,4 @@
-:root{--auth-navy:#07172d;--auth-navy2:#102b4d;--auth-gold:#e9b949;--auth-cyan:#32c7d5;--auth-bg:#eef4fa;--auth-text:#10243d;--auth-muted:#66758a;--auth-danger:#b42318;--auth-ok:#16794b}
+﻿:root{--auth-navy:#07172d;--auth-navy2:#102b4d;--auth-gold:#e9b949;--auth-cyan:#32c7d5;--auth-bg:#eef4fa;--auth-text:#10243d;--auth-muted:#66758a;--auth-danger:#b42318;--auth-ok:#16794b}
 *{box-sizing:border-box}body.auth-page{margin:0;min-height:100vh;font-family:Inter,"Noto Sans KR",Arial,sans-serif;color:var(--auth-text);background:linear-gradient(rgba(238,244,250,.93),rgba(238,244,250,.96)),url('../images/healing-points-anatomy-bg.jpg') center/cover fixed no-repeat}
 .auth-top{min-height:78px;padding:14px clamp(18px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:16px;background:#071326;color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
 .auth-brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}.auth-brand-mark{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#f4ca63,#bd7f0c);color:#061328;font-size:1.25rem;font-weight:900}.auth-brand strong{display:block;font-size:1.12rem}.auth-brand small{display:block;color:#f2c75f;letter-spacing:.18em;font-size:.67rem;margin-top:2px}
@@ -10,3 +10,22 @@
 .auth-setup{display:none;margin-bottom:18px;padding:14px;border:1px solid #e4b341;border-radius:12px;background:#fff8df;color:#654b0b;line-height:1.55}.auth-setup.show{display:block}.auth-setup code{font-size:.82rem}.auth-dashboard{display:grid;gap:14px}.auth-user{padding:16px;border-radius:14px;background:#eef4fa}.auth-user strong,.auth-user span{display:block}.auth-user span{margin-top:4px;color:var(--auth-muted);font-size:.88rem}.pass-card{padding:18px;border:1px solid #cedae7;border-radius:15px;background:#fff}.pass-card.active{border-color:#57bb90;background:#f1fcf7}.pass-card.expired{opacity:.7}.pass-card h3{margin:0 0 7px}.pass-card p{margin:4px 0;color:#64758a;font-size:.9rem}.pass-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.auth-button-secondary{display:inline-flex;justify-content:center;padding:11px 15px;border:1px solid #315477;border-radius:10px;background:#fff;color:#153652;font-weight:800;text-decoration:none;cursor:pointer}.auth-footer{padding:22px;text-align:center;color:#718096;font-size:.8rem}
 @media(max-width:800px){.auth-layout{grid-template-columns:1fr;padding:28px 0}.auth-intro{padding:10px}.auth-intro h1{font-size:2.25rem}.auth-benefits{grid-template-columns:1fr 1fr}.auth-card{padding:24px}.auth-top{padding:12px 16px}.auth-brand small{display:none}}
 @media(max-width:480px){.auth-benefits{grid-template-columns:1fr}.auth-layout{width:min(100% - 20px,560px)}.auth-card{padding:20px;border-radius:18px}.auth-language button{padding:7px 9px}}
+
+
+/* Mobile Keyboard Clearance & Auto-Scroll Margins */
+.auth-form input, .auth-form select {
+  scroll-margin-top: 100px;
+  scroll-margin-bottom: 220px;
+}
+@media (max-width: 800px) {
+  body.auth-page {
+    min-height: 100vh;
+    padding-bottom: 50vh !important;
+  }
+  .auth-layout {
+    padding-bottom: 30vh !important;
+  }
+  .auth-card {
+    margin-bottom: 40px;
+  }
+}

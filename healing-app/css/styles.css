@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    NovaCell Healing Points - Luxury Medical Interface System
    High-Voltage Microcurrent Clinical Guide System
    ========================================================================== */
@@ -2759,5 +2759,21 @@ html, body {
     grid-template-columns: 1fr;
     gap: 8px;
     margin-bottom: 16px;
+  }
+}
+
+/* Mobile Member Chip Relocation to Top Right (Prevents obscuring bottom menu tabs) */
+@media (max-width: 900px) {
+  .nc-member-chip {
+    top: 12px !important;
+    bottom: auto !important;
+    right: 56px !important;
+    padding: 7px 12px !important;
+    font-size: 0.78rem !important;
+    max-width: 180px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
   }
 }

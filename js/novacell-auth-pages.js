@@ -123,4 +123,21 @@
 
   languageButtons.forEach((button) => button.addEventListener("click", () => { params.set("lang", button.dataset.lang); location.search = params.toString(); }));
   render();
+
+  // Smartphone keyboard smooth auto-scroll to focused inputs
+  function setupInputAutoScroll() {
+    const inputs = document.querySelectorAll("input, select, textarea");
+    inputs.forEach(input => {
+      input.addEventListener("focus", () => {
+        setTimeout(() => {
+          input.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 260);
+      });
+    });
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupInputAutoScroll);
+  } else {
+    setupInputAutoScroll();
+  }
 })();
