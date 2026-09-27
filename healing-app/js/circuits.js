@@ -478,8 +478,43 @@ function renderList() {
       selectById(circuit.id);
     });
 
-    list.appendChild(button);
+        list.appendChild(button);
   });
+
+  const activeBtn = list.querySelector(".circuit-item.active");
+  if (activeBtn) {
+    activeBtn.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+
+  renderQuickPills();
+}
+
+function renderQuickPills() {
+  const pillsContainer = $("quick-nav-pills");
+  if (!pillsContainer) return;
+  pillsContainer.innerHTML = "";
+
+  CIRCUITS.forEach((circuit) => {
+    const pill = document.createElement("button");
+    pill.type = "button";
+    const isSelected = CIRCUITS[selected]?.id === circuit.id;
+    pill.className = "quick-pill" + (isSelected ? " active" : "");
+    const orderStr = circuit.order.toString().padStart(2, "0");
+    const shortName = isEn() ? circuit.code : circuit.name.replace(" \uD68C\uB85C", "");
+    pill.innerHTML = `<span class="pill-num">${orderStr}</span><span class="pill-name">${shortName}</span>`;
+    pill.title = isEn() ? circuit.en : circuit.name;
+
+    pill.addEventListener("click", () => {
+      selectById(circuit.id);
+    });
+
+    pillsContainer.appendChild(pill);
+  });
+
+  const activePill = pillsContainer.querySelector(".quick-pill.active");
+  if (activePill) {
+    activePill.scrollIntoView({ inline: "nearest", behavior: "smooth" });
+  }
 }
 
 function isNoHoverCircuit(c) {
@@ -518,6 +553,15 @@ function resetFigureAlignment() {
 
 function renderMuscles(circuit) {
   const container = $("circuit-muscles");
+  if (!container) return;
+
+  const muscleCardTitle = $("muscle-card-title");
+  if (muscleCardTitle) {
+    const cTitle = isEn()
+      ? `${circuit.en.replace(/\s*\(.*\)/, '').trim()} Muscle Batteries`
+      : `${circuit.name} \uBC30\uD130\uB9AC \uADFC\uC721 \uBAA9\uB85D`;
+    muscleCardTitle.textContent = cTitle;
+  }
   if (!container) return;
 
   container.innerHTML = "";
@@ -625,6 +669,14 @@ function highlightMuscle(index, active) {
 
 function renderDetail(circuit) {
   if (!circuit) return;
+
+  const muscleCardTitle = $("muscle-card-title");
+  if (muscleCardTitle) {
+    const cTitle = isEn()
+      ? `${circuit.en.replace(/\s*\(.*\)/, '').trim()} Muscle Batteries`
+      : `${circuit.name} \uBC30\uD130\uB9AC \uADFC\uC721 \uBAA9\uB85D`;
+    muscleCardTitle.textContent = cTitle;
+  }
 
   $("circuit-sequence").textContent = `${circuit.order.toString().padStart(2, "0")} / 14`;
   $("circuit-title").textContent = isEn() ? circuit.en : circuit.name;
@@ -1365,7 +1417,27 @@ function applyLang(lang) {
   if (muscleEyebrow) muscleEyebrow.textContent = "MUSCLE BATTERIES";
 
   const muscleCardTitle = $("muscle-card-title");
-  if (muscleCardTitle) muscleCardTitle.textContent = lang === "en" ? "Circuit Muscle Batteries" : "회로 배터리 근육 목록";
+    if (muscleCardTitle) {
+    const curCircuit = CIRCUITS[selected] || CIRCUITS[0];
+    const cTitle = lang === "en"
+      ? `${curCircuit.en.replace(/\s*\(.*\)/, '').trim()} Muscle Batteries`
+      : `${curCircuit.name} \uBC30\uD130\uB9AC \uADFC\uC721 \uBAA9\uB85D`;
+    muscleCardTitle.textContent = cTitle;
+  }
+
+  const quickNavLabel = $("quick-nav-label");
+  if (quickNavLabel) quickNavLabel.textContent = lang === "en" ? "\u26A1 Quick Circuit Jump (01~14)" : "\u26A1 \uBE60\uB978 \uD68C\uB85C \uC774\uB3D9 (01~14)";
+
+  const quickNavHint = $("quick-nav-hint");
+  if (quickNavHint) quickNavHint.textContent = lang === "en" ? "Swipe & Tap" : "\uC88C\uC6B0 \uC2A4\uD06C\uB864 \uD130\uCE58";
+
+  const listGuideText = $("circuit-list-guide-text");
+  if (listGuideText) listGuideText.textContent = lang === "en" ? "\u2195 Scroll sidebar on the right to select circuits 01~14" : "\u2195 \uC6B0\uCE21 \uC0AC\uC774\uB4DC\uBC14\uB97C \uC2A4\uD06C\uB864\uD558\uC5EC 01~14 \uD68C\uB85C\uB97C \uC120\uD1DD\uD558\uC138\uC694";
+
+  const listGuideBadge = $("circuit-list-guide-badge");
+  if (listGuideBadge) listGuideBadge.textContent = lang === "en" ? "14 Total" : "14\uAC1C \uC804\uCCB4";
+
+  renderQuickPills();
 
   const muscleHint = $("muscle-hint");
   if (muscleHint) {

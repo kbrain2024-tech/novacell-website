@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -58,6 +58,20 @@
         <span id="search-label">&#xD68C;&#xB85C;&#xB7;&#xC9C8;&#xD658; &#xAC80;&#xC0C9;</span>
         <input id="circuit-search" type="search" placeholder="&#xC608;: &#xD3D0;, &#xB450;&#xD1B5;, &#xC774;&#xBA85;, LU 7">
       </label>
+            <!-- 빠른 회로 선택 네비게이션 칩 -->
+      <div class="circuit-quick-nav" id="circuit-quick-nav" aria-label="빠른 회로 선택">
+        <div class="quick-nav-header">
+          <span class="quick-nav-label" id="quick-nav-label">⚡ 빠른 회로 이동 (01~14)</span>
+          <span class="quick-nav-hint" id="quick-nav-hint">좌우 스크롤 터치</span>
+        </div>
+        <div class="quick-nav-pills" id="quick-nav-pills"></div>
+      </div>
+
+      <!-- 우측 사이드바 스크롤 안내 가이드 -->
+      <div class="circuit-list-guide" id="circuit-list-guide">
+        <span class="guide-text" id="circuit-list-guide-text">↕ 우측 사이드바를 스크롤하여 01~14 회로를 선택하세요</span>
+        <span class="guide-badge" id="circuit-list-guide-badge">14개 전체</span>
+      </div>
       <div id="circuit-list" class="circuit-list" role="listbox" aria-label="&#xC0DD;&#xCCB4; &#xD68C;&#xB85C; &#xBAA9;&#xB85D;"></div>
     </aside>
 
@@ -98,7 +112,7 @@
             <div class="muscle-card-header">
               <div class="muscle-card-title-group">
                 <span id="muscle-eyebrow" class="card-eyebrow">MUSCLE BATTERIES</span>
-                <h3 id="muscle-card-title">&#xD68C;&#xB85C; &#xBC30;&#xD130;&#xB9AC; &#xADFC;&#xC721; &#xBAA9;&#xB85D;</h3>
+                <h3 id="muscle-card-title">폐 회로 배터리 근육 목록</h3>
               </div>
               <span id="muscle-count-badge" class="muscle-count-badge">5&#xAC1C; &#xADFC;&#xC721;</span>
             </div>
