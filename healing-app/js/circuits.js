@@ -134,29 +134,32 @@
     id: "stomach",
     order: 6,
     code: "ST",
-    name: "위장 회로",
+    name: "\uC704\uC7A5 \uD68C\uB85C",
     en: "Stomach (ST) Circuit",
     page: 209,
     image: "assets/circuits/stomach.png",
-    route: "눈 아래 → 입 주위 → 목 → 흉복부 → 하지 전면 외측 → 제2·3족지",
+    route: "\uB208 \uC544\uB798 \u2192 \uC785 \uC8FC\uC704 \u2192 \uBAA9 \u2192 \uD749\uBCF5\uBD80 \u2192 \uD558\uC9C0 \uC804\uBA74 \uC678\uCE21 \u2192 \uC81C2\u00B73\uC871\uC9C0",
     check: "ST 42",
     supply: "ST 41",
-    uses: "위 질환, 위산과다, 십이지장궤양, 위하수, 구안와사, 안면신경마비, 슬관절통, 고관절통, 두통, 치통, 안구통, 갑상선 질환 등의 질환에 적용합니다.",
+    uses: "\uC704 \uC9C8\uD658, \uC704\uC0B0\uACFC\uB2E4, \uC2ED\uC774\uC9C0\uC7A5\uADFF\uC591, \uC704\uD558\uC218, \uAD6C\uC548\uC640\uC0AC, \uC548\uBA74\uC2E0\uACBD\uB9C8\uBE44, \uC2AC\uAD00\uC808\uD1B5, \uACE0\uAD00\uC808\uD1B5, \uB450\uD1B5, \uCE58\uD1B5, \uC548\uAD6C\uD1B5, \uAC11\uC0C1\uC120 \uC9C8\uD658 \uB4F1\uC758 \uC9C8\uD658\uC5D0 \uC801\uC6A9\uD569\uB2C8\uB2E4.",
     muscles: [
-      { num: 1, ko: "전경골근", en: "Tibialis anterior", x: 68.0, y: 78.5, anatomyImg: "assets/circuits/user_muscles/tibialis_anterior_stomach_v2.png" },
-      { num: 2, ko: "장지신근", en: "Extensor digitorum longus", x: 69.5, y: 75.0, anatomyImg: "assets/circuits/user_muscles/extensor_digitorum_longus_stomach.png" },
-      { num: 3, ko: "대퇴직근", en: "Rectus femoris", x: 67.0, y: 56.5, anatomyImg: "assets/circuits/user_muscles/rectus_femoris_stomach_v2.png" },
-      { num: 4, ko: "대퇴사두근 (내/외측광근)", en: "Quadriceps (Vastus lateralis/medialis)", x: 65.5, y: 61.5, anatomyImg: "assets/circuits/user_muscles/quadriceps_vastus_stomach.png" },
-      { num: 5, ko: "대흉근 쇄골두", en: "Pectoralis major clavicular", x: 60.5, y: 25.5, anatomyImg: "assets/circuits/user_muscles/pectoralis_major_clavicular_stomach.png" },
-      { num: 6, ko: "복직근", en: "Rectus abdominis", x: 57.5, y: 39.0, anatomyImg: "assets/circuits/user_muscles/rectus_abdominis_stomach.png" },
-      { num: 7, ko: "안륜근", en: "Orbicularis oculi", x: 50.0, y: 11.5, anatomyImg: "assets/circuits/user_muscles/orbicularis_oculi_stomach.png" },
-      { num: 8, ko: "구륜근", en: "Orbicularis oris", x: 49.5, y: 14.5, anatomyImg: "assets/circuits/user_muscles/orbicularis_oris_stomach.png" },
-      { num: 9, ko: "교근 (천층)", en: "Superficial masseter", x: 53.0, y: 13.5, anatomyImg: "assets/circuits/user_muscles/masseter_stomach.png" },
-      { num: 10, ko: "측두근 전두부", en: "Temporalis anterior", x: 53.5, y: 10.0, anatomyImg: "assets/circuits/user_muscles/temporalis_anterior_stomach.png" }
+      { num: 1, ko: "\uC804\uACBD\uACE8\uADFC", en: "Tibialis anterior", x: 68.0, y: 78.5, anatomyImg: "assets/circuits/user_muscles/tibialis_anterior_stomach_v2.png" },
+      { num: 2, ko: "\uC7A5\uC9C0\uC2E0\uADFC", en: "Extensor digitorum longus", x: 69.5, y: 75.0, anatomyImg: "assets/circuits/user_muscles/extensor_digitorum_longus_stomach.png" },
+      { num: 3, ko: "\uC7A5\uBAA8\uC9C0\uC2E0\uADFC", en: "Extensor hallucis longus", x: 68.5, y: 79.5, anatomyImg: "assets/circuits/user_muscles/extensor_hallucis_longus_stomach.png" },
+      { num: 4, ko: "\uB2E8\uBAA8\uC9C0\uC2E0\uADFC", en: "Extensor hallucis brevis", x: 69.0, y: 82.0, anatomyImg: "assets/circuits/user_muscles/extensor_hallucis_brevis_stomach.png" },
+      { num: 5, ko: "\uB300\uD1F4\uC9C1\uADFC", en: "Rectus femoris", x: 67.0, y: 56.5, anatomyImg: "assets/circuits/user_muscles/rectus_femoris_stomach_v2.png" },
+      { num: 6, ko: "\uB300\uD1F4\uC0AC\uB450\uADFC (\uB0B4/\uC678\uCE21\uAD11\uADFC)", en: "Quadriceps (Vastus lateralis/medialis)", x: 65.5, y: 61.5, anatomyImg: "assets/circuits/user_muscles/quadriceps_vastus_stomach.png" },
+      { num: 7, ko: "\uC11C\uD61C\uC778\uB300", en: "Inguinal ligament", x: 61.0, y: 47.5, anatomyImg: "assets/circuits/user_muscles/inguinal_ligament_stomach.png" },
+      { num: 8, ko: "\uB300\uD749\uADFC \uC1C4\uACE8\uB450", en: "Pectoralis major clavicular", x: 60.5, y: 25.5, anatomyImg: "assets/circuits/user_muscles/pectoralis_major_clavicular_stomach.png" },
+      { num: 9, ko: "\uBCF5\uC9C1\uADFC", en: "Rectus abdominis", x: 57.5, y: 39.0, anatomyImg: "assets/circuits/user_muscles/rectus_abdominis_stomach.png" },
+      { num: 10, ko: "\uC548\uB95C\uADFC", en: "Orbicularis oculi", x: 50.0, y: 11.5, anatomyImg: "assets/circuits/user_muscles/orbicularis_oculi_stomach.png" },
+      { num: 11, ko: "\uAD6C\uB95C\uADFC", en: "Orbicularis oris", x: 49.5, y: 14.5, anatomyImg: "assets/circuits/user_muscles/orbicularis_oris_stomach.png" },
+      { num: 12, ko: "\uAD50\uADFC (\uCC9C\uCE35)", en: "Superficial masseter", x: 53.0, y: 13.5, anatomyImg: "assets/circuits/user_muscles/masseter_stomach.png" },
+      { num: 13, ko: "\uCE21\uB450\uADFC \uC804\uB450\uBD80", en: "Temporalis anterior", x: 53.5, y: 10.0, anatomyImg: "assets/circuits/user_muscles/temporalis_anterior_stomach.png" }
     ],
     extraPoints: [
-      { name: "ST 41 (전압 공급, 해계)", x: 68.0, y: 86.5, type: "supply", anatomyImg: "assets/circuits/user_muscles/tibialis_anterior_stomach_v2.png" },
-      { name: "ST 42 (전압 체크, 충양)", x: 68.5, y: 89.0, type: "check", anatomyImg: "assets/circuits/user_muscles/tibialis_anterior_stomach_v2.png" }
+      { name: "ST 41 (\uC804\uC555 \uACF5\uAE09, \uD574\uACC4)", x: 68.0, y: 86.5, type: "supply", anatomyImg: "assets/circuits/user_muscles/tibialis_anterior_stomach_v2.png" },
+      { name: "ST 42 (\uC804\uC555 \uCCB4\uD06C, \uCDA9\uC591)", x: 68.5, y: 89.0, type: "check", anatomyImg: "assets/circuits/user_muscles/tibialis_anterior_stomach_v2.png" }
     ]
   },
   {
@@ -216,51 +219,62 @@
     id: "liver",
     order: 9,
     code: "LV",
-    name: "간 회로",
+    name: "\uAC04 \uD68C\uB85C",
     en: "Liver (LV) Circuit",
     page: 212,
     image: "assets/circuits/liver.png",
-    route: "족대지 외측 → 족배 → 경골 내측 → 대퇴 내측 → 생식기 → 하복부 → 기문",
+    route: "\uC871\uB300\uC9C0 \uC678\uCE21 \u2192 \uC871\uBC30 \u2192 \uACBD\uACE8 \uB0B4\uCE21 \u2192 \uB300\uD1F4 \uB0B4\uCE21 \u2192 \uC0DD\uC2DD\uAE30 \u2192 \uD558\uBCF5\uBD80 \u2192 \uAE30\uBB38",
     check: "LV 3",
     supply: "LV 8",
-    uses: "간장 질환, 황달, 담석증, 신경쇠약, 안질환, 녹내장, 근육 경련, 고혈압, 늑간 신경통, 생식기 질환, 생리통 등의 질환에 적용합니다.",
+    uses: "\uAC04\uC7A5 \uC9C8\uD658, \uD669\uB2EC, \uB2F4\uC11D\uC99D, \uC2E0\uACBD\uC3E0\uC57D, \uC548\uC9C8\uD658, \uB179\uB0B4\uC7A5, \uADFC\uC721 \uACBD\uB828, \uACE0\uD608\uC555, \uB291\uAC04 \uC2E0\uACBD\uD1B5, \uC0DD\uC2DD\uAE30 \uC9C8\uD658, \uC0DD\uB9AC\uD1B5 \uB4F1\uC758 \uC9C8\uD658\uC5D0 \uC801\uC6A9\uD569\uB2C8\uB2E4.",
     muscles: [
-      { num: 1, ko: "장·단비골근", en: "Fibularis longus/brevis", x: 67.5, y: 80.0, anatomyImg: "assets/circuits/user_muscles/tibialis_posterior_liver.png" },
-      { num: 2, ko: "후경골근 / 장모지굴근", en: "Tibialis posterior / Flexor hallucis", x: 69.5, y: 76.0, anatomyImg: "assets/circuits/user_muscles/flexor_hallucis_longus_liver.png" },
-      { num: 3, ko: "장·단내전근 / 대내전근", en: "Adductor longus / magnus", x: 66.5, y: 58.5, anatomyImg: "assets/circuits/user_muscles/adductor_magnus_liver.png" },
-      { num: 4, ko: "대요근 / 장골근", en: "Psoas major / Iliacus", x: 63.5, y: 46.5, anatomyImg: "assets/circuits/user_muscles/psoas_major_liver.png" },
-      { num: 5, ko: "횡격막", en: "Diaphragm", x: 57.5, y: 34.0, anatomyImg: "assets/circuits/user_muscles/diaphragm_liver.png" },
-      { num: 6, ko: "설골상근군 (악설골근/이설골근)", en: "Suprahyoid muscles", x: 49.5, y: 15.5, anatomyImg: "assets/circuits/user_muscles/hyoid_muscles_liver.png" }
+      { num: 1, ko: "\uC7A5\u00B7\uB2E8\uBE44\uACE8\uADFC", en: "Fibularis longus/brevis", x: 67.5, y: 80.0, anatomyImg: "assets/circuits/user_muscles/tibialis_posterior_liver.png" },
+      { num: 2, ko: "\uD6C4\uACBD\uACE8\uADFC", en: "Tibialis posterior", x: 68.0, y: 81.5, anatomyImg: "assets/circuits/user_muscles/tibialis_posterior_liver.png" },
+      { num: 3, ko: "\uC7A5\uBAA8\uC9C0\uAD74\uADFC", en: "Flexor hallucis longus", x: 69.5, y: 84.5, anatomyImg: "assets/circuits/user_muscles/flexor_hallucis_longus_liver.png" },
+      { num: 4, ko: "\uC2AC\uC640\uADFC", en: "Popliteus", x: 68.5, y: 70.0, anatomyImg: "assets/circuits/user_muscles/popliteus_liver.png" },
+      { num: 5, ko: "\uB300\uB0B4\uC804\uADFC (\uC7A5\u00B7\uB2E8\uB0B4\uC804\uADFC)", en: "Adductor magnus / longus", x: 66.5, y: 58.5, anatomyImg: "assets/circuits/user_muscles/adductor_magnus_liver.png" },
+      { num: 6, ko: "\uD3D0\uC1C4\uADFC", en: "Obturator muscle", x: 65.0, y: 52.0, anatomyImg: "assets/circuits/user_muscles/obturator_muscle_liver.png" },
+      { num: 7, ko: "\uC7A5\uACE8\uADFC", en: "Iliacus", x: 62.5, y: 48.0, anatomyImg: "assets/circuits/user_muscles/iliacus_liver.png" },
+      { num: 8, ko: "\uB300\uC694\uADFC", en: "Psoas major", x: 61.5, y: 44.5, anatomyImg: "assets/circuits/user_muscles/psoas_major_liver.png" },
+      { num: 9, ko: "\uD6A1\uACA9\uB9C9", en: "Diaphragm", x: 57.5, y: 34.0, anatomyImg: "assets/circuits/user_muscles/diaphragm_liver.png" },
+      { num: 10, ko: "\uD749\uB9C9", en: "Pleura", x: 56.5, y: 29.5, anatomyImg: "assets/circuits/user_muscles/pleura_liver.png" },
+      { num: 11, ko: "\uC2EC\uB0AD", en: "Pericardium", x: 55.5, y: 27.0, anatomyImg: "assets/circuits/user_muscles/pericardium_liver.png" },
+      { num: 12, ko: "\uC124\uACE8\uC0C1\uADFC\uAD70 (\uC545\uC124\uACE8\uADFC/\uC774\uC124\uACE8\uADFC)", en: "Suprahyoid muscles", x: 49.5, y: 15.5, anatomyImg: "assets/circuits/user_muscles/hyoid_muscles_liver.png" },
+      { num: 13, ko: "\uB450\uC7A5\uADFC / \uACBD\uC7A5\uADFC", en: "Longus capitis / colli", x: 50.5, y: 19.0, anatomyImg: "assets/circuits/user_muscles/longus_capitis_liver.png" }
     ],
     extraPoints: [
-      { name: "LV 8 (전압 공급, 곡천)", x: 69.0, y: 67.0, type: "supply", anatomyImg: "assets/circuits/user_muscles/flexor_hallucis_longus_liver.png" },
-      { name: "LV 3 (전압 체크, 태충)", x: 69.0, y: 89.5, type: "check", anatomyImg: "assets/circuits/user_muscles/flexor_hallucis_longus_liver.png" }
+      { name: "LV 8 (\uC804\uC555 \uACF5\uAE09, \uACE1\uCC8C)", x: 69.0, y: 67.0, type: "supply", anatomyImg: "assets/circuits/user_muscles/flexor_hallucis_longus_liver.png" },
+      { name: "LV 3 (\uC804\uC555 \uCCB4\uD06C, \uD0DC\uCDA9)", x: 69.0, y: 89.5, type: "check", anatomyImg: "assets/circuits/user_muscles/flexor_hallucis_longus_liver.png" }
     ]
   },
   {
     id: "gallbladder",
     order: 10,
     code: "GB",
-    name: "담낭 회로",
+    name: "\uB2F4\uB0AD \uD68C\uB85C",
     en: "Gallbladder (GB) Circuit",
     page: 213,
     image: "assets/circuits/gallbladder.png",
-    route: "눈 외측 → 측두부 편측 → 목 → 흉협부 측면 → 고관절 → 하지 외측 → 제4족지",
+    route: "\uB208 \uC678\uCE21 \u2192 \uCE21\uB450\uBD80 \uD3B8\uCE21 \u2192 \uBAA9 \u2192 \uD749\uD611\uBD80 \uCE21\uBA74 \u2192 \uACE0\uAD00\uC808 \u2192 \uD558\uC9C0 \uC678\uCE21 \u2192 \uC81C4\uC871\uC9C0",
     check: "GB 40",
     supply: "GB 43",
-    uses: "담석증, 황달, 신경통, 늑간 신경통, 고혈압, 편두통, 좌골신경통, 이명, 백내장, 중이염, 어깨 결림, 무릎 관절통 등의 질환에 적용합니다.",
+    uses: "\uB2F4\uC11D\uC99D, \uD669\uB2EC, \uC2E0\uACBD\uD1B5, \uB291\uAC04 \uC2E0\uACBD\uD1B5, \uACE0\uD608\uC555, \uD3B8\uB450\uD1B5, \uC88C\uACE8\uC2E0\uACBD\uD1B5, \uC774\uBA85, \uBC31\uB0B4\uC7A5, \uC911\uC774\uC5FC, \uC5B4\uAE68 \uACB0\uB9BC, \uBB34\uB98E \uAD00\uC808\uD1B5 \uB4F1\uC758 \uC9C8\uD658\uC5D0 \uC801\uC6A9\uD569\uB2C8\uB2E4.",
     muscles: [
-      { num: 1, ko: "제3비골근 / 장·단비골근", en: "Fibularis tertius / brevis", x: 74.0, y: 84.0, anatomyImg: "assets/circuits/user_muscles/fibularis_longus_gallbladder.png" },
-      { num: 2, ko: "대퇴근막장근 (TFL)", en: "Tensor fasciae latae", x: 69.5, y: 53.0, anatomyImg: "assets/circuits/user_muscles/tensor_fasciae_latae_gallbladder.png" },
-      { num: 3, ko: "장경인대 (IT Band)", en: "Iliotibial tract", x: 71.0, y: 63.5, anatomyImg: "assets/circuits/user_muscles/iliotibial_tract_gallbladder.png" },
-      { num: 4, ko: "요방형근 / 외복사근", en: "External oblique / QL", x: 64.5, y: 44.5, anatomyImg: "assets/circuits/user_muscles/external_oblique_gallbladder.png" },
-      { num: 5, ko: "전거근 / 늑간근", en: "Intercostal muscles", x: 62.0, y: 33.5, anatomyImg: "assets/circuits/user_muscles/intercostal_muscles_gallbladder.png" },
-      { num: 6, ko: "두판상근 / 후두하근", en: "Splenius capitis / Suboccipitals", x: 50.0, y: 17.5, anatomyImg: "assets/circuits/user_muscles/splenius_capitis_gallbladder.png" },
-      { num: 7, ko: "측두근 (중·후부)", en: "Temporalis (Middle/Posterior)", x: 48.0, y: 11.5, anatomyImg: "assets/circuits/user_muscles/temporalis_gallbladder.png" }
+      { num: 1, ko: "\uC81C3\uBE44\uACE8\uADFC", en: "Fibularis tertius", x: 73.5, y: 86.5, anatomyImg: "assets/circuits/user_muscles/fibularis_tertius_gallbladder.png" },
+      { num: 2, ko: "\uB2E8\uBE44\uACE8\uADFC", en: "Fibularis brevis", x: 74.0, y: 83.0, anatomyImg: "assets/circuits/user_muscles/fibularis_brevis_gallbladder.png" },
+      { num: 3, ko: "\uC7A5\uBE44\uACE8\uADFC", en: "Fibularis longus", x: 73.5, y: 78.5, anatomyImg: "assets/circuits/user_muscles/fibularis_longus_gallbladder.png" },
+      { num: 4, ko: "\uC7A5\uACBD\uC778\uB300 (IT Band)", en: "Iliotibial tract", x: 71.0, y: 63.5, anatomyImg: "assets/circuits/user_muscles/iliotibial_tract_gallbladder.png" },
+      { num: 5, ko: "\uB300\uD1F4\uADFC\uB9C9\uC7A5\uADFC (TFL)", en: "Tensor fasciae latae", x: 69.5, y: 53.0, anatomyImg: "assets/circuits/user_muscles/tensor_fasciae_latae_gallbladder.png" },
+      { num: 6, ko: "\uC694\uBC29\uD615\uADFC / \uC678\uBCF5\uC0AC\uADFC", en: "External oblique / QL", x: 64.5, y: 44.5, anatomyImg: "assets/circuits/user_muscles/external_oblique_gallbladder.png" },
+      { num: 7, ko: "\uC804\uAC70\uADFC / \uB291\uAC04\uADFC", en: "Intercostal muscles", x: 62.0, y: 33.5, anatomyImg: "assets/circuits/user_muscles/intercostal_muscles_gallbladder.png" },
+      { num: 8, ko: "\uC2EC\uBD80\uAD50\uADFC", en: "Deep masseter", x: 53.0, y: 14.5, anatomyImg: "assets/circuits/user_muscles/deep_masseter_gallbladder.png" },
+      { num: 9, ko: "\uB450\uD310\uC0C1\uADFC", en: "Splenius capitis", x: 50.0, y: 17.5, anatomyImg: "assets/circuits/user_muscles/splenius_capitis_gallbladder.png" },
+      { num: 10, ko: "\uB450\uBC18\uADF9\uADFC", en: "Semispinalis capitis", x: 51.5, y: 16.0, anatomyImg: "assets/circuits/user_muscles/semispinalis_capitis_gallbladder.png" },
+      { num: 11, ko: "\uCE21\uB450\uADFC (\uC911\u00B7\uD6C4\uBD80)", en: "Temporalis (Middle/Posterior)", x: 48.0, y: 11.5, anatomyImg: "assets/circuits/user_muscles/temporalis_gallbladder.png" }
     ],
     extraPoints: [
-      { name: "GB 43 (전압 공급, 협계)", x: 74.5, y: 92.0, type: "supply", anatomyImg: "assets/circuits/user_muscles/fibularis_longus_gallbladder.png" },
-      { name: "GB 40 (전압 체크, 구허)", x: 73.0, y: 88.0, type: "check", anatomyImg: "assets/circuits/user_muscles/fibularis_longus_gallbladder.png" }
+      { name: "GB 43 (\uC804\uC555 \uACF5\uAE09, \uD611\uACC4)", x: 74.5, y: 92.0, type: "supply", anatomyImg: "assets/circuits/user_muscles/fibularis_longus_gallbladder.png" },
+      { name: "GB 40 (\uC804\uC555 \uCCB4\uD06C, \uAD6C\uD5C8)", x: 73.0, y: 88.0, type: "check", anatomyImg: "assets/circuits/user_muscles/fibularis_longus_gallbladder.png" }
     ]
   },
   {
@@ -417,6 +431,42 @@ function renderList() {
   });
 }
 
+function isNoHoverCircuit(c) {
+  if (!c) return false;
+  return (c.id === "conception-vessel" || c.id === "governor-vessel" || c.order === 13 || c.order === 14);
+}
+
+function alignFigureWithMuscle(item) {
+  const figureCol = document.getElementById("detail-figure-col") || document.getElementById("circuit-figure-card");
+  const detailGrid = document.querySelector(".detail-grid");
+  if (!figureCol || !detailGrid) return;
+
+  // On mobile or tablet single-column view, do not shift translateY
+  if (window.innerWidth <= 1024) {
+    figureCol.style.transform = "none";
+    return;
+  }
+
+  const gridRect = detailGrid.getBoundingClientRect();
+  const itemRect = item.getBoundingClientRect();
+
+  // Target relative top offset from top of the grid
+  const targetTop = itemRect.top - gridRect.top;
+  const maxShift = Math.max(0, detailGrid.offsetHeight - figureCol.offsetHeight - 24);
+  const shift = Math.max(0, Math.min(targetTop - 20, maxShift));
+
+  figureCol.style.transition = "transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)";
+  figureCol.style.transform = `translateY(${shift}px)`;
+}
+
+function resetFigureAlignment() {
+  const figureCol = document.getElementById("detail-figure-col") || document.getElementById("circuit-figure-card");
+  if (figureCol) {
+    figureCol.style.transition = "transform 0.3s ease";
+    figureCol.style.transform = "none";
+  }
+}
+
 function renderMuscles(circuit) {
   const container = $("circuit-muscles");
   if (!container) return;
@@ -424,14 +474,14 @@ function renderMuscles(circuit) {
   container.innerHTML = "";
   const countBadge = $("muscle-count-badge");
   if (countBadge) {
-    countBadge.textContent = `${circuit.muscles.length}\uAC1C \uADFC\uC721`; // "媛?洹쇱쑁"
+    countBadge.textContent = `${circuit.muscles.length}\uAC1C \uADFC\uC721`; // "N媛?洹쇱쑁"
   }
 
-  const isNoHoverCircuit = (circuit.id === "conception-vessel" || circuit.id === "governor-vessel" || circuit.order === 13 || circuit.order === 14);
+  const noHover = isNoHoverCircuit(circuit);
 
   circuit.muscles.forEach((muscle, index) => {
     const item = document.createElement("div");
-    item.className = "muscle-item" + (isNoHoverCircuit ? " no-hover" : "");
+    item.className = "muscle-item" + (noHover ? " no-hover" : "");
     item.dataset.index = index;
     item.dataset.num = muscle.num;
 
@@ -443,93 +493,73 @@ function renderMuscles(circuit) {
       </div>
     `;
 
-    // Only attach cursor hover and popup on circuits 01 to 12. Circuits 13 and 14 have NO hover/popup.
-    if (!isNoHoverCircuit) {
+    // 13 & 14 have NO hover/popup effects
+    if (!noHover) {
       item.addEventListener("mouseenter", () => {
         highlightMuscle(index, true);
-        showFloatingAnatomy(muscle, item, circuit);
-
-        const figureCard = $("circuit-figure-card");
-        if (figureCard) {
-          const cardRect = figureCard.getBoundingClientRect();
-          if (cardRect.top < 60) {
-            figureCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
-          }
-        }
+        showFixedAnatomy(muscle, circuit);
+        alignFigureWithMuscle(item);
       });
 
       item.addEventListener("mouseleave", () => {
         highlightMuscle(index, false);
-        hideFloatingAnatomy();
       });
 
       item.addEventListener("click", () => {
         highlightMuscle(index, true);
-        showFloatingAnatomy(muscle, item, circuit);
+        showFixedAnatomy(muscle, circuit);
+        alignFigureWithMuscle(item);
       });
     }
 
     container.appendChild(item);
   });
+
+  // Reset alignment when mouse leaves container
+  container.addEventListener("mouseleave", () => {
+    if (!noHover) {
+      resetFigureAlignment();
+    }
+  });
+}
+// 2. Fixed 3D Anatomy Card Display
+function showFixedAnatomy(muscle, circuit) {
+  if (!circuit || isNoHoverCircuit(circuit)) return;
+
+  const card = $("fixed-anatomy-card");
+  if (!card) return;
+  card.style.display = "block";
+
+  const badge = $("fixed-anatomy-badge");
+  const title = $("fixed-anatomy-title");
+  const en = $("fixed-anatomy-en");
+  const img = $("fixed-anatomy-img");
+  const placeholder = $("fixed-anatomy-placeholder");
+
+  if (badge) badge.textContent = `[${muscle.num}] ${circuit.name} \uBC30\uD130\uB9AC`; // "諛고꽣由?
+  if (title) title.textContent = muscle.ko;
+  if (en) en.textContent = muscle.en;
+
+  if (img && muscle.anatomyImg) {
+    img.src = muscle.anatomyImg;
+    img.alt = `${muscle.ko} 3D \uB3C4\uD574`;
+    img.style.display = "block";
+    if (placeholder) placeholder.style.display = "none";
+  }
 }
 
-function renderCanvasTable(circuit) {
-  const canvasTable = $("canvas-muscle-table");
-  const isNoHoverCircuit = (circuit.id === "conception-vessel" || circuit.id === "governor-vessel" || circuit.order === 13 || circuit.order === 14);
+function resetFixedAnatomy(circuit) {
+  const card = $("fixed-anatomy-card");
+  if (!card) return;
 
-  if (isNoHoverCircuit) {
-    if (canvasTable) canvasTable.style.display = "none";
+  if (isNoHoverCircuit(circuit)) {
+    card.style.display = "none";
     return;
   }
-  if (canvasTable) canvasTable.style.display = "block";
 
-  const canvasList = $("canvas-table-list");
-  const canvasTitle = $("canvas-table-title");
-  if (canvasTitle) {
-    canvasTitle.textContent = `${circuit.name} \uBC30\uD130\uB9AC \uB3C4\uD15C (${circuit.code})`; // "諛고꽣由??꾪몴"
-  }
-  if (canvasList) {
-    canvasList.innerHTML = "";
-    circuit.muscles.forEach((muscle, index) => {
-      const row = document.createElement("div");
-      row.className = "canvas-table-row";
-      row.dataset.index = index;
-      row.dataset.num = muscle.num;
-
-      row.innerHTML = `
-        <span class="canvas-row-num">${muscle.num}</span>
-        <div class="canvas-row-content">
-          <span class="canvas-row-ko">${muscle.ko}</span>
-          <span class="canvas-row-en">${muscle.en}</span>
-        </div>
-      `;
-
-      row.addEventListener("mouseenter", () => {
-        highlightMuscle(index, true);
-        showFloatingAnatomy(muscle, row, circuit);
-      });
-
-      row.addEventListener("mouseleave", () => {
-        highlightMuscle(index, false);
-        hideFloatingAnatomy();
-      });
-
-      row.addEventListener("click", () => {
-        highlightMuscle(index, true);
-        showFloatingAnatomy(muscle, row, circuit);
-      });
-
-      canvasList.appendChild(row);
-    });
-  }
-}
-
-// Circle pins completely removed as requested
-function renderPins(circuit) {
-  const overlay = $("pins-overlay");
-  if (overlay) {
-    overlay.innerHTML = "";
-    overlay.style.display = "none";
+  card.style.display = "block";
+  if (circuit.muscles && circuit.muscles.length > 0) {
+    showFixedAnatomy(circuit.muscles[0], circuit);
   }
 }
 
@@ -540,59 +570,6 @@ function highlightMuscle(index, active) {
     const elIdx = parseInt(el.dataset.index, 10);
     el.classList.toggle("active", active && elIdx === index);
   });
-
-  document.querySelectorAll(".canvas-table-row").forEach((el) => {
-    const elIdx = parseInt(el.dataset.index, 10);
-    el.classList.toggle("active", active && elIdx === index);
-  });
-}
-
-function showFloatingAnatomy(muscle, targetEl, circuit) {
-  // Circuits 13 and 14: Never expose any anatomy popup images
-  if (circuit && (circuit.id === "conception-vessel" || circuit.id === "governor-vessel" || circuit.order === 13 || circuit.order === 14)) {
-    return;
-  }
-
-  const tooltip = $("pin-floating-tooltip");
-  if (!tooltip) return;
-
-  const imgSrc = muscle.anatomyImg || "";
-  const circuitName = circuit ? circuit.name : "\uD68C\uB85C"; // "?뚮줈"
-
-  tooltip.innerHTML = `
-    <div class="anatomy-pop-card">
-      <div class="anatomy-pop-header">
-        <span class="anatomy-pop-tag">${circuitName} \uBC30\uD130\uB9AC [${muscle.num}]</span>
-        <strong class="anatomy-pop-ko">${muscle.ko}</strong>
-        <span class="anatomy-pop-en">${muscle.en}</span>
-      </div>
-      <div class="anatomy-pop-media">
-        ${imgSrc ? `<img src="${imgSrc}" alt="${muscle.ko} 3D \uB3C4\uD574" onerror="this.parentElement.innerHTML='<div class=\\'no-img\\'>\uB3C4\uD574 \uC900\uBE44 \uC911</div>'">` : `<div class="no-img">\uB3C4\uD574 \uC900\uBE44 \uC911</div>`}
-      </div>
-    </div>
-  `;
-
-  tooltip.hidden = false;
-  tooltip.style.display = "block";
-  positionTooltip(targetEl, tooltip);
-}
-
-function positionTooltip(targetEl, tooltip) {
-  const stage = $("stage-canvas-wrap");
-  if (!stage) return;
-
-  // Place popup in the upper-left of the stage with generous clearance from the human body
-  tooltip.style.left = "16px";
-  tooltip.style.top = "16px";
-  tooltip.style.transform = "none";
-}
-
-function hideFloatingAnatomy() {
-  const tooltip = $("pin-floating-tooltip");
-  if (tooltip) {
-    tooltip.hidden = true;
-    tooltip.style.display = "none";
-  }
 }
 
 function renderDetail(circuit) {
@@ -624,8 +601,7 @@ function renderDetail(circuit) {
   }
 
   renderMuscles(circuit);
-  renderCanvasTable(circuit);
-  renderPins(circuit);
+  resetFixedAnatomy(circuit); resetFigureAlignment();
 
   const prevBtn = $("previous-circuit");
   const nextBtn = $("next-circuit");
@@ -673,6 +649,315 @@ function handleSearch(query) {
   }
 }
 
+/* ==========================================================================
+   5. 528Hz Healing Voltage Timer & Tibetan Singing Bowl Audio Engine
+   ========================================================================== */
+let audioCtx = null;
+let osc528 = null;
+let oscSub = null;
+let timerGainNode = null;
+let isAudioMuted = false;
+
+let totalTimerSeconds = 300; // Default: 5 min (300s)
+let remainingTimerSeconds = 300;
+let timerInterval = null;
+let isTimerRunning = false;
+
+function getAudioContext() {
+  if (!audioCtx) {
+    const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+    if (AudioCtxClass) {
+      audioCtx = new AudioCtxClass();
+    }
+  }
+  if (audioCtx && audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+  return audioCtx;
+}
+
+function start528HzSound() {
+  if (isAudioMuted) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    stop528HzSound();
+
+    timerGainNode = ctx.createGain();
+    timerGainNode.gain.setValueAtTime(0.0001, ctx.currentTime);
+    timerGainNode.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.8);
+    timerGainNode.connect(ctx.destination);
+
+    // 528Hz fundamental sine wave (Love / DNA repair / cellular voltage)
+    osc528 = ctx.createOscillator();
+    osc528.type = "sine";
+    osc528.frequency.setValueAtTime(528.0, ctx.currentTime);
+
+    // 264Hz subtle subharmonic for warm resonance
+    oscSub = ctx.createOscillator();
+    oscSub.type = "sine";
+    oscSub.frequency.setValueAtTime(264.0, ctx.currentTime);
+
+    const subGain = ctx.createGain();
+    subGain.gain.setValueAtTime(0.035, ctx.currentTime);
+    oscSub.connect(subGain);
+    subGain.connect(timerGainNode);
+
+    osc528.connect(timerGainNode);
+
+    osc528.start();
+    oscSub.start();
+  } catch (e) {
+    console.warn("Audio start error:", e);
+  }
+}
+
+function stop528HzSound() {
+  try {
+    if (timerGainNode && audioCtx) {
+      timerGainNode.gain.setValueAtTime(timerGainNode.gain.value, audioCtx.currentTime);
+      timerGainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.3);
+    }
+    setTimeout(() => {
+      if (osc528) {
+        try { osc528.stop(); osc528.disconnect(); } catch (e) {}
+        osc528 = null;
+      }
+      if (oscSub) {
+        try { oscSub.stop(); oscSub.disconnect(); } catch (e) {}
+        oscSub = null;
+      }
+    }, 350);
+  } catch (e) {}
+}
+
+// Tibetan Singing Bowl Chime Synthesis
+function playSingingBowlBell() {
+  if (isAudioMuted) return;
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const frequencies = [264, 528, 792, 1378, 2145];
+    const gains = [0.35, 0.25, 0.14, 0.08, 0.04];
+    const decayTimes = [6.0, 5.0, 4.0, 3.0, 2.0];
+    const now = ctx.currentTime;
+
+    frequencies.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq + (i === 1 ? 0.7 : 0), now);
+
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.linearRampToValueAtTime(gains[i], now + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + decayTimes[i]);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + decayTimes[i] + 0.1);
+    });
+  } catch (e) {
+    console.warn("Singing bowl error:", e);
+  }
+}
+
+function updateTimerDisplay() {
+  const display = $("timer-time-display");
+  const bar = $("timer-bar-fill");
+
+  const mins = Math.floor(remainingTimerSeconds / 60);
+  const secs = remainingTimerSeconds % 60;
+  if (display) {
+    display.textContent = `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  }
+
+  if (bar) {
+    const pct = totalTimerSeconds > 0 ? (remainingTimerSeconds / totalTimerSeconds) * 100 : 0;
+    bar.style.width = `${Math.max(0, Math.min(100, pct))}%`;
+  }
+}
+
+function toggleTimer() {
+  if (isTimerRunning) {
+    pauseTimer();
+  } else {
+    startTimer();
+  }
+}
+
+function startTimer() {
+  if (remainingTimerSeconds <= 0) {
+    remainingTimerSeconds = totalTimerSeconds;
+  }
+
+  isTimerRunning = true;
+  updateTimerDisplay();
+
+  const toggleBtn = $("timer-toggle-btn");
+  const label = $("timer-btn-label");
+  const icon = $("timer-play-icon");
+  const badge = $("timer-status-badge");
+  const pulseDot = $("freq-pulse-dot");
+  const freqLabel = $("freq-label");
+
+  if (toggleBtn) toggleBtn.classList.remove("paused");
+  if (label) label.textContent = "\uC77C\uC2DC\uC815\uC9C0"; // "?쇱떆?뺤?"
+  if (icon) icon.textContent = "\u23F8";
+  if (badge) {
+    badge.textContent = "528Hz \uCE58\uC720 \uC911"; // "528Hz 移섏쑀 以?
+    badge.className = "timer-status-badge running";
+  }
+  if (pulseDot) pulseDot.className = "freq-pulse-dot pulsing";
+  if (freqLabel) freqLabel.textContent = "528Hz \uC8FC\uD30C\uC218 \uBC1C\uC0DD \uC911"; // "528Hz 二쇳뙆??諛쒖깮 以?
+
+  start528HzSound();
+
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    if (remainingTimerSeconds > 0) {
+      remainingTimerSeconds--;
+      updateTimerDisplay();
+
+      if (remainingTimerSeconds === 0) {
+        finishTimer();
+      }
+    }
+  }, 1000);
+}
+
+function pauseTimer() {
+  isTimerRunning = false;
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+
+  stop528HzSound();
+
+  const toggleBtn = $("timer-toggle-btn");
+  const label = $("timer-btn-label");
+  const icon = $("timer-play-icon");
+  const badge = $("timer-status-badge");
+  const pulseDot = $("freq-pulse-dot");
+  const freqLabel = $("freq-label");
+
+  if (toggleBtn) toggleBtn.classList.add("paused");
+  if (label) label.textContent = "\uACC4\uC18D \uC2DC\uC791"; // "怨꾩냽 ?쒖옉"
+  if (icon) icon.textContent = "\u25B6";
+  if (badge) {
+    badge.textContent = "\uC77C\uC2DC\uC815\uC9C0"; // "?쇱떆?뺤?"
+    badge.className = "timer-status-badge";
+  }
+  if (pulseDot) pulseDot.className = "freq-pulse-dot";
+  if (freqLabel) freqLabel.textContent = "\uCE58\uC720 \uC77C\uC2DC\uC815\uC9C0"; // "移섏쑀 ?쇱떆?뺤?"
+}
+
+function resetTimer() {
+  pauseTimer();
+  remainingTimerSeconds = totalTimerSeconds;
+  updateTimerDisplay();
+
+  const toggleBtn = $("timer-toggle-btn");
+  const label = $("timer-btn-label");
+  const icon = $("timer-play-icon");
+  const badge = $("timer-status-badge");
+  const pulseDot = $("freq-pulse-dot");
+  const freqLabel = $("freq-label");
+
+  if (toggleBtn) toggleBtn.classList.remove("paused");
+  if (label) label.textContent = "\uCE58\uC720 \uD0C0\uC774\uBA38 \uC2DC\uC791"; // "移섏쑀 ??대㉧ ?쒖옉"
+  if (icon) icon.textContent = "\u25B6";
+  if (badge) {
+    badge.textContent = "\uB300\uAE30 \uC911"; // "?湲?以?
+    badge.className = "timer-status-badge";
+  }
+  if (pulseDot) pulseDot.className = "freq-pulse-dot";
+  if (freqLabel) freqLabel.textContent = "528Hz \uCE58\uC720 \uC8FC\uD30C\uC218 \uC900\uBE44";
+}
+
+function finishTimer() {
+  pauseTimer();
+  remainingTimerSeconds = 0;
+  updateTimerDisplay();
+
+  const badge = $("timer-status-badge");
+  const freqLabel = $("freq-label");
+  const label = $("timer-btn-label");
+
+  if (badge) {
+    badge.textContent = "\uCE58\uC720 \uC644\uB8CC \uD83D\uDD14"; // "移섏쑀 ?꾨즺 ?뵒"
+    badge.className = "timer-status-badge finished";
+  }
+  if (freqLabel) freqLabel.textContent = "\uC2F1\uC789\uBCFC \uB9C8\uBB34\uB9AC \uC54C\uB9BC"; // "?깆엵蹂?留덈Т由??뚮┝"
+  if (label) label.textContent = "\uB2E4\uC2DC \uC2DC\uC791"; // "?ㅼ떆 ?쒖옉"
+
+  playSingingBowlBell();
+}
+
+function setTimerMinutes(mins) {
+  mins = Math.max(1, Math.min(10, mins));
+  totalTimerSeconds = mins * 60;
+  resetTimer();
+
+  document.querySelectorAll(".preset-btn").forEach((btn) => {
+    const bMin = parseInt(btn.dataset.min, 10);
+    btn.classList.toggle("active", bMin === mins);
+  });
+}
+
+function adjustTimerSeconds(delta) {
+  const next = Math.max(60, Math.min(600, remainingTimerSeconds + delta));
+  remainingTimerSeconds = next;
+  totalTimerSeconds = Math.max(remainingTimerSeconds, totalTimerSeconds);
+  updateTimerDisplay();
+}
+
+function initTimerEvents() {
+  document.querySelectorAll(".preset-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const min = parseInt(btn.dataset.min, 10);
+      if (min) setTimerMinutes(min);
+    });
+  });
+
+  const incBtn = $("timer-inc-btn");
+  if (incBtn) incBtn.addEventListener("click", () => adjustTimerSeconds(30));
+
+  const decBtn = $("timer-dec-btn");
+  if (decBtn) decBtn.addEventListener("click", () => adjustTimerSeconds(-30));
+
+  const toggleBtn = $("timer-toggle-btn");
+  if (toggleBtn) toggleBtn.addEventListener("click", toggleTimer);
+
+  const resetBtn = $("timer-reset-btn");
+  if (resetBtn) resetBtn.addEventListener("click", resetTimer);
+
+  const soundBtn = $("timer-sound-toggle");
+  if (soundBtn) {
+    soundBtn.addEventListener("click", () => {
+      isAudioMuted = !isAudioMuted;
+      soundBtn.classList.toggle("muted", isAudioMuted);
+      const icon = $("sound-icon");
+      const sLabel = $("sound-label");
+      if (icon) icon.textContent = isAudioMuted ? "\uD83D\uDD07" : "\uD83D\uDD0A";
+      if (sLabel) sLabel.textContent = isAudioMuted ? "\uCE58\uC720\uC74C \uAEBC\uC9D0" : "\uCE58\uC720\uC74C \uCF1C\uC9D0";
+
+      if (isAudioMuted) {
+        stop528HzSound();
+      } else if (isTimerRunning) {
+        start528HzSound();
+      }
+    });
+  }
+
+  updateTimerDisplay();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = $("circuit-search");
   if (searchInput) {
@@ -715,4 +1000,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderList();
   renderDetail(CIRCUITS[selected]);
+  initTimerEvents();
 });
