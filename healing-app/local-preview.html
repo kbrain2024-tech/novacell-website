@@ -572,6 +572,30 @@
     </div>
   </div>
 
+  <!-- Immediate Direct Event Handler for Instant Cover Screen Dismissal -->
+  <script>
+    (function() {
+      function dismissWelcomeCover() {
+        var screen = document.getElementById('welcome-cover-screen');
+        if (screen) {
+          screen.classList.add('closed');
+        }
+        var ws = document.getElementById('main-workspace');
+        if (ws) {
+          ws.inert = false;
+        }
+      }
+      var enterBtn = document.getElementById('cover-enter-btn');
+      var closeBtn = document.getElementById('cover-close-quick-btn');
+      if (enterBtn) {
+        enterBtn.addEventListener('click', dismissWelcomeCover);
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', dismissWelcomeCover);
+      }
+    })();
+  </script>
+
   <!-- App Script Entrypoint -->
   
 
@@ -4213,8 +4237,13 @@ class Workspace extends NovaCellApp {
   $('add-point').onclick=()=>this.editPoint(null);$('edit-point').onclick=()=>this.editPoint(this.getActiveHealingPoint());$('place-point').onclick=()=>this.beginPlacement();$('cancel-placement').onclick=()=>this.cancelPlacement();
   $('point-cancel').onclick=()=>$('point-editor').close();$('point-form').addEventListener('keydown',e=>{if(e.isComposing&&e.key==='Enter')e.preventDefault();});$('point-form').onsubmit=e=>{e.preventDefault();try{this.savePoint();}catch(err){$('point-error').textContent='저장 중 문제가 생겼습니다: '+err.message;}};
   $('remove-pin').onclick=()=>this.removeSelectedPin();$('remove-point').onclick=()=>this.removePoint();
-  $('duration-apply').onclick=()=>this.applyDuration();$('duration-ten').onclick=()=>{$('duration-unit').value='60';$('duration-value').value='10';this.applyDuration();};
-  $('duration-unit').onchange=()=>{const unit=Number($('duration-unit').value);$('duration-value').max=String(600/unit);$('duration-value').step=unit===60?'0.1':'1';$('duration-value').min=unit===60?'0.1':'1';$('duration-value').value=unit===60?String(Math.max(.1,Math.round(this.timerTotalSeconds/6)/10)):String(this.timerTotalSeconds);};
+  const dApply = document.getElementById('duration-apply');
+  const dTen = document.getElementById('duration-ten');
+  const dUnit = document.getElementById('duration-unit');
+  const dVal = document.getElementById('duration-value');
+  if (dApply) dApply.onclick = () => this.applyDuration();
+  if (dTen) dTen.onclick = () => { if (dUnit) dUnit.value = '60'; if (dVal) dVal.value = '10'; this.applyDuration(); };
+  if (dUnit) dUnit.onchange = () => { const unit = Number(dUnit.value); if (dVal) { dVal.max = String(600/unit); dVal.step = unit === 60 ? '0.1' : '1'; dVal.min = unit === 60 ? '0.1' : '1'; dVal.value = unit === 60 ? String(Math.max(.1, Math.round(this.timerTotalSeconds / 6) / 10)) : String(this.timerTotalSeconds); } };
   $('plan-name').onchange=e=>{this.state.planName=e.target.value.trim().slice(0,60)||'기본 작업';this.persist();};
   $('export-data').onclick=()=>this.exportData();$('import-data').onclick=()=>$('import-file').click();$('import-file').onchange=e=>this.importData(e.target.files[0]);
   $('new-plan').onclick=()=>{if(!confirm('현재 사용자 변경을 지우고 기본 공개 치료점으로 되돌리시겠습니까? 필요한 포인트는 먼저 백업해 주세요.'))return;this.pauseTimer();this.state=this.makeFreshState();this.detailView='original';this.activePin=null;this.completed.clear();this.persist();this.syncData();this.selectedPointId=this.currentCondition.healingPoints[0].id;this.render();this.openTimerModal();$('plan-name').value=this.state.planName;};
@@ -4324,6 +4353,9 @@ class Workspace extends NovaCellApp {
  // ==========================================================================
   // 528Hz Cellular Voltage Healing Timer & Singing Bowl Audio Engine
   // ==========================================================================
+  // ==========================================================================
+  // 528Hz Cellular Voltage Healing Timer & Singing Bowl Audio Engine
+  // ==========================================================================
   initAudioState() {
     this.audioCtx = null;
     this.timerGainNode = null;
@@ -4356,9 +4388,9 @@ class Workspace extends NovaCellApp {
     }
     if (this.volPct) this.volPct.textContent = `${displayPct}%`;
     if (this.volIcon) {
-      if (this.masterVolume <= 0.01 || this.isAudioMuted) this.volIcon.textContent = '?뵁';
-      else if (this.masterVolume < 0.5) this.volIcon.textContent = '?뵃';
-      else this.volIcon.textContent = '?뵄';
+      if (this.masterVolume <= 0.01 || this.isAudioMuted) this.volIcon.textContent = '\uD83D\uDD07';
+      else if (this.masterVolume < 0.5) this.volIcon.textContent = '\uD83D\uDD09';
+      else this.volIcon.textContent = '\uD83D\uDD0A';
     }
     if (this.timerGainNode && this.audioCtx) {
       try {
@@ -4377,12 +4409,12 @@ class Workspace extends NovaCellApp {
       const soundLabel = document.getElementById('sound-label');
       if (this.isAudioMuted) {
         this.timerSoundToggle.classList.add('muted');
-        if (soundIcon) soundIcon.textContent = '?뵁';
-        if (soundLabel) soundLabel.textContent = '移섏쑀??爰쇱쭚';
+        if (soundIcon) soundIcon.textContent = '\uD83D\uDD07';
+        if (soundLabel) soundLabel.textContent = '\uCE58\uC720\uC74C \uAEBC\uC9D0';
       } else {
         this.timerSoundToggle.classList.remove('muted');
-        if (soundIcon) soundIcon.textContent = '?뵄';
-        if (soundLabel) soundLabel.textContent = '移섏쑀??耳쒖쭚';
+        if (soundIcon) soundIcon.textContent = '\uD83D\uDD0A';
+        if (soundLabel) soundLabel.textContent = '\uCE58\uC720\uC74C \uCF1C\uC9D0';
       }
     }
     this.setVolume(Math.round(this.masterVolume * 100));
@@ -4537,20 +4569,20 @@ class Workspace extends NovaCellApp {
     if (!this.timerStatusBadge) return;
     this.timerStatusBadge.textContent = status;
     this.timerStatusBadge.className = 'timer-status-badge';
-    if (status.includes('諛쒖쭊') || status.includes('移섏쑀 以?)) {
+    if (status.indexOf('\uBC1C\uC9C4') !== -1 || status.indexOf('\uCE58\uC720 \uC911') !== -1) {
       this.timerStatusBadge.classList.add('running');
       if (this.freqPulseDot) this.freqPulseDot.classList.add('pulsing');
-      if (this.freqLabel) this.freqLabel.textContent = '528Hz 移섏쑀 ?뚮룞 諛쒖쭊 以?;
-    } else if (status.includes('?꾨즺')) {
+      if (this.freqLabel) this.freqLabel.textContent = '528Hz \uCE58\uC720 \uD30C\uB3D9 \uBC1C\uC9C4 \uC911';
+    } else if (status.indexOf('\uC644\uB8CC') !== -1) {
       this.timerStatusBadge.classList.add('finished');
       if (this.freqPulseDot) this.freqPulseDot.classList.remove('pulsing');
-      if (this.freqLabel) this.freqLabel.textContent = '移섏쑀 ?몄뀡 ?꾨즺';
-    } else if (status.includes('?쇱떆?뺤?')) {
+      if (this.freqLabel) this.freqLabel.textContent = '\uCE58\uC720 \uC138\uC158 \uC644\uB8CC';
+    } else if (status.indexOf('\uC77C\uC2DC\uC815\uC9C0') !== -1) {
       if (this.freqPulseDot) this.freqPulseDot.classList.remove('pulsing');
-      if (this.freqLabel) this.freqLabel.textContent = '移섏쑀 ?뚮룞 ?쇱떆?뺤?';
+      if (this.freqLabel) this.freqLabel.textContent = '\uCE58\uC720 \uD30C\uB3D9 \uC77C\uC2DC\uC815\uC9C0';
     } else {
       if (this.freqPulseDot) this.freqPulseDot.classList.remove('pulsing');
-      if (this.freqLabel) this.freqLabel.textContent = '528Hz 移섏쑀 二쇳뙆??以鍮?;
+      if (this.freqLabel) this.freqLabel.textContent = '528Hz \uCE58\uC720 \uC8FC\uD30C\uC218 \uC900\uBE44';
     }
   }
 
@@ -4564,18 +4596,18 @@ class Workspace extends NovaCellApp {
     const curIdx = this.currentCondition.healingPoints.findIndex(x => x.id === p.id);
     const totalCount = this.currentCondition.healingPoints.length;
     if (this.timerHpCode) {
-      this.timerHpCode.textContent = `${p.code} 쨌 ${curIdx + 1} / ${totalCount}`;
+      this.timerHpCode.textContent = `${p.code} \u00B7 ${curIdx + 1} / ${totalCount}`;
     }
     if (this.timerHpTitle) {
       this.timerHpTitle.textContent = p.nameKo;
     }
     if (this.timerNextPointBtn) {
       this.timerNextPointBtn.disabled = false;
-      this.timerNextPointBtn.textContent = this.isLastPoint() ? '?쒖꽌 ?꾨즺' : '?ㅼ쓬 ?ъ씤????;
+      this.timerNextPointBtn.textContent = this.isLastPoint() ? '\uC21C\uC11C \uC644\uB8CC' : '\uB2E4\uC74C \uD3EC\uC778\uD2B8 \u276F';
     }
     this.updatePresetButtons();
     this.updateTimerDisplay();
-    this.setTimerStatusBadge('?湲?以?);
+    this.setTimerStatusBadge('\uB300\uAE30 \uC911');
   }
 
   closeTimerModal(){ this.pauseTimer(); }
@@ -4593,7 +4625,7 @@ class Workspace extends NovaCellApp {
     this.persist();
     this.updatePresetButtons();
     this.updateTimerDisplay();
-    this.setTimerStatusBadge('?湲?以?);
+    this.setTimerStatusBadge('\uB300\uAE30 \uC911');
   }
 
   adjustSeconds(delta) {
@@ -4610,7 +4642,7 @@ class Workspace extends NovaCellApp {
     this.persist();
     this.updatePresetButtons();
     this.updateTimerDisplay();
-    this.setTimerStatusBadge('?湲?以?);
+    this.setTimerStatusBadge('\uB300\uAE30 \uC911');
   }
 
   updatePresetButtons() {
@@ -4658,15 +4690,15 @@ class Workspace extends NovaCellApp {
     if (this.timerToggleBtn) {
       const playIcon = document.getElementById('timer-play-icon');
       const btnLabel = document.getElementById('timer-btn-label');
-      if (playIcon) playIcon.textContent = '??;
-      if (btnLabel) btnLabel.textContent = '?쇱떆 ?뺤?';
+      if (playIcon) playIcon.textContent = '\u23F8';
+      if (btnLabel) btnLabel.textContent = '\uC77C\uC2DC \uC815\uC9C0';
       this.timerToggleBtn.classList.add('paused');
     }
-    this.setTimerStatusBadge('528Hz 移섏쑀 ?뚮룞 諛쒖쭊 以?);
+    this.setTimerStatusBadge('528Hz \uCE58\uC720 \uD30C\uB3D9 \uBC1C\uC9C4 \uC911');
     this.start528HzSound();
     if (this.timerNextPointBtn) {
       this.timerNextPointBtn.disabled = false;
-      this.timerNextPointBtn.textContent = this.isLastPoint() ? '?쒖꽌 ?꾨즺' : '?ㅼ쓬 ?ъ씤????;
+      this.timerNextPointBtn.textContent = this.isLastPoint() ? '\uC21C\uC11C \uC644\uB8CC' : '\uB2E4\uC74C \uD3EC\uC778\uD2B8 \u276F';
     }
     this.timerInterval = setInterval(() => this.tick(), 200);
     this.updateTimerDisplay();
@@ -4693,11 +4725,11 @@ class Workspace extends NovaCellApp {
     if (this.timerToggleBtn) {
       const playIcon = document.getElementById('timer-play-icon');
       const btnLabel = document.getElementById('timer-btn-label');
-      if (playIcon) playIcon.textContent = '??;
-      if (btnLabel) btnLabel.textContent = '移섏쑀 ??대㉧ ?쒖옉';
+      if (playIcon) playIcon.textContent = '\u25B6';
+      if (btnLabel) btnLabel.textContent = '\uCE58\uC720 \uD0C0\uC774\uBA38 \uC2DC\uC791';
       this.timerToggleBtn.classList.remove('paused');
     }
-    this.setTimerStatusBadge('?쇱떆?뺤?');
+    this.setTimerStatusBadge('\uC77C\uC2DC\uC815\uC9C0');
     if(this.ready) this.updateTimerDisplay();
   }
 
@@ -4706,10 +4738,10 @@ class Workspace extends NovaCellApp {
     this.timerSeconds = this.timerTotalSeconds;
     if (this.timerNextPointBtn) {
       this.timerNextPointBtn.disabled = false;
-      this.timerNextPointBtn.textContent = this.isLastPoint() ? '?쒖꽌 ?꾨즺' : '?ㅼ쓬 ?ъ씤????;
+      this.timerNextPointBtn.textContent = this.isLastPoint() ? '\uC21C\uC11C \uC644\uB8CC' : '\uB2E4\uC74C \uD3EC\uC778\uD2B8 \u276F';
     }
     this.completed?.delete(this.selectedPointId);
-    this.setTimerStatusBadge('?湲?以?);
+    this.setTimerStatusBadge('\uB300\uAE30 \uC911');
     this.updateTimerDisplay();
   }
 
@@ -4725,15 +4757,15 @@ class Workspace extends NovaCellApp {
     this.stop528HzSound();
     this.playSingingBowlBell();
     this.completed.add(this.selectedPointId);
-    this.setTimerStatusBadge('移섏쑀 ?몄뀡 ?꾨즺');
+    this.setTimerStatusBadge('\uCE58\uC720 \uC138\uC158 \uC644\uB8CC');
     if(this.isLastPoint()){
       if (this.timerNextPointBtn) {
-        this.timerNextPointBtn.textContent = '?꾨즺??;
+        this.timerNextPointBtn.textContent = '\uC644\uB8CC\uB428';
         this.timerNextPointBtn.disabled = true;
       }
     } else {
       if (this.timerNextPointBtn) {
-        this.timerNextPointBtn.textContent = '?ㅼ쓬 ?ъ씤????;
+        this.timerNextPointBtn.textContent = '\uB2E4\uC74C \uD3EC\uC778\uD2B8 \u276F';
         this.timerNextPointBtn.disabled = false;
       }
     }
@@ -4743,7 +4775,7 @@ class Workspace extends NovaCellApp {
     this.pauseTimer();
     if(this.isLastPoint()){
       if (this.timerNextPointBtn) {
-        this.timerNextPointBtn.textContent = '?꾨즺??;
+        this.timerNextPointBtn.textContent = '\uC644\uB8CC\uB428';
         this.timerNextPointBtn.disabled = true;
       }
       return;
@@ -4752,7 +4784,7 @@ class Workspace extends NovaCellApp {
     if (i >= 0 && i < this.currentCondition.healingPoints.length - 1) {
       this.selectHealingPoint(this.currentCondition.healingPoints[i + 1]);
     }
-  }const i=this.currentCondition.healingPoints.findIndex(p=>p.id===this.selectedPointId);this.selectHealingPoint(this.currentCondition.healingPoints[i+1]);this.timerStatus('다음 포인트 대기 · 위치를 확인하고 시작을 눌러 주세요.');}
+  }
  editCase(i){this.editCaseKey=this.currentCondition.id+':'+i;const s=this.state.caseSources[this.editCaseKey]||{};for(const [id,key] of [['case-kind','kind'],['case-source','source'],['case-url','url'],['case-reviewer','reviewer'],['case-date','date']])$(id).value=s[key]||(key==='kind'?'unverified':'');$('case-error').textContent='';$('case-editor').showModal();}
  saveCase(){const kind=$('case-kind').value,source=$('case-source').value.trim(),url=$('case-url').value.trim();if(kind==='record'&&!source){$('case-error').textContent='실제 기록으로 표시하려면 출처나 익명 기록번호를 입력해 주세요.';return;}if(url&&!httpURL(url)){$('case-error').textContent='http 또는 https 주소를 입력해 주세요.';return;}this.state.caseSources[this.editCaseKey]={kind,source,url:httpURL(url),reviewer:$('case-reviewer').value.trim(),date:$('case-date').value};this.persist();this.renderClinicalCases(this.currentCondition);$('case-editor').close();}
  previewPointStyle(){const diameter=({small:10,medium:20,large:32})[$('point-size').value]||10;const ring=$('circle-preview-ring');ring.style.width=diameter+'px';ring.style.height=diameter+'px';ring.style.border=`${$('point-stroke').value||1}px solid ${$('point-color').value}`;}
@@ -4835,8 +4867,8 @@ class Workspace extends NovaCellApp {
   }catch(e){this.status('가져오기 실패: '+e.message,true);}finally{$('import-file').value='';}
  }
 
- closeCover(){super.closeCover();this.mainWorkspace.inert=false;this.searchInput.focus();}
- openCover(){super.openCover();this.mainWorkspace.inert=true;this.coverEnterBtn.focus();}
+ closeCover(){super.closeCover();if(this.mainWorkspace)this.mainWorkspace.inert=false;if(this.searchInput){try{this.searchInput.focus();}catch(e){}}}
+ openCover(){super.openCover();if(this.mainWorkspace)this.mainWorkspace.inert=true;if(this.coverEnterBtn){try{this.coverEnterBtn.focus();}catch(e){}}}
 }
 if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{try{window.app=new Workspace();window.app.openCover();}catch(err){console.error(err);const box=document.createElement('p');box.textContent='앱 초기화 중 문제가 발생했습니다. 새로고침 후에도 반복되면 오류 화면을 전달해 주세요.';box.style.cssText='position:fixed;top:0;left:0;right:0;background:#4c2020;color:white;padding:16px;z-index:99999';document.body.append(box);}});
 
