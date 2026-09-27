@@ -1356,3 +1356,14 @@ html, body {
     margin-top: 12px;
   }
 }
+
+/* Floating Draggable Member Chip Override */
+.nc-member-chip {
+  top: 14px !important;
+  right: 18px !important;
+  bottom: auto !important;
+  cursor: grab !important;
+}
+.nc-member-chip.dragging {
+  cursor: grabbing !important;
+}

@@ -1,3 +1,12 @@
-/robots.txt    /robots.txt   200
+﻿/robots.txt    /robots.txt   200
 /sitemap.xml   /sitemap.xml  200
+
+# Bio Point & Circuits Alias / Clean URL Redirects
+/healing-app/bio-point        /bio-point.html   301!
+/healing-app/bio-point.html   /bio-point.html   301!
+/healing-app/circuits         /circuits.html    301!
+/healing-app/circuits.html    /circuits.html    301!
+/bio-point                    /bio-point.html   301!
+/circuits                     /circuits.html    301!
+
 /*    /index.html   200

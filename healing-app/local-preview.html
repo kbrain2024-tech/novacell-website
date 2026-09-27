@@ -4191,7 +4191,7 @@ class Workspace extends NovaCellApp {
  constructor(){
   super();this.baseConditions=structuredClone(this.conditions);applyReview(this.baseConditions);
   let loadError='',migrationNotice='',defaultNotice='';try{const stored=localStorage.getItem(KEY),raw=stored?JSON.parse(stored):null;this.state=raw?validateState(raw,this.baseConditions):this.makeFreshState();if(raw&&raw.version<29){localStorage.setItem(KEY,JSON.stringify(this.state));migrationNotice='v29로 이전했습니다. 기존 개인 치료점과 백업 자료는 그대로 유지됩니다.';}else if(!raw&&globalThis.__NOVACELL_PUBLIC_PRESET__){localStorage.setItem(KEY,JSON.stringify(this.state));defaultNotice='검토용 기본 치료점 71개와 원 위치 123개를 불러왔습니다. 위치는 반드시 전문가가 다시 확인해 주세요.';}}catch{this.state=this.makeFreshState();loadError='이 브라우저의 저장 데이터를 읽지 못했습니다. 백업 파일이 있다면 가져와 주세요.';}
-  this.detailView='original';this.imageStore=new ImageStore();this.imageUrls=new Map();this.detailLoading=false;this.pinFilter='selected';this.colorFilter='all';this.placement=null;this.activePin=null;this.completed=new Set();this.ready=true;
+  this.detailView='original';this.imageStore=new ImageStore();this.imageUrls=new Map();this.detailLoading=false;this.pinFilter='selected';this.colorFilter='all';this.placement=null;this.activePin=null;this.pinLocked=true;this.completed=new Set();this.ready=true;
   this.buildTools();this.buildDialogs();
   this.detailStage=new ImageStage(document.querySelector('.anatomy-image-frame'),[this.anatomy3dImage],pos=>this.placeAt(pos));
   this.bodyStage=new ImageStage($('fullbody-image-frame'),[this.fullbodyImgPosterior,this.fullbodyImgAnterior],pos=>this.placeAt(pos));
@@ -4201,10 +4201,30 @@ class Workspace extends NovaCellApp {
   $('plan-name').value=this.state.planName;if(loadError)this.status(loadError,true);else if(migrationNotice)this.status(migrationNotice);else if(defaultNotice)this.status(defaultNotice);this.loadUserImages();
  }
  makeFreshState(){const preset=globalThis.__NOVACELL_PUBLIC_PRESET__;return preset?validateState(preset,this.baseConditions):blank();}
+  togglePinLock(){
+  this.pinLocked=!this.pinLocked;
+  this.updateLockBtn();
+ }
+ updateLockBtn(){
+  const btn=document.getElementById('toggle-pin-lock');
+  if(!btn)return;
+  if(this.pinLocked){
+   btn.innerHTML='&#x1F512; \uC704\uCE58 \uC7A0\uAE08';
+   btn.className='btn-pin-lock locked';
+   btn.title='\uC704\uCE58\uAC00 \uC7A0\uAEBC \uC788\uC2B5\uB2C8\uB2E4. (\uD074\uB9AD \uC2DC \uC704\uCE58 \uC218\uC815 \uB4DC\uB798\uADF8 \uAC00\uB2A5)';
+   this.status('\uD3EC\uC778\uD288 \uC704\uCE58 \uC7A0\uAE08 \uBAA8\uB4DC: \uD074\uB9AD \uC2DC \uC870\uD68C\uB9CC \uAC00\uB2A5\uD558\uBA70 \uB9C8\uC6B0\uC2A4/\uD130\uCE58\uB85C \uBC00\uB9AC\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.');
+  }else{
+   btn.innerHTML='&#x1F513; \uC704\uCE58 \uD3B8\uC9D1 \uC911';
+   btn.className='btn-pin-lock unlocked';
+   btn.title='\uD3EC\uC778\uD288\uB97C \uB4DC\uB798\uADF8\uD558\uC5EC \uC704\uCE58\uB97C \uC62E\uAE38 \uC218 \uC788\uC2B5\uB2C8\uB2E4. (\uC644\uB8CC \uD6C4 \uB2E4\uC2DC \uD074\uB9AD\uD574 \uC7A0\uAE08)';
+   this.status('\uC704\uCE58 \uD3B8\uC9D1 \uBAA8\uB4DC: \uB9C8\uC6B0\uC2A4 \uB610\uB294 \uD130\uCE58\uB85C \uD3EC\uC778\uD288\uB97C \uB4DC\uB798\uADF8\uD558\uC5EC \uC704\uCE58\uB97C \uBCC0\uACBD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.');
+  }
+  document.body.classList.toggle('pins-editable',!this.pinLocked);
+ }
  buildTools(){
   const tools=document.createElement('div');tools.className='workspace-tools';tools.innerHTML=`
    <label>포인트 <select id="pin-filter"><option value="selected">선택점 + 배치된 핵심점</option><option value="all">현재 질환 전체</option><option value="custom">추가점만</option><option value="none">모두 숨김</option></select></label>
-   <button id="upload-pair">외측·내측 이미지 등록</button><button id="add-point">＋ 포인트</button><button id="place-point">선택점 원 추가</button><button id="cancel-placement" hidden>위치 지정 취소</button>
+   <button id="toggle-pin-lock" type="button" class="btn-pin-lock locked" title="&#xC704;&#xCE58; &#xC7A0;&#xAE08;/&#xD574;&#xC81C; &#xC804;&#xD658;">&#x1F512; &#xC704;&#xCE58; &#xC7A0;&#xAE08;</button><button id="upload-pair">외측·내측 이미지 등록</button><button id="add-point">＋ 포인트</button><button id="place-point">선택점 원 추가</button><button id="cancel-placement" hidden>위치 지정 취소</button>
    <details><summary>표시 · 작업 관리</summary><div class="extra-tools">
     <label>분류 <select id="group-filter"><option value="all">전체</option><option value="treat">치료 계획</option><option value="observe">관찰</option><option value="tender">압통 기록</option></select></label>
     <label><input id="large-pins" type="checkbox">클릭 영역 표시</label>
@@ -4218,6 +4238,7 @@ class Workspace extends NovaCellApp {
   const note=document.createElement('p');note.className='workspace-note';note.id='work-status';note.setAttribute('role','status');tools.after(note);
   const summary=document.createElement('div');summary.className='point-summary';summary.innerHTML='<span id="point-summary-text"></span><button id="remove-pin">선택 원 삭제</button><button id="edit-point">선택점 편집</button><button id="remove-point">추가점 삭제</button>';this.canvasContainer.after(summary);
   const note2=document.createElement('div');note2.className='evidence-note';note2.textContent='좌표는 참고 이미지의 임시 표시입니다. 원본의 치료점·시술 조건·효과는 검증되지 않았습니다. 해부 문헌은 치료 효과의 근거와 구분해 표시합니다.';$('recipe-view-container').prepend(note2);
+  const lockBtn=document.getElementById('toggle-pin-lock');if(lockBtn){lockBtn.onclick=()=>this.togglePinLock();this.updateLockBtn();}
  }
  buildDialogs(){
   const point=document.createElement('dialog');point.id='point-editor';point.className='editor';point.setAttribute('aria-labelledby','point-editor-title');point.innerHTML=`<form id="point-form" novalidate><h2 id="point-editor-title">포인트 편집</h2><p class="editor-hint" id="point-editor-context"></p>
@@ -4791,11 +4812,11 @@ class Workspace extends NovaCellApp {
  bindPinDrag(pin,p,stage,key,index,initialPos){
   let drag=null;
   const restore=()=>{if(!drag)return;pin.style.left=drag.original.x+'%';pin.style.top=drag.original.y+'%';drag=null;stage.pinDragging=false;pin.classList.remove('dragging');};
-  pin.addEventListener('pointerdown',e=>{if(e.button!==0||this.placement)return;e.preventDefault();e.stopPropagation();pin.focus();const pos=this.positionsFor(p,key)[index]||initialPos;if(!pos)return;this.activePin={id:p.id,key,index};drag={startX:e.clientX,startY:e.clientY,original:pos,pos,moved:false};stage.pinDragging=true;pin.setPointerCapture(e.pointerId);});
+  pin.addEventListener('pointerdown',e=>{if(e.button!==0||this.placement)return;if(this.pinLocked)return;e.preventDefault();e.stopPropagation();pin.focus();const pos=this.positionsFor(p,key)[index]||initialPos;if(!pos)return;this.activePin={id:p.id,key,index};drag={startX:e.clientX,startY:e.clientY,original:pos,pos,moved:false};stage.pinDragging=true;pin.setPointerCapture(e.pointerId);});
   pin.addEventListener('pointermove',e=>{if(!drag)return;e.stopPropagation();drag.moved ||= Math.hypot(e.clientX-drag.startX,e.clientY-drag.startY)>3;if(!drag.moved)return;const rect=stage.surface.getBoundingClientRect();const xy=ImageStage.dragPosition(rect,drag.original,{x:e.clientX-drag.startX,y:e.clientY-drag.startY});if(!xy)return;drag.pos=xy;pin.classList.add('dragging');pin.style.left=xy.x+'%';pin.style.top=xy.y+'%';});
   pin.addEventListener('pointerup',e=>{if(!drag)return;e.stopPropagation();const end=drag;drag=null;stage.pinDragging=false;pin.classList.remove('dragging');if(pin.hasPointerCapture(e.pointerId))pin.releasePointerCapture(e.pointerId);if(end.moved){pin.skipClick=true;this.commitPinPosition(p.id,key,index,end.pos);} });
   pin.addEventListener('pointercancel',restore);pin.addEventListener('lostpointercapture',restore);
-  pin.addEventListener('keydown',e=>{if(e.key==='Escape'&&drag){e.preventDefault();restore();return;}const delta={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(!delta)return;e.preventDefault();e.stopPropagation();const pos=this.positionsFor(p,key)[index],step=e.shiftKey?1:.2;if(pos)this.commitPinPosition(p.id,key,index,{x:Math.max(0,Math.min(100,pos.x+delta[0]*step)),y:Math.max(0,Math.min(100,pos.y+delta[1]*step))});});
+  pin.addEventListener('keydown',e=>{if(e.key==='Escape'&&drag){e.preventDefault();restore();return;}const delta={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key];if(!delta)return;if(this.pinLocked)return;e.preventDefault();e.stopPropagation();const pos=this.positionsFor(p,key)[index],step=e.shiftKey?1:.2;if(pos)this.commitPinPosition(p.id,key,index,{x:Math.max(0,Math.min(100,pos.x+delta[0]*step)),y:Math.max(0,Math.min(100,pos.y+delta[1]*step))});});
  }
  commitPinPosition(id,key,index,pos){
   const p=this.currentCondition.healingPoints.find(x=>x.id===id);if(!p||!key)return;const changed=this.selectedPointId!==id,m=this.editableMeta(p),list=this.storedPositions(m,key),next={x:Math.round(pos.x*100)/100,y:Math.round(pos.y*100)/100};if(index<list.length)list[index]=next;else if(index===0)list.push(next);else return;m.positions[key]=list;this.state.overrides[id]=m;this.activePin={id,key,index};
@@ -4874,5 +4895,64 @@ if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{t
 
 </script>
   <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
+<script>
+(function() {
+  function makeDraggable(chip){
+    let isDragging=false,startX=0,startY=0,startLeft=0,startTop=0,moved=false;
+    try{
+      const saved=localStorage.getItem('nc_chip_pos');
+      if(saved){
+        const pos=JSON.parse(saved);
+        const maxX=Math.max(10,window.innerWidth-100);
+        const maxY=Math.max(10,window.innerHeight-45);
+        chip.style.left=Math.min(Math.max(10,pos.x),maxX)+'px';
+        chip.style.top=Math.min(Math.max(10,pos.y),maxY)+'px';
+        chip.style.right='auto';chip.style.bottom='auto';
+      }
+    }catch(e){}
+    chip.title='留덉씠?섏씠吏 (留덉슦?ㅻ굹 ?곗튂濡??먰븯???꾩튂濡??대룞 媛??';
+    chip.addEventListener('pointerdown',e=>{
+      if(e.button!==0)return;
+      isDragging=true;moved=false;
+      startX=e.clientX;startY=e.clientY;
+      const rect=chip.getBoundingClientRect();
+      startLeft=rect.left;startTop=rect.top;
+      chip.setPointerCapture(e.pointerId);
+      chip.classList.add('dragging');
+    });
+    chip.addEventListener('pointermove',e=>{
+      if(!isDragging)return;
+      const dx=e.clientX-startX,dy=e.clientY-startY;
+      if(Math.hypot(dx,dy)>4)moved=true;
+      if(!moved)return;
+      const newLeft=Math.min(Math.max(8,startLeft+dx),window.innerWidth-chip.offsetWidth-8);
+      const newTop=Math.min(Math.max(8,startTop+dy),window.innerHeight-chip.offsetHeight-8);
+      chip.style.left=newLeft+'px';chip.style.top=newTop+'px';chip.style.right='auto';chip.style.bottom='auto';
+    });
+    const onUp=e=>{
+      if(!isDragging)return;
+      isDragging=false;chip.classList.remove('dragging');
+      if(chip.hasPointerCapture(e.pointerId))chip.releasePointerCapture(e.pointerId);
+      if(moved){
+        chip.skipClick=true;
+        try{const rect=chip.getBoundingClientRect();localStorage.setItem('nc_chip_pos',JSON.stringify({x:rect.left,y:rect.top}));}catch(err){}
+      }
+    };
+    chip.addEventListener('pointerup',onUp);chip.addEventListener('pointercancel',onUp);
+    chip.onclick=e=>{if(chip.skipClick){chip.skipClick=false;return;}alert('留덉씠?섏씠吏 ?곕룞 踰꾪듉?낅땲?? (留덉슦?ㅻ줈 ?쒕옒洹명븯???먰븯???꾩튂濡??대룞?쒗궗 ???덉뒿?덈떎.)');};
+  }
+  window.addEventListener('DOMContentLoaded', () => {
+    let chip = document.getElementById("ncMemberChip");
+    if (!chip) {
+      chip = document.createElement("button");
+      chip.id = "ncMemberChip";
+      chip.className = "nc-member-chip";
+      chip.textContent = "??諛뺤갹???먯옣??(NovaCell)";
+      document.body.append(chip);
+      makeDraggable(chip);
+    }
+  });
+})();
+</script>
 </body>
 </html>
