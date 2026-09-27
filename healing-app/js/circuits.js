@@ -658,11 +658,15 @@ function handleSearch(query) {
 /* ==========================================================================
    5. 528Hz Healing Voltage Timer & Tibetan Singing Bowl Audio Engine
    ========================================================================== */
+/* ==========================================================================
+   5. 528Hz Healing Voltage Timer & Tibetan Singing Bowl Audio Engine
+   ========================================================================== */
 let audioCtx = null;
 let osc528 = null;
 let oscSub = null;
 let timerGainNode = null;
 let isAudioMuted = false;
+let masterVolume = 0.65; // Default volume: 65%
 
 let totalTimerSeconds = 300;
 let remainingTimerSeconds = 300;
@@ -682,6 +686,45 @@ function getAudioContext() {
   return audioCtx;
 }
 
+function setVolume(pct) {
+  masterVolume = Math.max(0, Math.min(100, pct)) / 100;
+  try {
+    localStorage.setItem("novacell_timer_vol", masterVolume);
+  } catch (e) {}
+
+  const slider = $("timer-volume-slider");
+  const pctLabel = $("vol-pct");
+  const volIcon = $("vol-icon");
+
+  const displayPct = Math.round(masterVolume * 100);
+  if (slider && parseInt(slider.value, 10) !== displayPct) {
+    slider.value = displayPct;
+  }
+  if (pctLabel) {
+    pctLabel.textContent = `${displayPct}%`;
+  }
+
+  if (volIcon) {
+    if (masterVolume <= 0.01 || isAudioMuted) {
+      volIcon.textContent = "\uD83D\uDD07"; // ?뵁
+    } else if (masterVolume < 0.5) {
+      volIcon.textContent = "\uD83D\uDD09"; // ?뵃
+    } else {
+      volIcon.textContent = "\uD83D\uDD0A"; // ?뵄
+    }
+  }
+
+  // Adjust currently playing 528Hz tone in real time
+  if (timerGainNode && audioCtx) {
+    try {
+      const now = audioCtx.currentTime;
+      timerGainNode.gain.cancelScheduledValues(now);
+      const targetGain = isAudioMuted ? 0.0001 : 0.28 * masterVolume;
+      timerGainNode.gain.linearRampToValueAtTime(Math.max(0.0001, targetGain), now + 0.08);
+    } catch (e) {}
+  }
+}
+
 function stop528HzSound() {
   if (!timerGainNode && !osc528 && !oscSub) return;
   const curCtx = audioCtx;
@@ -689,7 +732,6 @@ function stop528HzSound() {
   const curOsc528 = osc528;
   const curOscSub = oscSub;
 
-  // Immediately clear active pointers so new starts never collide
   timerGainNode = null;
   osc528 = null;
   oscSub = null;
@@ -703,7 +745,6 @@ function stop528HzSound() {
     } catch (e) {}
   }
 
-  // Gracefully stop the previous oscillators after the short fade-out
   setTimeout(() => {
     try {
       if (curOsc528) {
@@ -724,7 +765,7 @@ function stop528HzSound() {
 }
 
 function start528HzSound() {
-  if (isAudioMuted) return;
+  if (isAudioMuted || masterVolume <= 0.01) return;
   try {
     const ctx = getAudioContext();
     if (!ctx) return;
@@ -740,18 +781,25 @@ function start528HzSound() {
 }
 
 function doStart528(ctx) {
-  // If already playing continuously, do nothing (keep uninterrupted continuous sound!)
+  // If already playing continuously, keep playing without interruption
   if (osc528 && timerGainNode) return;
 
   stop528HzSound();
 
   const now = ctx.currentTime;
+  const vol = Math.max(0, Math.min(1, masterVolume));
+
+  // Lowpass filter for smooth, warm solfeggio tone (no harsh screech)
+  const filter = ctx.createBiquadFilter();
+  filter.type = "lowpass";
+  filter.frequency.setValueAtTime(850, now);
+  filter.connect(ctx.destination);
+
   const masterGain = ctx.createGain();
   masterGain.gain.cancelScheduledValues(now);
-  masterGain.gain.setValueAtTime(0.001, now);
-  // Clear, comfortable continuous healing tone (0.30 gain)
-  masterGain.gain.linearRampToValueAtTime(0.30, now + 0.3);
-  masterGain.connect(ctx.destination);
+  masterGain.gain.setValueAtTime(0.0001, now);
+  masterGain.gain.linearRampToValueAtTime(0.28 * vol, now + 0.35);
+  masterGain.connect(filter);
   timerGainNode = masterGain;
 
   // 528Hz Solfeggio fundamental tone (DNA repair / Cellular voltage restoration)
@@ -767,15 +815,22 @@ function doStart528(ctx) {
   oSub.type = "sine";
   oSub.frequency.setValueAtTime(264.0, now);
   const subGain = ctx.createGain();
-  subGain.gain.setValueAtTime(0.12, now);
+  subGain.gain.setValueAtTime(0.12 * vol, now);
   oSub.connect(subGain);
   subGain.connect(masterGain);
   oSub.start(now);
   oscSub = oSub;
 }
 
+/* ==========================================================================
+   Genuine Tibetan Meditation Singing Bowl Synthesis
+   - Soft padded felt-mallet strike (no harsh metallic click)
+   - Lowpass filtered (<650Hz) for deep golden bronze warmth
+   - 1.4Hz binaural acoustic beating ("??~~~ ?? ?? ??")
+   - Rich 9-second meditative lingering decay
+   ========================================================================== */
 function playSingingBowlBell() {
-  if (isAudioMuted) return;
+  if (isAudioMuted || masterVolume <= 0.01) return;
   try {
     const ctx = getAudioContext();
     if (!ctx) return;
@@ -791,51 +846,77 @@ function playSingingBowlBell() {
 }
 
 function doPlaySingingBowl(ctx) {
-  const frequencies = [264, 528, 1056, 1584, 2112];
-  const gains = [0.42, 0.32, 0.18, 0.10, 0.05];
-  const decayTimes = [6.0, 5.2, 4.2, 3.2, 2.0];
   const now = ctx.currentTime;
+  const vol = Math.max(0, Math.min(1, masterVolume));
 
-  frequencies.forEach((freq, i) => {
+  // Lowpass filter: cuts all harsh high-frequency noise above 650Hz completely
+  const filter = ctx.createBiquadFilter();
+  filter.type = "lowpass";
+  filter.frequency.setValueAtTime(650, now);
+  filter.Q.setValueAtTime(2.2, now);
+  filter.connect(ctx.destination);
+
+  // Meditation bowl harmonic structure
+  const voices = [
+    { freq: 264.0, gain: 0.45 * vol, decay: 9.0 },  // Primary warm bowl body
+    { freq: 265.4, gain: 0.40 * vol, decay: 8.5 },  // Acoustic tremolo beating (1.4Hz soothing wobble)
+    { freq: 132.0, gain: 0.28 * vol, decay: 7.5 },  // Deep temple gong sub-bass foundation
+    { freq: 528.0, gain: 0.16 * vol, decay: 6.0 },  // Sweet soft Solfeggio harmonic overtone
+    { freq: 529.2, gain: 0.12 * vol, decay: 5.5 }   // Subtle harmonic shimmer
+  ];
+
+  voices.forEach((v) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
     osc.type = "sine";
-    osc.frequency.setValueAtTime(freq + (i % 2 === 1 ? 0.75 : -0.5), now);
+    osc.frequency.setValueAtTime(v.freq, now);
 
+    // Felt-mallet soft attack (0.09s) - zero sharp transient click
     gain.gain.cancelScheduledValues(now);
     gain.gain.setValueAtTime(0.0001, now);
-    gain.gain.linearRampToValueAtTime(gains[i], now + 0.05);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + decayTimes[i]);
+    gain.gain.linearRampToValueAtTime(v.gain, now + 0.09);
+
+    // Long, deep, tranquil decay (??~~~ ?? ?? ??)
+    gain.gain.exponentialRampToValueAtTime(0.00005, now + v.decay);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(filter);
 
     osc.start(now);
-    osc.stop(now + decayTimes[i] + 0.1);
+    osc.stop(now + v.decay + 0.1);
   });
 }
 
 function playTestChime() {
+  if (masterVolume <= 0.01) return;
   try {
     const ctx = getAudioContext();
     if (!ctx) return;
     const now = ctx.currentTime;
+    const vol = Math.max(0, Math.min(1, masterVolume));
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = "lowpass";
+    filter.frequency.setValueAtTime(800, now);
+    filter.connect(ctx.destination);
+
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
     osc.type = "sine";
     osc.frequency.setValueAtTime(528, now);
 
-    gain.gain.setValueAtTime(0.001, now);
-    gain.gain.linearRampToValueAtTime(0.28, now + 0.04);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
+    gain.gain.cancelScheduledValues(now);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.linearRampToValueAtTime(0.24 * vol, now + 0.06);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.6);
 
     osc.connect(gain);
-    gain.connect(ctx.destination);
+    gain.connect(filter);
 
     osc.start(now);
-    osc.stop(now + 0.5);
+    osc.stop(now + 0.65);
   } catch (e) {}
 }
 
@@ -1026,6 +1107,11 @@ function initTimerEvents() {
       if (icon) icon.textContent = isAudioMuted ? "\uD83D\uDD07" : "\uD83D\uDD0A";
       if (sLabel) sLabel.textContent = isAudioMuted ? "\uCE58\uC720\uC74C \uAEBC\uC9D0" : "\uCE58\uC720\uC74C \uCF1C\uC9D0";
 
+      const volIcon = $("vol-icon");
+      if (volIcon) {
+        volIcon.textContent = isAudioMuted ? "\uD83D\uDD07" : (masterVolume < 0.5 ? "\uD83D\uDD09" : "\uD83D\uDD0A");
+      }
+
       if (isAudioMuted) {
         stop528HzSound();
       } else {
@@ -1036,6 +1122,39 @@ function initTimerEvents() {
         }
       }
     });
+  }
+
+  // Volume slider event listener
+  const volSlider = $("timer-volume-slider");
+  if (volSlider) {
+    volSlider.addEventListener("input", (e) => {
+      getAudioContext();
+      const val = parseInt(e.target.value, 10);
+      if (isAudioMuted && val > 0) {
+        isAudioMuted = false;
+        if (soundBtn) {
+          soundBtn.classList.remove("muted");
+          const icon = $("sound-icon");
+          const sLabel = $("sound-label");
+          if (icon) icon.textContent = "\uD83D\uDD0A";
+          if (sLabel) sLabel.textContent = "\uCE58\uC720\uC74C \uCF1C\uC9D0";
+        }
+      }
+      setVolume(val);
+    });
+  }
+
+  // Restore saved volume
+  try {
+    const savedVol = localStorage.getItem("novacell_timer_vol");
+    if (savedVol !== null) {
+      const parsed = parseFloat(savedVol);
+      if (!isNaN(parsed)) setVolume(Math.round(parsed * 100));
+    } else {
+      setVolume(65);
+    }
+  } catch (e) {
+    setVolume(65);
   }
 
   updateTimerDisplay();
@@ -1055,7 +1174,9 @@ function initLanguageToggle() {
 
   function applyLang(lang) {
     currentLang = lang;
-    localStorage.setItem("novacell_site_lang", lang);
+    try {
+      localStorage.setItem("novacell_site_lang", lang);
+    } catch (e) {}
 
     const navTherapy = $("nav-therapy");
     const navChakra = $("nav-chakra");

@@ -1122,3 +1122,58 @@ html, body {
   opacity: 0.35;
   font-size: 0.72rem;
 }
+/* Timer Volume Control */
+.timer-volume-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: var(--text-sub);
+  user-select: none;
+  transition: all 0.2s ease;
+}
+.timer-volume-wrap:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(15, 23, 42, 0.85);
+}
+.timer-volume-wrap .vol-icon {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+.timer-volume-slider {
+  width: 85px;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+  accent-color: #38bdf8;
+  transition: all 0.2s ease;
+}
+.timer-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.7);
+  transition: transform 0.15s ease;
+}
+.timer-volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+.timer-volume-wrap .vol-pct {
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-width: 32px;
+  text-align: right;
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
+}
