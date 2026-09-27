@@ -296,15 +296,89 @@
             <div id="recipe-sub-title" class="recipe-sub-title">Cervicogenic Headache & Occipital Neuralgia</div>
           </div>
 
-          <!-- The timer is a normal recipe card, below the selected condition title. -->
-          <section id="timer-modal" class="timer-dock timer-utility-card" aria-label="선택 포인트 타이머">
-            <div class="timer-heading"><div><span class="eyebrow">POINT TIMER</span><div id="timer-hp-code">선택 포인트</div><strong id="timer-hp-title"></strong></div><output id="timer-display" aria-label="남은 시간">10:00</output></div>
-            <div id="timer-progress" class="horizontal-progress" role="progressbar" aria-label="진행 시간" aria-valuemin="0" aria-valuemax="600" aria-valuenow="0"><div id="timer-progress-fill"></div></div>
-            <div class="timer-scale"><span>0</span><span id="timer-mid-scale">5분</span><span id="timer-max-scale">10분</span></div>
-            <div class="timer-settings"><label>시간 <input id="duration-value" type="number" value="10" min="1" max="10" step="1"></label><label><span class="sr-only">시간 단위</span><select id="duration-unit"><option value="60">분</option><option value="1">초</option></select></label><button id="duration-apply">설정 적용</button><button id="duration-ten">10분</button><span>1초–10분 · 시간 측정 전용</span></div>
-            <div class="timer-controls-row"><button id="timer-toggle-btn" class="btn-timer-action primary">시작</button><button id="timer-reset-btn" class="btn-timer-action">초기화</button><button id="timer-next-point-btn" class="btn-timer-action">다음 포인트</button><button id="modal-close-btn" hidden>닫기</button></div>
-            <div id="timer-status" role="status" aria-live="polite">기본 10분은 앱 설정값이며 치료 권장 시간이 아닙니다.</div>
-          </section>
+          <!-- 528Hz ?명룷 ?꾩븬 移섏쑀 ??대㉧ (?좉꼍 ?앹껜 ?뚮줈 & 李⑦겕??諛붿씠???ъ씤???쒖??? -->
+          <!-- 528Hz ?명룷 ?꾩븬 移섏쑀 ??대㉧ (?좉꼍 ?앹껜 ?뚮줈 & 李⑦겕??諛붿씠???ъ씤???쒖??? -->
+          <article id="timer-modal" class="healing-timer-card hp-healing-timer-card" aria-label="?좏깮 ?ъ씤??528Hz 移섏쑀 ??대㉧">
+            <div class="timer-card-header">
+              <div class="timer-brand-group">
+                <span class="timer-wave-icon">&#12336;</span>
+                <div>
+                  <h4 id="timer-title">528Hz &#xC138;&#xD3EC; &#xC804;&#xC555; &#xCE58;&#xC720; &#xD0C0;&#xC774;&#xBA38;</h4>
+                  <small id="timer-sub">DNA &#xBCF5;&#xC6D0; &#xC8FC;&#xD30C;&#xC218; &middot; &#xC2F1;&#xC789;&#xBCFC; &#xCC28;&#xC784; &#xBCA8;</small>
+                </div>
+              </div>
+              <span id="timer-status-badge" class="timer-status-badge">&#xB300;&#xAE30; &#xC911;</span>
+            </div>
+
+            <!-- ?쒖꽦 ?ъ씤???먮룞 ?곌껐 諛곕꼫 (湲곗〈 ?μ젏 ?꾨꼍 蹂댁〈) -->
+            <div class="timer-point-banner">
+              <div class="timer-point-tag">
+                <span class="timer-point-eyebrow">POINT TIMER</span>
+                <span id="timer-hp-code" class="timer-point-code">HP-01 &middot; 1 / 4</span>
+              </div>
+              <strong id="timer-hp-title" class="timer-point-title">&#xB300;&#xD6C4;&#xB450;&#xC2E0;&#xACBD;&#xC758; &#xC0C1;&#xD56D;&#xC120; &#xD1B5;&#xACFC; &#xC601;&#xC5ED;</strong>
+            </div>
+
+            <div class="timer-body">
+              <!-- ?쒓컙 議곗젅 踰꾪듉 (1遺?~ 10遺??꾨━??諛?+-30珥? -->
+              <div class="timer-controls-row">
+                <div class="timer-preset-group" aria-label="&#xD0C0;&#xC774;&#xBA38; &#xC2DC;&#xAC04; &#xD504;&#xB9AC;&#xC14B;">
+                  <button type="button" class="preset-btn" data-min="1" id="preset-1min">1&#xBD84;</button>
+                  <button type="button" class="preset-btn" data-min="3" id="preset-3min">3&#xBD84;</button>
+                  <button type="button" class="preset-btn active" data-min="5" id="preset-5min">5&#xBD84;</button>
+                  <button type="button" class="preset-btn" data-min="7" id="preset-7min">7&#xBD84;</button>
+                  <button type="button" class="preset-btn" data-min="10" id="preset-10min">10&#xBD84;</button>
+                </div>
+                <div class="timer-adjust-group">
+                  <button type="button" id="timer-dec-btn" class="timer-adjust-btn" title="30&#xCD08; &#xAC10;&#xC18C;">-30&#xCD08;</button>
+                  <button type="button" id="timer-inc-btn" class="timer-adjust-btn" title="30&#xCD08; &#xC99D;&#xAC00;">+30&#xCD08;</button>
+                </div>
+              </div>
+
+              <!-- ??대㉧ ?붿뒪?뚮젅??諛?528Hz 諛쒖쭊 ?쒖떆 -->
+              <div class="timer-display-wrap">
+                <output id="timer-display" class="timer-time-text" aria-label="&#xB0A8;&#xC740; &#xC2DC;&#xAC04;">05:00</output>
+                <div class="timer-freq-indicator">
+                  <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
+                  <span id="freq-label">528Hz &#xCE58;&#xC720; &#xC8FC;&#xD30C;&#xC218; &#xC900;&#xBE44;</span>
+                </div>
+              </div>
+
+              <!-- 媛濡?寃뚯씠吏 諛?(?쒓컙 寃쎄낵 ?쒓컖?? -->
+              <div id="timer-progress" class="timer-bar-track" role="progressbar" aria-label="&#xD0C0;&#xC774;&#xBA38; &#xC9C4;&#xD589; &#xAC8C;&#xC774;&#xC9C0;" aria-valuemin="0" aria-valuemax="300" aria-valuenow="0">
+                <div id="timer-bar-fill" class="timer-bar-fill" style="width: 100%;"></div>
+              </div>
+
+              <!-- ?숈옉 踰꾪듉 & ?ㅼ쓬 ?ъ씤??& ?ъ슫??蹂쇰ⅷ -->
+              <div class="timer-actions-row">
+                <button type="button" id="timer-toggle-btn" class="timer-btn-primary">
+                  <span id="timer-play-icon">&#9654;</span>
+                  <span id="timer-btn-label">&#xCE58;&#xC720; &#xD0C0;&#xC774;&#xBA38; &#xC2DC;&#xC791;</span>
+                </button>
+                <button type="button" id="timer-reset-btn" class="timer-btn-secondary">
+                  <span>&#8634;</span>
+                  <span id="timer-reset-label">&#xB9AC;&#xC14B;</span>
+                </button>
+                <button type="button" id="timer-next-point-btn" class="timer-btn-next" title="&#xB2E4;&#xC74C; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;&#xB85C; &#xC774;&#xB3D9;">
+                  <span>&#xB2E4;&#xC74C; &#xD3EC;&#xC778;&#xD2B8; &#x276F;</span>
+                </button>
+                <button type="button" id="timer-sound-toggle" class="timer-btn-sound" title="&#xC8FC;&#xD30C;&#xC218; &#xC18C;&#xB9AC; &#xCF1C;&#xAE30;/&#xB044;&#xAE30;">
+                  <span id="sound-icon">&#128266;</span>
+                  <span id="sound-label">&#xCE58;&#xC720;&#xC74C; &#xCF1C;&#xC9D0;</span>
+                </button>
+                <div class="timer-volume-wrap" title="&#xC74C;&#xB7C9; &#xC870;&#xC808;">
+                  <span id="vol-icon" class="vol-icon">&#128266;</span>
+                  <input type="range" id="timer-volume-slider" class="timer-volume-slider" min="0" max="100" value="65" aria-label="&#xC74C;&#xB7C9; &#xC870;&#xC808;">
+                  <span id="vol-pct" class="vol-pct">65%</span>
+                </div>
+              </div>
+
+              <p id="timer-desc" class="timer-desc">
+                * <strong>528Hz &#xC8FC;&#xD30C;&#xC218;</strong>&#xB294; &#xC190;&#xC0C1;&#xB41C; &#xC138;&#xD3EC; &#xC804;&#xC555;&#xC744; &#xAE68;&#xC6B0;&#xACE0; &#xBBF8;&#xD1A0;&#xCF58;&#xB4DC;&#xB9AC;&#xC544; ATP &#xC0DD;&#xC131;&#xC744; &#xCD09;&#xC9C4;&#xD569;&#xB2C8;&#xB2E4;. &#xD0C0;&#xC774;&#xBA38; &#xC885;&#xB8CC; &#xC2DC; <strong>&#xC2F1;&#xC789;&#xBCFC; &#xCC28;&#xC784; &#xBCA8;</strong>&#xC774; &#xBD80;&#xB4DC;&#xB7FD;&#xACE0; &#xB9D1;&#xAC8C; &#xC6B8;&#xB9BD;&#xB2C8;&#xB2E4;.
+              </p>
+            </div>
+            <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
+          </article>
 
           <!-- View 1: Clinical Recipe View -->
           <div id="recipe-view-container" class="recipe-subview-panel active">
@@ -588,14 +662,14 @@ const CONDITIONS_DATA = [
     ],
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe - 무극성 고전압 미세전류)',
-      contactMethod: '점진적 심부 압박 접촉 (Point Compression) 후 미세 회전 통전',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactMethod: '점진적 심부 압박 접촉 (Point Compression) 후 미세전류 전압 통전',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계 [분절 안정화]: HP-04 (C2-C3 후관절점)에 펜 도자를 25초간 접촉하여 중추 분절 흥분을 가라앉힙니다.',
-        '2단계 [심부 순환 개방]: HP-02 (후두하삼각점)에 도자를 수직으로 부드럽게 대어 30초간 통전합니다.',
-        '3단계 [말초 신경 포착 해소]: HP-01 (대후두신경점) 및 HP-03 (소후두신경점)에 각각 20초씩 펜을 접촉하여 방사통 경로를 차단합니다.'
+        '\u0031\uB2E8\uACC4 [\uBD84\uC808 \uC548\uC815\uD654]: HP-04 (C2-C3 \uD6C4\uAD00\uC808\uC810)\uC5D0 \uD39C \uB3C4\uC790\uB97C 30\uCD08\uAC04 \uC811\uCD09\uD558\uC5EC \uC911\uCD94 \uBD84\uC808 \uD765\uBD84\uC744 \uAC00\uB77C\uC549\uD799\uB2C8\uB2E4.',
+        '\u0032\uB2E8\uACC4 [\uC2EC\uBD80 \uC21C\uD658 \uAC1C\uBC29]: HP-02 (\uD6C4\uB450\uD558\uC0BC\uAC01\uC810)\uC5D0 \uB3C4\uC790\uB97C \uC218\uC9C1\uC73C\uB85C \uBD80\uB4DC\uB7FD\uAC8C \uB300\uC5B4 1\uBD84\uAC04 \uD1B5\uC804\uD569\uB2C8\uB2E4.',
+        '\u0033\uB2E8\uACC4 [\uB9D0\uCD08 \uC2E0\uACBD \uD3EC\uCC29 \uD574\uC18C]: HP-01 (\uB300\uD6C4\uB450\uC2E0\uACBD\uC810) \uBC0F HP-03 (\uC18C\uD6C4\uB450\uC2E0\uACBD\uC810)\uC5D0 \uAC01\uAC01 30\uCD08\uC529 \uD39C\uC744 \uC811\uCD09\uD558\uC5EC \uBC29\uC0AC\uD1B5 \uACBD\uB85C\uB97C \uCC28\uB2E8\uD569\uB2C8\uB2E4.'
       ],
       clinicalPearls: [
         '피부 표면에 수분감(전도성 미스트나 겔 소량)을 유지하면 미세전류의 심부 침투율이 극대화됩니다.',
@@ -606,7 +680,7 @@ const CONDITIONS_DATA = [
       primaryLandmarks: '외후두융기(External Occipital Protuberance), 유양돌기(Mastoid Process), 제2경추 극돌기(C2 Spinous Process)',
       dangerStructures: '추골동맥(Vertebral Artery, C1-C2 사이 외측 주행), 경정맥공 주위 혈관총, 척수관',
       probeTechnique: '두개골 하연 및 상항선 골면에 수직으로 직각 접촉하되, C1-C2 사이 후두하삼각 통전 시 두개강 방향으로 깊게 찌르는 압박을 금하고 연조직 표층 뼈 표면에 펜 도자를 지지합니다.',
-      safetyPrecautions: '추골동맥 박리 또는 뇌혈류 부전 병력이 있는 환자는 C1 외측 강압 촉진을 피하고 미세전류 통전 시간은 30초 미만으로 제한합니다.'
+      safetyPrecautions: '추골동맥 박리 또는 뇌혈류 부전 병력이 있는 환자는 C1 외측 강압 촉진을 피하고 미세전류 통전 시간은 1 미만으로 제한합니다.'
     },
     clinicalCases: [
       {
@@ -615,7 +689,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '우측 뒷머리에서 정수리를 지나 우측 안구 안쪽까지 쑤시고 타는 듯한 지속적 통증 (NRS 8)',
         priorTreatments: '신경차단술 10회 이상 시행했으나 3~4일 후 재발, 진통소염제 및 근이완제 복용 시 위장 장애로 중단',
         clinicalExamination: '우측 상항선(대후두신경 출구부) 극심한 압통과 함께 틴넬 징후 양성. 우측 C2-3 관절돌기 촉진 시 안구 후방으로 연관통 유발 확인',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-04(C2-C3 후관절 분절점) 25초, HP-02(후두하삼각) 30초, HP-01(대후두신경 출구점) 25초 통전 실시 (출력 레벨 3)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-04(C2-C3 후관절 분절점) 1, HP-02(후두하삼각) 1, HP-01(대후두신경 출구점) 1 통전 실시 (출력 레벨 3)',
         therapeuticOutcome: '1회 시술 직후 후두부 압박감이 8에서 3으로 경감, 안구 후방 통증 즉시 소실. 주 2회씩 총 4회 시술 후 NRS 1 이하로 안정화되어 컴퓨터 작업 시 통증 없음.',
         clinicalPearls: '경추성 두통 환자의 상당수는 후두부 자체보다 C2-C3 후관절낭의 기계적 감작이 선행하므로 반드시 분절 포인트를 먼저 통전하는 것이 성공의 열쇠입니다.'
       },
@@ -625,7 +699,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '귀 뒤쪽부터 관자놀이까지 벼락치듯 찌르는 편두통과 경부 뻣뻣함',
         priorTreatments: '트립탄 계열 편두통약 복용 중이었으나 약물 과용성 두통 의심 단계에 이름',
         clinicalExamination: '유양돌기 후하방 소후두신경 주행부(HP-HN-03) 촉진 시 관자놀이로 뻗치는 방사통 정확히 일치',
-        novaCellApplication: 'HP-HN-03(소후두신경점) 및 HP-HN-01(상항선)에 고전압 미세전류 펜 도자 각 25초 접촉 통전',
+        novaCellApplication: 'HP-HN-03(소후두신경점) 및 HP-HN-01(상항선)에 고전압 미세전류 펜 도자 각 1 접촉 통전',
         therapeuticOutcome: '시술 2회 차에 박동성 관자놀이 통증 소실, 두경부 가동범위 정상 회복 및 트립탄 약물 투약 완전 중단.'
       }
     ]
@@ -691,11 +765,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '미세 수직 안착 (Minimal Pressure Touch - 통증 유발점 자극 최소화)',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계 [중추 안정]: HP-04 (경돌유돌부)에 펜 도자를 20초간 부드럽게 대어 신경혈관 긴장을 풉니다.',
+        '1단계 [중추 안정]: HP-04 (경돌유돌부)에 펜 도자를 30초간 부드럽게 대어 신경혈관 긴장을 풉니다.',
         '2단계 [해당 분지 골공 통전]: 통증 호발 분지에 맞춰 HP-01(이마), HP-02(뺨), HP-03(턱끝) 골공 외연에 15초간 살포시 펜을 접촉합니다.'
       ],
       clinicalPearls: [
@@ -716,7 +790,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '양치질과 식사 시 우측 뺨과 상악 잇몸에 전기가 통하듯 찌릿하여 음식을 씹지 못함 (NRS 9)',
         priorTreatments: '카르바마제핀(항경련제) 복용 중 간수치 상승으로 감량 후 통증 재발, 미세혈관감압술 권유받았으나 고령으로 주저함',
         clinicalExamination: '우측 안와하공(Infraorbital foramen) 가벼운 접촉만으로도 뺨 전체로 번지는 강렬한 발작성 통증 유발',
-        novaCellApplication: '노바셀 단일 펜 도자 최저 1단계 세팅으로 HP-TN-04(유양돌기 전하방) 20초 안착 후, HP-TN-02(안와하공 외연)에 15초간 비침습 미세전류 통전 시행',
+        novaCellApplication: '노바셀 단일 펜 도자 최저 1단계 세팅으로 HP-TN-04(유양돌기 전하방) 30초 안착 후, HP-TN-02(안와하공 외연)에 15초간 비침습 미세전류 통전 시행',
         therapeuticOutcome: '1회 치료 후 식사 시 통증 빈도 50% 감소. 총 6회 통전 후 음식 저작 및 양치질이 통증 없이 가능해져 NRS 1로 안정.'
       }
     ]
@@ -772,12 +846,12 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '부드러운 정적 접촉 후 마비근 주행 방향으로 미세 유도 스트로킹',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: HP-01(경돌유돌공 주간부)에 펜 도자를 25초간 접촉하여 본간 신경혈류를 촉진합니다.',
-        '2단계: HP-03(안륜근점)과 HP-02(협근점)에 각각 20초간 통전하며 근육 긴장도를 유도합니다.'
+        '1단계: HP-01(경돌유돌공 주간부)에 펜 도자를 1간 접촉하여 본간 신경혈류를 촉진합니다.',
+        '2단계: HP-03(안륜근점)과 HP-02(협근점)에 각각 30초간 통전하며 근육 긴장도를 유도합니다.'
       ],
       clinicalPearls: [
         '발병 초기 골든타임(발병 2주 이내)뿐만 아니라, 수개월이 지난 후유증기(연합운동, 근경련)에도 미세전류의 세포 ATP 합성 촉진 효과가 탁월합니다.'
@@ -796,7 +870,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '양치 시 입술 우측으로 물이 주르륵 흐르고, 눈이 2mm가량 덜 감겨 안구건조증 극심',
         priorTreatments: '발병 초기 스테로이드 2주 복용 후 호전 정체, 침 치료 및 물리치료 병행 중이었으나 눈꺼풀 마비 지속',
         clinicalExamination: 'House-Brackmann 등급 Grade IV. 귓불 뒤쪽 유양돌기 함요부 압통 및 협근 긴장도 현저히 저하',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-FP-01(경돌유돌공) 25초, HP-FP-03(안륜근 외측) 20초, HP-FP-02(협근) 20초 주 3회 시술',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-FP-01(경돌유돌공) 1, HP-FP-03(안륜근 외측) 30초, HP-FP-02(협근) 30초 주 3회 시술',
         therapeuticOutcome: '치료 2주 차(6회)에 눈이 완전히 감기기 시작했으며, 4주 차에 입술 비대칭이 Grade II로 획기적 호전됨.'
       }
     ]
@@ -842,11 +916,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '부드러운 압박 후 작은 원을 그리며 미세 진동 인가',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-TH-01(두판상근 부착점)과 HP-TH-02(상두사근점)에 각각 25초간 순차적으로 도자를 접촉합니다.'
+        'HP-TH-01(두판상근 부착점)과 HP-TH-02(상두사근점)에 각각 1간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '목을 가볍게 턱을 당긴(Chin-tuck) 자세에서 통전하면 근막 이완 효과가 배가됩니다.'
@@ -865,7 +939,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '매일 오후 3시만 되면 머리 전체가 터질 듯 조이고 눈이 침침함 (NRS 6)',
         priorTreatments: '진통제 매일 2알 복용, 마사지 및 스트레칭으로도 반나절 후 재발',
         clinicalExamination: '양측 두판상근 부착부 극심한 밴드형 경결 및 압통 확인',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-TH-01 및 HP-TH-02에 각 25초 통전 (주 2회, 2주간 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-TH-01 및 HP-TH-02에 각 1 통전 (주 2회, 2주간 총 4회)',
         therapeuticOutcome: '1회 치료 후 당일 오후 두통 없이 근무 완료. 4회 시술 후 진통제 투약 100% 중단.'
       }
     ]
@@ -921,12 +995,12 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '입을 살짝 벌린(Rest position) 상태에서 관절 틈새에 직각 안착',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: HP-02(교근 심부점)에 25초간 통전하여 강직된 턱 근육을 이완합니다.',
-        '2단계: 입을 반쯤 벌린 상태에서 HP-01(외측익돌근점)과 HP-03(이개측두신경점)에 각 20초간 세밀히 통전합니다.'
+        '1단계: HP-02(교근 심부점)에 1간 통전하여 강직된 턱 근육을 이완합니다.',
+        '2단계: 입을 반쯤 벌린 상태에서 HP-01(외측익돌근점)과 HP-03(이개측두신경점)에 각 30초간 세밀히 통전합니다.'
       ],
       clinicalPearls: [
         '환자에게 혀를 입천장에 가볍게 대고 힘을 뺀 상태를 유지하도록 지도하면 관절강이 열려 효과가 극대화됩니다.'
@@ -945,7 +1019,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '입을 벌릴 때 손가락 2개도 들어가지 않고(개구량 23mm) 턱에서 뚝뚝 소리와 심한 통증 (NRS 7)',
         priorTreatments: '치과 스플린트(마우스피스) 6개월 착용했으나 개구제한 지속',
         clinicalExamination: '우측 외측익돌근 및 심부 교근 촉진 시 격렬한 압통, 개구 시 하악이 우측으로 지그재그 편위',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-TM-02(교근) 25초 통전 후, 입을 살짝 벌린 상태에서 HP-TM-01 및 HP-TM-03 각 20초 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-TM-02(교근) 1 통전 후, 입을 살짝 벌린 상태에서 HP-TM-01 및 HP-TM-03 각 30초 통전',
         therapeuticOutcome: '1회 시술 직후 개구량 38mm(손가락 3개 통과)로 즉시 회복. 3회 치료 후 관절 잡음 소실 및 정상 식사 가능.'
       }
     ]
@@ -1004,15 +1078,15 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '심부 지지 압박 후 관절낭 방향으로 미세 통전 회전',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: HP-01(견갑절흔 견갑상신경)에 30초간 통전하여 관절낭 중추 통증을 차단합니다.',
-        '2단계: HP-02(액와신경 사각간극)와 HP-03(이두근구)에 각 25초간 통전하여 전·후방 관절낭 섬유화를 이완시킵니다.'
+        '1단계: HP-01(견갑절흔 견갑상신경)에 1간 통전하여 관절낭 중추 통증을 차단합니다.',
+        '2단계: HP-02(액와신경 사각간극)와 HP-03(이두근구)에 각 1간 통전하여 전·후방 관절낭 섬유화를 이완시킵니다.'
       ],
       clinicalPearls: [
-        '통전 직후 통증이 가라앉은 상태에서 환자에게 가벼운 시계추 운동(Codman exercise)을 30초간 병행시키면 관절낭 이완 효과가 오래 유지됩니다.'
+        '통전 직후 통증이 가라앉은 상태에서 환자에게 가벼운 시계추 운동(Codman exercise)을 1간 병행시키면 관절낭 이완 효과가 오래 유지됩니다.'
       ]
     },
     anatomicalSafetyGuide: {
@@ -1028,7 +1102,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '야간에 우측으로 눕지 못하고 자다가 깨서 울 정도로 아픔, 굴곡 80도, 외전 70도, 열중쉬어 불가 (NRS 8)',
         priorTreatments: '체외충격파 8회 및 소염진통제 복용했으나 야간통 지속',
         clinicalExamination: '견갑절흔부(HP-FS-01) 촉진 시 극심한 압통과 함께 어깨 심부로 뻗치는 통증, 후방 사각간극 결절 확인',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-FS-01 30초, HP-FS-02 30초, HP-FS-03 25초 통전 (주 2회, 3주간 총 6회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-FS-01 1, HP-FS-02 1, HP-FS-03 1 통전 (주 2회, 3주간 총 6회)',
         therapeuticOutcome: '2회 시술 후 야간통 90% 소실로 수면 회복. 6회 시술 후 굴곡 160도, 외전 150도로 가동 범위 대부분 정상화.'
       }
     ]
@@ -1074,11 +1148,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '팔을 가볍게 뒤로 신전시킨 상태에서 대결절 건면에 직각 안착',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-RC-02(견봉하 점액낭점) 25초 통전 후, HP-RC-01(극상근 부착부)에 25초간 집중 통전합니다.'
+        'HP-RC-02(견봉하 점액낭점) 1 통전 후, HP-RC-01(극상근 부착부)에 1간 집중 통전합니다.'
       ],
       clinicalPearls: [
         '팔을 약간 뒤로 젖히면 견봉 밑에 숨어있던 극상근 건이 전방으로 노출되어 펜 도자의 미세전류가 건병증 부위에 정확히 도달합니다.'
@@ -1097,7 +1171,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '스매싱 동작 시 어깨 외측에 날카로운 통증, 외전 80도에서 전형적인 통증 호 (NRS 7)',
         priorTreatments: '물리치료 및 찜질 2개월간 시행했으나 운동 복귀 시 통증 재발',
         clinicalExamination: 'Neer 충돌 검사 및 Hawkins 검사 양성, 대결절 상면 압통 현저',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-RC-01 및 HP-RC-02에 각 25초 통전 (주 2회, 2주간 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-RC-01 및 HP-RC-02에 각 1 통전 (주 2회, 2주간 총 4회)',
         therapeuticOutcome: '2회 시술 후 일상생활 통증 소실, 4회 시술 후 Painful arc 음성으로 전환되어 배드민턴 복귀.'
       }
     ]
@@ -1143,11 +1217,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '미세 수직 안착 (과도한 심부 찌름 금지, 표재 근막 접촉)',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-TOS-01(사각근 간극)에 20초간 부드럽게 대어 신경 긴장을 풀고, HP-TOS-02(소흉근부)에 20초간 접촉합니다.'
+        'HP-TOS-01(사각근 간극)에 30초간 부드럽게 대어 신경 긴장을 풀고, HP-TOS-02(소흉근부)에 30초간 접촉합니다.'
       ],
       clinicalPearls: [
         '쇄골 상와 부위는 쇄골하동맥이 주행하므로 반드시 손가락으로 동맥 맥박을 확인하고 맥박의 외측 안전 구역에 펜을 접촉해야 합니다.'
@@ -1166,7 +1240,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '가위질이나 드라이기를 들고 5분만 있어도 양팔이 저려 팔을 떨어뜨림, Roos 검사 양성 (NRS 7)',
         priorTreatments: '목 디스크로 오인하여 경추 도수치료 및 견인치료 3개월 받았으나 무효',
         clinicalExamination: 'Wright 과외전 검사 및 Adson 검사 양성, 쇄골 상와 사각근 촉진 시 제4-5수지로 전기가 방사됨',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-TOS-01(사각근 간극 외측 안전구역) 20초, HP-TOS-02(소흉근) 20초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-TOS-01(사각근 간극 외측 안전구역) 30초, HP-TOS-02(소흉근) 30초 주 2회 통전',
         therapeuticOutcome: '3회 시술 후 드라이기 사용 시 팔 저림 70% 감소, 6회 치료 후 Roos 검사 3분간 정상 유지.'
       }
     ]
@@ -1212,11 +1286,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '견갑골 뼈 가장자리에 지지하여 뼈를 향해 비스듬히 통전',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-DSN-01(견갑골 상각) 25초 통전 후, HP-DSN-02(능형근점)에 25초간 도자를 안착시킵니다.'
+        'HP-DSN-01(견갑골 상각) 1 통전 후, HP-DSN-02(능형근점)에 1간 도자를 안착시킵니다.'
       ],
       clinicalPearls: [
         '환자가 팔을 반대쪽 어깨로 감싸 쥐어 날개뼈가 외측으로 벌어지게 한 후 시술하면 능형근 부위가 편평하게 펴져 통전 효과가 탁월합니다.'
@@ -1235,7 +1309,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '좌측 견갑골 안쪽이 칼로 도려내는 듯 아파 업무 집중 불가, 야간 수면 방해 (NRS 7)',
         priorTreatments: '체외충격파 10회 및 마사지 지속했으나 일시적 호전 후 당일 재발',
         clinicalExamination: '견갑골 상각 및 내측연(HP-DSN-02)에 굵은 연필심 같은 근막 경결 촉진',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-DSN-01 25초, HP-DSN-02 25초 통전 (주 2회, 2주간 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-DSN-01 1, HP-DSN-02 1 통전 (주 2회, 2주간 총 4회)',
         therapeuticOutcome: '1회 시술 직후 묵직하던 결림의 60% 즉각 경감, 4회 치료 후 만성 결림 완전 소실.'
       }
     ]
@@ -1284,11 +1358,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '골막 부착부에 직각으로 단단히 지지 후 미세 전류 인가',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-LE-01(외측상과 건부착점) 25초 통전 후, HP-LE-02(Frohse 아케이드)에 25초간 접촉합니다.'
+        'HP-LE-01(외측상과 건부착점) 1 통전 후, HP-LE-02(Frohse 아케이드)에 1간 접촉합니다.'
       ],
       clinicalPearls: [
         '외측상과 뼈만 누르지 말고 그 바로 1cm 아래 근육 힘줄 접합부(Musculotendinous junction)를 함께 통전해야 재발하지 않습니다.'
@@ -1307,7 +1381,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '망치질이나 나사 조일 때 팔꿈치 바깥이 찢어지듯 아파 일손을 놓음, Cozen 검사 강양성 (NRS 8)',
         priorTreatments: '물리치료 10회 및 팔꿈치 밴드 착용했으나 호전 없음',
         clinicalExamination: '외측상과 건부착부(HP-LE-01) 극심한 압통 및 악력 측정 시 건측의 40%로 저하',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-LE-01 및 HP-LE-02 각 25초 통전 (주 2회, 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-LE-01 및 HP-LE-02 각 1 통전 (주 2회, 총 4회)',
         therapeuticOutcome: '2회 시술 후 악력 80% 회복, 4회 치료 후 Cozen 검사 음성 전환 및 목수 작업 통증 없이 복귀.'
       }
     ]
@@ -1353,11 +1427,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '내측상과 전면 골면에 안전 지지 접촉',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-ME-01(내측상과 건부착점) 25초 통전 후, HP-ME-02(원회내근)에 25초간 접촉합니다.'
+        'HP-ME-01(내측상과 건부착점) 1 통전 후, HP-ME-02(원회내근)에 1간 접촉합니다.'
       ],
       clinicalPearls: [
         '내측상과 바로 뒤쪽 고랑에는 척골신경이 지나가므로 절대 뒤쪽 고랑을 찌르지 말고 전하면 뼈에만 도자를 안착시킵니다.'
@@ -1376,7 +1450,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '아이언 샷 임팩트 시 좌측 팔꿈치 안쪽이 찢어지는 통증, 손목 굴곡 저항 검사 양성 (NRS 7)',
         priorTreatments: '소염진통제 복용 및 파스 부착했으나 스윙 시 재발',
         clinicalExamination: '내측상과 전하방(HP-ME-01) 국소 압통 명확, 척골신경 틴넬 징후는 음성',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-ME-01 및 HP-ME-02 각 25초 통전 (주 2회, 총 3회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-ME-01 및 HP-ME-02 각 1 통전 (주 2회, 총 3회)',
         therapeuticOutcome: '2회 시술 후 스윙 임팩트 통증 소실, 3회 치료 후 필드 레슨 정상 복귀.'
       }
     ]
@@ -1422,11 +1496,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '신경을 짓누르지 않고 인대 가장자리에 깃털처럼 가볍게 안착',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-CuT-01 및 HP-CuT-02에 각 20초간 부드럽게 접촉하여 통전합니다.'
+        'HP-CuT-01 및 HP-CuT-02에 각 30초간 부드럽게 접촉하여 통전합니다.'
       ],
       clinicalPearls: [
         '척골신경 본간을 펜촉으로 세게 누르면 전기 충격 같은 통증이 유발되므로, 주관의 골성 테두리에 펜 도자를 지지하여 전류를 유도하십시오.'
@@ -1445,7 +1519,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '컴퓨터 키보드 칠 때 우측 새끼손가락 감각이 둔하고 밤에 팔꿈치를 접고 자면 저려 깸 (NRS 6)',
         priorTreatments: '비타민 B제제 복용 및 물리치료 했으나 진전 없음',
         clinicalExamination: '주관 부위 틴넬 징후 강양성(새끼손가락으로 찌릿), Froment 징후 양성',
-        novaCellApplication: '노바셀 단일 펜 도자 1단계 출력으로 HP-CuT-01 및 HP-CuT-02 각 20초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자 1단계 출력으로 HP-CuT-01 및 HP-CuT-02 각 30초 주 2회 통전',
         therapeuticOutcome: '2주(4회) 시술 후 야간 수면 저림 소실, 4주 후 새끼손가락 감각 90% 정상 회복.'
       }
     ]
@@ -1501,12 +1575,12 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '수근관 횡수근인대 표면에 수직 점진 안착',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: HP-CTS-02(원회내근부) 25초 통전으로 상부 신경 경로를 개방합니다.',
-        '2단계: HP-CTS-01(수근관 입구)에 25초, HP-CTS-03(무지구)에 20초간 순차적으로 도자를 접촉합니다.'
+        '1단계: HP-CTS-02(원회내근부) 1 통전으로 상부 신경 경로를 개방합니다.',
+        '2단계: HP-CTS-01(수근관 입구)에 1, HP-CTS-03(무지구)에 30초간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '손목 터널 증후군은 손목만 치료하면 재발률이 높으므로, 반드시 전완 상부의 원회내근 관통점(HP-CTS-02)을 함께 통전해야 근본 치료가 됩니다.'
@@ -1525,7 +1599,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '새벽마다 손이 타는 듯이 저려 깨서 손을 털어야 함, 팔렌 검사 15초 만에 양성 (NRS 8)',
         priorTreatments: '수술 권유받았으나 조리 업무 중단이 어려워 보존적 치료 희망',
         clinicalExamination: '양측 손목 틴넬 징후 양성, 무지구 근위축 경미하게 관찰됨',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-CTS-02 25초, HP-CTS-01 25초, HP-CTS-03 20초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-CTS-02 1, HP-CTS-01 1, HP-CTS-03 30초 주 2회 통전',
         therapeuticOutcome: '시술 1주(2회) 후 야간 수면 저림 소실, 4주(8회) 치료 후 팔렌 검사 60초 이상 음성으로 완치.'
       }
     ]
@@ -1571,11 +1645,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '도르래 결절 및 건초 구획 골면에 밀착 접촉',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '해당 증상에 맞춰 HP-TF-01(도르래 결절) 또는 HP-DQ-01(요골 붓돌기)에 25초간 접촉 통전합니다.'
+        '해당 증상에 맞춰 HP-TF-01(도르래 결절) 또는 HP-DQ-01(요골 붓돌기)에 1간 접촉 통전합니다.'
       ],
       clinicalPearls: [
         '방아쇠수지 시술 시 손가락을 가볍게 굽혔다 펴는 동작을 하면서 통전하면 도르래와 건 사이 유착 박리 속도가 훨씬 빨라집니다.'
@@ -1594,7 +1668,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '아침마다 중지가 걸려 펴지지 않고 펼 때 딱 소리와 함께 극심한 통증 (NRS 7)',
         priorTreatments: '물리치료 및 파스 부착했으나 걸림 증상 악화',
         clinicalExamination: '우측 3지 A1 도르래 부위 직경 4mm 결절 촉진 및 굴신 시 Snapping 명확',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-TF-01 결절부에 25초간 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-TF-01 결절부에 1간 주 2회 통전',
         therapeuticOutcome: '2회 시술 후 걸림 현상 80% 완화, 4회 치료 후 걸림 없이 부드러운 손가락 굴신 회복.'
       }
     ]
@@ -1643,11 +1717,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '늑골 뼈 표면에 펜 도자를 비스듬히 안착 (늑간 틈새 깊은 직각 찌름 금지)',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-IN-01(늑골각 하연) 20초 통전 후, HP-IN-02(중액와선 외측피지)에 20초간 순차적으로 도자를 접촉합니다.'
+        'HP-IN-01(늑골각 하연) 30초 통전 후, HP-IN-02(중액와선 외측피지)에 30초간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '늑골 아래 고랑에는 신경과 함께 늑간동맥이 주행하므로 강한 압박을 피하고 늑골 뼈 하연 골막에 살짝 걸치듯 펜을 유지합니다.'
@@ -1666,7 +1740,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '기침하거나 차를 후진할 때 좌측 옆구리에서 앞가슴까지 전기가 오르듯 찔러 숨을 헐떡임 (NRS 8)',
         priorTreatments: '흉부 엑스레이 및 CT상 폐와 늑골 골절 이상 없음, 진통소염제 복용 무효',
         clinicalExamination: '좌측 제7늑골각 하연(HP-IN-01) 촉진 시 앞가슴으로 뻗치는 번개 통증 재현',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-IN-01 및 HP-IN-02 각 20초간 안전 안착 통전 (주 2회, 총 3회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-IN-01 및 HP-IN-02 각 30초간 안전 안착 통전 (주 2회, 총 3회)',
         therapeuticOutcome: '1회 시술 직후 심호흡 시 통증 70% 감소, 3회 시술 후 기침 및 상체 회전 통증 완전 소실.'
       }
     ]
@@ -1712,11 +1786,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '횡돌기 및 늑골 골면에 도자를 안착하여 통전',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-DSP-01(후관절점) 25초 통전 후, HP-DSP-02(흉장늑근점)에 25초간 접촉합니다.'
+        'HP-DSP-01(후관절점) 1 통전 후, HP-DSP-02(흉장늑근점)에 1간 접촉합니다.'
       ],
       clinicalPearls: [
         '흉추 분절 통전 시 복식호흡을 유도하여 흉곽이 부드럽게 움직이게 하면 후관절 간극의 압력이 빠르게 정상화됩니다.'
@@ -1735,7 +1809,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '오후 2시만 되면 등 한가운데가 타는 듯 뻐근하고 명치 부근까지 결려 업무 중단 (NRS 6)',
         priorTreatments: '도수치료 10회 및 마사지 지속했으나 당일 저녁 재발',
         clinicalExamination: 'T5-6 흉추 후관절 횡돌기 상연(HP-DSP-01) 국소 압통 현저 및 흉장늑근 경결',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-DSP-01 및 HP-DSP-02에 각 25초 통전 (주 2회, 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-DSP-01 및 HP-DSP-02에 각 1 통전 (주 2회, 총 4회)',
         therapeuticOutcome: '2회 시술 후 타는 듯한 통증 소실, 4회 치료 후 장시간 컴퓨터 근무에도 등 결림 없음.'
       }
     ]
@@ -1781,11 +1855,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '극미세 가벼운 접촉 (Light Touch - 통증 유발 금지, 경계부 접근)',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: 통증 부위의 근원인 척추 부근 HP-PHN-01(DRG 반사점)에 20초간 조용히 접촉합니다.',
+        '1단계: 통증 부위의 근원인 척추 부근 HP-PHN-01(DRG 반사점)에 30초간 조용히 접촉합니다.',
         '2단계: 극심한 이질통 부위 중심부가 아닌 그 외곽 경계부 HP-PHN-02에 15초간 살포시 펜을 댑니다.'
       ],
       clinicalPearls: [
@@ -1805,7 +1879,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '옷이 닿기만 해도 불에 덴 듯 아파 헐렁한 얇은 옷만 겨우 걸치고 외출 불가 (NRS 9)',
         priorTreatments: '마약성 진통제(패치) 및 항우울제 복용 중이나 어지럼증과 변비 부작용, 신경차단술 5회 무효',
         clinicalExamination: '우측 흉곽 옆구리에 심한 이질통(Allodynia)과 색소침착 관찰, T6-7 척추 주위 압통',
-        novaCellApplication: '노바셀 단일 펜 도자 1단계 출력으로 HP-PHN-01(DRG 영역) 20초, 이질통 외곽 정상 피부에 15초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자 1단계 출력으로 HP-PHN-01(DRG 영역) 30초, 이질통 외곽 정상 피부에 15초 주 2회 통전',
         therapeuticOutcome: '2주(4회) 후 불타는 작열통 50% 경감, 6주 치료 후 옷을 입고 산책이 가능할 정도로 NRS 2로 안정.'
       }
     ]
@@ -1851,11 +1925,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '흉골 및 늑연골 뼈 표면에 수직으로 부드럽게 안착',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-ACS-02(루이스각) 20초 통전 후, 가장 압통이 심한 HP-ACS-01(흉늑관절 결절)에 20초간 도자를 접촉합니다.'
+        'HP-ACS-02(루이스각) 30초 통전 후, 가장 압통이 심한 HP-ACS-01(흉늑관절 결절)에 30초간 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '환자가 숨을 천천히 내쉰(Exhalation) 상태에서 가볍게 접촉하면 흉골 뼈 표면에 안정적으로 밀착됩니다.'
@@ -1874,7 +1948,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '좌측 흉골 옆이 찌릿찌릿 쑤셔 심장마비 공포감에 응급실 2회 방문 (NRS 7)',
         priorTreatments: '심장 초음파, 24시간 홀터 심전도 정상 판정 후 신경안정제 처방받음',
         clinicalExamination: '좌측 제3, 4 흉늑관절(HP-ACS-01)을 누르면 "바로 여기가 아픈 곳이다"라며 극심한 압통 확인 (Tietze 검사 양성)',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-ACS-02 및 HP-ACS-01 각 20초간 부드럽게 통전 (주 2회, 2주간 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-ACS-02 및 HP-ACS-01 각 30초간 부드럽게 통전 (주 2회, 2주간 총 4회)',
         therapeuticOutcome: '1회 시술 직후 압통 50% 호전 및 심리적 불안 해소, 4회 치료 후 가슴 찌름 통증 완전 소실.'
       }
     ]
@@ -1933,12 +2007,12 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '수직 심부 압박 접촉 (Deep Perpendicular Compression)',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: HP-01(L4-L5 후관절) 및 HP-02(L5-S1 후관절)에 각각 30초간 펜 도자를 수직으로 깊게 안착시킵니다.',
-        '2단계: HP-03(장골능 부착점)에 25초간 접촉하여 외측 지지 인대의 긴장도를 낮춥니다.'
+        '1단계: HP-01(L4-L5 후관절) 및 HP-02(L5-S1 후관절)에 각각 1간 펜 도자를 수직으로 깊게 안착시킵니다.',
+        '2단계: HP-03(장골능 부착점)에 1간 접촉하여 외측 지지 인대의 긴장도를 낮춥니다.'
       ],
       clinicalPearls: [
         '환자를 엎드리게 한 후 배 밑에 베개를 하나 받쳐 요추 전만을 약간 완만하게 만들어주면 후관절 간극이 열려 통전 효율이 대폭 상승합니다.'
@@ -1957,7 +2031,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '장시간 운전 후 차에서 내릴 때 허리가 굳어 바로 서지 못하고 뒤로 젖히면 악 소리 나게 아픔 (NRS 7)',
         priorTreatments: '허리 신경차단술 6회 시행했으나 2~3주 후 재발, 진통소염제 장기 복용으로 속쓰림',
         clinicalExamination: 'Kemp 검사 양성(허리 신전 및 회전 시 요통 악화), 하지 직거상 검사(SLR)는 80도 정상',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-LP-01(L4-5) 30초, HP-LP-02(L5-S1) 30초, HP-LP-03 25초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-LP-01(L4-5) 1, HP-LP-02(L5-S1) 1, HP-LP-03 1 주 2회 통전',
         therapeuticOutcome: '1회 시술 직후 허리 젖힘 각도 15도에서 30도로 증가, 4회 치료 후 운전 후 하차 시 허리 바로 펴짐.'
       }
     ]
@@ -2003,11 +2077,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '부드러운 정적 접촉 후 경련 근육을 가볍게 지지',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-ALS-01(제12늑골 하연) 25초 통전 후, HP-ALS-02(장골능 부착점)에 25초간 접촉하여 긴장을 풉니다.'
+        'HP-ALS-01(제12늑골 하연) 1 통전 후, HP-ALS-02(장골능 부착점)에 1간 접촉하여 긴장을 풉니다.'
       ],
       clinicalPearls: [
         '급성기 환자는 엎드리기 어려우므로 아픈 쪽이 위로 오도록 옆으로 눕힌 자세(측와위)에서 다리 사이에 베개를 끼우고 시술하면 매우 편안해합니다.'
@@ -2026,7 +2100,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '무거운 상자를 들다 허리에서 "뚝" 소리가 난 후 허리를 전혀 펴지 못하고 부축받아 내원 (NRS 9)',
         priorTreatments: '내원 직전 소염진통 처치 및 약물 복용했으나 보행 불가 상태 지속',
         clinicalExamination: '우측 요방형근 돌처럼 단단하게 뭉침, 허리 굴곡 10도 이상 불가능',
-        novaCellApplication: '측와위 자세에서 노바셀 단일 펜 도자로 HP-ALS-01 및 HP-ALS-02 각 25초 통전 후 5분 안정',
+        novaCellApplication: '측와위 자세에서 노바셀 단일 펜 도자로 HP-ALS-01 및 HP-ALS-02 각 1 통전 후 5분 안정',
         therapeuticOutcome: '시술 직후 혼자 힘으로 일어서서 걸을 수 있게 되었으며 허리 굴곡 60도 회복, 2일 후 완치.'
       }
     ]
@@ -2072,11 +2146,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '점진적 압박 후 신경근 흥분 신호 안정화 유도',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-LDR-01(해당 신경근점) 30초 통전 후, HP-LDR-02(상둔피신경점)에 25초간 순차적으로 도자를 접촉합니다.'
+        'HP-LDR-01(해당 신경근점) 1 통전 후, HP-LDR-02(상둔피신경점)에 1간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '다리로 뻗치는 통증이 심할수록 발끝 말초만 만지지 말고 허리의 신경근 기시부(HP-LDR-01)를 먼저 통전하여 신경근 부종을 가라앉혀야 합니다.'
@@ -2095,7 +2169,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '좌측 엉덩이부터 종아리 바깥쪽, 엄지발가락까지 찌릿하고 당겨 50m 이상 보행 불가 (NRS 8)',
         priorTreatments: 'MRI상 L4-5 추간판 후외측 탈출 확인, 경막외 신경차단술 2회 후에도 저림 지속',
         clinicalExamination: '하지 직거상 검사(SLR) 좌측 35도에서 극심한 하지 방사통 양성, L5 감각 저하',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-LDR-01(L4-5 신경근점) 30초, HP-LDR-02 25초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-LDR-01(L4-5 신경근점) 1, HP-LDR-02 1 주 2회 통전',
         therapeuticOutcome: '2주(4회) 시술 후 SLR 70도로 호전, 종아리 저림 80% 소실되어 500m 이상 정상 보행.'
       }
     ]
@@ -2141,11 +2215,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '골막 심부 지지 접촉 후 척추 주위 미세 순환 유도',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-LSS-01(L4-L5 추간공부) 30초 통전 후, HP-LSS-02(후천골공점)에 30초간 순차적으로 도자를 접촉합니다.'
+        'HP-LSS-01(L4-L5 추간공부) 1 통전 후, HP-LSS-02(후천골공점)에 1간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '협착증 환자는 허리를 약간 구부린 새우잠 자세(Fetal position)로 눕힌 후 시술하면 척추관이 확장되어 통전 시 신경 편안함이 극대화됩니다.'
@@ -2164,7 +2238,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '연속 보행 가능 거리 50m 미만, 종아리가 터질 듯해 마트 장보기가 불가능 (NRS 8)',
         priorTreatments: '신경성형술 1회 및 풍선확장술 1회 받았으나 6개월 후 파행 재발, 수술 고려 중',
         clinicalExamination: '보행 파행 테스트 70m에서 종아리 통증 발현, SLR은 75도 정상 (협착증 전형 소견)',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-LSS-01 30초, HP-LSS-02 30초 주 2회 통전 (총 8회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-LSS-01 1, HP-LSS-02 1 주 2회 통전 (총 8회)',
         therapeuticOutcome: '4주 치료 후 연속 보행 거리 50m에서 300m 이상으로 비약적 증가, 야간 종아리 쥐남 소실.'
       }
     ]
@@ -2220,13 +2294,13 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '심부 지지 압박 접촉 (Point Compression) 후 미세 진동 인가',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: HP-PS-02(대전자 정지부) 25초 통전으로 근육 외측 장력을 풉니다.',
-        '2단계: HP-PS-01(이상근하공 좌골신경점)에 30초간 깊고 편안하게 펜을 안착시킵니다.',
-        '3단계: HP-PS-03(좌골결절 외측)에 25초간 접촉하여 허벅지 방사통을 정리합니다.'
+        '1단계: HP-PS-02(대전자 정지부) 1 통전으로 근육 외측 장력을 풉니다.',
+        '2단계: HP-PS-01(이상근하공 좌골신경점)에 1간 깊고 편안하게 펜을 안착시킵니다.',
+        '3단계: HP-PS-03(좌골결절 외측)에 1간 접촉하여 허벅지 방사통을 정리합니다.'
       ],
       clinicalPearls: [
         '이상근은 대둔근 심부에 위치하므로 도자 끝으로 대둔근을 부드럽게 밀어내며 천골 뼈 방향으로 비스듬히 안착시키면 미세전류가 좌골신경에 정확히 닿습니다.'
@@ -2245,7 +2319,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '의자에 20분만 앉아 있어도 우측 엉덩이가 쑤시고 허벅지 뒤가 당겨 앉아 있을 수 없음 (NRS 7)',
         priorTreatments: '허리 디스크 의심으로 요추 신경차단술 3회 받았으나 둔부 통증 호전 전혀 없음',
         clinicalExamination: 'FAIR 검사(굴곡-내전-내회전 시 둔통 유발) 강양성, 이상근하공(HP-PS-01) 극심한 압통 확인',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-PS-01 30초, HP-PS-02 25초, HP-PS-03 25초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-PS-01 1, HP-PS-02 1, HP-PS-03 1 주 2회 통전',
         therapeuticOutcome: '1회 시술 후 의자 착석 시간 1시간으로 연장, 3회 치료 후 FAIR 검사 음성 전환 및 완치.'
       }
     ]
@@ -2291,11 +2365,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '천장관절 간극 골면에 비스듬히 안착 지지',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-SIJ-01(PSIS 하내측점) 30초 통전 후, HP-SIJ-02(천결절인대)에 25초간 순차적으로 도자를 접촉합니다.'
+        'HP-SIJ-01(PSIS 하내측점) 1 통전 후, HP-SIJ-02(천결절인대)에 1간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '환자의 통증 부위가 허리뼈 중심인지 골반 보조개(PSIS) 부근인지 정확히 구분(Fortin sign)하여 관절 간극에 펜을 정확히 안착시켜야 합니다.'
@@ -2314,7 +2388,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '출산 후 침대에서 일어날 때 우측 골반 뼈가 빠질 듯 아프고 한 발로 서지 못함 (NRS 7)',
         priorTreatments: '골반 교정 도수치료 받았으나 1~2일 후 재발',
         clinicalExamination: 'Patrick(FABER) 검사 및 Gaenslen 검사 양성, PSIS 직하방(HP-SIJ-01) 압통 명확',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-SIJ-01 30초, HP-SIJ-02 25초 주 2회 통전 (총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-SIJ-01 1, HP-SIJ-02 1 주 2회 통전 (총 4회)',
         therapeuticOutcome: '2회 시술 후 기상 시 통증 70% 감소, 4회 치료 후 한 발로 서서 양말 신기 가능해짐.'
       }
     ]
@@ -2363,11 +2437,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '무릎을 30도 굴곡한 상태에서 경골 골막에 수직 안착',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-KOA-01(내측 관절간극) 30초 통전 후, HP-KOA-02(거위발건 부착부)에 25초간 순차적으로 도자를 접촉합니다.'
+        'HP-KOA-01(내측 관절간극) 1 통전 후, HP-KOA-02(거위발건 부착부)에 1간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '무릎 밑에 작은 수건을 받쳐 무릎을 20~30도 구부려주면 관절 간극이 넓어져 도자 전류가 심부 관절포에 깊숙이 도달합니다.'
@@ -2386,7 +2460,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '아파트 계단 내려갈 때 우측 무릎 안쪽이 시큰거려 게걸음으로 내려옴 (NRS 7)',
         priorTreatments: '히알루론산 관절강 치료 3회 받았으나 계단 하강 시 통증 지속',
         clinicalExamination: '내측 관절 간극(HP-KOA-01) 및 거위발건(HP-KOA-02) 부위 국소 압통 명확',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-KOA-01 30초, HP-KOA-02 25초 주 2회 통전 (총 6회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-KOA-01 1, HP-KOA-02 1 주 2회 통전 (총 6회)',
         therapeuticOutcome: '2주(4회) 후 평지 보행 통증 완전 소실, 6회 치료 후 계단 정상 보행 가능.'
       }
     ]
@@ -2432,11 +2506,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '슬개골 뼈 모서리에 직각으로 단단히 지지 접촉',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-PT-02(상극 대퇴사두근건) 25초 통전 후, HP-PT-01(하극 슬개건)에 25초간 접촉합니다.'
+        'HP-PT-02(상극 대퇴사두근건) 1 통전 후, HP-PT-01(하극 슬개건)에 1간 접촉합니다.'
       ],
       clinicalPearls: [
         '슬개골 상극을 살짝 아래로 누르면 슬개골 하극 뼈 모서리가 위로 들려 펜 도자가 건병증 부위에 정확하게 접촉됩니다.'
@@ -2455,7 +2529,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '농구 리바운드 점프 착지 시 무릎 앞쪽이 찌릿하게 꺾여 운동 중단 (NRS 7)',
         priorTreatments: '냉찜질 및 소염제 복용했으나 점프 동작 시 재발',
         clinicalExamination: '슬개골 하극(HP-PT-01) 핀포인트 압통 명확, Basset 검사 양성',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-PT-02 및 HP-PT-01 각 25초 통전 (주 2회, 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-PT-02 및 HP-PT-01 각 1 통전 (주 2회, 총 4회)',
         therapeuticOutcome: '2회 치료 후 쪼그려 앉기 통증 소실, 4회 치료 후 점프 착지 통증 없이 농구 복귀.'
       }
     ]
@@ -2501,11 +2575,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '비골 뼈 바닥에 부드럽게 대고 가벼운 전기 자극 인가',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-CPN-01(비골두 경부) 25초 통전 후, HP-CPN-02(심비골신경점)에 20초간 접촉합니다.'
+        'HP-CPN-01(비골두 경부) 1 통전 후, HP-CPN-02(심비골신경점)에 30초간 접촉합니다.'
       ],
       clinicalPearls: [
         '비골두 뒤쪽은 신경이 매우 표층에 있으므로 도자를 강하게 짓누르지 말고 뼈 표면에 펜을 가볍게 얹는 느낌으로 통전하십시오.'
@@ -2524,7 +2598,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '쪼그려 밭일한 후 우측 발등 감각이 무디고 걸을 때 발끝이 끌려 슬리퍼가 벗겨짐 (발목 신전 근력 Gr 3)',
         priorTreatments: '한의원 침 치료 및 신경비타민 복용했으나 발목 힘 빠짐 지속',
         clinicalExamination: '비골두 하방(HP-CPN-01) 틴넬 징후 양성, 발목 족배굴곡 및 엄지 신전력 저하',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-CPN-01 25초, HP-CPN-02 20초 주 3회 집중 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-CPN-01 1, HP-CPN-02 30초 주 3회 집중 통전',
         therapeuticOutcome: '1주(3회) 치료 후 발등 감각 80% 회복, 3주 치료 후 발목 근력 Gr 5 정상 회복되어 보행 정상화.'
       }
     ]
@@ -2570,11 +2644,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '외측 인대 부착부 골면에 직각 지지 접촉',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-AS-01(전거비인대점) 25초 통전 후, HP-AS-02(종비인대점)에 25초간 도자를 접촉합니다.'
+        'HP-AS-01(전거비인대점) 1 통전 후, HP-AS-02(종비인대점)에 1간 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '발목을 90도 중립 상태로 고정한 후 통전해야 인대가 적절한 장력을 받아 치유 전류의 흡수율이 높아집니다.'
@@ -2593,7 +2667,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '계단이나 매트 운동 시 발목 외측이 시큰거리고 헛디딤 발생 (NRS 6)',
         priorTreatments: '깁스 2주 후 한의원 침 맞았으나 발목 외측 복사뼈 앞 부종 지속',
         clinicalExamination: '전거비인대 부착부(HP-AS-01) 굵은 압통 결절, 전방 전위 검사(Anterior drawer) 경미한 이완',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-AS-01 및 HP-AS-02 각 25초 통전 (주 2회, 총 4회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-AS-01 및 HP-AS-02 각 1 통전 (주 2회, 총 4회)',
         therapeuticOutcome: '2회 시술 후 붓기와 시큰거림 70% 소실, 4회 치료 후 불안정감 없이 필라테스 지도 복귀.'
       }
     ]
@@ -2649,13 +2723,13 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '발뒤꿈치 바닥 골막을 향해 수직 강압 지지 접촉',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        '1단계: HP-PF-03(아킬레스건 부착점) 25초 통전으로 뒤쪽 장력을 풉니다.',
-        '2단계: 가장 통증이 극심한 HP-PF-01(종골 내측결절)에 30초간 집중 통전합니다.',
-        '3단계: HP-PF-02(아치 장력점)에 20초간 접촉하여 마무리합니다.'
+        '1단계: HP-PF-03(아킬레스건 부착점) 1 통전으로 뒤쪽 장력을 풉니다.',
+        '2단계: 가장 통증이 극심한 HP-PF-01(종골 내측결절)에 1간 집중 통전합니다.',
+        '3단계: HP-PF-02(아치 장력점)에 30초간 접촉하여 마무리합니다.'
       ],
       clinicalPearls: [
         '발바닥 각질층은 전기 저항이 높으므로 시술 전 전도성 겔을 충분히 도포하고 펜 도자를 뼈를 향해 단단히 눌러 접촉시켜야 미세전류가 100% 흡수됩니다.'
@@ -2674,7 +2748,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '아침 첫 발 디딜 때 발뒤꿈치가 칼로 찔리는 듯 아파 까치발로 화장실 이동 (NRS 8)',
         priorTreatments: '체외충격파 5회 시행했으나 시술 시 너무 아프고 효과 일시적, 맞춤 깔창 착용 중',
         clinicalExamination: '종골 내측 결절(HP-PF-01) 핀포인트 압통 극심, 족저근막 초음파상 근막 두께 5.8mm(비후)',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-PF-03 25초, HP-PF-01 30초, HP-PF-02 20초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-PF-03 1, HP-PF-01 1, HP-PF-02 30초 주 2회 통전',
         therapeuticOutcome: '1주(2회) 후 아침 첫 발 통증 50% 감소, 3주(6회) 치료 후 아침 첫 발 통증 0으로 소실.'
       }
     ]
@@ -2720,11 +2794,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '발목터널 인대 표면에 가볍게 안착 접촉',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-TTS-01(발목터널 입구) 25초 통전 후, HP-TTS-02(내측 족저신경점)에 25초간 접촉합니다.'
+        'HP-TTS-01(발목터널 입구) 1 통전 후, HP-TTS-02(내측 족저신경점)에 1간 접촉합니다.'
       ],
       clinicalPearls: [
         '안쪽 복사뼈 뒤에는 후경골동맥의 박동이 뛰고 있으므로, 맥박을 손끝으로 확인하고 맥박 바로 뒤쪽 고랑에 펜 도자를 안착시킵니다.'
@@ -2743,7 +2817,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '밤마다 발바닥이 불타는 듯 화끈거려 잠을 못 자고 발바닥에 종이를 댄 듯 감각 무딤 (NRS 7)',
         priorTreatments: '혈액순환제 및 진통소염제 복용 무효, 족저근막염으로 오인 치료받음',
         clinicalExamination: '내과 후하방 발목터널(HP-TTS-01) 틴넬 징후 강양성(발바닥으로 전기 방사)',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-TTS-01 및 HP-TTS-02 각 25초 주 2회 통전',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-TTS-01 및 HP-TTS-02 각 1 주 2회 통전',
         therapeuticOutcome: '2주(4회) 시술 후 야간 발바닥 화끈거림 소실, 4주 후 발바닥 감각 85% 회복.'
       }
     ]
@@ -2792,13 +2866,13 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe - 무극성 고전압 미세전류)',
       contactMethod: '미세 안착 접촉 (Micro-Touch - 뼈 바닥 지지 후 무압박 통전)',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
         '1단계 [경동맥 보호]: 검지로 총경동맥 박동을 내측으로 가볍게 밀어 보호합니다.',
-        '2단계 [성상신경절 통전]: HP-01(C6 결절점)에 펜 도자를 수직으로 대어 C6 횡돌기 뼈 바닥에 살포시 안착 후 30초간 통전합니다.',
-        '3단계 [상경신경절 리셋]: HP-02(상경신경절점)에 20초간 부드럽게 접촉하여 뇌순환을 촉진합니다.'
+        '2단계 [성상신경절 통전]: HP-01(C6 결절점)에 펜 도자를 수직으로 대어 C6 횡돌기 뼈 바닥에 살포시 안착 후 1간 통전합니다.',
+        '3단계 [상경신경절 리셋]: HP-02(상경신경절점)에 30초간 부드럽게 접촉하여 뇌순환을 촉진합니다.'
       ],
       clinicalPearls: [
         '통전 중 환자에게 눈을 감고 편안히 심호흡을 유도하면 통전 10~15초 후 안면과 손끝이 따뜻해지는 부교감신경 활성화 반응(혈관 확장)이 나타납니다.'
@@ -2817,7 +2891,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '매일 밤 수면제를 먹어도 2~3시간밖에 못 자고, 얼굴로 열이 치솟으며 손발은 얼음장처럼 차가움 (NRS 8)',
         priorTreatments: '신경안정제 및 수면제 복용 중이었으나 주간 졸림증으로 일상생활 곤란',
         clinicalExamination: 'C6 Chassaignac 결절(HP-SGB-01) 극심한 압통 및 양측 손끝 체열 검사상 현저한 저체온 관찰',
-        novaCellApplication: '노바셀 단일 펜 도자로 경동맥을 외측으로 분리 후 HP-SGB-01에 30초간 안전 통전 (주 2회, 3주간 총 6회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 경동맥을 외측으로 분리 후 HP-SGB-01에 1간 안전 통전 (주 2회, 3주간 총 6회)',
         therapeuticOutcome: '1회 시술 직후 손끝이 따뜻해지며 당일 밤 수면제 없이 6시간 연속 수면 성공. 6회 치료 후 안면홍조 소실 및 불면증 완전 탈출.'
       }
     ]
@@ -2863,11 +2937,11 @@ const CONDITIONS_DATA = [
     novaCellProtocol: {
       probeType: '단일 펜 도자 (Monopolar Pen Probe)',
       contactMethod: '부드러운 정적 접촉으로 따스한 생체 파동 유도',
-      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 20\uCD08 ~ 30\uCD08 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
+      contactDurationPerPoint: '\uD3EC\uC778\uD2B8\uB2F9 1\uBD84 ~ 2\uBD84 (\uD658\uC790\uAC00 \uB530\uB054 \uAC70\uB9BC\uC774 \uC0AC\uB77C\uC9C0\uAC70\uB098 \uBB35\uC9C1\uD55C \uC774\uC644\uAC10\uC744 \uB290\uB084\uB54C\uAE4C\uC9C0)',
       outputIntensity: '\uACE0\uC804\uC555 \uBBF8\uC138\uC804\uB958 03~05\uB2E8\uACC4 (\uD3B8\uC548\uD55C \uD384\uC2A4 \uC9C4\uB3D9 \uAC10\uAC01)',
       stingingRemedy: '\uD658\uBD80\uC5D0 \uC54C\uCF5C \uB610\uB294 \uC0DD\uB9AC\uC2DD\uC5FC\uC218 \uC2A4\uD504\uB808\uC774',
       treatmentSequence: [
-        'HP-PCS-01(C6 교감신경점) 30초 통전 후, HP-PCS-02(천골 자율신경점)에 30초간 순차적으로 도자를 접촉합니다.'
+        'HP-PCS-01(C6 교감신경점) 1 통전 후, HP-PCS-02(천골 자율신경점)에 1간 순차적으로 도자를 접촉합니다.'
       ],
       clinicalPearls: [
         '통전 부위에 따뜻한 온열팩을 가볍게 얹어둔 상태에서 시술하면 미세전류와 열에너지가 복합 작용하여 뼈 시림이 훨씬 빠르게 가라앉습니다.'
@@ -2886,7 +2960,7 @@ const CONDITIONS_DATA = [
         chiefComplaint: '한여름에도 선풍기나 에어컨 바람을 전혀 쐬지 못하고 손목과 무릎 속이 얼음장처럼 시림 (NRS 7)',
         priorTreatments: '한약 복용 및 산후조리원 찜질 요법 시행했으나 찬바람 노출 시 시림 지속',
         clinicalExamination: '전신 적외선 체열 검사상 양측 상하지 말단 심한 저체온, C6 성상신경절 및 천골부 압통',
-        novaCellApplication: '노바셀 단일 펜 도자로 HP-PCS-01 30초, HP-PCS-02 30초 주 2회 통전 (총 6회)',
+        novaCellApplication: '노바셀 단일 펜 도자로 HP-PCS-01 1, HP-PCS-02 1 주 2회 통전 (총 6회)',
         therapeuticOutcome: '3회 시술 후 손발 냉증 60% 개선, 6회 치료 후 여름철 얇은 옷 착용 및 가벼운 냉방 가능해짐.'
       }
     ]
