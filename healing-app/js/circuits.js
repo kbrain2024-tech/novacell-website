@@ -940,19 +940,42 @@ function doStart528(ctx) {
 /* ==========================================================================
    Tibetan Meditation Singing Bowl Synthesis (Doubled 2x Volume Boost)
    ========================================================================== */
+let circuitsBowlAudio = null;
+
 function playSingingBowlBell() {
   if (isAudioMuted || masterVolume <= 0.01) return;
+
+  try {
+    if (!circuitsBowlAudio) {
+      circuitsBowlAudio = document.getElementById("singing-bowl-audio") || new Audio("assets/audio/singing-bowl.mp3");
+    }
+    circuitsBowlAudio.pause();
+    circuitsBowlAudio.currentTime = 0;
+    circuitsBowlAudio.volume = Math.max(0, Math.min(1, masterVolume));
+    const p = circuitsBowlAudio.play();
+    if (p && typeof p.catch === "function") {
+      p.catch((err) => {
+        console.warn("Singing bowl MP3 play error, falling back to synth:", err);
+        playSynthesizedSingingBowl();
+      });
+    }
+  } catch (e) {
+    console.warn("Singing bowl MP3 error, falling back to synth:", e);
+    playSynthesizedSingingBowl();
+  }
+}
+
+function playSynthesizedSingingBowl() {
   try {
     const ctx = getAudioContext();
     if (!ctx) return;
-
     if (ctx.state === "suspended") {
       ctx.resume().then(() => doPlaySingingBowl(ctx));
     } else {
       doPlaySingingBowl(ctx);
     }
   } catch (e) {
-    console.warn("Singing bowl error:", e);
+    console.warn("Synthesized bowl error:", e);
   }
 }
 

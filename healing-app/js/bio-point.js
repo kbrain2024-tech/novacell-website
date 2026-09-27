@@ -339,15 +339,45 @@ function stop528HzSound() {
   }
 }
 
-function playSingingBowlBell() {
-  if (isSoundMuted) return;
-  const ctx = getAudioContext();
-  if (!ctx) return;
+/* ==========================================================================
+   Tibetan Meditation Singing Bowl (Custom MP3 Audio with Web Audio Fallback)
+   ========================================================================== */
+let bioPointBowlAudio = null;
 
-  if (ctx.state === "suspended") {
-    ctx.resume().then(() => doPlaySingingBowl(ctx));
-  } else {
-    doPlaySingingBowl(ctx);
+function playSingingBowlBell() {
+  if (isSoundMuted || userVolume <= 0.01) return;
+
+  try {
+    if (!bioPointBowlAudio) {
+      bioPointBowlAudio = document.getElementById("singing-bowl-audio") || new Audio("assets/audio/singing-bowl.mp3");
+    }
+    bioPointBowlAudio.pause();
+    bioPointBowlAudio.currentTime = 0;
+    bioPointBowlAudio.volume = Math.max(0, Math.min(1, userVolume));
+    const p = bioPointBowlAudio.play();
+    if (p && typeof p.catch === "function") {
+      p.catch((err) => {
+        console.warn("Singing bowl MP3 play error, falling back to synth:", err);
+        playSynthesizedSingingBowl();
+      });
+    }
+  } catch (e) {
+    console.warn("Singing bowl MP3 error, falling back to synth:", e);
+    playSynthesizedSingingBowl();
+  }
+}
+
+function playSynthesizedSingingBowl() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    if (ctx.state === "suspended") {
+      ctx.resume().then(() => doPlaySingingBowl(ctx));
+    } else {
+      doPlaySingingBowl(ctx);
+    }
+  } catch (e) {
+    console.warn("Synthesized bowl error:", e);
   }
 }
 
