@@ -652,37 +652,40 @@ html, body {
 .fixed-anatomy-header {
   background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
   border-bottom: 1px solid #e2e8f0;
-  padding: 8px 12px;
+  padding: 10px 14px 11px 14px;
 }
 
 .fixed-anatomy-badge {
   display: block;
-  margin-bottom: 2px;
-  font-size: 10.5px;
+  margin-bottom: 7px;
+  font-size: 11.5px;
   font-weight: 800;
   color: #0284c7;
   letter-spacing: 0.3px;
+  line-height: 1.35;
 }
 
 .fixed-anatomy-title {
-  margin: 2px 0 0 0;
-  font-size: 13.5px;
+  display: block;
+  margin: 0 0 4px 0;
+  font-size: 14.5px;
   font-weight: 800;
   color: #0f172a;
-  line-height: 1.25;
+  line-height: 1.35;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .fixed-anatomy-en {
-  font-size: 10.5px;
+  display: block;
+  font-size: 11px;
   color: #64748b;
   font-weight: 500;
+  line-height: 1.3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: block;
 }
 
 .fixed-anatomy-media {

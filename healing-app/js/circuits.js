@@ -1,4 +1,4 @@
-const CIRCUITS = [
+﻿const CIRCUITS = [
   {
     id: "lung",
     order: 1,
@@ -697,8 +697,8 @@ function renderDetail(circuit) {
   }
   if (protoMuscleDesc) {
     protoMuscleDesc.textContent = isEn()
-      ? `Apply microcurrent sequentially to origins/insertions of major muscle batteries for 20-30s each to release peripheral nerve entrapment and myofascial adhesions.`
-      : `회로 주요 근육 배터리의 기시부/부착부를 순차적으로 각 20~30초씩 통전하여 말초 신경 포착과 근막 유착을 해소합니다.`;
+      ? `Apply microcurrent sequentially to origins/insertions of major muscle batteries for 1 minute each to release peripheral nerve entrapment and myofascial adhesions.`
+      : `회로 주요 근육 배터리의 기시부/부착부를 순차적으로 각 1분씩 통전하여 말초 신경 포착과 근막 유착을 해소합니다.`;
   }
 
   renderMuscles(circuit);
