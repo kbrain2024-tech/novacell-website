@@ -1,234 +1,275 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#070a13">
-  <title>Bio Point | NovaCell</title>
-  <meta name="description" content="노바셀 통치 요법 195~203쪽의 Bio Point 개념, 7개 차크라와 세 가지 원본 도해의 한영 병기 안내">
-  <link rel="stylesheet" href="css/bio-point.css">
-  <meta name="robots" content="noindex,nofollow">
-  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
-  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
+  <meta name="theme-color" content="#030712">
+  <title id="page-title">NovaCell Healing Points | 차크라 바이오 포인트 노바셀 통치 요법</title>
+  <meta name="description" content="노바셀 통치 요법 책 195~203쪽의 전면 7개 차크라 코일과 후면 독맥 척추 축전기 바이오 포인트 상호작용 도해 및 528Hz 치유 타이머 가이드">
+  <link rel="stylesheet" href="css/bio-point.css?v=39">
 </head>
-<body class="novacell-access-pending">
-  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
-  <header class="bio-header">
-    <a class="brand" href="index.html" aria-label="&#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8; &#xBA54;&#xC778;&#xC73C;&#xB85C; &#xC774;&#xB3D9;">
+<body>
+  <!-- Header Navigation -->
+  <header class="circuit-header">
+    <a class="brand" href="index.html" aria-label="메인 홈으로 이동">
       <span class="brand-mark" aria-hidden="true">&#x25C7;</span>
       <span><strong>NovaCell Healing Points</strong><small id="brand-sub-title">CHAKRA BIO POINT GUIDE</small></span>
     </a>
-    <nav class="header-actions" aria-label="&#xD398;&#xC774;&#xC9C0; &#xC774;&#xB3D9;">
-      <a href="index.html" id="nav-therapy">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</a>
-      <a class="active" href="bio-point.html" id="nav-chakra" aria-current="page">&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</a>
-      <a href="circuits.html" id="nav-circuit">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</a>
-      <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="?몄뼱 蹂寃?/ Change Language">
-        <span class="lang-opt ko active">&#xD55C;&#xAE00;</span>
+    <nav class="header-actions" aria-label="페이지 이동">
+      <a href="index.html" id="nav-therapy">질환별 치료 포인트</a>
+      <a class="active" href="bio-point.html" id="nav-chakra" aria-current="page">차크라 바이오 포인트</a>
+      <a href="circuits.html" id="nav-circuit">신경 생체 회로</a>
+      <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="언어 변경 / Change Language">
+        <span class="lang-opt ko active">한글</span>
         <span class="lang-divider">/</span>
         <span class="lang-opt en">ENG</span>
       </button>
     </nav>
   </header>
 
+  <!-- Main Shell -->
   <main class="bio-shell">
+    <!-- Left Sidebar: Controls & Point Selection -->
     <aside class="bio-sidebar">
-      <p class="eyebrow">BOOK PAGES 195-203</p>
-      <h1>Bio Point</h1>
-      <p>바이오 포인트 노바셀 통치 요법</p>
-      <nav class="section-nav" aria-label="Bio Point 목차">
-        <a href="#overview">01 개요</a>
-        <a href="#chakras">7개 차크라</a>
-        <a href="#images">3개 원본 도해</a>
-        <a href="#principles">바이오 포인트 원리</a>
-        <a href="#pairs">회로 짝과 감정</a>
-      </nav>
-      <div class="source-box"><strong>책 자료 범위</strong><span>『노바셀 통치 요법』<br>인쇄면 195~203쪽</span></div>
+      <div class="sidebar-heading">
+        <p class="eyebrow" id="sidebar-eyebrow">BOOK PAGES 195-203</p>
+        <h1 id="sidebar-main-title">Chakra Bio Points<br><span class="accent-title">차크라 바이오 포인트 노바셀 통치 요법</span></h1>
+        <p id="sidebar-intro" class="sidebar-intro">신체 전면의 임맥(CV)을 따르는 7개 쁘라나 코일과 후면 독맥(GV)을 따르는 척추 축전기 포인트를 순차적으로 안내합니다.</p>
+      </div>
+
+      <!-- View Switcher (Front / Back) -->
+      <div class="view-segmented-control" role="tablist" aria-label="도해 시점 선택">
+        <button id="view-toggle-front" class="segmented-btn active" type="button" role="tab" aria-selected="true">
+          <span>🔆 전면 차크라 (Front Coils)</span>
+        </button>
+        <button id="view-toggle-back" class="segmented-btn" type="button" role="tab" aria-selected="false">
+          <span>⚡ 후면 축전기 (Back Capacitors)</span>
+        </button>
+      </div>
+
+      <!-- List Meta Bar -->
+      <div class="list-meta-bar">
+        <span class="list-meta-label" id="list-meta-label">POINTS LIST</span>
+        <span class="view-item-count" id="view-item-count">7개 차크라</span>
+      </div>
+
+      <!-- Interactive Points Cards List -->
+      <div id="chakra-list" class="chakra-list" role="listbox" aria-label="차크라 바이오 포인트 목록"></div>
+
+      <!-- Quick Reference Summary Drawers -->
+      <div class="sidebar-drawer">
+        <h3 id="sidebar-drawer-title">⚡ 전면 코일 & 후면 축전기 모델</h3>
+        <p id="sidebar-drawer-text">속이 빈 장기(소장, 위장, 대장, 방광, 담낭)는 <strong>전면 코일(Coils)</strong>, 단단한 실질 장기(심장, 폐, 비장, 신장, 간)는 <strong>후면 축전기(Capacitors)</strong>로 기능하여 생체 전위를 교차 조율합니다.</p>
+      </div>
     </aside>
 
-    <article class="bio-content">
-      <section id="overview" class="hero-section">
+    <!-- Right Main Stage: Diagram, Timer & Clinical Protocol -->
+    <section class="bio-main-stage" aria-live="polite">
+      <!-- Stage Topline -->
+      <div class="stage-topline">
+        <div class="topline-info">
+          <p id="chakra-sequence" class="eyebrow">FRONT CHAKRA 04 / 07</p>
+          <h2 id="chakra-main-title">아나하타 차크라 (심장)</h2>
+          <p id="chakra-sub-title" class="topline-sub">임맥(CV) CV17 전중혈 · 흉골 중앙 · 소장 (슬픔 해소 & 사랑·기쁨 회복)</p>
+        </div>
+        <div class="topline-actions">
+          <div class="stage-quick-toggles">
+            <button id="stage-toggle-front" class="stage-toggle-btn active" type="button">전면 도해</button>
+            <button id="stage-toggle-back" class="stage-toggle-btn" type="button">후면 도해</button>
+          </div>
+          <span id="chakra-source-page" class="source-badge">책 196~199쪽</span>
+        </div>
+      </div>
+
+      <!-- Human Figure Stage Area -->
+      <div class="figure-stage-wrapper">
+        <div class="stage-header-bar">
+          <div class="stage-header-left">
+            <span class="stage-header-dot"></span>
+            <strong id="stage-view-badge" class="stage-view-badge">전면 차크라 쁘라나 코일(Front Coils) 도해</strong>
+            <span id="stage-view-sub" class="stage-view-sub">임맥(CV) 중심선 및 7개 생체 에너지 센터</span>
+          </div>
+        </div>
+
+        <div class="stage-canvas-area">
+          <img id="figure-body-img" class="figure-body-img" src="assets/biopoint/front-korean.webp" alt="전면 차크라 바이오 포인트 코일 도해">
+          
+          <!-- Interactive Hotspot Pins -->
+          <div id="stage-pins-container" class="stage-pins-container"></div>
+
+          <!-- Floating Live Active Chakra Information Card -->
+          <div id="floating-point-card" class="floating-point-card">
+            <div class="floating-point-header">
+              <span id="floating-point-badge" class="floating-point-badge">[차크라 04] 전면 코일</span>
+              <strong id="floating-point-title" class="floating-point-title">아나하타 차크라 (심장)</strong>
+              <span id="floating-point-sub" class="floating-point-sub">임맥(CV) CV17 전중혈 · 흉골 중앙</span>
+            </div>
+            <div class="floating-point-body">
+              <div class="floating-row">
+                <span id="floating-label-org">연계 장기 및 정서</span>
+                <strong id="floating-point-organ">소장 · 슬픔 해소 & 사랑·기쁨 회복</strong>
+              </div>
+              <div class="floating-row">
+                <span id="floating-label-act">생체 작용 및 전위</span>
+                <strong id="floating-point-action">528Hz 사랑과 세포 재생 공명, 흉선 면역 세포 전위 활성화</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p id="stage-figcaption" class="stage-figcaption">『노바셀 통치 요법』 196~199쪽 원본 도해 · 전면 쁘라나 코일(Front Coils) 및 바이오 포인트 전압 순환 시스템</p>
+      </div>
+
+      <!-- 528Hz Cellular Voltage Healing Timer -->
+      <div id="timer-card" class="timer-card">
+        <div class="timer-header">
+          <div class="timer-title-group">
+            <span class="timer-icon-freq">&#x3030;</span>
+            <div>
+              <h3 id="timer-title" class="timer-title">528Hz 세포 전압 치유 타이머</h3>
+              <p id="timer-sub" class="timer-subtitle">DNA 복원 주파수 · 싱잉볼 차임 벨</p>
+            </div>
+          </div>
+          <span id="timer-status-badge" class="timer-status-badge">대기 중</span>
+        </div>
+
+        <!-- Presets -->
+        <div class="timer-presets">
+          <button class="preset-btn" data-min="1" type="button">1분</button>
+          <button class="preset-btn" data-min="3" type="button">3분</button>
+          <button class="preset-btn active" data-min="5" type="button">5분</button>
+          <button class="preset-btn" data-min="7" type="button">7분</button>
+          <button class="preset-btn" data-min="10" type="button">10분</button>
+        </div>
+
+        <!-- Time Display & Progress -->
+        <div class="timer-display-wrap">
+          <span id="timer-time-display" class="timer-time-text">05:00</span>
+          <div class="freq-indicator">
+            <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
+            <span id="freq-label">528Hz 치유 주파수 준비</span>
+          </div>
+        </div>
+
+        <div class="timer-progress-track">
+          <div id="timer-bar-fill" class="timer-progress-fill" style="width: 100%;"></div>
+        </div>
+
+        <!-- Actions Row -->
+        <div class="timer-actions-row">
+          <button id="timer-toggle-btn" class="timer-start-btn" type="button">
+            <span id="timer-play-icon">&#x25B6;</span>
+            <span id="timer-btn-label">치유 타이머 시작</span>
+          </button>
+          <button id="timer-reset-btn" class="timer-sub-btn" type="button">
+            <span>&#x21BA;</span>
+            <span id="timer-reset-label">리셋</span>
+          </button>
+          <button id="timer-sound-btn" class="timer-sub-btn" type="button">
+            <span id="sound-btn-icon">&#x1F50A;</span>
+            <span id="sound-btn-text">치유음 켜짐</span>
+          </button>
+          <div class="volume-control-box" title="음량 조절 / Volume">
+            <span class="vol-icon">&#x1F3A7;</span>
+            <input id="timer-volume-slider" class="volume-slider" type="range" min="0" max="1" step="0.05" value="0.8">
+          </div>
+        </div>
+
+        <p id="timer-guide-note" class="timer-note">
+          * <strong>528Hz 주파수</strong>는 손상된 세포 전압을 깨우고 미토콘드리아 ATP 생성을 촉진합니다. 타이머 종료 시 티베트 싱잉볼 차임 벨이 깊고 맑게 울립니다.
+        </p>
+      </div>
+
+      <!-- NovaCell Clinical Protocol Guide -->
+      <div id="clinical-protocol-guide" class="clinical-protocol-guide">
+        <div class="protocol-header">
+          <div class="protocol-top-badge-row">
+            <span id="proto-badge-main" class="proto-badge-main">&#x26A1; NOVACELL CLINICAL PROTOCOL</span>
+            <span id="proto-badge-link" class="proto-badge-link">임상 가이드 & 증례 분석실 연계</span>
+          </div>
+          <h3 id="proto-guide-title" class="protocol-title">노바셀 의료기 차크라 바이오 포인트 적용 임상 시술 가이드</h3>
+          <p id="proto-guide-sub" class="protocol-sub">NovaCell Microcurrent Probe Chakra Protocol & Clinical Pearls</p>
+        </div>
+
+        <!-- Clinical Parameters -->
+        <div class="clinical-params-row">
+          <div class="param-box">
+            <span id="proto-prm-label-1" class="param-label">출력 강도 레벨</span>
+            <span id="proto-prm-val-1" class="param-value">고전압 미세전류 03~05단계 (편안한 펄스 진동)</span>
+          </div>
+          <div class="param-box">
+            <span id="proto-prm-label-2" class="param-label">펜 도자 접촉 방식</span>
+            <span id="proto-prm-val-2" class="param-value">점진적 심부 압박 직각 안착 (Point Compression)</span>
+          </div>
+          <div class="param-box">
+            <span id="proto-prm-label-3" class="param-label">따끔거림 예방 / 전도성</span>
+            <span id="proto-prm-val-3" class="param-value">알콜 또는 생리식염수/전도성 미스트 스프레이</span>
+          </div>
+        </div>
+
+        <!-- Treatment Sequence -->
+        <div class="clinical-sequence-section">
+          <h4 id="proto-seq-heading" class="sequence-heading">&#x1F4CA; 임상 시술 순서 (Treatment Sequence)</h4>
+          <div class="sequence-steps-grid">
+            <div class="clinical-step-box step-check">
+              <div id="proto-step-1-badge" class="step-num-badge">1단계 [전압 체크]</div>
+              <div class="step-target" id="proto-step-1-title">전중(CV17) 전압 체크 (25~30초)</div>
+              <p class="step-desc" id="proto-step-1-desc">펜 도자를 해당 차크라 전압 체크 포인트(CV17)에 25~30초간 직각으로 안착하여 분절 에너지 전압 상태를 확인하고 자율신경계 흥분을 안정화합니다.</p>
+            </div>
+
+            <div class="clinical-step-box step-supply">
+              <div id="proto-step-2-badge" class="step-num-badge">2단계 [전압 공급]</div>
+              <div class="step-target" id="proto-step-2-title">아나하타 전압 공급 & 528Hz 타이머 (3~5분)</div>
+              <p class="step-desc" id="proto-step-2-desc">차크라 바이오 포인트에 도자를 수직으로 밀착하고 528Hz 치유 타이머(3~5분)를 가동하여 세포막 전위를 충전하고 쁘라나(생명 에너지) 순환을 극대화합니다.</p>
+            </div>
+
+            <div class="clinical-step-box step-muscle">
+              <div id="proto-step-3-badge" class="step-num-badge">3단계 [차크라 밸런싱]</div>
+              <div class="step-target" id="proto-step-3-title">상하 차크라 및 후면 축전기 순차 시술</div>
+              <p class="step-desc" id="proto-step-3-desc">선택된 차크라와 연계된 전면 코일 및 후면 축전기 포인트를 순차적으로 각 1분씩 통전하여 억압된 감정(불안·분노·슬픔·두려움)을 정화하고 전신 생체 전류를 조율합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinical Pearls -->
+        <div class="clinical-pearls-card">
+          <div id="proto-pearls-heading" class="pearls-header">&#x1F4A1; 임상 시술 노하우 & Clinical Pearls</div>
+          <ul id="proto-pearls-list">
+            <li><strong>해부학적 함요처 직각 안착:</strong> 도자 팁을 강하게 비비거나 찌르지 말고, 뼈 경계 오목한 곳(혈자리 및 건·근막 접합부)에 펜촉을 가만히 직각으로 안착시킨 상태에서 전기를 인가합니다.</li>
+            <li><strong>전도성 수분감 유지:</strong> 피부 표면에 전도성 미스트나 알콜/생리식염수를 가볍게 도포하여 촉촉한 수분감을 유지하면 미세전류의 심부 침투율과 통전 효율이 극대화되고 따끔거림이 예방됩니다.</li>
+            <li><strong>528Hz 치유 주파수 호흡 동기화:</strong> 타이머와 528Hz 음원을 가동하며 환자가 편안한 복식 호흡(들숨 4초, 날숨 6초)을 하도록 유도하면 부교감 신경이 활성화되어 전압 흡수가 최적화됩니다.</li>
+            <li><strong>싱잉볼 알림 종료 후 재평가:</strong> 세션 완료 시 맑게 울리는 티베트 싱잉볼 종소리와 함께 도자를 떼고, 관절 가동 범위(ROM)와 통증 경감 및 바이오 에너지 활력을 재평가합니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Circuit Pairs & Principles Section -->
+      <div class="pairs-principles-section">
         <div>
-          <p class="eyebrow">01 · BIO POINT NOVACELL REMEDY</p>
-          <h2>Bio Point</h2>
-          <p class="hero-subtitle">바이오 포인트 노바셀 통치 요법</p>
-          <p>책에서는 차크라를 인체의 쁘라나(Prana, 생명 에너지)가 순환하는 특별한 중심으로 소개하고, 임맥(CV)과 독맥(GV)을 따라 여러 생체 회로가 교차하는 지점과 비교합니다. 노바셀 통치 요법에서는 차크라의 위치와 가깝지만 완전히 같지는 않은 전환점을 <strong>바이오 포인트</strong>라고 구분합니다.</p>
+          <h4 id="pairs-heading" class="sequence-heading">&#x1F517; 6개 생체 회로 짝과 감정 밸런싱</h4>
+          <div id="circuit-pairs-grid" class="circuit-pairs-grid" style="margin-top: 10px;"></div>
         </div>
-        <span class="page-badge">책 195~203쪽</span>
-      </section>
 
-      <section class="summary-grid" aria-label="핵심 개념">
-        <article><span>01</span><h3>중앙 케이블</h3><p>책에서는 신체 전면의 임맥(CV)과 후면의 독맥(GV)을 전압 전달의 기본 케이블로 설명합니다.</p></article>
-        <article><span>02</span><h3>중앙 바이오 포인트</h3><p>두개골, 목, 가슴, 복부, 골반과 회음부 등 각 영역의 중앙 전환점을 설명합니다.</p></article>
-        <article><span>03</span><h3>측면 바이오 포인트</h3><p>신체 각 부위의 오른쪽과 왼쪽으로 전압을 제공하는 측면 지점을 별도로 설명합니다.</p></article>
-      </section>
-
-      <section id="chakras" class="content-section">
-        <div class="section-heading"><div><p class="eyebrow">SEVEN CHAKRAS</p><h2>7개 차크라와 바이오 포인트</h2></div><span>책 196~197쪽</span></div>
-        <div class="chakra-grid">
-          <article class="chakra-card root"><b>01</b><h3>물라다라 · Muladhara</h3><p class="aka">뿌리·베이스·루트 차크라 / Root Chakra</p><p>골반 바닥과 미골 끝 부위에 해당하며 생존, 음식, 수면, 성적 본능과 두려움의 정서에 관한 설명이 수록되어 있습니다.</p><dl><div><dt>임맥 CV</dt><dd>CV1</dd></div><div><dt>독맥 GV</dt><dd>GV1</dd></div></dl></article>
-          <article class="chakra-card sacral"><b>02</b><h3>스와디스타나 · Swadhisthana</h3><p class="aka">천골·골반 차크라 / Sacral Chakra</p><p>난소, 전립선, 생식기와 욕망에 관련된 중심으로 설명합니다.</p><dl><div><dt>임맥 CV</dt><dd>CV3</dd></div><div><dt>독맥 GV</dt><dd>GV4</dd></div></dl></article>
-          <article class="chakra-card solar"><b>03</b><h3>마니푸라 · Manipura</h3><p class="aka">태양총 차크라 / Solar Plexus Chakra</p><p>배꼽 부위, 소화기관, 내면의 힘과 목적에 관련된 에너지 중심으로 설명합니다.</p><dl><div><dt>임맥 CV</dt><dd>CV12</dd></div><div><dt>독맥 GV</dt><dd>GV6</dd></div></dl></article>
-          <article class="chakra-card heart"><b>04</b><h3>아나하타 · Anahata</h3><p class="aka">심장 차크라 / Heart Chakra</p><p>가슴 중앙에 위치하며 사랑, 믿음, 동정심과 여러 감정이 모이는 곳으로 설명합니다.</p><dl><div><dt>임맥 CV</dt><dd>CV17</dd></div><div><dt>독맥 GV</dt><dd>GV11</dd></div></dl></article>
-          <article class="chakra-card throat"><b>05</b><h3>비슈다 · Vishuddha</h3><p class="aka">목 차크라 / Throat Chakra</p><p>인후 부위에서 말하기, 듣기와 신진대사 조절에 관련된 중심으로 설명합니다.</p><dl><div><dt>임맥 CV</dt><dd>CV22</dd></div><div><dt>독맥 GV</dt><dd>GV14</dd></div></dl></article>
-          <article class="chakra-card eye"><b>06</b><h3>아즈나 · Ajna</h3><p class="aka">제3의 눈 차크라 / Third Eye Chakra</p><p>미간과 송과선에 관련되며 직감과 지혜의 중심으로 설명합니다.</p><dl><div><dt>임맥 CV</dt><dd>미간</dd></div><div><dt>독맥 GV</dt><dd>GV16</dd></div></dl></article>
-          <article class="chakra-card crown"><b>07</b><h3>사하스라라 · Sahasrara</h3><p class="aka">크라운 차크라 / Crown Chakra</p><p>머리 위에 해당하며 깨달음으로 가는 관문으로 설명합니다.</p><dl><div><dt>임맥 CV</dt><dd>GV20 바이오 터미널</dd></div><div><dt>독맥 GV</dt><dd>GV20</dd></div></dl></article>
+        <div>
+          <h4 id="principles-heading" class="sequence-heading">&#x1F4D6; 책에 수록된 차크라 바이오 포인트 5대 원리</h4>
+          <div id="principles-grid" class="principles-grid" style="margin-top: 10px;"></div>
         </div>
-      </section>
+      </div>
 
-      <section id="images" class="content-section">
-        <div class="section-heading"><div><p class="eyebrow">BILINGUAL FIGURES</p><h2>차크라·바이오 포인트 원본 도해 3장</h2></div><span>책 198~200쪽</span></div>
-        <p class="section-intro">원본 그림의 위치와 선을 바꾸지 않고 보존했습니다. 한글 전용 그림에는 영문 범례를, 영문 전용 그림에는 한글 범례를 같은 카드 안에 붙여 한 화면에서 대조할 수 있습니다.</p>
-
-        <article class="figure-card">
-          <div class="figure-title"><div><span>FIGURE 01</span><h3>전면 차크라 · 한글 원본</h3></div><b>English added</b></div>
-          <div class="figure-layout">
-            <figure><img src="assets/biopoint/front-korean.webp" alt="한글로 표시된 전면 차크라 원본 그림"><figcaption>책 198쪽 원본 · Front Chakra</figcaption></figure>
-            <div class="legend-panel"><h4>영문 보완 범례</h4><ul>
-              <li><strong>담낭(분노)</strong><span>Gall Bladder (Anger)</span></li>
-              <li><strong>교감신경·뇌·눈·귀(불안)</strong><span>Sympathetic · Brain · Eyes · Ears (Anxiety)</span></li>
-              <li><strong>대장(비통)</strong><span>Large Intestine (Grief)</span></li>
-              <li><strong>소장(슬픔)</strong><span>Small Intestine (Sorrow)</span></li>
-              <li><strong>위장(걱정)</strong><span>Stomach (Worry)</span></li>
-              <li><strong>방광(두려움)</strong><span>Bladder (Fear)</span></li>
-            </ul><h4>차크라 이름</h4><ul>
-              <li><strong>사하스라라 · 크라운</strong><span>Sahasrara · Crown Chakra</span></li>
-              <li><strong>아즈나 · 제3의 눈</strong><span>Ajna · Third Eye Chakra</span></li>
-              <li><strong>비슈다 · 목</strong><span>Vishuddha · Throat Chakra</span></li>
-              <li><strong>아나하타 · 심장</strong><span>Anahata · Heart Chakra</span></li>
-              <li><strong>마니푸라 · 태양총</strong><span>Manipura · Solar Plexus Chakra</span></li>
-              <li><strong>스와디스타나 · 천골</strong><span>Swadhisthana · Sacral Chakra</span></li>
-              <li><strong>물라다라 · 뿌리</strong><span>Muladhara · Root Chakra</span></li>
-            </ul></div>
-          </div>
-        </article>
-
-        <article class="figure-card">
-          <div class="figure-title"><div><span>FIGURE 02</span><h3>전면 차크라 · 영문 원본</h3></div><b>한글 추가</b></div>
-          <div class="figure-layout">
-            <figure><img src="assets/biopoint/front-english.webp" alt="영어로 표시된 전면 차크라 원본 그림"><figcaption>책 199쪽 원본 · 전면: 코일(Front: Coils)</figcaption></figure>
-            <div class="legend-panel"><h4>한글 보완 범례</h4><ul>
-              <li><strong>Gall Bladder (Anger)</strong><span>담낭(분노)</span></li>
-              <li><strong>Sympathetic · Brain · Eyes · Ears</strong><span>교감신경·뇌·눈·귀(불안)</span></li>
-              <li><strong>Large Intestine (Grief)</strong><span>대장(비통)</span></li>
-              <li><strong>Small Intestine (Sorrow)</strong><span>소장(슬픔)</span></li>
-              <li><strong>Stomach (Worry)</strong><span>위장(걱정)</span></li>
-              <li><strong>Bladder (Fear)</strong><span>방광(두려움)</span></li>
-            </ul><h4>차크라 이름</h4><ul>
-              <li><strong>Sahasrara · Crown Chakra</strong><span>사하스라라 · 크라운 차크라</span></li>
-              <li><strong>Ajna · Third Eye Chakra</strong><span>아즈나 · 제3의 눈 차크라</span></li>
-              <li><strong>Vishuddha · Throat Chakra</strong><span>비슈다 · 목 차크라</span></li>
-              <li><strong>Anahata · Heart Chakra</strong><span>아나하타 · 심장 차크라</span></li>
-              <li><strong>Manipura · Solar Plexus Chakra</strong><span>마니푸라 · 태양총 차크라</span></li>
-              <li><strong>Swadhisthana · Sacral Chakra</strong><span>스와디스타나 · 천골 차크라</span></li>
-              <li><strong>Muladhara · Root Chakra</strong><span>물라다라 · 뿌리 차크라</span></li>
-            </ul></div>
-          </div>
-        </article>
-
-        <article class="figure-card">
-          <div class="figure-title"><div><span>FIGURE 03</span><h3>후면 바이오 포인트와 회로</h3></div><b>한글 · English</b></div>
-          <div class="figure-layout">
-            <figure><img src="assets/biopoint/back-bilingual.webp" alt="후면 바이오 포인트와 생체 회로를 한글과 영어로 표시한 그림"><figcaption>책 200쪽 원본 · 후면: 축전기(Back: Capacitors)</figcaption></figure>
-            <div class="legend-panel"><h4>한영 통합 범례</h4><ul>
-              <li><strong>담낭</strong><span>Gall Bladder</span></li>
-              <li><strong>부교감신경</strong><span>Parasympathetic</span></li>
-              <li><strong>폐</strong><span>Lung</span></li>
-              <li><strong>심장</strong><span>Heart</span></li>
-              <li><strong>비장</strong><span>Spleen</span></li>
-              <li><strong>신장</strong><span>Kidney</span></li>
-            </ul><h4>그림의 척추 기준</h4><ul>
-              <li><strong>C1</strong><span>담낭 · Gall Bladder</span></li>
-              <li><strong>C7</strong><span>폐 · Lung</span></li>
-              <li><strong>T5</strong><span>심장 · Heart</span></li>
-              <li><strong>T11</strong><span>비장 · Spleen</span></li>
-              <li><strong>L2</strong><span>신장 · Kidney</span></li>
-            </ul></div>
-          </div>
-        </article>
-      </section>
-
-      <section id="principles" class="content-section">
-        <div class="section-heading"><div><p class="eyebrow">BIO POINT PRINCIPLES</p><h2>책에 설명된 바이오 포인트 원리</h2></div><span>책 200~203쪽</span></div>
-        <div class="principle-list">
-          <article><b>01</b><div><h3>차크라와 바이오 포인트의 구분</h3><p>책에서는 여러 회로가 임맥과 독맥에서 교차하는 지점이 차크라 위치와 거의 일치하지만 완전히 같지는 않기 때문에 ‘바이오 포인트’라는 이름을 사용한다고 설명합니다.</p></div></article>
-          <article><b>02</b><div><h3>전면과 후면의 기본 케이블</h3><p>임맥(CV)과 독맥(GV)을 신체 앞뒤로 전압을 전달하는 기본 케이블로 설명하고, 각 신체 영역에 기관으로 전압을 보내는 중앙 바이오 포인트가 있다고 기술합니다.</p></div></article>
-          <article><b>03</b><div><h3>중앙점과 좌우 측면점</h3><p>두개골, 목, 가슴, 복부, 골반, 정수리와 회음부에 중앙점의 짝이 있고, 각 부위의 오른쪽과 왼쪽에 측면 바이오 포인트가 있다고 설명합니다.</p></div></article>
-          <article><b>04</b><div><h3>기관별 회로 모델</h3><p>책에서는 근육을 기관에 전압을 공급하는 배터리 스택에 비유하고, 기관이나 기관 일부마다 관련 생체 회로가 다를 수 있다는 모델을 제시합니다.</p></div></article>
-          <article><b>05</b><div><h3>전면 코일과 후면 축전기</h3><p>속이 빈 장기는 전면의 코일, 단단한 장기는 후면의 축전기 역할을 한다는 테슬라 공명 회로 모델을 설명합니다.</p></div></article>
-        </div>
-      </section>
-
-      <section id="pairs" class="content-section">
-        <div class="section-heading"><div><p class="eyebrow">CIRCUIT PAIRS</p><h2>책에 제시된 회로 짝과 감정</h2></div><span>책 203쪽</span></div>
-        <div class="pair-grid">
-          <article><strong>PC ↔ TB</strong><span>심포 ↔ 삼초</span><small>불안 · Anxiety</small></article>
-          <article><strong>LU ↔ LI</strong><span>폐 ↔ 대장</span><small>고통·비애 · Grief</small></article>
-          <article><strong>HT ↔ SI</strong><span>심장 ↔ 소장</span><small>슬픔·기쁨의 부족 · Sorrow</small></article>
-          <article><strong>SP ↔ ST</strong><span>비장·췌장 ↔ 위장</span><small>걱정 · Worry</small></article>
-          <article><strong>KI ↔ BL</strong><span>신장 ↔ 방광</span><small>두려움·공포 · Fear</small></article>
-          <article><strong>LV ↔ GB</strong><span>간 ↔ 담낭</span><small>분노 · Anger</small></article>
-        </div>
-      </section>
-
+      <!-- Evidence Disclaimer Note -->
       <aside class="evidence-note">
         <strong>자료 범위와 주의</strong>
-        <p>이 페이지는 박창혁 저 『노바셀 통치 요법』 인쇄면 195~203쪽을 앱에서 찾기 쉽게 정리한 교육·작업용 화면입니다. 차크라, 전압, 감정 및 회로의 관계는 책에 제시된 설명이며 앱이 임상 효과나 해부학적 위치를 독립적으로 검증했다는 뜻은 아닙니다. 실제 환자 적용 전 금기, 해부학적 구조, 환자 상태와 임상 판단을 별도로 확인해 주세요.</p>
+        <p id="evidence-disclaimer-text">
+          이 페이지는 박창혁 저 『노바셀 통치 요법』 인쇄 페이지 195~203쪽의 내용을 앱에서 찾기 쉽게 옮긴 교육·작업용 화면입니다. 책에 기재된 적용 질환, 회로 설명과 포인트를 안내하며, 앱이 치료 효과나 환자별 완치를 독립적으로 검증했다는 뜻은 아닙니다. 실제 적용 전 환자 상태, 금기, 해부학적 구조와 임상 판단을 별도로 확인해 주세요.
+        </p>
       </aside>
-    </article>
+    </section>
   </main>
+
+  <!-- Auth and Gate Scripts -->
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
-<script>
-(function() {
-  function initLanguageToggle() {
-    var langBtn = document.getElementById("lang-toggle-btn");
-    var currentLang = localStorage.getItem("novacell_site_lang") || "ko";
-    var urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("lang") === "en") currentLang = "en";
-
-    function applyLang(lang) {
-      currentLang = lang;
-      localStorage.setItem("novacell_site_lang", lang);
-      var navTherapy = document.getElementById("nav-therapy");
-      var navChakra = document.getElementById("nav-chakra");
-      var navCircuit = document.getElementById("nav-circuit");
-      var brandSub = document.getElementById("brand-sub-title");
-
-      if (lang === "en") {
-        if (navTherapy) navTherapy.textContent = "Condition Therapy Points";
-        if (navChakra) navChakra.textContent = "Chakra Bio Points";
-        if (navCircuit) navCircuit.textContent = "Neural Circuit Therapy";
-        if (brandSub) brandSub.textContent = "CHAKRA BIO POINT GUIDE";
-        if (langBtn) {
-          var koOpt = langBtn.querySelector(".lang-opt.ko");
-          var enOpt = langBtn.querySelector(".lang-opt.en");
-          if (koOpt) koOpt.classList.remove("active");
-          if (enOpt) enOpt.classList.add("active");
-        }
-      } else {
-        if (navTherapy) navTherapy.textContent = "\uC9C8\uD658\uBCC4 \uCE58\uB8CC \uD3EC\uC778\uD2B8";
-        if (navChakra) navChakra.textContent = "\uCC28\uD06C\uB77C \uBC14\uC774\uC624 \uD3EC\uC778\uD2B8";
-        if (navCircuit) navCircuit.textContent = "\uC2E0\uACBD \uC0DD\uCCB4 \uD68C\uB85C";
-        if (brandSub) brandSub.textContent = "CHAKRA BIO POINT GUIDE";
-        if (langBtn) {
-          var koOpt = langBtn.querySelector(".lang-opt.ko");
-          var enOpt = langBtn.querySelector(".lang-opt.en");
-          if (koOpt) koOpt.classList.add("active");
-          if (enOpt) enOpt.classList.remove("active");
-        }
-      }
-    }
-
-    if (langBtn) {
-      langBtn.addEventListener("click", function() {
-        applyLang(currentLang === "ko" ? "en" : "ko");
-      });
-    }
-    applyLang(currentLang);
-  }
-  document.addEventListener("DOMContentLoaded", initLanguageToggle);
-})();
-</script>
+  <script src="js/bio-point.js?v=39"></script>
 </body>
 </html>
