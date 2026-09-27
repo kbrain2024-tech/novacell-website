@@ -103,20 +103,20 @@
       </div>
     </header>
 
-<!-- Smartphone Quick Navigation Bar (紐⑤컮???꾩슜 ?곷떒 ??諛붾줈媛湲???諛? -->
-<nav class="mobile-quick-nav-bar" aria-label="紐⑤컮???듭떖 媛?대뱶 諛붾줈媛湲?>
+<!-- Smartphone Quick Navigation Bar -->
+<nav class="mobile-quick-nav-bar" aria-label="Quick Nav">
   <div class="mobile-quick-nav-track">
-    <a class="mobile-quick-pill active" href="index.html" id="m-nav-therapy" title="吏덊솚蹂?移섎즺 ?ъ씤??>
-      <span class="m-pill-icon">??/span>
-      <span class="m-pill-text">吏덊솚蹂?移섎즺 ?ъ씤??/span>
+    <a class="mobile-quick-pill active" href="index.html" id="m-nav-therapy">
+      <span class="m-pill-icon">&#x2695;</span>
+      <span class="m-pill-text">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</span>
     </a>
-    <a class="mobile-quick-pill bio-point-link" href="bio-point.html" id="m-nav-chakra" title="李⑦겕??諛붿씠???ъ씤??>
-      <span class="m-pill-icon">??/span>
-      <span class="m-pill-text">李⑦겕??諛붿씠???ъ씤??/span>
+    <a class="mobile-quick-pill bio-point-link" href="bio-point.html" id="m-nav-chakra">
+      <span class="m-pill-icon">&#x25C9;</span>
+      <span class="m-pill-text">&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</span>
     </a>
-    <a class="mobile-quick-pill circuit-guide-link" href="circuits.html" id="m-nav-circuit" title="?좉꼍 ?앹껜 ?뚮줈">
-      <span class="m-pill-icon">??/span>
-      <span class="m-pill-text">?좉꼍 ?앹껜 ?뚮줈</span>
+    <a class="mobile-quick-pill circuit-guide-link" href="circuits.html" id="m-nav-circuit">
+      <span class="m-pill-icon">&#x21BB;</span>
+      <span class="m-pill-text">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</span>
     </a>
   </div>
 </nav>
@@ -4117,7 +4117,7 @@ function dataURLToImage(data){const m=typeof data==='string'&&data.match(/^data:
 class ImageStage {
  constructor(frame,images,onPlace){
   this.frame=frame;this.images=images;this.onPlace=onPlace;this.scale=1;this.pan={x:0,y:0};
-  frame.replaceChildren();frame.classList.add('image-stage');frame.tabIndex=0;frame.setAttribute('aria-label','?대? ?대?吏. ??以묒븰 ?덉젙 怨좎젙');
+  frame.replaceChildren();frame.classList.add('image-stage');frame.tabIndex=0;frame.setAttribute('aria-label','해부 이미지. 드래그 이동, 휠 확대, 방향키 이동, + - 확대, Home 초기화. 위치 지정 중 Enter는 화면 중앙에 배치');
   this.surface=document.createElement('div');this.surface.className='image-surface';this.layer=document.createElement('div');this.layer.className='precise-pin-layer';
   this.surface.append(...images,this.layer);frame.append(this.surface);
   for(const im of images){im.draggable=false;im.addEventListener('load',()=>this.fit());}
@@ -4137,7 +4137,7 @@ class ImageStage {
   this.frame.addEventListener('pointerup',e=>{if(clickStart&&!clickStart.moved&&this.placing){const pos=this.coords(e.clientX,e.clientY);if(pos)this.onPlace(pos);}clickStart=null;});
   this.frame.addEventListener('pointercancel',()=>clickStart=null);
   this.frame.addEventListener('wheel',e=>{e.preventDefault();if(this.pinDragging)return;this.zoom(Math.exp(-e.deltaY*.001));},{passive:false});
-  this.frame.addEventListener('keydown',e=>{if(e.target!==this.frame)return;let used=true;if(e.key==='+'||e.key==='=')this.zoom(1.15);else if(e.key==='-')this.zoom(1/1.15);else if(e.key==='Home')this.reset();else if(e.key==='Enter'&&this.placing){const r=this.frame.getBoundingClientRect(),pos=this.coords(r.left+r.width/2,r.top+r.height/2);if(pos)this.onPlace(pos);}else used=false;if(used){e.preventDefault();this.transform();}});
+  this.frame.addEventListener('keydown',e=>{if(e.target!==this.frame)return;let used=true;if(e.key==='ArrowLeft')this.pan.x-=15;else if(e.key==='ArrowRight')this.pan.x+=15;else if(e.key==='ArrowUp')this.pan.y-=15;else if(e.key==='ArrowDown')this.pan.y+=15;else if(e.key==='+'||e.key==='=')this.zoom(1.15);else if(e.key==='-')this.zoom(1/1.15);else if(e.key==='Home')this.reset();else if(e.key==='Enter'&&this.placing){const r=this.frame.getBoundingClientRect(),pos=this.coords(r.left+r.width/2,r.top+r.height/2);if(pos)this.onPlace(pos);}else used=false;if(used){e.preventDefault();this.transform();}});
  }
 }
 
