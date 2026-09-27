@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #030712;
   --panel: #0a1120;
   --panel-elevated: #0f1c34;
@@ -1380,4 +1380,87 @@ html, body {
 }
 .nc-member-chip.dragging {
   cursor: grabbing !important;
+}
+
+/* ==========================================================================
+   Smartphone Quick Navigation Bar (v45)
+   ========================================================================== */
+.mobile-quick-nav-bar {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .mobile-quick-nav-bar {
+    display: block;
+    position: sticky;
+    top: 50px;
+    z-index: 85;
+    background: rgba(6, 17, 28, 0.96);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0, 221, 236, 0.22);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    padding: 7px 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .mobile-quick-nav-bar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mobile-quick-nav-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 100%;
+  }
+  
+  .mobile-quick-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+    background: rgba(13, 27, 42, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: -0.2px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .mobile-quick-pill:hover,
+  .mobile-quick-pill:active {
+    background: rgba(0, 221, 236, 0.12);
+    border-color: rgba(0, 221, 236, 0.4);
+    color: #e2e8f0;
+  }
+  
+  .mobile-quick-pill.active {
+    background: linear-gradient(135deg, rgba(0, 221, 236, 0.22), rgba(14, 165, 233, 0.3));
+    border-color: #00ddec;
+    color: #22d3ee;
+    box-shadow: 0 0 12px rgba(0, 221, 236, 0.25);
+  }
+  
+  .mobile-quick-pill .m-pill-icon {
+    font-size: 13px;
+    line-height: 1;
+  }
+  
+  .mobile-quick-pill.active .m-pill-icon {
+    color: #38bdf8;
+  }
+  
+  .mobile-quick-pill .m-pill-text {
+    line-height: 1.2;
+  }
 }

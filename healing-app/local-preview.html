@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -24,10 +24,15 @@
   <meta name="twitter:description" content="부위별 해부 참고 이미지와 치료 포인트 기록, 타이머, Bio Point 및 생체 회로를 한곳에서 확인하세요.">
   <meta name="twitter:image" content="https://healing.novacell.kr/assets/novacell-kakao-share-v26.jpg">
   <link rel="image_src" href="https://healing.novacell.kr/assets/novacell-kakao-share-v26.jpg">
+  <link rel="canonical" href="https://healing.novacell.kr/">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/workspace.css">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
+  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
 </head>
-<body>
+<body class="novacell-access-pending">
+  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
   <!-- Ambient High-Tech Glow Effects -->
   <div class="ambient-glow glow-cyan"></div>
   <div class="ambient-glow glow-emerald"></div>
@@ -97,6 +102,24 @@
         </button>
       </div>
     </header>
+
+<!-- Smartphone Quick Navigation Bar (紐⑤컮???꾩슜 ?곷떒 ??諛붾줈媛湲???諛? -->
+<nav class="mobile-quick-nav-bar" aria-label="紐⑤컮???듭떖 媛?대뱶 諛붾줈媛湲?>
+  <div class="mobile-quick-nav-track">
+    <a class="mobile-quick-pill active" href="index.html" id="m-nav-therapy" title="吏덊솚蹂?移섎즺 ?ъ씤??>
+      <span class="m-pill-icon">??/span>
+      <span class="m-pill-text">吏덊솚蹂?移섎즺 ?ъ씤??/span>
+    </a>
+    <a class="mobile-quick-pill bio-point-link" href="bio-point.html" id="m-nav-chakra" title="李⑦겕??諛붿씠???ъ씤??>
+      <span class="m-pill-icon">??/span>
+      <span class="m-pill-text">李⑦겕??諛붿씠???ъ씤??/span>
+    </a>
+    <a class="mobile-quick-pill circuit-guide-link" href="circuits.html" id="m-nav-circuit" title="?좉꼍 ?앹껜 ?뚮줈">
+      <span class="m-pill-icon">??/span>
+      <span class="m-pill-text">?좉꼍 ?앹껜 ?뚮줈</span>
+    </a>
+  </div>
+</nav>
 
     <!-- Smartphone Hamburger Navigation -->
     <div id="mobile-menu-overlay" class="mobile-menu-overlay" hidden>
@@ -4094,7 +4117,7 @@ function dataURLToImage(data){const m=typeof data==='string'&&data.match(/^data:
 class ImageStage {
  constructor(frame,images,onPlace){
   this.frame=frame;this.images=images;this.onPlace=onPlace;this.scale=1;this.pan={x:0,y:0};
-  frame.replaceChildren();frame.classList.add('image-stage');frame.tabIndex=0;frame.setAttribute('aria-label','해부 이미지. 드래그 이동, 휠 확대, 방향키 이동, + - 확대, Home 초기화. 위치 지정 중 Enter는 화면 중앙에 배치');
+  frame.replaceChildren();frame.classList.add('image-stage');frame.tabIndex=0;frame.setAttribute('aria-label','?대? ?대?吏. ??以묒븰 ?덉젙 怨좎젙');
   this.surface=document.createElement('div');this.surface.className='image-surface';this.layer=document.createElement('div');this.layer.className='precise-pin-layer';
   this.surface.append(...images,this.layer);frame.append(this.surface);
   for(const im of images){im.draggable=false;im.addEventListener('load',()=>this.fit());}
@@ -4102,19 +4125,19 @@ class ImageStage {
  }
  currentImage(){return this.images.find(i=>i.style.display!=='none')||this.images[0];}
  fit(){const im=this.currentImage(),r=this.frame.getBoundingClientRect();if(!im.naturalWidth||r.width<1||r.height<1)return;const f=Math.min(r.width/im.naturalWidth,r.height/im.naturalHeight);this.w=im.naturalWidth*f;this.h=im.naturalHeight*f;this.surface.style.width=this.w+'px';this.surface.style.height=this.h+'px';this.transform();}
- transform(){this.surface.style.transform=`translate(calc(-50% + ${this.pan.x}px), calc(-50% + ${this.pan.y}px)) scale(${this.scale})`;this.surface.style.setProperty('--inverse-zoom',1/this.scale);}
+ transform(){this.surface.style.transform=`translate(-50%, -50%) scale(${this.scale})`;this.surface.style.setProperty('--inverse-zoom',1/this.scale);}
  reset(){this.scale=1;this.pan={x:0,y:0};this.fit();}
  zoom(f){this.scale=Math.max(1,Math.min(6,this.scale*f));this.transform();}
  coords(x,y){let r=this.surface.getBoundingClientRect();if(!r.width||!r.height)return null;let px=(x-r.left)/r.width*100,py=(y-r.top)/r.height*100;return px>=0&&px<=100&&py>=0&&py<=100?{x:px,y:py}:null;}
  visibleCenter(){const r=this.frame.getBoundingClientRect();return this.coords(r.left+r.width/2,r.top+r.height/2)||{x:50,y:50};}
  static dragPosition(rect,start,delta){if(!rect.width||!rect.height)return null;return {x:Math.max(0,Math.min(100,start.x+delta.x/rect.width*100)),y:Math.max(0,Math.min(100,start.y+delta.y/rect.height*100))};}
- bind(){let drag;
-  this.frame.addEventListener('pointerdown',e=>{if(e.target.closest('button')||e.button!==0)return;this.frame.focus();drag={x:e.clientX,y:e.clientY,ox:e.clientX,oy:e.clientY,moved:false};this.frame.setPointerCapture(e.pointerId);});
-  this.frame.addEventListener('pointermove',e=>{if(!drag)return;drag.moved ||= Math.hypot(e.clientX-drag.ox,e.clientY-drag.oy)>4;if(!this.placing){this.pan.x+=e.clientX-drag.x;this.pan.y+=e.clientY-drag.y;this.transform();}drag.x=e.clientX;drag.y=e.clientY;});
-  this.frame.addEventListener('pointerup',e=>{if(drag&&!drag.moved&&this.placing){const pos=this.coords(e.clientX,e.clientY);if(pos)this.onPlace(pos);}drag=null;});
-  this.frame.addEventListener('pointercancel',()=>drag=null);
+ bind(){let clickStart;
+  this.frame.addEventListener('pointerdown',e=>{if(e.target.closest('button')||e.button!==0)return;clickStart={x:e.clientX,y:e.clientY,moved:false};});
+  this.frame.addEventListener('pointermove',e=>{if(!clickStart)return;if(Math.hypot(e.clientX-clickStart.x,e.clientY-clickStart.y)>4)clickStart.moved=true;});
+  this.frame.addEventListener('pointerup',e=>{if(clickStart&&!clickStart.moved&&this.placing){const pos=this.coords(e.clientX,e.clientY);if(pos)this.onPlace(pos);}clickStart=null;});
+  this.frame.addEventListener('pointercancel',()=>clickStart=null);
   this.frame.addEventListener('wheel',e=>{e.preventDefault();if(this.pinDragging)return;this.zoom(Math.exp(-e.deltaY*.001));},{passive:false});
-  this.frame.addEventListener('keydown',e=>{if(e.target!==this.frame)return;let used=true;if(e.key==='ArrowLeft')this.pan.x-=15;else if(e.key==='ArrowRight')this.pan.x+=15;else if(e.key==='ArrowUp')this.pan.y-=15;else if(e.key==='ArrowDown')this.pan.y+=15;else if(e.key==='+'||e.key==='=')this.zoom(1.15);else if(e.key==='-')this.zoom(1/1.15);else if(e.key==='Home')this.reset();else if(e.key==='Enter'&&this.placing){const r=this.frame.getBoundingClientRect(),pos=this.coords(r.left+r.width/2,r.top+r.height/2);if(pos)this.onPlace(pos);}else used=false;if(used){e.preventDefault();this.transform();}});
+  this.frame.addEventListener('keydown',e=>{if(e.target!==this.frame)return;let used=true;if(e.key==='+'||e.key==='=')this.zoom(1.15);else if(e.key==='-')this.zoom(1/1.15);else if(e.key==='Home')this.reset();else if(e.key==='Enter'&&this.placing){const r=this.frame.getBoundingClientRect(),pos=this.coords(r.left+r.width/2,r.top+r.height/2);if(pos)this.onPlace(pos);}else used=false;if(used){e.preventDefault();this.transform();}});
  }
 }
 
@@ -4891,68 +4914,12 @@ class Workspace extends NovaCellApp {
  closeCover(){super.closeCover();if(this.mainWorkspace)this.mainWorkspace.inert=false;if(this.searchInput){try{this.searchInput.focus();}catch(e){}}}
  openCover(){super.openCover();if(this.mainWorkspace)this.mainWorkspace.inert=true;if(this.coverEnterBtn){try{this.coverEnterBtn.focus();}catch(e){}}}
 }
-if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{try{window.app=new Workspace();window.app.openCover();}catch(err){console.error(err);const box=document.createElement('p');box.textContent='앱 초기화 중 문제가 발생했습니다. 새로고침 후에도 반복되면 오류 화면을 전달해 주세요.';box.style.cssText='position:fixed;top:0;left:0;right:0;background:#4c2020;color:white;padding:16px;z-index:99999';document.body.append(box);}});
+if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{try{window.app=new Workspace();window.app.openCover();document.querySelectorAll("a[href*='bio-point'], #nav-chakra").forEach(function(a){a.href='bio-point.html';a.addEventListener('click',function(e){e.preventDefault();location.href='bio-point.html';});});document.querySelectorAll("a[href*='circuits'], #nav-circuit").forEach(function(a){a.href='circuits.html';a.addEventListener('click',function(e){e.preventDefault();location.href='circuits.html';});});}catch(err){console.error(err);const box=document.createElement('p');box.textContent='앱 초기화 중 문제가 발생했습니다. 새로고침 후에도 반복되면 오류 화면을 전달해 주세요.';box.style.cssText='position:fixed;top:0;left:0;right:0;background:#4c2020;color:white;padding:16px;z-index:99999';document.body.append(box);}});
 
 </script>
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
   <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
-<script>
-(function() {
-  function makeDraggable(chip){
-    let isDragging=false,startX=0,startY=0,startLeft=0,startTop=0,moved=false;
-    try{
-      const saved=localStorage.getItem('nc_chip_pos');
-      if(saved){
-        const pos=JSON.parse(saved);
-        const maxX=Math.max(10,window.innerWidth-100);
-        const maxY=Math.max(10,window.innerHeight-45);
-        chip.style.left=Math.min(Math.max(10,pos.x),maxX)+'px';
-        chip.style.top=Math.min(Math.max(10,pos.y),maxY)+'px';
-        chip.style.right='auto';chip.style.bottom='auto';
-      }
-    }catch(e){}
-    chip.title='留덉씠?섏씠吏 (留덉슦?ㅻ굹 ?곗튂濡??먰븯???꾩튂濡??대룞 媛??';
-    chip.addEventListener('pointerdown',e=>{
-      if(e.button!==0)return;
-      isDragging=true;moved=false;
-      startX=e.clientX;startY=e.clientY;
-      const rect=chip.getBoundingClientRect();
-      startLeft=rect.left;startTop=rect.top;
-      chip.setPointerCapture(e.pointerId);
-      chip.classList.add('dragging');
-    });
-    chip.addEventListener('pointermove',e=>{
-      if(!isDragging)return;
-      const dx=e.clientX-startX,dy=e.clientY-startY;
-      if(Math.hypot(dx,dy)>4)moved=true;
-      if(!moved)return;
-      const newLeft=Math.min(Math.max(8,startLeft+dx),window.innerWidth-chip.offsetWidth-8);
-      const newTop=Math.min(Math.max(8,startTop+dy),window.innerHeight-chip.offsetHeight-8);
-      chip.style.left=newLeft+'px';chip.style.top=newTop+'px';chip.style.right='auto';chip.style.bottom='auto';
-    });
-    const onUp=e=>{
-      if(!isDragging)return;
-      isDragging=false;chip.classList.remove('dragging');
-      if(chip.hasPointerCapture(e.pointerId))chip.releasePointerCapture(e.pointerId);
-      if(moved){
-        chip.skipClick=true;
-        try{const rect=chip.getBoundingClientRect();localStorage.setItem('nc_chip_pos',JSON.stringify({x:rect.left,y:rect.top}));}catch(err){}
-      }
-    };
-    chip.addEventListener('pointerup',onUp);chip.addEventListener('pointercancel',onUp);
-    chip.onclick=e=>{if(chip.skipClick){chip.skipClick=false;return;}alert('留덉씠?섏씠吏 ?곕룞 踰꾪듉?낅땲?? (留덉슦?ㅻ줈 ?쒕옒洹명븯???먰븯???꾩튂濡??대룞?쒗궗 ???덉뒿?덈떎.)');};
-  }
-  window.addEventListener('DOMContentLoaded', () => {
-    let chip = document.getElementById("ncMemberChip");
-    if (!chip) {
-      chip = document.createElement("button");
-      chip.id = "ncMemberChip";
-      chip.className = "nc-member-chip";
-      chip.textContent = "??諛뺤갹???먯옣??(NovaCell)";
-      document.body.append(chip);
-      makeDraggable(chip);
-    }
-  });
-})();
-</script>
 </body>
 </html>
