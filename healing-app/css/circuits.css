@@ -1390,6 +1390,9 @@ html, body {
 }
 
 @media (max-width: 860px) {
+  .header-actions a {
+    display: none !important;
+  }
   .mobile-quick-nav-bar {
     display: block;
     position: sticky;

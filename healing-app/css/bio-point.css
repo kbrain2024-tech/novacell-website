@@ -545,13 +545,21 @@ html, body {
 .stage-canvas-area {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 540px;
-  max-height: 720px;
+  min-height: auto;
   padding: 16px 20px;
   background: #ffffff;
   overflow: hidden;
+}
+
+.bio-figure-wrapper {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .figure-body-img {
@@ -560,13 +568,16 @@ html, body {
   max-width: 100%;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
 
-/* Hotspot Pins */
+/* Hotspot Pins (Locked 1:1 on bio-figure-wrapper) */
 .stage-pins-container {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
@@ -1337,6 +1348,9 @@ html, body {
 }
 
 @media (max-width: 860px) {
+  .header-actions a {
+    display: none !important;
+  }
   .bio-shell {
     grid-template-columns: 1fr;
   }
@@ -1347,13 +1361,20 @@ html, body {
     border-bottom: 1px solid var(--line);
   }
   .bio-main-stage {
-    padding: 20px 16px;
+    padding: 16px 12px;
+  }
+  .stage-canvas-area {
+    padding: 12px 8px;
+    min-height: auto;
+  }
+  .figure-body-img {
+    max-height: min(65vh, 520px);
   }
   .floating-point-card {
     position: static;
     width: 100%;
     max-width: 100%;
-    margin-top: 12px;
+    margin-top: 14px;
   }
 }
 

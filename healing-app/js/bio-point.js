@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NovaCell Chakra Bio Points Interactive Application Logic
  * Comprehensive bilingual support, 528Hz Cellular Voltage Healing Timer,
  * Interactive Front/Back Body Mapping, and NovaCell Clinical Protocol Guide.
@@ -22,7 +22,7 @@ const CHAKRAS_FRONT = [
     actionEn: "Brain voltage reset, CSF circulation & spiritual tranquility",
     checkKo: "백회(GV20)",
     checkEn: "GV20 (Baihui)",
-    pinTop: "8.5%",
+    pinTop: "8.8%",
     pinLeft: "50%"
   },
   {
