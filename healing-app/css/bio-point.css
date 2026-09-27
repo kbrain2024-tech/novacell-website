@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NovaCell Chakra Bio Points Interactive Application Styles
  * Dark Cyber-Medical Aesthetic, Responsive Two-Column Layout,
  * Interactive Hotspot Pins, Floating Information Card, and 528Hz Timer.
@@ -640,11 +640,11 @@ html, body {
   100% { transform: scale(1.8); opacity: 0; }
 }
 
-/* Floating Live Active Chakra Card */
+/* Floating Live Active Chakra Card (Fixed to Bottom-Left Corner) */
 .floating-point-card {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  left: 14px;
+  bottom: 14px;
   width: 280px;
   max-width: 44%;
   background: #ffffff;

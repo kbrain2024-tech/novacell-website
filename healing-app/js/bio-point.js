@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NovaCell Chakra Bio Points Interactive Application Logic
  * Comprehensive bilingual support, 528Hz Cellular Voltage Healing Timer,
  * Interactive Front/Back Body Mapping, and NovaCell Clinical Protocol Guide.
@@ -653,6 +653,7 @@ function selectPoint(idx) {
   renderActivePoint();
 }
 
+window.switchView = switchView;
 function switchView(view) {
   currentView = view;
   activePointIndex = 0;
@@ -1185,7 +1186,7 @@ function initViewToggles() {
 
   // Check URL hash or param
   const urlParams = new URLSearchParams(window.location.search);
-  if (window.location.hash === "#back" || urlParams.get("view") === "back") {
+  if (window.location.hash.toLowerCase().indexOf("back") !== -1 || urlParams.get("view") === "back") {
     switchView("back");
   } else {
     switchView("front");
