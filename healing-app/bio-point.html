@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -14,14 +14,19 @@
 <body class="novacell-access-pending">
   <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
   <header class="bio-header">
-    <a class="brand" href="index.html" aria-label="치료점 앱으로 돌아가기">
-      <span class="brand-mark" aria-hidden="true">◇</span>
-      <span><strong>NovaCell Healing Points</strong><small>BIO POINT GUIDE</small></span>
+    <a class="brand" href="index.html" aria-label="移섎즺 ?ъ씤??硫붿씤?쇰줈 ?대룞">
+      <span class="brand-mark" aria-hidden="true">&#x25C7;</span>
+      <span><strong>NovaCell Healing Points</strong><small id="brand-sub-title">CHAKRA BIO POINT GUIDE</small></span>
     </a>
-    <nav class="header-actions" aria-label="페이지 이동">
-      <a href="index.html">치료점 앱</a>
-      <a class="active" href="bio-point.html" aria-current="page">Bio Point</a>
-      <a href="circuits.html">생체 회로</a>
+    <nav class="header-actions" aria-label="?섏씠吏 ?대룞">
+      <a href="index.html" id="nav-therapy">移섎즺 ?ъ씤??/a>
+      <a class="active" href="bio-point.html" id="nav-chakra" aria-current="page">李⑦겕??諛붿씠???ъ씤??/a>
+      <a href="circuits.html" id="nav-circuit">?좉꼍 ?앹껜 ?뚮줈</a>
+      <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="?몄뼱 蹂寃?/ Change Language">
+        <span class="lang-opt ko active">&#xD55C;&#xAE00;</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-opt en">ENG</span>
+      </button>
     </nav>
   </header>
 
@@ -174,5 +179,56 @@
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
+<script>
+(function() {
+  function initLanguageToggle() {
+    var langBtn = document.getElementById("lang-toggle-btn");
+    var currentLang = localStorage.getItem("novacell_site_lang") || "ko";
+    var urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("lang") === "en") currentLang = "en";
+
+    function applyLang(lang) {
+      currentLang = lang;
+      localStorage.setItem("novacell_site_lang", lang);
+      var navTherapy = document.getElementById("nav-therapy");
+      var navChakra = document.getElementById("nav-chakra");
+      var navCircuit = document.getElementById("nav-circuit");
+      var brandSub = document.getElementById("brand-sub-title");
+
+      if (lang === "en") {
+        if (navTherapy) navTherapy.textContent = "Therapy Points";
+        if (navChakra) navChakra.textContent = "Chakra Bio Points";
+        if (navCircuit) navCircuit.textContent = "Neural Circuit";
+        if (brandSub) brandSub.textContent = "CHAKRA BIO POINT GUIDE";
+        if (langBtn) {
+          var koOpt = langBtn.querySelector(".lang-opt.ko");
+          var enOpt = langBtn.querySelector(".lang-opt.en");
+          if (koOpt) koOpt.classList.remove("active");
+          if (enOpt) enOpt.classList.add("active");
+        }
+      } else {
+        if (navTherapy) navTherapy.textContent = "\uCE58\uB8CC \uD3EC\uC778\uD2B8";
+        if (navChakra) navChakra.textContent = "\uCC28\uD06C\uB77C \uBC14\uC774\uC624 \uD3EC\uC778\uD2B8";
+        if (navCircuit) navCircuit.textContent = "\uC2E0\uACBD \uC0DD\uCCB4 \uD68C\uB85C";
+        if (brandSub) brandSub.textContent = "CHAKRA BIO POINT GUIDE";
+        if (langBtn) {
+          var koOpt = langBtn.querySelector(".lang-opt.ko");
+          var enOpt = langBtn.querySelector(".lang-opt.en");
+          if (koOpt) koOpt.classList.add("active");
+          if (enOpt) enOpt.classList.remove("active");
+        }
+      }
+    }
+
+    if (langBtn) {
+      langBtn.addEventListener("click", function() {
+        applyLang(currentLang === "ko" ? "en" : "ko");
+      });
+    }
+    applyLang(currentLang);
+  }
+  document.addEventListener("DOMContentLoaded", initLanguageToggle);
+})();
+</script>
 </body>
 </html>

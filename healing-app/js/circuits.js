@@ -655,6 +655,9 @@ function handleSearch(query) {
 /* ==========================================================================
    5. 528Hz Healing Voltage Timer & Tibetan Singing Bowl Audio Engine
    ========================================================================== */
+/* ==========================================================================
+   5. 528Hz Healing Voltage Timer & Tibetan Singing Bowl Audio Engine
+   ========================================================================== */
 let audioCtx = null;
 let osc528 = null;
 let oscSub = null;
@@ -679,6 +682,47 @@ function getAudioContext() {
   return audioCtx;
 }
 
+function stop528HzSound() {
+  if (!timerGainNode && !osc528 && !oscSub) return;
+  const curCtx = audioCtx;
+  const curGain = timerGainNode;
+  const curOsc528 = osc528;
+  const curOscSub = oscSub;
+
+  // Immediately clear active pointers so new starts never collide
+  timerGainNode = null;
+  osc528 = null;
+  oscSub = null;
+
+  if (curGain && curCtx) {
+    try {
+      const now = curCtx.currentTime;
+      curGain.gain.cancelScheduledValues(now);
+      curGain.gain.setValueAtTime(curGain.gain.value, now);
+      curGain.gain.linearRampToValueAtTime(0.0001, now + 0.12);
+    } catch (e) {}
+  }
+
+  // Gracefully stop the previous oscillators after the short fade-out
+  setTimeout(() => {
+    try {
+      if (curOsc528) {
+        curOsc528.stop();
+        curOsc528.disconnect();
+      }
+    } catch (e) {}
+    try {
+      if (curOscSub) {
+        curOscSub.stop();
+        curOscSub.disconnect();
+      }
+    } catch (e) {}
+    try {
+      if (curGain) curGain.disconnect();
+    } catch (e) {}
+  }, 150);
+}
+
 function start528HzSound() {
   if (isAudioMuted) return;
   try {
@@ -696,52 +740,38 @@ function start528HzSound() {
 }
 
 function doStart528(ctx) {
+  // If already playing continuously, do nothing (keep uninterrupted continuous sound!)
+  if (osc528 && timerGainNode) return;
+
   stop528HzSound();
 
   const now = ctx.currentTime;
-  timerGainNode = ctx.createGain();
-  timerGainNode.gain.cancelScheduledValues(now);
-  timerGainNode.gain.setValueAtTime(0.001, now);
-  timerGainNode.gain.linearRampToValueAtTime(0.32, now + 0.3);
-  timerGainNode.connect(ctx.destination);
+  const masterGain = ctx.createGain();
+  masterGain.gain.cancelScheduledValues(now);
+  masterGain.gain.setValueAtTime(0.001, now);
+  // Clear, comfortable continuous healing tone (0.30 gain)
+  masterGain.gain.linearRampToValueAtTime(0.30, now + 0.3);
+  masterGain.connect(ctx.destination);
+  timerGainNode = masterGain;
 
-  osc528 = ctx.createOscillator();
-  osc528.type = "sine";
-  osc528.frequency.setValueAtTime(528.0, now);
+  // 528Hz Solfeggio fundamental tone (DNA repair / Cellular voltage restoration)
+  const o528 = ctx.createOscillator();
+  o528.type = "sine";
+  o528.frequency.setValueAtTime(528.0, now);
+  o528.connect(masterGain);
+  o528.start(now);
+  osc528 = o528;
 
-  oscSub = ctx.createOscillator();
-  oscSub.type = "sine";
-  oscSub.frequency.setValueAtTime(264.0, now);
-
+  // 264Hz subharmonic octave resonance (warm, grounded soothing overtone)
+  const oSub = ctx.createOscillator();
+  oSub.type = "sine";
+  oSub.frequency.setValueAtTime(264.0, now);
   const subGain = ctx.createGain();
   subGain.gain.setValueAtTime(0.12, now);
-  oscSub.connect(subGain);
-  subGain.connect(timerGainNode);
-
-  osc528.connect(timerGainNode);
-
-  osc528.start(now);
-  oscSub.start(now);
-}
-
-function stop528HzSound() {
-  try {
-    if (timerGainNode && audioCtx) {
-      const now = audioCtx.currentTime;
-      timerGainNode.gain.cancelScheduledValues(now);
-      timerGainNode.gain.linearRampToValueAtTime(0.0001, now + 0.2);
-    }
-    setTimeout(() => {
-      if (osc528) {
-        try { osc528.stop(); osc528.disconnect(); } catch (e) {}
-        osc528 = null;
-      }
-      if (oscSub) {
-        try { oscSub.stop(); oscSub.disconnect(); } catch (e) {}
-        oscSub = null;
-      }
-    }, 250);
-  } catch (e) {}
+  oSub.connect(subGain);
+  subGain.connect(masterGain);
+  oSub.start(now);
+  oscSub = oSub;
 }
 
 function playSingingBowlBell() {
@@ -1010,6 +1040,58 @@ function initTimerEvents() {
 
   updateTimerDisplay();
 }
+
+/* ==========================================================================
+   6. Header Menu Multi-Language Switcher (KO / EN)
+   ========================================================================== */
+function initLanguageToggle() {
+  const langBtn = $("lang-toggle-btn");
+  let currentLang = localStorage.getItem("novacell_site_lang") || "ko";
+
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get("lang") === "en") {
+    currentLang = "en";
+  }
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem("novacell_site_lang", lang);
+
+    const navTherapy = $("nav-therapy");
+    const navChakra = $("nav-chakra");
+    const navCircuit = $("nav-circuit");
+    const brandSub = $("brand-sub-title");
+
+    if (lang === "en") {
+      if (navTherapy) navTherapy.textContent = "Therapy Points";
+      if (navChakra) navChakra.textContent = "Chakra Bio Points";
+      if (navCircuit) navCircuit.textContent = "Neural Circuit";
+      if (brandSub) brandSub.textContent = "NEURAL CIRCUIT GUIDE";
+      if (langBtn) {
+        langBtn.querySelector(".lang-opt.ko")?.classList.remove("active");
+        langBtn.querySelector(".lang-opt.en")?.classList.add("active");
+      }
+    } else {
+      if (navTherapy) navTherapy.textContent = "\uCE58\uB8CC \uD3EC\uC778\uD2B8";
+      if (navChakra) navChakra.textContent = "\uCC28\uD06C\uB77C \uBC14\uC774\uC624 \uD3EC\uC778\uD2B8";
+      if (navCircuit) navCircuit.textContent = "\uC2E0\uACBD \uC0DD\uCCB4 \uD68C\uB85C";
+      if (brandSub) brandSub.textContent = "NEURAL CIRCUIT GUIDE";
+      if (langBtn) {
+        langBtn.querySelector(".lang-opt.ko")?.classList.add("active");
+        langBtn.querySelector(".lang-opt.en")?.classList.remove("active");
+      }
+    }
+  }
+
+  if (langBtn) {
+    langBtn.addEventListener("click", () => {
+      const nextLang = currentLang === "ko" ? "en" : "ko";
+      applyLang(nextLang);
+    });
+  }
+
+  applyLang(currentLang);
+}
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = $("circuit-search");
   if (searchInput) {
@@ -1053,4 +1135,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderList();
   renderDetail(CIRCUITS[selected]);
   initTimerEvents();
+  initLanguageToggle();
 });
