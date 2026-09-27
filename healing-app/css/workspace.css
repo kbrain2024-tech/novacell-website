@@ -96,13 +96,23 @@ body.mobile-menu-open{overflow:hidden!important}
 /* ==========================================================================
    528Hz Cellular Voltage Healing Timer & Point Banner Styles
    ========================================================================== */
-.hp-healing-timer-card {
-  margin: 18px 0 24px;
-  background: linear-gradient(180deg, #0b1a36 0%, #071226 100%);
-  border: 1.5px solid rgba(56, 189, 248, 0.35);
-  border-radius: 18px;
-  overflow: hidden;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 24px rgba(14, 116, 144, 0.15);
+.hp-healing-timer-card,
+.healing-timer-card,
+#timer-modal {
+  display: block !important;
+  flex-shrink: 0 !important;
+  min-height: max-content !important;
+  height: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 14px 0 20px !important;
+  background: linear-gradient(180deg, #0b1a36 0%, #071226 100%) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.4) !important;
+  border-radius: 16px !important;
+  overflow: visible !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 24px rgba(14, 116, 144, 0.2) !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .timer-card-header {
