@@ -3856,10 +3856,26 @@ class NovaCellApp {
   }
 
   onTimerComplete() {
-    // Flash effect / Sound cue simulation
-    this.timerDisplay.innerHTML = `<span style="color: var(--accent-emerald); font-size: 2rem;">완료!</span>`;
+    this.timerDisplay.innerHTML = '<span style="color: var(--accent-emerald); font-size: 2rem;">\uC644\uB8CC!</span>';
     if (navigator.vibrate) {
       navigator.vibrate([100, 50, 100]);
+    }
+    this.playTimerSound();
+  }
+
+  playTimerSound() {
+    try {
+      let audio = document.getElementById('singing-bowl-audio');
+      if (!audio) {
+        audio = new Audio('assets/audio/singing-bowl.mp3');
+        audio.id = 'singing-bowl-audio';
+        document.body.appendChild(audio);
+      }
+      audio.currentTime = 0;
+      audio.volume = 0.8;
+      audio.play().catch(e => console.warn('Timer sound error:', e));
+    } catch (e) {
+      console.warn('Timer sound notice:', e);
     }
   }
 
@@ -4308,5 +4324,6 @@ if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{t
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
+  <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
 </body>
 </html>
