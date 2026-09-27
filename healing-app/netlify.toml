@@ -1,10 +1,38 @@
-[build]
-  publish = "."
+[[redirects]]
+  from = "/healing-app/bio-point*"
+  to = "/bio-point.html"
+  status = 200
+  force = true
 
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    X-Robots-Tag = "noindex, nofollow"
+[[redirects]]
+  from = "/healing-app/circuits*"
+  to = "/circuits.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/bio-point*"
+  to = "/bio-point.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/circuits*"
+  to = "/circuits.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,280 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#030712">
+  <title id="page-title">NovaCell Healing Points | 차크라 바이오 포인트 노바셀 통치 요법</title>
+  <meta name="description" content="노바셀 통치 요법 책 195~203쪽의 전면 7개 차크라 코일과 후면 독맥 척추 축전기 바이오 포인트 상호작용 도해 및 528Hz 치유 타이머 가이드">
+  <link rel="stylesheet" href="css/bio-point.css?v=39">
+  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
+  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
+</head>
+<body class="novacell-access-pending">
+  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell &#xD68C;&#xC6D0; &#xC774;&#xC6A9;&#xAD8C;&#xC744; &#xD655;&#xC778;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;...</p></div>
+  <!-- Header Navigation -->
+  <header class="circuit-header">
+    <a class="brand" href="index.html" aria-label="메인 홈으로 이동">
+      <span class="brand-mark" aria-hidden="true">&#x25C7;</span>
+      <span><strong>NovaCell Healing Points</strong><small id="brand-sub-title">CHAKRA BIO POINT GUIDE</small></span>
+    </a>
+    <nav class="header-actions" aria-label="페이지 이동">
+      <a href="index.html" id="nav-therapy">질환별 치료 포인트</a>
+      <a class="active" href="bio-point.html" id="nav-chakra" aria-current="page">차크라 바이오 포인트</a>
+      <a href="circuits.html" id="nav-circuit">신경 생체 회로</a>
+      <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="언어 변경 / Change Language">
+        <span class="lang-opt ko active">한글</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-opt en">ENG</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Shell -->
+  <main class="bio-shell">
+    <!-- Left Sidebar: Controls & Point Selection -->
+    <aside class="bio-sidebar">
+      <div class="sidebar-heading">
+        <p class="eyebrow" id="sidebar-eyebrow">BOOK PAGES 195-203</p>
+        <h1 id="sidebar-main-title">Chakra Bio Points<br><span class="accent-title">차크라 바이오 포인트 노바셀 통치 요법</span></h1>
+        <p id="sidebar-intro" class="sidebar-intro">신체 전면의 임맥(CV)을 따르는 7개 쁘라나 코일과 후면 독맥(GV)을 따르는 척추 축전기 포인트를 순차적으로 안내합니다.</p>
+      </div>
+
+      <!-- View Switcher (Front / Back) -->
+      <div class="view-segmented-control" role="tablist" aria-label="도해 시점 선택">
+        <button id="view-toggle-front" class="segmented-btn active" type="button" role="tab" aria-selected="true">
+          <span>🔆 전면 차크라 (Front Coils)</span>
+        </button>
+        <button id="view-toggle-back" class="segmented-btn" type="button" role="tab" aria-selected="false">
+          <span>⚡ 후면 축전기 (Back Capacitors)</span>
+        </button>
+      </div>
+
+      <!-- List Meta Bar -->
+      <div class="list-meta-bar">
+        <span class="list-meta-label" id="list-meta-label">POINTS LIST</span>
+        <span class="view-item-count" id="view-item-count">7개 차크라</span>
+      </div>
+
+      <!-- Interactive Points Cards List -->
+      <div id="chakra-list" class="chakra-list" role="listbox" aria-label="차크라 바이오 포인트 목록"></div>
+
+      <!-- Quick Reference Summary Drawers -->
+      <div class="sidebar-drawer">
+        <h3 id="sidebar-drawer-title">⚡ 전면 코일 & 후면 축전기 모델</h3>
+        <p id="sidebar-drawer-text">속이 빈 장기(소장, 위장, 대장, 방광, 담낭)는 <strong>전면 코일(Coils)</strong>, 단단한 실질 장기(심장, 폐, 비장, 신장, 간)는 <strong>후면 축전기(Capacitors)</strong>로 기능하여 생체 전위를 교차 조율합니다.</p>
+      </div>
+    </aside>
+
+    <!-- Right Main Stage: Diagram, Timer & Clinical Protocol -->
+    <section class="bio-main-stage" aria-live="polite">
+      <!-- Stage Topline -->
+      <div class="stage-topline">
+        <div class="topline-info">
+          <p id="chakra-sequence" class="eyebrow">FRONT CHAKRA 04 / 07</p>
+          <h2 id="chakra-main-title">아나하타 차크라 (심장)</h2>
+          <p id="chakra-sub-title" class="topline-sub">임맥(CV) CV17 전중혈 · 흉골 중앙 · 소장 (슬픔 해소 & 사랑·기쁨 회복)</p>
+        </div>
+        <div class="topline-actions">
+          <div class="stage-quick-toggles">
+            <button id="stage-toggle-front" class="stage-toggle-btn active" type="button">전면 도해</button>
+            <button id="stage-toggle-back" class="stage-toggle-btn" type="button">후면 도해</button>
+          </div>
+          <span id="chakra-source-page" class="source-badge">책 196~199쪽</span>
+        </div>
+      </div>
+
+      <!-- Human Figure Stage Area -->
+      <div class="figure-stage-wrapper">
+        <div class="stage-header-bar">
+          <div class="stage-header-left">
+            <span class="stage-header-dot"></span>
+            <strong id="stage-view-badge" class="stage-view-badge">전면 차크라 쁘라나 코일(Front Coils) 도해</strong>
+            <span id="stage-view-sub" class="stage-view-sub">임맥(CV) 중심선 및 7개 생체 에너지 센터</span>
+          </div>
+        </div>
+
+        <div class="stage-canvas-area">
+          <img id="figure-body-img" class="figure-body-img" src="assets/biopoint/front-korean.webp" alt="전면 차크라 바이오 포인트 코일 도해">
+          
+          <!-- Interactive Hotspot Pins -->
+          <div id="stage-pins-container" class="stage-pins-container"></div>
+
+          <!-- Floating Live Active Chakra Information Card -->
+          <div id="floating-point-card" class="floating-point-card">
+            <div class="floating-point-header">
+              <span id="floating-point-badge" class="floating-point-badge">[차크라 04] 전면 코일</span>
+              <strong id="floating-point-title" class="floating-point-title">아나하타 차크라 (심장)</strong>
+              <span id="floating-point-sub" class="floating-point-sub">임맥(CV) CV17 전중혈 · 흉골 중앙</span>
+            </div>
+            <div class="floating-point-body">
+              <div class="floating-row">
+                <span id="floating-label-org">연계 장기 및 정서</span>
+                <strong id="floating-point-organ">소장 · 슬픔 해소 & 사랑·기쁨 회복</strong>
+              </div>
+              <div class="floating-row">
+                <span id="floating-label-act">생체 작용 및 전위</span>
+                <strong id="floating-point-action">528Hz 사랑과 세포 재생 공명, 흉선 면역 세포 전위 활성화</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p id="stage-figcaption" class="stage-figcaption">『노바셀 통치 요법』 196~199쪽 원본 도해 · 전면 쁘라나 코일(Front Coils) 및 바이오 포인트 전압 순환 시스템</p>
+      </div>
+
+      <!-- 528Hz Cellular Voltage Healing Timer -->
+      <div id="timer-card" class="timer-card">
+        <div class="timer-header">
+          <div class="timer-title-group">
+            <span class="timer-icon-freq">&#x3030;</span>
+            <div>
+              <h3 id="timer-title" class="timer-title">528Hz 세포 전압 치유 타이머</h3>
+              <p id="timer-sub" class="timer-subtitle">DNA 복원 주파수 · 싱잉볼 차임 벨</p>
+            </div>
+          </div>
+          <span id="timer-status-badge" class="timer-status-badge">대기 중</span>
+        </div>
+
+        <!-- Presets -->
+        <div class="timer-presets">
+          <button class="preset-btn" data-min="1" type="button">1분</button>
+          <button class="preset-btn" data-min="3" type="button">3분</button>
+          <button class="preset-btn active" data-min="5" type="button">5분</button>
+          <button class="preset-btn" data-min="7" type="button">7분</button>
+          <button class="preset-btn" data-min="10" type="button">10분</button>
+        </div>
+
+        <!-- Time Display & Progress -->
+        <div class="timer-display-wrap">
+          <span id="timer-time-display" class="timer-time-text">05:00</span>
+          <div class="freq-indicator">
+            <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
+            <span id="freq-label">528Hz 치유 주파수 준비</span>
+          </div>
+        </div>
+
+        <div class="timer-progress-track">
+          <div id="timer-bar-fill" class="timer-progress-fill" style="width: 100%;"></div>
+        </div>
+
+        <!-- Actions Row -->
+        <div class="timer-actions-row">
+          <button id="timer-toggle-btn" class="timer-start-btn" type="button">
+            <span id="timer-play-icon">&#x25B6;</span>
+            <span id="timer-btn-label">치유 타이머 시작</span>
+          </button>
+          <button id="timer-reset-btn" class="timer-sub-btn" type="button">
+            <span>&#x21BA;</span>
+            <span id="timer-reset-label">리셋</span>
+          </button>
+          <button id="timer-sound-btn" class="timer-sub-btn" type="button">
+            <span id="sound-btn-icon">&#x1F50A;</span>
+            <span id="sound-btn-text">치유음 켜짐</span>
+          </button>
+          <div class="volume-control-box" title="음량 조절 / Volume">
+            <span class="vol-icon">&#x1F3A7;</span>
+            <input id="timer-volume-slider" class="volume-slider" type="range" min="0" max="1" step="0.05" value="0.8">
+          </div>
+        </div>
+
+        <p id="timer-guide-note" class="timer-note">
+          * <strong>528Hz 주파수</strong>는 손상된 세포 전압을 깨우고 미토콘드리아 ATP 생성을 촉진합니다. 타이머 종료 시 티베트 싱잉볼 차임 벨이 깊고 맑게 울립니다.
+        </p>
+      </div>
+
+      <!-- NovaCell Clinical Protocol Guide -->
+      <div id="clinical-protocol-guide" class="clinical-protocol-guide">
+        <div class="protocol-header">
+          <div class="protocol-top-badge-row">
+            <span id="proto-badge-main" class="proto-badge-main">&#x26A1; NOVACELL CLINICAL PROTOCOL</span>
+            <span id="proto-badge-link" class="proto-badge-link">임상 가이드 & 증례 분석실 연계</span>
+          </div>
+          <h3 id="proto-guide-title" class="protocol-title">노바셀 의료기 차크라 바이오 포인트 적용 임상 시술 가이드</h3>
+          <p id="proto-guide-sub" class="protocol-sub">NovaCell Microcurrent Probe Chakra Protocol & Clinical Pearls</p>
+        </div>
+
+        <!-- Clinical Parameters -->
+        <div class="clinical-params-row">
+          <div class="param-box">
+            <span id="proto-prm-label-1" class="param-label">출력 강도 레벨</span>
+            <span id="proto-prm-val-1" class="param-value">고전압 미세전류 03~05단계 (편안한 펄스 진동)</span>
+          </div>
+          <div class="param-box">
+            <span id="proto-prm-label-2" class="param-label">펜 도자 접촉 방식</span>
+            <span id="proto-prm-val-2" class="param-value">점진적 심부 압박 직각 안착 (Point Compression)</span>
+          </div>
+          <div class="param-box">
+            <span id="proto-prm-label-3" class="param-label">따끔거림 예방 / 전도성</span>
+            <span id="proto-prm-val-3" class="param-value">알콜 또는 생리식염수/전도성 미스트 스프레이</span>
+          </div>
+        </div>
+
+        <!-- Treatment Sequence -->
+        <div class="clinical-sequence-section">
+          <h4 id="proto-seq-heading" class="sequence-heading">&#x1F4CA; 임상 시술 순서 (Treatment Sequence)</h4>
+          <div class="sequence-steps-grid">
+            <div class="clinical-step-box step-check">
+              <div id="proto-step-1-badge" class="step-num-badge">1단계 [전압 체크]</div>
+              <div class="step-target" id="proto-step-1-title">전중(CV17) 전압 체크 (25~30초)</div>
+              <p class="step-desc" id="proto-step-1-desc">펜 도자를 해당 차크라 전압 체크 포인트(CV17)에 25~30초간 직각으로 안착하여 분절 에너지 전압 상태를 확인하고 자율신경계 흥분을 안정화합니다.</p>
+            </div>
+
+            <div class="clinical-step-box step-supply">
+              <div id="proto-step-2-badge" class="step-num-badge">2단계 [전압 공급]</div>
+              <div class="step-target" id="proto-step-2-title">아나하타 전압 공급 & 528Hz 타이머 (3~5분)</div>
+              <p class="step-desc" id="proto-step-2-desc">차크라 바이오 포인트에 도자를 수직으로 밀착하고 528Hz 치유 타이머(3~5분)를 가동하여 세포막 전위를 충전하고 쁘라나(생명 에너지) 순환을 극대화합니다.</p>
+            </div>
+
+            <div class="clinical-step-box step-muscle">
+              <div id="proto-step-3-badge" class="step-num-badge">3단계 [차크라 밸런싱]</div>
+              <div class="step-target" id="proto-step-3-title">상하 차크라 및 후면 축전기 순차 시술</div>
+              <p class="step-desc" id="proto-step-3-desc">선택된 차크라와 연계된 전면 코일 및 후면 축전기 포인트를 순차적으로 각 1분씩 통전하여 억압된 감정(불안·분노·슬픔·두려움)을 정화하고 전신 생체 전류를 조율합니다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clinical Pearls -->
+        <div class="clinical-pearls-card">
+          <div id="proto-pearls-heading" class="pearls-header">&#x1F4A1; 임상 시술 노하우 & Clinical Pearls</div>
+          <ul id="proto-pearls-list">
+            <li><strong>해부학적 함요처 직각 안착:</strong> 도자 팁을 강하게 비비거나 찌르지 말고, 뼈 경계 오목한 곳(혈자리 및 건·근막 접합부)에 펜촉을 가만히 직각으로 안착시킨 상태에서 전기를 인가합니다.</li>
+            <li><strong>전도성 수분감 유지:</strong> 피부 표면에 전도성 미스트나 알콜/생리식염수를 가볍게 도포하여 촉촉한 수분감을 유지하면 미세전류의 심부 침투율과 통전 효율이 극대화되고 따끔거림이 예방됩니다.</li>
+            <li><strong>528Hz 치유 주파수 호흡 동기화:</strong> 타이머와 528Hz 음원을 가동하며 환자가 편안한 복식 호흡(들숨 4초, 날숨 6초)을 하도록 유도하면 부교감 신경이 활성화되어 전압 흡수가 최적화됩니다.</li>
+            <li><strong>싱잉볼 알림 종료 후 재평가:</strong> 세션 완료 시 맑게 울리는 티베트 싱잉볼 종소리와 함께 도자를 떼고, 관절 가동 범위(ROM)와 통증 경감 및 바이오 에너지 활력을 재평가합니다.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Circuit Pairs & Principles Section -->
+      <div class="pairs-principles-section">
+        <div>
+          <h4 id="pairs-heading" class="sequence-heading">&#x1F517; 6개 생체 회로 짝과 감정 밸런싱</h4>
+          <div id="circuit-pairs-grid" class="circuit-pairs-grid" style="margin-top: 10px;"></div>
+        </div>
+
+        <div>
+          <h4 id="principles-heading" class="sequence-heading">&#x1F4D6; 책에 수록된 차크라 바이오 포인트 5대 원리</h4>
+          <div id="principles-grid" class="principles-grid" style="margin-top: 10px;"></div>
+        </div>
+      </div>
+
+      <!-- Evidence Disclaimer Note -->
+      <aside class="evidence-note">
+        <strong>자료 범위와 주의</strong>
+        <p id="evidence-disclaimer-text">
+          이 페이지는 박창혁 저 『노바셀 통치 요법』 인쇄 페이지 195~203쪽의 내용을 앱에서 찾기 쉽게 옮긴 교육·작업용 화면입니다. 책에 기재된 적용 질환, 회로 설명과 포인트를 안내하며, 앱이 치료 효과나 환자별 완치를 독립적으로 검증했다는 뜻은 아닙니다. 실제 적용 전 환자 상태, 금기, 해부학적 구조와 임상 판단을 별도로 확인해 주세요.
+        </p>
+      </aside>
+    </section>
+  </main>
+
+    <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
+
+  <!-- Auth and Gate Scripts -->
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
+  <script src="js/bio-point.js?v=39"></script>
+</body>
+</html>

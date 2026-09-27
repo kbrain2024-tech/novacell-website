@@ -1,4 +1,4 @@
-﻿# ===================================================
+# ===================================================
 # NovaCell Domain & Subdomain Routing Configuration
 # ===================================================
 
@@ -6,19 +6,19 @@
 /robots.txt    /robots.txt   200
 /sitemap.xml   /sitemap.xml  200
 
-# 2. Healing Points Dedicated WebApp Routing (v29 Cover Screen)
+# 2. Healing Points Sub-pages & Direct Routes (High Priority)
+https://healing.novacell.kr/healing-app/bio-point*   /healing-app/bio-point.html  200!
+https://healing.novacell.kr/healing-app/circuits*    /healing-app/circuits.html   200!
+https://healing.novacell.kr/healing-app/*            /healing-app/:splat          200!
+https://healing.novacell.kr/bio-point*               /healing-app/bio-point.html  200!
+https://healing.novacell.kr/circuits*                /healing-app/circuits.html   200!
+/healing-app/bio-point*                              /healing-app/bio-point.html  200!
+/healing-app/circuits*                               /healing-app/circuits.html   200!
+
+# 2-1. Healing Points Dedicated WebApp Routing (v29 Cover Screen)
 https://healing.novacell.kr/*   /healing-app/:splat  200!
 http://healing.novacell.kr/*    /healing-app/:splat  200!
 
-
-# 2-1. Healing Sub-pages Specific Routing
-https://healing.novacell.kr/bio-point        https://healing.novacell.kr/bio-point.html  301!
-https://healing.novacell.kr/circuits         https://healing.novacell.kr/circuits.html   301!
-https://healing.novacell.kr/healing-app/*    https://healing.novacell.kr/:splat          301!
-/healing-app/bio-point                       https://healing.novacell.kr/bio-point.html  301!
-/healing-app/circuits                        https://healing.novacell.kr/circuits.html   301!
-/bio-point                                   https://healing.novacell.kr/bio-point.html  301!
-/circuits                                    https://healing.novacell.kr/circuits.html   301!
 # 3. Reflex Therapy Guide Dedicated WebApp Routing (v18 PWA)
 https://guide.novacell.kr/*     /reflex-app/:splat  200!
 http://guide.novacell.kr/*      /reflex-app/:splat  200!
