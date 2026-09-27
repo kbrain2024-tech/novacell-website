@@ -652,13 +652,16 @@ function handleSearch(query) {
 /* ==========================================================================
    5. 528Hz Healing Voltage Timer & Tibetan Singing Bowl Audio Engine
    ========================================================================== */
+/* ==========================================================================
+   5. 528Hz Healing Voltage Timer & Tibetan Singing Bowl Audio Engine
+   ========================================================================== */
 let audioCtx = null;
 let osc528 = null;
 let oscSub = null;
 let timerGainNode = null;
 let isAudioMuted = false;
 
-let totalTimerSeconds = 300; // Default: 5 min (300s)
+let totalTimerSeconds = 300;
 let remainingTimerSeconds = 300;
 let timerInterval = null;
 let isTimerRunning = false;
@@ -682,42 +685,51 @@ function start528HzSound() {
     const ctx = getAudioContext();
     if (!ctx) return;
 
-    stop528HzSound();
-
-    timerGainNode = ctx.createGain();
-    timerGainNode.gain.setValueAtTime(0.0001, ctx.currentTime);
-    timerGainNode.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.8);
-    timerGainNode.connect(ctx.destination);
-
-    // 528Hz fundamental sine wave (Love / DNA repair / cellular voltage)
-    osc528 = ctx.createOscillator();
-    osc528.type = "sine";
-    osc528.frequency.setValueAtTime(528.0, ctx.currentTime);
-
-    // 264Hz subtle subharmonic for warm resonance
-    oscSub = ctx.createOscillator();
-    oscSub.type = "sine";
-    oscSub.frequency.setValueAtTime(264.0, ctx.currentTime);
-
-    const subGain = ctx.createGain();
-    subGain.gain.setValueAtTime(0.035, ctx.currentTime);
-    oscSub.connect(subGain);
-    subGain.connect(timerGainNode);
-
-    osc528.connect(timerGainNode);
-
-    osc528.start();
-    oscSub.start();
+    if (ctx.state === "suspended") {
+      ctx.resume().then(() => doStart528(ctx));
+    } else {
+      doStart528(ctx);
+    }
   } catch (e) {
     console.warn("Audio start error:", e);
   }
 }
 
+function doStart528(ctx) {
+  stop528HzSound();
+
+  const now = ctx.currentTime;
+  timerGainNode = ctx.createGain();
+  timerGainNode.gain.cancelScheduledValues(now);
+  timerGainNode.gain.setValueAtTime(0.001, now);
+  timerGainNode.gain.linearRampToValueAtTime(0.32, now + 0.3);
+  timerGainNode.connect(ctx.destination);
+
+  osc528 = ctx.createOscillator();
+  osc528.type = "sine";
+  osc528.frequency.setValueAtTime(528.0, now);
+
+  oscSub = ctx.createOscillator();
+  oscSub.type = "sine";
+  oscSub.frequency.setValueAtTime(264.0, now);
+
+  const subGain = ctx.createGain();
+  subGain.gain.setValueAtTime(0.12, now);
+  oscSub.connect(subGain);
+  subGain.connect(timerGainNode);
+
+  osc528.connect(timerGainNode);
+
+  osc528.start(now);
+  oscSub.start(now);
+}
+
 function stop528HzSound() {
   try {
     if (timerGainNode && audioCtx) {
-      timerGainNode.gain.setValueAtTime(timerGainNode.gain.value, audioCtx.currentTime);
-      timerGainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.3);
+      const now = audioCtx.currentTime;
+      timerGainNode.gain.cancelScheduledValues(now);
+      timerGainNode.gain.linearRampToValueAtTime(0.0001, now + 0.2);
     }
     setTimeout(() => {
       if (osc528) {
@@ -728,42 +740,73 @@ function stop528HzSound() {
         try { oscSub.stop(); oscSub.disconnect(); } catch (e) {}
         oscSub = null;
       }
-    }, 350);
+    }, 250);
   } catch (e) {}
 }
 
-// Tibetan Singing Bowl Chime Synthesis
 function playSingingBowlBell() {
   if (isAudioMuted) return;
   try {
     const ctx = getAudioContext();
     if (!ctx) return;
 
-    const frequencies = [264, 528, 792, 1378, 2145];
-    const gains = [0.35, 0.25, 0.14, 0.08, 0.04];
-    const decayTimes = [6.0, 5.0, 4.0, 3.0, 2.0];
-    const now = ctx.currentTime;
-
-    frequencies.forEach((freq, i) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = "sine";
-      osc.frequency.setValueAtTime(freq + (i === 1 ? 0.7 : 0), now);
-
-      gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.linearRampToValueAtTime(gains[i], now + 0.04);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + decayTimes[i]);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(now);
-      osc.stop(now + decayTimes[i] + 0.1);
-    });
+    if (ctx.state === "suspended") {
+      ctx.resume().then(() => doPlaySingingBowl(ctx));
+    } else {
+      doPlaySingingBowl(ctx);
+    }
   } catch (e) {
     console.warn("Singing bowl error:", e);
   }
+}
+
+function doPlaySingingBowl(ctx) {
+  const frequencies = [264, 528, 1056, 1584, 2112];
+  const gains = [0.42, 0.32, 0.18, 0.10, 0.05];
+  const decayTimes = [6.0, 5.2, 4.2, 3.2, 2.0];
+  const now = ctx.currentTime;
+
+  frequencies.forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(freq + (i % 2 === 1 ? 0.75 : -0.5), now);
+
+    gain.gain.cancelScheduledValues(now);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.linearRampToValueAtTime(gains[i], now + 0.05);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + decayTimes[i]);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + decayTimes[i] + 0.1);
+  });
+}
+
+function playTestChime() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(528, now);
+
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(0.28, now + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.5);
+  } catch (e) {}
 }
 
 function updateTimerDisplay() {
@@ -783,6 +826,7 @@ function updateTimerDisplay() {
 }
 
 function toggleTimer() {
+  getAudioContext();
   if (isTimerRunning) {
     pauseTimer();
   } else {
@@ -791,6 +835,8 @@ function toggleTimer() {
 }
 
 function startTimer() {
+  getAudioContext();
+
   if (remainingTimerSeconds <= 0) {
     remainingTimerSeconds = totalTimerSeconds;
   }
@@ -806,14 +852,14 @@ function startTimer() {
   const freqLabel = $("freq-label");
 
   if (toggleBtn) toggleBtn.classList.remove("paused");
-  if (label) label.textContent = "\uC77C\uC2DC\uC815\uC9C0"; // "?쇱떆?뺤?"
+  if (label) label.textContent = "\uC77C\uC2DC\uC815\uC9C0";
   if (icon) icon.textContent = "\u23F8";
   if (badge) {
-    badge.textContent = "528Hz \uCE58\uC720 \uC911"; // "528Hz 移섏쑀 以?
+    badge.textContent = "528Hz \uCE58\uC720 \uC911";
     badge.className = "timer-status-badge running";
   }
   if (pulseDot) pulseDot.className = "freq-pulse-dot pulsing";
-  if (freqLabel) freqLabel.textContent = "528Hz \uC8FC\uD30C\uC218 \uBC1C\uC0DD \uC911"; // "528Hz 二쇳뙆??諛쒖깮 以?
+  if (freqLabel) freqLabel.textContent = "528Hz \uC8FC\uD30C\uC218 \uBC1C\uC0DD \uC911";
 
   start528HzSound();
 
@@ -847,14 +893,14 @@ function pauseTimer() {
   const freqLabel = $("freq-label");
 
   if (toggleBtn) toggleBtn.classList.add("paused");
-  if (label) label.textContent = "\uACC4\uC18D \uC2DC\uC791"; // "怨꾩냽 ?쒖옉"
+  if (label) label.textContent = "\uACC4\uC18D \uC2DC\uC791";
   if (icon) icon.textContent = "\u25B6";
   if (badge) {
-    badge.textContent = "\uC77C\uC2DC\uC815\uC9C0"; // "?쇱떆?뺤?"
+    badge.textContent = "\uC77C\uC2DC\uC815\uC9C0";
     badge.className = "timer-status-badge";
   }
   if (pulseDot) pulseDot.className = "freq-pulse-dot";
-  if (freqLabel) freqLabel.textContent = "\uCE58\uC720 \uC77C\uC2DC\uC815\uC9C0"; // "移섏쑀 ?쇱떆?뺤?"
+  if (freqLabel) freqLabel.textContent = "\uCE58\uC720 \uC77C\uC2DC\uC815\uC9C0";
 }
 
 function resetTimer() {
@@ -870,10 +916,10 @@ function resetTimer() {
   const freqLabel = $("freq-label");
 
   if (toggleBtn) toggleBtn.classList.remove("paused");
-  if (label) label.textContent = "\uCE58\uC720 \uD0C0\uC774\uBA38 \uC2DC\uC791"; // "移섏쑀 ??대㉧ ?쒖옉"
+  if (label) label.textContent = "\uCE58\uC720 \uD0C0\uC774\uBA38 \uC2DC\uC791";
   if (icon) icon.textContent = "\u25B6";
   if (badge) {
-    badge.textContent = "\uB300\uAE30 \uC911"; // "?湲?以?
+    badge.textContent = "\uB300\uAE30 \uC911";
     badge.className = "timer-status-badge";
   }
   if (pulseDot) pulseDot.className = "freq-pulse-dot";
@@ -890,16 +936,17 @@ function finishTimer() {
   const label = $("timer-btn-label");
 
   if (badge) {
-    badge.textContent = "\uCE58\uC720 \uC644\uB8CC \uD83D\uDD14"; // "移섏쑀 ?꾨즺 ?뵒"
+    badge.textContent = "\uCE58\uC720 \uC644\uB8CC \uD83D\uDD14";
     badge.className = "timer-status-badge finished";
   }
-  if (freqLabel) freqLabel.textContent = "\uC2F1\uC789\uBCFC \uB9C8\uBB34\uB9AC \uC54C\uB9BC"; // "?깆엵蹂?留덈Т由??뚮┝"
-  if (label) label.textContent = "\uB2E4\uC2DC \uC2DC\uC791"; // "?ㅼ떆 ?쒖옉"
+  if (freqLabel) freqLabel.textContent = "\uC2F1\uC789\uBCFC \uB9C8\uBB34\uB9AC \uC54C\uB9BC";
+  if (label) label.textContent = "\uB2E4\uC2DC \uC2DC\uC791";
 
   playSingingBowlBell();
 }
 
 function setTimerMinutes(mins) {
+  getAudioContext();
   mins = Math.max(1, Math.min(10, mins));
   totalTimerSeconds = mins * 60;
   resetTimer();
@@ -911,7 +958,8 @@ function setTimerMinutes(mins) {
 }
 
 function adjustTimerSeconds(delta) {
-  const next = Math.max(60, Math.min(600, remainingTimerSeconds + delta));
+  getAudioContext();
+  const next = Math.max(30, Math.min(600, remainingTimerSeconds + delta));
   remainingTimerSeconds = next;
   totalTimerSeconds = Math.max(remainingTimerSeconds, totalTimerSeconds);
   updateTimerDisplay();
@@ -940,6 +988,7 @@ function initTimerEvents() {
   const soundBtn = $("timer-sound-toggle");
   if (soundBtn) {
     soundBtn.addEventListener("click", () => {
+      getAudioContext();
       isAudioMuted = !isAudioMuted;
       soundBtn.classList.toggle("muted", isAudioMuted);
       const icon = $("sound-icon");
@@ -949,15 +998,18 @@ function initTimerEvents() {
 
       if (isAudioMuted) {
         stop528HzSound();
-      } else if (isTimerRunning) {
-        start528HzSound();
+      } else {
+        if (isTimerRunning) {
+          start528HzSound();
+        } else {
+          playTestChime();
+        }
       }
     });
   }
 
   updateTimerDisplay();
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = $("circuit-search");
   if (searchInput) {
