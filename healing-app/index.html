@@ -6218,7 +6218,21 @@ window.CONDITION_TRANSLATIONS_EN = {
         }.bind(this));
       }
 
-      if (this.mechanismText && cond.pathologyMechanismEn) {
+            if (window.HEALING_POINTS_EN && window.HEALING_POINTS_EN[cond.id]) {
+        var hps = window.HEALING_POINTS_EN[cond.id];
+        var pointCards = this.healingPointsList.querySelectorAll('.point-desc-card');
+        pointCards.forEach(function(card, idx) {
+          if (hps[idx]) {
+            var vals = card.querySelectorAll('.desc-val');
+            if (vals.length >= 3) {
+              vals[0].textContent = hps[idx].targetAnatomy;
+              vals[1].textContent = hps[idx].locationGuide;
+              vals[2].textContent = hps[idx].significance;
+            }
+          }
+        });
+      }
+if (this.mechanismText && cond.pathologyMechanismEn) {
         this.mechanismText.textContent = cond.pathologyMechanismEn;
       }
       
@@ -6244,6 +6258,530 @@ window.CONDITION_TRANSLATIONS_EN = {
     };
   }
 })();
+</script>
+
+<script>
+window.HEALING_POINTS_EN = {
+  "HP-CPN-01": [
+    {
+      "significance": "Relieves compression of the common peroneal nerve and restores motor nerve conduction rate of the tibialis anterior.",
+      "locationGuide": "A concave groove on the neck area 1.5 cm posteroinferior to the fibular head.",
+      "targetAnatomy": "Common peroneal nerve, peroneus longus aponeurosis, fibular neck periosteum."
+    }
+  ],
+  "HP-DQ-01": [
+    {
+      "significance": "Relieves Finkelstein's pain in De Quervain's tenosynovitis and frictional inflammation at the base of the thumb.",
+      "locationGuide": "A concave groove just above the radial styloid process on the lateral side of the wrist.",
+      "targetAnatomy": "Extensor pollicis brevis (EPB) and abductor pollicis longus (APL) tendon sheaths."
+    }
+  ],
+  "HP-FP-01": [
+    {
+      "significance": "The most fundamental core point to decompress ischemia of the facial nerve trunk and pressure within the nerve canal.",
+      "locationGuide": "A deep bony depression between the mastoid process behind the earlobe and the mandible.",
+      "targetAnatomy": "Facial nerve main trunk, posterior auricular artery branch."
+    }
+  ],
+  "HP-TTS-02": [
+    {
+      "significance": "Relieves numbness and sensory loss in the big toe and medial sole.",
+      "locationGuide": "Beginning of the medial arch of the sole, 2 cm posteroinferior to the navicular tuberosity.",
+      "targetAnatomy": "Medial plantar nerve, abductor hallucis aponeurosis."
+    }
+  ],
+  "HP-DSP-01": [
+    {
+      "significance": "Desensitizes the source segment of back pain originating from the thoracic facet joints.",
+      "locationGuide": "2~2.5 cm lateral to the corresponding thoracic spinous process, bone surface at the superior margin of the transverse process base.",
+      "targetAnatomy": "Medial branch of the posterior ramus of the thoracic spinal nerve, superior margin of the thoracic transverse process."
+    }
+  ],
+  "HP-ME-01": [
+    {
+      "significance": "Directly blocks pain and promotes tissue recovery for tendinitis at the origin of the flexor tendon.",
+      "locationGuide": "Tender nodule 5 mm anteroinferior to the medial epicondyle of the humerus.",
+      "targetAnatomy": "Common flexor tendon, periosteum on the anteroinferior surface of the medial epicondyle of the humerus."
+    }
+  ],
+  "HP-PS-03": [
+    {
+      "significance": "Relieves pulling and numbness radiating from the gluteal fold down the back of the thigh.",
+      "locationGuide": "A depression 2 cm lateral to the sitting bone (ischial tuberosity).",
+      "targetAnatomy": "Sciatic nerve pathway, common hamstring origin tendon, lateral ischial tuberosity."
+    }
+  ],
+  "HP-TOS-02": [
+    {
+      "significance": "Relieves the secondary thoracic outlet entrapment (hyperabduction syndrome) that occurs when raising the arm.",
+      "locationGuide": "2 cm medial and inferior to the coracoid process, pectoralis minor nodule deep to the pectoralis major.",
+      "targetAnatomy": "Deep pectoralis minor insertion aponeurosis, axillary artery/vein, brachial plexus cords."
+    }
+  ],
+  "HP-HN-02": [
+    {
+      "significance": "Promotes cerebral blood flow, acts as the core switch for tension/vascular headaches and dizziness.",
+      "locationGuide": "Concave depression 2 cm lateral to the C2 spinous process below the superior nuchal line.",
+      "targetAnatomy": "Triangular area between the obliquus capitis superior/inferior and rectus capitis posterior major, sympathetic plexus around the vertebral artery."
+    }
+  ],
+  "HP-LP-03": [
+    {
+      "significance": "Relaxes heavy, tightening myofascial tension along the pelvic lines on both sides of the lower back.",
+      "locationGuide": "A hard nodule on the periosteum of the iliac crest ridge, 4~5 cm lateral to the posterior superior iliac spine (PSIS).",
+      "targetAnatomy": "Iliocostalis tendon attachment, posterior layer of the thoracolumbar fascia, posterior margin of the iliac crest."
+    }
+  ],
+  "HP-PHN-01": [
+    {
+      "significance": "Subdues central sensitization and normalizes nerve conduction threshold.",
+      "locationGuide": "Paravertebral area 2 cm lateral to the thoracic spinous process corresponding to the pain dermatome.",
+      "targetAnatomy": "Dorsal root ganglion (DRG) projection area of the corresponding segment, base of the thoracic transverse process."
+    }
+  ],
+  "HP-TH-01": [
+    {
+      "significance": "Relaxes the primary fascia causing tension headaches radiating from the nape to the temporal region.",
+      "locationGuide": "Concave depression 2.5 cm medial to the mastoid process, at the boundary of the hairline.",
+      "targetAnatomy": "Splenius capitis, superior attachment aponeurosis of the semispinalis capitis."
+    }
+  ],
+  "HP-CP-02": [
+    {
+      "significance": "Promotes recovery of strength in the dorsiflexors that lift the ankle.",
+      "locationGuide": "5 cm inferior to the fibular head, groove between the anterolateral lower leg muscles.",
+      "targetAnatomy": "Deep peroneal nerve, intermuscular septum between the tibialis anterior and extensor digitorum longus."
+    }
+  ],
+  "HP-FS-02": [
+    {
+      "significance": "Releases posteroinferior capsular contracture and restores mobility for backward arm extension and relieves night pain.",
+      "locationGuide": "A concave gap 2 cm superior to the posterior axillary fold and 3 cm posteroinferior to the acromion.",
+      "targetAnatomy": "Axillary nerve, posterior humeral circumflex artery, between the teres minor, teres major, and long head of the triceps brachii."
+    }
+  ],
+  "HP-PS-02": [
+    {
+      "significance": "Balances the tension of the hip external rotators and eliminates gluteal pain during walking.",
+      "locationGuide": "The concave groove (Trochanteric fossa) at the postero-medial upper aspect of the greater trochanter.",
+      "targetAnatomy": "Piriformis tendon, periosteum at the superomedial aspect of the greater trochanter of the femur."
+    }
+  ],
+  "HP-PT-02": [
+    {
+      "significance": "Disperses and relaxes the excessive tension of the quadriceps femoris transmitted to the patellar tendon.",
+      "locationGuide": "A hard tendon attachment at the center of the superior margin of the patella.",
+      "targetAnatomy": "Attachment of the rectus femoris and vastus intermedius tendons."
+    }
+  ],
+  "HP-ACS-01": [
+    {
+      "significance": "Relieves pain and swelling from localized sternocostal arthritis causing piercing chest pain.",
+      "locationGuide": "A nodule where the costal cartilage and ribs meet, 2~3 cm lateral to the lateral margin of the sternum.",
+      "targetAnatomy": "2nd~4th sternocostal joint cartilage, radiate sternocostal ligaments."
+    }
+  ],
+  "HP-TM-02": [
+    {
+      "significance": "Relieves masticatory muscle spasms and restores balanced occlusion of the mandible.",
+      "locationGuide": "The hardest nodular induration 1.5 cm superior to the angle of the mandible (jaw corner).",
+      "targetAnatomy": "Deep/superficial masseter complex, masseteric aponeurosis."
+    }
+  ],
+  "HP-TH-02": [
+    {
+      "significance": "Relieves posterior head pulling and vertex (crown) radiating pain that occurs during cervical rotation.",
+      "locationGuide": "Deep area 3 cm lateral between the C1 transverse process and the superior nuchal line, below the occipital bone.",
+      "targetAnatomy": "Obliquus capitis superior, lateral to the inferior nuchal line of the occipital bone."
+    }
+  ],
+  "HP-LE-02": [
+    {
+      "significance": "Simultaneously resolves nerve entrapment of accompanied radial tunnel syndrome.",
+      "locationGuide": "About 3~4 cm inferior to the lateral epicondyle, a tender depression at the muscle belly of the supinator.",
+      "targetAnatomy": "Posterior interosseous nerve (PIN), tendinous arch at the superior margin of the supinator."
+    }
+  ],
+  "HP-SIJ-01": [
+    {
+      "significance": "Resolves the central pain trigger point where 80% of sacroiliac joint pain occurs.",
+      "locationGuide": "The joint space gap 1 cm inferomedial directly below the posterior superior iliac spine (PSIS).",
+      "targetAnatomy": "Long posterior sacroiliac ligament, lateral branch of the posterior sacral rami."
+    }
+  ],
+  "HP-SGB-01": [
+    {
+      "significance": "Normalizes sympathetic hyperactivity in the head and neck and instantly resets cerebral blood flow and autonomic balance.",
+      "locationGuide": "A depression 2.5 cm lateral to the cricoid cartilage (C6 level), between the sternocleidomastoid muscle and the carotid pulse.",
+      "targetAnatomy": "Stellate ganglion (C6-C7 sympathetic trunk), periosteum of the anterior tubercle of the C6 transverse process."
+    }
+  ],
+  "HP-TOS-01": [
+    {
+      "significance": "Relieves the most proximal entrapment of the brachial plexus to alleviate numbness and paralysis in the entire upper extremity.",
+      "locationGuide": "2.5 cm superior to the clavicle, a concave depression just lateral to the posterior margin of the clavicular head of the sternocleidomastoid muscle.",
+      "targetAnatomy": "Upper and middle trunks of the brachial plexus, gap between the anterior and middle scalene muscles."
+    }
+  ],
+  "HP-ME-02": [
+    {
+      "significance": "Disperses tension load and relaxes spasms occurring during forearm pronation.",
+      "locationGuide": "3 cm inferior to the medial epicondyle, along the anteromedial diagonal pathway of the forearm.",
+      "targetAnatomy": "Pronator teres, lateral to the median nerve pathway."
+    }
+  ],
+  "HP-LSS-02": [
+    {
+      "significance": "Increases peripheral blood flow to the pelvis and lower extremities, extending the walking distance before claudication.",
+      "locationGuide": "A concave hole in the sacrum, 1.5 cm inferomedial to the posterior superior iliac spine (PSIS).",
+      "targetAnatomy": "Posterior rami of the sacral nerves, sympathetic plexus for pelvic organs and lower extremity blood vessels."
+    }
+  ],
+  "HP-CTS-03": [
+    {
+      "significance": "Restores thumb opposition function (Opponens) and recovers finger grip strength.",
+      "locationGuide": "The concave center at the base of the thenar eminence (thumb mound).",
+      "targetAnatomy": "Recurrent motor branch of the median nerve, abductor pollicis brevis."
+    }
+  ],
+  "HP-IN-01": [
+    {
+      "significance": "Relieves the most proximal entrapment of the intercostal nerve pathway to alleviate radiating pain throughout the rib cage.",
+      "locationGuide": "A concave groove at the inferior margin of the rib angle, 7~8 cm lateral to the thoracic spinous processes on the back.",
+      "targetAnatomy": "Lateral cutaneous branch of the intercostal nerve, inferior margin of the rib angle."
+    }
+  ],
+  "HP-HN-03": [
+    {
+      "significance": "Relieves piercing pain in the temporal region (temples) and behind the ear, and alleviates migraines.",
+      "locationGuide": "A concave border just behind the mastoid process behind the ear.",
+      "targetAnatomy": "Lesser occipital nerve (C2,3 anterior rami branch), superior end of the posterior margin of the sternocleidomastoid muscle (SCM)."
+    }
+  ],
+  "HP-ALS-02": [
+    {
+      "significance": "Relaxes the muscle spasms pulling the pelvis upward to restore the ability to walk.",
+      "locationGuide": "A severely tender nodule at the lateral groove of the erector spinae, at the center of the superior margin of the iliac crest.",
+      "targetAnatomy": "Inferior tendon of the quadratus lumborum, medial ridge of the iliac crest."
+    }
+  ],
+  "HP-DSN-02": [
+    {
+      "significance": "Directly releases the entrapment causing chronic stiffness and referred pain medial to the shoulder blade.",
+      "locationGuide": "Center of the medial margin of the scapula, 2 cm medial between the spinal spinous processes and the scapula.",
+      "targetAnatomy": "Dorsal scapular nerve, aponeurosis between the rhomboid minor and major."
+    }
+  ],
+  "HP-CuT-02": [
+    {
+      "significance": "Decompresses the secondary entrapment site when the ulnar nerve enters the forearm.",
+      "locationGuide": "3 cm inferior to the cubital tunnel, in the gap between muscles in the posteromedial forearm.",
+      "targetAnatomy": "Aponeurosis between the two heads of the flexor carpi ulnaris (FCU), distal ulnar nerve."
+    }
+  ],
+  "HP-TN-01": [
+    {
+      "significance": "Relieves tingling sensations and shooting pain in the forehead, frontal region, and anterior scalp.",
+      "locationGuide": "A palpable concave notch at the inner 1/3 of the eyebrow along the superior orbital margin.",
+      "targetAnatomy": "Supraorbital nerve (V1 branch), frontalis aponeurosis."
+    }
+  ],
+  "HP-AS-02": [
+    {
+      "significance": "Restores subtalar stability of the ankle joint and relieves chronic traction pain of the ligaments.",
+      "locationGuide": "The surface of the calcaneus bone, 1.5 cm vertically below the tip of the lateral malleolus.",
+      "targetAnatomy": "Calcaneofibular ligament (CFL), lateral surface of the calcaneus, subfibular bursa."
+    }
+  ],
+  "HP-LDR-01": [
+    {
+      "significance": "Blocks central radiating pain caused by nerve root edema and inflammatory chemical mediators.",
+      "locationGuide": "2.5 cm lateral to the L4 or L5 spinous process, at the junction of the superior margin of the transverse process.",
+      "targetAnatomy": "Lateral branch of the corresponding spinal nerve root, intertransverse ligament."
+    }
+  ],
+  "HP-CTS-02": [
+    {
+      "significance": "Doubles the wrist pain treatment effect by blocking double crush syndrome.",
+      "locationGuide": "Along the forearm midline, 3~4 cm inferior to the center of the elbow crease.",
+      "targetAnatomy": "Median nerve, between the humeral and ulnar heads of the pronator teres."
+    }
+  ],
+  "HP-LP-02": [
+    {
+      "significance": "Decompresses the L5-S1 segment, which bears the most weight, and relieves chronic lumbosacral pain.",
+      "locationGuide": "A lateral sacral depression 1.5 cm inferior to the intercrestal line (connecting the highest points of both iliac crests).",
+      "targetAnatomy": "Medial branch of the L5 posterior rami, joint capsule at the junction of the sacral ala."
+    }
+  ],
+  "HP-HN-01": [
+    {
+      "significance": "Direct entrapment relief point for occipital pain and radiating pain to the vertex (crown).",
+      "locationGuide": "A tender point 2~2.5 cm lateral to the external occipital protuberance (EOP), just below the superior nuchal line.",
+      "targetAnatomy": "Greater occipital nerve (C2 posterior ramus), attachment aponeurosis of the trapezius and semispinalis capitis."
+    }
+  ],
+  "HP-PHN-02": [
+    {
+      "significance": "Suppresses spontaneous discharge of peripheral nociceptors and promotes skin microcirculation.",
+      "locationGuide": "A normal skin depression at the pain boundary just outside the area where allodynia occurs.",
+      "targetAnatomy": "Lateral or anterior cutaneous nerve endings of the intercostal nerve."
+    }
+  ],
+  "HP-AS-01": [
+    {
+      "significance": "Promotes ligament remodeling of the most commonly torn anterior talofibular ligament and blocks local pain.",
+      "locationGuide": "A concave joint depression 1 cm anteroinferior to the lateral malleolus (outer ankle bone).",
+      "targetAnatomy": "Anterior talofibular ligament (ATFL), lateral periosteum of the talar neck."
+    }
+  ],
+  "HP-IN-02": [
+    {
+      "significance": "Relieves needle-like piercing pain and skin hyperalgesia on the side of the flank.",
+      "locationGuide": "The gap between the corresponding ribs on the mid-axillary line (vertical line through the center of the armpit).",
+      "targetAnatomy": "Lateral cutaneous branch, penetration site through the serratus anterior aponeurosis."
+    }
+  ],
+  "HP-SIJ-02": [
+    {
+      "significance": "Stabilizes the rotational twisting of the pelvis and removes deep stiffness in the buttocks.",
+      "locationGuide": "A hard ligamentous band connecting the lateral lower margin of the sacrum to the ischial tuberosity.",
+      "targetAnatomy": "Sacrotuberous ligament, periosteum of the inferolateral margin of the sacrum."
+    }
+  ],
+  "HP-CuT-01": [
+    {
+      "significance": "Relieves mechanical friction of the ulnar nerve at the entrance of the cubital tunnel and improves nerve conduction velocity.",
+      "locationGuide": "The upper part of the concave groove between the medial epicondyle and the olecranon (elbow point).",
+      "targetAnatomy": "Ulnar nerve, Osborne's ligament (Cubital tunnel retinaculum)."
+    }
+  ],
+  "HP-FS-03": [
+    {
+      "significance": "Relieves stiffness and piercing pain in the anterior shoulder when lifting the arm forward.",
+      "locationGuide": "The palpable tendon groove on the anterior humerus, 4 cm anterior and inferior to the acromion.",
+      "targetAnatomy": "Long head tendon of the biceps brachii, transverse humeral ligament, bicipital groove between the greater and lesser tubercles."
+    }
+  ],
+  "HP-RC-01": [
+    {
+      "significance": "Promotes microcirculation and attenuates inflammatory signals at the core predilection site for tendinopathy.",
+      "locationGuide": "A bone nodule palpable when the arm is extended backward, 1 cm just below the anterolateral edge of the acromion.",
+      "targetAnatomy": "Supraspinatus tendon attachment, subacromial bursa."
+    }
+  ],
+  "HP-FP-02": [
+    {
+      "significance": "Alleviates food trapping inside the cheek during mastication and facial asymmetry.",
+      "locationGuide": "The central depression of the buccinator muscle, 2 cm lateral to the corner of the mouth.",
+      "targetAnatomy": "Buccal branch of the facial nerve, buccinator, lateral to the facial vein."
+    }
+  ],
+  "HP-TN-03": [
+    {
+      "significance": "Relieves lower lip, chin, and mandibular gum pain, as well as toothache-like facial pain.",
+      "locationGuide": "A depression in the center of the jawbone below the mandibular 1st-2nd premolars.",
+      "targetAnatomy": "Mental nerve (peripheral branch of the inferior alveolar nerve, V3), mandibular periosteum."
+    }
+  ],
+  "HP-DSP-02": [
+    {
+      "significance": "Relieves the induration of the erector spinae band that presses down on the entire back.",
+      "locationGuide": "A myofascial nodule 5 cm lateral to the spinous process, just medial to the rib angle.",
+      "targetAnatomy": "Iliocostalis thoracis tendon, periosteum on the posterior surface of the rib."
+    }
+  ],
+  "HP-LE-01": [
+    {
+      "significance": "Attenuates chronic inflammatory signals at the tendon-periosteum attachment and promotes collagen regeneration.",
+      "locationGuide": "A severely tender nodule just anterior to and 5 mm distal to the lateral epicondyle of the humerus.",
+      "targetAnatomy": "Extensor carpi radialis brevis (ECRB) tendon, lateral epicondyle periosteum of the humerus."
+    }
+  ],
+  "HP-PF-01": [
+    {
+      "significance": "Blocks the core origin pain of plantar fasciitis and induces fibroblast activation.",
+      "locationGuide": "The most painful bone spur slightly medial to the center of the bottom of the heel.",
+      "targetAnatomy": "Plantar fascia origin, flexor digitorum brevis, calcaneal periosteum."
+    }
+  ],
+  "HP-FP-03": [
+    {
+      "significance": "Restores the eye blinking function and improves lagophthalmos (inability to close the eyes completely).",
+      "locationGuide": "A concave spot on the superior margin of the zygomatic arch, 1 cm lateral to the outer canthus of the eye.",
+      "targetAnatomy": "Zygomatic branch of the facial nerve, lateral margin of the orbicularis oculi."
+    }
+  ],
+  "HP-ACS-02": [
+    {
+      "significance": "Relieves stuffiness in the center of the chest and associated pectoral muscle spasms.",
+      "locationGuide": "The center and lateral aspects of the horizontally palpable Angle of Louis at the upper sternum.",
+      "targetAnatomy": "Sternal angle cartilaginous joint, origin of the sternal head of the pectoralis major."
+    }
+  ],
+  "HP-LSS-01": [
+    {
+      "significance": "Improves spinal nerve venous congestion and relieves ischemic pain of the cauda equina.",
+      "locationGuide": "A depression 2 cm lateral to the space between the L4-L5 spinous processes.",
+      "targetAnatomy": "Lumbar nerve root venous plexus, deep aponeurosis of the paravertebral multifidus."
+    }
+  ],
+  "HP-LP-01": [
+    {
+      "significance": "Core segmental blocking point for lumbar facet joint back pain and gluteal radiating pain.",
+      "locationGuide": "2 cm lateral to the inferior margin of the L4 spinous process, the groove between the transverse process base and the superior articular process.",
+      "targetAnatomy": "Medial branch of the lumbar posterior rami, L4-5 facet joint capsule, deep multifidus."
+    }
+  ],
+  "HP-PCS-01": [
+    {
+      "significance": "Normalizes the hypothalamic thermoregulation circuit to induce systemic vasodilation.",
+      "locationGuide": "Anterolateral tubercle of the C6 transverse process.",
+      "targetAnatomy": "Stellate ganglion, paravertebral sympathetic trunk."
+    }
+  ],
+  "HP-FS-01": [
+    {
+      "significance": "Controls severe joint pain by desensitizing the central nerve that innervates 70% of shoulder joint capsule sensation.",
+      "locationGuide": "The V-shaped depression where the clavicle meets the spine of the scapula, at the junction of the medial/lateral 1/3 of the superior margin of the scapular spine.",
+      "targetAnatomy": "Suprascapular nerve (C5,6), superior transverse scapular ligament, deep to the supraspinatus."
+    }
+  ],
+  "HP-ALS-01": [
+    {
+      "significance": "Emergency release of acute upper quadratus lumborum spasms and relief of back pain during breathing.",
+      "locationGuide": "An angular depression where the inferior margin of the 12th rib meets the lateral border of the erector spinae.",
+      "targetAnatomy": "Upper tendon of the quadratus lumborum, periosteum of the inferior margin of the 12th rib."
+    }
+  ],
+  "HP-TN-02": [
+    {
+      "significance": "A core healing point that relieves lightning-like pain in the cheek, upper lip, and maxillary gums.",
+      "locationGuide": "A concave depression on the maxilla, 1 cm below the inferior orbital margin directly under the pupil.",
+      "targetAnatomy": "Infraorbital nerve (V2 branch), maxillary periosteum, deep to the levator labii superioris."
+    }
+  ],
+  "HP-TM-03": [
+    {
+      "significance": "Blocks chronic capsulitis inside the TMJ and radiating pain to the temples.",
+      "locationGuide": "A concave joint depression just in front of the tragus (the projection in front of the ear).",
+      "targetAnatomy": "Auriculotemporal nerve, posterior to the superficial temporal artery, retrodiscal tissue of the TMJ."
+    }
+  ],
+  "HP-LDR-02": [
+    {
+      "significance": "Relieves the cold tingling sensation throughout the buttocks commonly associated with disc patients.",
+      "locationGuide": "A bone groove on the ridge of the iliac crest, 7~8 cm lateral to the posterior superior iliac spine (PSIS).",
+      "targetAnatomy": "Superior cluneal nerves (L1-L3 posterior rami), lateral margin of the thoracolumbar fascia."
+    }
+  ],
+  "HP-PF-02": [
+    {
+      "significance": "Relieves tension in the windlass mechanism of the sole during walking.",
+      "locationGuide": "The center of the palpable tough band in the middle of the medial arch of the sole.",
+      "targetAnatomy": "Medial band of the plantar fascia, aponeurosis inferior to the navicular bone."
+    }
+  ],
+  "HP-TTS-01": [
+    {
+      "significance": "Reduces internal pressure of the tarsal tunnel and resolves nerve conduction disorders of the plantar nerves.",
+      "locationGuide": "A concave depression 1.5 cm posteroinferior to the medial malleolus (directly behind the pulse point).",
+      "targetAnatomy": "Posterior tibial nerve, flexor retinaculum, posterior tibial artery."
+    }
+  ],
+  "HP-CTS-01": [
+    {
+      "significance": "Lowers internal pressure at the entrance of the carpal tunnel and restores axoplasmic flow of the median nerve.",
+      "locationGuide": "Center of the transverse wrist crease on the palmar side, between the palmaris longus and flexor carpi radialis tendons.",
+      "targetAnatomy": "Median nerve main trunk, proximal edge of the transverse carpal ligament (Flexor retinaculum)."
+    }
+  ],
+  "HP-PS-01": [
+    {
+      "significance": "The most core point to directly release piriformis shortening that compresses the sciatic nerve.",
+      "locationGuide": "At the junction of the medial/lateral 1/3 on a line connecting the PSIS and the greater trochanter of the femur.",
+      "targetAnatomy": "Sciatic nerve main trunk, inferior margin of the piriformis, inferior gluteal nerve."
+    }
+  ],
+  "HP-HN-04": [
+    {
+      "significance": "A central reflex point that directly desensitizes the source segment of cervicogenic referred pain.",
+      "locationGuide": "The palpable articular pillar approximately 1.5 cm inferolateral to the C2 spinous process.",
+      "targetAnatomy": "Third occipital nerve (TON), C2-3 joint capsule and multifidus attachment."
+    }
+  ],
+  "HP-TF-01": [
+    {
+      "significance": "Subdues pulley swelling and instantly relieves snapping when flexing/extending the finger.",
+      "locationGuide": "A hard, palpable nodule at the base of the corresponding finger on the distal palmar crease.",
+      "targetAnatomy": "A1 pulley, thickened nodule of the flexor digitorum profundus tendon."
+    }
+  ],
+  "HP-SGB-02": [
+    {
+      "significance": "Promotes facial blood flow, relieves tinnitus, migraines, and eye fatigue.",
+      "locationGuide": "Posterior to the angle of the mandible (jaw corner), a concave gap at the upper anterior margin of the sternocleidomastoid muscle.",
+      "targetAnatomy": "Superior cervical ganglion (SCG), anterior area of the C2-C3 transverse processes."
+    }
+  ],
+  "HP-PF-03": [
+    {
+      "significance": "Relaxes the posterior tension line of the Achilles tendon and plantar fascia spanning across the calcaneus.",
+      "locationGuide": "1.5 cm above the calcaneal attachment on the back of the heel.",
+      "targetAnatomy": "Achilles tendon calcaneal attachment, posterior continuous aponeurosis of the plantar fascia."
+    }
+  ],
+  "HP-KOA-01": [
+    {
+      "significance": "Directly controls inflammation of the medial joint capsule and weight-bearing pain in osteoarthritis.",
+      "locationGuide": "The concave joint space gap between the medial margin of the patella and the tibial plateau.",
+      "targetAnatomy": "Deep part of the medial collateral ligament (MCL), joint capsule at the margin of the medial meniscus."
+    }
+  ],
+  "HP-TN-04": [
+    {
+      "significance": "Reopens nerve blood flow throughout the entire face and desensitizes central pain circuits.",
+      "locationGuide": "A deep concave depression between the mastoid process behind the earlobe and the ramus of the mandible.",
+      "targetAnatomy": "Facial nerve main trunk and stylohyoid ligament, sympathetic plexus anteroinferior to the external auditory canal."
+    }
+  ],
+  "HP-RC-02": [
+    {
+      "significance": "Relieves acute pain and swelling of bursitis caused by impingement syndrome.",
+      "locationGuide": "The joint space gap just below the center of the lateral margin of the acromion.",
+      "targetAnatomy": "Inferior margin of the coracoacromial ligament, subacromial bursa."
+    }
+  ],
+  "HP-KOA-02": [
+    {
+      "significance": "Relieves pes anserine bursitis and neuralgia that cause piercing pain in the medial knee when walking on stairs.",
+      "locationGuide": "Periosteum 2.5~3 cm inferior and medial to the tibial tuberosity (prominent bone in front of the knee).",
+      "targetAnatomy": "Insertion tendons of the sartorius, gracilis, and semitendinosus; infrapatellar branch of the saphenous nerve."
+    }
+  ],
+  "HP-DSN-01": [
+    {
+      "significance": "Resolves the central axis of upper trapezius-levator scapulae tension extending from the neck to the shoulder.",
+      "locationGuide": "A severely hard tender point at the tip of the bone at the superior angle (top corner) of the scapula.",
+      "targetAnatomy": "Insertion tendon of the levator scapulae, periosteum at the superior angle of the scapula."
+    }
+  ],
+  "HP-TM-01": [
+    {
+      "significance": "Controls anterior displacement of the TMJ disc and instantly relieves mouth-opening pain.",
+      "locationGuide": "A concave gap below the zygomatic arch, between the anterior margin of the mandibular ramus and the external auditory canal.",
+      "targetAnatomy": "Lateral pterygoid tendon, mandibular notch, trigeminal V3 masseteric nerve."
+    }
+  ],
+  "HP-PCS-02": [
+    {
+      "significance": "Restores microcirculation in the pelvis and relieves coldness in the lower extremities and back pain.",
+      "locationGuide": "1.5 cm lateral to the second posterior sacral foramen (S2).",
+      "targetAnatomy": "Sacral sympathetic ganglion, lateral part of the sacral ala."
+    }
+  ]
+};
+
 </script>
 </body>
 </html>
