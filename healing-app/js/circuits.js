@@ -1,4 +1,4 @@
-﻿const CIRCUITS = [
+const CIRCUITS = [
   {
     id: "lung",
     order: 1,
@@ -604,6 +604,12 @@ function renderMuscles(circuit) {
         highlightMuscle(index, true);
         showFixedAnatomy(muscle, circuit);
         alignFigureWithMuscle(item);
+        if (window.innerWidth <= 1024) {
+          const fig = document.getElementById("circuit-figure-card");
+          if (fig) {
+            fig.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }
       });
     }
 

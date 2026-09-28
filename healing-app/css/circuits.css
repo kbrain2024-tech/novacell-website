@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #030712;
   --panel: #0a1120;
   --panel-elevated: #0f1c34;
@@ -1059,173 +1059,7 @@ html, body {
 .pins-overlay, .circuit-pin, .pin-floating-tooltip {
   display: none !important;
 }
-/* ==========================================================================
-   Responsive & Mobile Adjustments
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .circuit-shell {
-    grid-template-columns: 1fr !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-    overflow-x: hidden !important;
-  }
 
-  .circuit-sidebar {
-    height: auto !important;
-    max-height: none !important;
-    position: static !important;
-    overflow: visible !important;
-    padding: 16px 14px !important;
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .circuit-list {
-    max-height: 290px !important;
-    height: 290px !important;
-    overflow-y: scroll !important;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
-    padding: 8px !important;
-    background: rgba(5, 12, 26, 0.75);
-    border: 1.5px solid rgba(56, 189, 248, 0.28);
-    border-radius: 12px;
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
-    box-sizing: border-box !important;
-    width: 100% !important;
-  }
-
-  .circuit-detail {
-    padding: 16px 12px 40px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    overflow-x: hidden !important;
-  }
-
-  .detail-grid {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .circuit-copy {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .detail-figure-col, .circuit-figure { 
-    position: relative !important; 
-    top: 0 !important; 
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    overflow: hidden !important;
-  }
-
-  .figure-stage {
-    height: auto !important;
-    min-height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 12px 10px 16px 10px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .stage-canvas-wrap {
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    line-height: normal !important;
-  }
-
-  .stage-canvas-wrap img#circuit-image {
-    max-height: 380px !important;
-    width: auto !important;
-    max-width: 100% !important;
-    object-fit: contain !important;
-    margin: 0 auto !important;
-    display: block !important;
-  }
-
-  .fixed-anatomy-card {
-    position: static !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 12px 0 0 0 !important;
-    border: 1.5px solid #cbd5e1 !important;
-    border-radius: 12px !important;
-    background: #ffffff !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12) !important;
-    overflow: hidden !important;
-    display: block !important;
-    box-sizing: border-box !important;
-  }
-
-  .fixed-anatomy-header {
-    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
-    border-bottom: 1px solid #e2e8f0 !important;
-    padding: 10px 14px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .fixed-anatomy-title {
-    font-size: 15px !important;
-    color: #0f172a !important;
-    display: block !important;
-    margin: 2px 0 !important;
-    white-space: normal !important;
-    word-break: break-word !important;
-  }
-
-  .fixed-anatomy-en {
-    font-size: 12px !important;
-    color: #64748b !important;
-    display: block !important;
-    white-space: normal !important;
-  }
-
-  .fixed-anatomy-media {
-    min-height: 180px !important;
-    max-height: 240px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: #f8fafc !important;
-    padding: 10px !important;
-    overflow: hidden !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .fixed-anatomy-media img {
-    max-height: 200px !important;
-    width: auto !important;
-    max-width: 100% !important;
-    object-fit: contain !important;
-    display: block !important;
-    margin: 0 auto !important;
-  }
-
-  .timer-time-text {
-    font-size: 30px !important;
-  }
-}
 /* Language Switcher Button */
 .lang-toggle-btn {
   display: inline-flex;
@@ -1518,81 +1352,668 @@ html, body {
   display: none;
 }
 
+
+/* ==========================================================================
+   Comprehensive Responsive & Mobile Adjustments (Smartphones & Tablets <= 1024px)
+   ========================================================================== */
 @media (max-width: 1024px) {
+  /* 1. Global Viewport & Container Overflow Fix */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative !important;
+  }
+
+  /* 2. Header & Member Chip & Lang Button Clean Alignment (No Overlap) */
+  .circuit-header {
+    height: 52px !important;
+    padding: 0 10px !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .brand strong {
+    font-size: 13.5px !important;
+    letter-spacing: -0.3px !important;
+    white-space: nowrap !important;
+  }
+
+  .brand small {
+    display: none !important;
+  }
+
+  .brand-mark {
+    font-size: 16px !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
   .header-actions a {
     display: none !important;
   }
+
+  .lang-toggle-btn {
+    height: 32px !important;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Draggable Member Chip: Positioned cleanly to the left of lang toggle button, never overlapping */
+  .nc-member-chip {
+    top: 10px !important;
+    right: 80px !important;
+    height: 32px !important;
+    padding: 4px 10px !important;
+    font-size: 11px !important;
+    max-width: 120px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    border-radius: 20px !important;
+    z-index: 102 !important;
+  }
+
+  /* 3. Mobile Top Navigation Bar */
   .mobile-quick-nav-bar {
-    display: block;
-    position: sticky;
-    top: 50px;
-    z-index: 85;
-    background: rgba(6, 17, 28, 0.96);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(0, 221, 236, 0.22);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
-    padding: 7px 10px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    display: block !important;
+    position: sticky !important;
+    top: 52px !important;
+    z-index: 85 !important;
+    background: rgba(6, 17, 28, 0.96) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(0, 221, 236, 0.22) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4) !important;
+    padding: 7px 10px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
   }
-  
+
   .mobile-quick-nav-bar::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
-  
+
   .mobile-quick-nav-track {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    min-width: 100%;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    min-width: 100% !important;
   }
-  
+
   .mobile-quick-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 13px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #94a3b8;
-    background: rgba(13, 27, 42, 0.88);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    text-decoration: none;
-    flex-shrink: 0;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    letter-spacing: -0.2px;
-    -webkit-tap-highlight-color: transparent;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 6px 13px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #94a3b8 !important;
+    background: rgba(13, 27, 42, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+    letter-spacing: -0.2px !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
-  
-  .mobile-quick-pill:hover,
-  .mobile-quick-pill:active {
-    background: rgba(0, 221, 236, 0.12);
-    border-color: rgba(0, 221, 236, 0.4);
-    color: #e2e8f0;
-  }
-  
+
   .mobile-quick-pill.active {
-    background: linear-gradient(135deg, rgba(0, 221, 236, 0.22), rgba(14, 165, 233, 0.3));
-    border-color: #00ddec;
-    color: #22d3ee;
-    box-shadow: 0 0 12px rgba(0, 221, 236, 0.25);
+    background: linear-gradient(135deg, rgba(0, 221, 236, 0.22), rgba(14, 165, 233, 0.3)) !important;
+    border-color: #00ddec !important;
+    color: #22d3ee !important;
+    box-shadow: 0 0 12px rgba(0, 221, 236, 0.25) !important;
   }
-  
-  .mobile-quick-pill .m-pill-icon {
-    font-size: 13px;
-    line-height: 1;
+
+  /* 4. App Shell & Sidebar */
+  .circuit-shell {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
-  
-  .mobile-quick-pill.active .m-pill-icon {
-    color: #38bdf8;
+
+  .circuit-sidebar {
+    height: auto !important;
+    max-height: none !important;
+    position: static !important;
+    overflow: hidden !important;
+    padding: 14px 12px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--line) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
-  
-  .mobile-quick-pill .m-pill-text {
-    line-height: 1.2;
+
+  .sidebar-heading h1 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  .circuit-search {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .circuit-search input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+  }
+
+  /* Quick Navigation Pills (01~14) */
+  .circuit-quick-nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 8px 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .quick-nav-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding-bottom: 4px !important;
+  }
+
+  .quick-pill {
+    flex-shrink: 0 !important;
+    padding: 4px 10px !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Circuit List Scrollbar on Mobile */
+  .circuit-list {
+    max-height: 260px !important;
+    height: 260px !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    padding: 6px !important;
+    background: rgba(5, 12, 26, 0.75) !important;
+    border: 1.5px solid rgba(56, 189, 248, 0.28) !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .circuit-item {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+  }
+
+  .circuit-name-group strong,
+  .circuit-name-group small {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  /* 5. Circuit Detail Area */
+  .circuit-detail {
+    padding: 14px 12px 40px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .detail-topline {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: 14px !important;
+  }
+
+  .detail-topline h2 {
+    font-size: 22px !important;
+    margin: 0 !important;
+    word-break: keep-all !important;
+  }
+
+  .title-en {
+    font-size: 13px !important;
+    margin: 2px 0 0 0 !important;
+  }
+
+  .source-page {
+    font-size: 11.5px !important;
+    padding: 4px 8px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 6. Detail Grid: Clean Logical Flex Flow on Mobile */
+  .detail-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Using display: contents to allow perfect logical ordering of cards on mobile */
+  .circuit-copy {
+    display: contents !important;
+  }
+
+  .detail-figure-col {
+    display: contents !important;
+  }
+
+  /* Mobile Order Definition:
+     1. Human Model & 3D Anatomy side-by-side (Order 1)
+     2. Circuit Pathway (Order 2)
+     3. Voltage Check & Supply Points (Order 3)
+     4. Applied Conditions / Uses (Order 4)
+     5. Muscle Batteries List (Order 5)
+     6. 528Hz Timer Card (Order 6)
+     7. Clinical Protocol Card (Order 7)
+     8. Clinical Pearls Card (Order 8)
+     9. Previous / Next Circuit Navigation (Order 9)
+  */
+  .circuit-figure {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  }
+
+  .figure-toolbar {
+    padding: 8px 12px !important;
+    background: #f8fafc !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  .toolbar-brand strong {
+    font-size: 13px !important;
+    color: #0f172a !important;
+  }
+
+  .toolbar-brand small {
+    font-size: 10px !important;
+    color: #64748b !important;
+  }
+
+  /* =======================================================================
+     SIDE-BY-SIDE Human Model + 3D Anatomy Card ("사람 이미지 옆에 해부도")
+     ======================================================================= */
+  .figure-stage {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    display: block !important;
+    background: #ffffff !important;
+    padding: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .stage-canvas-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    background: #ffffff !important;
+    line-height: normal !important;
+    position: relative !important;
+  }
+
+  /* Left: Human Body Model */
+  .stage-canvas-wrap img#circuit-image {
+    flex: 0 0 48% !important;
+    width: 48% !important;
+    max-width: 48% !important;
+    height: 300px !important;
+    max-height: 300px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Right: Fixed 3D Anatomy Card (Placed right NEXT TO human body) */
+  .fixed-anatomy-card {
+    position: static !important;
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    max-width: 50% !important;
+    margin: 0 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .fixed-anatomy-header {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 8px 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+  }
+
+  .fixed-anatomy-badge {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: #0284c7 !important;
+    margin-bottom: 3px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+
+  .fixed-anatomy-title {
+    font-size: 13.5px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    display: block !important;
+    margin: 0 0 2px 0 !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    line-height: 1.25 !important;
+  }
+
+  .fixed-anatomy-en {
+    font-size: 9.5px !important;
+    color: #64748b !important;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .fixed-anatomy-media {
+    flex: 1 1 auto !important;
+    min-height: 140px !important;
+    max-height: 220px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #030712 !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .fixed-anatomy-media img#fixed-anatomy-img {
+    max-height: 200px !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    background: #030712 !important;
+  }
+
+  .fixed-anatomy-placeholder {
+    padding: 16px 8px !important;
+    text-align: center !important;
+  }
+
+  .fixed-anatomy-placeholder p {
+    font-size: 10.5px !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+  }
+
+  .circuit-figure figcaption {
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+    word-break: break-word !important;
+  }
+
+  /* 7. Information Cards (Full Width, Word Wrap, No Truncation) */
+  .route-card {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .point-grid {
+    order: 3 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .point-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+  }
+
+  .point-card strong {
+    font-size: 14px !important;
+    word-break: break-word !important;
+  }
+
+  .uses-card {
+    order: 4 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .info-card {
+    padding: 14px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .info-card h3 {
+    font-size: 13.5px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .info-card p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* 8. Muscle Batteries Card */
+  .muscle-card {
+    order: 5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .muscle-card-header h3 {
+    font-size: 14.5px !important;
+    word-break: break-word !important;
+  }
+
+  .muscle-item {
+    padding: 10px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .muscle-item strong {
+    font-size: 13.5px !important;
+  }
+
+  /* 9. 528Hz Healing Timer Card */
+  .healing-timer-card {
+    order: 6 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .timer-card-header {
+    padding: 10px 14px !important;
+  }
+
+  .timer-body {
+    padding: 14px 12px !important;
+  }
+
+  .timer-time-text {
+    font-size: 32px !important;
+  }
+
+  .timer-actions-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .timer-btn-primary,
+  .timer-btn-secondary,
+  .timer-btn-sound {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* 10. Clinical Protocol Card (Full Word Break, No Right Truncation) */
+  .circuit-clinical-protocol-card {
+    order: 7 !important;
+    padding: 16px 12px 18px !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .clinical-card-title {
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+    word-break: keep-all !important;
+  }
+
+  .clinical-spec-tiles {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .spec-mini-tile {
+    padding: 10px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .spec-mini-val {
+    word-break: break-word !important;
+  }
+
+  .clinical-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .clinical-step-box {
+    padding: 12px 12px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .step-target {
+    font-size: 0.92rem !important;
+    word-break: break-word !important;
+  }
+
+  .step-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* 11. Clinical Pearls Card */
+  .clinical-pearls-card {
+    order: 8 !important;
+    padding: 14px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .pearls-list {
+    padding-left: 16px !important;
+  }
+
+  .pearls-list li {
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    word-break: break-word !important;
+  }
+
+  /* 12. Navigation Buttons (Previous / Next Circuit at bottom) */
+  .navigation-row {
+    order: 9 !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .navigation-row button {
+    flex: 1 !important;
+    padding: 12px 14px !important;
+    font-size: 13.5px !important;
   }
 }

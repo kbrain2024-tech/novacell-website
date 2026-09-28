@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
@@ -103,7 +103,7 @@
             </article>
           </div>
 
-          <article class="info-card">
+          <article class="info-card uses-card" id="circuit-uses-card">
             <h3 id="circuit-uses-title">&#xCC45;&#xC5D0; &#xAE30;&#xC7AC;&#xB41C; &#xC801;&#xC6A9; &#xC9C8;&#xD658;</h3>
             <p id="circuit-uses"></p>
           </article>
