@@ -4979,22 +4979,23 @@ if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{t
       if (!this.categoryBar) return;
       this.categoryBar.innerHTML = '';
       var isEn = (localStorage.getItem('nc_lang') === 'en');
+      var self = this;
       this.categories.forEach(function(cat) {
         var count = (cat.id === 'all') 
-          ? window.app.conditions.length 
-          : window.app.conditions.filter(function(c) { return c.categoryId === cat.id; }).length;
+          ? self.conditions.length 
+          : self.conditions.filter(function(c) { return c.categoryId === cat.id; }).length;
 
         var chip = document.createElement('button');
-        chip.className = 'cat-chip ' + (window.app.currentCategory === cat.id ? 'active' : '');
+        chip.className = 'cat-chip ' + (self.currentCategory === cat.id ? 'active' : '');
         chip.dataset.cat = cat.id;
         var catDisplayName = isEn ? (cat.nameEn || cat.nameKo) : cat.nameKo;
         chip.innerHTML = '<span class="cat-chip-name">' + catDisplayName + '</span><span class="cat-chip-count">' + count + '</span>';
         chip.addEventListener('click', function() {
-          window.app.currentCategory = cat.id;
-          window.app.renderCategories();
-          window.app.renderConditionsList();
+          self.currentCategory = cat.id;
+          self.renderCategories();
+          self.renderConditionsList();
         });
-        window.app.categoryBar.appendChild(chip);
+        self.categoryBar.appendChild(chip);
       });
       this.categoryBar.querySelectorAll('button').forEach(function(b) {
         b.setAttribute('aria-pressed', String(b.classList.contains('active')));
