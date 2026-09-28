@@ -994,8 +994,8 @@ function applyLang(lang) {
 
     // Floating Card Labels
     const flLbl1 = $("floating-label-pt"); if (flLbl1) flLbl1.textContent = "Anatomical Point";
-    const flLbl2 = $("floating-label-org"); if (flLbl2) flLbl2.textContent = "Organ & Emotion";
-    const flLbl3 = $("floating-label-act"); if (flLbl3) flLbl3.textContent = "Bio-Action & ATP";
+    const flLbl2 = $("floating-label-org"); if (flLbl2) flLbl2.textContent = "Organ & Emotional Regulation";
+    const flLbl3 = $("floating-label-act"); if (flLbl3) flLbl3.textContent = "Bio-Action & Voltage Supply";
 
     // Timer Card Labels
     const timerTitle = $("timer-title"); if (timerTitle) timerTitle.textContent = "528Hz Cellular Voltage Healing Timer";
@@ -1076,8 +1076,8 @@ function applyLang(lang) {
 
     // Floating Card Labels
     const flLbl1 = $("floating-label-pt"); if (flLbl1) flLbl1.textContent = "해부학적 전환점";
-    const flLbl2 = $("floating-label-org"); if (flLbl2) flLbl2.textContent = "연계 장기 및 정서";
-    const flLbl3 = $("floating-label-act"); if (flLbl3) flLbl3.textContent = "생체 작용 및 전위";
+    const flLbl2 = $("floating-label-org"); if (flLbl2) flLbl2.textContent = "연계 장기 및 감정 조절";
+    const flLbl3 = $("floating-label-act"); if (flLbl3) flLbl3.textContent = "생체 작용 및 전압 공급";
 
     // Timer Card Labels
     const timerTitle = $("timer-title"); if (timerTitle) timerTitle.textContent = "528Hz 세포 전압 치유 타이머";
