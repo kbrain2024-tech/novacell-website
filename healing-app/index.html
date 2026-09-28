@@ -7017,5 +7017,134 @@ window.HEALING_POINTS_EN = {
 })();
 </script>
 
+<script>
+(function() {
+  var extDict = {
+    "포인팅 위치 잠금 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Pointing Position Lock Mode: View only on click, no dragging via mouse/touch.",
+    "포인될 위치 잠금 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Pointing Position Lock Mode: View only on click, no dragging via mouse/touch.",
+    "외후두융기와 유양돌기를 기준으로 확인하는 후두부 영역입니다. 신경 주행은 개인마다 달라 고정된 2~2.5cm 지점을 보편적 위치로 사용할 수 없습니다.": "Occipital region identified based on EOP and mastoid process. Due to individual nerve course variations, a fixed 2~2.5cm point cannot be universally applied.",
+    "외후두융기와 유양돌기를 기준으로 확인하는 후두부 영역입니다. 신경 주행은 개인마다 달라 고정된 2?2.5cm 지점을 보편적 위치로 사용할 수 없습니다.": "Occipital region identified based on EOP and mastoid process. Due to individual nerve course variations, a fixed 2~2.5cm point cannot be universally applied.",
+    "경추 C2-C3 후관절 관절점": "C2-C3 Facet Joint Point",
+    "경추성 연관통의 근원 분절을 직접 탈감각시키는 중추 반사점": "Central reflex point that directly desensitizes the root segment of cervicogenic referred pain",
+    "대후두신경의 상향선 통과 영역": "Greater Occipital Nerve (Superior Nuchal Line)",
+    "대후두신경 상향선 통과 영역": "Greater Occipital Nerve (Superior Nuchal Line)",
+    "대후두신경 기시부 (상항선 하)": "Greater Occipital Nerve (Superior Nuchal Line)",
+    "* 528Hz 주파수는 손상된 세포 전압을 깨우고 미토콘드리아 ATP 생성을 촉진합니다. 타이머 종료 시 싱잉볼 차임 벨이 부드럽고 맑게 울립니다.": "* The 528Hz frequency awakens damaged cell voltage and promotes mitochondrial ATP production. A singing bowl chime rings softly and clearly when the timer ends.",
+    "증례와 출처 확인": "Verify Case and Source",
+    "원본의 33개 증례는 출처 미확인 상태입니다. 실제 기록 또는 교육 예시 여부를 기록할 수 있습니다.": "The 33 original cases are unverified. They may be actual records or educational examples.",
+    "출처 미확인": "Source Unverified",
+    "원자료·문헌·기록번호가 제공되지 않았습니다.": "Raw data, literature, or record numbers are not provided.",
+    "출처 기록 / 수정": "Edit / Record Source",
+    "증례 Case #1 (CASE-HN-01)": "Case Study #1 (CASE-HN-01)",
+    "48세 여성 / 컴퓨터 프로그래머 / 유병기간 4년 만성 난치성 우측 후두통": "48yo Female / Computer Programmer / 4-year Chronic Intractable Right Occipital Pain",
+    "주호소 (Chief Complaint)": "Chief Complaint",
+    "우측 뒷머리에서 정수리를 지나 우측 안구 안쪽까지 쑤시고 타는 듯한 지속적 통증 (NRS 8)": "Continuous burning and aching pain from the right back of the head, through the crown, to the inside of the right eye (NRS 8)",
+    "기왕력 및 기존 치료 경과 (Prior Treatments)": "Prior Treatments",
+    "신경차단술 10회 이상 시행했으나 3~4일 후 재발, 진통소염제 및 근이완제 복용 시 위장 장애로 중단": "Underwent nerve blocks 10+ times with relapse after 3-4 days, stopped NSAIDs/muscle relaxants due to GI issues",
+    "이학적 진찰 및 압통점 소견 (Clinical Examination)": "Clinical Examination",
+    "우측 상항선(대후두신경 출구부) 극심한 압통과 함께 틴넬 징후 양성. 우측 C2-3 관절돌기 촉진 시 안구 후방으로 연관통 유발 확인": "Severe tenderness and positive Tinel's sign at the right superior nuchal line. Palpation of the right C2-3 articular process triggers referred pain behind the eye.",
+    "노바셀 펜 도자 힐링 Point 통전 프로토콜 (NovaCell Application)": "NovaCell Application",
+    "노바셀 단일 펜 도자로 HP-04(C2-C3 후관절절점) 1, HP-02(후두하삼각) 1, HP-01(대후두신경 출구점) 1 통전 실시 (출력 레벨 3)": "NovaCell single pen probe applied to HP-04 (1 min), HP-02 (1 min), and HP-01 (1 min) at output level 3.",
+    "노바셀 단일 펜 도자로 HP-04(C2-C3 후관절점) 1, HP-02(후두하삼각) 1, HP-01(대후두신경 출구점) 1 통전 실시 (출력 레벨 3)": "NovaCell single pen probe applied to HP-04 (1 min), HP-02 (1 min), and HP-01 (1 min) at output level 3.",
+    "치료 경과 및 임상적 호전 (Therapeutic Outcome)": "Therapeutic Outcome",
+    "1회 시술 직후 후두부 압박감이 8에서 3으로 경감, 안구 후방 통증 즉시 소실. 주 2회씩 총 4회 시술 후 NRS 1 이하로 안정화되어 컴퓨터 작업 시 통증 없음.": "Occipital pressure dropped from 8 to 3 immediately after 1st session, eye pain gone. Stabilized below NRS 1 after 4 sessions (2/week), no pain during computer work.",
+    "임상 핵심 통찰 (Clinical Insight)": "Clinical Insight",
+    "경추성 두통 환자의 상당수는 후두부 자체보다 C2-C3 후관절낭의 기계적 감작이 선행하므로 반드시 해당 Point를 먼저 통전하는 것이 성공의 열쇠입니다.": "For many cervicogenic headache patients, mechanical sensitization of the C2-C3 facet joint capsule precedes occipital pain. Treating this point first is the key to success.",
+    "증례 Case #2 (CASE-HN-02)": "Case Study #2 (CASE-HN-02)",
+    "35세 남성 / 금융업 / 유병기간 6개월 심한 편두통 양상의 측두부 박동통": "35yo Male / Finance / 6-month Severe Migraine-like Temporal Throbbing Pain",
+    "귀 뒤쪽부터 관자놀이까지 벼락치듯 찌르는 편두통과 경부 뻣뻣함": "Lightning-like piercing migraine from behind the ear to the temple with neck stiffness",
+    "트립탄 계열 편두통약 복용 중이었으나 약물 과용성 두통 의심 단계에 이름": "Taking triptan migraine meds, suspected medication-overuse headache",
+    "유양돌기 후하방 소후두신경 주행부(HP-HN-03) 촉진 시 관자놀이로 뻗치는 방사통 정확히 일치": "Palpation of lesser occipital nerve course (HP-HN-03) exactly matched radiating pain to the temple",
+    "HP-HN-03(소후두신경점) 및 HP-HN-01(상항선)에 고전압 미세전류 펜 도자 각 1 접촉 통전": "High-voltage microcurrent pen applied to HP-HN-03 and HP-HN-01 for 1 min each",
+    "시술 2회 차에 박동성 관자놀이 통증 소실, 두경부 가동범위 정상 회복 및 트립탄 약물 투약 완전 중단.": "Throbbing temporal pain disappeared by 2nd session, ROM restored, triptan meds completely stopped.",
+    "해부학적 위험 구조물 및 시술 안전 지침": "Anatomical Risk Structures & Safety Guidelines",
+    "노바셀은 비침습 단일 펜 도자를 사용하지만, 신경 포착 부위 및 대혈관 주행 인접 부위를 다루므로 개별 환자의 해부학적 확인과 기기 사용설명서 검토가 필요합니다. 이 자료는 안전이나 치료 효과를 보장하지 않습니다.": "NovaCell uses a non-invasive single pen probe, but since it targets nerve entrapments and areas near major blood vessels, anatomical verification and device manual review are required. This material does not guarantee safety or therapeutic efficacy.",
+    "기준 골격 및 근육 랜드마크": "Reference Skeletal & Muscular Landmarks",
+    "외후두융기(External Occipital Protuberance), 유양돌기(Mastoid Process), 제2경추 극돌기(C2 Spinous Process)": "External Occipital Protuberance (EOP), Mastoid Process, C2 Spinous Process",
+    "인접 주의/기피 위험 구조물": "Adjacent High-Risk Structures (Caution/Avoid)",
+    "추골동맥(Vertebral Artery, C1-C2 사이 외측 주행), 경정맥공 주위 혈관총, 척수관": "Vertebral Artery (lateral course between C1-C2), Jugular Foramen Vascular Plexus, Spinal Canal",
+    "펜 도자 접촉 압력 및 각도 기법": "Pen Probe Pressure & Angle Technique",
+    "두개골 하연 및 상항선 골면에 수직으로 직각 접촉하되, C1-C2 사이 후두하삼각 통전 시 두개강 방향으로 깊게 찌르는 압박을 금하고 연조직 표층 뼈 표면에 펜 도자를 지지합니다.": "Apply perpendicular to the skull base and superior nuchal line. When treating the suboccipital triangle between C1-C2, avoid deep piercing pressure towards the cranial cavity; rest the probe on the superficial bone surface of the soft tissue.",
+    "의료사고 방지 필수 준수의무": "Mandatory Compliance for Medical Accident Prevention",
+    "추골동맥 박리 또는 뇌혈류 부전 병력이 있는 환자는 C1 외측 강압 촉진을 피하고 미세전류 통전 시간은 1 미만으로 제한합니다.": "Avoid strong palpation lateral to C1 in patients with a history of vertebral artery dissection or cerebral blood flow insufficiency; limit microcurrent duration to under 1 minute.",
+    "다음 포인트 ❯": "Next Point ❯",
+    "다음 Point ❯": "Next Point ❯",
+    "다음 Point >": "Next Point >",
+    "순서 완료": "Sequence Complete",
+    "치유음 켜짐": "Sound ON",
+    "치유음 꺼짐": "Sound OFF",
+    "해부 설명 일부 교정 · 치료점 미검증": "Anatomy Description Partially Corrected · Therapy Point Unverified"
+  };
+
+  // Enhance original applyDynamicTranslations with the extended dictionary and better matching
+  var origApplyDynamic = window.applyDynamicTranslations;
+  window.applyDynamicTranslations = function() {
+    if (origApplyDynamic) origApplyDynamic();
+
+    var lang = localStorage.getItem("novacell_site_lang") || localStorage.getItem("nc_lang") || "ko";
+    if (lang !== 'en') return;
+
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function(node) {
+        if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) {
+            return NodeFilter.FILTER_REJECT;
+        }
+        var text = node.nodeValue.replace(/\s+/g, ' ').trim();
+        if (text.length > 0) {
+            for (var key in extDict) {
+                if (text.indexOf(key) !== -1) return NodeFilter.FILTER_ACCEPT;
+            }
+        }
+        return NodeFilter.FILTER_SKIP;
+      }
+    }, false);
+
+    var nodesToTranslate = [];
+    var currentNode;
+    while (currentNode = walker.nextNode()) {
+        nodesToTranslate.push(currentNode);
+    }
+
+    nodesToTranslate.forEach(function(node) {
+        var text = node.nodeValue.replace(/\s+/g, ' ').trim();
+        var origText = node.nodeValue;
+        var newText = origText;
+        
+        // Exact match (ignoring whitespace differences)
+        if (extDict[text]) {
+            newText = extDict[text];
+        } else {
+            // Substring match
+            for (var key in extDict) {
+                if (text.indexOf(key) !== -1) {
+                    newText = newText.split(key).join(extDict[key]);
+                }
+            }
+        }
+        if (newText !== origText) {
+            node.nodeValue = newText;
+        }
+    });
+  };
+
+  // Intercept Workspace dynamic UI updates to force translation continuously
+  if (typeof Workspace !== 'undefined') {
+    var methods = ['openTimerModal', 'updateTimerDisplay', 'selectHealingPoint', 'renderHealingPointsList', 'renderHealingPins', 'updateActivePointBar', 'renderCategories', 'renderCurrentCondition', 'toggleTimerSound'];
+    methods.forEach(function(m) {
+      if (Workspace.prototype[m]) {
+        var orig = Workspace.prototype[m];
+        Workspace.prototype[m] = function() {
+          var ret = orig.apply(this, arguments);
+          setTimeout(function() {
+             window.applyDynamicTranslations();
+          }, 10); // Small delay to let DOM update first
+          return ret;
+        };
+      }
+    });
+  }
+
+})();
+</script>
 </body>
 </html>
