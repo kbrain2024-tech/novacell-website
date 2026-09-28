@@ -5651,7 +5651,13 @@ window.translateClinicalText = function(text) {
       var isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
       if (isEn && this.anatomyImgCaption && this.currentCondition) {
         var txt = this.anatomyImgCaption.textContent;
-        this.anatomyImgCaption.textContent = window.translateClinicalText(txt.replace(this.currentCondition.titleKo, this.currentCondition.titleEn));
+        
+          var replacedTxt = txt.replace(this.currentCondition.titleKo, this.currentCondition.titleEn);
+          if (isEn) {
+            replacedTxt = replacedTxt.replace('해부학 구조 이미지', 'Anatomy Structure Image').replace('선택 부위', 'Selected Region');
+          }
+          this.anatomyImgCaption.textContent = window.translateClinicalText(replacedTxt);
+
       }
     };
 
@@ -5707,7 +5713,25 @@ window.translateClinicalText = function(text) {
       var mNavChakra = document.querySelector("#m-nav-chakra .m-pill-text");
       var mNavCircuit = document.querySelector("#m-nav-circuit .m-pill-text");
       var mNavHome = document.querySelector("#m-nav-home .m-pill-text");
-
+        // Desktop Header Menus
+        var hNavTherapy = document.querySelector('#nav-therapy span');
+        var hNavChakra = document.querySelector('#nav-chakra span');
+        var hNavCircuit = document.querySelector('#nav-circuit span');
+        var hNavHome = document.querySelector('#nav-home span');
+        var hNavCover = document.querySelector('#open-cover-btn span');
+        if (lang === 'en') {
+          if (hNavTherapy) hNavTherapy.textContent = 'Therapy Points';
+          if (hNavChakra) hNavChakra.textContent = 'Chakra Points';
+          if (hNavCircuit) hNavCircuit.textContent = 'Neural Circuits';
+          if (hNavHome) hNavHome.textContent = '🌐 Official Site ↗';
+          if (hNavCover) hNavCover.textContent = 'Main Cover';
+        } else {
+          if (hNavTherapy) hNavTherapy.textContent = '질환별 치료 포인트';
+          if (hNavChakra) hNavChakra.textContent = '차크라 바이오 포인트';
+          if (hNavCircuit) hNavCircuit.textContent = '신경 생체 회로';
+          if (hNavHome) hNavHome.textContent = '🌐 공식 홈페이지 ↗';
+          if (hNavCover) hNavCover.textContent = '메인 대문';
+        }
       if (lang === "en") {
         document.title = "NovaCell Healing Points | High-Voltage Clinical Guide";
         if (navHome) navHome.textContent = "\uD83C\uDF10 Official Site \u2197";
@@ -5755,7 +5779,39 @@ window.translateClinicalText = function(text) {
       var placePointBtn = document.getElementById('place-point');
       if (placePointBtn) placePointBtn.textContent = (lang === 'en' ? 'Add Pin Circle' : '\uC120\uD1DD\uC810 \uC6D0 \uCD94\uAC00');
       var cancelPlacementBtn = document.getElementById('cancel-placement');
-      if (cancelPlacementBtn) cancelPlacementBtn.textContent = (lang === 'en' ? 'Cancel Placement' : '\uC704\uCE58 \uC9C0\uC815 \uCDE8\uC18C');
+        // Right Panel Fixed Titles
+        var rightPanelTitle = document.querySelector('.panel-right .panel-title');
+        if (rightPanelTitle) {
+          rightPanelTitle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> ' + 
+            (lang === 'en' ? 'Clinical Guide & Case Studies' : '임상 가이드 & 증례 분석실');
+        }
+
+        var subnavRecipe = document.querySelector('#subnav-btn-recipe span');
+        if (subnavRecipe) subnavRecipe.textContent = (lang === 'en' ? 'Clinical Recipe' : '치유 레시피');
+        var subnavCases = document.querySelector('#subnav-btn-cases span:first-of-type');
+        if (subnavCases) subnavCases.textContent = (lang === 'en' ? 'Cases & Sources' : '증례 · 출처');
+        var subnavSafety = document.querySelector('#subnav-btn-safety span');
+        if (subnavSafety) subnavSafety.textContent = (lang === 'en' ? 'Safety Guide' : '안전 가이드');
+
+        var timerTitle = document.getElementById('timer-title');
+        if (timerTitle) timerTitle.textContent = (lang === 'en' ? '528Hz Cell Voltage Timer' : '528Hz 세포 전압 치유 타이머');
+        var timerSub = document.getElementById('timer-sub');
+        var startTimerBtn = document.querySelector('#start-probe-timer-btn span');
+        if (startTimerBtn) startTimerBtn.textContent = (lang === 'en' ? 'Start Timer' : '타이머 설정');
+        var viewRecipeBtn = document.querySelector('#mobile-view-recipe-btn span');
+        if (viewRecipeBtn) viewRecipeBtn.textContent = (lang === 'en' ? 'View Recipe ▶' : '치유 레시피 ▶');
+        
+        var timerStatus = document.getElementById('timer-status-badge');
+        if (timerStatus && timerStatus.textContent === '대기 중' || timerStatus.textContent === 'Standby') {
+            timerStatus.textContent = (lang === 'en' ? 'Standby' : '대기 중');
+        }        if (timerSub) timerSub.textContent = (lang === 'en' ? 'DNA Repair Frequency · Singing Bowl Chime' : 'DNA 복원 주파수 · 싱잉볼 차임 벨');
+
+        var subtitles = document.querySelectorAll('.panel-right .panel-subtitle');
+        if (subtitles.length >= 3) {
+            subtitles[0].textContent = (lang === 'en' ? 'Symptom Characteristics' : '증상 특징');
+            subtitles[1].textContent = (lang === 'en' ? 'Key Healing Points' : '핵심 힐링 포인트 (Key Healing Points)');
+            subtitles[2].textContent = (lang === 'en' ? 'Pathology Mechanism' : '병리 메커니즘 (Pathology Mechanism)');
+        }      if (cancelPlacementBtn) cancelPlacementBtn.textContent = (lang === 'en' ? 'Cancel Placement' : '\uC704\uCE58 \uC9C0\uC815 \uCDE8\uC18C');
 
       var detailsSummary = document.querySelector('.workspace-tools details summary');
       if (detailsSummary) detailsSummary.textContent = (lang === 'en' ? 'Display & Pin Management' : '\uD45C\uC2DC \u00B7 \uC791\uC5C5 \uAD00\uB9AC');
@@ -6195,7 +6251,7 @@ window.CONDITION_TRANSLATIONS_EN = {
   }
 
   // Hook into Workspace initialization to sync translations
-  if (window.Workspace) {
+  if (typeof Workspace !== 'undefined') {
     var origRenderCurrentCondition = window.Workspace.prototype.renderCurrentCondition;
     window.Workspace.prototype.renderCurrentCondition = function() {
       origRenderCurrentCondition.call(this);
