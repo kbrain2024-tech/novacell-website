@@ -22,6 +22,7 @@
       <a href="index.html" id="nav-therapy">질환별 치료 포인트</a>
       <a class="active" href="bio-point.html" id="nav-chakra" aria-current="page">차크라 바이오 포인트</a>
       <a href="circuits.html" id="nav-circuit">신경 생체 회로</a>
+      <a href="https://novacell.kr/" class="nav-official-home" id="nav-home" target="_blank" rel="noopener" title="?몃컮? 怨듭떇 ?덊럹?댁?濡??대룞">&#x1F310; 怨듭떇 ?덊럹?댁? &#x2197;</a>
       <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="언어 변경 / Change Language">
         <span class="lang-opt ko active">한글</span>
         <span class="lang-divider">/</span>
@@ -44,6 +45,10 @@
     <a class="mobile-quick-pill circuit-guide-link" href="circuits.html" id="m-nav-circuit">
       <span class="m-pill-icon">&#x21BB;</span>
       <span class="m-pill-text">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</span>
+    </a>
+    <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="노바셀 공식 홈페이지로 이동">
+      <span class="m-pill-icon">&#x1F310;</span>
+      <span class="m-pill-text" id="m-nav-home-text">공식 홈 &#x2197;</span>
     </a>
   </div>
 </nav>

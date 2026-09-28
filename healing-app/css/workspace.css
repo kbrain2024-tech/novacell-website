@@ -713,3 +713,44 @@ body.pins-editable .live-pin.dragging {
     line-height: 1.2;
   }
 }
+
+/* Official Website Shortcut Link (novacell.kr) */
+.header-actions a.nav-official-home,
+.header-cover-btn.nav-official-home {
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  background: rgba(56, 189, 248, 0.1) !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  font-size: 12.5px !important;
+}
+
+.header-actions a.nav-official-home:hover,
+.header-cover-btn.nav-official-home:hover {
+  background: rgba(56, 189, 248, 0.25) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.35) !important;
+  transform: translateY(-1px) !important;
+}
+
+.mobile-quick-pill.m-nav-home {
+  background: rgba(14, 165, 233, 0.16) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+}
+
+.mobile-quick-pill.m-nav-home:hover,
+.mobile-quick-pill.m-nav-home:active {
+  background: rgba(14, 165, 233, 0.3) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+}

@@ -21,6 +21,7 @@
       <a href="index.html" id="nav-therapy">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</a>
       <a href="bio-point.html" id="nav-chakra">&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</a>
       <a class="active" href="circuits.html" id="nav-circuit" aria-current="page">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</a>
+      <a href="https://novacell.kr/" class="nav-official-home" id="nav-home" target="_blank" rel="noopener" title="노바셀 공식 홈페이지로 이동">&#x1F310; 공식 홈페이지 &#x2197;</a>
       <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="&#xC5B8;&#xC5B4; &#xBCC0;&#xACBD; / Change Language">
         <span class="lang-opt ko active">&#xD55C;&#xAE00;</span>
         <span class="lang-divider">/</span>
@@ -43,6 +44,10 @@
     <a class="mobile-quick-pill active" href="circuits.html" id="m-nav-circuit">
       <span class="m-pill-icon">&#x21BB;</span>
       <span class="m-pill-text">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</span>
+    </a>
+    <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="노바셀 공식 홈페이지로 이동">
+      <span class="m-pill-icon">&#x1F310;</span>
+      <span class="m-pill-text" id="m-nav-home-text">공식 홈 &#x2197;</span>
     </a>
   </div>
 </nav>

@@ -1371,11 +1371,15 @@ function applyLang(lang) {
     if (navTherapy) navTherapy.textContent = "Condition Therapy Points";
     if (navChakra) navChakra.textContent = "Chakra Bio Points";
     if (navCircuit) navCircuit.textContent = "Neural Circuit Therapy";
+    const navHome = $("nav-home"); if (navHome) navHome.textContent = "🌐 Official Site ↗";
+    const mNavHome = $("m-nav-home-text"); if (mNavHome) mNavHome.textContent = "Official Site ↗";
     if (brandSub) brandSub.textContent = "NEURAL CIRCUIT THERAPY GUIDE";
   } else {
     if (navTherapy) navTherapy.textContent = "질환별 치료 포인트";
     if (navChakra) navChakra.textContent = "차크라 바이오 포인트";
     if (navCircuit) navCircuit.textContent = "신경 생체 회로";
+    const navHomeKo = $("nav-home"); if (navHomeKo) navHomeKo.textContent = "🌐 공식 홈페이지 ↗";
+    const mNavHomeKo = $("m-nav-home-text"); if (mNavHomeKo) mNavHomeKo.textContent = "공식 홈 ↗";
     if (brandSub) brandSub.textContent = "NEURAL CIRCUIT THERAPY GUIDE";
   }
 
