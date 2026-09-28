@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -4936,10 +4936,225 @@ if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{t
   <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
 <script>
 (function() {
+  var BADGE_MAP = {
+    '\uACE8\uBC18 \uC88C\uACE8\uC2E0\uACBD': 'Pelvic Sciatica',
+    '\uACE8\uBC18 \uCC9C\uC7A5\uAD00\uC808': 'SI Joint Spasm',
+    '\uAE09\uC131 \uC694\uD1B5': 'Acute Low Back Pain',
+    '\uB09C\uCE58\uC131 \uC2E0\uACBD\uD1B5': 'Intractable Neuralgia',
+    '\uB450\uACBD\uBD80 \uB300\uD45C': 'Head & Neck Primary',
+    '\uB450\uACBD\uBD80 \uB9CC\uC131': 'Chronic Head/Neck',
+    '\uB4F1 \uD1B5\uC99D': 'Upper Back Pain',
+    '\uB514\uC2A4\uD06C \uC2E0\uACBD\uADFC': 'Disc Radiculopathy',
+    '\uBB34\uB98E \uB300\uD45C': 'Knee Primary',
+    '\uBC1C\uBAA9 \uC778\uB300': 'Ankle Ligament',
+    '\uBC1C\uBAA9\uD130\uB110': 'Tarsal Tunnel',
+    '\uBC1C\uBC14\uB2E5 \uB300\uD45C': 'Plantar Primary',
+    '\uBE44\uACE8 \uC2E0\uACBD': 'Peroneal Nerve',
+    '\uC190\uBAA9 \uB300\uD45C': 'Wrist Primary',
+    '\uC218\uBD80 \uAC74\uCD08\uC5FC': 'Hand Tenosynovitis',
+    '\uC2AC\uAC1C\uAC74 \uC190\uC0C1': 'Patellar Tendon',
+    '\uC2E0\uACBD \uD3EC\uCC29': 'Nerve Entrapment',
+    '\uC548\uBA74 \uB300\uD45C': 'Facial Primary',
+    '\uC548\uBA74 \uB9C8\uBE44': 'Facial Palsy',
+    '\uC55E\uAC00\uC2B4 \uD1B5\uC99D': 'Anterior Chest Pain',
+    '\uC5B4\uAE68 \uB300\uD45C': 'Shoulder Primary',
+    '\uC5B4\uAE68 \uC190\uC0C1': 'Shoulder Injury',
+    '\uC790\uC728\uC2E0\uACBD \uB300\uD45C': 'Autonomic Primary',
+    '\uC804\uC2E0 \uC2DC\uB9BC': 'Systemic Cold/Numbness',
+    '\uCC99\uACE8 \uC2E0\uACBD': 'Ulnar Nerve',
+    '\uD131\uAD00\uC808 \uB300\uD45C': 'TMJ Primary',
+    '\uD314\uAFC8\uCE58 \uB0B4\uCE21': 'Medial Elbow',
+    '\uD314\uAFC8\uCE58 \uB300\uD45C': 'Elbow Primary',
+    '\uD5C8\uB9AC \uB300\uD45C': 'Lumbar Primary',
+    '\uD611\uCC29 \uD30C\uD589': 'Spinal Stenosis',
+    '\uD749\uACFD \uB300\uD45C': 'Thoracic Primary',
+    '\uD749\uBC30\uBD80 \uACB0\uB9BC': 'Rhomboid Spasm'
+  };
+
+  function patchAppPrototypes() {
+    if (typeof NovaCellApp === 'undefined') return;
+
+    // 1. Override renderCategories
+    NovaCellApp.prototype.renderCategories = function() {
+      if (!this.categoryBar) return;
+      this.categoryBar.innerHTML = '';
+      var isEn = (localStorage.getItem('nc_lang') === 'en');
+      this.categories.forEach(function(cat) {
+        var count = (cat.id === 'all') 
+          ? window.app.conditions.length 
+          : window.app.conditions.filter(function(c) { return c.categoryId === cat.id; }).length;
+
+        var chip = document.createElement('button');
+        chip.className = 'cat-chip ' + (window.app.currentCategory === cat.id ? 'active' : '');
+        chip.dataset.cat = cat.id;
+        var catDisplayName = isEn ? (cat.nameEn || cat.nameKo) : cat.nameKo;
+        chip.innerHTML = '<span class="cat-chip-name">' + catDisplayName + '</span><span class="cat-chip-count">' + count + '</span>';
+        chip.addEventListener('click', function() {
+          window.app.currentCategory = cat.id;
+          window.app.renderCategories();
+          window.app.renderConditionsList();
+        });
+        window.app.categoryBar.appendChild(chip);
+      });
+      this.categoryBar.querySelectorAll('button').forEach(function(b) {
+        b.setAttribute('aria-pressed', String(b.classList.contains('active')));
+      });
+    };
+
+    // 2. Override renderConditionsList
+    NovaCellApp.prototype.renderConditionsList = function() {
+      if (!this.conditionsList) return;
+      var list = this.getFilteredConditions();
+      var isEn = (localStorage.getItem('nc_lang') === 'en');
+      if (this.conditionsCounter) {
+        this.conditionsCounter.textContent = isEn ? (list.length + ' Conditions') : (list.length + '\uAC1C \uC9C8\uD658');
+      }
+      this.conditionsList.innerHTML = '';
+
+      if (list.length === 0) {
+        this.conditionsList.innerHTML = '<div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">' + (isEn ? 'No conditions found for this search.' : '\uAC80\uC0C9\uB41C \uC99D\uC0C1 \uB610\uB294 \uC9C8\uD658\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.') + '</div>';
+        return;
+      }
+
+      var self = this;
+      list.forEach(function(cond) {
+        var card = document.createElement('div');
+        card.className = 'condition-item-card ' + (self.currentCondition.id === cond.id ? 'active' : '');
+        card.setAttribute('title', cond.titleKo + ' (' + cond.titleEn + ')\n' + cond.overview);
+        
+        var badgeText = isEn ? (BADGE_MAP[cond.badge] || cond.badge) : cond.badge;
+        var hpCountText = isEn ? ('HP ' + cond.healingPoints.length + ' Points') : ('HP ' + cond.healingPoints.length + '\uD3EC\uC778\uD2B8');
+        var primaryTitle = isEn ? cond.titleEn : cond.titleKo;
+        var secondaryTitle = isEn ? cond.titleKo : cond.titleEn;
+
+        card.innerHTML = 
+          '<div class="card-header-line">' +
+            '<span class="card-badge">' + badgeText + '</span>' +
+            '<span class="card-hp-count">' +
+              '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">' +
+                '<circle cx="12" cy="12" r="10" />' +
+              '</svg>' +
+              hpCountText +
+            '</span>' +
+          '</div>' +
+          '<div class="card-title-ko" style="' + (isEn ? 'font-size:1.02rem; font-weight:700;' : '') + '">' + primaryTitle + '</div>' +
+          '<div class="card-title-en" style="' + (isEn ? 'color:var(--text-secondary);' : '') + '">' + secondaryTitle + '</div>' +
+          '<div class="card-preview-text" title="' + cond.overview + '">' + cond.overview + '</div>';
+
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-pressed', String(card.classList.contains('active')));
+        card.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+            var active = self.conditionsList.querySelector('.active');
+            if (active) active.focus();
+          }
+        });
+
+        card.addEventListener('mouseenter', function() {
+          self.showConditionTooltip(cond, card);
+        });
+
+        card.addEventListener('mousemove', function(e) {
+          self.positionConditionTooltip(e, card);
+        });
+
+        card.addEventListener('mouseleave', function() {
+          self.hideConditionTooltip();
+        });
+
+        card.addEventListener('click', function() {
+          self.hideConditionTooltip();
+          self.selectCondition(cond);
+        });
+
+        self.conditionsList.appendChild(card);
+      });
+    };
+
+    // 3. Wrap renderCurrentCondition
+    var origRenderCurrent = NovaCellApp.prototype.renderCurrentCondition;
+    NovaCellApp.prototype.renderCurrentCondition = function() {
+      origRenderCurrent.call(this);
+      var cond = this.currentCondition;
+      if (!cond) return;
+      var isEn = (localStorage.getItem('nc_lang') === 'en');
+
+      var catObj = this.categories.find(function(c) { return c.id === cond.categoryId; });
+      if (this.recipeCategoryTag) {
+        this.recipeCategoryTag.textContent = catObj ? (isEn ? (catObj.nameEn || catObj.nameKo) : catObj.nameKo) : (isEn ? 'All' : '\uC804\uCCB4');
+      }
+      if (this.recipeBadge) {
+        this.recipeBadge.textContent = isEn ? (BADGE_MAP[cond.badge] || cond.badge) : cond.badge;
+      }
+      if (this.recipeMainTitle) {
+        this.recipeMainTitle.textContent = isEn ? cond.titleEn : cond.titleKo;
+      }
+      if (this.recipeSubTitle) {
+        this.recipeSubTitle.textContent = isEn ? cond.titleKo : cond.titleEn;
+      }
+
+      if (this.anatomyImgCaption) {
+        var captionBadge = isEn ? (BADGE_MAP[cond.badge] || cond.badge) : cond.badge;
+        var captionTitle = isEn ? cond.titleEn : cond.titleKo;
+        this.anatomyImgCaption.textContent = isEn 
+          ? (captionTitle + ' (' + captionBadge + ') Clinical Anatomy Reference')
+          : (cond.titleKo + ' (' + cond.badge + ') \uC9C8\uD658\uBCC4 \uCC38\uACE0 \uD574\uBD80\uB3C4 \u00B7 \uCE58\uB8CC\uC810\uC740 \uC9C1\uC811 \uBC30\uCE58');
+      }
+
+      // Re-render HP Cards with English labels when isEn
+      if (this.healingPointsContainer) {
+        this.healingPointsContainer.querySelectorAll('.hp-detail-card').forEach(function(hpCard) {
+          var id = hpCard.id.replace('hp-card-', '');
+          var hp = cond.healingPoints.find(function(p) { return p.id === id; });
+          if (!hp) return;
+          var hpNameKo = hpCard.querySelector('.hp-name-ko');
+          var hpNameEn = hpCard.querySelector('.hp-name-en');
+          if (hpNameKo && hpNameEn) {
+            if (isEn) {
+              hpNameKo.textContent = hp.nameEn;
+              hpNameKo.style.fontSize = '0.95rem';
+              hpNameKo.style.fontWeight = '700';
+              hpNameEn.textContent = hp.nameKo;
+            } else {
+              hpNameKo.textContent = hp.nameKo;
+              hpNameKo.style.fontSize = '';
+              hpNameKo.style.fontWeight = '';
+              hpNameEn.textContent = hp.nameEn;
+            }
+          }
+          var labels = hpCard.querySelectorAll('.info-label');
+          if (labels.length >= 3) {
+            labels[0].textContent = isEn ? 'Target Anatomy' : '\uD0C0\uAE4F \uC870\uC9C1';
+            labels[1].textContent = isEn ? 'Palpation & Location' : '\uCD09\uC9C4 \uBC0F \uC704\uCE58';
+            labels[2].textContent = isEn ? 'Clinical Significance' : '\uC784\uC0C1\uC801 \uC758\uC758';
+          }
+        });
+      }
+
+      // Re-label Protocol Card
+      if (this.protocolCard) {
+        var probeBadge = this.protocolCard.querySelector('.protocol-probe-badge');
+        if (probeBadge) probeBadge.textContent = isEn ? 'Monopolar Pen Probe' : '\uB2E8\uC77C \uD39C \uB3C4\uC790 (Monopolar)';
+        var specLabels = this.protocolCard.querySelectorAll('.spec-tile-label');
+        if (specLabels.length >= 4) {
+          specLabels[0].textContent = isEn ? 'Application Technique' : '\uB3C4\uC790 \uC811\uCD09 \uAE30\uBC95';
+          specLabels[1].textContent = isEn ? 'Duration Per Point' : '\uD3EC\uC778\uD2B8\uB2F9 \uAD8C\uC7A5 \uC2DC\uAC04';
+          specLabels[2].textContent = isEn ? 'Output Intensity' : '\uCD9C\uB825 \uAC15\uB3C4 \uB808\uBCA8';
+          specLabels[3].textContent = isEn ? 'Comfort Remedy' : '\uD658\uBD80 \uB530\uAFC8 \uAC70\uB9BC \uC81C\uAC70 \uBC29\uBC95';
+        }
+      }
+    };
+  }
+
   function initLangToggle() {
+    patchAppPrototypes();
     var btn = document.getElementById("lang-toggle-btn");
     if (!btn) return;
     var curLang = localStorage.getItem("nc_lang") || "ko";
+
     function applyLangUI(lang) {
       curLang = lang;
       localStorage.setItem("nc_lang", lang);
@@ -4982,12 +5197,53 @@ if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{t
         if (mNavCircuit) mNavCircuit.textContent = "\uC2E0\uACBD \uC0DD\uCCB4 \uD68C\uB85C";
         if (mNavHome) mNavHome.textContent = "\uACF5\uC2DD \uD648 \u2197";
       }
+
+      // Update Left Panel title & search
+      var panelTitle = document.querySelector('.panel-left .panel-title');
+      if (panelTitle) {
+        panelTitle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> ' + (lang === 'en' ? 'Select Disease & Condition' : '\uC9C8\uD658 \uBC0F \uC99D\uC0C1 \uC120\uD1DD');
+      }
+      var searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.placeholder = (lang === 'en' ? 'Search conditions, symptoms, points...' : '\uC9C8\uD658\uBA85, \uC99D\uC0C1, \uD1B5\uC99D \uBD80\uC704, \uCE58\uB8CC\uC810 \uAC80\uC0C9...');
+      }
+
+      // Update mobile bottom tab bar labels
+      var mTabCond = document.querySelector('.mobile-tab-btn[data-tab="conditions"] span');
+      var mTabAnat = document.querySelector('.mobile-tab-btn[data-tab="anatomy"] span');
+      var mTabRecipe = document.querySelector('.mobile-tab-btn[data-tab="recipe"] span');
+      if (mTabCond) mTabCond.textContent = (lang === 'en' ? 'Disease List' : '\uC9C8\uD658 \uBAA9\uB85D');
+      if (mTabAnat) mTabAnat.textContent = (lang === 'en' ? 'Anatomy & Points' : '\uD574\uBD80\uB3C4 \u00B7 \uD3EC\uC778\uD2B8');
+      if (mTabRecipe) mTabRecipe.textContent = (lang === 'en' ? 'Therapy Recipe' : '\uCE58\uC720 \uB808\uC2DC\uD53C');
+
+      // Update subnav labels in recipe panel
+      var symptomsLabel = document.querySelector('#recipe-view-container .recipe-section-card:nth-child(1) .section-label');
+      if (symptomsLabel) {
+        symptomsLabel.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg> ' + (lang === 'en' ? 'Clinical Symptoms' : '\uC784\uC0C1 \uC99D\uC0C1 (Clinical Symptoms)');
+      }
+      var mechLabel = document.querySelector('#recipe-view-container .recipe-section-card:nth-child(2) .section-label');
+      if (mechLabel) {
+        mechLabel.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg> ' + (lang === 'en' ? 'Pathology & Mechanism' : '\uC2E0\uACBD\u00B7\uADFC\uB9C9 \uBCD1\uD0DC\uC0DD\uB9AC \uAE30\uC804 (Pathology & Mechanism)');
+      }
+      var hpLabel = document.querySelector('#recipe-view-container .recipe-section-card:nth-child(3) .section-label');
+      if (hpLabel) {
+        hpLabel.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg> ' + (lang === 'en' ? 'Key Healing Points' : '\uD575\uC2EC \uD790\uB9C1 \uD3EC\uC778\uD2B8 (Healing Points)');
+      }
+
+      // Re-render app view
+      if (window.app) {
+        window.app.renderCategories();
+        window.app.renderConditionsList();
+        window.app.renderCurrentCondition();
+      }
     }
+
     btn.addEventListener("click", function() {
       applyLangUI(curLang === "ko" ? "en" : "ko");
     });
     applyLangUI(curLang);
   }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initLangToggle);
   } else {

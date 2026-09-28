@@ -1,4 +1,4 @@
-const CIRCUITS = [
+﻿const CIRCUITS = [
   {
     id: "lung",
     order: 1,
@@ -482,8 +482,10 @@ function renderList() {
   });
 
   const activeBtn = list.querySelector(".circuit-item.active");
-  if (activeBtn) {
-    activeBtn.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  if (activeBtn && list.scrollHeight > list.clientHeight) {
+    const listTop = list.getBoundingClientRect().top;
+    const btnTop = activeBtn.getBoundingClientRect().top;
+    list.scrollTop += (btnTop - listTop - 10);
   }
 
   renderQuickPills();
@@ -512,8 +514,10 @@ function renderQuickPills() {
   });
 
   const activePill = pillsContainer.querySelector(".quick-pill.active");
-  if (activePill) {
-    activePill.scrollIntoView({ inline: "nearest", behavior: "smooth" });
+  if (activePill && pillsContainer.scrollWidth > pillsContainer.clientWidth) {
+    const pRect = pillsContainer.getBoundingClientRect();
+    const pillRect = activePill.getBoundingClientRect();
+    pillsContainer.scrollLeft += (pillRect.left - pRect.left) - (pillsContainer.clientWidth / 2 - activePill.clientWidth / 2);
   }
 }
 
@@ -1658,6 +1662,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initTimerEvents();
   initLanguageToggle();
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+  setTimeout(function() { window.scrollTo(0, 0); }, 0);
+  setTimeout(function() { window.scrollTo(0, 0); }, 50);
+  setTimeout(function() { window.scrollTo(0, 0); }, 200);
 });
 
 // Initialize Hamburger Menu Drawer

@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    NovaCell Therapy (노바셀 통치 요법) Official Design System
    Benchmarked from Tennant Health & Upgraded for Korean Bio-Tech Excellence
    ========================================================================== */
@@ -2383,3 +2383,49 @@ body {
 
 /* Netlify Forms spam trap: present in markup for bot detection, invisible to visitors. */
 .form-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important}
+
+/* ==========================================================================
+   Header Language Toggle & 4th Hero Action (Healing Points App)
+   ========================================================================== */
+.header-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 13px;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 163, 89, 0.55);
+  background: rgba(8, 22, 47, 0.85);
+  color: #f7d58b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+.header-lang-btn:hover {
+  background: rgba(212, 163, 89, 0.25);
+  border-color: #f7d58b;
+  color: #ffffff;
+}
+
+.btn-hero-healing {
+  border-color: rgba(56, 189, 248, 0.6) !important;
+  background: linear-gradient(135deg, rgba(8, 28, 58, 0.85), rgba(6, 44, 78, 0.95)) !important;
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2) !important;
+  color: #e0f2fe !important;
+}
+.btn-hero-healing:hover {
+  border-color: #38bdf8 !important;
+  background: linear-gradient(135deg, rgba(14, 52, 102, 0.95), rgba(8, 64, 116, 0.95)) !important;
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.4) !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+@media (max-width: 768px) {
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
