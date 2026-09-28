@@ -1659,3 +1659,31 @@ document.addEventListener("DOMContentLoaded", () => {
   initTimerEvents();
   initLanguageToggle();
 });
+
+// Initialize Hamburger Menu Drawer
+function initMobileMenuDrawer() {
+  var toggle = document.getElementById("mobile-menu-toggle");
+  var overlay = document.getElementById("mobile-menu-overlay");
+  var closeBtn = document.getElementById("mobile-menu-close");
+  if (!toggle || !overlay) return;
+  toggle.addEventListener("click", function() {
+    overlay.hidden = false;
+    toggle.setAttribute("aria-expanded", "true");
+    document.body.classList.add("mobile-menu-open");
+    if (closeBtn) closeBtn.focus();
+  });
+  function closeDrawer() {
+    overlay.hidden = true;
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("mobile-menu-open");
+  }
+  if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
+  overlay.addEventListener("click", function(e) {
+    if (e.target === overlay) closeDrawer();
+  });
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initMobileMenuDrawer);
+} else {
+  initMobileMenuDrawer();
+}

@@ -21,14 +21,22 @@
       <a href="index.html" id="nav-therapy">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</a>
       <a href="bio-point.html" id="nav-chakra">&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</a>
       <a class="active" href="circuits.html" id="nav-circuit" aria-current="page">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</a>
-      <a href="https://novacell.kr/" class="nav-official-home" id="nav-home" target="_blank" rel="noopener" title="노바셀 공식 홈페이지로 이동">&#x1F310; 공식 홈페이지 &#x2197;</a>
+      <a href="https://novacell.kr/" class="nav-official-home" id="nav-home" target="_blank" rel="noopener" title="&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#xBC14;&#xB85C;&#xAC00;&#xAE30;">&#x1F310; &#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#x2197;</a>
       <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="&#xC5B8;&#xC5B4; &#xBCC0;&#xACBD; / Change Language">
         <span class="lang-opt ko active">&#xD55C;&#xAE00;</span>
         <span class="lang-divider">/</span>
         <span class="lang-opt en">ENG</span>
       </button>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="&#xC804;&#xCCB4; &#xBA54;&#xB274; &#xC5F4;&#xAE30;" aria-controls="mobile-menu-overlay" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <line x1="4" y1="6" x2="20" y2="6"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="18" x2="20" y2="18"></line>
+        </svg>
+      </button>
     </nav>
-  </header>
+
+</header>
 
 <!-- Smartphone Quick Navigation Bar -->
 <nav class="mobile-quick-nav-bar" aria-label="Quick Nav">
@@ -45,12 +53,34 @@
       <span class="m-pill-icon">&#x21BB;</span>
       <span class="m-pill-text">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</span>
     </a>
-    <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="노바셀 공식 홈페이지로 이동">
+    <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#xBC14;&#xB85C;&#xAC00;&#xAE30;">
       <span class="m-pill-icon">&#x1F310;</span>
-      <span class="m-pill-text" id="m-nav-home-text">공식 홈 &#x2197;</span>
+      <span class="m-pill-text" id="m-nav-home-text">&#xACF5;&#xC2DD; &#xD648; &#x2197;</span>
     </a>
   </div>
 </nav>
+
+<!-- Smartphone Hamburger Navigation Drawer -->
+<div id="mobile-menu-overlay" class="mobile-menu-overlay" hidden>
+  <aside id="mobile-menu-panel" class="mobile-menu-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+    <div class="mobile-menu-head">
+      <div>
+        <span class="mobile-menu-kicker">NOVACELL CLINICAL GUIDE</span>
+        <h2 id="mobile-menu-title">&#xC804;&#xCCB4; &#xBA54;&#xB274;</h2>
+      </div>
+      <button id="mobile-menu-close" class="mobile-menu-close" type="button" aria-label="&#xC804;&#xCCB4; &#xBA54;&#xB274; &#xB2EB;&#xAE30;">&times;</button>
+    </div>
+
+    <nav class="mobile-menu-links" aria-label="NovaCell &#xC804;&#xCCB4; &#xBA54;&#xB274;">
+      <a href="index.html"><span>&#x2695;</span><strong>&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</strong><small>Condition Therapy Guide</small></a>
+      <a href="bio-point.html"><span>&#x25C9;</span><strong>&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</strong><small>Chakra Bio Points</small></a>
+      <a href="circuits.html"><span>&#x21BB;</span><strong>&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</strong><small>Neural Circuit Therapy</small></a>
+      <a href="https://novacell.kr/" target="_blank" rel="noopener" class="drawer-official-home"><span>&#x1F310;</span><strong>&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0;</strong><small>novacell.kr &#xBC14;&#xB85C;&#xAC00;&#xAE30; &#x2197;</small></a>
+      <a href="index.html?openCover=1"><span>&#x2606;</span><strong>&#xBA54;&#xC778; &#xB300;&#xBB38;</strong><small>NovaCell &#xC2DC;&#xC791; &#xD654;&#xBA74; &#xC5F4;&#xAE30;</small></a>
+      <a href="&#xC0AC;&#xC6A9;&#xC548;&#xB0B4;.html"><span>?</span><strong>&#xC0AC;&#xC6A9; &#xC548;&#xB0B4;</strong><small>&#xC870;&#xC791; &#xBC0F; &#xBC31;&#xC5C5; &#xBC29;&#xBC95;</small></a>
+    </nav>
+  </aside>
+</div>
 
   <main class="circuit-shell">
     <aside class="circuit-sidebar">

@@ -82,8 +82,8 @@
         <a class="header-cover-btn circuit-guide-link" href="circuits.html" id="nav-circuit" title="&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C; &#xB178;&#xBC14;&#xC14B; &#xD1B5;&#xCE58; &#xC694;&#xBC15; &#xC5F4;&#xAE30;">
           <span>&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</span>
         </a>
-        <a class="header-cover-btn nav-official-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="nav-home" title="怨듭떇 ?덊럹?댁? 諛붾줈媛湲?>
-          <span>&#x1F310; 怨듭떇 ?덊럹?댁? &#x2197;</span>
+        <a class="header-cover-btn nav-official-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="nav-home" title="&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#xBC14;&#xB85C;&#xAC00;&#xAE30;">
+          <span>&#x1F310; &#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#x2197;</span>
         </a>
         <button id="open-cover-btn" class="header-cover-btn" title="NovaCell 웰컴 대문 열기">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -96,6 +96,11 @@
           <div class="pulse-dot"></div>
           <span>POINT WORKSPACE · v3</span>
         </div>
+        <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="&#xC5B8;&#xC5B4; &#xBCC0;&#xACBD; / Change Language">
+          <span class="lang-opt ko active">&#xD55C;&#xAE00;</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-opt en">ENG</span>
+        </button>
         <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="전체 메뉴 열기" aria-controls="mobile-menu-overlay" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
             <line x1="4" y1="6" x2="20" y2="6"></line>
@@ -121,9 +126,9 @@
       <span class="m-pill-icon">&#x21BB;</span>
       <span class="m-pill-text">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</span>
     </a>
-    <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="怨듭떇 ?덊럹?댁? 諛붾줈媛湲?>
+    <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#xBC14;&#xB85C;&#xAC00;&#xAE30;">
       <span class="m-pill-icon">&#x1F310;</span>
-      <span class="m-pill-text" id="m-nav-home-text">怨듭떇 ??&#x2197;</span>
+      <span class="m-pill-text" id="m-nav-home-text">&#xACF5;&#xC2DD; &#xD648; &#x2197;</span>
     </a>
   </div>
 </nav>
@@ -4929,5 +4934,66 @@ if(typeof window!=='undefined')window.addEventListener('DOMContentLoaded',()=>{t
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
   <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
+<script>
+(function() {
+  function initLangToggle() {
+    var btn = document.getElementById("lang-toggle-btn");
+    if (!btn) return;
+    var curLang = localStorage.getItem("nc_lang") || "ko";
+    function applyLangUI(lang) {
+      curLang = lang;
+      localStorage.setItem("nc_lang", lang);
+      localStorage.setItem("nc_circuit_lang", lang);
+      var koSpan = btn.querySelector(".lang-opt.ko");
+      var enSpan = btn.querySelector(".lang-opt.en");
+      if (koSpan && enSpan) {
+        if (lang === "en") {
+          koSpan.classList.remove("active");
+          enSpan.classList.add("active");
+        } else {
+          koSpan.classList.add("active");
+          enSpan.classList.remove("active");
+        }
+      }
+      var navTherapy = document.getElementById("nav-therapy");
+      var navChakra = document.getElementById("nav-chakra");
+      var navCircuit = document.getElementById("nav-circuit");
+      var navHome = document.getElementById("nav-home");
+      var mNavTherapy = document.querySelector("#m-nav-therapy .m-pill-text");
+      var mNavChakra = document.querySelector("#m-nav-chakra .m-pill-text");
+      var mNavCircuit = document.querySelector("#m-nav-circuit .m-pill-text");
+      var mNavHome = document.getElementById("m-nav-home-text");
+      if (lang === "en") {
+        if (navTherapy && navTherapy.querySelector("span")) navTherapy.querySelector("span").textContent = "Therapy Points";
+        if (navChakra && navChakra.querySelector("span")) navChakra.querySelector("span").textContent = "Chakra Bio Points";
+        if (navCircuit && navCircuit.querySelector("span")) navCircuit.querySelector("span").textContent = "Neural Circuits";
+        if (navHome && navHome.querySelector("span")) navHome.querySelector("span").textContent = "\uD83C\uDF10 Official Site \u2197";
+        if (mNavTherapy) mNavTherapy.textContent = "Therapy Points";
+        if (mNavChakra) mNavChakra.textContent = "Chakra Points";
+        if (mNavCircuit) mNavCircuit.textContent = "Neural Circuits";
+        if (mNavHome) mNavHome.textContent = "Official Site \u2197";
+      } else {
+        if (navTherapy && navTherapy.querySelector("span")) navTherapy.querySelector("span").textContent = "\uC9C8\uD658\uBCC4 \uCE58\uB8CC \uD3EC\uC778\uD2B8";
+        if (navChakra && navChakra.querySelector("span")) navChakra.querySelector("span").textContent = "\uCC28\uD06C\uB77C \uBC14\uC774\uC624 \uD3EC\uC778\uD2B8";
+        if (navCircuit && navCircuit.querySelector("span")) navCircuit.querySelector("span").textContent = "\uC2E0\uACBD \uC0DD\uCCB4 \uD68C\uB85C";
+        if (navHome && navHome.querySelector("span")) navHome.querySelector("span").textContent = "\uD83C\uDF10 \uACF5\uC2DD \uD648\uD398\uC774\uC9C0 \u2197";
+        if (mNavTherapy) mNavTherapy.textContent = "\uC9C8\uD658\uBCC4 \uCE58\uB8CC \uD3EC\uC778\uD2B8";
+        if (mNavChakra) mNavChakra.textContent = "\uCC28\uD06C\uB77C \uBC14\uC774\uC624 \uD3EC\uC778\uD2B8";
+        if (mNavCircuit) mNavCircuit.textContent = "\uC2E0\uACBD \uC0DD\uCCB4 \uD68C\uB85C";
+        if (mNavHome) mNavHome.textContent = "\uACF5\uC2DD \uD648 \u2197";
+      }
+    }
+    btn.addEventListener("click", function() {
+      applyLangUI(curLang === "ko" ? "en" : "ko");
+    });
+    applyLangUI(curLang);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLangToggle);
+  } else {
+    initLangToggle();
+  }
+})();
+</script>
 </body>
 </html>
