@@ -5465,7 +5465,7 @@ window.translateClinicalText = function(text) {
     // 2. Override renderConditionsList
     NovaCellApp.prototype.renderConditionsList = function() {
       if (!this.conditionsList) return;
-      if (this.syncTranslations) this.syncTranslations(); window.applyDynamicTranslations();
+      if (this.syncTranslations) this.syncTranslations();
       var list = this.getFilteredConditions();
       var isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
       if (this.conditionsCounter) {
@@ -5688,305 +5688,7 @@ window.translateClinicalText = function(text) {
     if (!btn) return;
     var curLang = localStorage.getItem("novacell_site_lang") || localStorage.getItem("nc_lang") || "ko";
 
-    window.applyDynamicTranslations = function() {
-    var lang = localStorage.getItem("novacell_site_lang") || localStorage.getItem("nc_lang") || "ko";
-    if (lang !== 'en') return;
-
-    var uiDictEn = {
-        "고전압 미세전류 펜 도자 힐링 시스템": "High-Voltage Microcurrent Pen Probe Healing System",
-        "선택점 + 배치된 핵심점": "Selected Point + Active Pins",
-        "위치 잠금": "Lock Position",
-        "외측·내측 이미지 등록": "Register Lateral/Medial Image",
-        "포인트": "Point",
-        "선택점 원 추가": "Add Pin to Selected",
-        "▼ 표시·작업 관리": "▼ Display & Workspace Management",
-        "분류": "Category",
-        "전체": "All",
-        "클릭 영역 표시": "Show Click Areas",
-        "작업명": "Task Name",
-        "기본 공개 치료점": "Default Public Therapy Points",
-        "포인트 백업": "Backup Points",
-        "백업 가져오기": "Import Backup",
-        "새 작업": "New Task",
-        "사용 안내": "User Guide",
-        "포인팅 위치 잠금 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Pointing Position Lock Mode: View only on click, no dragging via mouse/touch.",
-        "기본 이미지": "Default Image",
-        "외측 미등록": "Lateral Unregistered",
-        "내측 미등록": "Medial Unregistered",
-        "치료점은 직접 배치": "Manually place therapy points",
-        "후면·측면 비교": "Posterior/Lateral Comparison",
-        "기본점 · 현재 화면 원 2개 · 양쪽": "Default Point · 2 circles on current screen · Bilateral",
-        "선택 원 삭제": "Delete Selected Circle",
-        "선택점 편집": "Edit Selected Point",
-        "추가점 삭제": "Delete Added Point",
-        "치유 주파수 준비": "Healing Frequency Ready",
-        "치유 타이머 시작": "Start Healing Timer",
-        "리셋": "Reset",
-        "다음 포인트 〉": "Next Point 〉",
-        "해부 설명 일부 교정 · 치료점 미검증": "Anatomy Description Partially Corrected · Therapy Point Unverified",
-        "전신 이미지의 표면 영역에 맞춘 임시 표시입니다. 환자의 정확한 치료 위치가 아닙니다.": "Temporary display based on surface area of full-body image. Not the exact treatment location of the patient.",
-        "사용자 분류: 치료 계획 · 양쪽": "User Category: Treatment Plan · Bilateral",
-        "교정 전 원문 확인": "View Original Uncorrected Text",
-        "타이머 설정": "Start Timer",
-        "치유 레시피 ▶": "View Recipe ▶",
-        "대후두신경의 상향선 통과 영역": "Greater Occipital Nerve (Superior Nuchal Line)",
-        "대후두신경 기시부 (상항선 하)": "Greater Occipital Nerve (Superior Nuchal Line)",
-        "후두하삼각 심부점 (C1-C2 척추사이)": "Suboccipital Triangle Core (C1-C2 Gap)",
-        "소후두신경 통과점 (유양돌기 후하방)": "Lesser Occipital Nerve (Retro-Mastoid)",
-        "제3후두신경(TON), C2-3 관절포 및 다열근 부착부": "3rd Occipital Nerve (TON), C2-3 Facet Joint & Multifidus Attachment",
-        "대후두신경(C2 후지), 승모근 및 두반극근 부착건막": "Greater occipital nerve (C2 dorsal ramus), trapezius and semispinalis capitis aponeurosis",
-        "외후두융기와 유양돌기를 기준으로 확인하는 후두부 영역입니다. 신경 주행은 개인마다 달라 고정된 2~2.5cm 지점을 보편적 위치로 사용할 수 없습니다.": "Occipital region identified based on EOP and mastoid process. Due to individual nerve course variations, a fixed 2~2.5cm point cannot be universally applied.",
-        "해부학적 참고 영역입니다. 문헌의 신경 위치는 NovaCell 치료점이나 치료 효과를 검증한 자료가 아닙니다.": "Anatomical reference area. Literature nerve location does not verify NovaCell therapy points or clinical efficacy.",
-        "상/하두사근, 대후두직근 사이 삼각영역, 추골동맥 주위 교감신경총": "Triangular area between superior/inferior oblique & rectus capitis posterior major, sympathetic plexus around vertebral artery",
-        "상항선 아래 C2 극돌기 외측 2cm 오목한 함요처": "Concave depression 2cm lateral to C2 spinous process below superior nuchal line",
-        "뇌혈류 순환 촉진, 긴장성/혈관성 두통 및 어지럼증의 핵심 스위치": "Promotes cerebral blood flow, key switch for tension/vascular headache and dizziness",
-        "소후두신경(C2,3 전지 분지), 흉쇄유돌근(SCM) 후연 상단": "Lesser occipital nerve (C2,3 ventral rami branches), upper posterior border of SCM",
-        "외후두융기-유양돌기 연결선의 외측 구간과 흉쇄유돌근 후연을 참고합니다. 정확한 주행과 분지는 개인별 확인이 필요합니다.": "Refer to lateral segment of EOP-mastoid process line and posterior border of SCM. Exact course and branching require individual verification.",
-        "측두부(관자놀이) 및 귀 뒤쪽 찌르는 통증, 편두통 완화": "Relieves piercing pain in temporal region and behind the ear, alleviates migraine",
-        "경추 2번 극돌기 하외측 약 1.5cm 관절주두 촉지부": "Palpable facet joint area approx. 1.5cm inferolateral to C2 spinous process",
-        "경추성 연관통의 근원 분절을 직접 탈감각시키는 중추 반사점": "Central reflex point that directly desensitizes the root segment of cervicogenic referred pain",
-        
-        ,
-        "▼ 표시 · 작업 관리": "▼ Display & Workspace Management",
-        "포인될 Lock Position 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Lock Position Mode: View only on click, dragging via mouse/touch is disabled.",
-        "기본 작업": "Default Task",
-        "외측 미등록": "Lateral Unregistered",
-        "내측 미등록": "Medial Unregistered",
-        "경추성 두통 / 후두신경통": "Cervicogenic Headache / Occipital Neuralgia",
-        "후면·측면 비교": "Posterior/Lateral Comparison",
-        "치료점은 직접 배치": "Manually place therapy points",
-        "대기 중": "Standby",
-        "임상 시술 순서 (TREATMENT SEQUENCE)": "Clinical Treatment Sequence",
-        "임상 시술 노하우 & Clinical Pearls": "Clinical Treatment Know-how & Clinical Pearls",
-        "1단계 [분절 안정화]: HP-04 (C2-C3 후관절점)에 펜 도자를 30초간 접촉하여 중추 분절 흥분을 가라앉힙니다.": "Step 1 [Segmental Stabilization]: Apply pen probe to HP-04 (C2-C3 facet joint point) for 30 seconds to calm central segmental excitation.",
-        "2단계 [심부 순환 개방]: HP-02 (후두하삼각점)에 도자를 수직으로 부드럽게 대어 1분간 통전합니다.": "Step 2 [Deep Circulation Opening]: Gently apply probe vertically to HP-02 (Suboccipital triangle point) for 1 minute.",
-        "3단계 [말초 신경 포착 해소]: HP-01 (대후두신경점) 및 HP-03 (소후두신경점)에 각각 30초씩 펜을 접촉하여 방사통 경로를 차단합니다.": "Step 3 [Peripheral Nerve Entrapment Relief]: Apply pen to HP-01 (Greater occipital nerve point) and HP-03 (Lesser occipital nerve point) for 30 seconds each to block radiating pain pathways.",
-        "피부 표면에 수분감(전도성 미스트나 겔 소량)을 유지하면 미세전류의 심부 침투율이 극대화됩니다. 도자 팁을 강하게 비비지 말고, 해부학적 함요처(뼈 경계 오목한 곳)에 펜촉을 가만히 안착시킨 상태에서 전기를 인가합니다.": "Maintaining moisture on the skin surface (conductive mist or small amount of gel) maximizes the deep penetration rate of microcurrents. Do not rub the probe tip strongly; gently seat the pen tip in the anatomical depression (concave bone boundary) while applying electricity.",
-        "위치·치료점 근거 미검증": "Location & Therapy Point Unverified",
-        "원본 프로토콜 · 기기 사용설명서 및 치료 근거 대조 전. Start Timer값과 원본의 권장 시간은 별개입니다.": "Original Protocol · Before comparing with device manual & clinical evidence. Start Timer value is independent of original recommended time.",
-        "좌표는 참고 이미지의 임시 표시입니다. 원본의 치료점·시술 조건·효과는 검증되지 않았습니다. 해부 문헌은 치료 효과의 근거와 구분해 표시합니다.": "Coordinates are temporary marks on reference images. Original therapy points, conditions, and effects are unverified. Anatomical literature is marked separately from clinical evidence.",
-        "현재 화면 원": "circles on current screen",
-        "양쪽": "Bilateral",
-        "기본점": "Default Point", "해부 설명 출처: 후두신경과 후두동맥 해부 연구 (Shin 외, 2018)": "Anatomy Description Source: Anatomy Study of Occipital Nerve and Artery (Shin et al., 2018)"
-    };
-
-    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-        acceptNode: function(node) {
-            if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) {
-                return NodeFilter.FILTER_REJECT;
-            }
-            var text = node.nodeValue.trim();
-            if (text.length > 0) return NodeFilter.FILTER_ACCEPT;
-            return NodeFilter.FILTER_SKIP;
-        }
-    }, false);
-    
-    var nodesToTranslate = [];
-    var currentNode;
-    while(currentNode = walker.nextNode()) nodesToTranslate.push(currentNode);
-    
-    nodesToTranslate.forEach(function(node) {
-        var text = node.nodeValue.trim();
-        if (uiDictEn[text]) {
-            node.nodeValue = node.nodeValue.replace(text, uiDictEn[text]);
-        } else {
-            var newText = node.nodeValue;
-            var changed = false;
-            for (var key in uiDictEn) {
-                if (newText.includes(key)) {
-                    newText = newText.replace(key, uiDictEn[key]);
-                    changed = true;
-                }
-            }
-            if (changed) node.nodeValue = newText;
-        }
-    });
-
-    var inputs = document.querySelectorAll('input, button');
-    inputs.forEach(function(el) {
-        if (el.placeholder && uiDictEn[el.placeholder.trim()]) el.placeholder = uiDictEn[el.placeholder.trim()];
-        if (el.value && uiDictEn[el.value.trim()]) el.value = uiDictEn[el.value.trim()];
-    });
-};
-
-function applyLangUI(lang) {
-        // Massive UI Translation Dictionary (Flat Mapping)
-        var uiDictEn = {
-            "고전압 미세전류 펜 도자 힐링 시스템": "High-Voltage Microcurrent Pen Probe Healing System",
-            "선택점 + 배치된 핵심점": "Selected Point + Active Pins",
-            "위치 잠금": "Lock Position",
-            "외측·내측 이미지 등록": "Register Lateral/Medial Image",
-            "포인트": "Point",
-            "선택점 원 추가": "Add Pin to Selected",
-            "▼ 표시·작업 관리": "▼ Display & Workspace Management",
-            "분류": "Category",
-            "전체": "All",
-            "클릭 영역 표시": "Show Click Areas",
-            "작업명": "Task Name",
-            "기본 공개 치료점": "Default Public Therapy Points",
-            "포인트 백업": "Backup Points",
-            "백업 가져오기": "Import Backup",
-            "새 작업": "New Task",
-            "사용 안내": "User Guide",
-            "포인팅 위치 잠금 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Pointing Position Lock Mode: View only on click, no dragging via mouse/touch.",
-            "기본 이미지": "Default Image",
-            "외측 미등록": "Lateral Unregistered",
-            "내측 미등록": "Medial Unregistered",
-            "치료점은 직접 배치": "Manually place therapy points",
-            "후면·측면 비교": "Posterior/Lateral Comparison",
-            "기본점 · 현재 화면 원 2개 · 양쪽": "Default Point · 2 circles on current screen · Bilateral",
-            "선택 원 삭제": "Delete Selected Circle",
-            "선택점 편집": "Edit Selected Point",
-            "추가점 삭제": "Delete Added Point",
-            "치유 주파수 준비": "Healing Frequency Ready",
-            "치유 타이머 시작": "Start Healing Timer",
-            "리셋": "Reset",
-            "다음 포인트 〉": "Next Point 〉",
-            "분": "m",
-            "초": "s",
-            "해부 설명 일부 교정 · 치료점 미검증": "Anatomy Description Partially Corrected · Therapy Point Unverified",
-            "전신 이미지의 표면 영역에 맞춘 임시 표시입니다. 환자의 정확한 치료 위치가 아닙니다.": "Temporary display based on surface area of full-body image. Not the exact treatment location of the patient.",
-            "사용자 분류: 치료 계획 · 양쪽": "User Category: Treatment Plan · Bilateral",
-            "교정 전 원문 확인": "View Original Uncorrected Text",
-            "타이머 설정": "Start Timer",
-            "치유 레시피 ▶": "View Recipe ▶",
-        "대후두신경의 상향선 통과 영역": "Greater Occipital Nerve (Superior Nuchal Line)",
-        "대후두신경 기시부 (상항선 하)": "Greater Occipital Nerve (Superior Nuchal Line)",
-        "후두하삼각 심부점 (C1-C2 척추사이)": "Suboccipital Triangle Core (C1-C2 Gap)",
-        "소후두신경 통과점 (유양돌기 후하방)": "Lesser Occipital Nerve (Retro-Mastoid)",
-        "제3후두신경(TON), C2-3 관절포 및 다열근 부착부": "3rd Occipital Nerve (TON), C2-3 Facet Joint & Multifidus Attachment",
-        "대후두신경(C2 후지), 승모근 및 두반극근 부착건막": "Greater occipital nerve (C2 dorsal ramus), trapezius and semispinalis capitis aponeurosis",
-        "외후두융기와 유양돌기를 기준으로 확인하는 후두부 영역입니다. 신경 주행은 개인마다 달라 고정된 2~2.5cm 지점을 보편적 위치로 사용할 수 없습니다.": "Occipital region identified based on EOP and mastoid process. Due to individual nerve course variations, a fixed 2~2.5cm point cannot be universally applied.",
-        "해부학적 참고 영역입니다. 문헌의 신경 위치는 NovaCell 치료점이나 치료 효과를 검증한 자료가 아닙니다.": "Anatomical reference area. Literature nerve location does not verify NovaCell therapy points or clinical efficacy.",
-        "상/하두사근, 대후두직근 사이 삼각영역, 추골동맥 주위 교감신경총": "Triangular area between superior/inferior oblique & rectus capitis posterior major, sympathetic plexus around vertebral artery",
-        "상항선 아래 C2 극돌기 외측 2cm 오목한 함요처": "Concave depression 2cm lateral to C2 spinous process below superior nuchal line",
-        "뇌혈류 순환 촉진, 긴장성/혈관성 두통 및 어지럼증의 핵심 스위치": "Promotes cerebral blood flow, key switch for tension/vascular headache and dizziness",
-        "소후두신경(C2,3 전지 분지), 흉쇄유돌근(SCM) 후연 상단": "Lesser occipital nerve (C2,3 ventral rami branches), upper posterior border of SCM",
-        "외후두융기-유양돌기 연결선의 외측 구간과 흉쇄유돌근 후연을 참고합니다. 정확한 주행과 분지는 개인별 확인이 필요합니다.": "Refer to lateral segment of EOP-mastoid process line and posterior border of SCM. Exact course and branching require individual verification.",
-        "측두부(관자놀이) 및 귀 뒤쪽 찌르는 통증, 편두통 완화": "Relieves piercing pain in temporal region and behind the ear, alleviates migraine",
-        "경추 2번 극돌기 하외측 약 1.5cm 관절주두 촉지부": "Palpable facet joint area approx. 1.5cm inferolateral to C2 spinous process",
-        "경추성 연관통의 근원 분절을 직접 탈감각시키는 중추 반사점": "Central reflex point that directly desensitizes the root segment of cervicogenic referred pain",
-        
-        ,
-        "▼ 표시 · 작업 관리": "▼ Display & Workspace Management",
-        "포인될 Lock Position 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Lock Position Mode: View only on click, dragging via mouse/touch is disabled.",
-        "기본 작업": "Default Task",
-        "외측 미등록": "Lateral Unregistered",
-        "내측 미등록": "Medial Unregistered",
-        "경추성 두통 / 후두신경통": "Cervicogenic Headache / Occipital Neuralgia",
-        "후면·측면 비교": "Posterior/Lateral Comparison",
-        "치료점은 직접 배치": "Manually place therapy points",
-        "대기 중": "Standby",
-        "임상 시술 순서 (TREATMENT SEQUENCE)": "Clinical Treatment Sequence",
-        "임상 시술 노하우 & Clinical Pearls": "Clinical Treatment Know-how & Clinical Pearls",
-        "1단계 [분절 안정화]: HP-04 (C2-C3 후관절점)에 펜 도자를 30초간 접촉하여 중추 분절 흥분을 가라앉힙니다.": "Step 1 [Segmental Stabilization]: Apply pen probe to HP-04 (C2-C3 facet joint point) for 30 seconds to calm central segmental excitation.",
-        "2단계 [심부 순환 개방]: HP-02 (후두하삼각점)에 도자를 수직으로 부드럽게 대어 1분간 통전합니다.": "Step 2 [Deep Circulation Opening]: Gently apply probe vertically to HP-02 (Suboccipital triangle point) for 1 minute.",
-        "3단계 [말초 신경 포착 해소]: HP-01 (대후두신경점) 및 HP-03 (소후두신경점)에 각각 30초씩 펜을 접촉하여 방사통 경로를 차단합니다.": "Step 3 [Peripheral Nerve Entrapment Relief]: Apply pen to HP-01 (Greater occipital nerve point) and HP-03 (Lesser occipital nerve point) for 30 seconds each to block radiating pain pathways.",
-        "피부 표면에 수분감(전도성 미스트나 겔 소량)을 유지하면 미세전류의 심부 침투율이 극대화됩니다. 도자 팁을 강하게 비비지 말고, 해부학적 함요처(뼈 경계 오목한 곳)에 펜촉을 가만히 안착시킨 상태에서 전기를 인가합니다.": "Maintaining moisture on the skin surface (conductive mist or small amount of gel) maximizes the deep penetration rate of microcurrents. Do not rub the probe tip strongly; gently seat the pen tip in the anatomical depression (concave bone boundary) while applying electricity.",
-        "위치·치료점 근거 미검증": "Location & Therapy Point Unverified",
-        "원본 프로토콜 · 기기 사용설명서 및 치료 근거 대조 전. Start Timer값과 원본의 권장 시간은 별개입니다.": "Original Protocol · Before comparing with device manual & clinical evidence. Start Timer value is independent of original recommended time.",
-        "좌표는 참고 이미지의 임시 표시입니다. 원본의 치료점·시술 조건·효과는 검증되지 않았습니다. 해부 문헌은 치료 효과의 근거와 구분해 표시합니다.": "Coordinates are temporary marks on reference images. Original therapy points, conditions, and effects are unverified. Anatomical literature is marked separately from clinical evidence.",
-        "현재 화면 원": "circles on current screen",
-        "양쪽": "Bilateral",
-        "기본점": "Default Point", "해부 설명 출처: 후두신경과 후두동맥 해부 연구 (Shin 외, 2018)": "Anatomy Description Source: Anatomy Study of Occipital Nerve and Artery (Shin et al., 2018)"
-        };
-        
-        var uiDictKo = {
-            "High-Voltage Microcurrent Pen Probe Healing System": "고전압 미세전류 펜 도자 힐링 시스템",
-            "Selected Point + Active Pins": "선택점 + 배치된 핵심점",
-            "Lock Position": "위치 잠금",
-            "Register Lateral/Medial Image": "외측·내측 이미지 등록",
-            "Point": "포인트",
-            "Add Pin to Selected": "선택점 원 추가",
-            "▼ Display & Workspace Management": "▼ 표시·작업 관리",
-            "Category": "분류",
-            "All": "전체",
-            "Show Click Areas": "클릭 영역 표시",
-            "Task Name": "작업명",
-            "Default Public Therapy Points": "기본 공개 치료점",
-            "Backup Points": "포인트 백업",
-            "Import Backup": "백업 가져오기",
-            "New Task": "새 작업",
-            "User Guide": "사용 안내",
-            "Pointing Position Lock Mode: View only on click, no dragging via mouse/touch.": "포인팅 위치 잠금 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.",
-            "Default Image": "기본 이미지",
-            "Lateral Unregistered": "외측 미등록",
-            "Medial Unregistered": "내측 미등록",
-            "Manually place therapy points": "치료점은 직접 배치",
-            "Posterior/Lateral Comparison": "후면·측면 비교",
-            "Default Point · 2 circles on current screen · Bilateral": "기본점 · 현재 화면 원 2개 · 양쪽",
-            "Delete Selected Circle": "선택 원 삭제",
-            "Edit Selected Point": "선택점 편집",
-            "Delete Added Point": "추가점 삭제",
-            "Healing Frequency Ready": "치유 주파수 준비",
-            "Start Healing Timer": "치유 타이머 시작",
-            "Reset": "리셋",
-            "Next Point 〉": "다음 포인트 〉",
-            "m": "분",
-            "s": "초",
-            "Anatomy Description Partially Corrected · Therapy Point Unverified": "해부 설명 일부 교정 · 치료점 미검증",
-            "Temporary display based on surface area of full-body image. Not the exact treatment location of the patient.": "전신 이미지의 표면 영역에 맞춘 임시 표시입니다. 환자의 정확한 치료 위치가 아닙니다.",
-            "User Category: Treatment Plan · Bilateral": "사용자 분류: 치료 계획 · 양쪽",
-            "View Original Uncorrected Text": "교정 전 원문 확인",
-            "Start Timer": "타이머 설정",
-            "View Recipe ▶": "치유 레시피 ▶"
-        };
-        
-        var targetDict = lang === 'en' ? uiDictEn : uiDictKo;
-        
-        // Use TreeWalker to translate all text nodes dynamically
-        var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
-            acceptNode: function(node) {
-                if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) {
-                    return NodeFilter.FILTER_REJECT;
-                }
-                var text = node.nodeValue.trim();
-                if (text.length > 0 && (targetDict[text] || text.includes('분') || text.includes('초') || text.includes('m') || text.includes('s') || text.includes('치료점은 직접 배치') || text.includes('Manually place therapy points'))) {
-                    return NodeFilter.FILTER_ACCEPT;
-                }
-                return NodeFilter.FILTER_SKIP;
-            }
-        }, false);
-        
-        var nodesToTranslate = [];
-        var currentNode;
-        while(currentNode = walker.nextNode()) {
-            nodesToTranslate.push(currentNode);
-        }
-        
-        nodesToTranslate.forEach(function(node) {
-            var text = node.nodeValue.trim();
-            if (targetDict[text]) {
-                node.nodeValue = node.nodeValue.replace(text, targetDict[text]);
-            } else {
-                // Partial replacements for dynamic strings
-                var newText = node.nodeValue;
-                for (var key in targetDict) {
-                    if (newText.includes(key)) {
-                        newText = newText.replace(key, targetDict[key]);
-                    }
-                }
-                node.nodeValue = newText;
-            }
-        });
-        
-        // Update input placeholders and values
-        var inputs = document.querySelectorAll('input, button');
-        inputs.forEach(function(el) {
-            if (el.placeholder && targetDict[el.placeholder.trim()]) {
-                el.placeholder = targetDict[el.placeholder.trim()];
-            }
-            if (el.value && targetDict[el.value.trim()]) {
-                el.value = targetDict[el.value.trim()];
-            }
-        });
-        
-        // Top left specific target
-        var topBrandSub = document.querySelector('.brand-sub span:nth-child(2)');
-        if (topBrandSub) {
-            topBrandSub.textContent = (lang === 'en') ? "High-Voltage Microcurrent Pen Probe Healing System" : "고전압 미세전류 펜 도자 힐링 시스템";
-        }
-        window.applyDynamicTranslations();
+    function applyLangUI(lang) {
       curLang = lang;
       try {
         localStorage.setItem("novacell_site_lang", lang);
@@ -6550,11 +6252,11 @@ window.CONDITION_TRANSLATIONS_EN = {
 
   // Hook into Workspace initialization to sync translations
   if (typeof Workspace !== 'undefined') {
-    var origRenderCurrentCondition = Workspace.prototype.renderCurrentCondition;
-    Workspace.prototype.renderCurrentCondition = function() {
+    var origRenderCurrentCondition = window.Workspace.prototype.renderCurrentCondition;
+    window.Workspace.prototype.renderCurrentCondition = function() {
       origRenderCurrentCondition.call(this);
       
-      syncTranslations(); window.applyDynamicTranslations();
+      syncTranslations();
 
       var isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
       if (!isEn) return;
@@ -6572,20 +6274,21 @@ window.CONDITION_TRANSLATIONS_EN = {
         }.bind(this));
       }
 
-            if (window.HEALING_POINTS_EN && window.HEALING_POINTS_EN[cond.id]) {
-        var hps = window.HEALING_POINTS_EN[cond.id];
-        var pointCards = this.healingPointsList.querySelectorAll('.point-desc-card');
-        pointCards.forEach(function(card, idx) {
-          if (hps[idx]) {
-            var vals = card.querySelectorAll('.desc-val');
-            if (vals.length >= 3) {
-              vals[0].textContent = hps[idx].targetAnatomy;
-              vals[1].textContent = hps[idx].locationGuide;
-              vals[2].textContent = hps[idx].significance;
+        if (window.HEALING_POINTS_EN) {
+          var pointCards = document.querySelectorAll('.hp-detail-card');
+          pointCards.forEach(function(card) {
+            var id = card.id.replace('hp-card-', '');
+            var hpEn = window.HEALING_POINTS_EN[id];
+            if (hpEn && hpEn[0]) {
+              var vals = card.querySelectorAll('.info-val');
+              if (vals.length >= 3) {
+                vals[0].textContent = hpEn[0].targetAnatomy;
+                vals[1].textContent = hpEn[0].locationGuide || hpEn[0].palpationLocation;
+                vals[2].textContent = hpEn[0].significance;
+              }
             }
-          }
-        });
-      }
+          });
+        }
 if (this.mechanismText && cond.pathologyMechanismEn) {
         this.mechanismText.textContent = cond.pathologyMechanismEn;
       }
@@ -6602,8 +6305,8 @@ if (this.mechanismText && cond.pathologyMechanismEn) {
       });
     };
 
-    var origOpenCover = Workspace.prototype.openCover;
-    Workspace.prototype.openCover = function() {
+    var origOpenCover = window.Workspace.prototype.openCover;
+    window.Workspace.prototype.openCover = function() {
       origOpenCover.call(this);
       document.documentElement.classList.remove('no-cover');
       if (this.coverScreen) {
@@ -7137,5 +6840,182 @@ window.HEALING_POINTS_EN = {
 };
 
 </script>
+<script>
+// Dynamic translation injection and bugfixes
+(function() {
+  function syncTranslations() {
+    if (window.app && window.app.conditions) {
+      var trans = window.CONDITION_TRANSLATIONS_EN;
+      if (trans) {
+        window.app.conditions.forEach(function(c) {
+          if (trans[c.id]) {
+            c.symptomsEn = trans[c.id].symptomsEn;
+            c.pathologyMechanismEn = trans[c.id].pathologyMechanismEn;
+          }
+        });
+      }
+    }
+  }
+
+  // Massive UI Translation Dictionary (Flat Mapping)
+  window.applyDynamicTranslations = function() {
+      var lang = localStorage.getItem("novacell_site_lang") || localStorage.getItem("nc_lang") || "ko";
+      if (lang !== 'en') return;
+
+      var uiDictEn = {
+          "고전압 미세전류 펜 도자 힐링 시스템": "High-Voltage Microcurrent Pen Probe Healing System",
+          "선택점 + 활성핀 동시": "Selected Point + Active Pins",
+          "포인팅 잠금": "Lock Position",
+          "외측·내측 이미지 등록": "Register Lateral/Medial Image",
+          "포인트": "Point",
+          "선택점에 핀 추가": "Add Pin to Selected",
+          "▼ 표시 · 작업 관리": "▼ Display & Workspace Management",
+          "분류": "Category",
+          "전체": "All",
+          "클릭 영역 표시": "Show Click Areas",
+          "작업명": "Task Name",
+          "기본 공용 치료점": "Default Public Therapy Points",
+          "백업된 포인트": "Backup Points",
+          "백업 불러오기": "Import Backup",
+          "새 작업": "New Task",
+          "사용 안내": "User Guide",
+          "포인팅 잠금 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Pointing Position Lock Mode: View only on click, no dragging via mouse/touch.",
+          "포인될 Lock Position 모드: 클릭 시 조회만 가능하며 마우스/터치로 밀리지 않습니다.": "Lock Position Mode: View only on click, dragging via mouse/touch is disabled.",
+          "기본 이미지": "Default Image",
+          "외측 미등록": "Lateral Unregistered",
+          "내측 미등록": "Medial Unregistered",
+          "치료점은 직접 배치": "Manually place therapy points",
+          "후면·측면 비교": "Posterior/Lateral Comparison",
+          "기본점 · 현재 화면 원 2개 · 양쪽": "Default Point · 2 circles on current screen · Bilateral",
+          "선택된 원 삭제": "Delete Selected Circle",
+          "선택된 포인트 수정": "Edit Selected Point",
+          "추가된 핀 삭제": "Delete Added Point",
+          "치유 주파수 준비": "Healing Frequency Ready",
+          "치유 타이머 시작": "Start Healing Timer",
+          "리셋": "Reset",
+          "다음 포인트 ▶": "Next Point ▶",
+          "분": "m",
+          "초": "s",
+          "해부 설명 일부 교정 · 치료점 미검증": "Anatomy Description Partially Corrected · Therapy Point Unverified",
+          "전신 이미지 표면적에 맞춘 임시 표시입니다. 환자의 정확한 치료 위치가 아닙니다.": "Temporary display based on surface area of full-body image. Not the exact treatment location of the patient.",
+          "사용자 분류: 치료 계획 · 양쪽": "User Category: Treatment Plan · Bilateral",
+          "원본 교정 전 텍스트 확인": "View Original Uncorrected Text",
+          "타이머 설정": "Start Timer",
+          "치유 레시피 ▶": "View Recipe ▶",
+          "기본 작업": "Default Task",
+          "대기 중": "Standby",
+          "경추성 두통 / 후두신경통": "Cervicogenic Headache / Occipital Neuralgia",
+          "임상 시술 순서 (TREATMENT SEQUENCE)": "Clinical Treatment Sequence",
+          "임상 시술 노하우 & Clinical Pearls": "Clinical Treatment Know-how & Clinical Pearls",
+          "1단계 [분절 안정화]: HP-04 (C2-C3 후관절점)에 펜 도자를 30초간 접촉하여 중추 분절 흥분을 가라앉힙니다.": "Step 1 [Segmental Stabilization]: Apply pen probe to HP-04 (C2-C3 facet joint point) for 30 seconds to calm central segmental excitation.",
+          "2단계 [심부 순환 개방]: HP-02 (후두하삼각점)에 도자를 수직으로 부드럽게 대어 1분간 통전합니다.": "Step 2 [Deep Circulation Opening]: Gently apply probe vertically to HP-02 (Suboccipital triangle point) for 1 minute.",
+          "3단계 [말초 신경 포착 해소]: HP-01 (대후두신경점) 및 HP-03 (소후두신경점)에 각각 30초씩 펜을 접촉하여 방사통 경로를 차단합니다.": "Step 3 [Peripheral Nerve Entrapment Relief]: Apply pen to HP-01 (Greater occipital nerve point) and HP-03 (Lesser occipital nerve point) for 30 seconds each to block radiating pain pathways.",
+          "피부 표면에 수분감(전도성 미스트나 겔 소량)을 유지하면 미세전류의 심부 침투율이 극대화됩니다. 도자 팁을 강하게 비비지 말고, 해부학적 함요처(뼈 경계 오목한 곳)에 펜촉을 가만히 안착시킨 상태에서 전기를 인가합니다.": "Maintaining moisture on the skin surface (conductive mist or small amount of gel) maximizes the deep penetration rate of microcurrents. Do not rub the probe tip strongly; gently seat the pen tip in the anatomical depression (concave bone boundary) while applying electricity.",
+          "위치·치료점 근거 미검증": "Location & Therapy Point Unverified",
+          "원본 프로토콜 · 기기 사용설명서 및 치료 근거 대조 전. Start Timer값과 원본의 권장 시간은 별개입니다.": "Original Protocol · Before comparing with device manual & clinical evidence. Start Timer value is independent of original recommended time.",
+          "좌표는 참고 이미지의 임시 표시입니다. 원본의 치료점·시술 조건·효과는 검증되지 않았습니다. 해부 문헌은 치료 효과의 근거와 구분해 표시합니다.": "Coordinates are temporary marks on reference images. Original therapy points, conditions, and effects are unverified. Anatomical literature is marked separately from clinical evidence.",
+          "현재 화면 원": "circles on current screen",
+          "양쪽": "Bilateral",
+          "기본점": "Default Point",
+          "대후두신경의 상향선 통과 영역": "Greater Occipital Nerve (Superior Nuchal Line)",
+          "대후두신경 기시부 (상항선 하)": "Greater Occipital Nerve (Superior Nuchal Line)",
+          "후두하삼각 심부점 (C1-C2 척추사이)": "Suboccipital Triangle Core (C1-C2 Gap)",
+          "소후두신경 통과점 (유양돌기 후하방)": "Lesser Occipital Nerve (Retro-Mastoid)",
+          "제3후두신경(TON), C2-3 관절포 및 다열근 부착부": "3rd Occipital Nerve (TON), C2-3 Facet Joint & Multifidus Attachment",
+          "대후두신경(C2 후지), 승모근 및 두반극근 부착건막": "Greater occipital nerve (C2 dorsal ramus), trapezius and semispinalis capitis aponeurosis",
+          "외후두융기와 유양돌기를 기준으로 확인하는 후두부 영역입니다. 신경 주행은 개인마다 달라 고정된 2~2.5cm 지점을 보편적 위치로 사용할 수 없습니다.": "Occipital region identified based on EOP and mastoid process. Due to individual nerve course variations, a fixed 2~2.5cm point cannot be universally applied.",
+          "해부학적 참고 영역입니다. 문헌의 신경 위치는 NovaCell 치료점이나 치료 효과를 검증한 자료가 아닙니다.": "Anatomical reference area. Literature nerve location does not verify NovaCell therapy points or clinical efficacy.",
+          "상/하두사근, 대후두직근 사이 삼각영역, 추골동맥 주위 교감신경총": "Triangular area between superior/inferior oblique & rectus capitis posterior major, sympathetic plexus around vertebral artery",
+          "상항선 아래 C2 극돌기 외측 2cm 오목한 함요처": "Concave depression 2cm lateral to C2 spinous process below superior nuchal line",
+          "뇌혈류 순환 촉진, 긴장성/혈관성 두통 및 어지럼증의 핵심 스위치": "Promotes cerebral blood flow, key switch for tension/vascular headache and dizziness",
+          "소후두신경(C2,3 전지 분지), 흉쇄유돌근(SCM) 후연 상단": "Lesser occipital nerve (C2,3 ventral rami branches), upper posterior border of SCM",
+          "외후두융기-유양돌기 연결선의 외측 구간과 흉쇄유돌근 후연을 참고합니다. 정확한 주행과 분지는 개인별 확인이 필요합니다.": "Refer to lateral segment of EOP-mastoid process line and posterior border of SCM. Exact course and branching require individual verification.",
+          "측두부(관자놀이) 및 귀 뒤쪽 찌르는 통증, 편두통 완화": "Relieves piercing pain in temporal region and behind the ear, alleviates migraine",
+          "경추 2번 극돌기 하외측 약 1.5cm 관절주두 촉지부": "Palpable facet joint area approx. 1.5cm inferolateral to C2 spinous process",
+          "경추성 연관통의 근원 분절을 직접 탈감각시키는 중추 반사점": "Central reflex point that directly desensitizes the root segment of cervicogenic referred pain"
+      };
+
+      // Create a walker to text nodes
+      var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+          acceptNode: function(node) {
+              if (node.parentElement && (node.parentElement.tagName === 'SCRIPT' || node.parentElement.tagName === 'STYLE')) {
+                  return NodeFilter.FILTER_REJECT;
+              }
+              var text = node.nodeValue.trim();
+              if (text.length > 0 && uiDictEn[text]) {
+                  return NodeFilter.FILTER_ACCEPT;
+              }
+              
+              // Also accept if it contains known sub-strings
+              var match = Object.keys(uiDictEn).some(function(k) { return text.indexOf(k) !== -1; });
+              if (match) return NodeFilter.FILTER_ACCEPT;
+              
+              return NodeFilter.FILTER_SKIP;
+          }
+      }, false);
+
+      var nodesToTranslate = [];
+      var currentNode;
+      while (currentNode = walker.nextNode()) {
+          nodesToTranslate.push(currentNode);
+      }
+
+      nodesToTranslate.forEach(function(node) {
+          var text = node.nodeValue.trim();
+          if (uiDictEn[text]) {
+              node.nodeValue = node.nodeValue.replace(text, uiDictEn[text]);
+          } else {
+              var newText = node.nodeValue;
+              for (var key in uiDictEn) {
+                  if (newText.indexOf(key) !== -1) {
+                      newText = newText.replace(new RegExp(key, 'g'), uiDictEn[key]);
+                  }
+              }
+              node.nodeValue = newText;
+          }
+      });
+  };
+
+  // Hook into Workspace initialization to sync translations
+  if (typeof Workspace !== 'undefined') {
+    var origApplyLangUI = window.applyLangUI;
+    if (origApplyLangUI) {
+      window.applyLangUI = function(lang) {
+        origApplyLangUI(lang);
+        window.applyDynamicTranslations();
+      };
+    }
+    
+    var origRenderCurrentCondition = Workspace.prototype.renderCurrentCondition;
+    Workspace.prototype.renderCurrentCondition = function() {
+      origRenderCurrentCondition.call(this);
+      
+      syncTranslations(); 
+      window.applyDynamicTranslations();
+
+      var isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+      if (!isEn) return;
+
+      var cond = this.currentCondition;
+      if (!cond) return;
+
+      if (this.symptomsContainer && cond.symptomsEn) {
+        this.symptomsContainer.innerHTML = '';
+        cond.symptomsEn.forEach(function(sym) {
+          var chip = document.createElement('div');
+          chip.className = 'symptom-chip';
+          chip.textContent = sym;
+          this.symptomsContainer.appendChild(chip);
+        }.bind(this));
+      }
+
+      if (this.mechanismText && cond.pathologyMechanismEn) {
+        this.mechanismText.textContent = cond.pathologyMechanismEn;
+      }
+    };
+  }
+})();
+</script>
+
 </body>
 </html>
