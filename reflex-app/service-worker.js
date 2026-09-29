@@ -1,10 +1,10 @@
-const CACHE = "novacell-reflex-therapy-v33-official-en-maps";
+const CACHE = "novacell-reflex-therapy-v34-official-en-maps";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=33",
-  "./program-data.js?v=33",
-  "./app.js?v=33",
+  "./styles.css?v=34",
+  "./program-data.js?v=34",
+  "./app.js?v=34",
   "./manifest.webmanifest",
   "./assets/foot-sole-map.webp",
   "./assets/foot-top-map.webp",
@@ -50,10 +50,16 @@ self.addEventListener("activate", event => {
   );
 });
 
-// Network-First for HTML documents to guarantee instant deployment of new features,
-// Cache-First for static media assets
+// Network-First for HTML documents, scripts, styles to guarantee instant deployment
 self.addEventListener("fetch", event => {
-  if (event.request.mode === "navigate" || event.request.destination === "document") {
+  const url = event.request.url;
+  const isCodeOrDoc = event.request.mode === "navigate" ||
+                      event.request.destination === "document" ||
+                      url.includes(".js") ||
+                      url.includes(".css") ||
+                      url.includes("manifest");
+
+  if (isCodeOrDoc) {
     event.respondWith(
       fetch(event.request)
         .then(response => {
