@@ -2531,7 +2531,19 @@ applyLanguage();
 $$("[data-mode]").forEach(b => b.classList.toggle("active", b.dataset.mode === state.mode));
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./service-worker.js");
+  navigator.serviceWorker.register("./service-worker.js").then(reg => {
+    try { reg.update(); } catch (e) {}
+    reg.onupdatefound = () => {
+      const installing = reg.installing;
+      if (installing) {
+        installing.onstatechange = () => {
+          if (installing.state === "installed" && navigator.serviceWorker.controller) {
+            window.location.reload();
+          }
+        };
+      }
+    };
+  }).catch(() => {});
 }
 
 window.state = state;
