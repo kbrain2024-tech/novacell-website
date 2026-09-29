@@ -33,6 +33,18 @@
 
 <script id="ext-dict-data" type="application/json">
 {
+    "포인트당 1분 ~ 2분 (환자가 따끔 거림이 사라지거나 묵직한 이완감을 느낄때까지)": "1–2 min per point (until stinging subsides or deep relaxation is felt)",
+    "고전압 미세전류 03~05단계 (편안한 펄스 진동 감각)": "High-Voltage Microcurrent Level 3–5 (comfortable pulse vibration sensation)",
+    "환부에 알콜 또는 생리식염수 스프레이": "Spray alcohol or physiological saline on the affected area",
+    "1단계": "Step 1",
+    "2단계": "Step 2",
+    "3단계": "Step 3",
+    "4단계": "Step 4",
+    "5단계": "Step 5",
+    "말초 신경 포착 해소": "Peripheral Nerve Entrapment Relief",
+    "말초 Nerve Entrapment 해소": "Peripheral Nerve Entrapment Relief",
+    "분절 안정화": "Segment Stabilization",
+    "심부 순환 개방": "Deep Circulation Opening",
     "64세 여성 / 주부 / 유병기간 2년 퇴행성 슬관절염(K-L grade II)":  "64-year-old female / Housewife / 2-year history of Knee Osteoarthritis (K-L grade II)",
     "부위별 해부 참고 이미지와 치료 포인트 기록, 타이머, Bio Point 및 생체 회로를 한곳에서 확인하세요":  "Check regional anatomical reference images, treatment point records, timers, Bio Points, and bio-circuits all in one place",
     "내측 등록됨":  "Medial Registered",
@@ -4592,12 +4604,38 @@ window.EXT_DICT_EN = JSON.parse(document.getElementById('ext-dict-data').textCon
   }
   window.normalizeTypos = normalizeTypos;
 
+  var PROTO_TRANSLATIONS = {
+    '포인트당 1분 ~ 2분 (환자가 따끔 거림이 사라지거나 묵직한 이완감을 느낄때까지)': '1–2 min per point (until stinging subsides or deep relaxation is felt)',
+    '고전압 미세전류 03~05단계 (편안한 펄스 진동 감각)': 'High-Voltage Microcurrent Level 3–5 (comfortable pulse vibration sensation)',
+    '환부에 알콜 또는 생리식염수 스프레이': 'Spray alcohol or physiological saline on the affected area',
+    '점진적 심부 압박 접촉 (Point Compression) 후 미세전류 전압 통전': 'Microcurrent voltage application after progressive deep compression contact (Point Compression)',
+    '단일 펜 도자 (Monopolar Pen Probe - 무극성 고전압 미세전류)': 'Monopolar Pen Probe (Non-polar High-Voltage Microcurrent)'
+  };
+
+  function cleanSequenceEn(str) {
+    if (!str || typeof str !== 'string') return str;
+    return str
+      .replace(/(\d+)단계/g, 'Step $1')
+      .replace(/1단계/g, 'Step 1')
+      .replace(/2단계/g, 'Step 2')
+      .replace(/3단계/g, 'Step 3')
+      .replace(/4단계/g, 'Step 4')
+      .replace(/5단계/g, 'Step 5')
+      .replace(/말초\s*Nerve\s*Entrapment\s*해소/gi, 'Peripheral Nerve Entrapment Relief')
+      .replace(/말초\s*신경\s*포착\s*해소/g, 'Peripheral Nerve Entrapment Relief')
+      .replace(/분절\s*안정화/g, 'Segment Stabilization')
+      .replace(/심부\s*순환\s*개방/g, 'Deep Circulation Opening');
+  }
+  window.cleanSequenceEn = cleanSequenceEn;
+
   function transEn(text) {
     if (!text || typeof text !== 'string') return text;
     var trimmed = text.trim();
+    if (PROTO_TRANSLATIONS[trimmed]) return PROTO_TRANSLATIONS[trimmed];
     if (window.EXT_DICT_EN && window.EXT_DICT_EN[trimmed]) return window.EXT_DICT_EN[trimmed];
     
     var norm = normalizeTypos(trimmed);
+    if (PROTO_TRANSLATIONS[norm]) return PROTO_TRANSLATIONS[norm];
     if (window.EXT_DICT_EN && window.EXT_DICT_EN[norm]) return window.EXT_DICT_EN[norm];
 
     var res = norm;
@@ -4608,7 +4646,7 @@ window.EXT_DICT_EN = JSON.parse(document.getElementById('ext-dict-data').textCon
         }
       }
     }
-    return res;
+    return cleanSequenceEn(res);
   }
   window.transEn = transEn;
 
@@ -5356,15 +5394,70 @@ class NovaCellApp {
     // Render Subnav views
     this.renderClinicalCases(cond);
     this.renderSafetyGuide(cond);
+    this.setRightPanelSubnav(this.currentSubnav || 'recipe');
 
     // Render Pins on 3D view
     this.renderHealingPins();
     this.updateActivePointBar();
   }
 
+  setRightPanelSubnav(tabName) {
+    this.currentSubnav = tabName;
+
+    const btnMap = {
+      recipe: this.subnavBtnRecipe || document.getElementById('subnav-btn-recipe'),
+      cases: this.subnavBtnCases || document.getElementById('subnav-btn-cases'),
+      safety: this.subnavBtnSafety || document.getElementById('subnav-btn-safety')
+    };
+
+    Object.keys(btnMap).forEach(key => {
+      const btn = btnMap[key];
+      if (btn) {
+        if (key === tabName) {
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+        } else {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-pressed', 'false');
+        }
+      }
+    });
+
+    const panelMap = {
+      recipe: this.recipeViewContainer || document.getElementById('recipe-view-container'),
+      cases: this.casesViewContainer || document.getElementById('cases-view-container'),
+      safety: this.safetyViewContainer || document.getElementById('safety-view-container')
+    };
+
+    Object.keys(panelMap).forEach(key => {
+      const panel = panelMap[key];
+      if (panel) {
+        if (key === tabName) {
+          panel.classList.add('active');
+          panel.style.display = 'block';
+        } else {
+          panel.classList.remove('active');
+          panel.style.display = 'none';
+        }
+      }
+    });
+
+    if (this.currentCondition) {
+      if (tabName === 'cases') {
+        this.renderClinicalCases(this.currentCondition);
+      } else if (tabName === 'safety') {
+        this.renderSafetyGuide(this.currentCondition);
+      }
+    }
+
+    const scrollWrap = document.querySelector('.recipe-scroll-content');
+    if (scrollWrap) scrollWrap.scrollTop = 0;
+  }
+
   renderClinicalCases(cond) {
-    if (!this.casesListContainer) return;
-    this.casesListContainer.innerHTML = '';
+    const container = this.casesListContainer || document.getElementById('cases-list-container');
+    if (!container) return;
+    container.innerHTML = '';
     const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
     const cases = cond.clinicalCases || [];
 
@@ -5429,11 +5522,12 @@ class NovaCellApp {
   }
 
   renderSafetyGuide(cond) {
-    if (!this.safetyContentContainer) return;
+    const container = this.safetyContentContainer || this.safetyGuideContent || document.getElementById('safety-guide-content');
+    if (!container) return;
     const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
     const safety = cond.anatomicalSafetyGuide;
     if (!safety) {
-      this.safetyContentContainer.innerHTML = `
+      container.innerHTML = `
         <div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
           ${isEn ? 'No safety guidelines registered.' : '등록된 안전 가이드 데이터가 없습니다.'}
         </div>
@@ -5446,7 +5540,7 @@ class NovaCellApp {
     const probe = isEn ? (safety.probeTechniqueEn || safety.probeTechnique || safety.neurovascularProtection) : (safety.probeTechnique || safety.neurovascularProtection);
     const prec = isEn ? (safety.safetyPrecautionsEn || safety.safetyPrecautions || safety.bioelectricPrecautions) : (safety.safetyPrecautions || safety.bioelectricPrecautions);
 
-    this.safetyContentContainer.innerHTML = `
+    container.innerHTML = `
       <div class="safety-card landmark-card">
         <div class="safety-card-title">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -6698,6 +6792,8 @@ setTimeout(__initNovaCellWorkspace, 100);
 function patchWorkspaceClass(wsClass) {
   if (!wsClass || !wsClass.prototype) return;
   const proto = wsClass.prototype;
+  const esc = window.escapeHTML || (v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])));
+
 
   // 1. buildTools
   proto.buildTools = function() {
@@ -7035,11 +7131,51 @@ function patchWorkspaceClass(wsClass) {
           url: source?.url || '',
           by: source?.by || (isEn ? 'NovaCell Clinical Team' : 'NovaCell 임상팀')
         };
-        this.saveState();
+        if (this.persist) this.persist();
+        else if (this.saveState) this.saveState();
         this.renderClinicalCases(cond);
       };
       card.append(div);
     });
+  };
+
+  // 8b. setRightPanelSubnav
+  proto.setRightPanelSubnav = function(tabName) {
+    this.currentSubnav = tabName;
+    ['recipe', 'cases', 'safety'].forEach(t => {
+      const b = document.getElementById('subnav-btn-' + t);
+      if (b) {
+        b.setAttribute('aria-pressed', String(tabName === t));
+        if (tabName === t) b.classList.add('active');
+        else b.classList.remove('active');
+      }
+    });
+    const panelMap = {
+      recipe: this.recipeViewContainer || document.getElementById('recipe-view-container'),
+      cases: this.casesViewContainer || document.getElementById('cases-view-container'),
+      safety: this.safetyViewContainer || document.getElementById('safety-view-container')
+    };
+    Object.keys(panelMap).forEach(key => {
+      const panel = panelMap[key];
+      if (panel) {
+        if (key === tabName) {
+          panel.classList.add('active');
+          panel.style.display = 'block';
+        } else {
+          panel.classList.remove('active');
+          panel.style.display = 'none';
+        }
+      }
+    });
+    if (this.currentCondition) {
+      if (tabName === 'cases') {
+        this.renderClinicalCases(this.currentCondition);
+      } else if (tabName === 'safety') {
+        this.renderSafetyGuide(this.currentCondition);
+      }
+    }
+    const scrollWrap = document.querySelector('.recipe-scroll-content');
+    if (scrollWrap) scrollWrap.scrollTop = 0;
   };
 
   // 9. renderHealingPins
@@ -7305,11 +7441,19 @@ if (typeof Workspace !== 'undefined') {
       if (modeBtnBody) modeBtnBody.textContent = (lang === 'en' ? 'Full Body Map' : '전신 지도');
 
       var pinFilter = document.getElementById('pin-filter');
-      if (pinFilter && pinFilter.options) {
-        if (pinFilter.options[0]) pinFilter.options[0].textContent = (lang === 'en' ? 'Selected Point + Active Pins' : '선택점 + 배치된 핵심점');
-        if (pinFilter.options[1]) pinFilter.options[1].textContent = (lang === 'en' ? 'All Condition Pins' : '현재 질환 전체');
-        if (pinFilter.options[2]) pinFilter.options[2].textContent = (lang === 'en' ? 'Custom Pins Only' : '추가점만');
-        if (pinFilter.options[3]) pinFilter.options[3].textContent = (lang === 'en' ? 'Hide All Pins' : '모두 숨김');
+      if (pinFilter) {
+        var pinLabel = pinFilter.closest('label');
+        if (pinLabel && pinLabel.childNodes.length > 0) {
+          if (pinLabel.childNodes[0].nodeType === Node.TEXT_NODE) {
+            pinLabel.childNodes[0].nodeValue = (lang === 'en' ? 'Point ' : '포인트 ');
+          }
+        }
+        if (pinFilter.options) {
+          if (pinFilter.options[0]) pinFilter.options[0].textContent = (lang === 'en' ? 'Selected Point + Active Pins' : '선택점 + 배치된 핵심점');
+          if (pinFilter.options[1]) pinFilter.options[1].textContent = (lang === 'en' ? 'All Condition Pins' : '현재 질환 전체');
+          if (pinFilter.options[2]) pinFilter.options[2].textContent = (lang === 'en' ? 'Custom Pins Only' : '추가점만');
+          if (pinFilter.options[3]) pinFilter.options[3].textContent = (lang === 'en' ? 'Hide All Pins' : '모두 숨김');
+        }
       }
 
       var uploadBtn = document.getElementById('upload-pair');
@@ -7338,12 +7482,42 @@ if (typeof Workspace !== 'undefined') {
           (lang === 'en' ? 'Clinical Guide & Case Studies' : '임상 가이드 & 증례 분석실');
       }
 
-      var subRecipe = document.getElementById('subnav-btn-recipe');
-      if (subRecipe) subRecipe.textContent = (lang === 'en' ? 'Clinical Recipe' : '치유 레시피');
-      var subCases = document.getElementById('subnav-btn-cases');
-      if (subCases) subCases.textContent = (lang === 'en' ? 'Clinical Cases' : '임상 증례');
-      var subSafety = document.getElementById('subnav-btn-safety');
-      if (subSafety) subSafety.textContent = (lang === 'en' ? 'Safety Guide' : '안전 가이드');
+      var subRecipeSpan = document.querySelector('#subnav-btn-recipe span');
+      if (subRecipeSpan) {
+        subRecipeSpan.textContent = (lang === 'en' ? 'Clinical Recipe' : '치유 레시피');
+      } else {
+        var subRecipe = document.getElementById('subnav-btn-recipe');
+        if (subRecipe) subRecipe.textContent = (lang === 'en' ? 'Clinical Recipe' : '치유 레시피');
+      }
+
+      var subCasesSpan = document.querySelector('#subnav-btn-cases span:not(#cases-count-badge)');
+      if (subCasesSpan) {
+        subCasesSpan.textContent = (lang === 'en' ? 'Clinical Cases' : '임상 증례');
+      } else {
+        var subCases = document.getElementById('subnav-btn-cases');
+        if (subCases) subCases.textContent = (lang === 'en' ? 'Clinical Cases' : '임상 증례');
+      }
+
+      var subSafetySpan = document.querySelector('#subnav-btn-safety span');
+      if (subSafetySpan) {
+        subSafetySpan.textContent = (lang === 'en' ? 'Safety Guide' : '안전 가이드');
+      } else {
+        var subSafety = document.getElementById('subnav-btn-safety');
+        if (subSafety) subSafety.textContent = (lang === 'en' ? 'Safety Guide' : '안전 가이드');
+      }
+
+      // Ensure robust click handling for subnav buttons
+      ['recipe', 'cases', 'safety'].forEach(function(t) {
+        var btn = document.getElementById('subnav-btn-' + t);
+        if (btn) {
+          btn.onclick = function(e) {
+            e.preventDefault();
+            if (window.app && typeof window.app.setRightPanelSubnav === 'function') {
+              window.app.setRightPanelSubnav(t);
+            }
+          };
+        }
+      });
 
       // Case source notice header
       var casesNoticeTitle = document.querySelector('#cases-view-container h4');
