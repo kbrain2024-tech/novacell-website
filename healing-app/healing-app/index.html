@@ -1846,25 +1846,12 @@
 
         <!-- Right Panel Segmented Subnav Bar -->
         <div class="recipe-subnav-bar">
-          <button id="subnav-btn-recipe" class="recipe-subnav-btn active" data-subnav="recipe" title="치유 레시피 (표준 치료 프로토콜)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
-            <span>치유 레시피</span>
+          <button id="subnav-btn-recipe" class="recipe-subnav-btn active" data-subnav="recipe" title="Clinical Recipe"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><span>Recipe</span>
           </button>
-          <button id="subnav-btn-cases" class="recipe-subnav-btn" data-subnav="cases" title="증례 · 출처 보고">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-            </svg>
-            <span>증례 · 출처</span>
+          <button id="subnav-btn-cases" class="recipe-subnav-btn" data-subnav="cases" title="Clinical Cases &amp; Evidence"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg><span>Cases</span>
             <span id="cases-count-badge" class="subnav-count-badge">1</span>
           </button>
-          <button id="subnav-btn-safety" class="recipe-subnav-btn" data-subnav="safety" title="의료사고 방지 해부학 안전 가이드">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-            </svg>
-            <span>안전 가이드</span>
+          <button id="subnav-btn-safety" class="recipe-subnav-btn" data-subnav="safety" title="Anatomical Safety Guide"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span>Safety Guide</span>
           </button>
         </div>
 
@@ -1890,7 +1877,7 @@
                   <small id="timer-sub">DNA &#xBCF5;&#xC6D0; &#xC8FC;&#xD30C;&#xC218; &middot; &#xC2F1;&#xC789;&#xBCFC; &#xCC28;&#xC784; &#xBCA8;</small>
                 </div>
               </div>
-              <span id="timer-status-badge" class="timer-status-badge">&#xB300;&#xAE30; &#xC911;</span>
+              <span id="timer-status-badge" class="timer-status-badge">Standby</span>
             </div>
 
             <!-- ?쒖꽦 ?ъ씤???먮룞 ?곌껐 諛곕꼫 (湲곗〈 ?μ젏 ?꾨꼍 蹂댁〈) -->
@@ -1899,22 +1886,22 @@
                 <span class="timer-point-eyebrow">POINT TIMER</span>
                 <span id="timer-hp-code" class="timer-point-code">HP-01 &middot; 1 / 4</span>
               </div>
-              <strong id="timer-hp-title" class="timer-point-title">&#xB300;&#xD6C4;&#xB450;&#xC2E0;&#xACBD;&#xC758; &#xC0C1;&#xD56D;&#xC120; &#xD1B5;&#xACFC; &#xC601;&#xC5ED;</strong>
+              <strong id="timer-hp-title" class="timer-point-title">Greater Occipital Nerve (Superior Nuchal Line)</strong>
             </div>
 
             <div class="timer-body">
               <!-- ?쒓컙 議곗젅 踰꾪듉 (1遺?~ 10遺??꾨━??諛?+-30珥? -->
               <div class="timer-controls-row">
                 <div class="timer-preset-group" aria-label="&#xD0C0;&#xC774;&#xBA38; &#xC2DC;&#xAC04; &#xD504;&#xB9AC;&#xC14B;">
-                  <button type="button" class="preset-btn" data-min="1" id="preset-1min">1&#xBD84;</button>
-                  <button type="button" class="preset-btn" data-min="3" id="preset-3min">3&#xBD84;</button>
-                  <button type="button" class="preset-btn active" data-min="5" id="preset-5min">5&#xBD84;</button>
-                  <button type="button" class="preset-btn" data-min="7" id="preset-7min">7&#xBD84;</button>
-                  <button type="button" class="preset-btn" data-min="10" id="preset-10min">10&#xBD84;</button>
+                  <button type="button" class="preset-btn" data-min="1" id="preset-1min">1m</button>
+                  <button type="button" class="preset-btn" data-min="3" id="preset-3min">3m</button>
+                  <button type="button" class="preset-btn active" data-min="5" id="preset-5min">5m</button>
+                  <button type="button" class="preset-btn" data-min="7" id="preset-7min">7m</button>
+                  <button type="button" class="preset-btn" data-min="10" id="preset-10min">10m</button>
                 </div>
                 <div class="timer-adjust-group">
-                  <button type="button" id="timer-dec-btn" class="timer-adjust-btn" title="30&#xCD08; &#xAC10;&#xC18C;">-30&#xCD08;</button>
-                  <button type="button" id="timer-inc-btn" class="timer-adjust-btn" title="30&#xCD08; &#xC99D;&#xAC00;">+30&#xCD08;</button>
+                  <button type="button" id="timer-dec-btn" class="timer-adjust-btn" title="Decrease 30 seconds">-30s</button>
+                  <button type="button" id="timer-inc-btn" class="timer-adjust-btn" title="Increase 30 seconds">+30s</button>
                 </div>
               </div>
 
@@ -1923,7 +1910,7 @@
                 <output id="timer-display" class="timer-time-text" aria-label="&#xB0A8;&#xC740; &#xC2DC;&#xAC04;">05:00</output>
                 <div class="timer-freq-indicator">
                   <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
-                  <span id="freq-label">528Hz Healing Frequency Ready</span>
+                  
                 </div>
               </div>
 
@@ -1936,22 +1923,21 @@
               <div class="timer-actions-row">
                 <button type="button" id="timer-toggle-btn" class="timer-btn-primary">
                   <span id="timer-play-icon">&#9654;</span>
-                  <span id="timer-btn-label">&#xCE58;&#xC720; &#xD0C0;&#xC774;&#xBA38; &#xC2DC;&#xC791;</span>
+                  <span id="timer-btn-label">Start Healing Timer</span>
                 </button>
                 <button type="button" id="timer-reset-btn" class="timer-btn-secondary">
                   <span>&#8634;</span>
-                  <span id="timer-reset-label">&#xB9AC;&#xC14B;</span>
+                  <span id="timer-reset-label">Reset</span>
                 </button>
-                <button type="button" id="timer-next-point-btn" class="timer-btn-next" title="&#xB2E4;&#xC74C; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;&#xB85C; &#xC774;&#xB3D9;">
-                  <span>&#xB2E4;&#xC74C; &#xD3EC;&#xC778;&#xD2B8; &#x276F;</span>
+                <button type="button" id="timer-next-point-btn" class="timer-btn-next" title="Move to next therapy point"><span>Next Point &#x276F;</span>
                 </button>
-                <button type="button" id="timer-sound-toggle" class="timer-btn-sound" title="&#xC8FC;&#xD30C;&#xC218; &#xC18C;&#xB9AC; &#xCF1C;&#xAE30;/&#xB044;&#xAE30;">
+                <button type="button" id="timer-sound-toggle" class="timer-btn-sound" title="Toggle Frequency Sound">
                   <span id="sound-icon">&#128266;</span>
-                  <span id="sound-label">&#xCE58;&#xC720;&#xC74C; &#xCF1C;&#xC9D0;</span>
+                  <span id="sound-label">Sound ON</span>
                 </button>
-                <div class="timer-volume-wrap" title="&#xC74C;&#xB7C9; &#xC870;&#xC808;">
+                <div class="timer-volume-wrap" title="Volume Control">
                   <span id="vol-icon" class="vol-icon">&#128266;</span>
-                  <input type="range" id="timer-volume-slider" class="timer-volume-slider" min="0" max="100" value="65" aria-label="&#xC74C;&#xB7C9; &#xC870;&#xC808;">
+                  <input type="range" id="timer-volume-slider" class="timer-volume-slider" min="0" max="100" value="65" aria-label="Volume Control">
                   <span id="vol-pct" class="vol-pct">65%</span>
                 </div>
               </div>
@@ -5442,6 +5428,12 @@ class NovaCellApp {
       }
     });
 
+    // Hide timer-modal when viewing cases or safety guide so content is unobstructed
+    const timerModal = document.getElementById('timer-modal');
+    if (timerModal) {
+      timerModal.style.display = (tabName === 'recipe' ? 'block' : 'none');
+    }
+
     if (this.currentCondition) {
       if (tabName === 'cases') {
         this.renderClinicalCases(this.currentCondition);
@@ -5457,12 +5449,14 @@ class NovaCellApp {
   renderClinicalCases(cond) {
     const container = this.casesListContainer || document.getElementById('cases-list-container');
     if (!container) return;
+    this.casesListContainer = container;
     container.innerHTML = '';
     const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
     const cases = cond.clinicalCases || [];
+    const esc = window.escapeHTML || (v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])));
 
     if (cases.length === 0) {
-      this.casesListContainer.innerHTML = `
+      container.innerHTML = `
         <div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
           ${isEn ? 'No clinical cases registered for this condition.' : '등록된 임상 증례 데이터가 없습니다.'}
         </div>
@@ -5485,47 +5479,50 @@ class NovaCellApp {
       card.innerHTML = `
         <div class="case-header">
           <span class="case-badge">${isEn ? `CASE 0${idx + 1}` : `증례 0${idx + 1}`}</span>
-          <span class="case-patient">${escapeHTML(profile)}</span>
+          <span class="case-patient">${esc(profile)}</span>
         </div>
-        <h4 class="case-title">${escapeHTML(caseTitle)}</h4>
+        <h4 class="case-title">${esc(caseTitle)}</h4>
 
         <div class="case-content-grid">
           <div class="case-field-row">
             <span class="field-name">${isEn ? 'Chief Complaint' : '주요 증상 및 내원 동기'}</span>
-            <span class="field-val">${escapeHTML(complaint)}</span>
+            <span class="field-val">${esc(complaint)}</span>
           </div>
           <div class="case-field-row">
             <span class="field-name">${isEn ? 'Prior Treatment History' : '기존 치료 이력 및 반응'}</span>
-            <span class="field-val">${escapeHTML(prior)}</span>
+            <span class="field-val">${esc(prior)}</span>
           </div>
           <div class="case-field-row">
             <span class="field-name">${isEn ? 'Clinical Examination & Findings' : '임상 진찰 및 촉진 소견'}</span>
-            <span class="field-val">${escapeHTML(exam)}</span>
+            <span class="field-val">${esc(exam)}</span>
           </div>
           <div class="case-field-row">
             <span class="field-name highlight">${isEn ? 'NovaCell Conduction Protocol' : '노바셀 치료점 및 통전 프로토콜'}</span>
-            <span class="field-val highlight">${escapeHTML(app)}</span>
+            <span class="field-val highlight">${esc(app)}</span>
           </div>
           <div class="case-field-row">
             <span class="field-name">${isEn ? 'Therapeutic Outcomes & Course' : '치유 경과 및 임상적 결과'}</span>
-            <span class="field-val">${escapeHTML(outcome)}</span>
+            <span class="field-val">${esc(outcome)}</span>
           </div>
         </div>
 
         <div class="case-pearls">
           <strong>${isEn ? 'Clinical Pearls & Key Takeaway:' : '💡 핵심 치료 포인트 & Insight:'}</strong>
-          ${escapeHTML(pearls)}
+          ${esc(pearls)}
         </div>
       `;
-      this.casesListContainer.appendChild(card);
+      container.appendChild(card);
     });
   }
 
   renderSafetyGuide(cond) {
     const container = this.safetyContentContainer || this.safetyGuideContent || document.getElementById('safety-guide-content');
     if (!container) return;
+    this.safetyContentContainer = container;
     const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
     const safety = cond.anatomicalSafetyGuide;
+    const esc = window.escapeHTML || (v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])));
+
     if (!safety) {
       container.innerHTML = `
         <div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
@@ -5543,48 +5540,48 @@ class NovaCellApp {
     container.innerHTML = `
       <div class="safety-card landmark-card">
         <div class="safety-card-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;min-width:18px;max-width:18px;flex-shrink:0;">
             <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
           ${isEn ? '1. Primary Anatomical Palpation Landmarks' : '1. 주요 해부학적 촉진 랜드마크'}
         </div>
-        <p class="safety-desc">${escapeHTML(landmarks)}</p>
+        <p class="safety-desc">${esc(landmarks)}</p>
       </div>
 
       <div class="safety-card danger-card">
         <div class="safety-card-title warning">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;min-width:18px;max-width:18px;flex-shrink:0;">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
             <line x1="12" y1="9" x2="12" y2="13" />
             <line x1="12" y1="17" x2="12.01" y2="17" />
           </svg>
           ${isEn ? '2. High-Risk Anatomical Danger Structures' : '2. 손상 주의 위험 해부 구조 (Danger Structures)'}
         </div>
-        <p class="safety-desc">${escapeHTML(danger)}</p>
+        <p class="safety-desc">${esc(danger)}</p>
       </div>
 
       <div class="safety-card technique-card">
         <div class="safety-card-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;min-width:18px;max-width:18px;flex-shrink:0;">
             <circle cx="12" cy="12" r="10" />
             <line x1="12" y1="8" x2="12" y2="12" />
             <line x1="12" y1="16" x2="12.01" y2="16" />
           </svg>
           ${isEn ? '3. Neurovascular Protection & Probe Technique' : '3. 신경·혈관 보호를 위한 펜 도자 운용 기법'}
         </div>
-        <p class="safety-desc">${escapeHTML(probe)}</p>
+        <p class="safety-desc">${esc(probe)}</p>
       </div>
 
       <div class="safety-card caution-card">
         <div class="safety-card-title caution">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;min-width:18px;max-width:18px;flex-shrink:0;">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
             <path d="M7 11V7a5 5 0 0 1 10 0v4" />
           </svg>
           ${isEn ? '4. Clinical Precautions & Contraindications' : '4. 고전압 미세전류 생체전기 안전 수칙'}
         </div>
-        <p class="safety-desc">${escapeHTML(prec)}</p>
+        <p class="safety-desc">${esc(prec)}</p>
       </div>
     `;
   }
@@ -7167,6 +7164,13 @@ function patchWorkspaceClass(wsClass) {
         }
       }
     });
+
+    // Hide timer-modal when viewing cases or safety guide so content is unobstructed
+    const timerModal = document.getElementById('timer-modal');
+    if (timerModal) {
+      timerModal.style.display = (tabName === 'recipe' ? 'block' : 'none');
+    }
+
     if (this.currentCondition) {
       if (tabName === 'cases') {
         this.renderClinicalCases(this.currentCondition);
@@ -7314,16 +7318,189 @@ function patchWorkspaceClass(wsClass) {
     $('point-editor').showModal();
   };
 
-  // 12. Audio and Timer labels
+  // 12. Localized Timer Methods & Audio Engine
+  proto.openTimerModal = function(hp) {
+    if (!this.ready) return;
+    const p = hp || this.getActiveHealingPoint();
+    if (!p) return;
+    this.pauseTimer();
+    this.timerTotalSeconds = this.state.durations[p.id] || this.state.defaultDuration || 300;
+    this.timerSeconds = this.timerTotalSeconds;
+    const curIdx = this.currentCondition.healingPoints.findIndex(x => x.id === p.id);
+    const totalCount = this.currentCondition.healingPoints.length;
+    const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+
+    if (this.timerHpCode) {
+      this.timerHpCode.textContent = `${p.code} · ${curIdx + 1} / ${totalCount}`;
+    }
+    if (this.timerHpTitle) {
+      this.timerHpTitle.textContent = isEn ? (p.nameEn || p.nameKo) : p.nameKo;
+    }
+    if (this.timerNextPointBtn) {
+      this.timerNextPointBtn.disabled = false;
+      const nextSpan = this.timerNextPointBtn.querySelector('span') || this.timerNextPointBtn;
+      nextSpan.textContent = this.isLastPoint() 
+        ? (isEn ? 'Sequence Done' : '순서 완료') 
+        : (isEn ? 'Next Point ❯' : '다음 포인트 ❯');
+    }
+    this.updatePresetButtons();
+    this.updateTimerDisplay();
+    this.setTimerStatusBadge(isEn ? 'Standby' : '대기 중');
+  };
+
+  proto.setPresetMinutes = function(min) {
+    this.pauseTimer();
+    const sec = min * 60;
+    this.timerTotalSeconds = sec;
+    this.timerSeconds = sec;
+    this.state.defaultDuration = sec;
+    if (this.selectedPointId) {
+      this.state.durations[this.selectedPointId] = sec;
+    }
+    this.persist();
+    this.updatePresetButtons();
+    this.updateTimerDisplay();
+    const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+    this.setTimerStatusBadge(isEn ? 'Standby' : '대기 중');
+  };
+
+  proto.adjustSeconds = function(delta) {
+    this.pauseTimer();
+    let sec = this.timerTotalSeconds + delta;
+    if (sec < 30) sec = 30;
+    if (sec > 1800) sec = 1800;
+    this.timerTotalSeconds = sec;
+    this.timerSeconds = sec;
+    this.state.defaultDuration = sec;
+    if (this.selectedPointId) {
+      this.state.durations[this.selectedPointId] = sec;
+    }
+    this.persist();
+    this.updatePresetButtons();
+    this.updateTimerDisplay();
+    const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+    this.setTimerStatusBadge(isEn ? 'Standby' : '대기 중');
+  };
+
+  proto.updatePresetButtons = function() {
+    const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+    const curMin = Math.round(this.timerTotalSeconds / 60);
+    const isExact = (this.timerTotalSeconds % 60 === 0);
+    const presets = document.querySelectorAll('.timer-preset-group .preset-btn');
+    presets.forEach(btn => {
+      const m = parseInt(btn.dataset.min, 10);
+      btn.textContent = isEn ? `${m}m` : `${m}분`;
+      if (isExact && m === curMin) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    const decBtn = document.getElementById('timer-dec-btn');
+    if (decBtn) {
+      decBtn.textContent = isEn ? '-30s' : '-30초';
+      decBtn.title = isEn ? 'Decrease 30 seconds' : '30초 감소';
+    }
+    const incBtn = document.getElementById('timer-inc-btn');
+    if (incBtn) {
+      incBtn.textContent = isEn ? '+30s' : '+30초';
+      incBtn.title = isEn ? 'Increase 30 seconds' : '30초 증가';
+    }
+    const resetLabel = document.getElementById('timer-reset-label');
+    if (resetLabel) resetLabel.textContent = isEn ? 'Reset' : '리셋';
+  };
+
+  proto.startTimer = function() {
+    if (!this.ready || this.isTimerRunning) return;
+    if (this.timerSeconds <= 0) this.timerSeconds = this.timerTotalSeconds;
+    this.deadline = Date.now() + this.timerSeconds * 1000;
+    this.isTimerRunning = true;
+    const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+    if (this.timerToggleBtn) {
+      const playIcon = document.getElementById('timer-play-icon');
+      const btnLabel = document.getElementById('timer-btn-label');
+      if (playIcon) playIcon.textContent = '⏸';
+      if (btnLabel) btnLabel.textContent = isEn ? 'Pause' : '일시 정지';
+      this.timerToggleBtn.classList.add('paused');
+    }
+    this.setTimerStatusBadge(isEn ? '528Hz Frequency Active' : '528Hz 치유 파동 발진 중');
+    this.start528HzSound();
+    if (this.timerNextPointBtn) {
+      this.timerNextPointBtn.disabled = false;
+      const nextSpan = this.timerNextPointBtn.querySelector('span') || this.timerNextPointBtn;
+      nextSpan.textContent = this.isLastPoint() 
+        ? (isEn ? 'Sequence Done' : '순서 완료') 
+        : (isEn ? 'Next Point ❯' : '다음 포인트 ❯');
+    }
+    this.timerInterval = setInterval(() => this.tick(), 200);
+    this.updateTimerDisplay();
+  };
+
+  proto.pauseTimer = function() {
+    if (this.ready && this.isTimerRunning) {
+      this.timerSeconds = Math.max(0, Math.ceil((this.deadline - Date.now()) / 1000));
+    }
+    this.isTimerRunning = false;
+    clearInterval(this.timerInterval);
+    this.timerInterval = null;
+    this.stop528HzSound();
+    const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+    if (this.timerToggleBtn) {
+      const playIcon = document.getElementById('timer-play-icon');
+      const btnLabel = document.getElementById('timer-btn-label');
+      if (playIcon) playIcon.textContent = '▶';
+      if (btnLabel) btnLabel.textContent = isEn ? 'Start Healing Timer' : '치유 타이머 시작';
+      this.timerToggleBtn.classList.remove('paused');
+    }
+    this.setTimerStatusBadge(isEn ? 'Paused' : '일시 정지');
+    if (this.ready) this.updateTimerDisplay();
+  };
+
+  proto.resetTimer = function() {
+    this.pauseTimer();
+    this.timerSeconds = this.timerTotalSeconds;
+    const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+    if (this.timerNextPointBtn) {
+      this.timerNextPointBtn.disabled = false;
+      const nextSpan = this.timerNextPointBtn.querySelector('span') || this.timerNextPointBtn;
+      nextSpan.textContent = this.isLastPoint() 
+        ? (isEn ? 'Sequence Done' : '순서 완료') 
+        : (isEn ? 'Next Point ❯' : '다음 포인트 ❯');
+    }
+    this.completed?.delete(this.selectedPointId);
+    this.setTimerStatusBadge(isEn ? 'Standby' : '대기 중');
+    this.updateTimerDisplay();
+  };
+
+  proto.moveToNextPoint = function() {
+    this.resetTimer();
+    const cond = this.currentCondition;
+    if (!cond) return;
+    const points = cond.healingPoints;
+    const currentIndex = points.findIndex(p => p.id === this.selectedPointId);
+    const nextIndex = (currentIndex + 1) % points.length;
+    const nextPoint = points[nextIndex];
+    this.selectHealingPoint(nextPoint);
+    this.openTimerModal(nextPoint);
+    this.startTimer();
+  };
+
   proto.setTimerStatusBadge = function(text) {
     if (!this.timerStatusBadge) return;
     const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
     const map = {
       '대기 중': isEn ? 'Standby' : '대기 중',
+      'Standby': isEn ? 'Standby' : '대기 중',
       '치유 통전 중': isEn ? 'Conduction Active' : '치유 통전 중',
+      'Conduction Active': isEn ? 'Conduction Active' : '치유 통전 중',
       '528Hz 치유 파동 발진 중': isEn ? '528Hz Frequency Active' : '528Hz 치유 파동 발진 중',
+      '528Hz Frequency Active': isEn ? '528Hz Frequency Active' : '528Hz 치유 파동 발진 중',
       '일시 정지': isEn ? 'Paused' : '일시 정지',
-      '치유 완료': isEn ? 'Complete' : '치유 완료'
+      '일시정지': isEn ? 'Paused' : '일시정지',
+      'Paused': isEn ? 'Paused' : '일시 정지',
+      '치유 완료': isEn ? 'Complete' : '치유 완료',
+      'Complete': isEn ? 'Complete' : '치유 완료'
     };
     this.timerStatusBadge.textContent = map[text] || text;
   };
@@ -7346,6 +7523,89 @@ function patchWorkspaceClass(wsClass) {
     }
     this.setVolume(Math.round(this.masterVolume * 100));
   };
+
+  // Inject critical CSS rules to fix Safety Guide SVGs and Subnav responsiveness
+  if (typeof document !== 'undefined' && !document.getElementById('novacell-fix-style')) {
+    const style = document.createElement('style');
+    style.id = 'novacell-fix-style';
+    style.textContent = `
+      /* Fix oversized SVG icons in Safety Guide on mobile and desktop */
+      .safety-card-title svg {
+        width: 18px !important;
+        height: 18px !important;
+        min-width: 18px !important;
+        max-width: 18px !important;
+        min-height: 18px !important;
+        max-height: 18px !important;
+        flex-shrink: 0 !important;
+        display: inline-block !important;
+        vertical-align: middle !important;
+      }
+      .safety-card-title {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+      }
+      .safety-card {
+        padding: 12px 14px !important;
+        margin-bottom: 12px !important;
+        border-radius: 8px !important;
+        background: rgba(15, 23, 42, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      }
+      .safety-desc {
+        font-size: 0.82rem !important;
+        line-height: 1.55 !important;
+        color: #cbd5e1 !important;
+        margin-top: 6px !important;
+        word-break: keep-all !important;
+      }
+
+      /* Fix subnav tab bar overflow & clipping on mobile/PC */
+      .recipe-subnav-bar {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 6px 8px !important;
+        gap: 5px !important;
+        align-items: center !important;
+      }
+      .recipe-subnav-btn {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        padding: 6px 4px !important;
+        font-size: 0.73rem !important;
+        white-space: nowrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+        gap: 4px !important;
+      }
+      .recipe-subnav-btn svg {
+        width: 13px !important;
+        height: 13px !important;
+        min-width: 13px !important;
+        flex-shrink: 0 !important;
+      }
+      .recipe-subnav-btn span {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+      .subnav-count-badge {
+        padding: 1px 5px !important;
+        font-size: 0.65rem !important;
+        flex-shrink: 0 !important;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 }
 
 
@@ -7484,18 +7744,18 @@ if (typeof Workspace !== 'undefined') {
 
       var subRecipeSpan = document.querySelector('#subnav-btn-recipe span');
       if (subRecipeSpan) {
-        subRecipeSpan.textContent = (lang === 'en' ? 'Clinical Recipe' : '치유 레시피');
+        subRecipeSpan.textContent = (lang === 'en' ? 'Recipe' : '치유 레시피');
       } else {
         var subRecipe = document.getElementById('subnav-btn-recipe');
-        if (subRecipe) subRecipe.textContent = (lang === 'en' ? 'Clinical Recipe' : '치유 레시피');
+        if (subRecipe) subRecipe.textContent = (lang === 'en' ? 'Recipe' : '치유 레시피');
       }
 
       var subCasesSpan = document.querySelector('#subnav-btn-cases span:not(#cases-count-badge)');
       if (subCasesSpan) {
-        subCasesSpan.textContent = (lang === 'en' ? 'Clinical Cases' : '임상 증례');
+        subCasesSpan.textContent = (lang === 'en' ? 'Cases' : '임상 증례');
       } else {
         var subCases = document.getElementById('subnav-btn-cases');
-        if (subCases) subCases.textContent = (lang === 'en' ? 'Clinical Cases' : '임상 증례');
+        if (subCases) subCases.textContent = (lang === 'en' ? 'Cases' : '임상 증례');
       }
 
       var subSafetySpan = document.querySelector('#subnav-btn-safety span');
@@ -7540,6 +7800,67 @@ if (typeof Workspace !== 'undefined') {
           ? '* <strong>528Hz frequency</strong> restores cell membrane voltage and stimulates mitochondrial ATP production. A <strong>singing bowl chime</strong> sounds gently upon timer completion.' 
           : '* <strong>528Hz 주파수</strong>는 손상된 세포 전압을 깨우고 미토콘드리아 ATP 생성을 촉진합니다. 타이머 종료 시 <strong>싱잉볼 차임 벨</strong>이 부드럽고 맑게 울립니다.');
       }
+
+      // Timer preset buttons (1m, 3m, 5m, 7m, 10m)
+      [1, 3, 5, 7, 10].forEach(function(m) {
+        var pBtn = document.getElementById('preset-' + m + 'min');
+        if (pBtn) pBtn.textContent = (lang === 'en' ? m + 'm' : m + '분');
+      });
+
+      // Timer adjust buttons (-30s, +30s)
+      var decBtn = document.getElementById('timer-dec-btn');
+      if (decBtn) {
+        decBtn.textContent = (lang === 'en' ? '-30s' : '-30초');
+        decBtn.title = (lang === 'en' ? 'Decrease 30 seconds' : '30초 감소');
+      }
+      var incBtn = document.getElementById('timer-inc-btn');
+      if (incBtn) {
+        incBtn.textContent = (lang === 'en' ? '+30s' : '+30초');
+        incBtn.title = (lang === 'en' ? 'Increase 30 seconds' : '30초 증가');
+      }
+
+      // Reset button label
+      var resetLabel = document.getElementById('timer-reset-label');
+      if (resetLabel) resetLabel.textContent = (lang === 'en' ? 'Reset' : '리셋');
+
+      // Timer action button label (Start Healing Timer / Pause)
+      var timerBtnLabel = document.getElementById('timer-btn-label');
+      if (timerBtnLabel) {
+        var isRunning = window.app && window.app.isTimerRunning;
+        timerBtnLabel.textContent = isRunning 
+          ? (lang === 'en' ? 'Pause' : '일시 정지') 
+          : (lang === 'en' ? 'Start Healing Timer' : '치유 타이머 시작');
+      }
+
+      // Next Point button
+      var nextPointBtn = document.getElementById('timer-next-point-btn');
+      if (nextPointBtn) {
+        var nextSpan = nextPointBtn.querySelector('span') || nextPointBtn;
+        var isLast = window.app && window.app.isLastPoint && window.app.isLastPoint();
+        nextSpan.textContent = isLast 
+          ? (lang === 'en' ? 'Sequence Done' : '순서 완료') 
+          : (lang === 'en' ? 'Next Point ❯' : '다음 포인트 ❯');
+        nextPointBtn.title = (lang === 'en' ? 'Move to next therapy point' : '다음 치료 포인트로 이동');
+      }
+
+      // Sound toggle label
+      var soundLabel = document.getElementById('sound-label');
+      if (soundLabel) {
+        var isMuted = window.app ? window.app.isAudioMuted : false;
+        soundLabel.textContent = (lang === 'en' 
+          ? (isMuted ? 'Sound OFF' : 'Sound ON') 
+          : (isMuted ? '치유음 꺼짐' : '치유음 켜짐'));
+      }
+
+      // Active point title in timer card
+      var hpTitle = document.getElementById('timer-hp-title');
+      if (hpTitle && window.app && typeof window.app.getActiveHealingPoint === 'function') {
+        var activePoint = window.app.getActiveHealingPoint();
+        if (activePoint) {
+          hpTitle.textContent = (lang === 'en' ? (activePoint.nameEn || activePoint.nameKo) : activePoint.nameKo);
+        }
+      }
+
       var startTimerBtn = document.querySelector('#start-probe-timer-btn span');
       if (startTimerBtn) startTimerBtn.textContent = (lang === 'en' ? 'Start Timer' : '타이머 설정');
       var viewRecipeBtn = document.querySelector('#mobile-view-recipe-btn span');
@@ -7547,9 +7868,10 @@ if (typeof Workspace !== 'undefined') {
       
       var timerStatus = document.getElementById('timer-status-badge');
       if (timerStatus) {
-        if (timerStatus.textContent === '대기 중' || timerStatus.textContent === 'Standby') {
-          timerStatus.textContent = (lang === 'en' ? 'Standby' : '대기 중');
-        }
+        var st = timerStatus.textContent.trim();
+        if (st === '대기 중' || st === 'Standby') timerStatus.textContent = (lang === 'en' ? 'Standby' : '대기 중');
+        else if (st === '일시 정지' || st === '일시정지' || st === 'Paused') timerStatus.textContent = (lang === 'en' ? 'Paused' : '일시 정지');
+        else if (st.indexOf('528Hz') !== -1) timerStatus.textContent = (lang === 'en' ? '528Hz Frequency Active' : '528Hz 치유 파동 발진 중');
       }
 
       var subtitles = document.querySelectorAll('.panel-right .panel-subtitle');
