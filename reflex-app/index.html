@@ -7,7 +7,7 @@
   <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 528Hz 치유 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
   <title>NovaCell Reflex Therapy APP | 손·발 반사요법 가이드</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=25">
+  <link rel="stylesheet" href="./styles.css?v=28">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
@@ -43,33 +43,63 @@
 
   <!-- Topbar Header (Healing Points Standard Header) -->
   <header class="topbar">
-    <a class="brand" href="#map"><span class="brand-mark">✦</span><span><strong>NovaCell</strong><small>REFLEX THERAPY APP</small></span></a>
+    <a class="brand" href="#map">
+      <span class="brand-mark">✦</span>
+      <span><strong>NovaCell</strong><small>REFLEX THERAPY APP</small></span>
+    </a>
+    
     <div class="top-actions">
-      <!-- Official Site Link -->
+      <!-- 1. Official Site Link -->
       <a class="header-cover-btn nav-official-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="navHome" title="공식 홈페이지 바로가기">
         <span>🌐 공식 홈페이지 ↗</span>
       </a>
-      <!-- Main Cover Modal Button -->
-      <button class="header-cover-btn home-gate-button" id="homeGateBtn" type="button" aria-label="NovaCell 메인 대문으로 돌아가기" title="NovaCell 메인 대문 열기">
-        <span>⭐ 메인 대문</span>
+
+      <!-- 2. Main Cover Modal Button -->
+      <button class="header-cover-btn home-gate-button" id="homeGateBtn" type="button" aria-label="NovaCell 메인 대문 열기" title="NovaCell 메인 대문 열기">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="vertical-align:middle;margin-right:2px;">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 29.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span id="homeGateText">메인 대문</span>
       </button>
-      <!-- Crosslink to Healing Points -->
+
+      <!-- 3. Crosslink to Healing Points -->
       <a class="header-cover-btn nav-healing-app" href="https://healing.novacell.kr/" target="_blank" rel="noopener" id="navHealing" title="NovaCell 질환별 치료 포인트 바로가기">
         <span>⚡ 치료 포인트 ↗</span>
       </a>
-      
-      <!-- Accessibility Switches: Language, Voice, Sound -->
-      <div class="access-switches" role="group" aria-label="언어와 음성 설정">
-        <button id="langToggle" title="한국어 / English">EN</button>
-        <button id="voiceToggle" title="치료점 음성 안내">🔊 음성</button>
-        <button id="soundToggle" title="시작·완료 알림음">♪ 알림</button>
+
+      <!-- 4. Header Status / User Badge Slot (novacell-app-gate.js docks user pill here) -->
+      <div class="header-status-badge" id="headerStatusBadge">
+        <div class="pulse-dot"></div>
+        <span id="headerStatusText">REFLEX THERAPY</span>
       </div>
+
+      <!-- 5. Healing Points Style Segmented Language Button: [ 한글 / ENG ] -->
+      <button id="langToggleBtn" class="lang-toggle-btn" type="button" title="언어 변경 / Change Language">
+        <span class="lang-opt ko active" id="langOptKo">한글</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-opt en" id="langOptEn">ENG</span>
+      </button>
       
-      <!-- Self / Pro Mode Switch -->
+      <!-- 6. Voice Guidance Toggle -->
+      <button id="voiceToggle" class="header-icon-btn active" type="button" title="치료점 음성 안내">
+        <span id="voiceIcon">🔊</span>
+        <span id="voiceLabel">음성</span>
+      </button>
+
+      <!-- 7. Sound Notification Toggle -->
+      <button id="soundToggle" class="header-icon-btn active" type="button" title="시작·완료 알림음">
+        <span id="soundIcon">♪</span>
+        <span id="soundLabel">알림</span>
+      </button>
+      
+      <!-- 8. Self / Pro Mode Switch -->
       <div class="mode-switch" role="group" aria-label="이용 모드">
-        <button class="active" data-mode="self" data-i18n="selfMode">자가관리</button><button data-mode="pro" data-i18n="proMode">전문가</button>
+        <button class="active" data-mode="self" id="selfModeBtn">자가관리</button>
+        <button data-mode="pro" id="proModeBtn">전문가</button>
       </div>
-      <button class="ghost" id="safetyBtn" data-i18n="safety">안전 안내</button>
+
+      <!-- 9. Safety Guide -->
+      <button class="ghost" id="safetyBtn" type="button" data-i18n="safety">안전 안내</button>
     </div>
   </header>
 
@@ -122,17 +152,40 @@
               <button id="zoomIn" aria-label="확대">＋</button>
             </div>
           </div>
+
+          <!-- Bilingual Anatomical Region Banner (발바닥 / 발등 / 손바닥 / 손등) -->
+          <div class="map-region-banner" id="mapRegionBanner">
+            <span id="mapRegionIcon">🦶</span>
+            <div>
+              <strong id="mapRegionTitle">오른발 발바닥 · 왼발 발바닥</strong>
+              <p id="mapRegionSub">발바닥 반사구 · Plantar Surface Reflex Map</p>
+            </div>
+          </div>
+
           <div class="map-stage" id="mapStage">
             <div class="map-canvas" id="mapCanvas">
               <img id="mapImage" src="./assets/foot-sole-map.webp" alt="교재 발바닥 반사 지도" draggable="false">
               <div id="customLayer"></div>
             </div>
           </div>
+
           <div class="map-toolbar">
             <button class="primary" id="addPointBtn" data-i18n="addPointBtn">＋ 사용자 포인트 추가</button>
             <button class="secondary" id="resetMapBtn" data-i18n="resetMapBtn">보기 초기화</button>
             <span data-i18n="mapHelp">마우스 휠 또는 버튼으로 확대 · 빈 공간을 끌어 이동</span>
           </div>
+
+          <!-- Comprehensive Bilingual Anatomical Reflex Reference Glossary for the active map -->
+          <section class="map-glossary-section" id="mapGlossarySection">
+            <div class="map-glossary-header">
+              <div class="map-glossary-title">
+                <span class="glossary-badge" id="glossaryBadge">BILINGUAL ATLAS</span>
+                <h3 id="glossaryHeading">해부학 반사구 대역 사전 (발바닥)</h3>
+              </div>
+              <span class="glossary-count" id="glossaryCount">24 Points</span>
+            </div>
+            <div class="glossary-grid" id="glossaryGrid"></div>
+          </section>
         </article>
 
         <aside class="point-panel panel">
@@ -215,7 +268,7 @@
             <p>통증이 생기지 않는 편안한 강도로 진행합니다.</p>
           </div>
 
-          <!-- 528Hz Cellular Voltage Healing Timer Card (Upgraded to Healing Points Specification) -->
+          <!-- 528Hz Cellular Voltage Healing Timer Card (Healing Points Specification) -->
           <article id="timer-modal" class="healing-timer-card hp-healing-timer-card timer-dock timer-utility-card" aria-label="528Hz 세포 전압 치유 타이머">
             <div class="timer-card-header">
               <div class="timer-brand-group">
@@ -459,8 +512,8 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./program-data.js?v=25"></script>
-  <script src="./app.js?v=25"></script>
+  <script src="./program-data.js?v=28"></script>
+  <script src="./app.js?v=28"></script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="reflex_therapy_1y" data-lang="ko"></script>

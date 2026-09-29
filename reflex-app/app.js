@@ -1,13 +1,225 @@
 const maps = [
-  { id: "right_sole", icon: "🦶", title: "오른발 발바닥", en: "Right sole", side: "RIGHT · FOOT", image: "foot-sole-map.webp", page: 27 },
-  { id: "left_sole", icon: "🦶", title: "왼발 발바닥", en: "Left sole", side: "LEFT · FOOT", image: "foot-sole-map.webp", page: 27 },
-  { id: "right_top", icon: "🦶", title: "오른발 발등", en: "Right foot top", side: "RIGHT · FOOT", image: "foot-top-map.webp", page: 28 },
-  { id: "left_top", icon: "🦶", title: "왼발 발등", en: "Left foot top", side: "LEFT · FOOT", image: "foot-top-map.webp", page: 28 },
-  { id: "right_palm", icon: "🖐️", title: "오른손 손바닥", en: "Right palm", side: "RIGHT · HAND", image: "hand-palm-map.webp", page: 31 },
-  { id: "left_palm", icon: "🖐️", title: "왼손 손바닥", en: "Left palm", side: "LEFT · HAND", image: "hand-palm-map.webp", page: 31 },
-  { id: "right_back", icon: "🤚", title: "오른손 손등", en: "Right hand back", side: "RIGHT · HAND", image: "hand-back-map.webp", page: 32 },
-  { id: "left_back", icon: "🤚", title: "왼손 손등", en: "Left hand back", side: "LEFT · HAND", image: "hand-back-map.webp", page: 32 }
+  {
+    id: "right_sole",
+    icon: "🦶",
+    surface: "sole",
+    title: "오른발 발바닥",
+    en: "Right Sole",
+    subtitleKo: "발바닥 반사구 (우측)",
+    subtitleEn: "Plantar Surface (Right)",
+    regionTitleKo: "오른발 발바닥 · 왼발 발바닥",
+    regionTitleEn: "Right Sole & Left Sole",
+    regionSubKo: "발바닥 반사구 · 교재 제1장 27쪽",
+    regionSubEn: "Plantar Surface Reflex Zones · Textbook p.27",
+    side: "RIGHT · FOOT",
+    image: "foot-sole-map.webp",
+    page: 27
+  },
+  {
+    id: "left_sole",
+    icon: "🦶",
+    surface: "sole",
+    title: "왼발 발바닥",
+    en: "Left Sole",
+    subtitleKo: "발바닥 반사구 (좌측)",
+    subtitleEn: "Plantar Surface (Left)",
+    regionTitleKo: "오른발 발바닥 · 왼발 발바닥",
+    regionTitleEn: "Right Sole & Left Sole",
+    regionSubKo: "발바닥 반사구 · 교재 제1장 27쪽",
+    regionSubEn: "Plantar Surface Reflex Zones · Textbook p.27",
+    side: "LEFT · FOOT",
+    image: "foot-sole-map.webp",
+    page: 27
+  },
+  {
+    id: "right_top",
+    icon: "🦶",
+    surface: "top",
+    title: "오른발 발등",
+    en: "Right Foot Top",
+    subtitleKo: "발등 반사구 (우측)",
+    subtitleEn: "Foot Dorsum (Right)",
+    regionTitleKo: "오른발 발등 · 왼발 발등",
+    regionTitleEn: "Right Foot Top & Left Foot Top",
+    regionSubKo: "발등 반사구 · 교재 제1장 28쪽",
+    regionSubEn: "Dorsal Foot Reflex Zones · Textbook p.28",
+    side: "RIGHT · FOOT",
+    image: "foot-top-map.webp",
+    page: 28
+  },
+  {
+    id: "left_top",
+    icon: "🦶",
+    surface: "top",
+    title: "왼발 발등",
+    en: "Left Foot Top",
+    subtitleKo: "발등 반사구 (좌측)",
+    subtitleEn: "Foot Dorsum (Left)",
+    regionTitleKo: "오른발 발등 · 왼발 발등",
+    regionTitleEn: "Right Foot Top & Left Foot Top",
+    regionSubKo: "발등 반사구 · 교재 제1장 28쪽",
+    regionSubEn: "Dorsal Foot Reflex Zones · Textbook p.28",
+    side: "LEFT · FOOT",
+    image: "foot-top-map.webp",
+    page: 28
+  },
+  {
+    id: "right_palm",
+    icon: "🖐️",
+    surface: "palm",
+    title: "오른손 손바닥",
+    en: "Right Palm",
+    subtitleKo: "손바닥 반사구 (우측)",
+    subtitleEn: "Palmar Surface (Right)",
+    regionTitleKo: "오른손 손바닥 · 왼손 손바닥",
+    regionTitleEn: "Right Palm & Left Palm",
+    regionSubKo: "손바닥 반사구 · 교재 제2장 31쪽",
+    regionSubEn: "Palmar Reflex Zones · Textbook p.31",
+    side: "RIGHT · HAND",
+    image: "hand-palm-map.webp",
+    page: 31
+  },
+  {
+    id: "left_palm",
+    icon: "🖐️",
+    surface: "palm",
+    title: "왼손 손바닥",
+    en: "Left Palm",
+    subtitleKo: "손바닥 반사구 (좌측)",
+    subtitleEn: "Palmar Surface (Left)",
+    regionTitleKo: "오른손 손바닥 · 왼손 손바닥",
+    regionTitleEn: "Right Palm & Left Palm",
+    regionSubKo: "손바닥 반사구 · 교재 제2장 31쪽",
+    regionSubEn: "Palmar Reflex Zones · Textbook p.31",
+    side: "LEFT · HAND",
+    image: "hand-palm-map.webp",
+    page: 31
+  },
+  {
+    id: "right_back",
+    icon: "🤚",
+    surface: "back",
+    title: "오른손 손등",
+    en: "Right Hand Back",
+    subtitleKo: "손등 반사구 (우측)",
+    subtitleEn: "Hand Dorsum (Right)",
+    regionTitleKo: "오른손 손등 · 왼손 손등",
+    regionTitleEn: "Right Hand Back & Left Hand Back",
+    regionSubKo: "손등 반사구 · 교재 제2장 32쪽",
+    regionSubEn: "Dorsal Hand Reflex Zones · Textbook p.32",
+    side: "RIGHT · HAND",
+    image: "hand-back-map.webp",
+    page: 32
+  },
+  {
+    id: "left_back",
+    icon: "🤚",
+    surface: "back",
+    title: "왼손 손등",
+    en: "Left Hand Back",
+    subtitleKo: "손등 반사구 (좌측)",
+    subtitleEn: "Hand Dorsum (Left)",
+    regionTitleKo: "오른손 손등 · 왼손 손등",
+    regionTitleEn: "Right Hand Back & Left Hand Back",
+    regionSubKo: "손등 반사구 · 교재 제2장 32쪽",
+    regionSubEn: "Dorsal Hand Reflex Zones · Textbook p.32",
+    side: "LEFT · HAND",
+    image: "hand-back-map.webp",
+    page: 32
+  }
 ];
+
+const mapGlossaries = {
+  sole: {
+    titleKo: "발바닥 반사구 대역표 (Sole / Plantar)",
+    titleEn: "Plantar Surface Reflex Area Atlas (Sole)",
+    items: [
+      { ko: "머리 / 뇌", en: "Head / Brain" },
+      { ko: "뇌하수체", en: "Pituitary Gland" },
+      { ko: "목 / 뇌간", en: "Neck / Brainstem" },
+      { ko: "갑상선 · 부갑상선", en: "Thyroid & Parathyroid" },
+      { ko: "눈 · 귀", en: "Eyes & Ears" },
+      { ko: "부비강", en: "Frontal Sinuses" },
+      { ko: "내이", en: "Inner Ear" },
+      { ko: "폐 / 가슴 / 등", en: "Lungs / Chest / Upper Back" },
+      { ko: "심장 / 가슴 (좌)", en: "Heart / Chest (Left)" },
+      { ko: "태양신경총", en: "Solar Plexus" },
+      { ko: "어깨 · 팔", en: "Shoulder & Arm" },
+      { ko: "횡격막", en: "Diaphragm" },
+      { ko: "간 · 담낭 (우)", en: "Liver & Gallbladder (Right)" },
+      { ko: "위 · 췌장", en: "Stomach & Pancreas" },
+      { ko: "신장 · 부신", en: "Kidney & Adrenal Gland" },
+      { ko: "척추 전체", en: "Entire Spine" },
+      { ko: "소장", en: "Small Intestine" },
+      { ko: "상행결장 (우)", en: "Ascending Colon (Right)" },
+      { ko: "횡행결장", en: "Transverse Colon" },
+      { ko: "하행결장 (좌)", en: "Descending Colon (Left)" },
+      { ko: "S자 결장 (좌)", en: "Sigmoid Colon (Left)" },
+      { ko: "방광", en: "Bladder" },
+      { ko: "허리 · 좌골신경", en: "Lower Back & Sciatic Nerve" },
+      { ko: "꼬리뼈", en: "Coccyx" }
+    ]
+  },
+  top: {
+    titleKo: "발등 반사구 대역표 (Foot Top / Dorsum)",
+    titleEn: "Dorsal Foot Reflex Area Atlas (Foot Top)",
+    items: [
+      { ko: "얼굴 / 부비동", en: "Face / Frontal Sinuses" },
+      { ko: "치아 / 잇몸 / 턱", en: "Teeth / Gums / Jaw" },
+      { ko: "목 / 뇌간", en: "Neck / Brainstem" },
+      { ko: "어깨 관절", en: "Shoulder Joint" },
+      { ko: "흉선", en: "Thymus Gland" },
+      { ko: "폐 / 가슴 / 유방", en: "Lungs / Chest / Breast" },
+      { ko: "척추 전체", en: "Spinal Column" },
+      { ko: "등 · 허리선", en: "Mid Back & Waistline" },
+      { ko: "팔꿈치", en: "Elbow" },
+      { ko: "다리 / 무릎", en: "Leg / Knee" },
+      { ko: "방광", en: "Bladder" },
+      { ko: "허리", en: "Lower Back" },
+      { ko: "림프샘 (상부 림프)", en: "Upper Lymphatic Nodes" },
+      { ko: "나팔관 / 서혜부", en: "Fallopian Tube & Groin" }
+    ]
+  },
+  palm: {
+    titleKo: "손바닥 반사구 대역표 (Palm / Palmar)",
+    titleEn: "Palmar Reflex Area Atlas (Palm)",
+    items: [
+      { ko: "머리 / 뇌", en: "Head / Brain" },
+      { ko: "부비동", en: "Frontal Sinuses" },
+      { ko: "목", en: "Neck" },
+      { ko: "내이 · 귀", en: "Inner Ear & Ear" },
+      { ko: "어깨 상부 · 어깨", en: "Upper Shoulder & Shoulder" },
+      { ko: "태양신경총", en: "Solar Plexus" },
+      { ko: "팔 · 팔꿈치", en: "Arm & Elbow" },
+      { ko: "횡격막", en: "Diaphragm" },
+      { ko: "간 · 담낭 (우)", en: "Liver & Gallbladder (Right)" },
+      { ko: "위 · 췌장", en: "Stomach & Pancreas" },
+      { ko: "신장 · 부신", en: "Kidney & Adrenal Gland" },
+      { ko: "상행결장 (우)", en: "Ascending Colon (Right)" },
+      { ko: "횡행결장", en: "Transverse Colon" },
+      { ko: "하행결장 (좌)", en: "Descending Colon (Left)" },
+      { ko: "방광", en: "Bladder" },
+      { ko: "허리 · 꼬리뼈", en: "Lower Back & Coccyx" }
+    ]
+  },
+  back: {
+    titleKo: "손등 반사구 대역표 (Hand Back / Dorsum)",
+    titleEn: "Dorsal Hand Reflex Area Atlas (Hand Back)",
+    items: [
+      { ko: "머리 / 부비동", en: "Head / Sinuses" },
+      { ko: "목 · 치아 · 턱", en: "Neck, Teeth & Jaw" },
+      { ko: "갑상선 · 부갑상선", en: "Thyroid & Parathyroid" },
+      { ko: "흉선", en: "Thymus Gland" },
+      { ko: "폐 / 가슴 / 등", en: "Lungs, Chest & Upper Back" },
+      { ko: "등 · 허리선", en: "Mid Back & Waistline" },
+      { ko: "엉덩이 · 골반", en: "Hip & Pelvis" },
+      { ko: "다리 / 무릎", en: "Leg & Knee" },
+      { ko: "자궁 / 전립선", en: "Uterus & Prostate" },
+      { ko: "난소 / 고환", en: "Ovaries & Testes" },
+      { ko: "림프관 · 나팔관 · 사타구니", en: "Lymphatics, Fallopian Tube & Groin" }
+    ]
+  }
+};
 
 const key = "novacell_reflex_therapy_v1";
 
@@ -59,7 +271,7 @@ const $$ = s => [...document.querySelectorAll(s)];
 const uiText = {
   ko: {
     officialHome: "🌐 공식 홈페이지 ↗",
-    mainCover: "⭐ 메인 대문",
+    mainCover: "메인 대문",
     healingApp: "⚡ 치료 포인트 ↗",
     selfMode: "자가관리",
     proMode: "전문가",
@@ -78,12 +290,12 @@ const uiText = {
     pause: "일시정지",
     restart: "다시 시작",
     reset: "리셋",
-    voiceOn: "🔊 음성",
-    voiceOff: "🔇 음성",
+    voiceOn: "음성",
+    voiceOff: "음성",
     soundOn: "치유음 켜짐",
     soundOff: "치유음 꺼짐",
-    topSoundOn: "♪ 알림",
-    topSoundOff: "♪ 무음",
+    topSoundOn: "알림",
+    topSoundOff: "무음",
     full: "전체",
     current: "현재",
     footWork: "발 작업점 지도",
@@ -198,7 +410,7 @@ const uiText = {
   },
   en: {
     officialHome: "🌐 Official Site ↗",
-    mainCover: "⭐ Main Cover",
+    mainCover: "Main Cover",
     healingApp: "⚡ Therapy Points ↗",
     selfMode: "Self-care",
     proMode: "Professional",
@@ -217,12 +429,12 @@ const uiText = {
     pause: "Pause",
     restart: "Restart",
     reset: "Reset",
-    voiceOn: "🔊 Voice",
-    voiceOff: "🔇 Voice",
+    voiceOn: "Voice",
+    voiceOff: "Voice",
     soundOn: "Sound ON",
     soundOff: "Sound OFF",
-    topSoundOn: "♪ Sound",
-    topSoundOff: "♪ Muted",
+    topSoundOn: "Sound",
+    topSoundOff: "Muted",
     full: "Fit",
     current: "Current",
     footWork: "Foot reflex map",
@@ -547,29 +759,51 @@ function playNotice(type = "start") {
 }
 
 // ==========================================================================
-// Natural Voice TTS Engine (Special Attention to Number and Text Spacing)
+// Natural Voice TTS Engine (Careful Spacing Between Number & Point Name)
 // ==========================================================================
 function updateAccessButtons() {
-  $("#langToggle").textContent = state.lang === "ko" ? "EN" : "한국어";
-  $("#voiceToggle").textContent = state.voice ? tr("voiceOn") : tr("voiceOff");
-  $("#voiceToggle").classList.toggle("active", state.voice);
+  const isKo = state.lang === "ko";
 
-  $("#soundToggle").textContent = state.sound ? tr("topSoundOn") : tr("topSoundOff");
-  $("#soundToggle").classList.toggle("active", state.sound);
+  // Segmented Language Toggle [ 한글 / ENG ]
+  const optKo = $("#langOptKo");
+  const optEn = $("#langOptEn");
+  if (optKo && optEn) {
+    optKo.classList.toggle("active", isKo);
+    optEn.classList.toggle("active", !isKo);
+  }
 
+  // Voice button
+  const voiceLabel = $("#voiceLabel");
+  if (voiceLabel) voiceLabel.textContent = isKo ? "음성" : "Voice";
+  const voiceBtn = $("#voiceToggle");
+  if (voiceBtn) voiceBtn.classList.toggle("active", state.voice);
+
+  // Sound button
+  const soundLabel = $("#soundLabel");
+  if (soundLabel) soundLabel.textContent = isKo ? "알림" : "Sound";
+  const soundBtn = $("#soundToggle");
+  if (soundBtn) soundBtn.classList.toggle("active", state.sound);
+
+  // Timer Sound Button
   const timerSoundBtn = $("#timerSoundBtn");
   if (timerSoundBtn) {
     const soundIcon = $("#timerSoundIcon");
-    const soundLabel = $("#timerSoundLabel");
+    const soundText = $("#timerSoundLabel");
     if (state.sound && !state.isAudioMuted) {
       timerSoundBtn.classList.remove("muted");
       if (soundIcon) soundIcon.textContent = "🔊";
-      if (soundLabel) soundLabel.textContent = tr("soundOn");
+      if (soundText) soundText.textContent = tr("soundOn");
     } else {
       timerSoundBtn.classList.add("muted");
       if (soundIcon) soundIcon.textContent = "🔇";
-      if (soundLabel) soundLabel.textContent = tr("soundOff");
+      if (soundText) soundText.textContent = tr("soundOff");
     }
+  }
+
+  // Header status text
+  const headerStatusText = $("#headerStatusText");
+  if (headerStatusText) {
+    headerStatusText.textContent = isKo ? "반사요법 가이드" : "REFLEX THERAPY";
   }
 }
 
@@ -607,7 +841,8 @@ function speakCurrentPoint() {
 // Comprehensive Language Application
 // ==========================================================================
 function applyLanguage() {
-  document.documentElement.lang = state.lang === "en" ? "en" : "ko";
+  const isEn = state.lang === "en";
+  document.documentElement.lang = isEn ? "en" : "ko";
 
   // Translate all [data-i18n] elements
   $$("[data-i18n]").forEach(el => {
@@ -620,15 +855,21 @@ function applyLanguage() {
   // Topbar Link Titles & Content
   const navHome = $("#navHome");
   if (navHome) navHome.querySelector("span").textContent = tr("officialHome");
-  const homeGateBtn = $("#homeGateBtn");
-  if (homeGateBtn) homeGateBtn.querySelector("span").textContent = tr("mainCover");
+  const homeGateText = $("#homeGateText");
+  if (homeGateText) homeGateText.textContent = tr("mainCover");
   const navHealing = $("#navHealing");
   if (navHealing) navHealing.querySelector("span").textContent = tr("healingApp");
+  const safetyBtn = $("#safetyBtn");
+  if (safetyBtn) safetyBtn.textContent = tr("safety");
+  const selfModeBtn = $("#selfModeBtn");
+  if (selfModeBtn) selfModeBtn.textContent = tr("selfMode");
+  const proModeBtn = $("#proModeBtn");
+  if (proModeBtn) proModeBtn.textContent = tr("proMode");
 
   // Welcome Gate
   const welcomeDesc = $("#welcomeDesc");
   if (welcomeDesc) {
-    welcomeDesc.innerHTML = state.lang === "en"
+    welcomeDesc.innerHTML = isEn
       ? "Connect <strong>hand &amp; foot reflexology maps</strong> with textbook-based systemic programs to learn anatomical locations and conduct structured sessions."
       : "<strong>손·발 반사구 지도</strong>와 교재 기반 계통별 프로그램을 연결하여<br>위치를 배우고, 작업 순서에 따라 세션을 진행할 수 있습니다.";
   }
@@ -651,6 +892,12 @@ function applyLanguage() {
   const safetyH3 = $("#safetyHeader3"); if (safetyH3) safetyH3.textContent = tr("safetyH3");
   const safetyT3 = $("#safetyText3"); if (safetyT3) safetyT3.textContent = tr("safetyT3");
 
+  // Search box placeholder
+  const progSearch = $("#programSearch");
+  if (progSearch) {
+    progSearch.placeholder = isEn ? "Search systems, programs, and reflex points" : "계통·소분류·작업 포인트 검색";
+  }
+
   // Timer Card UI
   const timerTitle = $("#timer-title"); if (timerTitle) timerTitle.textContent = tr("timerTitle");
   const timerSub = $("#timer-sub"); if (timerSub) timerSub.textContent = tr("timerSub");
@@ -660,19 +907,19 @@ function applyLanguage() {
   const finishSessionLabel = $("#finishSessionLabel"); if (finishSessionLabel) finishSessionLabel.textContent = tr("finishRecord");
 
   // Presets in Timer Card
-  const p20 = $("#preset-20s"); if (p20) p20.textContent = state.lang === "en" ? "20s" : "20초";
-  const p30 = $("#preset-30s"); if (p30) p30.textContent = state.lang === "en" ? "30s" : "30초";
-  const p1m = $("#preset-1min"); if (p1m) p1m.textContent = state.lang === "en" ? "1m" : "1분";
-  const p3m = $("#preset-3min"); if (p3m) p3m.textContent = state.lang === "en" ? "3m" : "3분";
-  const p5m = $("#preset-5min"); if (p5m) p5m.textContent = state.lang === "en" ? "5m" : "5분";
+  const p20 = $("#preset-20s"); if (p20) p20.textContent = isEn ? "20s" : "20초";
+  const p30 = $("#preset-30s"); if (p30) p30.textContent = isEn ? "30s" : "30초";
+  const p1m = $("#preset-1min"); if (p1m) p1m.textContent = isEn ? "1m" : "1분";
+  const p3m = $("#preset-3min"); if (p3m) p3m.textContent = isEn ? "3m" : "3분";
+  const p5m = $("#preset-5min"); if (p5m) p5m.textContent = isEn ? "5m" : "5분";
   const tMin = $("#timerMinus"); if (tMin) tMin.textContent = tr("minus10");
   const tPlu = $("#timerPlus"); if (tPlu) tPlu.textContent = tr("plus10");
-  const tSet = $("#openTimerSettings"); if (tSet) tSet.textContent = state.lang === "en" ? "Custom" : "설정";
+  const tSet = $("#openTimerSettings"); if (tSet) tSet.textContent = isEn ? "Custom" : "설정";
 
   updateAccessButtons();
   renderMaps();
   renderMapWorkspace();
-  renderPrograms($("#programSearch") ? $("#programSearch").value : "");
+  renderPrograms(progSearch ? progSearch.value : "");
   renderRecords();
   renderAcademy();
 
@@ -717,7 +964,7 @@ function load() {
 
 function save() {
   localStorage.setItem(key, JSON.stringify({
-    version: 5,
+    version: 6,
     savedAt: new Date().toISOString(),
     mode: state.mode,
     lang: state.lang,
@@ -745,15 +992,16 @@ function setView(view) {
 }
 
 // ==========================================================================
-// Map Views & Workspace
+// Map Views, Workspace & Bilingual Atlas Glossary
 // ==========================================================================
 function renderMaps() {
+  const isEn = state.lang === "en";
   $("#mapButtons").innerHTML = maps.map(m => `
     <button class="map-button ${m.id === state.mapId ? "active" : ""}" data-map="${m.id}">
       <i>${m.icon}</i>
       <span>
-        <b>${state.lang === "en" ? m.en : m.title}</b>
-        <small>${state.lang === "en" ? m.title : m.en}</small>
+        <b>${isEn ? m.en : m.title}</b>
+        <small>${isEn ? m.subtitleEn : m.subtitleKo}</small>
       </span>
     </button>
   `).join("");
@@ -774,13 +1022,49 @@ function renderMaps() {
 function renderMapWorkspace() {
   const m = maps.find(x => x.id === state.mapId);
   if (!m) return;
+  const isEn = state.lang === "en";
+
   $("#mapSide").textContent = m.side;
-  $("#mapTitle").textContent = state.lang === "en" ? m.en : m.title;
-  $("#mapSource").textContent = state.lang === "en" ? `Textbook p.${m.page} · Base map protected` : `교재 ${m.page}쪽 · 기본 지도 보호`;
+  $("#mapTitle").textContent = isEn ? m.en : m.title;
+  $("#mapSource").textContent = isEn ? `Textbook p.${m.page} · Base map protected` : `교재 ${m.page}쪽 · 기본 지도 보호`;
   $("#mapImage").src = `./assets/${m.image}`;
-  $("#mapImage").alt = state.lang === "en" ? `${m.en} textbook reflex map` : `${m.title} 교재 반사 지도`;
+  $("#mapImage").alt = isEn ? `${m.en} textbook reflex map` : `${m.title} 교재 반사 지도`;
+
+  // Update Bilingual Region Banner (발바닥 / 발등 / 손바닥 / 손등)
+  const rIcon = $("#mapRegionIcon");
+  if (rIcon) rIcon.textContent = m.icon;
+  const rTitle = $("#mapRegionTitle");
+  if (rTitle) rTitle.textContent = isEn ? m.regionTitleEn : m.regionTitleKo;
+  const rSub = $("#mapRegionSub");
+  if (rSub) rSub.textContent = isEn ? m.regionSubEn : m.regionSubKo;
+
+  // Render Interactive Bilingual Anatomical Atlas Glossary
+  renderMapGlossary(m.surface);
+
   applyTransform();
   renderCustomPoints();
+}
+
+function renderMapGlossary(surfaceKey) {
+  const gl = mapGlossaries[surfaceKey] || mapGlossaries.sole;
+  const isEn = state.lang === "en";
+
+  const badge = $("#glossaryBadge");
+  if (badge) badge.textContent = isEn ? "BILINGUAL ATLAS" : "해부학 대역 사전";
+  const heading = $("#glossaryHeading");
+  if (heading) heading.textContent = isEn ? gl.titleEn : gl.titleKo;
+  const count = $("#glossaryCount");
+  if (count) count.textContent = isEn ? `${gl.items.length} Points` : `${gl.items.length}개 반사구`;
+
+  const grid = $("#glossaryGrid");
+  if (grid) {
+    grid.innerHTML = gl.items.map(item => `
+      <div class="glossary-item">
+        <span class="glossary-item-primary">${isEn ? item.en : item.ko}</span>
+        <span class="glossary-item-secondary">${isEn ? item.ko : item.en}</span>
+      </div>
+    `).join("");
+  }
 }
 
 function applyTransform() {
@@ -794,7 +1078,8 @@ function mapPoints() {
 
 function renderCustomPoints() {
   const list = mapPoints();
-  $("#pointCount").textContent = state.lang === "en" ? `${list.length} custom` : `${list.length}개 추가점`;
+  const isEn = state.lang === "en";
+  $("#pointCount").textContent = isEn ? `${list.length} custom` : `${list.length}개 추가점`;
   $("#customLayer").innerHTML = list.map((p, i) => `
     <button class="custom-point ${p.id === state.selectedPoint ? "selected" : ""}" style="left:${p.x}%;top:${p.y}%" data-point="${p.id}" title="${p.name}">
       ${i + 1}
@@ -816,12 +1101,12 @@ function renderCustomPoints() {
           <div class="custom-item">
             <button data-select="${p.id}" style="color:inherit;text-align:left">
               <strong>${p.name}</strong>
-              <small>${p.memo || (state.lang === "en" ? "No notes" : "메모 없음")}</small>
+              <small>${p.memo || (isEn ? "No notes" : "메모 없음")}</small>
             </button>
             <button data-delete="${p.id}" aria-label="삭제">×</button>
           </div>
         `).join("")
-      : `<p style="color:var(--muted);font-size:.82rem">${state.lang === "en" ? "No custom points added yet." : "아직 추가한 포인트가 없습니다."}</p>`;
+      : `<p style="color:var(--muted);font-size:.82rem">${isEn ? "No custom points added yet." : "아직 추가한 포인트가 없습니다."}</p>`;
 
     $$("[data-select]").forEach(b => b.onclick = () => selectPoint(b.dataset.select));
     $$("[data-delete]").forEach(b => b.onclick = () => deletePoint(b.dataset.delete));
@@ -1224,7 +1509,7 @@ function pointMethod(point, p) {
   if (["횡격막", "식도", "상행결장", "횡행결장", "하행결장", "S자 결장", "척추 전체", "경추", "흉추", "요추", "허리", "등 상부", "폐", "림프", "상부 림프", "상부 림프계", "나팔관"].includes(point)) {
     return "번호로 표시된 선이나 영역을 따라 엄지 걷기로 천천히 이동합니다.";
   }
-  return "번호 표시점을 엄지로 천천히 누른 뒤 작은 원을 그리듯 부드럽게 회전합니다.";
+  return "번호 표시점을 엄지로 천천히 누른 뒤 작은 원을 그리듯 부드럽게 회전합니다."
 }
 
 function pointSide(point, p) {
@@ -1493,7 +1778,7 @@ function renderRecords() {
 function exportData() {
   const blob = new Blob([JSON.stringify({
     app: "NovaCell Reflex Therapy APP",
-    version: 5,
+    version: 6,
     exportedAt: new Date().toISOString(),
     points: state.points,
     records: state.records,
@@ -2024,31 +2309,40 @@ function bind() {
   $("#welcomeClose").onclick = closeWelcome;
   $("#homeGateBtn").onclick = openWelcome;
 
-  // Language toggle
-  $("#langToggle").onclick = () => {
-    state.lang = state.lang === "ko" ? "en" : "ko";
-    save();
-    applyLanguage();
-    toast(state.lang === "en" ? "English mode" : "한국어 모드");
-  };
+  // Segmented Language Toggle [ 한글 / ENG ]
+  const langToggleBtn = $("#langToggleBtn");
+  if (langToggleBtn) {
+    langToggleBtn.onclick = () => {
+      state.lang = state.lang === "ko" ? "en" : "ko";
+      save();
+      applyLanguage();
+      toast(state.lang === "en" ? "English mode enabled" : "한국어 모드로 변경되었습니다");
+    };
+  }
 
   // Voice toggle
-  $("#voiceToggle").onclick = () => {
-    state.voice = !state.voice;
-    if (!state.voice && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
-    save();
-    updateAccessButtons();
-    if (state.voice) {
-      speak(state.lang === "en" ? "Voice guidance on" : "음성 안내가 켜졌습니다");
-    }
-  };
+  const voiceBtn = $("#voiceToggle");
+  if (voiceBtn) {
+    voiceBtn.onclick = () => {
+      state.voice = !state.voice;
+      if (!state.voice && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+      save();
+      updateAccessButtons();
+      if (state.voice) {
+        speak(state.lang === "en" ? "Voice guidance on" : "음성 안내가 켜졌습니다");
+      }
+    };
+  }
 
-  // Top Sound toggle
-  $("#soundToggle").onclick = () => {
-    toggleSound();
-  };
+  // Sound toggle
+  const soundBtn = $("#soundToggle");
+  if (soundBtn) {
+    soundBtn.onclick = () => {
+      toggleSound();
+    };
+  }
 
   // Timer Sound Button
   const timerSoundBtn = $("#timerSoundBtn");
@@ -2203,4 +2497,3 @@ window.startProgram = startProgram;
 window.toggleTimer = toggleTimer;
 window.resetTimer = resetTimer;
 window.nextStep = nextStep;
-
