@@ -1,0 +1,2304 @@
+:root {
+  --bg: #030712;
+  --panel: #0a1120;
+  --panel-elevated: #0f1c34;
+  --card: #08142c;
+  --card-hover: #0e2246;
+  --line: rgba(56, 189, 248, 0.2);
+  --line-strong: rgba(56, 189, 248, 0.45);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --subtext: #cbd5e1;
+  --cyan: #38bdf8;
+  --cyan-bright: #00f0ff;
+  --cyan-soft: rgba(56, 189, 248, 0.15);
+  --blue-primary: #0284c7;
+  --blue-glow: rgba(2, 132, 199, 0.45);
+  --navy-dark: #050d1a;
+  --navy-base: #08142c;
+  --navy-card: #091a38;
+  --navy-light: #0f2b54;
+  --amber: #f59e0b;
+  --red: #ef4444;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Pretendard", "Noto Sans KR", sans-serif;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100vw;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-system);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* ==========================================================================
+   Header Navigation
+   ========================================================================== */
+.circuit-header {
+  height: 64px;
+  background: rgba(5, 13, 26, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #ffffff;
+}
+.brand-mark {
+  color: var(--cyan);
+  font-size: 20px;
+  filter: drop-shadow(0 0 8px var(--cyan));
+}
+.brand strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+.brand small {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--cyan);
+}
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+.header-actions a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+.header-actions a:hover {
+  color: #ffffff;
+  background: var(--cyan-soft);
+}
+.header-actions a.active {
+  color: #ffffff;
+  background: rgba(56, 189, 248, 0.22);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+}
+/* ==========================================================================
+   Main App Layout
+   ========================================================================== */
+.circuit-shell {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: calc(100vh - 64px);
+}
+/* ==========================================================================
+   Sidebar: Circuit Selection
+   ========================================================================== */
+.circuit-sidebar {
+  background: #060e1d;
+  border-right: 1px solid var(--line);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: calc(100vh - 64px);
+  position: sticky;
+  top: 64px;
+  overflow-y: auto;
+}
+.sidebar-heading .eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--cyan);
+  margin: 0 0 4px;
+}
+.sidebar-heading h1 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 6px;
+  line-height: 1.25;
+  color: #ffffff;
+}
+.sidebar-heading p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.circuit-search {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.circuit-search span {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.circuit-search input {
+  width: 100%;
+  background: rgba(9, 21, 44, 0.85);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  color: #ffffff;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+.circuit-search input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan-soft);
+}
+/* Quick Circuit Navigation Pills */
+.circuit-quick-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(10, 24, 48, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.quick-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+}
+
+.quick-nav-label {
+  font-weight: 700;
+  color: var(--cyan);
+}
+
+.quick-nav-hint {
+  font-size: 10px;
+  color: var(--text-sub);
+}
+
+.quick-nav-pills {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 rgba(15, 23, 42, 0.5);
+}
+
+.quick-nav-pills::-webkit-scrollbar {
+  height: 4px;
+}
+
+.quick-nav-pills::-webkit-scrollbar-track {
+  background: rgba(8, 21, 44, 0.5);
+  border-radius: 2px;
+}
+
+.quick-nav-pills::-webkit-scrollbar-thumb {
+  background: #38bdf8;
+  border-radius: 2px;
+}
+
+.quick-pill {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #cbd5e1;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.quick-pill:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.quick-pill.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
+}
+
+.quick-pill .pill-num {
+  font-size: 10px;
+  font-weight: 800;
+  color: #7dd3fc;
+}
+
+.quick-pill.active .pill-num {
+  color: #ffffff;
+}
+
+.circuit-list-guide {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 6px;
+  font-size: 11px;
+  color: var(--cyan);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.circuit-list-guide .guide-badge {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 9999px;
+  padding: 1px 7px;
+  font-size: 10px;
+  color: #7dd3fc;
+}
+
+.circuit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: scroll !important;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 #08152c;
+  padding-right: 6px;
+  overscroll-behavior: contain;
+}
+
+/* Explicit high-visibility scrollbar on right side ("?곗륫 ?ъ씠??諛?) */
+.circuit-list::-webkit-scrollbar {
+  width: 9px !important;
+  display: block !important;
+}
+
+.circuit-list::-webkit-scrollbar-track {
+  background: #08152c !important;
+  border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.circuit-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #38bdf8 0%, #0284c7 100%) !important;
+  border-radius: 6px;
+  border: 1.5px solid #08152c;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+}
+
+.circuit-list::-webkit-scrollbar-thumb:hover,
+.circuit-list::-webkit-scrollbar-thumb:active {
+  background: #7dd3fc !important;
+}
+.circuit-item {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(10, 24, 48, 0.45);
+  border: 1px solid rgba(56, 189, 248, 0.12);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+.circuit-item:hover {
+  background: rgba(14, 34, 70, 0.65);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateX(2px);
+}
+.circuit-item.active {
+  background: rgba(2, 132, 199, 0.25);
+  border-color: var(--cyan);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
+}
+.circuit-number {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--cyan);
+  font-size: 11px;
+  font-weight: 800;
+}
+.circuit-item.active .circuit-number {
+  background: var(--blue-primary);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 10px var(--cyan);
+}
+.circuit-meta {
+  display: flex;
+  flex-direction: column;
+}
+.circuit-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+.circuit-en-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+.circuit-code {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--cyan);
+  background: rgba(56, 189, 248, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+/* ==========================================================================
+   Detail Section (Middle & Right Columns)
+   ========================================================================== */
+.circuit-detail {
+  padding: 24px 32px 48px;
+  overflow-y: auto;
+}
+.detail-topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.detail-topline .eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--cyan);
+  margin: 0 0 4px;
+}
+.detail-topline h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+.title-en {
+  margin: 2px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cyan);
+}
+.source-page {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  background: rgba(14, 30, 60, 0.6);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+.detail-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+/* ==========================================================================
+   Left Column: Circuit Details & Muscle Batteries
+   ========================================================================== */
+.circuit-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.info-card {
+  background: #08142c;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+.info-card h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #7dd3fc;
+  letter-spacing: -0.2px;
+}
+.info-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--subtext);
+}
+.point-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.point-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+}
+.point-card span {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.point-card strong {
+  font-size: 16px;
+  font-weight: 800;
+}
+.point-card.check strong {
+  color: #38bdf8;
+}
+.point-card.supply strong {
+  color: #f87171;
+}
+/* Muscle Card on Left Column */
+.muscle-card {
+  background: linear-gradient(180deg, #091730 0%, #060f22 100%);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+}
+.muscle-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.muscle-card-title-group .card-eyebrow {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--cyan);
+}
+.muscle-card-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+}
+.muscle-count-badge {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--cyan);
+  background: rgba(56, 189, 248, 0.16);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+.muscle-hint {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-bottom: 12px !important;
+  line-height: 1.45;
+}
+.muscle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.muscle-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(11, 23, 44, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.muscle-item:hover, .muscle-item.active {
+  background: rgba(14, 116, 144, 0.32);
+  border-color: rgba(56, 189, 248, 0.85);
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 14px rgba(56, 189, 248, 0.3);
+}
+.muscle-num {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.muscle-name-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.muscle-ko {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+.muscle-en {
+  font-size: 12px;
+  color: #93c5fd;
+  font-weight: 500;
+}
+.navigation-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.navigation-row button {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: rgba(14, 30, 60, 0.7);
+  border: 1px solid var(--line);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.navigation-row button:hover:not(:disabled) {
+  background: var(--blue-primary);
+  border-color: var(--cyan);
+  box-shadow: 0 0 14px var(--blue-glow);
+}
+.navigation-row button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+
+/* ==========================================================================
+   Right Column: Detail Figure Column & Figure Card (Clean White Stage & Sticky)
+   ========================================================================== */
+.detail-figure-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky !important;
+  top: 80px !important;
+  align-self: start !important;
+  z-index: 20;
+  will-change: transform;
+}
+.circuit-figure {
+  margin: 0;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 21;
+}
+.figure-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+.toolbar-brand {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 18px;
+}
+.toolbar-pulse-dot {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0284c7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.6);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+.toolbar-brand strong {
+  font-size: 13.5px;
+  color: #0f172a;
+  font-weight: 700;
+}
+.toolbar-brand small {
+  font-size: 11px;
+  color: #64748b;
+}
+/* Stage Area: Pure Clean White Background */
+.figure-stage {
+  position: relative;
+  height: min(72vh, 760px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: #ffffff !important;
+  overflow: hidden;
+}
+.stage-canvas-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+  line-height: 0;
+  background: #ffffff;
+}
+.stage-canvas-wrap img {
+  display: block;
+  max-width: 100%;
+  max-height: min(68vh, 720px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  background: #ffffff;
+  pointer-events: none;
+}
+/* ==========================================================================
+   2. Fixed 3D Anatomy Card (Placed in the exact spot of the removed table)
+   ========================================================================== */
+.fixed-anatomy-card {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  width: 275px;
+  max-width: 44%;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16), 0 2px 6px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  z-index: 25;
+  pointer-events: auto;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.fixed-anatomy-header {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 14px 11px 14px;
+}
+.fixed-anatomy-badge {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #0284c7;
+  letter-spacing: 0.3px;
+  line-height: 1.35;
+}
+.fixed-anatomy-title {
+  display: block;
+  margin: 0 0 4px 0;
+  font-size: 14.5px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fixed-anatomy-en {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fixed-anatomy-media {
+  width: 100%;
+  min-height: 165px;
+  max-height: 230px;
+  background: #030712;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.fixed-anatomy-media img {
+  width: 100%;
+  height: auto;
+  max-height: 230px;
+  object-fit: contain;
+  display: block;
+  background: #030712;
+}
+.fixed-anatomy-placeholder {
+  padding: 24px 14px;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+.fixed-anatomy-placeholder .placeholder-icon {
+  display: inline-block;
+  font-size: 22px;
+  color: #0284c7;
+  margin-bottom: 6px;
+}
+.circuit-figure figcaption {
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 12px;
+  padding: 12px 18px;
+  line-height: 1.55;
+  border-top: 1px solid #e2e8f0;
+}
+/* ==========================================================================
+   5. Healing Voltage 528Hz Timer Card (Mounted Below Human Image)
+   ========================================================================== */
+.healing-timer-card {
+  background: linear-gradient(180deg, #0b1a36 0%, #071226 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.3);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 24px rgba(14, 116, 144, 0.15);
+}
+.timer-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(14, 34, 70, 0.6);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+.timer-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.timer-wave-icon {
+  font-size: 18px;
+  color: #38bdf8;
+}
+.timer-brand-group h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+.timer-brand-group small {
+  font-size: 11px;
+  color: #93c5fd;
+}
+.timer-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  transition: all 0.2s ease;
+}
+.timer-status-badge.running {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+.timer-status-badge.finished {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+.timer-body {
+  padding: 16px 20px;
+}
+/* Preset buttons */
+.timer-controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.timer-preset-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.preset-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(14, 30, 60, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.preset-btn:hover {
+  background: rgba(2, 132, 199, 0.3);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+.preset-btn.active {
+  background: #0284c7;
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+.timer-adjust-group {
+  display: flex;
+  gap: 6px;
+}
+.timer-adjust-btn {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(14, 30, 60, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.timer-adjust-btn:hover {
+  background: rgba(14, 116, 144, 0.3);
+  color: #f1f5f9;
+  border-color: #38bdf8;
+}
+/* Digital Display */
+.timer-display-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 8px;
+}
+.timer-time-text {
+  font-size: 38px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  line-height: 1;
+}
+.timer-freq-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #7dd3fc;
+  font-weight: 600;
+}
+.freq-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #38bdf8;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+.freq-pulse-dot.pulsing {
+  opacity: 1;
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+  animation: freqPulse 1.2s infinite ease-in-out;
+}
+@keyframes freqPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+/* Horizontal Progress Bar */
+.timer-bar-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(14, 30, 60, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  margin-bottom: 16px;
+  position: relative;
+}
+.timer-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0284c7 0%, #38bdf8 50%, #22c55e 100%);
+  border-radius: 10px;
+  transition: width 0.3s linear;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+}
+/* Action Buttons */
+.timer-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.timer-btn-primary {
+  flex: 1.5;
+  min-width: 160px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #0284c7 0%, #0369a1 100%);
+  border: 1px solid #38bdf8;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.4);
+}
+.timer-btn-primary:hover {
+  background: linear-gradient(90deg, #0369a1 0%, #0284c7 100%);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+  transform: translateY(-1px);
+}
+.timer-btn-primary.paused {
+  background: linear-gradient(90deg, #d97706 0%, #b45309 100%);
+  border-color: #f59e0b;
+}
+.timer-btn-secondary {
+  padding: 11px 16px;
+  border-radius: 10px;
+  background: rgba(14, 30, 60, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.timer-btn-secondary:hover {
+  background: rgba(14, 116, 144, 0.3);
+  border-color: #38bdf8;
+}
+.timer-btn-sound {
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: rgba(14, 30, 60, 0.6);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.timer-btn-sound.muted {
+  color: #94a3b8;
+  opacity: 0.7;
+}
+.timer-desc {
+  margin: 0;
+  font-size: 11.5px;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+.timer-desc strong {
+  color: #38bdf8;
+}
+/* ==========================================================================
+   Circuits 13 & 14: Cursor & Hover Interaction Disabled
+   ========================================================================== */
+.muscle-item.no-hover {
+  cursor: default !important;
+}
+.muscle-item.no-hover:hover {
+  background: rgba(11, 23, 44, 0.7) !important;
+  border-color: rgba(56, 189, 248, 0.2) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+/* Circle pins completely removed */
+.pins-overlay, .circuit-pin, .pin-floating-tooltip {
+  display: none !important;
+}
+
+/* Language Switcher Button */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  color: var(--text-sub);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 6px;
+  user-select: none;
+}
+.lang-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #ffffff;
+}
+.lang-toggle-btn .lang-opt {
+  transition: color 0.15s ease;
+}
+.lang-toggle-btn .lang-opt.active {
+  color: #38bdf8;
+  font-weight: 700;
+}
+.lang-toggle-btn .lang-divider {
+  opacity: 0.35;
+  font-size: 0.72rem;
+}
+/* Timer Volume Control */
+.timer-volume-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: var(--text-sub);
+  user-select: none;
+  transition: all 0.2s ease;
+}
+.timer-volume-wrap:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(15, 23, 42, 0.85);
+}
+.timer-volume-wrap .vol-icon {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+.timer-volume-slider {
+  width: 85px;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+  accent-color: #38bdf8;
+  transition: all 0.2s ease;
+}
+.timer-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(56, 189, 248, 0.7);
+  transition: transform 0.15s ease;
+}
+.timer-volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+}
+.timer-volume-wrap .vol-pct {
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-width: 32px;
+  text-align: right;
+  color: #94a3b8;
+  font-variant-numeric: tabular-nums;
+}
+/* ==========================================================================
+   Clinical Protocol Guide Card (?몃컮? ?섎즺湲??꾩긽 ?곸슜 媛?대뱶)
+   ========================================================================== */
+.circuit-clinical-protocol-card {
+  margin-top: 18px;
+  background: linear-gradient(145deg, rgba(13, 23, 42, 0.96), rgba(8, 16, 32, 0.98));
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 16px;
+  padding: 22px 24px 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.circuit-clinical-protocol-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #38bdf8, #818cf8 40%, #10b981 80%, #fbbf24);
+}
+.clinical-card-head {
+  margin-bottom: 16px;
+}
+.clinical-card-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.clinical-card-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 9999px;
+  padding: 3px 10px;
+}
+.clinical-card-guide-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 9999px;
+  padding: 3px 10px;
+}
+.clinical-card-title {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
+}
+.clinical-card-sub {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 0;
+}
+/* Quick Spec Tiles */
+.clinical-spec-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+@media (max-width: 900px) {
+  .clinical-spec-tiles {
+    grid-template-columns: 1fr;
+  }
+}
+.spec-mini-tile {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.spec-mini-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+.spec-mini-val {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.4;
+}
+/* Treatment Sequence */
+.clinical-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.clinical-section-header svg {
+  color: #38bdf8;
+}
+.clinical-section-header h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin: 0;
+}
+.clinical-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+@media (max-width: 900px) {
+  .clinical-steps-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.clinical-step-box {
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px 14px 16px;
+  transition: all 0.2s ease;
+}
+.clinical-step-box:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(15, 23, 42, 0.92);
+}
+.step-check { border-top: 3px solid #38bdf8; }
+.step-supply { border-top: 3px solid #f43f5e; }
+.step-muscle { border-top: 3px solid #10b981; }
+.step-num-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-bottom: 6px;
+}
+.step-target {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+.step-desc {
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+  margin: 0;
+}
+/* Clinical Pearls Card */
+.clinical-pearls-card {
+  background: rgba(30, 41, 59, 0.55);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.pearls-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin-bottom: 12px;
+}
+.pearls-list {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pearls-list li {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: #cbd5e1;
+}
+.pearls-list li strong {
+  color: #f8fafc;
+}
+/* Floating Draggable Member Chip Override */
+.nc-member-chip {
+  top: 14px !important;
+  right: 18px !important;
+  bottom: auto !important;
+  cursor: grab !important;
+}
+.nc-member-chip.dragging {
+  cursor: grabbing !important;
+}
+
+/* ==========================================================================
+   Smartphone Quick Navigation Bar (v45)
+   ========================================================================== */
+.mobile-quick-nav-bar {
+  display: none;
+}
+
+
+/* ==========================================================================
+   Comprehensive Responsive & Mobile Adjustments (Smartphones & Tablets <= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  /* 1. Global Viewport & Container Overflow Fix */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative !important;
+  }
+
+  /* 2. Header & Member Chip & Lang Button Clean Alignment (No Overlap) */
+  .circuit-header {
+    height: 52px !important;
+    padding: 0 10px !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .brand strong {
+    font-size: 13.5px !important;
+    letter-spacing: -0.3px !important;
+    white-space: nowrap !important;
+  }
+
+  .brand small {
+    display: none !important;
+  }
+
+  .brand-mark {
+    font-size: 16px !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  .header-actions a {
+    display: none !important;
+  }
+
+  .lang-toggle-btn {
+    height: 32px !important;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Draggable Member Chip: Positioned cleanly to the left of lang toggle button, never overlapping */
+  .nc-member-chip {
+    top: 10px !important;
+    right: 80px !important;
+    height: 32px !important;
+    padding: 4px 10px !important;
+    font-size: 11px !important;
+    max-width: 120px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    border-radius: 20px !important;
+    z-index: 102 !important;
+  }
+
+  /* 3. Mobile Top Navigation Bar */
+  .mobile-quick-nav-bar {
+    display: block !important;
+    position: sticky !important;
+    top: 52px !important;
+    z-index: 85 !important;
+    background: rgba(6, 17, 28, 0.96) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(0, 221, 236, 0.22) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4) !important;
+    padding: 7px 10px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  .mobile-quick-nav-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .mobile-quick-nav-track {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    min-width: 100% !important;
+  }
+
+  .mobile-quick-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 6px 13px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #94a3b8 !important;
+    background: rgba(13, 27, 42, 0.88) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    text-decoration: none !important;
+    flex-shrink: 0 !important;
+    letter-spacing: -0.2px !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  .mobile-quick-pill.active {
+    background: linear-gradient(135deg, rgba(0, 221, 236, 0.22), rgba(14, 165, 233, 0.3)) !important;
+    border-color: #00ddec !important;
+    color: #22d3ee !important;
+    box-shadow: 0 0 12px rgba(0, 221, 236, 0.25) !important;
+  }
+
+  /* 4. App Shell & Sidebar */
+  .circuit-shell {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .circuit-sidebar {
+    height: auto !important;
+    max-height: none !important;
+    position: static !important;
+    overflow: hidden !important;
+    padding: 14px 12px !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--line) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .sidebar-heading h1 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+
+  .circuit-search {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .circuit-search input {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-size: 13px !important;
+  }
+
+  /* Quick Navigation Pills (01~14) */
+  .circuit-quick-nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 8px 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .quick-nav-pills {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding-bottom: 4px !important;
+  }
+
+  .quick-pill {
+    flex-shrink: 0 !important;
+    padding: 4px 10px !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Circuit List Scrollbar on Mobile */
+  .circuit-list {
+    max-height: 260px !important;
+    height: 260px !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    padding: 6px !important;
+    background: rgba(5, 12, 26, 0.75) !important;
+    border: 1.5px solid rgba(56, 189, 248, 0.28) !important;
+    border-radius: 12px !important;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .circuit-item {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+  }
+
+  .circuit-name-group strong,
+  .circuit-name-group small {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+
+  /* 5. Circuit Detail Area */
+  .circuit-detail {
+    padding: 14px 12px 40px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .detail-topline {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: 14px !important;
+  }
+
+  .detail-topline h2 {
+    font-size: 22px !important;
+    margin: 0 !important;
+    word-break: keep-all !important;
+  }
+
+  .title-en {
+    font-size: 13px !important;
+    margin: 2px 0 0 0 !important;
+  }
+
+  .source-page {
+    font-size: 11.5px !important;
+    padding: 4px 8px !important;
+    white-space: nowrap !important;
+  }
+
+  /* 6. Detail Grid: Clean Logical Flex Flow on Mobile */
+  .detail-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Using display: contents to allow perfect logical ordering of cards on mobile */
+  .circuit-copy {
+    display: contents !important;
+  }
+
+  .detail-figure-col {
+    display: contents !important;
+  }
+
+  /* Mobile Order Definition:
+     1. Human Model & 3D Anatomy side-by-side (Order 1)
+     2. Circuit Pathway (Order 2)
+     3. Voltage Check & Supply Points (Order 3)
+     4. Applied Conditions / Uses (Order 4)
+     5. Muscle Batteries List (Order 5)
+     6. 528Hz Timer Card (Order 6)
+     7. Clinical Protocol Card (Order 7)
+     8. Clinical Pearls Card (Order 8)
+     9. Previous / Next Circuit Navigation (Order 9)
+  */
+  .circuit-figure {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  }
+
+  .figure-toolbar {
+    padding: 8px 12px !important;
+    background: #f8fafc !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+  }
+
+  .toolbar-brand strong {
+    font-size: 13px !important;
+    color: #0f172a !important;
+  }
+
+  .toolbar-brand small {
+    font-size: 10px !important;
+    color: #64748b !important;
+  }
+
+  /* =======================================================================
+     SIDE-BY-SIDE Human Model + 3D Anatomy Card ("사람 이미지 옆에 해부도")
+     ======================================================================= */
+  .figure-stage {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    display: block !important;
+    background: #ffffff !important;
+    padding: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .stage-canvas-wrap {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    background: #ffffff !important;
+    line-height: normal !important;
+    position: relative !important;
+  }
+
+  /* Left: Human Body Model */
+  .stage-canvas-wrap img#circuit-image {
+    flex: 0 0 48% !important;
+    width: 48% !important;
+    max-width: 48% !important;
+    height: 300px !important;
+    max-height: 300px !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Right: Fixed 3D Anatomy Card (Placed right NEXT TO human body) */
+  .fixed-anatomy-card {
+    position: static !important;
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    max-width: 50% !important;
+    margin: 0 !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+  }
+
+  .fixed-anatomy-header {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    padding: 8px 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+  }
+
+  .fixed-anatomy-badge {
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    color: #0284c7 !important;
+    margin-bottom: 3px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: block !important;
+  }
+
+  .fixed-anatomy-title {
+    font-size: 13.5px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    display: block !important;
+    margin: 0 0 2px 0 !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    line-height: 1.25 !important;
+  }
+
+  .fixed-anatomy-en {
+    font-size: 9.5px !important;
+    color: #64748b !important;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .fixed-anatomy-media {
+    flex: 1 1 auto !important;
+    min-height: 140px !important;
+    max-height: 220px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #030712 !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .fixed-anatomy-media img#fixed-anatomy-img {
+    max-height: 200px !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: 0 auto !important;
+    background: #030712 !important;
+  }
+
+  .fixed-anatomy-placeholder {
+    padding: 16px 8px !important;
+    text-align: center !important;
+  }
+
+  .fixed-anatomy-placeholder p {
+    font-size: 10.5px !important;
+    line-height: 1.45 !important;
+    margin: 0 !important;
+  }
+
+  .circuit-figure figcaption {
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+    word-break: break-word !important;
+  }
+
+  /* 7. Information Cards (Full Width, Word Wrap, No Truncation) */
+  .route-card {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .point-grid {
+    order: 3 !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .point-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 10px 12px !important;
+  }
+
+  .point-card strong {
+    font-size: 14px !important;
+    word-break: break-word !important;
+  }
+
+  .uses-card {
+    order: 4 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .info-card {
+    padding: 14px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .info-card h3 {
+    font-size: 13.5px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .info-card p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* 8. Muscle Batteries Card */
+  .muscle-card {
+    order: 5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .muscle-card-header h3 {
+    font-size: 14.5px !important;
+    word-break: break-word !important;
+  }
+
+  .muscle-item {
+    padding: 10px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .muscle-item strong {
+    font-size: 13.5px !important;
+  }
+
+  /* 9. 528Hz Healing Timer Card */
+  .healing-timer-card {
+    order: 6 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .timer-card-header {
+    padding: 10px 14px !important;
+  }
+
+  .timer-body {
+    padding: 14px 12px !important;
+  }
+
+  .timer-time-text {
+    font-size: 32px !important;
+  }
+
+  .timer-actions-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .timer-btn-primary,
+  .timer-btn-secondary,
+  .timer-btn-sound {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* 10. Clinical Protocol Card (Full Word Break, No Right Truncation) */
+  .circuit-clinical-protocol-card {
+    order: 7 !important;
+    padding: 16px 12px 18px !important;
+    margin-top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .clinical-card-title {
+    font-size: 1.05rem !important;
+    line-height: 1.35 !important;
+    word-break: keep-all !important;
+  }
+
+  .clinical-spec-tiles {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .spec-mini-tile {
+    padding: 10px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .spec-mini-val {
+    word-break: break-word !important;
+  }
+
+  .clinical-steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .clinical-step-box {
+    padding: 12px 12px 14px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .step-target {
+    font-size: 0.92rem !important;
+    word-break: break-word !important;
+  }
+
+  .step-desc {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  /* 11. Clinical Pearls Card */
+  .clinical-pearls-card {
+    order: 8 !important;
+    padding: 14px 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .pearls-list {
+    padding-left: 16px !important;
+  }
+
+  .pearls-list li {
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    word-break: break-word !important;
+  }
+
+  /* 12. Navigation Buttons (Previous / Next Circuit at bottom) */
+  .navigation-row {
+    order: 9 !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .navigation-row button {
+    flex: 1 !important;
+    padding: 12px 14px !important;
+    font-size: 13.5px !important;
+  }
+}
+
+/* ==========================================================================
+   Universal Header & Navigation System (Desktop + Mobile)
+   ========================================================================== */
+
+/* Desktop Header Actions Clearance for User Member Chip */
+@media (min-width: 901px) {
+  .header-actions {
+    padding-right: 140px !important;
+  }
+}
+
+/* Official Website Shortcut Link (novacell.kr) */
+.header-actions a.nav-official-home,
+.header-cover-btn.nav-official-home {
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-weight: 700 !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  font-size: 12.5px !important;
+  flex-shrink: 0 !important;
+}
+
+.header-actions a.nav-official-home:hover,
+.header-cover-btn.nav-official-home:hover {
+  background: rgba(56, 189, 248, 0.28) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Mobile Quick Nav Bar Official Home Pill */
+.mobile-quick-pill.m-nav-home {
+  background: rgba(14, 165, 233, 0.16) !important;
+  border: 1px solid rgba(56, 189, 248, 0.45) !important;
+  color: #38bdf8 !important;
+  font-weight: 700 !important;
+}
+
+.mobile-quick-pill.m-nav-home:hover,
+.mobile-quick-pill.m-nav-home:active {
+  background: rgba(14, 165, 233, 0.3) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+}
+
+/* Language Switcher Button (Shared across all 3 pages) */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+.lang-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #ffffff;
+}
+.lang-toggle-btn .lang-opt {
+  transition: color 0.15s ease;
+}
+.lang-toggle-btn .lang-opt.active {
+  color: #38bdf8;
+  font-weight: 700;
+}
+.lang-toggle-btn .lang-divider {
+  opacity: 0.35;
+  font-size: 0.72rem;
+}
+
+/* Mobile Hamburger Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 9px;
+  background: rgba(11, 32, 48, 0.9);
+  color: #38bdf8;
+  box-shadow: 0 0 12px rgba(0, 221, 236, 0.2);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 2147483640 !important;
+}
+.mobile-menu-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mobile Hamburger Navigation Drawer Overlay & Panel */
+.mobile-menu-overlay[hidden] {
+  display: none !important;
+}
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483645;
+  background: rgba(2, 7, 17, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.mobile-menu-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(88vw, 360px);
+  height: 100%;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 18px 16px calc(24px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(180deg, #0d1a2c 0%, #07111f 100%);
+  border-left: 1px solid #1d5265;
+  box-shadow: -16px 0 45px rgba(0, 0, 0, 0.7);
+  color: #eafcff;
+}
+.mobile-menu-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #284154;
+}
+.mobile-menu-kicker {
+  display: block;
+  color: #2be7f1;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.mobile-menu-head h2 {
+  margin: 4px 0 0;
+  font-size: 20px;
+  line-height: 1.25;
+  color: #ffffff;
+}
+.mobile-menu-close {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid #42566b;
+  border-radius: 50%;
+  background: #162437;
+  color: #e9f9ff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-menu-links {
+  display: grid;
+  gap: 9px;
+  margin-top: 16px;
+}
+.mobile-menu-links a,
+.mobile-menu-links button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #1d3a4d;
+  border-radius: 12px;
+  background: #0b1d2e;
+  color: #eafcff;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+.mobile-menu-links a:hover,
+.mobile-menu-links button:hover {
+  background: #11314d;
+  border-color: #38bdf8;
+  transform: translateY(-1px);
+}
+.mobile-menu-links a span,
+.mobile-menu-links button span {
+  font-size: 18px;
+  color: #38bdf8;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.mobile-menu-links strong {
+  font-size: 14px;
+  line-height: 1.35;
+  display: block;
+  color: #f1f5f9;
+}
+.mobile-menu-links small {
+  color: #92aebe;
+  font-size: 11px;
+  line-height: 1.35;
+  display: block;
+}
+.mobile-menu-links a.drawer-official-home {
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(56, 189, 248, 0.45);
+}
+.mobile-menu-links a.drawer-official-home strong {
+  color: #38bdf8;
+}
+body.mobile-menu-open {
+  overflow: hidden !important;
+}
+
+/* Mobile Strict Rules (<= 900px) */
+@media (max-width: 900px) {
+  /* Hide desktop header links, star button, status badge on mobile */
+  .header-actions a,
+  .header-actions a.nav-official-home,
+  .header-cover-btn,
+  .header-cover-btn.nav-official-home,
+  #open-cover-btn,
+  .header-status-badge {
+    display: none !important;
+  }
+
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-left: auto !important;
+    padding-right: 0 !important;
+  }
+
+  .lang-toggle-btn {
+    display: inline-flex !important;
+    height: 30px !important;
+    padding: 3px 8px !important;
+    font-size: 11px !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
+    z-index: 2147483630 !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+    width: 36px !important;
+    height: 36px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nc-member-chip {
+    top: 10px !important;
+    bottom: auto !important;
+    right: 125px !important;
+    height: 30px !important;
+    padding: 4px 8px !important;
+    font-size: 0.72rem !important;
+    max-width: 95px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    z-index: 2147482000 !important;
+  }
+}

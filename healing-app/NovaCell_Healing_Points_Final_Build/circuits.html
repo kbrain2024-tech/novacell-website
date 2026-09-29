@@ -1,0 +1,356 @@
+﻿<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#070a13">
+  <title id="page-title">NovaCell Healing Points | &#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C; &#xBC30;&#xD130;&#xB9AC; &#xB3C4;&#xD574; (v38)</title>
+  <meta name="description" content="&#xB178;&#xBC14;&#xC14B; &#xD1B5;&#xCE58; &#xC694;&#xBC95; &#xCC45; 204~217&#xCABD;&#xC758; &#xD3D0; &#xD68C;&#xB85C;&#xBD80;&#xD130; &#xB3C5;&#xB9E5; &#xD68C;&#xB85C;&#xAE4C;&#xC9C0; 14&#xAC1C; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C; &#xC548;&#xB0B4;">
+  <link rel="stylesheet" href="css/circuits.css?v=38">
+  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
+  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
+</head>
+<body class="novacell-access-pending">
+  <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell &#xD68C;&#xC6D0; &#xC774;&#xC6A9;&#xAD8C;&#xC744; &#xD655;&#xC778;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;...</p></div>
+  <header class="circuit-header">
+    <a class="brand" href="index.html" aria-label="&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8; &#xBA54;&#xC778;&#xC73C;&#xB85C; &#xC774;&#xB3D9;">
+      <span class="brand-mark" aria-hidden="true">&#x25C7;</span>
+      <span><strong>NovaCell Healing Points</strong><small id="brand-sub-title">NEURAL CIRCUIT THERAPY GUIDE</small></span>
+    </a>
+    <nav class="header-actions" aria-label="&#xD398;&#xC774;&#xC9C0; &#xC774;&#xB3D9;">
+      <a href="index.html" id="nav-therapy">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</a>
+      <a href="bio-point.html" id="nav-chakra">&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</a>
+      <a class="active" href="circuits.html" id="nav-circuit" aria-current="page">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</a>
+      <a href="https://novacell.kr/" class="nav-official-home" id="nav-home" target="_blank" rel="noopener" title="&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#xBC14;&#xB85C;&#xAC00;&#xAE30;">&#x1F310; &#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#x2197;</a>
+      <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" title="&#xC5B8;&#xC5B4; &#xBCC0;&#xACBD; / Change Language">
+        <span class="lang-opt ko active">&#xD55C;&#xAE00;</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-opt en">ENG</span>
+      </button>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="&#xC804;&#xCCB4; &#xBA54;&#xB274; &#xC5F4;&#xAE30;" aria-controls="mobile-menu-overlay" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <line x1="4" y1="6" x2="20" y2="6"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="18" x2="20" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+
+</header>
+
+<!-- Smartphone Quick Navigation Bar -->
+<nav class="mobile-quick-nav-bar" aria-label="Quick Nav">
+  <div class="mobile-quick-nav-track">
+    <a class="mobile-quick-pill" href="index.html" id="m-nav-therapy">
+      <span class="m-pill-icon">&#x2695;</span>
+      <span class="m-pill-text">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</span>
+    </a>
+    <a class="mobile-quick-pill bio-point-link" href="bio-point.html" id="m-nav-chakra">
+      <span class="m-pill-icon">&#x25C9;</span>
+      <span class="m-pill-text">&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</span>
+    </a>
+    <a class="mobile-quick-pill active" href="circuits.html" id="m-nav-circuit">
+      <span class="m-pill-icon">&#x21BB;</span>
+      <span class="m-pill-text">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</span>
+    </a>
+    <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#xBC14;&#xB85C;&#xAC00;&#xAE30;">
+      <span class="m-pill-icon">&#x1F310;</span>
+      <span class="m-pill-text" id="m-nav-home-text">&#xACF5;&#xC2DD; &#xD648; &#x2197;</span>
+    </a>
+  </div>
+</nav>
+
+<!-- Smartphone Hamburger Navigation Drawer -->
+<div id="mobile-menu-overlay" class="mobile-menu-overlay" hidden>
+  <aside id="mobile-menu-panel" class="mobile-menu-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+    <div class="mobile-menu-head">
+      <div>
+        <span class="mobile-menu-kicker">NOVACELL CLINICAL GUIDE</span>
+        <h2 id="mobile-menu-title">&#xC804;&#xCCB4; &#xBA54;&#xB274;</h2>
+      </div>
+      <button id="mobile-menu-close" class="mobile-menu-close" type="button" aria-label="&#xC804;&#xCCB4; &#xBA54;&#xB274; &#xB2EB;&#xAE30;">&times;</button>
+    </div>
+
+    <nav class="mobile-menu-links" aria-label="NovaCell &#xC804;&#xCCB4; &#xBA54;&#xB274;">
+      <a href="index.html"><span>&#x2695;</span><strong>&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</strong><small>Condition Therapy Guide</small></a>
+      <a href="bio-point.html"><span>&#x25C9;</span><strong>&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</strong><small>Chakra Bio Points</small></a>
+      <a href="circuits.html"><span>&#x21BB;</span><strong>&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</strong><small>Neural Circuit Therapy</small></a>
+      <a href="https://novacell.kr/" target="_blank" rel="noopener" class="drawer-official-home"><span>&#x1F310;</span><strong>&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0;</strong><small>novacell.kr &#xBC14;&#xB85C;&#xAC00;&#xAE30; &#x2197;</small></a>
+      <a href="index.html?openCover=1"><span>&#x2606;</span><strong>&#xBA54;&#xC778; &#xB300;&#xBB38;</strong><small>NovaCell &#xC2DC;&#xC791; &#xD654;&#xBA74; &#xC5F4;&#xAE30;</small></a>
+      <a href="&#xC0AC;&#xC6A9;&#xC548;&#xB0B4;.html"><span>?</span><strong>&#xC0AC;&#xC6A9; &#xC548;&#xB0B4;</strong><small>&#xC870;&#xC791; &#xBC0F; &#xBC31;&#xC5C5; &#xBC29;&#xBC95;</small></a>
+    </nav>
+  </aside>
+</div>
+
+  <main class="circuit-shell">
+    <aside class="circuit-sidebar">
+      <div class="sidebar-heading">
+        <p class="eyebrow" id="sidebar-eyebrow">NEURAL BIOLOGICAL CIRCUIT</p>
+        <h1 id="sidebar-main-title">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;<br><span id="sidebar-sub-title" style="font-size:0.62em; font-weight:600; color:var(--text-sub);">Neural Circuit Therapy</span><br><span id="sidebar-book-title" class="accent-title">&#xB178;&#xBC14;&#xC14B; &#xD1B5;&#xCE58; &#xC694;&#xBC95;</span></h1>
+        <p id="sidebar-intro">&#xD3D0; &#xD68C;&#xB85C;&#xBD80;&#xD130; &#xC784;&#xB9E5;&#xACFC; &#xB3C5;&#xB9E5; &#xD68C;&#xB85C;&#xAE4C;&#xC9C0; 14&#xAC1C; &#xD68C;&#xB85C;&#xB97C; &#xC120;&#xD1DD;&#xD574; &#xD655;&#xC778;&#xD569;&#xB2C8;&#xB2E4;.</p>
+      </div>
+      <label class="circuit-search">
+        <span id="search-label">&#xD68C;&#xB85C;&#xB7;&#xC9C8;&#xD658; &#xAC80;&#xC0C9;</span>
+        <input id="circuit-search" type="search" placeholder="&#xC608;: &#xD3D0;, &#xB450;&#xD1B5;, &#xC774;&#xBA85;, LU 7">
+      </label>
+            <!-- 빠른 회로 선택 네비게이션 칩 -->
+      <div class="circuit-quick-nav" id="circuit-quick-nav" aria-label="빠른 회로 선택">
+        <div class="quick-nav-header">
+          <span class="quick-nav-label" id="quick-nav-label">⚡ 빠른 회로 이동 (01~14)</span>
+          <span class="quick-nav-hint" id="quick-nav-hint">좌우 스크롤 터치</span>
+        </div>
+        <div class="quick-nav-pills" id="quick-nav-pills"></div>
+      </div>
+
+      <!-- 우측 사이드바 스크롤 안내 가이드 -->
+      <div class="circuit-list-guide" id="circuit-list-guide">
+        <span class="guide-text" id="circuit-list-guide-text">↕ 우측 사이드바를 스크롤하여 01~14 회로를 선택하세요</span>
+        <span class="guide-badge" id="circuit-list-guide-badge">14개 전체</span>
+      </div>
+      <div id="circuit-list" class="circuit-list" role="listbox" aria-label="&#xC0DD;&#xCCB4; &#xD68C;&#xB85C; &#xBAA9;&#xB85D;"></div>
+    </aside>
+
+    <section class="circuit-detail" aria-live="polite">
+      <div class="detail-topline">
+        <div>
+          <p id="circuit-sequence" class="eyebrow">01 / 14</p>
+          <h2 id="circuit-title">&#xD3D0; &#xD68C;&#xB85C;</h2>
+          <p id="circuit-title-en" class="title-en">Lung (LU) Circuit</p>
+        </div>
+        <span id="source-page" class="source-page">&#xCC45; 204&#xCABD;</span>
+      </div>
+
+      <div class="detail-grid">
+        <div class="circuit-copy">
+          <article class="info-card route-card">
+            <h3 id="circuit-route-title">&#xD68C;&#xB85C; &#xC9C4;&#xD589; &#xACBD;&#xB85C;</h3>
+            <p id="circuit-route"></p>
+          </article>
+
+          <div class="point-grid">
+            <article class="info-card point-card check">
+              <span id="circuit-check-label">&#xC804;&#xC555; &#xCCB4;&#xD06C;</span>
+              <strong id="circuit-check"></strong>
+            </article>
+            <article class="info-card point-card supply">
+              <span id="circuit-supply-label">&#xC804;&#xC555; &#xACF5;&#xAE09;</span>
+              <strong id="circuit-supply"></strong>
+            </article>
+          </div>
+
+          <article class="info-card uses-card" id="circuit-uses-card">
+            <h3 id="circuit-uses-title">&#xCC45;&#xC5D0; &#xAE30;&#xC7AC;&#xB41C; &#xC801;&#xC6A9; &#xC9C8;&#xD658;</h3>
+            <p id="circuit-uses"></p>
+          </article>
+
+          <article class="info-card muscle-card">
+            <div class="muscle-card-header">
+              <div class="muscle-card-title-group">
+                <span id="muscle-eyebrow" class="card-eyebrow">MUSCLE BATTERIES</span>
+                <h3 id="muscle-card-title">폐 회로 배터리 근육 목록</h3>
+              </div>
+              <span id="muscle-count-badge" class="muscle-count-badge">5&#xAC1C; &#xADFC;&#xC721;</span>
+            </div>
+            <p id="muscle-hint" class="muscle-hint">&#xC778;&#xCCB4; AI &#xBAA8;&#xB378; &#xC704;&#xC758; &#xBC88;&#xD638; &#xC6D0;(&#xD540;)&#xC5D0; &#xCEE4;&#xC11C;&#xB97C; &#xC62C;&#xB9AC;&#xAC70;&#xB098; &#xC544;&#xB798; &#xADFC;&#xC721;&#xC744; &#xC120;&#xD1DD;&#xD558;&#xBA74; &#xC704;&#xCE58;&#xC640; &#xD574;&#xBD80;&#xB3C4;&#xAC00; &#xD45C;&#xC2DC;&#xB429;&#xB2C8;&#xB2E4;.</p>
+            <div id="circuit-muscles" class="muscle-list"></div>
+          </article>
+
+          <div class="navigation-row">
+            <button id="previous-circuit" type="button">&#x2190; &#xC774;&#xC804; &#xD68C;&#xB85C;</button>
+            <button id="next-circuit" type="button">&#xB2E4;&#xC74C; &#xD68C;&#xB85C; &#x2192;</button>
+          </div>
+        </div>
+
+        <div class="detail-figure-col" id="detail-figure-col">
+          <figure class="circuit-figure" id="circuit-figure-card">
+            <div class="figure-toolbar">
+              <div class="toolbar-brand">
+                <span class="toolbar-pulse-dot"></span>
+                <strong id="fig-brand-title">&#xC778;&#xCCB4; AI &#xBAA8;&#xB378; &#xC0C1;&#xD638;&#xC791;&#xC6A9; &#xB3C4;&#xD574;</strong>
+                <small id="fig-brand-sub">Interactive Muscle Batteries Guide</small>
+              </div>
+            </div>
+            <div class="figure-stage" id="figure-stage">
+              <div class="stage-canvas-wrap" id="stage-canvas-wrap">
+                <img id="circuit-image" alt="">
+                
+                <div id="pin-floating-tooltip" class="pin-floating-tooltip" role="tooltip" hidden></div>
+                
+                <!-- 2. 고정형 3D 해부도 카드 -->
+                <div id="fixed-anatomy-card" class="fixed-anatomy-card">
+                  <div class="fixed-anatomy-header">
+                    <span id="fixed-anatomy-badge" class="fixed-anatomy-badge">&#xBC30;&#xD130;&#xB9AC; 3D &#xD574;&#xBD80;&#xB3C4;</span>
+                    <strong id="fixed-anatomy-title" class="fixed-anatomy-title">&#xADFC;&#xC721;&#xC744; &#xC120;&#xD1DD;&#xD558;&#xC138;&#xC694;</strong>
+                    <span id="fixed-anatomy-en" class="fixed-anatomy-en">Interactive Anatomy Guide</span>
+                  </div>
+                  <div class="fixed-anatomy-media">
+                    <img id="fixed-anatomy-img" src="" alt="3D &#xD574;&#xBD80;&#xB3C4;" style="display:none;">
+                    <div id="fixed-anatomy-placeholder" class="fixed-anatomy-placeholder">
+                      <span class="placeholder-icon">&#9889;</span>
+                      <p id="fixed-anatomy-placeholder-text">&#xC88C;&#xCE21; &#xBC30;&#xD130;&#xB9AC; &#xADFC;&#xC721; &#xBAA9;&#xB85D;&#xC5D0; &#xCEE4;&#xC11C;&#xB97C; &#xC62C;&#xB9AC;&#xBA74;<br><strong>&#xC2E4;&#xC81C; 3D &#xC778;&#xCCB4; &#xD574;&#xBD80;&#xB3C4;</strong>&#xAC00; &#xC5EC;&#xAE30;&#xC5D0; &#xACE0;&#xC815; &#xD45C;&#xC2DC;&#xB429;&#xB2C8;&#xB2E4;.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <figcaption id="circuit-caption"></figcaption>
+          </figure>
+
+          <!-- 5. 528Hz 치유 전압 타이머 카드 -->
+          <article class="healing-timer-card" id="healing-timer-card">
+            <div class="timer-card-header">
+              <div class="timer-brand-group">
+                <span class="timer-wave-icon">&#12336;</span>
+                <div>
+                  <h4 id="timer-title">528Hz &#xC138;&#xD3EC; &#xC804;&#xC555; &#xCE58;&#xC720; &#xD0C0;&#xC774;&#xBA38;</h4>
+                  <small id="timer-sub">DNA &#xBCF5;&#xC6D0; &#xC8FC;&#xD30C;&#xC218; &middot; &#xC2F1;&#xC789;&#xBCFC; &#xCC28;&#xC784; &#xBCA8;</small>
+                </div>
+              </div>
+              <span id="timer-status-badge" class="timer-status-badge">&#xB300;&#xAE30; &#xC911;</span>
+            </div>
+
+            <div class="timer-body">
+              <!-- 시간 조절 버튼 (1분 ~ 10분) -->
+              <div class="timer-controls-row">
+                <div class="timer-preset-group" aria-label="&#xD0C0;&#xC774;&#xBA38; &#xC2DC;&#xAC04; &#xD504;&#xB9AC;&#xC14B;">
+                  <button type="button" class="preset-btn" data-min="1" id="preset-1min">1&#xBD84;</button>
+                  <button type="button" class="preset-btn" data-min="3" id="preset-3min">3&#xBD84;</button>
+                  <button type="button" class="preset-btn active" data-min="5" id="preset-5min">5&#xBD84;</button>
+                  <button type="button" class="preset-btn" data-min="7" id="preset-7min">7&#xBD84;</button>
+                  <button type="button" class="preset-btn" data-min="10" id="preset-10min">10&#xBD84;</button>
+                </div>
+                <div class="timer-adjust-group">
+                  <button type="button" id="timer-dec-btn" class="timer-adjust-btn" title="30&#xCD08; &#xAC10;&#xC18C;">-30&#xCD08;</button>
+                  <button type="button" id="timer-inc-btn" class="timer-adjust-btn" title="30&#xCD08; &#xC99D;&#xAC00;">+30&#xCD08;</button>
+                </div>
+              </div>
+
+              <!-- 타이머 디스플레이 및 주파수 표시 -->
+              <div class="timer-display-wrap">
+                <div id="timer-time-display" class="timer-time-text">05:00</div>
+                <div class="timer-freq-indicator">
+                  <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
+                  <span id="freq-label">528Hz &#xCE58;&#xC720; &#xC8FC;&#xD30C;&#xC218; &#xC900;&#xBE44;</span>
+                </div>
+              </div>
+
+              <!-- 가로 게이지 바 (시간 경과 시각화) -->
+              <div class="timer-bar-track" aria-label="&#xD0C0;&#xC774;&#xBA38; &#xC9C4;&#xD589; &#xAC8C;&#xC774;&#xC9C0;">
+                <div id="timer-bar-fill" class="timer-bar-fill" style="width: 100%;"></div>
+              </div>
+
+              <!-- 동작 버튼 & 사운드 토글 -->
+              <div class="timer-actions-row">
+                <button type="button" id="timer-toggle-btn" class="timer-btn-primary">
+                  <span id="timer-play-icon">&#9654;</span>
+                  <span id="timer-btn-label">&#xCE58;&#xC720; &#xD0C0;&#xC774;&#xBA38; &#xC2DC;&#xC791;</span>
+                </button>
+                <button type="button" id="timer-reset-btn" class="timer-btn-secondary">
+                  <span>&#8634;</span>
+                  <span id="timer-reset-label">&#xB9AC;&#xC14B;</span>
+                </button>
+                <button type="button" id="timer-sound-toggle" class="timer-btn-sound" title="&#xC8FC;&#xD30C;&#xC218; &#xC18C;&#xB9AC; &#xCF1C;&#xAE30;/&#xB044;&#xAE30;">
+                  <span id="sound-icon">&#128266;</span>
+                  <span id="sound-label">&#xCE58;&#xC720;&#xC74C; &#xCF1C;&#xC9D0;</span>
+                </button>
+                <div class="timer-volume-wrap" title="&#xC74C;&#xB7C9; &#xC870;&#xC808;">
+                  <span id="vol-icon" class="vol-icon">&#128266;</span>
+                  <input type="range" id="timer-volume-slider" class="timer-volume-slider" min="0" max="100" value="65" aria-label="&#xC74C;&#xB7C9; &#xC870;&#xC808;">
+                  <span id="vol-pct" class="vol-pct">65%</span>
+                </div>
+              </div>
+
+              <p id="timer-desc" class="timer-desc">
+                * <strong>528Hz &#xC8FC;&#xD30C;&#xC218;</strong>&#xB294; &#xC190;&#xC0C1;&#xB41C; &#xC138;&#xD3EC; &#xC804;&#xC555;&#xC744; &#xAE68;&#xC6B0;&#xACE0; &#xBBF8;&#xD1A0;&#xCF58;&#xB4DC;&#xB9AC;&#xC544; ATP &#xC0DD;&#xC131;&#xC744; &#xCD09;&#xC9C4;&#xD569;&#xB2C8;&#xB2E4;. &#xD0C0;&#xC774;&#xBA38; &#xC885;&#xB8CC; &#xC2DC; <strong>&#xD2F0;&#xBCA0;&#xD2B8; &#xC2F1;&#xC789;&#xBCFC; &#xC54C;&#xB9BC;</strong>&#xC774; &#xBD80;&#xB4DC;&#xB7FD;&#xAC8C; &#xC6B8;&#xB9BD;&#xB2C8;&#xB2E4;.
+              </p>
+            </div>
+          </article>
+
+          <!-- 6. 노바셀 신경 생체 회로 의료기 적용 임상 가이드 카드 -->
+          <section class="circuit-clinical-protocol-card" id="circuit-clinical-guide" aria-label="&#xB178;&#xBC14;&#xC14B; &#xC758;&#xB8CC;&#xAE30; &#xC784;&#xC111; &#xC801;&#xC6A9; &#xAC00;&#xC774;&#xB4DC;">
+            <div class="clinical-card-head">
+              <div class="clinical-card-badge-row">
+                <span class="clinical-card-badge">&#x26A1; NOVACELL CLINICAL PROTOCOL</span>
+                <span id="proto-card-tag" class="clinical-card-guide-tag">&#xC784;&#xC111; &#xAC00;&#xC774;&#xB4DC; &amp; &#xC99D;&#xB840; &#xBD84;&#xC11D;&#xC2E4; &#xC5F0;&#xACC4;</span>
+              </div>
+              <h3 id="proto-card-title" class="clinical-card-title">&#xB178;&#xBC14;&#xC14B; &#xC758;&#xB8CC;&#xAE30; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C; &#xC801;&#xC6A9; &#xC784;&#xC111; &#xC2DC;&#xC220; &#xAC00;&#xC774;&#xB4DC;</h3>
+              <p id="proto-card-sub" class="clinical-card-sub">NovaCell Microcurrent Probe Circuit Protocol &amp; Clinical Pearls</p>
+            </div>
+
+            <!-- 시술 기본 스펙 요약 바 -->
+            <div class="clinical-spec-tiles">
+              <div class="spec-mini-tile">
+                <div id="spec-tile-1-label" class="spec-mini-label">&#xCD9C;&#xB825; &#xAC15;&#xB3C4; &#xB808;&#xBCA8;</div>
+                <div id="spec-tile-1-val" class="spec-mini-val">&#xACE0;&#xC804;&#xC555; &#xBBF8;&#xC138;&#xC804;&#xB958; 03~05&#xB2E8;&#xACC4; (&#xD3B8;&#xC548;&#xD55C; &#xD384;&#xC2A4; &#xC9C4;&#xB3D9;)</div>
+              </div>
+              <div class="spec-mini-tile">
+                <div id="spec-tile-2-label" class="spec-mini-label">&#xD39C; &#xB3C4;&#xC790; &#xC811;&#xCD09; &#xBC29;&#xC2DD;</div>
+                <div id="spec-tile-2-val" class="spec-mini-val">&#xC810;&#xC9C4;&#xC801; &#xC2EC;&#xBD80; &#xC555;&#xBC15; &#xC9C1;&#xAC01; &#xC548;&#xCC29; (Point Compression)</div>
+              </div>
+              <div class="spec-mini-tile">
+                <div id="spec-tile-3-label" class="spec-mini-label">&#xB530;&#xB054;&#xAC70;&#xB9BC; &#xC608;&#xBC29; / &#xC804;&#xB3C4;&#xC131;</div>
+                <div id="spec-tile-3-val" class="spec-mini-val">&#xC54C;&#xCF5C; &#xB610;&#xB294; &#xC0DD;&#xB9AC;&#xC2DD;&#xC5FC;&#xC218;/&#xC804;&#xB3C4;&#xC131; &#xBBF8;&#xC2A4;&#xD2B8; &#xC2A4;&#xD504;&#xB808;&#xC774;</div>
+              </div>
+            </div>
+
+            <!-- 임상 시술 순서 (Treatment Sequence) -->
+            <div class="clinical-section">
+              <div class="clinical-section-header">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20v-6M6 20V10M18 20V4"></path>
+                </svg>
+                <h4 id="proto-sequence-title">&#xC784;&#xC111; &#xC2DC;&#xC220; &#xC21C;&#xC11C; (Treatment Sequence)</h4>
+              </div>
+
+              <div class="clinical-steps-grid">
+                <div class="clinical-step-box step-check">
+                  <div id="proto-step-1-badge" class="step-num-badge">1&#xB2E8;&#xACC4; [&#xC804;&#xC555; &#xCCB4;&#xD06C;]</div>
+                  <div class="step-target" id="proto-step-check-title">&#xCCB4;&#xD06C; &#xD3EC;&#xC778;&#xD2B8; &#xC9C1;&#xAC01; &#xC811;&#xCD09;</div>
+                  <p class="step-desc" id="proto-step-check-desc">&#xD39C; &#xB3C4;&#xC790;&#xB97C; &#xD574;&#xB2F9; &#xD68C;&#xB85C;&#xC758; &#xC804;&#xC555; &#xCCB4;&#xD06C; &#xD3EC;&#xC778;&#xD2B8;&#xC5D0; 25~30&#xCD08;&#xAC04; &#xC9C1;&#xAC01;&#xC73C;&#xB85C; &#xC548;&#xCC29;&#xD558;&#xC5EC; &#xBD84;&#xC808; &#xD68C;&#xB85C;&#xC758; &#xC804;&#xC555; &#xC0C1;&#xD0DC;&#xB97C; &#xD655;&#xC778;&#xD558;&#xACE0; &#xC911;&#xCD94; &#xD765;&#xBD84;&#xC744; &#xC548;&#xC815;&#xD654;&#xD569;&#xB2C8;&#xB2E4;.</p>
+                </div>
+
+                <div class="clinical-step-box step-supply">
+                  <div id="proto-step-2-badge" class="step-num-badge">2&#xB2E8;&#xACC4; [&#xC804;&#xC555; &#xACF5;&#xAE09;]</div>
+                  <div class="step-target" id="proto-step-supply-title">&#xACF5;&#xAE09; &#xD3EC;&#xC778;&#xD2B8; &#xD1B5;&#xC804; &amp; 528Hz &#xD0C0;&#xC774;&#xBA38;</div>
+                  <p class="step-desc" id="proto-step-supply-desc">&#xC804;&#xC555; &#xACF5;&#xAE09; &#xD3EC;&#xC778;&#xD2B8;&#xC5D0; &#xB3C4;&#xC790;&#xB97C; &#xC218;&#xC9C1;&#xC73C;&#xB85C; &#xBC00;&#xCC29;&#xD558;&#xACE0; 528Hz &#xCE58;&#xC720; &#xD0C0;&#xC774;&#xBA38;(3~5&#xBD84;)&#xB97C; &#xAC00;&#xB3D9;&#xD558;&#xC5EC; &#xC138;&#xD3EC;&#xB9C9; &#xC804;&#xC704;&#xB97C; &#xCDA9;&#xC804;&#xD558;&#xACE0; ATP &#xC0DD;&#xC131;&#xC744; &#xADF9;&#xB300;&#xD654;&#xD569;&#xB2C8;&#xB2E4;.</p>
+                </div>
+
+                <div class="clinical-step-box step-muscle">
+                  <div id="proto-step-3-badge" class="step-num-badge">3&#xB2E8;&#xACC4; [&#xADFC;&#xC721; &#xBC30;&#xD130;&#xB9AC;]</div>
+                  <div class="step-target" id="proto-step-muscle-title">&#xADFC;&#xC721; &#xBC30;&#xD130;&#xB9AC; &#xC21C;&#xCC28; &#xC2DC;&#xC220;</div>
+                  <p class="step-desc" id="proto-step-muscle-desc">&#xD68C;&#xB85C; &#xC8FC;&#xC694; &#xADFC;&#xC721; &#xBC30;&#xD130;&#xB9AC;&#xC758; &#xAE30;&#xC2DC;&#xBD80;/&#xBD80;&#xCC29;&#xBD80;&#xB97C; &#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xAC01; 1&#xBD84;&#xC529; &#xD1B5;&#xC804;&#xD558;&#xC5EC; &#xB9D0;&#xCD08; &#xC2E0;&#xACBD; &#xD3EC;&#xCC29;&#xACFC; &#xADFC;&#xB9C9; &#xC720;&#xCC29;&#xC744; &#xD574;&#xC18C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 임상 시술 노하우 & Clinical Pearls -->
+            <div class="clinical-pearls-card">
+              <div class="pearls-header">
+                <span class="pearls-icon">&#x1F4A1;</span>
+                <strong id="proto-pearls-title">&#xC784;&#xC111; &#xC2DC;&#xC220; &#xB178;&#xD558;&#xC6B0; &amp; Clinical Pearls</strong>
+              </div>
+              <ul id="proto-pearls-list" class="pearls-list">
+                <li><strong>&#xD574;&#xBD80;&#xD559;&#xC801; &#xD568;&#xC694;&#xCC98; &#xC9C1;&#xAC01; &#xC548;&#xCC29;:</strong> &#xB3C4;&#xC790; &#xD301;&#xC744; &#xAC15;&#xD558;&#xAC8C; &#xBE44;&#xBE44;&#xAC70;&#xB098; &#xC9C0;&#xB974;&#xC9C0; &#xB9D0;&#xACE0;, &#xBF08; &#xACBD;&#xACC4; &#xC624;&#xBAA9;&#xD55C; &#xACF3;(&#xD608;&#xC790;&#xB9AC; &#xBC0F; &#xAC74;·&#xADFC;&#xB9C9; &#xC811;&#xD569;&#xBD80;)&#xC5D0; &#xD39C;&#xCD09;&#xC744; &#xAC00;&#xB9CC;&#xD788; &#xC9C1;&#xAC01;&#xC73C;&#xB85C; &#xC548;&#xCC29;&#xC2DC;&#xD0A8; &#xC0C1;&#xD0DC;&#xC5D0;&#xC11C; &#xC804;&#xAE30;&#xB97C; &#xC778;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</li>
+                <li><strong>&#xC804;&#xB3C4;&#xC131; &#xC218;&#xBD84;&#xAC10; &#xC720;&#xC9C0;:</strong> &#xD53C;&#xBD80; &#xD45C;&#xBA74;&#xC5D0; &#xC804;&#xB3C4;&#xC131; &#xBBF8;&#xC2A4;&#xD2B8;&#xB098; &#xC54C;&#xCF5C;/&#xC0DD;&#xB9AC;&#xC2DD;&#xC5FC;&#xC218;&#xB97C; &#xAC00;&#xBCCFD;&#xAC8C; &#xB3C4;&#xD3EC;&#xD558;&#xC5EC; &#xCD09;&#xCD09;&#xD55C; &#xC218;&#xBD84;&#xAC10;&#xC744; &#xC720;&#xC9C0;&#xD558;&#xBA74; &#xBBF8;&#xC138;&#xC804;&#xB958;&#xC758; &#xC2EC;&#xBD80; &#xCE68;&#xD22C;&#xC728;&#xACFC; &#xC138;&#xD3EC; &#xD1B5;&#xC804; &#xD6A8;&#xC728;&#xC774; &#xADF9;&#xB300;&#xD654;&#xB418;&#xACE0; &#xB530;&#xB054;&#xAC70;&#xB9BC;&#xC774; &#xC608;&#xBC29;&#xB429;&#xB2C8;&#xB2E4;.</li>
+                <li><strong>528Hz &#xCE58;&#xC720; &#xC8FC;&#xD30C;&#xC218; &#xD638;&#xD761; &#xB3D9;&#xAE30;&#xD654;:</strong> &#xD0C0;&#xC774;&#xBA38;&#xC640; 528Hz &#xC74C;&#xC6D0;&#xC744; &#xAC00;&#xB3D9;&#xD558;&#xBA70; &#xD658;&#xC790;&#xAC00; &#xD3B8;&#xC548;&#xD55C; &#xBCF5;&#xC2DD; &#xD638;&#xD761;(&#xB4E4;&#xC228; 4&#xCD08;, &#xB0A0;&#xC228; 6&#xCD08;)&#xC744; &#xD558;&#xB3C4;&#xB85D; &#xC720;&#xB3C4;&#xD558;&#xBA74; &#xBD80;&#xAD50;&#xAC10; &#xC2E0;&#xACBD;&#xC774; &#xD65C;&#xC131;&#xD654;&#xB418;&#xC5B4; &#xC804;&#xC555; &#xD778;&#xC218;&#xAC00; &#xCD5C;&#xC801;&#xD654;&#xB429;&#xB2C8;&#xB2E4;.</li>
+                <li><strong>&#xC2F1;&#xC789;&#xBCFC; &#xC54C;&#xB9BC; &#xC885;&#xB8CC; &#xD6C4; &#xC7AC;&#xD3C9;&#xAC00;:</strong> &#xC138;&#xC158; &#xC644;&#xB8CC; &#xC2DC; &#xB9D1;&#xAC8C; &#xC6B8;&#xB9AC;&#xB294; &#xD2F0;&#xBCA0;&#xD2B8; &#xC2F1;&#xC789;&#xBCFC; &#xC885;&#xC18C;&#xB9AC;&#xC640; &#xD568;&#xAED8; &#xB3C4;&#xC790;&#xB97C; &#xB5BC;&#xACE0;, &#xAD00;&#xC808; &#xAC00;&#xB3D9; &#xBC94;&#xC704;(ROM)&#xC640; &#xD1B5;&#xC99D; &#xAC10;&#xC18C; &#xBC0F; &#xBC30;&#xD130;&#xB9AC; &#xADFC;&#xB825;&#xC744; &#xC7AC;&#xD3C9;&#xAC00;&#xD569;&#xB2C8;&#xB2E4;.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </div>
+      <aside class="evidence-note">
+        <strong id="evidence-title">&#xC790;&#xB8CC; &#xBC94;&#xC704;&#xC640; &#xC8FC;&#xC758;</strong>
+        <p id="evidence-text">&#xC774; &#xD398;&#xC774;&#xC9C0;&#xB294; &#xBC15;&#xCC3D;&#xD601; &#xC800; &#x300E;&#xB178;&#xBC14;&#xC14B; &#xD1B5;&#xCE58; &#xC694;&#xBC95;&#x300F; &#xC778;&#xC1C4; &#xD398;&#xC774;&#xC9C0; 204~217&#xC758; &#xB0B4;&#xC6A9;&#xC744; &#xC571;&#xC5D0;&#xC11C; &#xCC3E;&#xAE30; &#xC27D;&#xAC8C; &#xC62E;&#xAE34; &#xAD50;&#xC721;&middot;&#xC791;&#xC5C5;&#xC6A9; &#xD654;&#xBA74;&#xC785;&#xB2C8;&#xB2E4;. &#xCC45;&#xC5D0; &#xAE30;&#xC7AC;&#xB41C; &#xC801;&#xC6A9; &#xC9C8;&#xD658;, &#xD68C;&#xB85C; &#xC124;&#xBA85;&#xACFC; &#xD3EC;&#xC778;&#xD2B8;&#xB97C; &#xC548;&#xB0B4;&#xD558;&#xBA70;, &#xC571;&#xC774; &#xCE58;&#xB8CC; &#xD6A8;&#xACFC;&#xB098; &#xD658;&#xC790;&#xBCC4; &#xC704;&#xCE58;&#xB97C; &#xB3C5;&#xB9BD;&#xC801;&#xC73C;&#xB85C; &#xAC80;&#xC99D;&#xD588;&#xB2E4;&#xB294; &#xB73B;&#xC740; &#xC544;&#xB2D9;&#xB2C8;&#xB2E4;. &#xC2E4;&#xC81C; &#xC801;&#xC6A9; &#xC804; &#xD658;&#xC790; &#xC0C1;&#xD0DC;, &#xAE08;&#xAE30;, &#xD574;&#xBD80;&#xD559;&#xC801; &#xAD6C;&#xC870;&#xC640; &#xC784;&#xC111; &#xD310;&#xB2E8;&#xC744; &#xBCC4;&#xB3C4;&#xB85C; &#xD655;&#xC778;&#xD574; &#xC8FC;&#xC138;&#xC694;.</p>
+      </aside>
+    </section>
+  </main>
+
+    <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
+  <script src="js/circuits.js?v=38"></script>
+</body>
+</html>
