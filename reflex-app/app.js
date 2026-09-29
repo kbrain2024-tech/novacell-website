@@ -13,6 +13,7 @@ const maps = [
     regionSubEn: "Plantar Surface Reflex Zones · Textbook p.27",
     side: "RIGHT · FOOT",
     image: "foot-sole-map.webp",
+    imageEn: "foot-sole-map-en.png",
     page: 27
   },
   {
@@ -29,6 +30,7 @@ const maps = [
     regionSubEn: "Plantar Surface Reflex Zones · Textbook p.27",
     side: "LEFT · FOOT",
     image: "foot-sole-map.webp",
+    imageEn: "foot-sole-map-en.png",
     page: 27
   },
   {
@@ -45,6 +47,7 @@ const maps = [
     regionSubEn: "Dorsal Foot Reflex Zones · Textbook p.28",
     side: "RIGHT · FOOT",
     image: "foot-top-map.webp",
+    imageEn: "foot-top-map-en.png",
     page: 28
   },
   {
@@ -61,6 +64,7 @@ const maps = [
     regionSubEn: "Dorsal Foot Reflex Zones · Textbook p.28",
     side: "LEFT · FOOT",
     image: "foot-top-map.webp",
+    imageEn: "foot-top-map-en.png",
     page: 28
   },
   {
@@ -77,6 +81,7 @@ const maps = [
     regionSubEn: "Palmar Reflex Zones · Textbook p.31",
     side: "RIGHT · HAND",
     image: "hand-palm-map.webp",
+    imageEn: "hand-palm-map-en.png",
     page: 31
   },
   {
@@ -93,6 +98,7 @@ const maps = [
     regionSubEn: "Palmar Reflex Zones · Textbook p.31",
     side: "LEFT · HAND",
     image: "hand-palm-map.webp",
+    imageEn: "hand-palm-map-en.png",
     page: 31
   },
   {
@@ -109,6 +115,7 @@ const maps = [
     regionSubEn: "Dorsal Hand Reflex Zones · Textbook p.32",
     side: "RIGHT · HAND",
     image: "hand-back-map.webp",
+    imageEn: "hand-back-map-en.png",
     page: 32
   },
   {
@@ -125,6 +132,7 @@ const maps = [
     regionSubEn: "Dorsal Hand Reflex Zones · Textbook p.32",
     side: "LEFT · HAND",
     image: "hand-back-map.webp",
+    imageEn: "hand-back-map-en.png",
     page: 32
   }
 ];
@@ -226,6 +234,7 @@ const key = "novacell_reflex_therapy_v1";
 const state = {
   mode: "self",
   lang: "ko",
+  mapLang: "auto",
   voice: true,
   sound: true,
   masterVolume: 0.70,
@@ -1024,11 +1033,31 @@ function renderMapWorkspace() {
   if (!m) return;
   const isEn = state.lang === "en";
 
+  // Automatic language sync or explicit user override
+  const isMapEn = state.mapLang === "en" || (state.mapLang !== "ko" && isEn);
+  const activeImage = (isMapEn && m.imageEn) ? m.imageEn : m.image;
+
   $("#mapSide").textContent = m.side;
   $("#mapTitle").textContent = isEn ? m.en : m.title;
-  $("#mapSource").textContent = isEn ? `Textbook p.${m.page} · Base map protected` : `교재 ${m.page}쪽 · 기본 지도 보호`;
-  $("#mapImage").src = `./assets/${m.image}`;
-  $("#mapImage").alt = isEn ? `${m.en} textbook reflex map` : `${m.title} 교재 반사 지도`;
+  $("#mapSource").textContent = isMapEn
+    ? (isEn ? `English Anatomical Atlas · Textbook p.${m.page}` : `영문 정밀 해부 지도 · 교재 ${m.page}쪽`)
+    : (isEn ? `Textbook p.${m.page} · Base map protected` : `교재 ${m.page}쪽 · 기본 지도 보호`);
+  $("#mapImage").src = `./assets/${activeImage}`;
+  $("#mapImage").alt = isMapEn ? `${m.en} English reflexology map` : `${m.title} 교재 반사 지도`;
+
+  // Update Map Language Toggle Button in toolbar
+  const toggleBtn = $("#mapLangToggleBtn");
+  if (toggleBtn) {
+    if (isMapEn) {
+      toggleBtn.innerHTML = `🇰🇷 ${isEn ? "Textbook (KR)" : "원본 교재 (한글)"}`;
+      toggleBtn.title = isEn ? "Switch to original Korean textbook map" : "한글 원본 교재 지도로 전환";
+      toggleBtn.classList.add("active-en-map");
+    } else {
+      toggleBtn.innerHTML = `🇺🇸 ${isEn ? "English Map" : "영문 정밀 지도"}`;
+      toggleBtn.title = isEn ? "Switch to 100% translated English map" : "100% 영문 번역 지도로 전환";
+      toggleBtn.classList.remove("active-en-map");
+    }
+  }
 
   // Update Bilingual Region Banner (발바닥 / 발등 / 손바닥 / 손등)
   const rIcon = $("#mapRegionIcon");
@@ -2381,6 +2410,19 @@ function bind() {
     state.panX = state.panY = 0;
     applyTransform();
   };
+
+  // Map Language Toggle (Original Korean Textbook Map <-> 100% English Atlas Map)
+  const mapLangToggleBtn = $("#mapLangToggleBtn");
+  if (mapLangToggleBtn) {
+    mapLangToggleBtn.onclick = () => {
+      const isCurrentlyEn = state.mapLang === "en" || (state.mapLang !== "ko" && state.lang === "en");
+      state.mapLang = isCurrentlyEn ? "ko" : "en";
+      renderMapWorkspace();
+      toast(state.mapLang === "en"
+        ? (state.lang === "en" ? "Switched to English Reflex Map" : "영문 정밀 지도로 전환되었습니다.")
+        : (state.lang === "en" ? "Switched to Original Textbook Map" : "한글 원본 교재 지도로 전환되었습니다."));
+    };
+  }
 
   // Custom point add dialog
   $("#addPointBtn").onclick = () => {
