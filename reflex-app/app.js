@@ -7,14 +7,14 @@ const maps = [
     en: "Right Sole",
     subtitleKo: "발바닥 반사구 (우측)",
     subtitleEn: "Plantar Surface (Right)",
-    regionTitleKo: "오른발 발바닥 · 왼발 발바닥",
-    regionTitleEn: "Right Sole & Left Sole",
-    regionSubKo: "발바닥 반사구 · 교재 제1장 27쪽",
-    regionSubEn: "Plantar Surface Reflex Zones · Textbook p.27",
+    regionTitleKo: "오른발 발바닥 · 오른발 (우측)",
+    regionTitleEn: "Right Sole (Plantar)",
+    regionSubKo: "발바닥 반사구 · 교재 제1장 26쪽",
+    regionSubEn: "Reference: Complete reflexology for life · p.26",
     side: "RIGHT · FOOT",
     image: "foot-sole-map.webp",
-    imageEn: "foot-sole-map-en.png",
-    page: 27
+    imageEn: "foot-sole-right-en.png",
+    page: 26
   },
   {
     id: "left_sole",
@@ -24,13 +24,13 @@ const maps = [
     en: "Left Sole",
     subtitleKo: "발바닥 반사구 (좌측)",
     subtitleEn: "Plantar Surface (Left)",
-    regionTitleKo: "오른발 발바닥 · 왼발 발바닥",
-    regionTitleEn: "Right Sole & Left Sole",
+    regionTitleKo: "왼발 발바닥 · 왼발 (좌측)",
+    regionTitleEn: "Left Sole (Plantar)",
     regionSubKo: "발바닥 반사구 · 교재 제1장 27쪽",
-    regionSubEn: "Plantar Surface Reflex Zones · Textbook p.27",
+    regionSubEn: "Reference: Complete reflexology for life · p.27",
     side: "LEFT · FOOT",
     image: "foot-sole-map.webp",
-    imageEn: "foot-sole-map-en.png",
+    imageEn: "foot-sole-left-en.png",
     page: 27
   },
   {
@@ -41,14 +41,14 @@ const maps = [
     en: "Right Foot Top",
     subtitleKo: "발등 반사구 (우측)",
     subtitleEn: "Foot Dorsum (Right)",
-    regionTitleKo: "오른발 발등 · 왼발 발등",
-    regionTitleEn: "Right Foot Top & Left Foot Top",
-    regionSubKo: "발등 반사구 · 교재 제1장 28쪽",
-    regionSubEn: "Dorsal Foot Reflex Zones · Textbook p.28",
+    regionTitleKo: "오른발 발등 · 오른발 (우측)",
+    regionTitleEn: "Right Foot Top (Dorsum)",
+    regionSubKo: "발등 반사구 · 교재 제1장 29쪽",
+    regionSubEn: "Reference: Complete reflexology for life · p.29",
     side: "RIGHT · FOOT",
     image: "foot-top-map.webp",
-    imageEn: "foot-top-map-en.png",
-    page: 28
+    imageEn: "foot-top-right-en.png",
+    page: 29
   },
   {
     id: "left_top",
@@ -58,13 +58,13 @@ const maps = [
     en: "Left Foot Top",
     subtitleKo: "발등 반사구 (좌측)",
     subtitleEn: "Foot Dorsum (Left)",
-    regionTitleKo: "오른발 발등 · 왼발 발등",
-    regionTitleEn: "Right Foot Top & Left Foot Top",
+    regionTitleKo: "왼발 발등 · 왼발 (좌측)",
+    regionTitleEn: "Left Foot Top (Dorsum)",
     regionSubKo: "발등 반사구 · 교재 제1장 28쪽",
-    regionSubEn: "Dorsal Foot Reflex Zones · Textbook p.28",
+    regionSubEn: "Reference: Complete reflexology for life · p.28",
     side: "LEFT · FOOT",
     image: "foot-top-map.webp",
-    imageEn: "foot-top-map-en.png",
+    imageEn: "foot-top-left-en.png",
     page: 28
   },
   {
@@ -75,13 +75,13 @@ const maps = [
     en: "Right Palm",
     subtitleKo: "손바닥 반사구 (우측)",
     subtitleEn: "Palmar Surface (Right)",
-    regionTitleKo: "오른손 손바닥 · 왼손 손바닥",
-    regionTitleEn: "Right Palm & Left Palm",
+    regionTitleKo: "오른손 손바닥 · 오른손 (우측)",
+    regionTitleEn: "Right Palm (Palmar)",
     regionSubKo: "손바닥 반사구 · 교재 제2장 31쪽",
-    regionSubEn: "Palmar Reflex Zones · Textbook p.31",
+    regionSubEn: "Reference: Complete reflexology for life · p.31",
     side: "RIGHT · HAND",
     image: "hand-palm-map.webp",
-    imageEn: "hand-palm-map-en.png",
+    imageEn: "hand-palm-right-en.png",
     page: 31
   },
   {
@@ -92,14 +92,14 @@ const maps = [
     en: "Left Palm",
     subtitleKo: "손바닥 반사구 (좌측)",
     subtitleEn: "Palmar Surface (Left)",
-    regionTitleKo: "오른손 손바닥 · 왼손 손바닥",
-    regionTitleEn: "Right Palm & Left Palm",
-    regionSubKo: "손바닥 반사구 · 교재 제2장 31쪽",
-    regionSubEn: "Palmar Reflex Zones · Textbook p.31",
+    regionTitleKo: "왼손 손바닥 · 왼손 (좌측)",
+    regionTitleEn: "Left Palm (Palmar)",
+    regionSubKo: "손바닥 반사구 · 교재 제2장 30쪽",
+    regionSubEn: "Reference: Complete reflexology for life · p.30",
     side: "LEFT · HAND",
     image: "hand-palm-map.webp",
-    imageEn: "hand-palm-map-en.png",
-    page: 31
+    imageEn: "hand-palm-left-en.png",
+    page: 30
   },
   {
     id: "right_back",
@@ -109,14 +109,14 @@ const maps = [
     en: "Right Hand Back",
     subtitleKo: "손등 반사구 (우측)",
     subtitleEn: "Hand Dorsum (Right)",
-    regionTitleKo: "오른손 손등 · 왼손 손등",
-    regionTitleEn: "Right Hand Back & Left Hand Back",
-    regionSubKo: "손등 반사구 · 교재 제2장 32쪽",
-    regionSubEn: "Dorsal Hand Reflex Zones · Textbook p.32",
+    regionTitleKo: "오른손 손등 · 오른손 (우측)",
+    regionTitleEn: "Right Hand Back (Dorsum)",
+    regionSubKo: "손등 반사구 · 교재 제2장 33쪽",
+    regionSubEn: "Reference: Complete reflexology for life · p.33",
     side: "RIGHT · HAND",
     image: "hand-back-map.webp",
-    imageEn: "hand-back-map-en.png",
-    page: 32
+    imageEn: "hand-back-right-en.png",
+    page: 33
   },
   {
     id: "left_back",
@@ -126,13 +126,13 @@ const maps = [
     en: "Left Hand Back",
     subtitleKo: "손등 반사구 (좌측)",
     subtitleEn: "Hand Dorsum (Left)",
-    regionTitleKo: "오른손 손등 · 왼손 손등",
-    regionTitleEn: "Right Hand Back & Left Hand Back",
+    regionTitleKo: "왼손 손등 · 왼손 (좌측)",
+    regionTitleEn: "Left Hand Back (Dorsum)",
     regionSubKo: "손등 반사구 · 교재 제2장 32쪽",
-    regionSubEn: "Dorsal Hand Reflex Zones · Textbook p.32",
+    regionSubEn: "Reference: Complete reflexology for life · p.32",
     side: "LEFT · HAND",
     image: "hand-back-map.webp",
-    imageEn: "hand-back-map-en.png",
+    imageEn: "hand-back-left-en.png",
     page: 32
   }
 ];
@@ -1040,7 +1040,7 @@ function renderMapWorkspace() {
   $("#mapSide").textContent = m.side;
   $("#mapTitle").textContent = isEn ? m.en : m.title;
   $("#mapSource").textContent = isMapEn
-    ? (isEn ? `English Anatomical Atlas · Textbook p.${m.page}` : `영문 정밀 해부 지도 · 교재 ${m.page}쪽`)
+    ? (isEn ? `Reference: Complete reflexology for life (p.${m.page})` : `참고자료: Complete reflexology for life (${m.page}쪽)`)
     : (isEn ? `Textbook p.${m.page} · Base map protected` : `교재 ${m.page}쪽 · 기본 지도 보호`);
   $("#mapImage").src = `./assets/${activeImage}`;
   $("#mapImage").alt = isMapEn ? `${m.en} English reflexology map` : `${m.title} 교재 반사 지도`;

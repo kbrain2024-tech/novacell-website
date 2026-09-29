@@ -707,22 +707,22 @@ body.welcome-open{overflow:hidden}
 .top-actions {
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  flex-wrap: wrap !important;
+  gap: 5px !important;
+  flex-wrap: nowrap !important;
 }
 
 .header-cover-btn {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  min-height: 38px !important;
-  padding: 6px 14px !important;
+  gap: 5px !important;
+  min-height: 33px !important;
+  padding: 5px 9px !important;
   border: 1px solid rgba(56, 189, 248, 0.35) !important;
   border-radius: 999px !important;
   background: rgba(56, 189, 248, 0.08) !important;
   color: #dffbff !important;
   cursor: pointer !important;
-  font-size: 0.82rem !important;
+  font-size: 0.76rem !important;
   font-weight: 800 !important;
   white-space: nowrap !important;
   text-decoration: none !important;
@@ -780,39 +780,41 @@ body.welcome-open{overflow:hidden}
   display: inline-flex !important;
   align-items: center !important;
   gap: 7px !important;
-  min-height: 38px !important;
-  padding: 6px 14px !important;
+  min-height: 33px !important;
+  padding: 5px 10px !important;
   border-radius: 999px !important;
   background: rgba(15, 23, 42, 0.85) !important;
   border: 1px solid rgba(56, 189, 248, 0.28) !important;
-  font-size: 12px !important;
+  font-size: 11px !important;
   font-weight: 750 !important;
   color: #7dd3fc !important;
   letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
 }
 
 .header-status-badge .pulse-dot {
-  width: 8px !important;
-  height: 8px !important;
+  width: 7px !important;
+  height: 7px !important;
   border-radius: 50% !important;
   background: #22c55e !important;
   box-shadow: 0 0 8px #22c55e !important;
 }
 
-/* Segmented Language Toggle Button [ ?쒓? / ENG ] (Healing Points Standard) */
+/* Segmented Language Toggle Button [ 한글 / ENG ] (Healing Points Standard) */
 .lang-toggle-btn {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  min-height: 38px !important;
-  padding: 6px 15px !important;
+  gap: 5px !important;
+  min-height: 33px !important;
+  padding: 5px 10px !important;
   background: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 999px !important;
   color: #e2e8f0 !important;
   cursor: pointer !important;
-  font-size: 12.5px !important;
+  font-size: 11.5px !important;
   font-weight: 750 !important;
+  white-space: nowrap !important;
   transition: all 0.2s ease !important;
 }
 
@@ -841,15 +843,16 @@ body.welcome-open{overflow:hidden}
 .header-icon-btn {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 5px !important;
-  min-height: 38px !important;
-  padding: 6px 13px !important;
+  gap: 4px !important;
+  min-height: 33px !important;
+  padding: 5px 9px !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 999px !important;
   background: rgba(255, 255, 255, 0.05) !important;
   color: #cbd5e1 !important;
-  font-size: 12px !important;
+  font-size: 11.5px !important;
   font-weight: 750 !important;
+  white-space: nowrap !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
 }
@@ -865,6 +868,13 @@ body.welcome-open{overflow:hidden}
   background: rgba(56, 189, 248, 0.18) !important;
   color: #dffbff !important;
   box-shadow: 0 0 10px rgba(56, 189, 248, 0.25) !important;
+}
+
+.mode-switch button, .ghost {
+  min-height: 33px !important;
+  padding: 5px 10px !important;
+  font-size: 11.5px !important;
+  white-space: nowrap !important;
 }
 
 /* ==========================================================================
