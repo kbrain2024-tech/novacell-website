@@ -1185,7 +1185,8 @@ body.welcome-open{overflow:hidden}
 }
 
 /* ==========================================================================
-   SMART HIGH-CONTRAST VECTOR LABELS LAYER (지도 위 대형 선명 라벨)
+   SMART HIGH-CONTRAST VECTOR HOTSPOTS & SIDE INSPECTOR CARDS
+   (교재 이미지를 가리지 않는 투명 가이드 링 & 사이드 카드)
    ========================================================================== */
 .smart-label-layer {
   position: absolute;
@@ -1200,60 +1201,286 @@ body.welcome-open{overflow:hidden}
   pointer-events: none;
 }
 
-.smart-label-pin {
+/* Transparent Non-Obscuring Hotspot Rings (이미지를 가리지 않는 투명 링) */
+.smart-hotspot {
   position: absolute;
+  width: 22px;
+  height: 22px;
   transform: translate(-50%, -50%);
-  pointer-events: auto;
+  border-radius: 50%;
+  border: 1.5px solid rgba(85, 219, 232, 0.7);
+  background: rgba(85, 219, 232, 0.08);
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 9px 3px 6px;
-  background: rgba(9, 22, 39, 0.9);
-  border: 1.5px solid rgba(85, 219, 232, 0.75);
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  display: grid;
+  place-items: center;
   user-select: none;
-  white-space: nowrap;
-  transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              border-color 0.2s ease,
+              background 0.2s ease,
+              box-shadow 0.2s ease;
+  z-index: 6;
 }
 
-.smart-label-pin:hover,
-.smart-label-pin.active {
-  transform: translate(-50%, -50%) scale(1.18);
-  background: rgba(2, 132, 199, 0.98);
-  border-color: #ffffff;
-  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.65);
-  z-index: 10;
-}
-
-.smart-label-pin .pin-dot {
-  width: 7px;
-  height: 7px;
+.smart-hotspot .hotspot-core {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--gold);
-  box-shadow: 0 0 6px var(--gold);
+  box-shadow: 0 0 5px var(--gold);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.smart-hotspot:hover,
+.smart-hotspot.active {
+  transform: translate(-50%, -50%) scale(1.4);
+  border-color: #ffffff;
+  background: rgba(231, 184, 90, 0.25);
+  box-shadow: 0 0 16px rgba(231, 184, 90, 0.8), 0 0 28px rgba(85, 219, 232, 0.4);
+  z-index: 12;
+}
+
+.smart-hotspot:hover .hotspot-core,
+.smart-hotspot.active .hotspot-core {
+  background: #ffffff;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px #ffffff;
+}
+
+/* Non-obscuring Side Floating Inspection Card (사이드 인스펙션 플로팅 카드) */
+.stage-side-card {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 290px;
+  max-width: calc(100% - 36px);
+  background: linear-gradient(150deg, rgba(8, 22, 42, 0.94), rgba(12, 30, 56, 0.96));
+  border: 1.5px solid rgba(85, 219, 232, 0.4);
+  border-left: 5px solid var(--gold);
+  border-radius: 18px;
+  padding: 16px 18px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  z-index: 15;
+  pointer-events: auto;
+  user-select: none;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.stage-side-card.active {
+  border-color: #55dbe8;
+  box-shadow: 0 14px 45px rgba(14, 165, 233, 0.4), 0 0 20px rgba(85, 219, 232, 0.25);
+  transform: translateY(-2px);
+}
+
+.side-card-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.side-card-badge {
+  font-size: 10px;
+  font-weight: 850;
+  color: var(--gold);
+  background: rgba(231, 184, 90, 0.15);
+  border: 1px solid rgba(231, 184, 90, 0.35);
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.05em;
+}
+
+.side-card-tag {
+  font-size: 9.5px;
+  font-weight: 800;
+  color: var(--cyan);
+  background: rgba(85, 219, 232, 0.12);
+  border: 1px solid rgba(85, 219, 232, 0.25);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.side-card-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.side-card-icon {
+  font-size: 26px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
   flex-shrink: 0;
 }
 
-.smart-label-pin .pin-ko {
+.side-card-title-group {
+  min-width: 0;
+}
+
+.side-card-title {
+  display: block;
+  font-size: 17px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.side-card-en-title {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 650;
+  color: #7dd3fc;
+  margin-top: 1px;
+}
+
+.side-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.side-card-loc {
+  font-size: 11px;
+  font-weight: 750;
+  color: var(--gold);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(231, 184, 90, 0.25);
+}
+
+.side-card-desc {
+  margin: 0 0 10px 0;
   font-size: 12.5px;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.side-card-action-box {
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.side-card-action-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 850;
+  color: var(--cyan);
+  margin-bottom: 3px;
+}
+
+.side-card-action-box p {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #f1f5f9;
+}
+
+/* Dedicated Right Side Panel Live Inspector Card */
+.side-reflex-live-card {
+  background: linear-gradient(150deg, rgba(13, 29, 49, 0.95), rgba(17, 39, 64, 0.95));
+  border: 1.5px solid rgba(85, 219, 232, 0.35);
+  border-left: 5px solid var(--gold);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.22s ease;
+}
+
+.side-reflex-live-card.active {
+  border-color: #55dbe8;
+  box-shadow: 0 12px 30px rgba(14, 165, 233, 0.35);
+  transform: translateY(-2px);
+}
+
+.live-card-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 8px;
+}
+
+.live-card-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.live-card-title-col strong {
+  display: block;
+  font-size: 16px;
   font-weight: 900;
   color: #ffffff;
   letter-spacing: -0.01em;
 }
 
-.smart-label-pin .pin-en {
-  font-size: 10px;
+.live-card-sub {
+  display: block;
+  font-size: 11px;
+  color: #7dd3fc;
   font-weight: 650;
-  color: #93c5fd;
-  opacity: 0.95;
 }
 
-.smart-label-pin:hover .pin-en,
-.smart-label-pin.active .pin-en {
-  color: #ffffff;
+.live-card-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.live-tag {
+  font-size: 9.5px;
+  font-weight: 850;
+  color: var(--cyan);
+  background: rgba(85, 219, 232, 0.12);
+  border: 1px solid rgba(85, 219, 232, 0.3);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+.live-loc {
+  font-size: 10.5px;
+  font-weight: 750;
+  color: var(--gold);
+  background: rgba(231, 184, 90, 0.12);
+  border: 1px solid rgba(231, 184, 90, 0.3);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.live-card-desc {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.live-action-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9px;
+  padding: 8px 10px;
+}
+
+.live-action-box strong {
+  display: block;
+  font-size: 10.5px;
+  color: var(--gold);
+  margin-bottom: 3px;
+}
+
+.live-action-box p {
+  margin: 0;
+  font-size: 11.5px;
+  color: #e2e8f0;
+  line-height: 1.4;
 }
 
 /* ==========================================================================
@@ -1412,6 +1639,16 @@ dialog.fullscreen-map-modal::backdrop {
     display: flex;
     justify-content: flex-end;
   }
+  .stage-side-card {
+    top: auto;
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+    max-width: none;
+    padding: 12px 14px;
+    background: rgba(8, 22, 42, 0.96);
+  }
   .fs-modal-header {
     height: auto;
     padding: 10px 14px;
@@ -1429,5 +1666,10 @@ dialog.fullscreen-map-modal::backdrop {
   .fs-modal-controls .fs-preset-btn {
     padding: 0 8px;
     font-size: 11px;
+  }
+  .fs-stage-side-card {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
   }
 }

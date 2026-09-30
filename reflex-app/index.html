@@ -7,7 +7,7 @@
   <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 528Hz 치유 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
   <title>NovaCell Reflex Therapy APP | 손·발 반사요법 가이드</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=37">
+  <link rel="stylesheet" href="./styles.css?v=38">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
@@ -179,9 +179,9 @@
               </div>
             </div>
             <div class="hud-actions">
-              <button type="button" id="toggleSmartLabelsBtn" class="hud-label-toggle active" title="지도 위에 대형 고가독성 라벨 표시 토글">
+              <button type="button" id="toggleSmartLabelsBtn" class="hud-label-toggle active" title="지도 위 투명 가이드 링 표시 토글">
                 <span class="hud-toggle-indicator"></span>
-                <span id="smartLabelToggleText">대형 라벨 ON</span>
+                <span id="smartLabelToggleText">가이드 링 ON</span>
               </button>
             </div>
           </div>
@@ -192,6 +192,29 @@
               <div id="smartLabelLayer" class="smart-label-layer"></div>
               <div id="customLayer"></div>
             </div>
+
+            <!-- Non-obscuring Side Floating Inspection Card (사이드 인스펙션 플로팅 카드) -->
+            <aside id="stageSideCard" class="stage-side-card" aria-live="polite">
+              <div class="side-card-topbar">
+                <span class="side-card-badge" id="sideCardBadge">반사구 탐색 모드</span>
+                <span class="side-card-tag" id="sideCardTag">300 DPI ATLAS</span>
+              </div>
+              <div class="side-card-main">
+                <span class="side-card-icon" id="sideCardIcon">🦶</span>
+                <div class="side-card-title-group">
+                  <strong class="side-card-title" id="sideCardTitle">반사구를 가리켜보세요</strong>
+                  <span class="side-card-en-title" id="sideCardEnTitle">Point Inspector</span>
+                </div>
+              </div>
+              <div class="side-card-meta">
+                <span class="side-card-loc" id="sideCardLoc">위치: 부위 탐색 대기 중</span>
+              </div>
+              <p class="side-card-desc" id="sideCardDesc">지도 위의 인체 부위나 텍스트에 마우스 커서를 접촉하시면, 이미지를 전혀 가리지 않고 이곳에 선명한 대형 명칭과 상세 해부학 효과가 즉시 표시됩니다.</p>
+              <div class="side-card-action-box" id="sideCardActionBox">
+                <span class="side-card-action-label">💡 임상 적응증 &amp; 지압 요령</span>
+                <p id="sideCardActionText">손·발 반사구를 20~30초간 지그시 압박하면 상응 장기의 혈류와 신경 활성을 돕습니다.</p>
+              </div>
+            </aside>
           </div>
 
           <div class="map-toolbar">
@@ -219,6 +242,27 @@
             <div><p class="eyebrow" data-i18n="pointPanelEyebrow">POINTS</p><h2 data-i18n="pointPanelTitle">반사구 정보</h2></div>
             <span id="pointCount">0</span>
           </div>
+
+          <!-- Dedicated Side Live Inspection Card for Base Map Anatomy -->
+          <div id="sideReflexLiveCard" class="side-reflex-live-card">
+            <div class="live-card-head">
+              <span id="liveCardIcon" class="live-card-icon">🦶</span>
+              <div class="live-card-title-col">
+                <strong id="liveCardTitle">반사구를 가리켜보세요</strong>
+                <span id="liveCardSub" class="live-card-sub">실시간 사이드 인스펙터</span>
+              </div>
+            </div>
+            <div class="live-card-tags">
+              <span id="liveCardTag" class="live-tag">300 DPI ATLAS</span>
+              <span id="liveCardLoc" class="live-loc">대기 중</span>
+            </div>
+            <p id="liveCardDesc" class="live-card-desc">지도 위의 인체 부위나 텍스트에 커서를 접촉하시면 이미지를 가리지 않고 이곳에 선명하게 안내됩니다.</p>
+            <div id="liveCardActionBox" class="live-action-box">
+              <strong>💡 자극 포인트</strong>
+              <p id="liveCardActionDesc">마우스 커서를 지도 위 반사구에 올려보세요.</p>
+            </div>
+          </div>
+
           <div class="protected-note" data-i18n="protectedNote">🔒 교재 기본 반사구는 원본 지도에 고정되어 있습니다.</div>
           <div id="pointDetail" class="point-detail empty">
             <strong data-i18n="pointDetailPrompt">포인트를 선택하세요</strong>
@@ -560,12 +604,34 @@
         <img id="fsMapImage" src="./assets/foot-sole-map-en.png" alt="전체화면 고해상도 반사 지도" draggable="false">
         <div id="fsSmartLabelLayer" class="smart-label-layer"></div>
       </div>
+      <!-- Fullscreen Non-obscuring Side Floating Card -->
+      <aside id="fsStageSideCard" class="stage-side-card fs-stage-side-card" aria-live="polite">
+        <div class="side-card-topbar">
+          <span class="side-card-badge" id="fsSideCardBadge">ULTRA HD ATLAS</span>
+          <span class="side-card-tag">300 DPI</span>
+        </div>
+        <div class="side-card-main">
+          <span class="side-card-icon" id="fsSideCardIcon">🦶</span>
+          <div class="side-card-title-group">
+            <strong class="side-card-title" id="fsSideCardTitle">부위를 가리켜보세요</strong>
+            <span class="side-card-en-title" id="fsSideCardEnTitle">Point Inspector</span>
+          </div>
+        </div>
+        <div class="side-card-meta">
+          <span class="side-card-loc" id="fsSideCardLoc">위치 탐색 대기 중</span>
+        </div>
+        <p class="side-card-desc" id="fsSideCardDesc">원하는 부위나 텍스트를 마우스로 가리키면 이미지를 가리지 않고 이곳에 선명하게 안내됩니다.</p>
+        <div class="side-card-action-box" id="fsSideCardActionBox">
+          <span class="side-card-action-label">💡 상세 해부학 효과</span>
+          <p id="fsSideCardActionText">가리키는 반사점의 세부 설명과 치료 적응증이 실시간 노출됩니다.</p>
+        </div>
+      </aside>
     </div>
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./program-data.js?v=37"></script>
-  <script src="./app.js?v=37"></script>
+  <script src="./program-data.js?v=38"></script>
+  <script src="./app.js?v=38"></script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="reflex_therapy_1y" data-lang="ko"></script>

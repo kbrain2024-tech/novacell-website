@@ -983,8 +983,8 @@ function applyLanguage() {
   const smartLabelText = $("#smartLabelToggleText");
   if (smartLabelText) {
     smartLabelText.textContent = state.showSmartLabels
-      ? (isEn ? "Smart Labels ON" : "대형 라벨 ON")
-      : (isEn ? "Smart Labels OFF" : "대형 라벨 OFF");
+      ? (isEn ? "Guide Rings ON" : "가이드 링 ON")
+      : (isEn ? "Guide Rings OFF" : "가이드 링 OFF");
   }
   const openFsBtn = $("#openFullscreenMapBtn");
   if (openFsBtn) {
@@ -1133,14 +1133,22 @@ function renderMapWorkspace() {
   const rSub = $("#mapRegionSub");
   if (rSub) rSub.textContent = isEn ? m.regionSubEn : m.regionSubKo;
 
-  // Reset / Update HUD Inspector default prompt for current map
+  // Reset / Update HUD Inspector & Side Inspection Cards default prompt for current map
   const hudIcon = $("#hudPointIcon"); if (hudIcon) hudIcon.textContent = m.icon;
   const hudTitle = $("#hudPointTitle"); if (hudTitle) hudTitle.textContent = isEn ? `Smart Inspector · ${m.en}` : `반사구 탐색 모드 · ${m.title}`;
   const hudDesc = $("#hudPointDesc"); if (hudDesc) hudDesc.textContent = isEn
-    ? "Click any smart badge or glossary item below for instant high-legibility anatomical details."
-    : "지도 위의 대형 라벨이나 아래 대역표를 클릭하시면 선명한 명칭과 상세 해부학 정보가 안내됩니다.";
+    ? "Hover over any anatomical zone or text on the map. High-legibility clinical details will display at the side without covering the image."
+    : "지도 위의 인체 부위나 텍스트를 마우스로 가리키시면, 이미지를 가리지 않고 사이드 카드에 선명한 대형 명칭과 상세 해부학 효과가 즉시 표시됩니다.";
 
-  // Render Interactive Bilingual Anatomical Atlas Glossary & Smart Vector Labels
+  // Reset Floating Side Card inside Map Stage
+  const sTitle = $("#sideCardTitle"); if (sTitle) sTitle.textContent = isEn ? `${m.en} Reflex Zones` : `${m.title} 반사구`;
+  const sEn = $("#sideCardEnTitle"); if (sEn) sEn.textContent = isEn ? m.title : m.en;
+  const sLoc = $("#sideCardLoc"); if (sLoc) sLoc.textContent = isEn ? "Hover any area to inspect" : "인체 부위를 가리키면 표시";
+  const sDesc = $("#sideCardDesc"); if (sDesc) sDesc.textContent = isEn
+    ? "Hover over any anatomical point or text on the map. Details will display here at the side without covering the image."
+    : "지도 위의 인체 부위나 텍스트에 커서를 접촉하시면 이미지를 전혀 가리지 않고 이곳에 대형 글씨로 상세 안내가 나타납니다.";
+
+  // Render Interactive Bilingual Anatomical Atlas Glossary & Smart Vector Hotspots
   renderMapGlossary(m.surface);
   renderSmartLabels();
 
@@ -1175,7 +1183,7 @@ function renderMapGlossary(surfaceKey) {
         const pins = surfacePins[surfaceKey] || [];
         const match = pins.find(p => p.ko.includes(ko) || ko.includes(p.ko));
         if (match) {
-          inspectReflexPoint(match.id, surfaceKey);
+          inspectReflexPoint(match.id, surfaceKey, true);
         } else {
           const hudTitle = $("#hudPointTitle");
           const hudDesc = $("#hudPointDesc");
@@ -1183,6 +1191,14 @@ function renderMapGlossary(surfaceKey) {
           if (hudTitle) hudTitle.textContent = isEn ? `${itemEl.dataset.glossaryEn} (${ko})` : `${ko} · ${itemEl.dataset.glossaryEn}`;
           if (hudTag) hudTag.textContent = isEn ? "ATLAS REFLEX POINT" : "해부학 표준 반사구";
           if (hudDesc) hudDesc.textContent = isEn ? `Target reflex zone for ${itemEl.dataset.glossaryEn}. Refer to highlighted areas on the map.` : `${ko} 반사구 위치입니다. 지도 내 해당 구역을 확인해 주세요.`;
+        }
+      };
+      itemEl.onmouseenter = () => {
+        const ko = itemEl.dataset.glossaryKo;
+        const pins = surfacePins[surfaceKey] || [];
+        const match = pins.find(p => p.ko.includes(ko) || ko.includes(p.ko));
+        if (match) {
+          inspectReflexPoint(match.id, surfaceKey, false);
         }
       };
     });
@@ -1203,18 +1219,17 @@ function renderSmartLabels() {
     layer.classList.remove("hidden");
   }
 
+  // Render transparent non-obscuring hotspots
   layer.innerHTML = pins.map(p => `
-    <div class="smart-label-pin" style="left:${p.x}%;top:${p.y}%" data-pin-id="${p.id}" title="${isEn ? p.en : p.ko}">
-      <span class="pin-dot"></span>
-      <span class="pin-ko">${isEn ? p.en : p.ko}</span>
-      <span class="pin-en">${isEn ? p.ko : p.en}</span>
+    <div class="smart-hotspot" style="left:${p.x}%;top:${p.y}%" data-pin-id="${p.id}" title="${isEn ? `${p.en} (${p.ko})` : `${p.ko} (${p.en})`}">
+      <span class="hotspot-core"></span>
     </div>
   `).join("");
 
-  layer.querySelectorAll(".smart-label-pin").forEach(pinEl => {
+  layer.querySelectorAll(".smart-hotspot").forEach(pinEl => {
     pinEl.onclick = e => {
       e.stopPropagation();
-      inspectReflexPoint(pinEl.dataset.pinId, m.surface);
+      inspectReflexPoint(pinEl.dataset.pinId, m.surface, true);
     };
     pinEl.onmouseenter = () => {
       inspectReflexPoint(pinEl.dataset.pinId, m.surface, false);
@@ -1226,11 +1241,52 @@ function renderSmartLabels() {
   if (fsLayer) {
     fsLayer.innerHTML = layer.innerHTML;
     fsLayer.classList.toggle("hidden", !state.showSmartLabels);
-    fsLayer.querySelectorAll(".smart-label-pin").forEach(pinEl => {
+    fsLayer.querySelectorAll(".smart-hotspot").forEach(pinEl => {
       pinEl.onclick = e => {
         e.stopPropagation();
-        inspectReflexPoint(pinEl.dataset.pinId, m.surface);
+        inspectReflexPoint(pinEl.dataset.pinId, m.surface, true);
       };
+      pinEl.onmouseenter = () => {
+        inspectReflexPoint(pinEl.dataset.pinId, m.surface, false);
+      };
+    });
+  }
+
+  // Canvas hover proximity detector: detects mouse motion near any anatomical point
+  const canvas = $("#mapCanvas");
+  if (canvas && !canvas._proximityBound) {
+    canvas._proximityBound = true;
+    let lastProxCheck = 0;
+    canvas.addEventListener("pointermove", e => {
+      if (state.pendingPoint) return;
+      const now = Date.now();
+      if (now - lastProxCheck < 45) return;
+      lastProxCheck = now;
+
+      const rect = canvas.getBoundingClientRect();
+      const normX = ((e.clientX - rect.left) / rect.width) * 100;
+      const normY = ((e.clientY - rect.top) / rect.height) * 100;
+
+      const currentMap = maps.find(x => x.id === state.mapId);
+      if (!currentMap) return;
+      const currentPins = surfacePins[currentMap.surface] || [];
+
+      // Find closest hotspot within 5.5% distance
+      let closest = null;
+      let minDist = 5.5;
+      for (const p of currentPins) {
+        const dx = normX - p.x;
+        const dy = normY - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = p;
+        }
+      }
+
+      if (closest) {
+        inspectReflexPoint(closest.id, currentMap.surface, false);
+      }
     });
   }
 }
@@ -1241,6 +1297,64 @@ function inspectReflexPoint(pinId, surfaceKey, playFeedback = true) {
   if (!p) return;
 
   const isEn = state.lang === "en";
+
+  // 1. Update Floating Side Card inside Map Stage
+  const sideCard = $("#stageSideCard");
+  const sIcon = $("#sideCardIcon");
+  const sTitle = $("#sideCardTitle");
+  const sEn = $("#sideCardEnTitle");
+  const sLoc = $("#sideCardLoc");
+  const sDesc = $("#sideCardDesc");
+  const sActText = $("#sideCardActionText");
+
+  if (sIcon) sIcon.textContent = p.icon || "📍";
+  if (sTitle) sTitle.textContent = isEn ? p.en : p.ko;
+  if (sEn) sEn.textContent = isEn ? p.ko : p.en;
+  if (sLoc) sLoc.textContent = isEn ? `Location: ${p.tagEn}` : `위치: ${p.tagKo}`;
+  if (sDesc) sDesc.textContent = isEn ? p.descEn : p.descKo;
+  if (sActText) sActText.textContent = isEn
+    ? `Apply firm, circular pressure for 20-30s to stimulate the corresponding ${p.en} pathway.`
+    : `${p.ko} 반사점에 엄지로 부드러운 원을 그리며 20~30초간 자극하세요.`;
+
+  if (sideCard) {
+    sideCard.classList.add("active");
+    clearTimeout(sideCard._timer);
+    sideCard._timer = setTimeout(() => sideCard.classList.remove("active"), 1600);
+  }
+
+  // 2. Update Fullscreen Side Card
+  const fsIcon = $("#fsSideCardIcon"); if (fsIcon) fsIcon.textContent = p.icon || "📍";
+  const fsTitle = $("#fsSideCardTitle"); if (fsTitle) fsTitle.textContent = isEn ? p.en : p.ko;
+  const fsEn = $("#fsSideCardEnTitle"); if (fsEn) fsEn.textContent = isEn ? p.ko : p.en;
+  const fsLoc = $("#fsSideCardLoc"); if (fsLoc) fsLoc.textContent = isEn ? `Location: ${p.tagEn}` : `위치: ${p.tagKo}`;
+  const fsDesc = $("#fsSideCardDesc"); if (fsDesc) fsDesc.textContent = isEn ? p.descEn : p.descKo;
+  const fsAct = $("#fsSideCardActionText"); if (fsAct) fsAct.textContent = isEn ? p.descEn : p.descKo;
+
+  // 3. Update Dedicated Right Side Panel Live Card
+  const liveCard = $("#sideReflexLiveCard");
+  const lIcon = $("#liveCardIcon");
+  const lTitle = $("#liveCardTitle");
+  const lSub = $("#liveCardSub");
+  const lLoc = $("#liveCardLoc");
+  const lDesc = $("#liveCardDesc");
+  const lActDesc = $("#liveCardActionDesc");
+
+  if (lIcon) lIcon.textContent = p.icon || "📍";
+  if (lTitle) lTitle.textContent = isEn ? p.en : p.ko;
+  if (lSub) lSub.textContent = isEn ? p.ko : p.en;
+  if (lLoc) lLoc.textContent = isEn ? p.tagEn : p.tagKo;
+  if (lDesc) lDesc.textContent = isEn ? p.descEn : p.descKo;
+  if (lActDesc) lActDesc.textContent = isEn
+    ? `Gentle pressure on ${p.en} supports organ harmony and cellular vitality.`
+    : `${p.ko} 지압 시 호흡을 편안히 유지하며 천천히 압력을 조절합니다.`;
+
+  if (liveCard) {
+    liveCard.classList.add("active");
+    clearTimeout(liveCard._timer);
+    liveCard._timer = setTimeout(() => liveCard.classList.remove("active"), 1600);
+  }
+
+  // 4. Update Top Map Point HUD Banner
   const hud = $("#mapPointHUD");
   const icon = $("#hudPointIcon");
   const title = $("#hudPointTitle");
@@ -1255,13 +1369,15 @@ function inspectReflexPoint(pinId, surfaceKey, playFeedback = true) {
   if (hud) {
     hud.style.borderColor = "var(--cyan)";
     hud.style.boxShadow = "0 0 20px rgba(85,219,232,0.35)";
-    setTimeout(() => {
+    clearTimeout(hud._timer);
+    hud._timer = setTimeout(() => {
       hud.style.borderColor = "";
       hud.style.boxShadow = "";
     }, 1200);
   }
 
-  $$(".smart-label-pin").forEach(el => {
+  // 5. Highlight active hotspot
+  $$(".smart-hotspot").forEach(el => {
     el.classList.toggle("active", el.dataset.pinId === pinId);
   });
 
@@ -1332,7 +1448,7 @@ function setupFsPan() {
   if (!stage) return;
   let start = null;
   stage.onpointerdown = e => {
-    if (e.target.closest(".smart-label-pin")) return;
+    if (e.target.closest(".smart-hotspot") || e.target.closest(".stage-side-card")) return;
     start = { x: e.clientX, y: e.clientY, px: state.fsPanX, py: state.fsPanY };
     stage.setPointerCapture?.(e.pointerId);
     stage.classList.add("dragging");
@@ -1455,7 +1571,7 @@ function setupMapPan() {
   const stage = $("#mapStage");
   let start = null;
   stage.onpointerdown = e => {
-    if (e.target.closest(".custom-point") || e.target.closest(".smart-label-pin")) return;
+    if (e.target.closest(".custom-point") || e.target.closest(".smart-hotspot") || e.target.closest(".stage-side-card")) return;
     if (state.pendingPoint) {
       placePoint(e);
       return;
@@ -2679,13 +2795,13 @@ function bind() {
       const textSpan = $("#smartLabelToggleText");
       if (textSpan) {
         textSpan.textContent = state.showSmartLabels
-          ? (state.lang === "en" ? "Smart Labels ON" : "대형 라벨 ON")
-          : (state.lang === "en" ? "Smart Labels OFF" : "대형 라벨 OFF");
+          ? (state.lang === "en" ? "Guide Rings ON" : "가이드 링 ON")
+          : (state.lang === "en" ? "Guide Rings OFF" : "가이드 링 OFF");
       }
       renderSmartLabels();
       toast(state.showSmartLabels
-        ? (state.lang === "en" ? "High-legibility smart labels visible" : "대형 고가독성 라벨이 켜졌습니다.")
-        : (state.lang === "en" ? "Smart labels hidden" : "대형 라벨이 숨겨졌습니다."));
+        ? (state.lang === "en" ? "Transparent guide rings visible" : "지도 위 투명 가이드 링이 켜졌습니다.")
+        : (state.lang === "en" ? "Guide rings hidden (Pure textbook map)" : "가이드 링이 숨겨졌습니다. (순수 원본 지도 모드)"));
     };
   }
 
