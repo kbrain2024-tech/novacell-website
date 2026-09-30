@@ -1,10 +1,10 @@
-const CACHE = "novacell-reflex-therapy-v44-hd-dual-lang-maps";
+const CACHE = "novacell-reflex-therapy-v45-complete-8maps-all-pairs";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=44",
-  "./program-data.js?v=44",
-  "./app.js?v=44",
+  "./styles.css?v=45",
+  "./program-data.js?v=45",
+  "./app.js?v=45",
   "./manifest.webmanifest",
   "./assets/foot-sole-map.webp",
   "./assets/foot-top-map.webp",
@@ -24,6 +24,7 @@ const ASSETS = [
   "./assets/foot-top-left-en.png",
   "./assets/hand-palm-right-ko.png",
   "./assets/hand-palm-right-en.png",
+  "./assets/hand-palm-left-ko.png",
   "./assets/hand-palm-left-en.png",
   "./assets/hand-back-right-ko.png",
   "./assets/hand-back-right-en.png",

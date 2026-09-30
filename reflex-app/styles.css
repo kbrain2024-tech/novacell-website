@@ -103,6 +103,8 @@ body.session-mode .workflow-tabs{grid-template-columns:repeat(5,1fr)}
 body.welcome-open{overflow:hidden}
 .welcome-gate{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;padding:clamp(10px,2vw,24px);background:radial-gradient(circle at 18% 20%,rgba(35,201,217,.13),transparent 35%),rgba(2,10,22,.94);backdrop-filter:blur(12px);transition:opacity .28s ease,transform .28s ease}
 .welcome-gate.closing{opacity:0;transform:scale(1.012);pointer-events:none}
+.welcome-gate[hidden],.welcome-gate.hidden{display:none!important}
+body.novacell-access-granted #novacellAccessGate{display:none!important;pointer-events:none!important}
 .welcome-shell{width:min(1220px,100%);height:min(650px,calc(100dvh - 20px));display:grid;grid-template-columns:55% 45%;overflow:hidden;border:1px solid rgba(42,213,225,.5);border-radius:25px;background:#071426;box-shadow:0 32px 90px rgba(0,0,0,.58),0 0 45px rgba(42,213,225,.09)}
 .welcome-visual{position:relative;min-width:0;overflow:hidden;background:#071426}.welcome-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,13,26,.28),transparent 54%,rgba(7,20,38,.52)),linear-gradient(0deg,rgba(3,13,26,.62),transparent 35%);pointer-events:none}.welcome-visual>img{width:100%;height:100%;display:block;object-fit:cover;object-position:57% center}
 .welcome-visual-copy{position:absolute;z-index:2;left:8%;top:12%;display:flex;flex-direction:column;color:white;text-shadow:0 3px 18px rgba(0,0,0,.55)}.welcome-visual-copy span,.welcome-visual-copy strong{font-size:clamp(2rem,3.7vw,3.8rem);line-height:.98;letter-spacing:-.05em}.welcome-visual-copy strong{font-weight:400}.welcome-visual-copy small{margin-top:15px;font-size:clamp(.9rem,1.35vw,1.25rem);letter-spacing:.01em}
