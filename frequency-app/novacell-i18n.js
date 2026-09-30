@@ -465,6 +465,10 @@
       vipPassBtn: 'NovaCell 이용권 가입 및 안내 보기',
       vipPhone: '전화 상담: 010-9726-7012',
       vipClose: '체험 모드로 계속하기',
+      vipPriceSub: '100대 Rife 주파수 · VIP 임상코드 · 고음질 음원 무제한 다운로드',
+      vipPriceAmount: '330,000원',
+      vipPriceTerm: '/ 1년 무제한 이용 (US $300)',
+      vipPassBtn: '1년 정기 패스 가입 (33만원 / $300)',
 
       // 모달 & 모바일 드로어
       modalSearchTitle: 'NovaCell 100 & VIP 힐링 코드 검색',
@@ -937,6 +941,10 @@
       vipPassBtn: 'Get NovaCell VIP Pass',
       vipPhone: 'Phone Support: +82-10-9726-7012',
       vipClose: 'Continue in Demo Mode',
+      vipPriceSub: '100 Rife Protocols · VIP Clinical Codes · Unlimited Lossless Audio',
+      vipPriceAmount: 'US $300',
+      vipPriceTerm: '/ 1-Year Unlimited (KRW ₩330,000)',
+      vipPassBtn: 'Get 1-Year VIP Pass ($300 / ₩330k)',
 
       // Modals & Drawer
       modalSearchTitle: 'NovaCell 100 & VIP Healing Code Search',

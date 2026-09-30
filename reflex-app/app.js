@@ -1,3 +1,69 @@
+
+// ==========================================================================
+// NovaCell Reflex Freemium Logic & VIP Gate Helpers
+// ==========================================================================
+function checkReflexVip() {
+  try {
+    if (window.NovaCellGate && window.NovaCellGate.isVip) return true;
+    if (window.NovaCellAuth && typeof window.NovaCellAuth.hasPass === 'function' && window.NovaCellAuth.hasPass('reflex_therapy_1y')) return true;
+    if (localStorage.getItem('novacell_vip_status') === 'active') return true;
+    if (localStorage.getItem('novacell_reflex_vip') === 'true') return true;
+    return false;
+  } catch(e) {
+    return false;
+  }
+}
+
+function openReflexVipModal(featureName) {
+  const modal = document.getElementById('reflexVipModal');
+  if (!modal) return;
+  const en = state.lang === 'en';
+  const descEl = document.getElementById('reflexVipFeatureDesc');
+  if (descEl) {
+    descEl.textContent = featureName 
+      ? (en ? `[${featureName}] is exclusive to NovaCell 1-Year Pass Members.` : `[${featureName}] 기능은 NovaCell 1년 정기 이용권 회원 전용입니다.`)
+      : (en ? 'Full access requires a NovaCell 1-Year VIP Pass.' : '전체 기능 이용을 위해 1년 정기 패스가 필요합니다.');
+  }
+  const linkEl = document.getElementById('reflexVipBuyLink');
+  if (linkEl) {
+    linkEl.href = en ? 'https://novacell.kr/en/reflex-guide.html' : 'https://novacell.kr/ko/reflex-therapy-guide.html';
+  }
+  const priceEl = document.getElementById('reflexVipPrice');
+  const termEl = document.getElementById('reflexVipTerm');
+  if (priceEl) priceEl.textContent = en ? 'US $99' : '99,000원';
+  if (termEl) termEl.textContent = en ? '/ 1-Year Unlimited (₩99,000)' : '/ 1년 무제한 정기 패스 (US $99)';
+  
+  if (typeof modal.showModal === 'function') {
+    modal.showModal();
+  } else {
+    modal.setAttribute('open', '');
+  }
+  modal.classList.add('active');
+}
+
+function closeReflexVipModal() {
+  const modal = document.getElementById('reflexVipModal');
+  if (!modal) return;
+  if (typeof modal.close === 'function') {
+    modal.close();
+  } else {
+    modal.removeAttribute('open');
+  }
+  modal.classList.remove('active');
+}
+window.checkReflexVip = checkReflexVip;
+window.openReflexVipModal = openReflexVipModal;
+window.closeReflexVipModal = closeReflexVipModal;
+window.openAppVipModal = openReflexVipModal;
+
+// Close on backdrop click
+document.addEventListener('click', function(e) {
+  const modal = document.getElementById('reflexVipModal');
+  if (modal && e.target === modal) {
+    closeReflexVipModal();
+  }
+});
+
 const maps = [
   {
     id: "right_sole",
@@ -2159,15 +2225,27 @@ function programCard(p) {
   const sysTitle = en ? (sys?.en || p.systemEn || p.system) : (sys?.title || p.system);
   const pSummary = en ? (p.summaryEn || p.summary) : p.summary;
   const pCaution = en ? (p.cautionEn || p.caution) : p.caution;
+  const isVip = checkReflexVip();
+  const isFreeProgram = (p.systemId === 'urinary' || p.id === 'urinary-foot' || p.id === 'urinary-infection');
+  const locked = !isVip && !isFreeProgram;
+
+  const badgeHtml = locked
+    ? `<div class="vip-lock-badge">🔒 ${en ? "1-Year Pass VIP" : "1년 패스 VIP 전용"}</div>`
+    : `<div class="free-trial-badge">🌿 ${en ? "Free Experience" : "무료 체험 가능"}</div>`;
+
+  const buttonText = locked
+    ? (en ? "🔒 Unlock with 1-Year Pass" : "🔒 1년 정기 패스로 시작")
+    : (en ? "Start Guided Session" : "작업점 지도로 세션 시작");
 
   return `
-    <article class="program-card">
+    <article class="program-card ${locked ? 'is-vip-locked' : ''}">
       <div class="program-heading">
         <span class="program-icon">${sys?.icon || "✦"}</span>
         <div>
           <small>${sysTitle} · ${en ? `Textbook p.${p.page}` : `교재 ${p.page}쪽`}</small>
           <h3>${en ? p.en : p.title}</h3>
           <em>${en ? p.title : p.en}</em>
+          ${badgeHtml}
         </div>
       </div>
       <p>${pSummary}</p>
@@ -2179,7 +2257,7 @@ function programCard(p) {
       <div class="program-points">
         ${p.points.map((x, i) => `<span>${i + 1}. ${pointLabel(x)}</span>`).join("")}
       </div>
-      <button class="primary" data-start="${p.id}">${en ? "Start Guided Session" : "작업점 지도로 세션 시작"}</button>
+      <button class="${locked ? 'secondary' : 'primary'}" data-start="${p.id}">${buttonText}</button>
     </article>
   `;
 }
@@ -2332,8 +2410,17 @@ function applyPreset(sec) {
 }
 
 function startProgram(id) {
-  state.activeProgram = programs.find(p => p.id === id);
-  if (!state.activeProgram) return;
+  const target = programs.find(p => p.id === id);
+  if (!target) return;
+
+  const isVip = checkReflexVip();
+  const isFreeProgram = (target.systemId === 'urinary' || target.id === 'urinary-foot' || target.id === 'urinary-infection');
+  if (!isVip && !isFreeProgram) {
+    openReflexVipModal(state.lang === 'en' ? target.en : target.title);
+    return;
+  }
+
+  state.activeProgram = target;
 
   state.sessionMap = "foot";
   resetSessionMap();

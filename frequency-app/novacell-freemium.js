@@ -11,7 +11,13 @@
 
   // 1. 상태 관리 (검토를 위해 기본 VIP 활성화 = true)
   window.NovaCellStudio = {
-    isVip: true, // 검토 및 전체 기능 테스트를 위해 기본 활성화
+    isVip: (function() {
+      try {
+        return localStorage.getItem('novacell_vip_status') === 'active' || 
+               localStorage.getItem('novacell_studio_vip') === 'true' ||
+               localStorage.getItem('novacell_vip_pass') === 'true';
+      } catch (e) { return false; }
+    })(), // 기본 Freemium 모드 (무료 3종 체험 + VIP 5종 및 고급기능 잠금)
     currentTab: 'tab-presets',
     activePresetKey: null,
     activePreset: null,
@@ -537,6 +543,12 @@
         : `[${featureName}] 기능은 NovaCell 정회원 전용입니다.`;
     }
     
+    const priceAmountEl = document.getElementById('vip-price-display');
+    const priceTermEl = document.getElementById('vip-term-display');
+    const passLinkEl = modal.querySelector('.btn-nc-vip-pass');
+    if (priceAmountEl) priceAmountEl.textContent = isEn ? 'US $300' : '330,000원';
+    if (priceTermEl) priceTermEl.textContent = isEn ? '/ 1-Year Unlimited (₩330,000)' : '/ 1년 무제한 이용 (US $300)';
+    if (passLinkEl) passLinkEl.href = isEn ? 'https://novacell.kr/en/sound-studio.html' : 'https://novacell.kr/ko/sound-studio.html';
     modal.classList.add('active');
     document.body.classList.add('modal-open');
   }
