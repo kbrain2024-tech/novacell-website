@@ -1237,15 +1237,139 @@ function updateAccessButtons() {
   }
 }
 
+// ==========================================================================
+// [모바일 완벽 지원] 스마트폰 영문 & 한글 음성 안내(TTS) 엔진
+// 모바일 브라우저(iOS Safari, Android Chrome)의 백그라운드 무음,
+// 언어 불일치 오류, 큐 캔슬 충돌, 가비지 컬렉션 드롭 문제를 완벽 해결합니다.
+// ==========================================================================
+let _ttsVoices = [];
+let _speechUnlocked = false;
+
+function loadTtsVoices() {
+  if (!("speechSynthesis" in window)) return [];
+  try {
+    const list = window.speechSynthesis.getVoices();
+    if (list && list.length) {
+      _ttsVoices = list;
+    }
+  } catch (e) {}
+  return _ttsVoices;
+}
+
+if ("speechSynthesis" in window) {
+  loadTtsVoices();
+  window.speechSynthesis.onvoiceschanged = () => {
+    loadTtsVoices();
+  };
+}
+
+// 모바일 제스처 자동 재생 잠금 해제 (iOS Safari & Android Chrome)
+function unlockMobileSpeech() {
+  if (_speechUnlocked || !("speechSynthesis" in window)) return;
+  try {
+    const silent = new SpeechSynthesisUtterance(" ");
+    silent.volume = 0.01;
+    silent.rate = 10;
+    window.speechSynthesis.speak(silent);
+    _speechUnlocked = true;
+  } catch (e) {}
+}
+["touchstart", "touchend", "click"].forEach(evt => {
+  document.addEventListener(evt, unlockMobileSpeech, { once: true, passive: true });
+});
+
+// 스마트폰 OS별 최적 음성 매칭 알고리즘
+function getBestVoice(targetLang) {
+  if (!("speechSynthesis" in window)) return null;
+  let voices = _ttsVoices;
+  if (!voices || !voices.length) {
+    voices = loadTtsVoices();
+  }
+  if (!voices || !voices.length) return null;
+
+  const isEn = targetLang === "en";
+
+  if (isEn) {
+    // 1) 영문 고품질 음성 우선순위 (iOS, Android, Windows)
+    const priorityEn = [
+      "Samantha", "Karen", "Daniel", "Moira", "Tessa", "Nicky", "Aaron", "Fred",
+      "Google US English", "Google UK English Female", "Google UK English Male",
+      "Samsung English", "en-US", "en_US", "en-GB", "en_GB", "en-AU"
+    ];
+    for (const name of priorityEn) {
+      const match = voices.find(v => 
+        (v.name && v.name.toLowerCase().includes(name.toLowerCase())) ||
+        (v.lang && v.lang.toLowerCase() === name.toLowerCase())
+      );
+      if (match) return match;
+    }
+    // 2) 'en'으로 시작하는 모든 영문 음성
+    const anyEn = voices.find(v => v.lang && v.lang.toLowerCase().startsWith("en"));
+    if (anyEn) return anyEn;
+  } else {
+    // 1) 한국어 고품질 음성 우선순위
+    const priorityKo = ["Yuna", "Sora", "Google 한국어", "Samsung 한국어", "ko-KR", "ko_KR"];
+    for (const name of priorityKo) {
+      const match = voices.find(v => 
+        (v.name && v.name.toLowerCase().includes(name.toLowerCase())) ||
+        (v.lang && v.lang.toLowerCase() === name.toLowerCase())
+      );
+      if (match) return match;
+    }
+    const anyKo = voices.find(v => v.lang && v.lang.toLowerCase().startsWith("ko"));
+    if (anyKo) return anyKo;
+  }
+
+  return null;
+}
+
 function speak(text) {
   if (!state.voice || !("speechSynthesis" in window)) return;
+  if (!text || typeof text !== "string") return;
+
   try {
-    window.speechSynthesis.cancel();
+    // 음성 잠금 상태 해제 확인
+    if (!_speechUnlocked) unlockMobileSpeech();
+
+    // iOS Safari의 큐 캔슬 버그 방지: 현재 말하고 있을 때만 정지
+    if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
+      window.speechSynthesis.cancel();
+    }
+
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = state.lang === "en" ? "en-US" : "ko-KR";
-    u.rate = 0.88; // Comfortable, measured clinical pace
+    const isEn = state.lang === "en";
+    u.lang = isEn ? "en-US" : "ko-KR";
+
+    // 스마트폰에서 영문 음성을 명시적으로 할당하여 무음 현상 원천 차단
+    const bestVoice = getBestVoice(state.lang);
+    if (bestVoice) {
+      u.voice = bestVoice;
+    }
+
+    // 모바일 지원 속도 (영어 0.92, 한국어 0.88), 피치 및 볼륨
+    u.rate = isEn ? 0.92 : 0.88;
     u.pitch = 1.0;
-    window.speechSynthesis.speak(u);
+    u.volume = Math.max(0.4, Math.min(1.0, state.masterVolume || 0.85));
+
+    // [중요] 모바일 가비지 컬렉션(GC)으로 인한 음성 중단 방지 글로벌 참조 보관
+    window._activeTtsUtterance = u;
+    u.onend = () => {
+      if (window._activeTtsUtterance === u) window._activeTtsUtterance = null;
+    };
+    u.onerror = (e) => {
+      console.warn("SpeechSynthesis error:", e);
+      if (window._activeTtsUtterance === u) window._activeTtsUtterance = null;
+    };
+
+    // iOS 오디오 세션 안정화를 위해 35ms 지연 후 기동
+    setTimeout(() => {
+      try {
+        window.speechSynthesis.speak(u);
+      } catch (err) {
+        console.warn("TTS speak execute error:", err);
+      }
+    }, 35);
+
   } catch (e) {
     console.warn("TTS Error:", e);
   }
@@ -3409,6 +3533,9 @@ function bind() {
     applyLanguage();
     updateGateLanguageButtons();
     toast(state.lang === "en" ? "English mode enabled" : "한국어 모드로 변경되었습니다");
+    if (state.voice) {
+      speak(state.lang === "en" ? "Voice guidance enabled" : "음성 안내가 설정되었습니다");
+    }
   };
   window.setLanguage = setLanguage;
   window.updateGateLanguageButtons = updateGateLanguageButtons;
