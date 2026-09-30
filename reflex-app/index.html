@@ -7,7 +7,7 @@
   <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 528Hz 치유 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
   <title>NovaCell Reflex Therapy APP | 손·발 반사요법 가이드</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=41">
+  <link rel="stylesheet" href="./styles.css?v=42">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
@@ -225,18 +225,18 @@
             <div class="live-card-head">
               <span id="liveCardIcon" class="live-card-icon">🦶</span>
               <div class="live-card-title-col">
-                <strong id="liveCardTitle">반사구를 가리켜보세요</strong>
-                <span id="liveCardSub" class="live-card-sub">실시간 사이드 인스펙터</span>
+                <strong id="liveCardTitle" data-i18n="liveCardTitle">Hover over a Reflex Point</strong>
+                <span id="liveCardSub" class="live-card-sub" data-i18n="liveCardSub">Live Side Inspector</span>
               </div>
             </div>
             <div class="live-card-tags">
               <span id="liveCardTag" class="live-tag">300 DPI ATLAS</span>
-              <span id="liveCardLoc" class="live-loc">대기 중</span>
+              <span id="liveCardLoc" class="live-loc" data-i18n="liveCardLoc">Standby</span>
             </div>
-            <p id="liveCardDesc" class="live-card-desc">지도 위의 인체 부위나 텍스트에 커서를 접촉하시면 이미지를 가리지 않고 이곳에 선명하게 안내됩니다.</p>
+            <p id="liveCardDesc" class="live-card-desc" data-i18n="liveCardDesc">Hover your cursor over anatomical regions or guide rings to inspect clinical reflex guidance here without obstructing the map.</p>
             <div id="liveCardActionBox" class="live-action-box">
-              <strong>💡 자극 포인트</strong>
-              <p id="liveCardActionDesc">마우스 커서를 지도 위 반사구에 올려보세요.</p>
+              <strong id="liveCardActionBadge" data-i18n="liveCardActionBadge">💡 Clinical Guidance</strong>
+              <p id="liveCardActionDesc" data-i18n="liveCardActionDesc">Move your mouse cursor over any reflex point on the map.</p>
             </div>
           </div>
 
@@ -598,8 +598,8 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./program-data.js?v=41"></script>
-  <script src="./app.js?v=41"></script>
+  <script src="./program-data.js?v=42"></script>
+  <script src="./app.js?v=42"></script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="reflex_therapy_1y" data-lang="ko"></script>
