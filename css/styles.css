@@ -2507,3 +2507,157 @@ body {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   NovaCell Sound Studio Home Section (Bio-Frequency Resonance)
+   ========================================================================== */
+.sound-studio-section {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #051327 0%, #0a2444 50%, #151838 100%);
+  border-top: 1px solid rgba(212, 163, 89, 0.2);
+  border-bottom: 1px solid rgba(212, 163, 89, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.sound-studio-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(380px, 1.08fr);
+  gap: 54px;
+  align-items: center;
+}
+
+.sound-studio-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 4.5vw, 4.15rem);
+  line-height: 1.06;
+  margin: 14px 0 18px;
+  color: #fff;
+}
+
+.sound-studio-section h2 span {
+  color: #f7d58b;
+  text-shadow: 0 0 20px rgba(212, 163, 89, 0.4);
+}
+
+.sound-studio-section p {
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.sound-studio-points {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.sound-studio-points span {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(212, 163, 89, 0.12);
+  border: 1px solid rgba(212, 163, 89, 0.35);
+  color: #f7d58b;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.sound-studio-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.sound-studio-price span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.sound-studio-price strong {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: #f7d58b;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-shadow: 0 0 15px rgba(212, 163, 89, 0.3);
+}
+
+.sound-studio-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.sound-studio-image {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 163, 89, 0.2);
+  border: 1.5px solid rgba(212, 163, 89, 0.35);
+}
+
+.sound-studio-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.sound-studio-image:hover img {
+  transform: scale(1.02);
+}
+
+.sound-studio-float-badge {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  right: 18px;
+  background: rgba(7, 20, 42, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 163, 89, 0.4);
+  border-radius: 12px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-size: 0.88rem;
+}
+
+.sound-studio-float-badge strong {
+  color: #f7d58b;
+  display: block;
+  font-size: 0.96rem;
+}
+
+.sound-studio-float-badge span {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1050px) {
+  .sound-studio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  .sound-studio-section {
+    padding: 60px 0;
+  }
+  .sound-studio-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+  .sound-studio-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
