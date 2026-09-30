@@ -1,10 +1,10 @@
-const CACHE = "novacell-reflex-therapy-v38-side-inspector-cards";
+const CACHE = "novacell-reflex-therapy-v40-zero-drift-hud";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=38",
-  "./program-data.js?v=38",
-  "./app.js?v=38",
+  "./styles.css?v=40",
+  "./program-data.js?v=40",
+  "./app.js?v=40",
   "./manifest.webmanifest",
   "./assets/foot-sole-map.webp",
   "./assets/foot-top-map.webp",

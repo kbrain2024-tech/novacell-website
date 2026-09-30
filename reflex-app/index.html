@@ -7,7 +7,7 @@
   <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 528Hz 치유 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
   <title>NovaCell Reflex Therapy APP | 손·발 반사요법 가이드</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=38">
+  <link rel="stylesheet" href="./styles.css?v=40">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
@@ -150,6 +150,7 @@
               <button id="zoomPreset100" class="zoom-preset" title="100% 기본 보기">100%</button>
               <button id="zoomPreset150" class="zoom-preset" title="150% 가독성 권장 확대">150%</button>
               <button id="zoomPreset200" class="zoom-preset" title="200% 정밀 확대">200%</button>
+              <button id="zoomPreset300" class="zoom-preset" title="300% 초정밀 확대">300%</button>
               <button id="zoomOut" aria-label="축소">−</button>
               <span id="zoomValue">100%</span>
               <button id="zoomIn" aria-label="확대">＋</button>
@@ -166,22 +167,29 @@
             </div>
           </div>
 
-          <!-- Smart High-Legibility Point Inspector HUD Banner -->
-          <div class="map-point-hud" id="mapPointHUD">
-            <div class="hud-main">
-              <span class="hud-icon" id="hudPointIcon">🦶</span>
-              <div class="hud-text">
+          <!-- Dedicated Top Horizontal Reflex Inspector (이미지를 전혀 가리지 않는 상단 가로 인스펙션 바) -->
+          <div class="map-horizontal-hud" id="mapPointHUD" aria-live="polite">
+            <div class="hud-left-col">
+              <span class="hud-main-icon" id="hudPointIcon">🦶</span>
+              <div class="hud-title-wrap">
                 <div class="hud-title-row">
-                  <strong class="hud-title" id="hudPointTitle">반사구 탐색 모드 · Smart Reflex Inspector</strong>
-                  <span class="hud-tag" id="hudPointTag">HD ATLAS</span>
+                  <strong class="hud-title" id="hudPointTitle">반사구를 가리켜보세요</strong>
+                  <span class="hud-en-title" id="hudPointEnTitle">Point Inspector</span>
+                  <span class="hud-pill-tag" id="hudPointTag">HD ATLAS</span>
                 </div>
-                <p class="hud-desc" id="hudPointDesc">지도나 아래 대역표의 반사구를 클릭하시면 고선명 대형 명칭과 상세 해부학 정보가 표시됩니다.</p>
+                <div class="hud-sub-row">
+                  <span class="hud-loc-badge" id="hudPointLoc">위치: 지도 위의 포인트에 마우스를 올리거나 터치하세요</span>
+                </div>
               </div>
             </div>
-            <div class="hud-actions">
-              <button type="button" id="toggleSmartLabelsBtn" class="hud-label-toggle active" title="지도 위 투명 가이드 링 표시 토글">
+            <div class="hud-center-col">
+              <span class="hud-desc-label">💡 해부학 임상 효과 &amp; 지압 요령</span>
+              <p class="hud-desc-text" id="hudPointDesc">지도 위의 포인트 원형 링을 가리키시면 이미지를 전혀 가리지 않고 이곳에 선명한 대형 명칭과 치료 효과가 즉시 안내됩니다.</p>
+            </div>
+            <div class="hud-actions-col">
+              <button type="button" id="toggleSmartLabelsBtn" class="hud-label-toggle active" title="지도 위 포인트 표시 토글">
                 <span class="hud-toggle-indicator"></span>
-                <span id="smartLabelToggleText">가이드 링 ON</span>
+                <span id="smartLabelToggleText">포인트 링 ON</span>
               </button>
             </div>
           </div>
@@ -192,29 +200,6 @@
               <div id="smartLabelLayer" class="smart-label-layer"></div>
               <div id="customLayer"></div>
             </div>
-
-            <!-- Non-obscuring Side Floating Inspection Card (사이드 인스펙션 플로팅 카드) -->
-            <aside id="stageSideCard" class="stage-side-card" aria-live="polite">
-              <div class="side-card-topbar">
-                <span class="side-card-badge" id="sideCardBadge">반사구 탐색 모드</span>
-                <span class="side-card-tag" id="sideCardTag">300 DPI ATLAS</span>
-              </div>
-              <div class="side-card-main">
-                <span class="side-card-icon" id="sideCardIcon">🦶</span>
-                <div class="side-card-title-group">
-                  <strong class="side-card-title" id="sideCardTitle">반사구를 가리켜보세요</strong>
-                  <span class="side-card-en-title" id="sideCardEnTitle">Point Inspector</span>
-                </div>
-              </div>
-              <div class="side-card-meta">
-                <span class="side-card-loc" id="sideCardLoc">위치: 부위 탐색 대기 중</span>
-              </div>
-              <p class="side-card-desc" id="sideCardDesc">지도 위의 인체 부위나 텍스트에 마우스 커서를 접촉하시면, 이미지를 전혀 가리지 않고 이곳에 선명한 대형 명칭과 상세 해부학 효과가 즉시 표시됩니다.</p>
-              <div class="side-card-action-box" id="sideCardActionBox">
-                <span class="side-card-action-label">💡 임상 적응증 &amp; 지압 요령</span>
-                <p id="sideCardActionText">손·발 반사구를 20~30초간 지그시 압박하면 상응 장기의 혈류와 신경 활성을 돕습니다.</p>
-              </div>
-            </aside>
           </div>
 
           <div class="map-toolbar">
@@ -596,7 +581,28 @@
         <button id="fsZoom100" class="fs-preset-btn">100%</button>
         <button id="fsZoom150" class="fs-preset-btn">150%</button>
         <button id="fsZoom200" class="fs-preset-btn">200%</button>
+        <button id="fsZoom300" class="fs-preset-btn">300%</button>
         <button id="fsCloseBtn" class="fs-close-btn" aria-label="닫기">✕</button>
+      </div>
+    </div>
+    <!-- Fullscreen Dedicated Top Horizontal HUD (이미지를 전혀 가리지 않는 상단 가로 인스펙션 바) -->
+    <div class="fs-horizontal-hud" id="fsMapHUD" aria-live="polite">
+      <div class="hud-left-col">
+        <span class="hud-main-icon" id="fsHudIcon">🦶</span>
+        <div class="hud-title-wrap">
+          <div class="hud-title-row">
+            <strong class="hud-title" id="fsHudTitle">반사구를 가리켜보세요</strong>
+            <span class="hud-en-title" id="fsHudEnTitle">Point Inspector</span>
+            <span class="hud-pill-tag">300 DPI ULTRA HD</span>
+          </div>
+          <div class="hud-sub-row">
+            <span class="hud-loc-badge" id="fsHudLoc">원하는 부위나 텍스트를 마우스로 가리키거나 터치하세요</span>
+          </div>
+        </div>
+      </div>
+      <div class="hud-center-col">
+        <span class="hud-desc-label">💡 상세 해부학 효과 &amp; 치료 적응증</span>
+        <p class="hud-desc-text" id="fsHudDesc">가리키는 반사점의 세부 설명과 치료 적응증이 상단에서 즉시 안내됩니다.</p>
       </div>
     </div>
     <div class="fs-modal-stage" id="fsMapStage">
@@ -604,34 +610,12 @@
         <img id="fsMapImage" src="./assets/foot-sole-map-en.png" alt="전체화면 고해상도 반사 지도" draggable="false">
         <div id="fsSmartLabelLayer" class="smart-label-layer"></div>
       </div>
-      <!-- Fullscreen Non-obscuring Side Floating Card -->
-      <aside id="fsStageSideCard" class="stage-side-card fs-stage-side-card" aria-live="polite">
-        <div class="side-card-topbar">
-          <span class="side-card-badge" id="fsSideCardBadge">ULTRA HD ATLAS</span>
-          <span class="side-card-tag">300 DPI</span>
-        </div>
-        <div class="side-card-main">
-          <span class="side-card-icon" id="fsSideCardIcon">🦶</span>
-          <div class="side-card-title-group">
-            <strong class="side-card-title" id="fsSideCardTitle">부위를 가리켜보세요</strong>
-            <span class="side-card-en-title" id="fsSideCardEnTitle">Point Inspector</span>
-          </div>
-        </div>
-        <div class="side-card-meta">
-          <span class="side-card-loc" id="fsSideCardLoc">위치 탐색 대기 중</span>
-        </div>
-        <p class="side-card-desc" id="fsSideCardDesc">원하는 부위나 텍스트를 마우스로 가리키면 이미지를 가리지 않고 이곳에 선명하게 안내됩니다.</p>
-        <div class="side-card-action-box" id="fsSideCardActionBox">
-          <span class="side-card-action-label">💡 상세 해부학 효과</span>
-          <p id="fsSideCardActionText">가리키는 반사점의 세부 설명과 치료 적응증이 실시간 노출됩니다.</p>
-        </div>
-      </aside>
     </div>
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./program-data.js?v=38"></script>
-  <script src="./app.js?v=38"></script>
+  <script src="./program-data.js?v=40"></script>
+  <script src="./app.js?v=40"></script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="reflex_therapy_1y" data-lang="ko"></script>
