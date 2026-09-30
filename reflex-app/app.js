@@ -689,6 +689,7 @@ const $$ = s => [...document.querySelectorAll(s)];
 const uiText = {
   ko: {
     officialHome: "🌐 공식 홈페이지 ↗",
+    listenVoice: "음성 듣기",
     mainCover: "메인 대문",
     healingApp: "⚡ 치료 포인트 ↗",
     selfMode: "자가관리",
@@ -1238,21 +1239,21 @@ function updateAccessButtons() {
 }
 
 // ==========================================================================
-// [모바일 완벽 지원] 스마트폰 영문 & 한글 음성 안내(TTS) 엔진
-// 모바일 브라우저(iOS Safari, Android Chrome)의 백그라운드 무음,
-// 언어 불일치 오류, 큐 캔슬 충돌, 가비지 컬렉션 드롭 문제를 완벽 해결합니다.
+// [모바일 100% 실시간 작동] 스마트폰 음성 안내(TTS) 엔진 (동기식 다이렉트 런처)
+// setTimeout을 완전히 제거하여 iOS 사파리 및 안드로이드 크롬의 모바일 사용자 제스처 컨텍스트를
+// 100% 보존하고, 음성 무음 및 큐 캔슬 버그를 원천 차단합니다.
 // ==========================================================================
 let _ttsVoices = [];
-let _speechUnlocked = false;
+let _activeUtterance = null;
 
 function loadTtsVoices() {
   if (!("speechSynthesis" in window)) return [];
   try {
     const list = window.speechSynthesis.getVoices();
-    if (list && list.length) {
+    if (list && list.length > 0) {
       _ttsVoices = list;
     }
-  } catch (e) {}
+  } catch(e) {}
   return _ttsVoices;
 }
 
@@ -1263,22 +1264,7 @@ if ("speechSynthesis" in window) {
   };
 }
 
-// 모바일 제스처 자동 재생 잠금 해제 (iOS Safari & Android Chrome)
-function unlockMobileSpeech() {
-  if (_speechUnlocked || !("speechSynthesis" in window)) return;
-  try {
-    const silent = new SpeechSynthesisUtterance(" ");
-    silent.volume = 0.01;
-    silent.rate = 10;
-    window.speechSynthesis.speak(silent);
-    _speechUnlocked = true;
-  } catch (e) {}
-}
-["touchstart", "touchend", "click"].forEach(evt => {
-  document.addEventListener(evt, unlockMobileSpeech, { once: true, passive: true });
-});
-
-// 스마트폰 OS별 최적 음성 매칭 알고리즘
+// 스마트폰 OS별 최적 음성 매칭
 function getBestVoice(targetLang) {
   if (!("speechSynthesis" in window)) return null;
   let voices = _ttsVoices;
@@ -1290,11 +1276,10 @@ function getBestVoice(targetLang) {
   const isEn = targetLang === "en";
 
   if (isEn) {
-    // 1) 영문 고품질 음성 우선순위 (iOS, Android, Windows)
+    // 1) 영문 고품질 음성 우선순위 (iOS: Samantha, Daniel, Karen / Android: Google US English, Samsung English)
     const priorityEn = [
-      "Samantha", "Karen", "Daniel", "Moira", "Tessa", "Nicky", "Aaron", "Fred",
-      "Google US English", "Google UK English Female", "Google UK English Male",
-      "Samsung English", "en-US", "en_US", "en-GB", "en_GB", "en-AU"
+      "Samantha", "Karen", "Daniel", "Google US English", "Samsung English",
+      "en-US", "en_US", "en-GB", "en_GB", "en-AU"
     ];
     for (const name of priorityEn) {
       const match = voices.find(v => 
@@ -1303,11 +1288,10 @@ function getBestVoice(targetLang) {
       );
       if (match) return match;
     }
-    // 2) 'en'으로 시작하는 모든 영문 음성
-    const anyEn = voices.find(v => v.lang && v.lang.toLowerCase().startsWith("en"));
+    const anyEn = voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith("en"));
     if (anyEn) return anyEn;
   } else {
-    // 1) 한국어 고품질 음성 우선순위
+    // 1) 한국어 고품질 음성 우선순위 (iOS: Yuna, Sora / Android: Google 한국어, Samsung 한국어)
     const priorityKo = ["Yuna", "Sora", "Google 한국어", "Samsung 한국어", "ko-KR", "ko_KR"];
     for (const name of priorityKo) {
       const match = voices.find(v => 
@@ -1316,7 +1300,7 @@ function getBestVoice(targetLang) {
       );
       if (match) return match;
     }
-    const anyKo = voices.find(v => v.lang && v.lang.toLowerCase().startsWith("ko"));
+    const anyKo = voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith("ko"));
     if (anyKo) return anyKo;
   }
 
@@ -1328,52 +1312,51 @@ function speak(text) {
   if (!text || typeof text !== "string") return;
 
   try {
-    // 음성 잠금 상태 해제 확인
-    if (!_speechUnlocked) unlockMobileSpeech();
-
-    // iOS Safari의 큐 캔슬 버그 방지: 현재 말하고 있을 때만 정지
-    if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
-      window.speechSynthesis.cancel();
+    // 말하고 있을 때만 이전 음성 중단 (말하고 있지 않을 때는 cancel 호출 금지 - iOS 사파리 버그 방지)
+    if (window.speechSynthesis.speaking) {
+      try { window.speechSynthesis.cancel(); } catch(e) {}
     }
 
     const u = new SpeechSynthesisUtterance(text);
     const isEn = state.lang === "en";
     u.lang = isEn ? "en-US" : "ko-KR";
 
-    // 스마트폰에서 영문 음성을 명시적으로 할당하여 무음 현상 원천 차단
+    // 스마트폰에서 알맞은 음성 객체 매핑
     const bestVoice = getBestVoice(state.lang);
     if (bestVoice) {
       u.voice = bestVoice;
     }
 
-    // 모바일 지원 속도 (영어 0.92, 한국어 0.88), 피치 및 볼륨
-    u.rate = isEn ? 0.92 : 0.88;
+    // 표준 음성 속도 1.0 (모든 스마트폰 기기에서 왜곡 없이 안정 발성)
+    u.rate = 1.0;
     u.pitch = 1.0;
-    u.volume = Math.max(0.4, Math.min(1.0, state.masterVolume || 0.85));
+    u.volume = 1.0;
 
-    // [중요] 모바일 가비지 컬렉션(GC)으로 인한 음성 중단 방지 글로벌 참조 보관
-    window._activeTtsUtterance = u;
+    // 모바일 가비지 컬렉션(GC) 방지 글로벌 보관
+    _activeUtterance = u;
     u.onend = () => {
-      if (window._activeTtsUtterance === u) window._activeTtsUtterance = null;
+      if (_activeUtterance === u) _activeUtterance = null;
     };
     u.onerror = (e) => {
-      console.warn("SpeechSynthesis error:", e);
-      if (window._activeTtsUtterance === u) window._activeTtsUtterance = null;
+      console.warn("TTS speak error:", e);
+      if (_activeUtterance === u) _activeUtterance = null;
     };
 
-    // iOS 오디오 세션 안정화를 위해 35ms 지연 후 기동
-    setTimeout(() => {
-      try {
-        window.speechSynthesis.speak(u);
-      } catch (err) {
-        console.warn("TTS speak execute error:", err);
-      }
-    }, 35);
+    // [핵심] 절대 setTimeout을 쓰지 않고 즉각 동기식으로 speak() 실행하여 사용자 제스처 컨텍스트 100% 보존!
+    window.speechSynthesis.speak(u);
 
   } catch (e) {
     console.warn("TTS Error:", e);
   }
 }
+
+function forceSpeakCurrentPoint() {
+  state.voice = true;
+  save();
+  updateAccessButtons();
+  speakCurrentPoint();
+}
+window.forceSpeakCurrentPoint = forceSpeakCurrentPoint;
 
 // Natural voice guidance with clear spacing between step number and point name
 function getKoreanOrdinal(num) {

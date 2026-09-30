@@ -367,12 +367,18 @@
             </div>
 
             <!-- Active Point Banner -->
-            <div class="timer-point-banner">
-              <div class="timer-point-tag">
-                <span class="timer-point-eyebrow">POINT TIMER</span>
-                <span id="timer-hp-code" class="timer-point-code">STEP 1 / 4</span>
+            <div class="timer-point-banner" style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+              <div>
+                <div class="timer-point-tag">
+                  <span class="timer-point-eyebrow">POINT TIMER</span>
+                  <span id="timer-hp-code" class="timer-point-code">STEP 1 / 4</span>
+                </div>
+                <strong id="timer-hp-title" class="timer-point-title">상행결장</strong>
               </div>
-              <strong id="timer-hp-title" class="timer-point-title">상행결장</strong>
+              <button type="button" id="btnSpeakPoint" onclick="if(window.forceSpeakCurrentPoint)window.forceSpeakCurrentPoint();" class="btn-speak-point" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;border:1.5px solid #38bdf8;background:rgba(56,189,248,0.22);color:#38bdf8;font-size:12.5px;font-weight:800;cursor:pointer;flex-shrink:0;box-shadow:0 0 10px rgba(56,189,248,0.25);" title="현재 치료점 음성 듣기">
+                <span>🔊</span>
+                <span data-i18n="listenVoice">음성 듣기</span>
+              </button>
             </div>
 
             <div class="timer-body">
