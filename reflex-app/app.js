@@ -1300,35 +1300,35 @@ function getBestVoice(targetLang) {
   if (!voices || !voices.length) return null;
 
   const isEn = targetLang === "en";
+  const prefix = isEn ? "en" : "ko";
 
-  if (isEn) {
-    // 1) 영문 고품질 음성 우선순위 (iOS: Samantha, Daniel, Karen / Android: Google US English, Samsung English)
-    const priorityEn = [
-      "Samantha", "Karen", "Daniel", "Google US English", "Samsung English",
-      "en-US", "en_US", "en-GB", "en_GB", "en-AU"
-    ];
-    for (const name of priorityEn) {
-      const match = voices.find(v => 
-        (v.name && v.name.toLowerCase().includes(name.toLowerCase())) ||
-        (v.lang && v.lang.toLowerCase() === name.toLowerCase())
-      );
-      if (match) return match;
-    }
-    const anyEn = voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith("en"));
-    if (anyEn) return anyEn;
-  } else {
-    // 1) 한국어 고품질 음성 우선순위 (iOS: Yuna, Sora / Android: Google 한국어, Samsung 한국어)
-    const priorityKo = ["Yuna", "Sora", "Google 한국어", "Samsung 한국어", "ko-KR", "ko_KR"];
-    for (const name of priorityKo) {
-      const match = voices.find(v => 
-        (v.name && v.name.toLowerCase().includes(name.toLowerCase())) ||
-        (v.lang && v.lang.toLowerCase() === name.toLowerCase())
-      );
-      if (match) return match;
-    }
-    const anyKo = voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith("ko"));
-    if (anyKo) return anyKo;
+  // 1. 해당 언어의 시스템 기본 음성 우선 (가장 안정적이며 무음 버그 없음)
+  const defaultVoice = voices.find(v => 
+    v.default && v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(prefix)
+  );
+  if (defaultVoice) return defaultVoice;
+
+  // 2. 기기 로컬 내장 음성 (localService: true - 오프라인 발성 100% 보장)
+  const localVoice = voices.find(v => 
+    v.localService && v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(prefix)
+  );
+  if (localVoice) return localVoice;
+
+  // 3. 고품질 이름 매칭
+  const priority = isEn 
+    ? ["Google US English", "Samsung English", "Samantha", "Karen", "Daniel", "en-US", "en_US", "en-GB"]
+    : ["Google 한국어", "Samsung 한국어", "Yuna", "Sora", "ko-KR", "ko_KR", "ko"];
+  for (const name of priority) {
+    const match = voices.find(v => 
+      (v.name && v.name.toLowerCase().includes(name.toLowerCase())) ||
+      (v.lang && v.lang.toLowerCase().replace('_', '-') === name.toLowerCase())
+    );
+    if (match) return match;
   }
+
+  // 4. 언어 코드가 일치하는 모든 음성
+  const anyVoice = voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(prefix));
+  if (anyVoice) return anyVoice;
 
   return null;
 }
@@ -1369,6 +1369,18 @@ function speak(text) {
     u.onerror = (e) => {
       console.warn("TTS speak error:", e);
       if (_activeUtterance === u) _activeUtterance = null;
+      // [스마트폰 폴백] 특정 음성 객체 에러 시, 시스템 기본 음성으로 100% 즉시 재발성
+      if (u.voice) {
+        try {
+          const fallbackU = new SpeechSynthesisUtterance(text);
+          fallbackU.lang = isEn ? "en-US" : "ko-KR";
+          fallbackU.rate = 1.0;
+          fallbackU.pitch = 1.0;
+          fallbackU.volume = 1.0;
+          _activeUtterance = fallbackU;
+          window.speechSynthesis.speak(fallbackU);
+        } catch(err) {}
+      }
     };
 
     // [핵심] 즉각 동기식으로 speak() 실행하여 사용자 제스처 컨텍스트 100% 보존!
@@ -1391,12 +1403,13 @@ function forceSpeakCurrentPoint() {
   updateAccessButtons();
   playNotice("start");
 
+  const en = state.lang === "en";
   if (state.activeProgram && state.activeProgram.points && state.activeProgram.points[state.step]) {
     speakCurrentPoint();
   } else {
-    const isEn = state.lang === "en";
-    speak(isEn ? "NovaCell Reflex Therapy. Please select a program or point." : "NovaCell 반사요법 가이드입니다. 프로그램을 선택하세요.");
-    toast(isEn ? "🔊 Voice guidance: Please select a program" : "🔊 음성 안내: 프로그램을 선택하세요");
+    const msg = en ? "NovaCell Reflex Therapy. Please select a program or point." : "NovaCell 반사요법 가이드입니다. 프로그램을 선택하세요.";
+    speak(msg);
+    toast(`🔊 ${msg}`);
   }
 }
 window.forceSpeakCurrentPoint = forceSpeakCurrentPoint;
@@ -1424,13 +1437,13 @@ function speakCurrentPoint() {
   const point = state.activeProgram.points[state.step];
   const name = pointLabel(point);
 
-  // In Korean: "첫 번째,   뇌하수체", "두 번째,   갑상선"
-  // In English: "Step 1,   Pituitary gland", "Step 2,   Thyroid"
-  const phrase = state.lang === "en"
-    ? `Step ${num},   ${name}`
-    : `${getKoreanOrdinal(num)},   ${name}`;
+  const en = state.lang === "en";
+  const phrase = en
+    ? `Step ${num},   ${name}.`
+    : `${getKoreanOrdinal(num)},   ${name} 반사구입니다.`;
 
   speak(phrase);
+  toast(`🔊 ${en ? `Step ${num}, ${name}` : `${getKoreanOrdinal(num)}, ${name}`}`);
 }
 
 // ==========================================================================
@@ -2590,6 +2603,12 @@ function startProgram(id) {
     return;
   }
 
+  // 1. Unlock AudioContext & resume SpeechSynthesis inside direct user tap
+  getAudioContext();
+  if ("speechSynthesis" in window) {
+    try { window.speechSynthesis.resume(); } catch(e) {}
+  }
+
   state.activeProgram = target;
 
   state.sessionMap = "foot";
@@ -2600,7 +2619,19 @@ function startProgram(id) {
   stopTimer();
   renderSession();
   setView("session");
-  speakCurrentPoint();
+
+  // [핵심] 세션 진입 시 프로그램 명칭 및 1단계 치료점 음성 안내 발성!
+  if (state.voice && target.points && target.points.length > 0) {
+    playNotice("start");
+    const en = state.lang === "en";
+    const firstPt = pointLabel(target.points[0]);
+    const title = en ? target.en : target.title;
+    const msg = en
+      ? `${title} session. Step 1,   ${firstPt}.`
+      : `${title} 세션입니다. 첫 번째,   ${firstPt}입니다.`;
+    speak(msg);
+    toast(`🔊 ${msg}`);
+  }
 }
 
 function applySessionMapTransform() {
@@ -2867,10 +2898,22 @@ function toggleTimer() {
     return;
   }
 
+  // 1. Unlock AudioContext & resume SpeechSynthesis inside direct user tap
+  getAudioContext();
+  if ("speechSynthesis" in window) {
+    try { window.speechSynthesis.resume(); } catch(e) {}
+  }
+
   if (state.timer) {
     // Pause
     state.timerStatus = "paused";
     stopTimer();
+    if (state.voice) {
+      const en = state.lang === "en";
+      const pauseMsg = en ? "Timer paused" : "타이머가 일시정지되었습니다";
+      speak(pauseMsg);
+      toast(`⏸ ${pauseMsg}`);
+    }
     return;
   }
 
@@ -2883,6 +2926,18 @@ function toggleTimer() {
   start528HzSound();
   state.timerStatus = "running";
 
+  // [핵심!] 치유 타이머 시작 시 즉시 치료점 명칭 및 세션 시작 음성 멘트 발성!
+  if (state.voice && state.activeProgram && state.activeProgram.points) {
+    const en = state.lang === "en";
+    const num = state.step + 1;
+    const pt = pointLabel(state.activeProgram.points[state.step]);
+    const startMsg = en
+      ? `Step ${num},   ${pt}. Starting 528Hz healing session.`
+      : `${getKoreanOrdinal(num)},   ${pt} 반사구입니다.   528Hz 치유 타이머를 시작합니다.`;
+    speak(startMsg);
+    toast(`🔊 ${en ? `Step ${num}, ${pt}` : `${getKoreanOrdinal(num)}, ${pt}`} · 528Hz`);
+  }
+
   state.timer = setInterval(() => {
     state.time--;
     renderTimerCard();
@@ -2894,8 +2949,15 @@ function toggleTimer() {
 
       // Completion Singing Bowl Chime & Voice Notice
       playNotice("complete");
-      toast(tr("completed"));
-      speak(tr("completed"));
+      const en = state.lang === "en";
+      const hasNext = state.activeProgram && (state.step < state.activeProgram.points.length - 1);
+      const finishMsg = en
+        ? (hasNext ? "Step completed. Proceed to the next reflex point." : "Session completed. Great job!")
+        : (hasNext ? "단계가 완료되었습니다. 다음 반사구로 진행하세요." : "모든 반사요법 단계가 완료되었습니다. 수고하셨습니다.");
+      toast(`🎉 ${finishMsg}`);
+      if (state.voice) {
+        speak(finishMsg);
+      }
     }
   }, 1000);
 
@@ -2912,13 +2974,20 @@ function resetTimer() {
 
 function nextStep() {
   if (!state.activeProgram) return;
+  getAudioContext();
+  if ("speechSynthesis" in window) {
+    try { window.speechSynthesis.resume(); } catch(e) {}
+  }
   if (state.step < state.activeProgram.points.length - 1) {
     state.step++;
     stopTimer();
     state.time = pointDuration();
     state.timerStatus = "ready";
     renderSession();
-    speakCurrentPoint();
+    if (state.voice) {
+      playNotice("start");
+      speakCurrentPoint();
+    }
   } else {
     toast(tr("last"));
   }

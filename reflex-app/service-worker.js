@@ -1,10 +1,10 @@
-const CACHE = "novacell-reflex-therapy-v47-mobile-voice-vibrant-toggle";
+const CACHE = "novacell-reflex-therapy-v48-session-timer-voice-announcements";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=47",
-  "./program-data.js?v=47",
-  "./app.js?v=47",
+  "./styles.css?v=48",
+  "./program-data.js?v=48",
+  "./app.js?v=48",
   "./manifest.webmanifest",
   "./assets/foot-sole-map.webp",
   "./assets/foot-top-map.webp",
