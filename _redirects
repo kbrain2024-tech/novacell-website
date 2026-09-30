@@ -23,6 +23,12 @@ http://healing.novacell.kr/*    /healing-app/:splat  200!
 https://guide.novacell.kr/*     /reflex-app/:splat  200!
 http://guide.novacell.kr/*      /reflex-app/:splat  200!
 
+# 3-1. Bio-Frequency Sound Studio Dedicated WebApp Routing
+https://frequency.novacell.kr/*   /frequency-app/:splat  200!
+http://frequency.novacell.kr/*    /frequency-app/:splat  200!
+/frequency-app                    /frequency-app/index.html  200
+/frequency-app/                   /frequency-app/index.html  200
+
 # 4. Academy & Clinical Master Class Routing
 https://academy.novacell.kr/*   https://novacell.kr/ko/education.html  302!
 http://academy.novacell.kr/*    https://novacell.kr/ko/education.html  302!

@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaCell Therapy | Bio-Frequency Sound Studio (바이오 전압 공명 주파수 시스템)</title>
+  <meta name="description" content="NovaCell Therapy 공식 바이오 주파수 사운드 테라피 시스템. 세포 전압(-50mV) 복원, 솔페지오 공명, 자율신경계 조율 및 딥 힐링 사운드 스튜디오.">
+  <link rel="canonical" href="https://frequency.novacell.kr/">
+
+  <!-- 구글 폰트 적용 (Modern & Premium Typography) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- RemixIcon (NovaCell 공식 아이콘) & FontAwesome 아이콘 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- 외부 스타일시트 연결 -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="novacell-studio.css">
+</head>
+<body>
+
+  <!-- 배경에 흐르는 몽환적인 그라디언트 오브 -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+
+  <!-- 1. NovaCell 공식 탑 바 (Top Announcement Bar) -->
+  <aside class="nc-top-bar" aria-label="NovaCell 공지 및 글로벌 네비게이션">
+    <div class="nc-top-left">
+      <span data-i18n="topSystem"><i class="ri-shield-flash-line text-gold"></i> <strong>NovaCell Therapy</strong> 바이오일렉트릭 시스템</span>
+      <span>·</span>
+      <span data-i18n="topConsult"><i class="ri-phone-line text-gold"></i> 글로벌 상담: <strong>+82-10-9726-7012</strong></span>
+    </div>
+    <div class="nc-top-right">
+      <!-- 탑 바 콤팩트 언어 스위처 (KO | EN) -->
+      <button class="nc-lang-toggle topbar-variant" onclick="window.toggleLanguage()" title="한글 / English 모드 전환" aria-label="언어 전환" data-i18n-title="langToggleTitle">
+        <span class="lang-opt lang-ko active">KO</span>
+        <span class="lang-opt lang-en">EN</span>
+      </button>
+      <span>·</span>
+      <a href="javascript:void(0)" onclick="openWelcomeGate()" class="nc-link text-gold" style="font-weight: 700;"><i class="fa-solid fa-archway"></i> <span data-i18n="navGate">메인 대문</span></a>
+      <span>·</span>
+      <a href="https://novacell.kr" target="_blank" rel="noopener noreferrer" class="nc-link text-gold"><i class="ri-home-4-line"></i> <span data-i18n="navHome">NovaCell 홈</span></a>
+      <span>·</span>
+      <a href="https://healing.novacell.kr" target="_blank" rel="noopener noreferrer" class="nc-link"><i class="ri-focus-3-line"></i> <span data-i18n="navHealing">힐링 포인트</span></a>
+      <span>·</span>
+      <a href="https://guide.novacell.kr" target="_blank" rel="noopener noreferrer" class="nc-link"><i class="ri-footprint-line"></i> <span data-i18n="navReflex">리플렉스 가이드</span></a>
+      <span>·</span>
+      <!-- 회원 등급 뱃지 (검토 모드 기본 활성화) -->
+      <div id="user-tier-badge" class="tier-badge vip-active">
+        <i class="ri-vip-crown-fill text-gold"></i> <span id="txt-tier-badge" data-i18n="tierVip">NovaCell VIP 회원</span>
+      </div>
+      <button id="btn-toggle-demo-vip" class="btn-demo-vip" onclick="toggleDemoVip()" title="체험/VIP 모드 토글">
+        <i class="ri-toggle-line"></i> <span data-i18n="btnVipTest">VIP 모드 테스트</span>
+      </button>
+      <button id="btn-header-member-action" class="btn-header-auth">
+        <i class="ri-user-settings-line"></i> <span data-i18n="btnMyPage">마이페이지</span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="app-container" style="padding-bottom: 120px;">
+    
+    <!-- 2. 메인 헤더 섹션 -->
+    <header class="app-header">
+      <a href="https://frequency.novacell.kr" class="nc-brand">
+        <div class="nc-logo-badge">N</div>
+        <div class="nc-brand-text">
+          <h1>NovaCell Therapy</h1>
+          <p><span data-i18n="brandSubtitle">Bio-Frequency Sound Studio</span> <span class="nc-subdomain-tag">frequency.novacell.kr</span></p>
+        </div>
+      </a>
+
+      <!-- 5대 모드 세그먼트 네비게이션 (헤더 중앙) -->
+      <nav class="nc-tabs-nav" aria-label="스튜디오 주요 모드">
+        <button id="btn-nav-tab-presets" class="nav-pill active" onclick="switchTab('tab-presets')">
+          <i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">바이오 힐링 프리셋</span>
+        </button>
+        <button id="btn-nav-tab-rife100" class="nav-pill" onclick="switchTab('tab-rife100')">
+          <i class="ri-dna-line" style="color: #34d399;"></i> <span data-i18n="tabRife100">NovaCell 100 힐링 코드</span>
+        </button>
+        <button id="btn-nav-tab-vip" class="nav-pill" onclick="switchTab('tab-vip')">
+          <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i> <span data-i18n="tabVip">VIP 임상 웰니스 코드</span> <span class="badge-lock">🔒 VIP</span>
+        </button>
+        <button id="btn-nav-tab-care" class="nav-pill" onclick="switchTab('tab-care')">
+          <i class="ri-heart-pulse-fill" style="color: #ec4899;"></i> <span data-i18n="tabCare">AI 웰니스 & 호흡 테라피</span>
+        </button>
+        <button id="btn-nav-tab-studio" class="nav-pill" onclick="switchTab('tab-studio')">
+          <i class="ri-sound-module-fill" style="color: #38bdf8;"></i> <span data-i18n="tabStudio">프로 스튜디오</span>
+        </button>
+      </nav>
+
+      <div class="wellness-check-entry">
+        <!-- 🌟 메인 헤더 럭셔리 언어 전환 스위처 (KO | EN) -->
+        <button id="header-lang-toggle" class="nc-lang-toggle header-variant" onclick="window.toggleLanguage()" title="한글 / English 모드 전환" aria-label="언어 전환" data-i18n-title="langToggleTitle">
+          <i class="ri-global-line text-gold" style="font-size: 0.92rem; margin-right: 2px;"></i>
+          <span class="lang-opt lang-ko active">한글</span>
+          <span class="lang-opt lang-en">ENG</span>
+        </button>
+
+        <button id="btn-open-welcome-gate" class="btn-wellness-check-trigger btn-header-gate" onclick="openWelcomeGate()" title="NovaCell 메인 대문 열기" data-i18n-title="btnGateHeaderTitle" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(99, 102, 241, 0.25)); border-color: rgba(212, 175, 55, 0.5); color: #fef08a;">
+          <i class="fa-solid fa-archway"></i> <span class="btn-text" data-i18n="btnGateHeader">메인 대문</span>
+        </button>
+        <button id="btn-start-wellness-check" class="btn-wellness-check-trigger" title="나의 맞춤형 사운드 체크 및 처방" data-i18n-title="btnAiCheckTitle">
+          <i class="fa-solid fa-clipboard-check"></i> <span class="btn-text" data-i18n="btnAiCheck">AI 맞춤 진단</span>
+        </button>
+        <button id="btn-nav-custom-studio" class="btn-wellness-check-trigger btn-nav-custom-studio" onclick="switchTab('tab-studio')" title="나만의 주파수 음원 생성기" data-i18n-title="btnStudioHeaderTitle">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> <span class="btn-text" data-i18n="btnStudioHeader">프로 스튜디오</span>
+        </button>
+      </div>
+
+      <!-- 모바일 햄버거 메뉴 버튼 -->
+      <button id="btn-hamburger" class="btn-hamburger-menu" title="전체 탐색 메뉴 열기" data-i18n-title="btnHamburgerTitle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </header>
+
+    <!-- ====================================================================
+         [TAB 1] 바이오 힐링 프리셋 (Bio-Healing Presets / Easy Mode)
+         ==================================================================== -->
+    <main id="tab-presets" class="nc-tab-panel active">
+      
+      <!-- 히어로 배너 (재생/정지 토글 탑재) -->
+      <section class="nc-hero-banner glass-panel">
+        <div class="nc-hero-text">
+          <h2 data-i18n="heroTab1Title"><i class="ri-pulse-line text-gold"></i> 세포 전압(-50mV) 복원 & 자율신경계 조율</h2>
+          <p data-i18n="heroTab1Desc">임상 연구로 검증된 바이오 공명 주파수(Solfeggio & Rife)와 고음질 자연음을 원클릭으로 감상하세요.<br>
+             프리셋 카드를 클릭하면 재생되며, 다시 클릭하면 즉시 정지됩니다.</p>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+          <button id="hero-play-btn" class="btn-hero-play-toggle" onclick="toggleMasterPlayback()" style="background: linear-gradient(135deg, var(--nc-gold), var(--nc-gold-dark)); color: #070a13; border: none; padding: 12px 24px; border-radius: 12px; font-weight: 800; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(212,175,55,0.4);">
+            <i class="ri-play-fill" style="font-size: 1.2rem;"></i> <span id="hero-play-btn-text" data-i18n="heroPlayBtn">사운드 재생</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 🌿 실시간 힐링 배경음 조율 바 (Ambient Quick Selector) -->
+      <section class="nc-ambient-quick-bar glass-panel" style="margin-bottom: 22px; padding: 18px 24px; border-radius: 16px; border: 1px solid rgba(212, 175, 55, 0.25); background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(7, 10, 19, 0.9)); box-shadow: 0 8px 32px rgba(0,0,0,0.37);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35); display: flex; align-items: center; justify-content: center; color: #38bdf8;">
+              <i class="ri-sound-module-line" style="font-size: 1.25rem;"></i>
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <h3 style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #f8fafc;" data-i18n="ambientBarTitle">실시간 힐링 배경음 조율</h3>
+                <span class="badge" style="background: rgba(212, 175, 55, 0.2); color: var(--nc-gold); border: 1px solid rgba(212, 175, 55, 0.35); font-size: 0.75rem; padding: 2px 8px; border-radius: 999px;" data-i18n="ambientBarBadge">원클릭 선택</span>
+              </div>
+              <p style="margin: 2px 0 0 0; font-size: 0.82rem; color: #94a3b8;" data-i18n="ambientBarDesc">주파수 청취 중 원하는 자연 힐링 사운드(비, 계곡물, 파도, 싱잉볼 등)를 언제든 자유롭게 즉시 변경할 수 있습니다.</p>
+            </div>
+          </div>
+          
+          <!-- 주파수 및 배경음 개별 볼륨 슬라이더 듀얼 컨트롤 -->
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <!-- 🎵 주파수 볼륨 -->
+            <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.35); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25);">
+              <i class="ri-pulse-line" style="color: #38bdf8; font-size: 1.05rem;"></i>
+              <span style="font-size: 0.8rem; color: #cbd5e1; white-space: nowrap; font-weight: 600;" data-i18n="lblFreq">주파수</span>
+              <input type="range" id="slider-quick-frequency" min="0" max="1" step="0.01" value="0.7" style="width: 85px; accent-color: #38bdf8; cursor: pointer;" oninput="setGlobalFrequencyVolume(parseFloat(this.value))">
+              <span id="txt-quick-frequency" style="font-size: 0.8rem; color: #38bdf8; font-weight: 700; min-width: 32px;">70%</span>
+            </div>
+
+            <!-- 🌿 맞춤 배경음 볼륨 -->
+            <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.35); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(52, 211, 153, 0.25);">
+              <i class="ri-leaf-line" style="color: #34d399; font-size: 1.05rem;"></i>
+              <span style="font-size: 0.8rem; color: #cbd5e1; white-space: nowrap; font-weight: 600;" data-i18n="lblAmbient">배경음</span>
+              <input type="range" id="slider-quick-nature" min="0" max="1" step="0.01" value="0.8" style="width: 85px; accent-color: #34d399; cursor: pointer;" oninput="setGlobalAmbientVolume(parseFloat(this.value))">
+              <span id="txt-quick-nature" style="font-size: 0.8rem; color: #34d399; font-weight: 700; min-width: 32px;">80%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 배경음 칩 선택기 -->
+        <div class="ambient-chips-container" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+          <button type="button" class="ambient-chip active" data-ambient="preset" onclick="setGlobalAmbientSound('preset')" title="현재 선택된 프리셋의 고유 맞춤 자연음 조합" data-i18n-title="ambPresetTitle">
+            <span class="chip-icon">🌿</span> <span data-i18n="ambPreset">프리셋 맞춤음</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="rain" onclick="setGlobalAmbientSound('rain')" title="마음이 편안해지는 자연 빗소리" data-i18n-title="ambRainTitle">
+            <span class="chip-icon">🌧️</span> <span data-i18n="ambRain">자연 빗소리</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="stream" onclick="setGlobalAmbientSound('stream')" title="뇌를 맑게 씻어주는 청량한 계곡물" data-i18n-title="ambStreamTitle">
+            <span class="chip-icon">🌲</span> <span data-i18n="ambStream">청량한 계곡물</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="waves" onclick="setGlobalAmbientSound('waves')" title="스트레스를 씻어내는 동해 파도소리" data-i18n-title="ambWavesTitle">
+            <span class="chip-icon">🌊</span> <span data-i18n="ambWaves">동해 파도소리</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="campfire" onclick="setGlobalAmbientSound('campfire')" title="따스함과 안도감을 주는 모닥불 장작소리" data-i18n-title="ambCampfireTitle">
+            <span class="chip-icon">🔥</span> <span data-i18n="ambCampfire">따스한 모닥불</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="singingbowl" onclick="setGlobalAmbientSound('singingbowl')" title="깊은 명상과 뇌파 이완을 돕는 티벳 싱잉볼" data-i18n-title="ambSingingbowlTitle">
+            <span class="chip-icon">🥣</span> <span data-i18n="ambSingingbowl">힐링 싱잉볼</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="forestbirds" onclick="setGlobalAmbientSound('forestbirds')" title="기분 좋은 활력을 깨우는 숲속 새소리" data-i18n-title="ambForestbirdsTitle">
+            <span class="chip-icon">🐦</span> <span data-i18n="ambForestbirds">숲속 새소리</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="crickets" onclick="setGlobalAmbientSound('crickets')" title="깊은 수면을 유도하는 밤 풀벌레 ASMR" data-i18n-title="ambCricketsTitle">
+            <span class="chip-icon">🦗</span> <span data-i18n="ambCrickets">밤 풀벌레</span>
+          </button>
+          <button type="button" class="ambient-chip chip-off" data-ambient="off" onclick="setGlobalAmbientSound('off')" title="모든 배경음을 끄고 순수 치료 주파수만 집중 청취" data-i18n-title="ambOffTitle">
+            <span class="chip-icon">🔇</span> <span data-i18n="ambOff">배경음 끄기 (순음만)</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- 8대 바이오 힐링 프리셋 카드 그리드 -->
+      <section class="preset-grid">
+        <article class="preset-card active" data-preset-key="cosmos-harmony" onclick="playPreset('cosmos-harmony')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap"><i class="ri-planet-line"></i></div>
+            <span class="preset-badge-tag free" data-i18n="badgeFree">무료 체험</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset1Title">우주의 자연 조화 (432Hz)</h3>
+          <p class="preset-desc" data-i18n="preset1Desc">자연과 동조되는 432Hz 순음과 세타파(6Hz), 명상 싱잉볼 사운드가 심신에 깊은 이완과 평온을 선사합니다.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset1Footer">432Hz ∙ 세타 6Hz ∙ 싱잉볼</span>
+            <span class="preset-play-hint"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+
+        <article class="preset-card" data-preset-key="dna-healing" onclick="playPreset('dna-healing')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap" style="color: #34d399; background: rgba(52, 211, 153, 0.12); border-color: rgba(52, 211, 153, 0.25);"><i class="ri-dna-line"></i></div>
+            <span class="preset-badge-tag free" data-i18n="badgeFree">무료 체험</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset2Title">세포 기적 & DNA 회복 (528Hz)</h3>
+          <p class="preset-desc" data-i18n="preset2Desc">미라클 주파수 528Hz와 알파파(10Hz), 부드러운 창문 빗소리가 손상된 세포 에너지 회복과 스트레스 정화를 촉진합니다.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset2Footer">528Hz ∙ 알파 10Hz ∙ 창문비</span>
+            <span class="preset-play-hint"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+
+        <article class="preset-card" data-preset-key="calm-anxiety" onclick="playPreset('calm-anxiety')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap" style="color: #f59e0b; background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.25);"><i class="ri-fire-line"></i></div>
+            <span class="preset-badge-tag free" data-i18n="badgeFree">무료 체험</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset3Title">불안·죄책감 정화 (396Hz)</h3>
+          <p class="preset-desc" data-i18n="preset3Desc">내면의 무거운 불안과 걱정을 내려놓도록 돕는 396Hz 솔페지오 톤과 따스한 모닥불 장작 소리의 융합.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset3Footer">396Hz ∙ 델타 3.5Hz ∙ 모닥불</span>
+            <span class="preset-play-hint"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+
+        <article class="preset-card vip" data-preset-key="cell-voltage" onclick="playPreset('cell-voltage')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap"><i class="ri-flashlight-line"></i></div>
+            <span class="preset-badge-tag vip" data-i18n="badgeVip">🔒 VIP 임상</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset4Title">세포 전압(-50mV) 복원</h3>
+          <p class="preset-desc" data-i18n="preset4Desc">박창혁 박사의 바이오일렉트릭 임상 Rife 주파수와 지구 생체 자기장(슈만 7.83Hz)을 합성하여 세포 충전 유도.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset4Footer">Code 001 ∙ 528Hz ∙ 시냇물 & 싱잉볼</span>
+            <span class="preset-play-hint text-gold"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+
+        <article class="preset-card vip" data-preset-key="deep-sleep" onclick="playPreset('deep-sleep')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap"><i class="ri-moon-clear-line"></i></div>
+            <span class="preset-badge-tag vip" data-i18n="badgeVip">🔒 VIP 임상</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset5Title">깊은 델타 REM 숙면</h3>
+          <p class="preset-desc" data-i18n="preset5Desc">과각성된 두뇌를 잠재우고 깊은 서파 수면(Delta 2Hz)으로 유도하는 임상 수면 주파수와 밤비, 고요한 풀벌레 배합.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset5Footer">Code 003 ∙ 델타 2Hz ∙ 밤비 & 풀벌레</span>
+            <span class="preset-play-hint text-gold"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+
+        <article class="preset-card vip" data-preset-key="pain-relief" onclick="playPreset('pain-relief')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap"><i class="ri-hand-sanitizer-line"></i></div>
+            <span class="preset-badge-tag vip" data-i18n="badgeVip">🔒 VIP 임상</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset6Title">만성 통증 & 근골격 이완</h3>
+          <p class="preset-desc" data-i18n="preset6Desc">신경통, 관절염, 오십견 등 근골격계 긴장과 말초 신경 흥분 신호를 완화하는 라이프 생체 진동 레시피.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset6Footer">Code 013 ∙ 432Hz ∙ 시냇물 & 싱잉볼</span>
+            <span class="preset-play-hint text-gold"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+
+        <article class="preset-card vip" data-preset-key="vagus-nerve" onclick="playPreset('vagus-nerve')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap"><i class="ri-heart-3-line"></i></div>
+            <span class="preset-badge-tag vip" data-i18n="badgeVip">🔒 VIP 임상</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset7Title">자율신경 & 미주신경 밸런스</h3>
+          <p class="preset-desc" data-i18n="preset7Desc">옴(Om 136.1Hz)과 슈만 공명(7.83Hz), Code 008 자율신경 조율로 상열하한 해소 및 부교감신경 활성화.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset7Footer">432Hz ∙ 슈만 7.83Hz ∙ 숲속새 & 시냇물</span>
+            <span class="preset-play-hint text-gold"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+
+        <article class="preset-card vip" data-preset-key="focus-brain" onclick="playPreset('focus-brain')">
+          <div class="preset-card-header">
+            <div class="preset-icon-wrap"><i class="ri-lightbulb-line"></i></div>
+            <span class="preset-badge-tag vip" data-i18n="badgeVip">🔒 VIP 임상</span>
+          </div>
+          <h3 class="preset-title" data-i18n="preset8Title">감마파 초집중 & 뇌 활력</h3>
+          <p class="preset-desc" data-i18n="preset8Desc">두뇌 미토콘드리아 활성화와 인지 몰입을 돕는 정밀 40Hz 감마파, 솔페지오 741Hz와 맑은 빗소리의 조화.</p>
+          <div class="preset-footer">
+            <span data-i18n="preset8Footer">40Hz 감마 ∙ 741Hz ∙ Code 072 ∙ 집중비</span>
+            <span class="preset-play-hint text-gold"><i class="ri-play-circle-fill"></i> <span data-i18n="presetPlayStop">재생 / 정지</span></span>
+          </div>
+        </article>
+      </section>
+
+      <!-- 솔페지오 주파수 섹션 (백업 원본 완벽 보존) -->
+      <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
+        <div class="control-group" id="solfeggio-section">
+          <div class="group-title">
+            <i class="fa-solid fa-wave-square"></i>
+            <h2 data-i18n="solfeggioTitle">2) 치유 솔페지오 주파수 (Solfeggio Freq)</h2>
+          </div>
+          <p class="group-desc" data-i18n="solfeggioDesc">몸과 마음의 조화와 기적의 치유를 돕는 특정 주파수 톤을 실시간 합성합니다.</p>
+          
+          <div class="solfeggio-selector-grid">
+            <button class="btn-solfeggio" data-freq="396" title="불안과 죄책감 해소" data-i18n="solf396">396Hz (해소)</button>
+            <button class="btn-solfeggio" data-freq="396_399" title="(바이노럴) 불안 해소 및 뇌파 동조 Delta" data-i18n="solf396_399">(바이노럴): 좌 396Hz / 우 399Hz Delta</button>
+            <button class="btn-solfeggio" data-freq="417" title="상황 변화와 장애 회복" data-i18n="solf417">417Hz (변화)</button>
+            <button class="btn-solfeggio active" data-freq="432" title="우주의 자연 조화 주파수" data-i18n="solf432">432Hz (조화)</button>
+            <button class="btn-solfeggio" data-freq="528" title="세포 기적 및 DNA 복구" data-i18n="solf528">528Hz (치유)</button>
+            <button class="btn-solfeggio" data-freq="639" title="관계 개선 및 소통 활성화" data-i18n="solf639">639Hz (소통)</button>
+            <button class="btn-solfeggio" data-freq="741" title="직관력 향상 및 내면 정화" data-i18n="solf741">741Hz (정화)</button>
+          </div>
+
+          <div class="beats-custom-sliders">
+            <div class="slider-item">
+              <span class="label" data-i18n="solfVolume">솔페지오 자체 볼륨</span>
+              <input type="range" id="slider-solfeggio-volume" min="0" max="1" step="0.01" value="0.4">
+              <span id="txt-solfeggio-volume" class="val-display">40%</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 3. 솔라브르 주파수 레시피 (Solavre Frequency Code) 추가 -->
+      </section>
+
+      <!-- 바이노럴 비트 뇌파 섹션 (백업 원본 완벽 보존) -->
+      <section class="glass-panel" id="beats-section" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
+          <div class="beats-channels-section" style="margin-top: 20px; padding-top: 16px; border-top: 1px dashed rgba(255, 255, 255, 0.1);" id="beats-section">
+            <!-- 헤더: 전원 버튼과 제목 배치 -->
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <button id="btn-beats-play" class="btn-play" style="width: 50px; height: 50px; font-size: 1.25rem; border-radius: 50%; border: none; background: linear-gradient(135deg, var(--color-neon-blue), var(--color-neon-purple)); color: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center;" title="바이노럴 비트 재생/정지" data-i18n-title="binauralPlayBtnTitle">
+                <i class="fa-solid fa-play"></i>
+              </button>
+              <div>
+                <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--color-neon-blue); margin: 0; display: flex; align-items: center; gap: 8px;">
+                  <i class="fa-solid fa-headphones"></i> <span data-i18n="binauralTitle">1) 바이노럴 비트 뇌파 동조 (Binaural Beats)</span>
+                </h3>
+                <p style="font-size: 0.78rem; color: var(--color-text-muted); margin: 0;" data-i18n="binauralDesc">뇌파 톤을 선택하고 재생을 시작하세요. (이어폰 필수)</p>
+              </div>
+            </div>
+
+            <!-- 뇌파 프리셋 선택 그리드 (델타파/세타파/슈만공명/알파파/베타파) -->
+            <div class="beats-preset-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 16px;">
+              <button class="btn-preset active" data-brainwave="delta" data-carrier="200" data-beat="4" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 12px 10px; color: var(--color-text-main); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: all 0.3s ease;">
+                <strong data-i18n="bwDelta">델타파 (4Hz)</strong>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);" data-i18n="bwDeltaSub">깊은 수면 유도</span>
+              </button>
+              <button class="btn-preset" data-brainwave="theta" data-carrier="210" data-beat="6" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 12px 10px; color: var(--color-text-main); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: all 0.3s ease;">
+                <strong data-i18n="bwTheta">세타파 (6Hz)</strong>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);" data-i18n="bwThetaSub">깊은 명상과 이완</span>
+              </button>
+              <button class="btn-preset" data-brainwave="schumann" data-carrier="200" data-beat="7.83" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 12px 10px; color: var(--color-text-main); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: all 0.3s ease;">
+                <strong data-i18n="bwSchumann">슈만 공명 (7.83Hz)</strong>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);" data-i18n="bwSchumannSub">지구 고유 진동·치유</span>
+              </button>
+              <button class="btn-preset" data-brainwave="alpha" data-carrier="200" data-beat="10" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 12px 10px; color: var(--color-text-main); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: all 0.3s ease;">
+                <strong data-i18n="bwAlpha">알파파 (10Hz)</strong>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);" data-i18n="bwAlphaSub">스트레스 해소</span>
+              </button>
+              <button class="btn-preset" data-brainwave="beta" data-carrier="250" data-beat="15" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 12px 10px; color: var(--color-text-main); cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; transition: all 0.3s ease;">
+                <strong data-i18n="bwBeta">베타파 (15Hz)</strong>
+                <span style="font-size: 0.75rem; color: var(--color-text-muted);" data-i18n="bwBetaSub">집중력과 기억력</span>
+              </button>
+            </div>
+
+            <!-- 3종 정밀 조절 슬라이더 영역 -->
+            <div class="beats-custom-sliders">
+              <div class="slider-item">
+                <span class="label" data-i18n="lblCarrier">기준 주파수 (Carrier Hz)</span>
+                <input type="range" id="slider-carrier-freq" min="80" max="400" step="1" value="100" ondragstart="return false;">
+                <span id="txt-carrier-freq" class="val-display">100 Hz</span>
+              </div>
+              <div class="slider-item">
+                <span class="label" data-i18n="lblBeat">유도 뇌파 주파수 (Beat Hz)</span>
+                <input type="range" id="slider-beat-freq" min="1" max="25" step="0.01" value="4" ondragstart="return false;">
+                <span id="txt-beat-freq" class="val-display">4.0 Hz</span>
+              </div>
+              <div class="slider-item">
+                <span class="label" data-i18n="lblBinauralVol">자체 볼륨 (Volume)</span>
+                <input type="range" id="slider-beats-volume" min="0" max="1" step="0.01" value="0.4" ondragstart="return false;">
+                <span id="txt-beats-volume" class="val-display">40%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 3.5. 솔라브르 VIP 레시피 코드 (Solavre VIP Wellness Code) 추가 -->
+      </section>
+
+      <!-- 남색 호흡 타이머 스테이지 (기존 양자 에너지 파동 비주얼 대체) -->
+      <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px; border: 1px solid rgba(99, 102, 241, 0.35); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="nc-logo-badge" style="background: linear-gradient(135deg, #4f46e5, #6366f1); width: 40px; height: 40px; font-size: 1.15rem;">
+              <i class="fa-solid fa-lungs" style="color: #fff;"></i>
+            </div>
+            <div>
+              <h3 style="font-size: 1.2rem; font-weight: 800; color: #f8fafc; margin-bottom: 2px;" data-i18n="indigoCardTitle">
+                바이오 호흡 동기화 타이머 (남색 • Indigo)
+              </h3>
+              <p style="font-size: 0.8rem; color: #94a3b8;" data-i18n="indigoCardDesc">
+                치유 주파수와 함께 호흡하며 심박변이도(HRV)와 자율신경계를 최적화합니다.
+              </p>
+            </div>
+          </div>
+          <button type="button" class="btn-demo-vip" onclick="switchTab('tab-care')" style="color: #818cf8; border-color: rgba(99,102,241,0.35); padding: 6px 14px; font-size: 0.8rem;">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="btnGoCare">7색 호흡 테라피로 이동</span>
+          </button>
+        </div>
+
+        <div class="breathing-media-card" id="tab1-breathing-card" style="cursor: pointer; --color-active-border: #6366f1; --color-active-glow: rgba(99, 102, 241, 0.6); --color-active-dark: #312e81;" onclick="switchTab('tab-care')" title="클릭하여 7색 호흡 테라피로 이동" data-i18n-title="indigoCardLinkTitle">
+          <!-- 남색 포스터 원본 썸네일 이미지 (N O V A C E L L 로고 적용 및 상시 원본 선명도 유지) -->
+          <img class="breathing-media-poster" src="breathing/thumbs/ko/indigo.png" alt="남색 호흡 타이머" data-i18n-alt="classicAlt" style="opacity: 1 !important; filter: none !important; -webkit-filter: none !important;" />
+
+          <!-- 호흡 동심원 인터랙티브 호스트 (우측 중앙 75%, 50% - 단독 고정 썸네일 가이드) -->
+          <div class="concentric-breathing-host" id="tab1-concentric-host" style="pointer-events: none;">
+            <div id="tab1-concentric-pulse" class="concentric-pulse-circle" style="border-color: #6366f1; box-shadow: 0 0 35px rgba(99, 102, 241, 0.6), inset 0 0 25px rgba(99, 102, 241, 0.3); animation: none !important;">
+              <div class="concentric-inner-orbit"></div>
+            </div>
+            <div class="concentric-circle-content" id="tab1-concentric-content">
+              <span id="tab1-breath-phase" class="concentric-phase-label" data-i18n="indigoBreathPhase">들숨 준비</span>
+              <span id="tab1-breath-timer" class="concentric-timer-num" style="color: #818cf8; text-shadow: 0 0 20px rgba(99, 102, 241, 0.8);">14s</span>
+              <span id="tab1-breath-sub" class="concentric-sub-label" data-i18n="indigoBreathSub">4-2-6-2 바이오 리듬</span>
+              <span class="concentric-hint-label" data-i18n="indigoBreathHint">7색 호흡 테라피 바로가기</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 하위 호환성 캔버스 및 비주얼라이저 폴백 완전 격리 (블러 간섭 원천 차단) -->
+        <div id="audio-visualizer-engine-hidden" style="display: none !important; position: absolute; width: 0; height: 0; overflow: hidden; pointer-events: none;">
+          <canvas id="canvas-visualizer" width="1" height="1"></canvas>
+          <div class="visualizer-fallback" style="display: none !important;"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         [TAB 2] NovaCell 100 생체 에너지 힐링 코드 (NovaCell 100 Bio-Healing Protocols)
+         전신 세포 전위(-50mV) 정상화 및 100대 라이프스타일 힐링 주파수 라이브러리
+         ==================================================================== -->
+    <main id="tab-rife100" class="nc-tab-panel" style="display: none;">
+      <!-- 상단 히어로 헤더 -->
+      <section class="nc-page-hero glass-panel" style="margin-bottom: 24px; padding: 28px 32px; border-radius: 20px; border: 1px solid rgba(52, 211, 153, 0.25); background: linear-gradient(135deg, rgba(6, 78, 59, 0.35), rgba(7, 10, 19, 0.9)); position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+          <div style="max-width: 680px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span class="badge" style="background: rgba(52, 211, 153, 0.2); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); padding: 4px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;">
+                <i class="ri-dna-line"></i> <span data-i18n="tabRife100">NovaCell 100 힐링 코드</span>
+              </span>
+              <span style="font-size: 0.82rem; color: #94a3b8;" data-i18n="rifeHeroBadge">100가지 전신 생체 주파수 매트릭스</span>
+            </div>
+            <h2 style="font-size: 1.85rem; font-weight: 800; color: #f8fafc; margin: 0 0 10px 0; letter-spacing: -0.02em;" data-i18n="rifeHeroTitle">
+              NovaCell 100 생체 에너지 힐링 코드
+            </h2>
+            <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.6; margin: 0;" data-i18n="rifeHeroDesc">
+              박창혁 박사의 세포 전압(-50mV) 원리를 기반으로 일상 속 긴장 해소, 깊은 숙면, 만성 피로, 소화 대사, 뇌 인지 기능을 조율하는 100대 전신 생체 공명 주파수를 한눈에 탐색하고 원클릭으로 청취하세요.
+            </p>
+          </div>
+          <!-- 빠른 재생 현황 박스 -->
+          <div class="hero-status-card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 14px; padding: 16px 20px; min-width: 270px;">
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 4px;" data-i18n="rifeHeroStatus">현재 선택된 주파수 코드</div>
+            <div id="hero-rife100-current-title" style="font-size: 0.95rem; font-weight: 700; color: #34d399; margin-bottom: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+              Code 001 : 이너 피스
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <button id="btn-hero-rife100-play" class="btn-play-toggle" onclick="toggleRifePlaybackFromPage()" style="background: linear-gradient(135deg, #34d399, #059669); color: #fff; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 700; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <i class="ri-play-fill"></i> <span data-i18n="rifeHeroPlay">재생 / 정지</span>
+              </button>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <i class="ri-volume-up-line" style="color: #34d399; font-size: 0.9rem;"></i>
+                <input type="range" id="slider-rife100-page-vol" min="0" max="1" step="0.01" value="0.5" style="width: 70px; accent-color: #34d399;" oninput="setRifePageVolume(parseFloat(this.value))">
+                <span id="txt-rife100-page-vol" style="font-size: 0.78rem; color: #34d399; font-weight: 700;">50%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 검색 & 카테고리 필터 바 -->
+      <section class="nc-filter-toolbar glass-panel" style="margin-bottom: 24px; padding: 18px 24px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(15, 23, 42, 0.7);">
+        <!-- 실시간 검색창 -->
+        <div style="position: relative; margin-bottom: 14px;">
+          <i class="ri-search-line" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.1rem;"></i>
+          <input type="text" id="input-rife100-search" placeholder="100개 코드 번호, 웰니스 테마 또는 증상 검색 (예: 001, 수면, 피로, 두뇌, 528, 자율신경)" data-i18n-placeholder="rifeSearchPlaceholder" style="width: 100%; padding: 14px 18px 14px 46px; background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 12px; color: #f8fafc; font-size: 0.92rem; outline: none; transition: border-color 0.2s;" oninput="onRife100SearchInput(this.value)">
+        </div>
+
+        <!-- 6대 카테고리 칩 필터 & 카운터 -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div class="rife100-cat-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <button class="nc-filter-chip active" data-rife-cat="all" onclick="filterRife100Category('all')">
+              <i class="ri-apps-line"></i> <span data-i18n="rifeCatAll">전체</span> <span class="chip-count">100</span>
+            </button>
+            <button class="nc-filter-chip" data-rife-cat="sleep" onclick="filterRife100Category('sleep')">
+              <span data-i18n="rifeCatSleep">🌙 깊은 수면</span> <span class="chip-count">11</span>
+            </button>
+            <button class="nc-filter-chip" data-rife-cat="stress" onclick="filterRife100Category('stress')">
+              <span data-i18n="rifeCatStress">🧘 정서 안정</span> <span class="chip-count">16</span>
+            </button>
+            <button class="nc-filter-chip" data-rife-cat="body" onclick="filterRife100Category('body')">
+              <span data-i18n="rifeCatBody">⚡ 신체 피로</span> <span class="chip-count">18</span>
+            </button>
+            <button class="nc-filter-chip" data-rife-cat="digest" onclick="filterRife100Category('digest')">
+              <span data-i18n="rifeCatDigest">🥗 소화·대사</span> <span class="chip-count">14</span>
+            </button>
+            <button class="nc-filter-chip" data-rife-cat="focus" onclick="filterRife100Category('focus')">
+              <span data-i18n="rifeCatFocus">🎯 두뇌·집중</span> <span class="chip-count">15</span>
+            </button>
+            <button class="nc-filter-chip" data-rife-cat="vitality" onclick="filterRife100Category('vitality')">
+              <span data-i18n="rifeCatVitality">🌿 일상 활력</span> <span class="chip-count">26</span>
+            </button>
+          </div>
+          <div id="rife100-results-count" style="font-size: 0.84rem; color: #94a3b8; font-weight: 600;">
+            표시 중: 100개 / 100개
+          </div>
+        </div>
+      </section>
+
+      <!-- 100대 코드 카드 그리드 -->
+      <section id="rife100-cards-container" class="nc-cards-grid">
+        <!-- 자바스크립트로 100개 카드가 한눈에 동적 렌더링됩니다 -->
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         [TAB 3] NovaCell VIP 임상 웰니스 코드 (NovaCell VIP Clinical Protocols)
+         박창혁 박사의 양자 세포의학(-50mV) 및 90대 질환·증상별 정밀 타겟 주파수 라이브러리
+         ==================================================================== -->
+    <main id="tab-vip" class="nc-tab-panel" style="display: none;">
+      <!-- 히어로 헤더 -->
+      <section class="nc-page-hero glass-panel" style="margin-bottom: 24px; padding: 28px 32px; border-radius: 20px; border: 1px solid rgba(245, 158, 11, 0.3); background: linear-gradient(135deg, rgba(120, 53, 15, 0.35), rgba(7, 10, 19, 0.95)); position: relative; overflow: hidden;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+          <div style="max-width: 680px;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.4); padding: 4px 12px; border-radius: 9999px; font-size: 0.8rem; font-weight: 700;">
+                <i class="ri-vip-crown-fill"></i> <span data-i18n="vipHeroBadge">VIP 정회원 전용 임상 라이브러리</span>
+              </span>
+              <span style="font-size: 0.82rem; color: #94a3b8;" data-i18n="vipSubSeries">V01 ~ V090 전편 수록 (총 90대 임상 코드)</span>
+            </div>
+            <h2 style="font-size: 1.85rem; font-weight: 800; color: #f8fafc; margin: 0 0 10px 0; letter-spacing: -0.02em;" data-i18n="vipHeroTitle">
+              NovaCell VIP 임상 웰니스 코드
+            </h2>
+            <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.6; margin: 0;" data-i18n="vipHeroDesc">
+              박창혁 박사의 양자물리학 및 세포 전압(-50mV) 원리를 기반으로 순환기, 뇌신경, 근골격, 호흡기, 소화대사, 종양 타겟 등 90여 개 질환 및 증상별 최적화된 공명 주파수를 한눈에 분별하여 선택하세요.
+            </p>
+          </div>
+          <!-- 빠른 재생 현황 박스 -->
+          <div class="hero-status-card" style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 14px; padding: 16px 20px; min-width: 270px;">
+            <div style="font-size: 0.78rem; color: #94a3b8; margin-bottom: 4px;" data-i18n="vipHeroStatus">현재 선택된 VIP 임상 코드</div>
+            <div id="hero-vip-current-title" style="font-size: 0.95rem; font-weight: 700; color: #f59e0b; margin-bottom: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 250px;">
+              Code V01 : 불면증 딥 릴랙스
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <button id="btn-hero-vip-play" class="btn-play-toggle" onclick="toggleVipPlaybackFromPage()" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: #070a13; border: none; padding: 8px 18px; border-radius: 10px; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; gap: 6px;">
+                <i class="ri-play-fill"></i> <span data-i18n="rifeHeroPlay">재생 / 정지</span>
+              </button>
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <i class="ri-volume-up-line" style="color: #f59e0b; font-size: 0.9rem;"></i>
+                <input type="range" id="slider-vip-page-vol" min="0" max="1" step="0.01" value="0.4" style="width: 70px; accent-color: #f59e0b;" oninput="setVipPageVolume(parseFloat(this.value))">
+                <span id="txt-vip-page-vol" style="font-size: 0.78rem; color: #f59e0b; font-weight: 700;">40%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 의료법 준수 면책 조항 안내 -->
+        <div style="margin-top: 18px; padding: 10px 16px; border-radius: 10px; background: rgba(245, 158, 11, 0.06); border: 1px dashed rgba(245, 158, 11, 0.25); font-size: 0.78rem; color: #fbbf24; line-height: 1.5;" data-i18n="vipDisclaimer" data-i18n-html="true">
+          <i class="ri-information-line"></i> <strong>의료법 안내 및 면책:</strong> 본 VIP 사운드 레시피는 의학적 치료 목적이 아니며, 양자물리학 기반 생체 전위 안정 및 자율신경 이완 보조를 위한 웰니스 사운드입니다.
+        </div>
+      </section>
+
+      <!-- 검색 & 카테고리 필터 바 -->
+      <section class="nc-filter-toolbar glass-panel" style="margin-bottom: 24px; padding: 18px 24px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(15, 23, 42, 0.7);">
+        <!-- 실시간 검색창 -->
+        <div style="position: relative; margin-bottom: 14px;">
+          <i class="ri-search-line" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.1rem;"></i>
+          <input type="text" id="input-vip-search" placeholder="질환명, 증상, 통증 부위 또는 VIP 코드 검색 (예: 불면, 두통, 관절염, 비염, 당뇨, V015, 고혈압, 간암)" data-i18n-placeholder="vipSearchPlaceholder" style="width: 100%; padding: 14px 18px 14px 46px; background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 12px; color: #f8fafc; font-size: 0.92rem; outline: none; transition: border-color 0.2s;" oninput="onVipSearchInput(this.value)">
+        </div>
+
+        <!-- 계통별 임상 카테고리 칩 필터 & 카운터 -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div class="vip-cat-chips" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <button class="nc-filter-chip active vip-chip" data-vip-cat="all" onclick="filterVipCategory('all')">
+              <i class="ri-apps-line"></i> <span data-i18n="vipCatAll">전체 임상 코드</span> <span class="chip-count">90</span>
+            </button>
+            <button class="nc-filter-chip vip-chip" data-vip-cat="focus" onclick="filterVipCategory('focus')">
+              <span data-i18n="vipCatFocus">🧠 뇌신경 ∙ 심혈관 ∙ 두통</span>
+            </button>
+            <button class="nc-filter-chip vip-chip" data-vip-cat="digest" onclick="filterVipCategory('digest')">
+              <span data-i18n="vipCatDigest">🥗 소화대사 ∙ 간 ∙ 비뇨기</span>
+            </button>
+            <button class="nc-filter-chip vip-chip" data-vip-cat="stress" onclick="filterVipCategory('stress')">
+              <span data-i18n="vipCatStress">🦴 근골격 ∙ 관절 ∙ 척추통증</span>
+            </button>
+            <button class="nc-filter-chip vip-chip" data-vip-cat="sleep" onclick="filterVipCategory('sleep')">
+              <span data-i18n="vipCatSleep">🫁 수면 ∙ 호흡기 ∙ 알레르기</span>
+            </button>
+          </div>
+          <div id="vip-results-count" style="font-size: 0.84rem; color: #94a3b8; font-weight: 600;">
+            임상 코드: 90개 / 90개
+          </div>
+        </div>
+      </section>
+
+      <!-- 90대 VIP 코드 카드 그리드 -->
+      <section id="vip-cards-container" class="nc-cards-grid vip-grid">
+        <!-- 자바스크립트로 92개 임상 카드가 한눈에 동적 렌더링됩니다 -->
+      </section>
+    </main>
+
+    <!-- ====================================================================
+         [TAB 4] AI 웰니스 진단 & 7색 차크라 호흡 테라피 (Bio Care & Breath)
+         ==================================================================== -->
+    <main id="tab-care" class="nc-tab-panel">
+
+      <!-- ================================================================
+           [섹션 1] 🌈 7색 차크라 생체 호흡 테라피 & 동심원 인터랙티브 스테이지
+           ================================================================ -->
+      <section class="glass-panel" style="padding: 26px 28px; border-radius: 24px; margin-bottom: 24px; border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55); position: relative; overflow: hidden;">
+        
+        <!-- 상단 헤더 & 한/영 언어 스위처 -->
+        <div class="nc-breathing-header-wrap">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="nc-logo-badge" style="background: linear-gradient(135deg, #ef4444, #eab308, #22c55e, #38bdf8, #a855f7); width: 42px; height: 42px; font-size: 1.25rem;">
+              <i class="fa-solid fa-lungs" style="color: #fff;"></i>
+            </div>
+            <div>
+              <h2 id="breathing-hero-title" style="font-size: 1.35rem; font-weight: 800; color: #f8fafc; margin-bottom: 2px;">
+                7색 차크라 바이오 호흡 테라피
+              </h2>
+              <p id="breathing-hero-sub" style="font-size: 0.82rem; color: #94a3b8;">
+                차크라별 고유 컬러와 솔페지오 주파수가 동심원 리듬(4-2-6-2)으로 공명하는 14초 바이오 리셋
+              </p>
+            </div>
+          </div>
+
+          <div class="nc-lang-switcher" aria-label="언어 선택">
+            <button id="btn-lang-ko" class="btn-lang-pill active" onclick="setBreathingLanguage('ko')">🇰🇷 한국어</button>
+            <button id="btn-lang-en" class="btn-lang-pill" onclick="setBreathingLanguage('en')">🇺🇸 English</button>
+          </div>
+        </div>
+
+        <!-- 7색 무지개 컬러 휠 셀렉터 바 -->
+        <div class="rainbow-palette-bar" id="rainbow-palette-bar">
+          <button class="btn-rainbow-color active" data-color="red" onclick="selectBreathingColor('red')">
+            <span class="color-dot-indicator" style="background: #ef4444; color: #ef4444;"></span>
+            <span class="color-btn-title">빨강 (Red)</span>
+            <span class="color-btn-sub">174Hz • 1차크라</span>
+          </button>
+          <button class="btn-rainbow-color" data-color="orange" onclick="selectBreathingColor('orange')">
+            <span class="color-dot-indicator" style="background: #f97316; color: #f97316;"></span>
+            <span class="color-btn-title">주황 (Orange)</span>
+            <span class="color-btn-sub">285Hz • 2차크라</span>
+          </button>
+          <button class="btn-rainbow-color" data-color="yellow" onclick="selectBreathingColor('yellow')">
+            <span class="color-dot-indicator" style="background: #eab308; color: #eab308;"></span>
+            <span class="color-btn-title">노랑 (Yellow)</span>
+            <span class="color-btn-sub">528Hz • 3차크라</span>
+          </button>
+          <button class="btn-rainbow-color" data-color="green" onclick="selectBreathingColor('green')">
+            <span class="color-dot-indicator" style="background: #22c55e; color: #22c55e;"></span>
+            <span class="color-btn-title">초록 (Green)</span>
+            <span class="color-btn-sub">639Hz • 4차크라</span>
+          </button>
+          <button class="btn-rainbow-color" data-color="blue" onclick="selectBreathingColor('blue')">
+            <span class="color-dot-indicator" style="background: #38bdf8; color: #38bdf8;"></span>
+            <span class="color-btn-title">파랑 (Blue)</span>
+            <span class="color-btn-sub">741Hz • 5차크라</span>
+          </button>
+          <button class="btn-rainbow-color" data-color="indigo" onclick="selectBreathingColor('indigo')">
+            <span class="color-dot-indicator" style="background: #6366f1; color: #6366f1;"></span>
+            <span class="color-btn-title">남색 (Indigo)</span>
+            <span class="color-btn-sub">852Hz • 6차크라</span>
+          </button>
+          <button class="btn-rainbow-color" data-color="purple" onclick="selectBreathingColor('purple')">
+            <span class="color-dot-indicator" style="background: #a855f7; color: #a855f7;"></span>
+            <span class="color-btn-title">보라 (Purple)</span>
+            <span class="color-btn-sub">963Hz • 7차크라</span>
+          </button>
+        </div>
+
+        <!-- 인터랙티브 듀얼 호흡 스테이지 -->
+        <div class="breathing-stage-layout">
+          
+          <!-- 좌측 16:9 와이드 비디오 & 펄스 링 미디어 카드 -->
+          <div class="breathing-media-card" id="breathing-media-card">
+            <!-- 썸네일 포스터 이미지 (상시 배경 유지 및 비례 축소) -->
+            <img id="breathing-poster" class="breathing-media-poster" src="breathing/thumbs/ko/red.png" alt="호흡 차크라 썸네일" />
+
+            <!-- 좌상단 모드 표시 배지 (연속 루프 / 1시간 테라피 실시간 상태) -->
+            <div id="breathing-mode-badge" class="breathing-mode-badge" style="display: none;">
+              <i class="fa-solid fa-repeat"></i> <span id="txt-mode-badge">연속 루프</span>
+            </div>
+
+            <!-- 🎯 호흡 동심원 인터랙티브 호스트 (우측 캔버스 중앙 X: 75%, Y: 50% 완벽 정렬) -->
+            <div class="concentric-breathing-host" id="concentric-breathing-host" onclick="toggleBreathingPlayback()" title="클릭하여 호흡 테라피 시작 / 일시정지">
+              <!-- 외부 네온 펄스 링 (호흡 리듬 4-2-6-2 줌인 / 줌아웃) -->
+              <div id="concentric-pulse-circle" class="concentric-pulse-circle">
+                <!-- 내부 보조 동심원 궤도 링 -->
+                <div class="concentric-inner-orbit"></div>
+              </div>
+
+              <!-- 동심원 정중앙 호흡 가이드 텍스트 & 카운트다운 타이머 -->
+              <div class="concentric-circle-content" id="concentric-circle-content">
+                <span id="txt-breath-phase" class="concentric-phase-label">들숨 준비</span>
+                <span id="txt-breath-timer" class="concentric-timer-num">14s</span>
+                <span id="txt-breath-sub" class="concentric-sub-label">4-2-6-2 바이오 리듬</span>
+                <span id="txt-breath-hint" class="concentric-hint-label">들숨 4초 • 멈춤 2초 • 날숨 6초 • 비움 2초</span>
+              </div>
+            </div>
+
+            <!-- 14초 사이클 하단 프로그레스 바 -->
+            <div class="breathing-cycle-bar-container">
+              <div id="breathing-cycle-bar-fill" class="breathing-cycle-bar-fill"></div>
+            </div>
+
+            <!-- 14초 완료 축하 팝업 배지 -->
+            <div id="reward-badge-popup" class="reward-badge-popup">
+              <div style="font-size: 2.2rem; margin-bottom: 8px;">🎉</div>
+              <h3 id="txt-reward-title" style="font-size: 1.25rem; font-weight: 800; color: #34d399; margin-bottom: 6px;" data-i18n="rewardTitle">14초 바이오 리셋 완료!</h3>
+              <p id="txt-reward-desc" style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 16px;" data-i18n="rewardDesc">
+                차크라 에너지와 자율신경이 조율되었습니다. 하루 3회 이상 실천해 보세요.
+              </p>
+              <div style="display: flex; gap: 8px; justify-content: center;">
+                <button class="btn-demo-vip" onclick="dismissRewardPopup(false)" style="padding: 8px 16px; font-size: 0.82rem;" data-i18n="btnConfirm">확인</button>
+                <button class="btn-demo-vip" onclick="dismissRewardPopup(true)" style="padding: 8px 16px; font-size: 0.82rem; background: linear-gradient(135deg, #10b981, #059669); color: #fff;" data-i18n="btnTurnLoopOn">연속 루프 켜기</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 우측 제어 패널 & 차크라 정보 -->
+          <div class="breathing-controls-card">
+            <div>
+              <div class="color-info-badge" id="chakra-info-badge">
+                <i class="fa-solid fa-atom"></i>
+                <span id="txt-chakra-badge">1차크라 • 물라다라 (174Hz)</span>
+              </div>
+
+              <h3 id="txt-color-title" style="font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 6px;">
+                빨강 (RED) • 세포 활력 & 그라운딩
+              </h3>
+              <p id="txt-color-desc" style="font-size: 0.83rem; color: #94a3b8; line-height: 1.5; margin-bottom: 14px;">
+                기초 생명력과 세포 전압을 충전하고 하체 에너지를 단단하게 안정시킵니다.
+              </p>
+
+              <!-- 4-2-6-2 호흡 스펙 미니 그리드 -->
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 16px;">
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 4px; text-align: center;">
+                  <div id="step-lbl-in" style="font-size: 0.68rem; color: #94a3b8;" data-i18n="stepIn">들이마시기</div>
+                  <div style="font-size: 0.95rem; font-weight: 800; color: #34d399;">4s</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 4px; text-align: center;">
+                  <div id="step-lbl-hold1" style="font-size: 0.68rem; color: #94a3b8;" data-i18n="stepHold1">숨 멈추기</div>
+                  <div style="font-size: 0.95rem; font-weight: 800; color: #fbbf24;">2s</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 4px; text-align: center;">
+                  <div id="step-lbl-out" style="font-size: 0.68rem; color: #94a3b8;" data-i18n="stepOut">내쉬기</div>
+                  <div style="font-size: 0.95rem; font-weight: 800; color: #38bdf8;">6s</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 8px 4px; text-align: center;">
+                  <div id="step-lbl-hold2" style="font-size: 0.68rem; color: #94a3b8;" data-i18n="stepHold2">비움 멈춤</div>
+                  <div style="font-size: 0.95rem; font-weight: 800; color: #a855f7;">2s</div>
+                </div>
+              </div>
+
+              <!-- 🧘 치유 주파수 맞춤 조율 섹션 (사용자가 원하는 주파수 자유 선택) -->
+              <div class="custom-breathing-freq-panel" style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-size: 0.8rem; font-weight: 700; color: #f8fafc; display: flex; align-items: center; gap: 6px;">
+                    <i class="ri-sound-module-line" style="color: var(--nc-gold);"></i> <span data-i18n="careCustomTitle">치유 주파수 맞춤 조율</span>
+                  </span>
+                  <span id="txt-custom-hz-badge" class="badge" style="background: rgba(212, 175, 55, 0.15); color: var(--nc-gold); border: 1px solid rgba(212, 175, 55, 0.35); font-size: 0.72rem; padding: 2px 8px; border-radius: 999px;" data-i18n="careCustomDefault">
+                    차크라 기본 (174Hz)
+                  </span>
+                </div>
+
+                <!-- 퀵 주파수 칩 셀렉터 -->
+                <div class="breathing-hz-chips" id="breathing-hz-chips" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;">
+                  <button type="button" class="btn-hz-chip active" data-hz="default" onclick="resetBreathingChakraHz()">🧘 차크라 기본</button>
+                  <button type="button" class="btn-hz-chip" data-hz="432" onclick="setBreathingFrequency(432, '432Hz 우주조화')">✨ 432Hz (조화)</button>
+                  <button type="button" class="btn-hz-chip" data-hz="528" onclick="setBreathingFrequency(528, '528Hz DNA기적')">🧬 528Hz (기적)</button>
+                  <button type="button" class="btn-hz-chip" data-hz="7.83" onclick="setBreathingFrequency(7.83, '7.83Hz 슈만공명')">🌍 7.83Hz (슈만)</button>
+                  <button type="button" class="btn-hz-chip" data-hz="40" onclick="setBreathingFrequency(40, '40Hz 감마집중')">🧠 40Hz (집중)</button>
+                  <button type="button" class="btn-hz-chip" data-hz="3.5" onclick="setBreathingFrequency(3.5, '3.5Hz 델타숙면')">🌙 3.5Hz (숙면)</button>
+                  <button type="button" class="btn-hz-chip" data-hz="396" onclick="setBreathingFrequency(396, '396Hz 정화')">396Hz</button>
+                  <button type="button" class="btn-hz-chip" data-hz="639" onclick="setBreathingFrequency(639, '639Hz 사랑·관계')">639Hz</button>
+                  <button type="button" class="btn-hz-chip" data-hz="852" onclick="setBreathingFrequency(852, '852Hz 직관·각성')">852Hz</button>
+                  <button type="button" class="btn-hz-chip" data-hz="963" onclick="setBreathingFrequency(963, '963Hz 송과체·우주')">963Hz</button>
+                </div>
+
+                <!-- 직접 Hz 입력 컨트롤 -->
+                <div style="display: flex; align-items: center; gap: 6px;">
+                  <div style="position: relative; flex: 1;">
+                    <input type="number" id="input-custom-breathing-hz" min="0.1" max="22000" step="any" placeholder="직접 Hz 입력 (예: 432, 528)" data-i18n-placeholder="customHzPlaceholder" style="width: 100%; background: rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.12); color: #fff; font-size: 0.78rem; padding: 6px 10px; border-radius: 8px; outline: none;" onkeydown="if(event.key==='Enter') applyCustomBreathingHz()">
+                  </div>
+                  <button type="button" class="btn-nc-sm" onclick="applyCustomBreathingHz()" style="background: rgba(212, 175, 55, 0.25); border: 1px solid var(--nc-gold); color: #fff; padding: 6px 12px; font-size: 0.76rem; border-radius: 8px; cursor: pointer; white-space: nowrap;" data-i18n="customHzBtnApply">
+                    적용
+                  </button>
+                  <button type="button" class="btn-nc-sm" onclick="resetBreathingChakraHz()" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; padding: 6px 10px; font-size: 0.76rem; border-radius: 8px; cursor: pointer; white-space: nowrap;" data-i18n="customHzBtnDefault">
+                    기본값
+                  </button>
+                </div>
+
+                <!-- 📚 NovaCell 100 & VIP 힐링 코드 검색 및 연동 버튼 -->
+                <button type="button" class="btn-open-code-modal" onclick="openHealingCodeSearchModal()" style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 11px 16px; margin-top: 12px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(245, 158, 11, 0.16)); border: 1px solid var(--nc-gold); border-radius: 12px; color: var(--nc-gold-light); font-weight: 700; font-size: 0.84rem; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);" data-i18n="btnSearchHealingBreath">
+                  <i class="ri-search-2-line" style="font-size: 1.1rem; color: var(--nc-gold);"></i> 📚 NovaCell 100 & VIP 힐링 코드 검색 및 호흡 연동
+                </button>
+
+                <!-- 활성화된 힐링 코드 표시 배지 -->
+                <div id="active-healing-code-banner" style="display: none; margin-top: 10px; padding: 10px 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 10px; font-size: 0.8rem; color: #e2e8f0; justify-content: space-between; align-items: center;">
+                  <div>
+                    <strong id="active-healing-code-title" style="color: #34d399;"></strong>
+                    <div id="active-healing-code-freqs" style="font-size: 0.72rem; color: #94a3b8; margin-top: 2px;"></div>
+                  </div>
+                  <button type="button" onclick="clearActiveHealingCode()" title="코드 해제" data-i18n="btnClearCode" data-i18n-title="btnClearCodeTitle" style="background: rgba(255,255,255,0.1); border: none; color: #cbd5e1; cursor: pointer; font-size: 0.8rem; padding: 4px 8px; border-radius: 6px;">해제</button>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <!-- 메인 액션 버튼: 14초 퀵 챌린지 시작 -->
+              <button id="btn-breath-action-main" class="btn-breath-action-main" onclick="toggleBreathingPlayback()">
+                <i class="fa-solid fa-play" id="icon-breath-play"></i>
+                <span id="txt-breath-action-label" data-i18n="btnStart14s">14초 바이오 챌린지 시작</span>
+              </button>
+
+              <!-- 서브 제어 버튼 행 -->
+              <div class="btn-breath-sub-row">
+                <button id="btn-breath-loop" class="btn-breath-sub" onclick="toggleBreathingLoop()">
+                  <i class="fa-solid fa-repeat"></i>
+                  <span id="txt-breath-loop-label" data-i18n="btnLoopOff">연속 루프: OFF</span>
+                </button>
+                <button id="btn-breath-1hour" class="btn-breath-sub btn-vip-session" onclick="start1HourBreathingSession()">
+                  <i class="fa-solid fa-moon"></i>
+                  <span id="txt-breath-1hour-label" data-i18n="btnDeep1Hour">🌙 1시간 딥 테라피</span>
+                </button>
+              </div>
+
+              <!-- 동기화 체크박스 & 전체화면 버튼 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.06);">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: #cbd5e1; cursor: pointer;">
+                  <input type="checkbox" id="chk-breath-sound-sync" checked onchange="toggleBreathingSoundSync(this.checked)" style="accent-color: var(--nc-gold);" />
+                  <span id="txt-sound-sync-label" data-i18n="soundSyncLabel">솔페지오 & 자연음 동기화</span>
+                </label>
+                <button class="btn-breath-sub" onclick="toggleBreathingFullscreen()" style="padding: 6px 12px; font-size: 0.76rem;">
+                  <i class="fa-solid fa-expand"></i> <span id="txt-fullscreen-label" data-i18n="fullscreenLabel">전체화면</span>
+                </button>
+              </div>
+
+              <!-- 마음을 달래는 긍정 확언 공간 -->
+              <div class="affirmation-container" style="margin-top: 14px; margin-bottom: 0;">
+                <i class="fa-solid fa-quote-left quote-icon"></i>
+                <p id="txt-hero-affirmation">"지금 이 순간, 당신은 완벽하고 안전하고 평온합니다."</p>
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ================================================================
+           [섹션 2] 하단 듀얼 그리드: AI 진단 설문 + 클래식 5대 호흡 훈련
+           ================================================================ -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px;">
+        
+        <!-- 좌측: AI 진단 설문 박스 (직접 임베드) -->
+        <section class="glass-panel" style="padding: 24px; border-radius: 20px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div class="nc-logo-badge" style="width: 36px; height: 36px; font-size: 1.1rem;">AI</div>
+              <div>
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #f8fafc;" data-i18n="aiSectionTitle">NovaCell 생체 주파수 맞춤 진단</h3>
+                <p style="font-size: 0.8rem; color: #94a3b8;" data-i18n="aiSectionSub">오늘의 컨디션에 따른 맞춤형 뇌파 & 치유 사운드 처방</p>
+              </div>
+            </div>
+            <button class="btn-demo-vip" onclick="document.getElementById('btn-start-wellness-check').click();" style="font-size: 0.78rem;">
+              <i class="fa-solid fa-expand"></i> <span data-i18n="aiSectionOpenFull">전체창으로 열기</span>
+            </button>
+          </div>
+
+          <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 18px;" data-i18n="aiSectionDesc">
+            수면의 질, 스트레스, 신체 긴장도, 통증 부위 등 20문항의 점검을 통해 오늘 가장 필요한 치유 주파수와 최적의 자연음 믹스를 분석·처방합니다.
+          </p>
+
+          <button onclick="document.getElementById('btn-start-wellness-check').click();" style="width: 100%; padding: 14px; background: linear-gradient(135deg, var(--nc-gold), var(--nc-gold-dark)); border: none; border-radius: 12px; font-weight: 800; color: #070a13; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+            <i class="fa-solid fa-clipboard-check"></i> <span data-i18n="aiSectionBtn">AI 맞춤 점검 시작하기</span>
+          </button>
+        </section>
+
+        <!-- 우측: 맞춤 호흡 명상 가이드 (백업 원본 완벽 보존) -->
+        <section class="glass-panel" style="padding: 24px; border-radius: 20px;">
+        <!-- 호흡 조절 연습 명상 가이드 섹션 -->
+        <div class="breathing-guide" id="breathing-section">
+          <div class="breathing-header">
+            <h3><i class="fa-solid fa-wind" style="color: var(--color-neon-green);"></i> <span data-i18n="classicTitle">클래식 5대 호흡 훈련 가이드</span></h3>
+            <p class="breathing-subtitle" data-i18n="classicSub">자율신경 조율, 스트레스 완화, 수면 유도 등 목적별 호흡 리듬을 훈련하세요.</p>
+          </div>
+
+          <!-- 호흡 패턴 선택 프리미엄 카드 탭 -->
+          <div class="breathing-patterns-grid">
+            <button class="btn-pattern active" data-pattern="coherent" onclick="changeClassicPattern('coherent')">
+              <strong data-i18n="classicCoherent">동조 호흡 (5-5s)</strong>
+              <span data-i18n="classicCoherentSub">자율신경 조율</span>
+            </button>
+            <button class="btn-pattern" data-pattern="box" onclick="changeClassicPattern('box')">
+              <strong data-i18n="classicBox">균등 호흡 (4-4-4-4s)</strong>
+              <span data-i18n="classicBoxSub">스트레스 완화</span>
+            </button>
+            <button class="btn-pattern" data-pattern="relax" onclick="changeClassicPattern('relax')">
+              <strong data-i18n="classicRelax">이완 호흡 (4-7-8s)</strong>
+              <span data-i18n="classicRelaxSub">수면 유도/진정</span>
+            </button>
+            <button class="btn-pattern" data-pattern="beginner" onclick="changeClassicPattern('beginner')">
+              <strong data-i18n="classicBeginner">초보자 호흡 (3-3s)</strong>
+              <span data-i18n="classicBeginnerSub">가벼운 훈련용</span>
+            </button>
+            <button class="btn-pattern" data-pattern="vitality" onclick="changeClassicPattern('vitality')">
+              <strong data-i18n="classicVitality">활력 호흡 (4-2-4s)</strong>
+              <span data-i18n="classicVitalitySub">신선한 에너지</span>
+            </button>
+          </div>
+
+          <!-- 호흡 패턴 상세 안내 설명 카드 -->
+          <div class="pattern-desc-card">
+            <h4 id="txt-pattern-title">동조 호흡 (Coherent Breathing)</h4>
+            <p id="txt-pattern-desc">5초 동안 들이마시고 5초 동안 내쉬는 균등 호흡법입니다. 심박변이도(HRV)를 극대화하고 심장과 뇌의 조화를 유도하여 자율신경계 균형에 탁월합니다.</p>
+          </div>
+
+          <!-- 마음을 달래는 긍정 확언 공간 -->
+          <div class="affirmation-container">
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p id="txt-affirmation">"지금 이 순간, 당신은 완벽하게 안전하고 평온합니다."</p>
+            <i class="fa-solid fa-quote-right quote-icon"></i>
+          </div>
+
+          <!-- 남색 호흡 타이머 배경 인터랙티브 클래식 호흡 스테이지 -->
+          <div class="breathing-media-card" id="classic-breathing-card" style="margin: 18px 0; cursor: pointer; border: 1px solid rgba(99, 102, 241, 0.35); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6); --color-active-border: #6366f1; --color-active-glow: rgba(99, 102, 241, 0.6); --color-active-dark: #312e81;" onclick="toggleClassicBreathing()" title="클릭하여 클래식 호흡 훈련 시작 / 일시정지" data-i18n-title="classicCardTitle">
+            <!-- 남색 포스터 이미지 (N O V A C E L L 로고 적용) -->
+            <img class="breathing-media-poster" src="breathing/thumbs/ko/indigo.png" alt="남색 호흡 타이머 배경" data-i18n-alt="classicAlt" />
+
+            <!-- 호흡 동심원 인터랙티브 호스트 (우측 캔버스 중앙 X: 75%, Y: 50% 완벽 정렬) -->
+            <div class="concentric-breathing-host" id="classic-concentric-host">
+              <!-- 외부 네온 펄스 링 (클래식 호흡 스텝별 scale & glow 적용) -->
+              <div id="breathing-circle" class="concentric-pulse-circle" style="border-color: #6366f1; box-shadow: 0 0 35px rgba(99, 102, 241, 0.6), inset 0 0 25px rgba(99, 102, 241, 0.3); animation: none !important;">
+                <div class="concentric-inner-orbit"></div>
+              </div>
+
+              <!-- 동심원 정중앙 호흡 가이드 텍스트 & 카운트다운 타이머 -->
+              <div class="concentric-circle-content" id="classic-circle-content">
+                <span id="txt-breathing-status" class="concentric-phase-label" style="color: #cbd5e1;" data-i18n="classicStatusReady">준비</span>
+                <span id="txt-breathing-timer" class="concentric-timer-num" style="color: #818cf8; text-shadow: 0 0 20px rgba(99, 102, 241, 0.8);">0s</span>
+                <span id="txt-classic-phase-sub" class="concentric-sub-label" data-i18n="classicCoherent">동조 호흡 (5-5s)</span>
+                <span id="txt-classic-hint" class="concentric-hint-label" data-i18n="classicHint">클릭하여 시작 / 정지</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 클래식 호흡 훈련 전용 컨트롤 버튼 바 -->
+          <div style="display: flex; gap: 10px; margin-bottom: 14px;">
+            <button type="button" id="btn-classic-breath-toggle" class="btn-breath-action-main" onclick="toggleClassicBreathing()" style="flex: 1; padding: 12px; font-size: 0.92rem; background: linear-gradient(135deg, #4f46e5, #6366f1); border-color: #818cf8; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);">
+              <i class="fa-solid fa-play" id="icon-classic-play"></i> <span id="txt-classic-action-label" data-i18n="classicStartBtn">클래식 호흡 훈련 시작</span>
+            </button>
+            <button type="button" class="btn-breath-sub" onclick="resetClassicBreathing()" style="padding: 12px 18px; font-size: 0.85rem;" title="처음부터 다시 시작">
+              <i class="fa-solid fa-rotate-left"></i> <span data-i18n="classicResetBtn">리셋</span>
+            </button>
+          </div>
+
+          <p class="breathing-desc" data-i18n="classicDesc">부풀어 오르는 원의 템포와 중앙의 타이머에 맞추어 깊게 호흡하며 마음의 고요를 다지세요.</p>
+        </div>
+
+      </section>
+
+      </div>
+
+    </main>
+
+    <!-- ====================================================================
+         [TAB 3] 프로 바이오 스튜디오 (Pro Studio / Creator Mode) 🔒 (VIP)
+         ==================================================================== -->
+    <main id="tab-studio" class="nc-tab-panel">
+      
+      <!-- 프로 스튜디오 헤더 -->
+      <section class="glass-panel" style="padding: 20px 24px; border-radius: 18px; margin-bottom: 20px; border: 1px solid rgba(212, 175, 55, 0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="nc-logo-badge" style="width: 42px; height: 42px; font-size: 1.3rem;"><i class="ri-sound-module-fill"></i></div>
+          <div>
+            <h2 style="font-size: 1.25rem; font-weight: 800; color: #f8fafc; display: flex; align-items: center; gap: 8px;">
+              <span data-i18n="studioHeaderTitle">NovaCell Pro Bio-Frequency Studio</span> <span class="badge-lock" data-i18n="badgeReviewMode">👑 검토 모드 활성</span>
+            </h2>
+            <p style="font-size: 0.82rem; color: #94a3b8;" data-i18n="studioHeaderSub">100대 Rife 생체 공명 주파수, VIP 웰니스 코드 V001~V082, 12종 빗소리 믹서 및 무손실 음원 내보내기</p>
+          </div>
+        </div>
+        <button class="btn-demo-vip active" onclick="toggleDemoVip()">
+          <i class="ri-checkbox-circle-fill text-gold"></i> <span data-i18n="badgeVipActive">VIP 모든 기능 작동 중</span>
+        </button>
+      </section>
+
+      <!-- 스튜디오 마스터 컨트롤러 바 (백업 원본 완벽 보존) -->
+      <section class="glass-panel" style="padding: 16px 24px; border-radius: 16px; margin-bottom: 24px;">
+        <div class="control-group master-controls">
+          <button id="btn-master-play" class="btn-play" title="마스터 재생/정지" data-i18n-title="masterPlayTitle">
+            <i class="fa-solid fa-play"></i>
+          </button>
+          
+          <button id="btn-master-mute" class="btn-mute" title="전체 소리 ON/OFF" data-i18n-title="masterMuteTitle">
+            <i class="fa-solid fa-volume-high"></i>
+          </button>
+
+          <div class="volume-slider-container">
+            <span class="label" data-i18n="studioMasterVol"><i class="fa-solid fa-sliders"></i> 마스터 볼륨 (전체 통제)</span>
+            <input type="range" id="slider-master-volume" min="0" max="1" step="0.01" value="0.8">
+            <span id="txt-master-volume" class="val-display">80%</span>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 2. 솔페지오 주파수 (Solfeggio Frequencies) 테라피 -->
+      </section>
+
+      <!-- 1. Rife 100대 레시피 섹션 (백업 원본 완벽 보존) -->
+      <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
+        <div class="control-group" id="rife-section">
+          <div class="group-title">
+            <i class="fa-solid fa-circle-nodes"></i>
+            <h2 data-i18n="rifeSectionTitle">3) NovaCell 100 생체 에너지 힐링 코드</h2>
+          </div>
+          <p class="group-desc" data-i18n="rifeSectionDesc">대체의학으로 알려진 로열 라이프(Rife) 주파수를 솔라브르 고유의 힐링 테마 코드 화음으로 실시간 합성합니다. 지친 하루 끝에 세포의 조화로운 공명을 느껴보세요.</p>
+          
+          <!-- 테라피 재생 및 볼륨 컨트롤러 헤더 -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 16px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <button id="btn-rife-play" class="btn-play" style="width: 50px; height: 50px; font-size: 1.25rem; border-radius: 50%; border: none; background: linear-gradient(135deg, #34d399, #059669); color: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center;" title="솔라브르 주파수 테라피 재생/정지" data-i18n-title="rifePlayBtnTitle">
+                <i class="fa-solid fa-play"></i>
+              </button>
+              <div>
+                <h3 style="font-size: 1.05rem; font-weight: 700; margin: 0; color: var(--color-text-main);" data-i18n="rifeControllerTitle">테라피 컨트롤러</h3>
+                <p style="font-size: 0.78rem; color: var(--color-text-muted); margin: 0;" data-i18n="rifeControllerSub">레시피 코드를 선택하고 재생을 시작하세요.</p>
+              </div>
+            </div>
+            
+            <!-- [신규] 주파수 고정(Hold) 버튼 -->
+            <button id="btn-rife-hold" class="btn-hold" style="padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.08); color: #34d399; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease;">
+              <i class="fa-solid fa-lock-open" id="icon-rife-hold"></i> <span id="txt-rife-hold" data-i18n="txtRifeHold">현재 주파수 고정</span>
+            </button>
+
+            <div class="volume-slider-container" style="max-width: 250px; flex-grow: 1;">
+              <span class="label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-sliders"></i> <span data-i18n="lblRifeOwnVol">자체 볼륨</span> (<span id="txt-rife-volume">50%</span>)</span>
+              <input type="range" id="slider-rife-volume" min="0" max="1" step="0.01" value="0.5" style="width: 100%;" ondragstart="return false;">
+            </div>
+          </div>
+
+          <!-- [신규] Rife 주파수 전환 간격(적용 시간) 제어 박스 -->
+          <div class="rife-interval-control-box" style="background: rgba(52, 211, 153, 0.03); border: 1px solid rgba(52, 211, 153, 0.12); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: #34d399; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="txtRifeIntervalLabel">주파수당 적용 시간 (전환 간격)</span>
+              </span>
+              <span id="txt-rife-interval" style="font-size: 0.85rem; font-weight: 700; color: #34d399; background: rgba(52, 211, 153, 0.1); padding: 2px 10px; border-radius: 6px; border: 1px solid rgba(52, 211, 153, 0.2);">8초 (스캔)</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+              <input type="range" id="slider-rife-interval" min="5" max="600" step="1" value="8" style="flex-grow: 1;" ondragstart="return false;">
+            </div>
+
+            <!-- 빠른 원클릭 프리셋 버튼들 -->
+            <div class="rife-interval-presets" style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <button class="btn-interval-preset btn-rife-int-preset active" data-seconds="8" data-i18n="rifeInt8" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(52, 211, 153, 0.3); background: rgba(52, 211, 153, 0.15); color: #34d399; cursor: pointer;">8초 (스캔)</button>
+              <button class="btn-interval-preset btn-rife-int-preset" data-seconds="30" data-i18n="rifeInt30" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">30초</button>
+              <button class="btn-interval-preset btn-rife-int-preset" data-seconds="60" data-i18n="rifeInt60" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">1분</button>
+              <button class="btn-interval-preset btn-rife-int-preset" data-seconds="180" data-i18n="rifeInt180" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">3분 (표준 힐링)</button>
+              <button class="btn-interval-preset btn-rife-int-preset" data-seconds="300" data-i18n="rifeInt300" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">5분 (딥 테라피)</button>
+            </div>
+          </div>
+
+          <!-- [신규] 실시간 주파수 가로 타임라인 바 위젯 -->
+          <div class="rife-timeline-container" id="rife-timeline-widget" style="margin-top: 5px; margin-bottom: 20px;">
+            <div class="rife-timeline-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="rife-timeline-title" data-i18n="rifeTimelineTitle" style="font-size: 0.85rem; font-weight: 700; color: #a855f7; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-wave-square"></i> 실시간 작용 주파수 타임라인</span>
+                <!-- 디지털 경과 시간 타이머 추가 - 폰트 수정으로 흔들림 해결 -->
+                <div id="rife-timer-display" style="font-family: 'Courier New', Courier, monospace; font-variant-numeric: tabular-nums; font-size: 0.82rem; font-weight: 700; color: #34d399; background: rgba(52, 211, 153, 0.08); padding: 2px 7px; border-radius: 4px; border: 1px solid rgba(52, 211, 153, 0.15); letter-spacing: 0.5px; display: none; align-items: center; gap: 4px;">
+                  <i class="fas fa-hourglass-half" id="rife-timer-icon" style="font-size: 0.75rem;"></i> 
+                  <span id="rife-timer-time">00:00</span>
+                </div>
+              </div>
+              <span class="rife-timeline-status" id="rife-timeline-status-text" style="font-size: 0.82rem; font-weight: 700; color: #34d399;" data-i18n="rifeTimelineStandby">대기 중 (총 33개 주파수 대역)</span>
+            </div>
+            <div class="rife-timeline-bar-wrapper" style="position: relative; height: 32px; display: flex; align-items: center; margin: 12px 0;">
+              <div class="rife-timeline-bg-line" style="position: absolute; left: 0; right: 0; height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 2px;"></div>
+              <div class="rife-timeline-progress-line" id="rife-timeline-progress" style="position: absolute; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #a855f7, #34d399); border-radius: 2px; transition: width 0.3s ease;"></div>
+              <div class="rife-timeline-nodes-container" id="rife-timeline-nodes" style="position: absolute; left: 0; right: 0; height: 100%;">
+                <!-- 주파수 노드 점들이 동적으로 생성됩니다 -->
+              </div>
+            </div>
+            <div class="rife-timeline-indicator" style="text-align: center;">
+              <span style="font-size: 0.76rem; color: var(--color-text-muted);" data-i18n="rifeTimelineHint">💡 가로선 위의 점을 클릭하면 해당 구간 주파수로 즉시 변경됩니다.</span>
+            </div>
+          </div>
+
+          <!-- [신규] 카테고리 선택 탭 뷰 (6개 웰니스 지표 분류) -->
+          <div class="rife-category-tabs" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <button class="btn-rife-tab active" data-category="all" title="전체 100대 코드 보기"><i class="fa-solid fa-border-all"></i> <span data-i18n="rifeTabAll">전체</span></button>
+            <button class="btn-rife-tab" data-category="sleep" title="깊은 수면 및 입면 유도"><i class="fa-solid fa-bed"></i> <span data-i18n="rifeTabSleep">깊은수면</span></button>
+            <button class="btn-rife-tab" data-category="stress" title="긴장 이완 및 정서 안정"><i class="fa-solid fa-face-smile"></i> <span data-i18n="rifeTabStress">긴장완화</span></button>
+            <button class="btn-rife-tab" data-category="body" title="바디 긴장 완화 및 뻐근함 이완"><i class="fa-solid fa-child-holding-hands"></i> <span data-i18n="rifeTabBody">신체피로</span></button>
+            <button class="btn-rife-tab" data-category="digest" title="위장 편안함 및 신진대사 조율"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="rifeTabDigest">소화·대사</span></button>
+            <button class="btn-rife-tab" data-category="focus" title="두뇌 활성화 및 집중력 강화"><i class="fa-solid fa-brain"></i> <span data-i18n="rifeTabFocus">두뇌·집중</span></button>
+            <button class="btn-rife-tab" data-category="vitality" title="일상 무기력 극복 및 신선한 에너지"><i class="fa-solid fa-bolt"></i> <span data-i18n="rifeTabVitality">일상에너지</span></button>
+          </div>
+          
+          <!-- [신규] 맞춤 코드 실시간 돋보기 검색창 -->
+          <div class="rife-search-wrapper" style="position: relative; margin-bottom: 12px;">
+            <i class="fa-solid fa-magnifying-glass search-icon" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted); font-size: 0.9rem;"></i>
+            <input type="text" id="input-rife-search" placeholder="테마, 웰니스 증상 또는 코드를 검색해 보세요 (예: 수면, 어깨, 집중, 015)" data-i18n-placeholder="rifeSearchPlaceholderTab5" style="width: 100%; padding: 12px 16px 12px 40px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; color: var(--color-text-main); font-size: 0.85rem; transition: all 0.3s ease; outline: none;">
+          </div>
+
+          <!-- [신규] 100대 자체 웰니스 코드 동적 바인딩 스크롤 박스 -->
+          <div class="rife-selector-grid" id="rife-codes-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; padding-right: 6px; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 12px; background: rgba(0, 0, 0, 0.15);">
+            <!-- 자바스크립트(app.js)에서 필터링된 결과물에 따라 동적으로 가벼운 칩 버튼들을 그립니다 -->
+          </div>
+
+          <!-- 솔라브르 주파수 레시피 상세 설명 디스플레이 카드 -->
+          <div class="rife-desc-card" style="background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.04); border-radius: 14px; padding: 16px 20px;">
+            <strong id="rife-card-title" style="font-size: 0.95rem; color: #34d399; font-weight: 700;">Code 001 : 이너 피스 (Inner Peace & Sleep)</strong>
+            <p id="rife-card-desc" style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin-top: 8px;">일상의 긴장을 해소하고 편안한 수면 환경을 조성하여 깊은 휴식을 돕는 주파수 레시피입니다. (Inner Peace & Sleep 테마)<br>[주파수 구성: 3.59, 3, 7.83, 10, 1550, 1500, 880, 802, 6000, 304, 2720, 2489, 2170, 2000, 1865, 1800, 1600, 776, 727, 660, 465, 450, 444, 440, 428, 380, 250, 146, 125, 95, 72, 20, 1.2 Hz]</p>
+            <button type="button" class="btn-nc-sm" onclick="linkActiveRifeCodeToBreathing()" style="margin-top: 12px; background: linear-gradient(135deg, rgba(52, 211, 153, 0.22), rgba(16, 185, 129, 0.18)); border: 1px solid #34d399; color: #34d399; font-weight: 700; padding: 7px 14px; border-radius: 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; transition: all 0.2s ease;">
+              <i class="fa-solid fa-lungs"></i> <span data-i18n="rifeLinkBreath">🫁 이 힐링 코드로 호흡 테라피 시작</span>
+            </button>
+          </div>
+
+          <!-- [신규 및 이동] 독립된 바이노럴 비트 뇌파 동조 제어기 (Rife 주파수와 완벽 분리 작동) -->
+      </section>
+
+      <!-- 2. VIP 레시피 V001~V082 섹션 (백업 원본 완벽 보존) -->
+      <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
+        <div class="control-group" id="vip-section">
+          <div class="group-title">
+            <i class="fa-solid fa-crown" style="color: #f59e0b;"></i>
+            <h2 style="color: #f59e0b !important;" data-i18n="vipSectionTitleTab5">3.5) NovaCell VIP 임상 웰니스 코드 (V01~V090)</h2>
+          </div>
+          
+          <!-- 강력한 의료법 준수 면책 조항 상시 노출 -->
+          <div class="vip-disclaimer-box" data-i18n="vipDisclaimerTab5" data-i18n-html="true" style="background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;">
+            <p style="font-size: 0.78rem; color: #f59e0b; line-height: 1.5; margin: 0; font-weight: 600;">
+              ⚠️ [의료법 관련 안내 및 강력 면책 조항]<br>
+              본 VIP 사운드 레시피는 특정 질병의 예방, 진단, 치료를 목적으로 하는 의학적 기기가 아닙니다. 양자물리학을 기반으로 하여 신체 에너지 조율, 이완 유도 및 자율신경 웰니스 보조 목적으로만 사용됩니다. 질병이 의심되거나 치료 중인 경우 반드시 의사의 상담을 받으십시오.
+            </p>
+          </div>
+
+          <p class="group-desc" data-i18n="vipDescTab5">엄선된 VIP 전용 웰니스 공명 주파수를 실시간 합성합니다. 각 계통별 최적화된 화음 주파수로 심신의 균형을 잡아보세요.</p>
+          
+          <!-- 테라피 재생 및 볼륨 컨트롤러 헤더 -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); padding-bottom: 16px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <button id="btn-vip-play" class="btn-play btn-vip-play" style="width: 50px; height: 50px; font-size: 1.25rem; border-radius: 50%; border: none; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center;" title="솔라브르 VIP 테라피 재생/정지">
+                <i class="fa-solid fa-play"></i>
+              </button>
+              <div>
+                <h3 style="font-size: 1.05rem; font-weight: 700; margin: 0; color: var(--color-text-main);" data-i18n="vipControllerTitle">VIP 테라피 컨트롤러</h3>
+                <p style="font-size: 0.78rem; color: var(--color-text-muted); margin: 0;" data-i18n="vipControllerSub">VIP 코드를 선택하고 재생을 시작하세요.</p>
+              </div>
+            </div>
+            
+            <!-- [신규] VIP 주파수 고정(Hold) 버튼 -->
+            <button id="btn-vip-hold" class="btn-hold" style="padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.08); color: #f59e0b; font-size: 0.82rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease;">
+              <i class="fa-solid fa-lock-open" id="icon-vip-hold"></i> <span id="txt-vip-hold" data-i18n="txtVipHold">현재 주파수 고정</span>
+            </button>
+
+            <div class="volume-slider-container" style="max-width: 250px; flex-grow: 1;">
+              <span class="label" style="font-size: 0.8rem; color: var(--color-text-muted); font-weight: 600; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-sliders"></i> <span data-i18n="lblVipOwnVol">VIP 볼륨</span> (<span id="txt-vip-volume">30%</span>)</span>
+              <input type="range" id="slider-vip-volume" min="0" max="1" step="0.01" value="0.3" style="width: 100%;" ondragstart="return false;">
+            </div>
+          </div>
+
+          <!-- [신규] VIP 주파수 전환 간격(적용 시간) 제어 박스 -->
+          <div class="vip-interval-control-box" style="background: rgba(245, 158, 11, 0.03); border: 1px solid rgba(245, 158, 11, 0.12); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 8px;">
+              <span style="font-size: 0.82rem; font-weight: 700; color: #f59e0b; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="txtVipIntervalLabel">주파수당 적용 시간 (전환 간격)</span>
+              </span>
+              <span id="txt-vip-interval" style="font-size: 0.85rem; font-weight: 700; color: #f59e0b; background: rgba(245, 158, 11, 0.1); padding: 2px 10px; border-radius: 6px; border: 1px solid rgba(245, 158, 11, 0.2);">8초 (스캔)</span>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+              <input type="range" id="slider-vip-interval" min="5" max="600" step="1" value="8" style="flex-grow: 1;" ondragstart="return false;">
+            </div>
+
+            <!-- 빠른 원클릭 프리셋 버튼들 -->
+            <div class="vip-interval-presets" style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <button class="btn-interval-preset btn-vip-int-preset active" data-seconds="8" data-i18n="vipInt8" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.15); color: #f59e0b; cursor: pointer;">8초 (스캔)</button>
+              <button class="btn-interval-preset btn-vip-int-preset" data-seconds="30" data-i18n="vipInt30" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">30초</button>
+              <button class="btn-interval-preset btn-vip-int-preset" data-seconds="60" data-i18n="vipInt60" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">1분</button>
+              <button class="btn-interval-preset btn-vip-int-preset" data-seconds="180" data-i18n="vipInt180" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">3분 (표준 힐링)</button>
+              <button class="btn-interval-preset btn-vip-int-preset" data-seconds="300" data-i18n="vipInt300" style="padding: 4px 10px; font-size: 0.74rem; font-weight: 600; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.08); background: rgba(255, 255, 255, 0.03); color: var(--color-text-muted); cursor: pointer;">5분 (딥 테라피)</button>
+            </div>
+          </div>
+
+          <!-- [신규] 실시간 VIP 주파수 가로 타임라인 바 위젯 -->
+          <div class="vip-timeline-container" id="vip-timeline-widget" style="margin-top: 5px; margin-bottom: 20px;">
+            <div class="vip-timeline-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="vip-timeline-title" data-i18n="vipTimelineTitle" style="font-size: 0.85rem; font-weight: 700; color: #f59e0b; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-wave-square"></i> 실시간 작용 VIP 주파수 타임라인</span>
+                <!-- 디지털 경과 시간 타이머 추가 - 폰트 수정으로 흔들림 해결 -->
+                <div id="vip-timer-display" style="font-family: 'Courier New', Courier, monospace; font-variant-numeric: tabular-nums; font-size: 0.82rem; font-weight: 700; color: #f59e0b; background: rgba(245, 158, 11, 0.08); padding: 2px 7px; border-radius: 4px; border: 1px solid rgba(245, 158, 11, 0.15); letter-spacing: 0.5px; display: none; align-items: center; gap: 4px;">
+                  <i class="fas fa-hourglass-half" id="vip-timer-icon" style="font-size: 0.75rem;"></i> 
+                  <span id="vip-timer-time">00:00</span>
+                </div>
+              </div>
+              <span class="vip-timeline-status" id="vip-timeline-status-text" style="font-size: 0.82rem; font-weight: 700; color: #f59e0b;" data-i18n="vipTimelineStandby">대기 중 (총 0개 주파수 대역)</span>
+            </div>
+            <div class="vip-timeline-bar-wrapper" style="position: relative; height: 32px; display: flex; align-items: center; margin: 12px 0;">
+              <div class="vip-timeline-bg-line" style="position: absolute; left: 0; right: 0; height: 4px; background: rgba(255, 255, 255, 0.08); border-radius: 2px;"></div>
+              <div class="vip-timeline-progress-line" id="vip-timeline-progress" style="position: absolute; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #f59e0b, #34d399); border-radius: 2px; transition: width 0.3s ease;"></div>
+              <div class="vip-timeline-nodes-container" id="vip-timeline-nodes" style="position: absolute; left: 0; right: 0; height: 100%;">
+                <!-- 주파수 노드 점들이 동적으로 생성됩니다 -->
+              </div>
+            </div>
+            <div class="vip-timeline-indicator" style="text-align: center;">
+              <span style="font-size: 0.76rem; color: var(--color-text-muted);" data-i18n="vipTimelineHint">💡 가로선 위의 점을 클릭하면 해당 구간 주파수로 즉시 변경됩니다.</span>
+            </div>
+          </div>
+
+          <!-- VIP 카테고리 선택 탭 뷰 -->
+          <div class="vip-category-tabs" style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <button class="btn-vip-tab active" data-category="all" title="전체 VIP 코드 보기"><i class="fa-solid fa-border-all"></i> <span data-i18n="vipTabAll">전체</span></button>
+            <button class="btn-vip-tab" data-category="sleep" title="수면 장애 극복 및 호흡기 이완"><i class="fa-solid fa-wind"></i> <span data-i18n="vipTabSleep">수면 ∙ 호흡기 명상 코드</span></button>
+            <button class="btn-vip-tab" data-category="digest" title="위장 및 간담도계 조율"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="vipTabDigest">소화대사 명상 코드</span></button>
+            <button class="btn-vip-tab" data-category="focus" title="두뇌 신경 및 심혈관 안정"><i class="fa-solid fa-brain"></i> <span data-i18n="vipTabFocus">뇌심혈관 명상 코드</span></button>
+            <button class="btn-vip-tab" data-category="stress" title="척추 및 관절 이완"><i class="fa-solid fa-child-holding-hands"></i> <span data-i18n="vipTabStress">근골격계 명상 코드</span></button>
+          </div>
+          
+          <!-- VIP 맞춤 코드 실시간 돋보기 검색창 -->
+          <div class="vip-search-wrapper" style="position: relative; margin-bottom: 12px;">
+            <i class="fa-solid fa-magnifying-glass search-icon" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--color-text-muted); font-size: 0.9rem;"></i>
+            <input type="text" id="input-vip-search" placeholder="증상, VIP 코드 또는 명칭을 검색해 보세요 (예: 호흡, 혈당, V01)" data-i18n-placeholder="vipSearchPlaceholderTab5" style="width: 100%; padding: 12px 16px 12px 40px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 12px; color: var(--color-text-main); font-size: 0.85rem; transition: all 0.3s ease; outline: none;">
+          </div>
+
+          <!-- VIP 웰니스 코드 동적 바인딩 스크롤 박스 -->
+          <div class="vip-selector-grid" id="vip-codes-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px; max-height: 200px; overflow-y: auto; padding-right: 6px; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 12px; background: rgba(0, 0, 0, 0.15);">
+            <!-- 자바스크립트(app.js)에서 동적으로 채워집니다 -->
+          </div>
+
+          <!-- VIP 상세 설명 디스플레이 카드 -->
+          <div class="vip-desc-card" style="background: rgba(245, 158, 11, 0.02); border: 1px solid rgba(245, 158, 11, 0.1); border-radius: 14px; padding: 16px 20px;">
+            <strong id="vip-card-title" style="font-size: 0.95rem; color: #f59e0b; font-weight: 700;">Code V01 : 가슴 및 상체 에너지 순환 (Upper Body Resonance)</strong>
+            <p id="vip-card-desc" style="font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; margin-top: 8px;">가슴 and 상체 부위의 에너지 흐름을 원활하게 정화하고 신체 조화를 돕는 프리미엄 조율 주파수입니다.<br>[주파수 구성: 3072, 2950, 2876, 2191, 2189, 2187, 2184, 2182, 2152, 2128, 2127, 2120, 2116, 2112, 2104, 2100, 2008, 1550, 866, 802, 732, 676, 666, 166, 120 Hz]</p>
+            <button type="button" class="btn-nc-sm" onclick="linkActiveVipCodeToBreathing()" style="margin-top: 12px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.22), rgba(212, 175, 55, 0.18)); border: 1px solid var(--nc-gold); color: var(--nc-gold-light); font-weight: 700; padding: 7px 14px; border-radius: 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; transition: all 0.2s ease;">
+              <i class="fa-solid fa-lungs"></i> <span data-i18n="vipLinkBreath">🫁 이 VIP 코드로 호흡 테라피 시작</span>
+            </button>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 3.7 나만의 주파수 음원 생성기 (Custom Frequency Studio) -->
+      </section>
+
+      <!-- 3. 나만의 주파수 음원 생성기 Custom Studio (백업 원본 완벽 보존) -->
+      <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
+        <div class="control-group custom-studio-panel" id="custom-studio-section">
+          <div class="group-title" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color: #c084fc; font-size: 1.3rem;"></i>
+              <h2 style="background: linear-gradient(135deg, #e879f9, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.5px;" data-i18n="customStudioTitle">3.7) 나만의 주파수 음원 생성기 (Custom Studio)</h2>
+            </div>
+            <span class="badge-custom-studio"><i class="fa-solid fa-sliders"></i> PRO GENERATOR</span>
+          </div>
+          <p class="group-desc" data-i18n="customStudioDesc">필요한 주파수와 지속 시간(초/분)을 자유롭게 입력하여 나만의 힐링 사운드 레시피를 제작하고 실시간 재생 및 고음질 BGM 파일로 내보낼 수 있습니다.</p>
+
+          <!-- 주파수 스튜디오 마스터 플레이 & 볼륨 컨트롤 바 -->
+          <div class="custom-master-toolbar">
+            <button id="btn-custom-play" class="btn-custom-main-play" title="커스텀 주파수 세션 시작/일시정지">
+              <i class="fa-solid fa-play"></i> <span data-i18n="customBtnPlay">세션 재생</span>
+            </button>
+            <button id="btn-custom-hold" class="btn-custom-hold-toggle" title="현재 재생 중인 주파수 고정 (자동 전환 일시정지)">
+              <i class="fa-solid fa-anchor"></i> <span data-i18n="customBtnHold">주파수 고정 (HOLD)</span>
+            </button>
+            <div class="custom-vol-control">
+              <span class="label"><i class="fa-solid fa-volume-high" style="color: #c084fc;"></i> <span data-i18n="customVolLabel">자체 볼륨</span></span>
+              <input type="range" id="slider-custom-volume" min="0" max="1" step="0.01" value="0.7">
+              <span id="txt-custom-volume" class="val-display">70%</span>
+            </div>
+          </div>
+
+          <!-- 1. 음원 기본 정보 입력 카드 -->
+          <div class="custom-subcard custom-meta-card">
+            <div class="subcard-header">
+              <i class="fa-solid fa-tag"></i> <span data-i18n="customCard1Header">1. 음원 코드 제목 및 설명 설정</span>
+            </div>
+            <div class="custom-meta-inputs">
+              <div class="input-row">
+                <input type="text" id="input-custom-title" placeholder="음원 코드 제목 (예: Code C001 : 통증 해방 120분 리셋)" value="Code C001 : 120분 전신 리셋 & 통증 완화" data-i18n-placeholder="customMetaTitlePlaceholder">
+                <select id="select-custom-category">
+                  <option value="pain" data-i18n="customCatPain">🧘 통증 해방 & 전신 균형</option>
+                  <option value="sleep" data-i18n="customCatSleep">🌙 깊은 수면 & 이완</option>
+                  <option value="focus" data-i18n="customCatFocus">🧠 두뇌 활성 & 집중력</option>
+                  <option value="solfeggio" data-i18n="customCatSolfeggio">🧬 세포 치유 & 솔페지오</option>
+                  <option value="energy" data-i18n="customCatEnergy">⚡ 활력 & 바이탈 리셋</option>
+                  <option value="custom" data-i18n="customCatCustom">✨ 기타 맞춤 테라피</option>
+                </select>
+              </div>
+              <textarea id="input-custom-desc" rows="2" placeholder="음원에 대한 상세 설명 또는 효능을 자유롭게 작성하세요" data-i18n-placeholder="customMetaDescPlaceholder">[1단계 신경안정] 7.83, 10, 20, 6000Hz (20분) → [2단계 산증감소/면역증강] 10000, 5000, 880, 787, 727, 20, 10Hz (35분) → [3단계 신체조율/생체활성화] 528, 432, 136.1, 40, 20, 10Hz (35분) → [4단계 세포재생/에너지리셋] 528, 432, 10, 7.83, 3.5, 0.5Hz (30분)</textarea>
+            </div>
+          </div>
+
+          <!-- 2. 주파수 레시피 입력 & 스마트 템플릿 카드 -->
+          <div class="custom-subcard custom-freq-card">
+            <div class="subcard-header">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-wave-square"></i> <span data-i18n="customCard2Header">2. 주파수(Hz) 레시피 입력</span>
+              </div>
+              <div class="template-button-group">
+                <span style="font-size: 0.75rem; color: var(--color-text-muted); margin-right: 4px;" data-i18n="customTemplateRec">추천 템플릿:</span>
+                <button class="btn-custom-template" data-template="reset120" title="통증 해방 및 신체 균형 리셋 120분"><i class="fa-solid fa-bolt"></i> <span data-i18n="tpl120">120분 리셋</span></button>
+                <button class="btn-custom-template" data-template="headache" title="두통 복합 케어 레시피"><i class="fa-solid fa-brain"></i> <span data-i18n="tplHeadache">두통 케어</span></button>
+                <button class="btn-custom-template" data-template="solfeggio" title="9대 솔페지오 주파수"><i class="fa-solid fa-dna"></i> <span data-i18n="tplSolfeggio">솔페지오</span></button>
+                <button class="btn-custom-template" data-template="sleep" title="숙면 델타 뇌파"><i class="fa-solid fa-moon"></i> <span data-i18n="tplSleep">깊은 숙면</span></button>
+              </div>
+            </div>
+
+            <textarea id="input-custom-freqs" rows="3" placeholder="주파수(Hz)를 쉼표(,), 공백, 또는 줄바꿈으로 입력하세요. (예: 7.83, 10, 20, 6000, 10000, 5000, 880, 787, 727, 528, 432, 136.1, 40, 3.5, 0.5)" data-i18n-placeholder="customFreqPlaceholder">7.83, 10, 20, 6000, 10000, 5000, 880, 787, 727, 528, 432, 136.1, 40, 3.5, 0.5</textarea>
+
+            <div class="custom-freq-actions">
+              <button id="btn-custom-apply-freqs" class="btn-action-primary"><i class="fa-solid fa-check"></i> <span data-i18n="btnApplyFreqs">주파수 파싱 및 칩 적용</span></button>
+              <button id="btn-custom-sort-freqs" class="btn-action-secondary"><i class="fa-solid fa-arrow-down-short-wide"></i> <span data-i18n="btnSortFreqs">오름차순 정렬</span></button>
+              <button id="btn-custom-unique-freqs" class="btn-action-secondary"><i class="fa-solid fa-filter"></i> <span data-i18n="btnUniqueFreqs">중복 제거</span></button>
+              <button id="btn-custom-clear-freqs" class="btn-action-secondary" style="color: #f87171;"><i class="fa-solid fa-trash-can"></i> <span data-i18n="btnClearFreqs">비우기</span></button>
+            </div>
+
+            <!-- 파싱된 인터랙티브 주파수 칩 컨테이너 -->
+            <div class="custom-chips-wrapper">
+              <div class="chips-info">
+                <span><i class="fa-solid fa-list-check"></i> <span data-i18n="customChipsLabel">구성된 주파수 칩 목록 (클릭 시 단독 청취 / ✕ 클릭 시 삭제):</span></span>
+                <span id="txt-chips-count" class="badge-count">15개</span>
+              </div>
+              <div id="custom-freq-chips-container" class="custom-chips-grid">
+                <!-- 자바스크립트에서 동적으로 렌더링 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. 주파수 지속 시간 (Dwell Time) 설정 카드 -->
+          <div class="custom-subcard custom-interval-card">
+            <div class="subcard-header">
+              <i class="fa-solid fa-stopwatch"></i> <span data-i18n="customCard3Header">3. 주파수별 지속 시간 (Dwell Time) 설정</span>
+            </div>
+            
+            <div class="interval-controls-grid">
+              <!-- 단위 선택 스위처 (초 vs 분) -->
+              <div class="unit-switcher-group">
+                <span class="label" data-i18n="lblInputUnit">입력 단위:</span>
+                <div class="unit-tabs">
+                  <button id="btn-unit-sec" class="btn-unit-tab" data-i18n="btnUnitSec">초(sec)</button>
+                  <button id="btn-unit-min" class="btn-unit-tab active" data-i18n="btnUnitMin">분(min)</button>
+                </div>
+              </div>
+
+              <!-- 슬라이더 및 직접 입력 -->
+              <div class="interval-input-group">
+                <input type="range" id="slider-custom-interval" min="1" max="1800" step="1" value="300">
+                <div class="interval-val-box">
+                  <input type="number" id="input-custom-interval" min="0.1" max="3600" step="0.5" value="5">
+                  <span id="txt-custom-unit-label">분</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 빠른 선택 프리셋 버튼 -->
+            <div class="interval-presets">
+              <span class="preset-label" data-i18n="lblQuickSet">빠른 설정:</span>
+              <button class="btn-custom-preset" data-sec="8" data-i18n="cPre8">8초 (쾌속 탐색)</button>
+              <button class="btn-custom-preset" data-sec="30" data-i18n="cPre30">30초</button>
+              <button class="btn-custom-preset" data-sec="60" data-i18n="cPre60">1분</button>
+              <button class="btn-custom-preset" data-sec="180" data-i18n="cPre180">3분 (표준)</button>
+              <button class="btn-custom-preset active" data-sec="300" data-i18n="cPre300">5분 (치유 권장)</button>
+              <button class="btn-custom-preset" data-sec="600" data-i18n="cPre600">10분</button>
+              <button class="btn-custom-preset" data-sec="1800" data-i18n="cPre1800">30분 (깊은 이완)</button>
+            </div>
+
+            <!-- 세션 총 시간 계산 배너 -->
+            <div class="custom-session-summary-banner">
+              <div class="summary-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+              <div class="summary-text">
+                <span><span data-i18n="calcTotalPrefix">총</span> <strong id="txt-calc-freq-count">15</strong><span data-i18n="calcFreqUnit">개 주파수 × 각</span> <strong id="txt-calc-each-time">5분</strong><span data-i18n="calcEachSuffix"> 지속</span></span>
+                <span class="total-time"><span data-i18n="calcTotalEstimate">예상 1사이클 소요 시간: </span><strong id="txt-calc-total-time">75분 (1시간 15분)</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. 실시간 타임라인 & 모니터링 카드 -->
+          <div class="custom-subcard custom-timeline-card">
+            <div class="subcard-header">
+              <i class="fa-solid fa-chart-line"></i> <span data-i18n="customCard4Header">4. 실시간 재생 모니터링 & 인터랙티브 타임라인</span>
+            </div>
+
+            <div class="custom-live-monitor">
+              <div class="monitor-item now-freq-box">
+                <span class="m-label" data-i18n="lblNowFreq">현재 출력 주파수</span>
+                <span id="custom-now-freq" class="m-value freq-glow">7.83 Hz</span>
+                <span id="custom-now-tier" class="m-subtag" data-i18n="customNowTierDefault">슈만 공명 ∙ 3중 바이노럴 비트 합성</span>
+              </div>
+              <div class="monitor-item countdown-box">
+                <span class="m-label" data-i18n="lblCountdown">주파수 전환 카운트다운</span>
+                <span id="custom-now-countdown" class="m-value">05:00</span>
+                <span id="custom-now-step" class="m-subtag" data-i18n="customNowStepDefault">주파수 1 / 15 단계</span>
+              </div>
+              <div class="monitor-item hold-status-box">
+                <span class="m-label" data-i18n="lblSwitchMode">전환 모드</span>
+                <span id="custom-now-mode" class="m-mode-badge auto"><i class="fa-solid fa-arrows-rotate"></i> <span data-i18n="badgeAutoSwitch">자동 순차 전환</span></span>
+              </div>
+            </div>
+
+            <!-- 프로그레스 바 -->
+            <div class="custom-step-progress-wrapper">
+              <div class="custom-step-progress-bar" id="custom-step-progress-bar" style="width: 0%;"></div>
+            </div>
+
+            <!-- 시각화 타임라인 트랙 -->
+            <div class="custom-timeline-track-wrapper">
+              <div id="custom-timeline-track" class="custom-timeline-track">
+                <!-- 자바스크립트로 동적 타임라인 블록 생성 -->
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. 내 레시피 보관함 & JSON 공유 카드 -->
+          <div class="custom-subcard custom-storage-card">
+            <div class="subcard-header">
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-box-archive"></i> <span data-i18n="customCard5Header">5. 내 레시피 보관함 & 백업</span>
+              </div>
+              <div class="storage-action-buttons">
+                <button id="btn-custom-save-recipe" class="btn-storage-action save"><i class="fa-solid fa-floppy-disk"></i> <span data-i18n="btnSaveRecipe">현재 레시피 저장</span></button>
+                <button id="btn-custom-export-json" class="btn-storage-action export"><i class="fa-solid fa-file-export"></i> <span data-i18n="btnExportJson">JSON 내보내기</span></button>
+                <button id="btn-custom-import-json-trigger" class="btn-storage-action import"><i class="fa-solid fa-file-import"></i> <span data-i18n="btnImportJson">JSON 불러오기</span></button>
+                <input type="file" id="input-custom-import-json" accept=".json" style="display: none;">
+              </div>
+            </div>
+
+            <!-- 저장된 레시피 목록 그리드 -->
+            <div id="custom-saved-recipes-container" class="custom-saved-grid">
+              <!-- 자바스크립트에서 로컬스토리지 기반 동적 렌더링 -->
+            </div>
+          </div>
+
+          <!-- 6. 고음질 BGM 음원 파일 내보내기 (Export) 카드 -->
+          <div class="custom-subcard custom-export-card">
+            <div class="subcard-header">
+              <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="customCard6Header">6. BGM 음원 파일 내보내기 (WAV 고음질 렌더링)</span>
+            </div>
+            
+            <div class="custom-export-controls-grid">
+              <div class="export-option-item">
+                <label for="select-custom-export-duration"><i class="fa-solid fa-clock"></i> <span data-i18n="lblExportLen">내보낼 총 길이:</span></label>
+                <select id="select-custom-export-duration">
+                  <option value="300" data-i18n="dur5m">5분 (짧은 집중 명상)</option>
+                  <option value="1800" data-i18n="dur30m">30분 (표준 힐링 세션)</option>
+                  <option value="3600" selected data-i18n="dur60m">60분 / 1시간 (풀 세션)</option>
+                  <option value="10800" data-i18n="dur3h">3시간 (심층 수면 & 휴식)</option>
+                  <option value="32400" data-i18n="dur9h">9시간 (수면 전체 재생)</option>
+                  <option value="auto" data-i18n="durAuto">전체 레시피 1사이클 (계산된 시간)</option>
+                </select>
+              </div>
+
+              <div class="export-option-item">
+                <label for="select-custom-export-bgm"><i class="fa-solid fa-music"></i> <span data-i18n="lblExportBgm">배경 BGM 자연음:</span></label>
+                <select id="select-custom-export-bgm">
+                  <option value="none" data-i18n="bgmNone">무음 (주파수 사운드만 단독 렌더링)</option>
+                  <option value="rain" data-i18n="bgmRain">빗소리 (Rain Ambience)</option>
+                  <option value="waves" data-i18n="bgmWaves">파도소리 (Ocean Waves)</option>
+                  <option value="forest" data-i18n="bgmForest">숲속소리 (Forest Birds)</option>
+                  <option value="whitenoise" data-i18n="bgmWhite">화이트 노이즈 (Pink/White Noise)</option>
+                </select>
+              </div>
+
+              <div class="export-option-item">
+                <label><i class="fa-solid fa-volume-low"></i> <span data-i18n="lblBgmVol">BGM 배경음 볼륨:</span></label>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <input type="range" id="slider-custom-export-bgm-vol" min="0" max="1" step="0.05" value="0.3" style="flex: 1;">
+                  <span id="txt-custom-export-bgm-vol" style="font-size: 0.8rem; min-width: 32px; color: var(--color-text-muted);">30%</span>
+                </div>
+              </div>
+
+              <div class="export-option-item">
+                <label><i class="fa-solid fa-sliders"></i> <span data-i18n="lblMasterVol">마스터 출력 볼륨:</span></label>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <input type="range" id="slider-custom-export-master-vol" min="0" max="1" step="0.05" value="0.8" style="flex: 1;">
+                  <span id="txt-custom-export-master-vol" style="font-size: 0.8rem; min-width: 32px; color: var(--color-text-muted);">80%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="custom-export-action-bar">
+              <button id="btn-custom-export-audio" class="btn-custom-export-render">
+                <i class="fa-solid fa-file-audio"></i> <span data-i18n="btnRenderBgm">맞춤 BGM 음원 파일(WAV) 렌더링 및 다운로드</span>
+              </button>
+            </div>
+
+            <!-- 렌더링 진행률 및 다운로드 결과 영역 -->
+            <div id="custom-export-progress-area" class="custom-export-progress hidden">
+              <div class="export-progress-header">
+                <span id="txt-custom-export-status"><i class="fa-solid fa-spinner fa-spin"></i> <span data-i18n="customExportRendering">고음질 오프라인 오디오 렌더링 중...</span></span>
+                <span id="txt-custom-export-percent">0%</span>
+              </div>
+              <div class="export-progress-track">
+                <div id="bar-custom-export-progress" class="export-progress-fill" style="width: 0%;"></div>
+              </div>
+              <div id="custom-export-download-wrapper" class="export-download-box hidden">
+                <a id="btn-custom-download-link" class="btn-custom-download-file" href="#" download="Solavre_Custom_Recipe.wav">
+                  <i class="fa-solid fa-download"></i> <span data-i18n="btnDownloadWav">생성된 음원 파일 다운로드 (.WAV)</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr class="divider">
+
+        <!-- 4. 자연의 소리 & 명상 악기 믹서 (12종 리얼 빗소리 + 클래식 자연음) -->
+      </section>
+
+      <!-- 4. 자연의 소리 멀티 믹서 (백업 원본 완벽 보존) -->
+      <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
+        <div class="control-group" id="mixer-section">
+          <div class="group-title">
+            <i class="fa-solid fa-tree"></i>
+            <h2 data-i18n="rainSectionTitle">4) 자연의 소리 & 명상 악기 믹서</h2>
+          </div>
+          <p class="group-desc" data-i18n="rainSectionDesc">고음질 리얼 빗소리 12종 음원과 수학적 오디오 합성 자연음을 자유롭게 믹싱하여 나만의 힐링 ASMR 환경을 만듭니다.</p>
+          
+          <!-- 자연음 마스터 볼륨 -->
+          <div class="slider-item nature-master-slider">
+            <span class="label"><i class="fa-solid fa-layer-group" style="color: var(--color-neon-green);"></i> <strong data-i18n="rainMasterLabel">자연음 파트 전체 볼륨</strong></span>
+            <input type="range" id="slider-nature-master" min="0" max="1" step="0.01" value="0.8">
+            <span id="txt-nature-master" class="val-display">80%</span>
+          </div>
+
+          <!-- [신규] 🌧️ 고음질 리얼 빗소리 12종 스페셜 컬렉션 -->
+          <div class="rain-special-panel">
+            <div class="rain-special-header">
+              <div class="rain-special-title">
+                <i class="fa-solid fa-cloud-showers-heavy"></i>
+                <span data-i18n="rainSpecialHeader">고음질 리얼 빗소리 12종 컬렉션</span>
+                <span class="badge-rain-count">12 Rain Sounds</span>
+              </div>
+            </div>
+
+            <!-- 빠른 빗소리 프리셋 칩 -->
+            <div class="rain-presets-bar">
+              <span style="font-size: 0.74rem; color: var(--color-text-muted); margin-right: 4px;"><i class="fa-solid fa-bolt-lightning"></i> <span data-i18n="lblQuickSelect">빠른 선택:</span></span>
+              <button type="button" class="btn-rain-preset" data-rain-preset="heavy"><i class="fa-solid fa-cloud-showers-heavy"></i> <span data-i18n="preHeavy">폭우/자연비</span></button>
+              <button type="button" class="btn-rain-preset" data-rain-preset="white"><i class="fa-solid fa-bed"></i> <span data-i18n="preWhite">수면 화이트</span></button>
+              <button type="button" class="btn-rain-preset" data-rain-preset="thunder"><i class="fa-solid fa-cloud-bolt"></i> <span data-i18n="preThunder">뇌우/천둥</span></button>
+              <button type="button" class="btn-rain-preset" data-rain-preset="relax"><i class="fa-solid fa-umbrella"></i> <span data-i18n="preRelax">릴랙싱</span></button>
+              <button type="button" class="btn-rain-preset" data-rain-preset="window"><i class="fa-solid fa-droplet"></i> <span data-i18n="preWindow">창가 빗방울</span></button>
+              <button type="button" class="btn-rain-preset" data-rain-preset="calm"><i class="fa-solid fa-spa"></i> <span data-i18n="preCalm">잔잔한 명상비</span></button>
+              <button type="button" class="btn-rain-preset" data-rain-preset="off" style="color: #fca5a5; border-color: rgba(239, 68, 68, 0.3);"><i class="fa-solid fa-volume-xmark"></i> <span data-i18n="preOff">빗소리 끄기</span></button>
+            </div>
+
+            <!-- 12종 빗소리 개별 슬라이더 목록 -->
+            <div class="rain-sliders-grid">
+              <!-- 01 heavy-rain-nature-sounds.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain01"><i class="fa-solid fa-cloud-showers-heavy" style="color: var(--color-neon-blue);"></i> <span data-i18n="rain01">01. 묵직한 폭우 & 자연의 비</span></span>
+                <input type="range" id="slider-rain-01" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-01" class="val-display">0%</span>
+              </div>
+              <!-- 02 white_records-rain-sounds.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain02"><i class="fa-solid fa-cloud-rain" style="color: var(--color-neon-blue);"></i> <span data-i18n="rain02">02. 화이트 노이즈 수면 빗소리</span></span>
+                <input type="range" id="slider-rain-02" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-02" class="val-display">0%</span>
+              </div>
+              <!-- 03 relaxing rain -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain03"><i class="fa-solid fa-umbrella" style="color: var(--color-neon-green);"></i> <span data-i18n="rain03">03. 편안한 릴랙싱 빗소리</span></span>
+                <input type="range" id="slider-rain-03" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-03" class="val-display">0%</span>
+              </div>
+              <!-- 04 thunderstorm rain -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain04"><i class="fa-solid fa-cloud-bolt" style="color: #f59e0b);"></i> <span data-i18n="rain04">04. 천둥 번개 동반 뇌우</span></span>
+                <input type="range" id="slider-rain-04" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-04" class="val-display">0%</span>
+              </div>
+              <!-- 05 rain-sounds.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain05"><i class="fa-solid fa-cloud-showers-water" style="color: var(--color-neon-purple);"></i> <span data-i18n="rain05">05. 깊고 풍성한 롱타임 빗소리</span></span>
+                <input type="range" id="slider-rain-05" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-05" class="val-display">0%</span>
+              </div>
+              <!-- 06 rain-sounds.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain06"><i class="fa-solid fa-droplet" style="color: var(--color-neon-blue);"></i> <span data-i18n="rain06">06. 창가 촉촉한 빗방울 소리</span></span>
+                <input type="range" id="slider-rain-06" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-06" class="val-display">0%</span>
+              </div>
+              <!-- 07 calming-rain-loop.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain07"><i class="fa-solid fa-repeat" style="color: var(--color-neon-green);"></i> <span data-i18n="rain07">07. 카밍 힐링 루프 빗소리</span></span>
+                <input type="range" id="slider-rain-07" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-07" class="val-display">0%</span>
+              </div>
+              <!-- 08 rain-sounds.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain08"><i class="fa-solid fa-mountain-sun" style="color: #38bdf8);"></i> <span data-i18n="rain08">08. 대지 적시는 장엄한 빗소리</span></span>
+                <input type="range" id="slider-rain-08" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-08" class="val-display">0%</span>
+              </div>
+              <!-- 09 gentle-midday-rain-sounds.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain09"><i class="fa-solid fa-sun-plant-wilt" style="color: #34d399);"></i> <span data-i18n="rain09">09. 한낮의 부드러운 단비</span></span>
+                <input type="range" id="slider-rain-09" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-09" class="val-display">0%</span>
+              </div>
+              <!-- 10 soundreality-rain-sound.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain10"><i class="fa-solid fa-headphones-simple" style="color: #c084fc);"></i> <span data-i18n="rain10">10. 초고음질 리얼리티 입체 빗소리</span></span>
+                <input type="range" id="slider-rain-10" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-10" class="val-display">0%</span>
+              </div>
+              <!-- 11 calming-rain.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain11"><i class="fa-solid fa-spa" style="color: var(--color-neon-blue);"></i> <span data-i18n="rain11">11. 잔잔한 명상 이완 빗소리</span></span>
+                <input type="range" id="slider-rain-11" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-11" class="val-display">0%</span>
+              </div>
+              <!-- 12 rain-sounds.mp3 -->
+              <div class="slider-item">
+                <span class="label" data-i18n-title="rain12"><i class="fa-solid fa-leaf" style="color: var(--color-neon-green);"></i> <span data-i18n="rain12">12. 숲속 나뭇잎 스치는 빗소리</span></span>
+                <input type="range" id="slider-rain-12" min="0" max="1" step="0.01" value="0">
+                <span id="txt-rain-12" class="val-display">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 클래식 자연음 및 명상 악기 채널 목록 -->
+          <div class="mixer-subtitle" style="font-size: 0.88rem; font-weight: 700; color: #cbd5e1; margin: 16px 0 10px 4px; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-seedling" style="color: var(--color-neon-green);"></i>
+            <span data-i18n="nature8Header">클래식 자연의 소리 & 힐링 악기 (8종)</span>
+          </div>
+
+          <div class="mixer-sliders">
+            <!-- 합성 빗소리 채널 -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-cloud-showers-heavy" style="color: var(--color-neon-blue);"></i> <span data-i18n="natSynthRain">합성 빗소리 (Synth Rain)</span></span>
+              <input type="range" id="slider-rain" min="0" max="1" step="0.01" value="0">
+              <span id="txt-rain" class="val-display">0%</span>
+            </div>
+            <!-- 파도소리 채널 -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-water" style="color: var(--color-neon-blue);"></i> <span data-i18n="natWaves">파도소리 (Waves)</span></span>
+              <input type="range" id="slider-waves" min="0" max="1" step="0.01" value="0">
+              <span id="txt-waves" class="val-display">0%</span>
+            </div>
+            <!-- 모닥불소리 채널 -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-fire" style="color: var(--color-neon-purple);"></i> <span data-i18n="natCampfire">모닥불소리 (Campfire)</span></span>
+              <input type="range" id="slider-campfire" min="0" max="1" step="0.01" value="0.0">
+              <span id="txt-campfire" class="val-display">0%</span>
+            </div>
+            <!-- 갈매기소리 채널 -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-dove" style="color: var(--color-neon-green);"></i> <span data-i18n="natSeagull">갈매기소리 (Seagull)</span></span>
+              <input type="range" id="slider-seagull" min="0" max="1" step="0.01" value="0.0">
+              <span id="txt-seagull" class="val-display">0%</span>
+            </div>
+            <!-- 싱잉볼소리 채널 -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-bell" style="color: var(--color-neon-purple);"></i> <span data-i18n="natSingingbowl">싱잉볼소리 (Singing Bowl)</span></span>
+              <input type="range" id="slider-singingbowl" min="0" max="1" step="0.01" value="0.0">
+              <span id="txt-singingbowl" class="val-display">0%</span>
+            </div>
+            <!-- [신규] 계곡물 흐르는 소리 채널 -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-water" style="color: var(--color-neon-blue);"></i> <span data-i18n="natStream">계곡물 흐르는 소리 (Valley Stream)</span></span>
+              <input type="range" id="slider-stream" min="0" max="1" step="0.01" value="0.0">
+              <span id="txt-stream" class="val-display">0%</span>
+            </div>
+            <!-- 깊은 숲의 새소리 채널 (숲새 + 뻐꾸기 통합) -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-tree" style="color: var(--color-neon-green);"></i> <span data-i18n="natForestBirds">깊은 숲의 새소리 (Deep Forest Birds)</span></span>
+              <input type="range" id="slider-forest-birds" min="0" max="1" step="0.01" value="0.0">
+              <span id="txt-forest-birds" class="val-display">0%</span>
+            </div>
+            <!-- 깊은 산속 새소리 채널 -->
+            <div class="slider-item">
+              <span class="label"><i class="fa-solid fa-dove" style="color: var(--color-neon-green);"></i> <span data-i18n="natMountainBirds">깊은 산속 새소리 (Mountain Birds)</span></span>
+              <input type="range" id="slider-mountain-birds" min="0" max="1" step="0.01" value="0.0">
+              <span id="txt-mountain-birds" class="val-display">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- 5. 유튜브 BGM 다운로드 & 내보내기 -->
+      </section>
+
+      <!-- 5. 유튜브 BGM 무손실 WAV 내보내기 (백업 원본 완벽 보존) -->
+      <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
+        <div class="control-group export-section" id="export-section">
+          <div class="group-title">
+            <i class="fa-solid fa-cloud-arrow-down"></i>
+            <h2 data-i18n="exportSectionTitle">유튜브 BGM 내보내기 (Export)</h2>
+          </div>
+          <p class="group-desc" data-i18n="exportSectionDesc">설정한 볼륨과 주파수 그대로 고음질 음원(WAV) 파일을 즉시 다운로드하여 동영상 제작 소스로 사용합니다.</p>
+          
+          <div class="export-options">
+            <div class="time-select-group">
+              <label for="select-export-duration" data-i18n="exportDurationLabel">녹음/내보내기 시간 선택</label>
+              <select id="select-export-duration">
+                <option value="300" data-i18n="opt5m">5 분 (영상 편집 루프용)</option>
+                <option value="1800" data-i18n="opt30m">30 분 (일반 명상용)</option>
+                <option value="3600" data-i18n="opt1h">1 시간 (집중 및 숙면용)</option>
+                <option value="10800" data-i18n="opt3h">3 시간 (자율신경 조율 및 장시간 웰니스 테라피용)</option>
+                <option value="32400" data-i18n="opt9h">9 시간 (깊은 수면 유도 및 야간 백색소음용)</option>
+              </select>
+            </div>
+            
+            <button id="btn-export-audio" class="btn-export">
+              <i class="fa-solid fa-download"></i> <span data-i18n="exportBtnStart">고화질 WAV 다운로드 시작</span>
+            </button>
+          </div>
+
+          <!-- 내보내기 진행 상태 프로그레스 바 -->
+          <div id="progress-container" class="progress-container hidden">
+            <div class="progress-bar-wrapper">
+              <div id="progress-bar" class="progress-bar" style="width: 0%;"></div>
+            </div>
+            <span id="txt-progress-status" data-i18n="exportProgressReady">음원 렌더링을 준비하고 있습니다... (0%)</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- 오른쪽 영역: 시각적 명상 도구 및 힐링 비주얼라이저 -->
+      </section>
+
+    </main>
+
+    <!-- 푸터 라이선스 및 NovaCell 패밀리 정보 -->
+    <footer class="app-footer" style="text-align: center; padding: 24px 0; color: #64748b; font-size: 0.78rem; border-top: 1px solid rgba(255, 255, 255, 0.05); margin-top: 40px;">
+      <p>&copy; 2026 NovaCell Therapy Bio-Frequency System. All Rights Reserved.</p>
+      <p style="margin-top: 4px;" data-i18n="footerCredit" data-i18n-html="true">박창혁 박사의 바이오일렉트릭 전압 의학 시스템 ∙ <a href="https://novacell.kr" target="_blank" rel="noopener noreferrer" style="color: var(--nc-gold); text-decoration: none;">novacell.kr</a></p>
+    </footer>
+
+  </div>
+
+  <!-- AI 자가 점검 모달 팝업 (백업 원본 완벽 보존) -->
+  <!-- Solavre AI 주파수 맞춤 케어 자가 점검 모달 팝업 -->
+  <div id="wellness-check-modal" class="modal-overlay hidden">
+    <div class="modal-content glass-panel">
+      <!-- 모달 닫기 버튼 -->
+      <button id="btn-close-wellness-check" class="btn-close-modal" title="체크 리스트 창 닫기">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <!-- 모달 헤더: 진행률 표시 -->
+      <div class="modal-header">
+        <div class="title-area">
+          <i class="fa-solid fa-heart-pulse wellness-check-icon"></i>
+          <h2>Solavre AI 주파수 맞춤 체크 리스트</h2>
+        </div>
+        <div class="progress-bar-container">
+          <div id="wellness-check-progress-bar" class="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+        <div class="progress-text-container">
+          <span id="wellness-check-progress-text">준비</span>
+        </div>
+      </div>
+
+      <!-- 설문지 영역 -->
+      <div id="wellness-check-survey-box" class="survey-box">
+        
+        <!-- 시작 화면 -->
+        <div id="survey-intro" class="survey-slide">
+          <h3>당신만을 위한 맞춤 힐링 사운드 레시피</h3>
+          <p class="slide-desc">간단한 20문항의 문답을 통해 오늘 밤 당신에게 가장 적합한 뇌파 주파수와 치유 자연음을 설계 및 매칭하여 나만의 사운드 레시피를 전해 드립니다. (약 2분 소요)</p>
+          <div class="input-group">
+            <label for="user-name-input"><i class="fa-solid fa-user"></i> 사용하실 이름을 입력해 주세요</label>
+            <input type="text" id="user-name-input" placeholder="이름 입력 (예: 힐러)" value="힐러" maxlength="10">
+          </div>
+          <button id="btn-survey-start" class="btn-survey-next">
+            시작하기 <i class="fa-solid fa-circle-play"></i>
+          </button>
+        </div>
+
+        <!-- 질문 슬라이드 (동적 로딩) -->
+        <div id="survey-question-container" class="survey-slide hidden">
+          <h3 id="survey-question-text">질문 텍스트가 표시됩니다.</h3>
+          <p id="survey-question-desc" class="slide-desc">질문 관련 가이드가 표시됩니다.</p>
+          
+          <!-- 일반 객관식 문항 옵션 그리드 -->
+          <div id="survey-options-container" class="options-grid"></div>
+
+          <!-- 커스텀 입력 양식 -->
+          <div id="survey-custom-input-container" class="custom-input-box hidden">
+            <!-- Q11 스트레스 입력 슬라이더 등 동적 생성 예정 -->
+          </div>
+
+          <div class="survey-nav-buttons">
+            <button id="btn-survey-prev" class="btn-survey-nav"><i class="fa-solid fa-arrow-left"></i> 이전</button>
+            <button id="btn-survey-submit-custom" class="btn-survey-next hidden">다음 단계 <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- 결과 레포트 화면 -->
+        <div id="survey-result" class="survey-slide hidden">
+          <div class="result-header">
+            <h3><i class="fa-solid fa-clipboard-check"></i> 오늘의 사운드 레시피</h3>
+            <span class="result-date" id="txt-result-date">Today's Sound Recipe</span>
+          </div>
+
+          <!-- 맞춤 레시피 요약 카드 -->
+          <div class="result-main-card">
+            <h4 id="txt-result-user-title">사용자님께 추천하는 사운드</h4>
+            <div class="recipe-box prescription-box">
+              <strong id="txt-result-track-name">레시피 분석 대기 중</strong>
+              <p id="txt-result-freq-details">주파수 및 자연음 구성 정보</p>
+            </div>
+            <p id="txt-result-comment" class="result-comment">맞춤 레시피 가이드가 제공됩니다.</p>
+          </div>
+
+          <!-- 5개 웰니스 지표 차트 시각화 -->
+          <div class="result-chart-box">
+            <h4>나의 스트레스 & 마인드 밸런스 점수</h4>
+            <div class="chart-item">
+              <span class="chart-label">수면 부족도 (SLEEP)</span>
+              <div class="chart-bar-bg">
+                <div id="bar-score-sleep" class="chart-bar-fill score-sleep" style="width: 0%;"></div>
+              </div>
+              <span id="txt-score-sleep" class="chart-val">0%</span>
+            </div>
+            <div class="chart-item">
+              <span class="chart-label">각성·집중 필요도 (FOCUS)</span>
+              <div class="chart-bar-bg">
+                <div id="bar-score-focus" class="chart-bar-fill score-focus" style="width: 0%;"></div>
+              </div>
+              <span id="txt-score-focus" class="chart-val">0%</span>
+            </div>
+            <div class="chart-item">
+              <span class="chart-label">이완·진정 필요도 (CALM)</span>
+              <div class="chart-bar-bg">
+                <div id="bar-score-calm" class="chart-bar-fill score-calm" style="width: 0%;"></div>
+              </div>
+              <span id="txt-score-calm" class="chart-val">0%</span>
+            </div>
+            <div class="chart-item">
+              <span class="chart-label">신체 회복도 (BODY)</span>
+              <div class="chart-bar-bg">
+                <div id="bar-score-body" class="chart-bar-fill score-body" style="width: 0%;"></div>
+              </div>
+              <span id="txt-score-body" class="chart-val">0%</span>
+            </div>
+            <div class="chart-item">
+              <span class="chart-label">정서 회복도 (MOOD)</span>
+              <div class="chart-bar-bg">
+                <div id="bar-score-mood" class="chart-bar-fill score-mood" style="width: 0%;"></div>
+              </div>
+              <span id="txt-score-mood" class="chart-val">0%</span>
+            </div>
+          </div>
+
+          <!-- 맞춤 레시피 실행 및 초기화 버튼 -->
+          <div class="result-actions">
+            <button id="btn-apply-recipe" class="btn-play-recipe">
+              <i class="fa-solid fa-circle-play"></i> 맞춤 사운드 레시피 즉시 적용 및 감상하기
+            </button>
+            <button id="btn-restart-wellness-check" class="btn-restart-survey">
+              <i class="fa-solid fa-rotate-left"></i> 다시 체크하기
+            </button>
+          </div>
+
+          <p class="medical-disclaimer">
+            ※ 본 사운드 레시피는 라이프스타일 웰니스 및 휴식을 돕는 매칭 추천이며, 의학적 치료나 의사의 의학적 판단을 대체하지 않습니다.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- 모바일 드로어 (백업 원본 완벽 보존) -->
+  <div id="drawer-overlay" class="drawer-overlay hidden"></div>
+
+  <!-- 모바일 전용 슬라이드 내비게이션 드로어 -->
+  <div id="mobile-drawer" class="mobile-drawer hidden">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+        <span data-i18n="drawerTitle">힐링 탐색 메뉴</span>
+      </div>
+      <button id="btn-close-drawer" class="btn-close-drawer" title="메뉴 닫기">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <!-- 모바일 드로어 언어 스위처 -->
+    <div style="padding: 0 16px 8px 16px;">
+      <button id="drawer-lang-toggle" class="nc-lang-toggle drawer-variant" onclick="toggleLanguage()" title="한글 / English 언어 전환">
+        <span class="lang-opt lang-ko active">한글</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-opt lang-en">ENG</span>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="javascript:void(0)" class="drawer-link" onclick="openWelcomeGate(); toggleDrawer();" style="color: #fef08a; font-weight: 700;"><i class="fa-solid fa-archway text-gold"></i> <span data-i18n="drawerGate">메인 대문 (스튜디오 가이드)</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-presets'); toggleDrawer();"><i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">바이오 힐링 프리셋</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-rife100'); toggleDrawer();" style="color: #34d399;"><i class="ri-dna-line"></i> <span data-i18n="tabRife100">NovaCell 100 힐링 코드</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-vip'); toggleDrawer();" style="color: #f59e0b;"><i class="ri-vip-crown-fill"></i> <span data-i18n="tabVip">VIP 임상 웰니스 코드 (V01~V090)</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-care'); toggleDrawer();" style="color: #60a5fa;"><i class="ri-heart-pulse-fill"></i> <span data-i18n="tabCare">AI 웰니스 & 호흡 테라피</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-studio'); toggleDrawer();" style="color: #c084fc;"><i class="fa-solid fa-sliders"></i> <span data-i18n="tabStudio">프로 사운드 스튜디오</span></a>
+      <a href="#mixer-section" class="drawer-link"><i class="fa-solid fa-tree"></i> <span data-i18n="rainSectionTitle">자연음 & 악기 믹서</span></a>
+      <a href="#breathing-section" class="drawer-link"><i class="fa-solid fa-wind"></i> <span data-i18n="classicTitle">맞춤 호흡 가이드</span></a>
+      <a href="#export-section" class="drawer-link"><i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="exportSectionTitle">BGM 내보내기</span></a>
+    </nav>
+    <div class="drawer-footer">
+      <button id="btn-drawer-wellness-check" class="btn-drawer-survey">
+        <i class="fa-solid fa-clipboard-check"></i> <span data-i18n="drawerWellnessCheck">AI 주파수 맞춤 체크</span>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ====================================================================
+       하단 고정 미니 오디오 플레이어 바 (Sticky Mini Player Bar)
+       ==================================================================== -->
+  <aside id="sticky-audio-bar" class="sticky-audio-bar visible" aria-label="오디오 플레이어">
+    <div class="sticky-left">
+      <div class="sticky-track-thumb"><i class="ri-pulse-fill"></i></div>
+      <div class="sticky-track-info">
+        <span id="sticky-track-title" class="sticky-track-title">우주의 자연 조화 (432Hz)</span>
+        <span id="sticky-track-badge" class="sticky-track-badge" data-i18n="stickyDemo">체험 사운드</span>
+      </div>
+    </div>
+
+    <div class="sticky-center">
+      <button id="sticky-play-btn" class="btn-sticky-play" onclick="toggleMasterPlayback()" title="재생/일시정지">
+        <i class="ri-play-fill"></i>
+      </button>
+
+      <!-- 슬립 타이머 드롭다운 -->
+      <div class="sticky-timer-dropdown">
+        <button id="sticky-timer-btn" class="btn-sticky-timer" title="슬립 타이머 설정">
+          <i class="ri-timer-line"></i> <span data-i18n="stickyTimer">타이머</span>
+        </button>
+        <div class="sticky-timer-menu">
+          <button class="sticky-timer-item" onclick="setSleepTimer(15)" data-i18n="timer15">15분</button>
+          <button class="sticky-timer-item" onclick="setSleepTimer(30)" data-i18n="timer30">30분</button>
+          <button class="sticky-timer-item" onclick="setSleepTimer(60)" data-i18n="timer60">60분</button>
+          <button class="sticky-timer-item" onclick="setSleepTimer(0)" data-i18n="timerOff">해제</button>
+        </div>
+      </div>
+
+      <!-- 힐링 배경음 선택 드롭다운 -->
+      <div class="sticky-timer-dropdown sticky-ambient-dropdown">
+        <button id="sticky-ambient-btn" class="btn-sticky-timer" title="실시간 배경음 변경">
+          <i class="ri-sound-module-line"></i> <span id="sticky-ambient-text">🌿 맞춤음</span>
+        </button>
+        <div class="sticky-timer-menu" style="min-width: 140px;">
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('preset')" data-i18n="ambPreset">🌿 프리셋 맞춤음</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('rain')" data-i18n="ambRain">🌧️ 자연 빗소리</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('stream')" data-i18n="ambStream">🌲 청량한 계곡물</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('waves')" data-i18n="ambWaves">🌊 동해 파도소리</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('campfire')" data-i18n="ambCampfire">🔥 따스한 모닥불</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('singingbowl')" data-i18n="ambSingingbowl">🥣 힐링 싱잉볼</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('forestbirds')" data-i18n="ambForestbirds">🐦 숲속 새소리</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('crickets')" data-i18n="ambCrickets">🦗 밤 풀벌레</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('off')" data-i18n="ambOff">🔇 배경음 끄기</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky-right">
+      <div class="sticky-dual-volume">
+        <!-- 🎵 주파수 볼륨 -->
+        <div class="sticky-vol-item" title="주파수 사운드(솔페지오/Rife/바이노럴) 볼륨">
+          <i class="ri-pulse-line" style="color: #38bdf8; font-size: 0.95rem;"></i>
+          <span class="sticky-vol-title" data-i18n="lblFreq">주파수</span>
+          <input type="range" id="sticky-freq-slider" class="sticky-vol-slider freq-slider" min="0" max="1" step="0.01" value="0.7" oninput="setGlobalFrequencyVolume(parseFloat(this.value))">
+          <span id="sticky-freq-val" class="sticky-vol-val freq-val">70%</span>
+        </div>
+
+        <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.15);"></div>
+
+        <!-- 🌿 배경음 볼륨 -->
+        <div class="sticky-vol-item" title="맞춤음/자연 배경음(비/파도/계곡/싱잉볼) 볼륨">
+          <i class="ri-leaf-line" style="color: #34d399; font-size: 0.95rem;"></i>
+          <span class="sticky-vol-title" data-i18n="lblAmbient">배경음</span>
+          <input type="range" id="sticky-ambient-slider" class="sticky-vol-slider ambient-slider" min="0" max="1" step="0.01" value="0.8" oninput="setGlobalAmbientVolume(parseFloat(this.value))">
+          <span id="sticky-ambient-val" class="sticky-vol-val ambient-val">80%</span>
+        </div>
+      </div>
+      <!-- 하위 호환용 히든 마스터 슬라이더 -->
+      <input type="range" id="sticky-volume-slider" min="0" max="1" step="0.01" value="0.8" style="display: none;">
+    </div>
+  </aside>
+
+  <!-- ====================================================================
+       NovaCell VIP 이용권 안내 팝업 모달 (Freemium Gate)
+       ==================================================================== -->
+  <div id="novacell-vip-modal" class="nc-vip-modal" role="dialog" aria-modal="true">
+    <div id="vip-modal-backdrop" class="nc-vip-backdrop"></div>
+    <div class="nc-vip-dialog">
+      <div class="nc-vip-header">
+        <div class="nc-vip-badge-icon"><i class="ri-vip-crown-fill"></i></div>
+        <h2 data-i18n="vipModalTitle">NovaCell 정회원 전용 기능</h2>
+        <p id="vip-modal-feature-title" class="nc-vip-feature-msg" data-i18n="vipModalFeature">NovaCell Bio-Frequency VIP 이용권이 필요합니다.</p>
+      </div>
+
+      <div class="nc-vip-benefits">
+        <div class="nc-vip-benefit-item">
+          <i class="ri-checkbox-circle-fill"></i>
+          <span data-i18n="vipBenefit1" data-i18n-html="true"><strong>100대 Rife 생체 공명 주파수</strong> 및 세포 전압(-50mV) 복원 프로토콜 무제한 이용</span>
+        </div>
+        <div class="nc-vip-benefit-item">
+          <i class="ri-checkbox-circle-fill"></i>
+          <span data-i18n="vipBenefit2" data-i18n-html="true"><strong>VIP 임상 웰니스 코드 V001~V082</strong> 전편 즉시 잠금 해제</span>
+        </div>
+        <div class="nc-vip-benefit-item">
+          <i class="ri-checkbox-circle-fill"></i>
+          <span data-i18n="vipBenefit3" data-i18n-html="true"><strong>12종 고음질 자연음 & 멀티 트랙 믹서</strong> 자유 조율</span>
+        </div>
+        <div class="nc-vip-benefit-item">
+          <i class="ri-checkbox-circle-fill"></i>
+          <span data-i18n="vipBenefit4" data-i18n-html="true"><strong>유튜브 힐링 BGM / 무손실 WAV 음원</strong> 무제한 내보내기 & 다운로드</span>
+        </div>
+      </div>
+
+      <div class="nc-vip-actions">
+        <button class="btn-nc-vip-login" onclick="window.open('https://novacell.kr/login?lang=ko', '_blank')">
+          <i class="ri-login-box-line"></i> <span data-i18n="vipLoginBtn">NovaCell 계정으로 로그인</span>
+        </button>
+        <a href="https://novacell.kr" target="_blank" rel="noopener noreferrer" class="btn-nc-vip-pass">
+          <i class="ri-flashlight-line"></i> <span data-i18n="vipPassBtn">NovaCell 이용권 가입 및 안내 보기</span>
+        </a>
+      </div>
+
+      <div class="nc-vip-sublinks">
+        <a href="tel:+82-10-9726-7012"><i class="ri-customer-service-2-line"></i> <span data-i18n="vipPhone">전화 상담: 010-9726-7012</span></a>
+        <button id="btn-close-vip-modal" data-i18n="vipClose">체험 모드로 계속하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 비디오 로드 및 음원 파일 다운로드를 돕는 Javascript -->
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="audioEngine_v3.1.js?v=3.5.0"></script>
+  <script src="app_v3.1.js?v=3.5.0"></script>
+  <script src="novacell-i18n.js"></script>
+  <script src="breathingGuide.js?v=3.5.0"></script>
+  <script src="novacell-freemium.js"></script>
+  <!-- ====================================================================
+       NovaCell 100 & VIP 임상 웰니스 코드 검색 & 호흡 연동 모달
+       ==================================================================== -->
+  <div id="modal-healing-code-search" class="nc-modal-backdrop" style="display: none;" onclick="if(event.target===this) closeHealingCodeSearchModal()">
+    <div class="nc-modal-dialog glass-panel" style="max-width: 780px; width: 92%; max-height: 85vh; display: flex; flex-direction: column; padding: 24px; border-radius: 20px; border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 20px 60px rgba(0,0,0,0.8); background: rgba(11, 19, 41, 0.95); backdrop-filter: blur(16px);">
+      
+      <!-- 모달 헤더 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="nc-logo-badge" style="background: linear-gradient(135deg, #d4af37, #f59e0b); width: 36px; height: 36px;">
+            <i class="ri-dna-line" style="color: #070a13; font-size: 1.15rem;"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: #f8fafc; margin-bottom: 2px;" data-i18n="modalSearchTitle">
+              NovaCell 100 & VIP 힐링 코드 검색
+            </h3>
+            <p style="font-size: 0.78rem; color: #94a3b8;" data-i18n="modalSearchSub">
+              총 190종의 검증된 치유 주파수 코드를 검색하여 호흡 테라피와 함께 재생합니다.
+            </p>
+          </div>
+        </div>
+        <button type="button" onclick="closeHealingCodeSearchModal()" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem;">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- 검색창 -->
+      <div style="position: relative; margin-bottom: 12px;">
+        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--nc-gold);"></i>
+        <input type="text" id="input-healing-modal-search" placeholder="코드 번호 또는 질환/효능 검색 (예: 17, 수면, 불면, 간, 암, 위, 피로, 면역, 두통...)" data-i18n-placeholder="modalSearchPlaceholder" style="width: 100%; padding: 12px 14px 12px 42px; background: rgba(0,0,0,0.5); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; color: #fff; font-size: 0.9rem; outline: none;" oninput="onHealingModalSearchInput(this.value)">
+      </div>
+
+      <!-- 탭 필터 -->
+      <div style="display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap;">
+        <button type="button" class="btn-modal-filter active" id="modal-tab-all" data-filter="all" onclick="setHealingModalFilter('all')" data-i18n="modalTabAll">
+          전체 (190)
+        </button>
+        <button type="button" class="btn-modal-filter" id="modal-tab-rife" data-filter="rife" onclick="setHealingModalFilter('rife')" data-i18n="modalTabRife">
+          🌿 NovaCell 100 힐링 코드 (100)
+        </button>
+        <button type="button" class="btn-modal-filter" id="modal-tab-vip" data-filter="vip" onclick="setHealingModalFilter('vip')" data-i18n="modalTabVip">
+          👑 VIP 임상 웰니스 코드 (90)
+        </button>
+      </div>
+
+      <!-- 검색 결과 카운트 -->
+      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.76rem; color: #94a3b8; margin-bottom: 8px; padding: 0 4px;">
+        <span id="txt-modal-results-count">치유 코드 목록을 불러오는 중...</span>
+        <span data-i18n="modalHint">클릭 시 해당 치유 주파수로 호흡 테라피가 연동됩니다</span>
+      </div>
+
+      <!-- 검색 결과 리스트 (스크롤) -->
+      <div id="healing-codes-modal-list" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding-right: 4px; max-height: 480px;">
+        <!-- JS 동적 렌더링 -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       NovaCell Bio-Frequency Sound Studio - Welcome Cover / Initial Gateway (메인 대문)
+       공식 홈페이지 힐링 포인트 및 리플렉스 가이드와 동일한 럭셔리 게이트 패턴 적용
+       ==================================================================== -->
+  <section class="welcome-cover-screen" id="welcome-cover-screen" aria-labelledby="welcomeTitle">
+    <div class="cover-backdrop" onclick="closeWelcomeGate()"></div>
+    <div class="cover-ambient-glow glow-1"></div>
+    <div class="cover-ambient-glow glow-2"></div>
+    
+    <div class="cover-content-card">
+      <button id="cover-close-quick-btn" class="cover-quick-close" onclick="closeWelcomeGate()" title="대문 닫기 (스튜디오 바로 시작하기)" data-i18n-title="gateCloseQuickTitle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Left: Grand Hero AI Model Visual Frame (동일 여성 AI 모델 & 사운드 주파수 파동) -->
+      <div class="cover-visual-column">
+        <div class="cover-image-container">
+          <img src="images/novacell_cover_model.jpg" alt="NovaCell Sound Studio AI 모델" data-i18n-alt="gateHeroAlt" class="cover-hero-image">
+          <div class="cover-image-gradient-overlay"></div>
+          
+          <div class="welcome-visual-copy">
+            <span>NovaCell</span>
+            <strong>Sound Studio</strong>
+            <small>Bio-Voltage &amp; Acoustic Frequency Resonance</small>
+          </div>
+
+          <div class="cover-floating-tag tag-top">
+            <span class="tag-sparkle">✦</span>
+            <span data-i18n="gateVisualTagTop">QUANTUM BIO-RESONANCE</span>
+          </div>
+
+          <div class="cover-floating-tag tag-bottom">
+            <span class="tag-pulse-dot"></span>
+            <span data-i18n="gateVisualTagBottom">Bio-Voltage &amp; Frequency Sound Studio</span>
+          </div>
+
+          <div class="welcome-signal">
+            <i></i> <span data-i18n="gateVisualSignal">100 HEALING CODES &amp; 7-COLOR BREATHING</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Modern Luxury Info & Action Panel -->
+      <div class="cover-info-column">
+        <div class="cover-brand-badge-wrap" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="cover-badge-gold" data-i18n="gateBadgeGold">NOVACELL CLINICAL SOUND</span>
+            <span class="cover-badge-tech" data-i18n="gateBadgeTech">BIO-FREQUENCY BIOTECH</span>
+          </div>
+          <button id="gate-lang-toggle" class="nc-lang-toggle gate-variant" onclick="toggleLanguage()" title="한글 / English 언어 전환" data-i18n-title="langToggleTitle">
+            <span class="lang-opt lang-ko active">한글</span>
+            <span class="lang-divider">/</span>
+            <span class="lang-opt lang-en">ENG</span>
+          </button>
+        </div>
+
+        <h1 class="cover-main-title" id="welcomeTitle">
+          <span class="title-gradient" data-i18n="gateTitle1">NovaCell</span>
+          <span class="title-white" data-i18n="gateTitle2">Sound Studio</span>
+        </h1>
+
+        <p class="cover-slogan-en" data-i18n="gateSlogan">Bio-Voltage &amp; Acoustic Frequency Resonance System</p>
+
+        <p class="cover-desc-ko" data-i18n="gateDesc" data-i18n-html="true">
+          박창혁 박사의 <strong>세포 전압(-50mV) 치유 원리</strong>를 기반으로 
+          <strong>100대 전신 생체 공명 주파수(Rife &amp; Solfeggio)</strong>와 <strong>VIP 임상 웰니스 코드</strong>, 
+          <strong>7색 차크라 바이오 호흡 동기화</strong>를 통합한 차세대 음향 바이오테라피 시스템입니다.
+        </p>
+
+        <div class="cover-feature-grid">
+          <div class="cover-feature-pill">
+            <div class="feat-icon">🧬</div>
+            <div class="feat-text">
+              <strong data-i18n="gateFeat1Title">100대 생체 힐링 코드</strong>
+              <span data-i18n="gateFeat1Desc" data-i18n-html="true">세포 전위 정상화 &amp; 100종 주파수</span>
+            </div>
+          </div>
+
+          <div class="cover-feature-pill">
+            <div class="feat-icon">👑</div>
+            <div class="feat-text">
+              <strong data-i18n="gateFeat2Title">VIP 임상 웰니스</strong>
+              <span data-i18n="gateFeat2Desc" data-i18n-html="true">90대 질환·증상별 듀얼 레시피</span>
+            </div>
+          </div>
+
+          <div class="cover-feature-pill">
+            <div class="feat-icon">🫁</div>
+            <div class="feat-text">
+              <strong data-i18n="gateFeat3Title">7색 호흡 테라피</strong>
+              <span data-i18n="gateFeat3Desc" data-i18n-html="true">4-2-6-2 리듬 &amp; 솔페지오 공명</span>
+            </div>
+          </div>
+
+          <div class="cover-feature-pill">
+            <div class="feat-icon">🎛️</div>
+            <div class="feat-text">
+              <strong data-i18n="gateFeat4Title">프로 사운드 스튜디오</strong>
+              <span data-i18n="gateFeat4Desc" data-i18n-html="true">양이 비트·주파수 조율 생성기</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-cta-wrap">
+          <button id="cover-enter-btn" class="cover-enter-button" onclick="closeWelcomeGate()">
+            <div class="btn-glow-layer"></div>
+            <span class="btn-content">
+              <span data-i18n="gateEnterBtn">NovaCell 사운드 스튜디오 시작하기</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
+          </button>
+          <span class="cover-sub-hint" data-i18n="gateSubHint" data-i18n-html="true">클릭하시면 100대 생체 주파수 및 7색 바이오 호흡 테라피 스튜디오로 즉시 입장합니다</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
