@@ -1,4 +1,4 @@
-const maps = [
+﻿const maps = [
   {
     id: "right_sole",
     icon: "🦶",
@@ -228,6 +228,222 @@ const mapGlossaries = {
     ]
   }
 };
+
+// mapPins definition with 100% textbook matching coordinates
+const mapPins = {
+  right_sole: [
+    { id: "brain", ko: "머리 / 뇌", en: "Head / Brain", x: 56.5, y: 7.8, icon: "🧠", tagKo: "엄지발가락 끝단", tagEn: "Great Toe Tip", descKo: "대뇌 피질 자극, 중추신경 안정, 두통 및 스트레스 완화", descEn: "Cerebral cortex stimulation, central nervous calming, headache ease" },
+    { id: "pituitary", ko: "뇌하수체", en: "Pituitary Gland", x: 58.7, y: 11.8, icon: "⚡", tagKo: "엄지발가락 지문 중심", tagEn: "Toe Print Center", descKo: "내분비계 총괄 조율, 성장 및 대사 호르몬 조절", descEn: "Master endocrine control, hormonal balance and metabolism" },
+    { id: "stem", ko: "목 / 뇌간", en: "Neck / Brainstem", x: 68.8, y: 14.8, icon: "🧣", tagKo: "엄지발가락 기저 안쪽 모서리", tagEn: "Medial Big Toe Base", descKo: "뇌혈류 촉진, 연수 자극, 경추 긴장 해소", descEn: "Brainstem reflex, cranial circulation, cervical tension release" },
+    { id: "thyroid", ko: "갑상선", en: "Thyroid Gland", x: 60.5, y: 17.2, icon: "🦋", tagKo: "엄지발가락 관절 기저", tagEn: "Great Toe Joint Base", descKo: "체온 및 대사율 조절, 에너지 활성화", descEn: "Metabolic rate regulation, temperature balance, energy boost" },
+    { id: "parathyroid", ko: "부갑상선", en: "Parathyroid Glands", x: 64.9, y: 18.9, icon: "✨", tagKo: "엄지발가락 기저 내측 능선", tagEn: "Medial Metatarsal Edge", descKo: "칼슘 농도 조절, 근육 경련 예방, 신경계 안정", descEn: "Calcium balance, muscle spasm prevention, neuromuscular calm" },
+    { id: "eyes", ko: "눈 (시신경)", en: "Eye", x: 61.2, y: 20.3, icon: "👁️", tagKo: "2·3지 기저부", tagEn: "Base of Toes 2 & 3", descKo: "시각 피로 회복, 안구건조증 완화, 시신경 혈류", descEn: "Optic nerve support, eye strain relief, ocular circulation" },
+    { id: "thymus", ko: "흉선", en: "Thymus Gland", x: 69.4, y: 22.2, icon: "🛡️", tagKo: "발 안쪽 상부 모서리", tagEn: "Medial Upper Ball Edge", descKo: "T세포 면역 활성화, 림프 방어력 증강", descEn: "T-cell immune activation, lymphatic defense enhancement" },
+    { id: "inner_ear", ko: "내이", en: "Inner Ear", x: 34.5, y: 24.0, icon: "🌀", tagKo: "발가락 아래 외측 패드", tagEn: "Sub-Toes Lateral Pad", descKo: "평형감각 조절, 어지럼증 및 이명 완화", descEn: "Equilibrium regulation, vertigo easing, motion stability" },
+    { id: "sinus", ko: "부비동 (전두동)", en: "Sinus", x: 22.5, y: 24.5, icon: "👃", tagKo: "발가락 끝단 부비동 연결선", tagEn: "Toe Tips Sinus Line", descKo: "비강 순환 촉진, 비염 및 부비동염 완화", descEn: "Sinus pressure release, rhinitis and nasal clearing" },
+    { id: "neck_lateral", ko: "목 (외측)", en: "Neck (Lateral)", x: 23.5, y: 27.2, icon: "🧣", tagKo: "새끼발가락 아래 외측", tagEn: "Under 5th Toe Lateral Edge", descKo: "측경부 근육 긴장 완화, 림프 배농", descEn: "Lateral neck muscle release, cervical lymph drainage" },
+    { id: "ear", ko: "귀 (청신경)", en: "Ear", x: 21.2, y: 29.7, icon: "👂", tagKo: "외측 볼 상단", tagEn: "Lateral Ball Upper Margin", descKo: "청각 피로 회복, 중이 순환 개선", descEn: "Auditory fatigue relief, inner ear circulation" },
+    { id: "heart", ko: "심장 / 흉부", en: "Heart / Chest", x: 61.3, y: 29.8, icon: "❤️", tagKo: "발바닥 볼 상부 내측", tagEn: "Upper Medial Ball Pad", descKo: "혈액 순환 촉진, 흉부 압박감 완화", descEn: "Cardiovascular flow, chest opening, rhythm ease" },
+    { id: "lungs", ko: "폐 / 가슴 / 등 상부", en: "Lung / Chest / Upper Back", x: 32.8, y: 34.2, icon: "🫁", tagKo: "발바닥 볼 융기부 중심", tagEn: "Center Ball Pad", descKo: "호흡 깊이 확장, 기침 및 흉곽 긴장 완화", descEn: "Respiratory expansion, thoracic ease, lung clearing" },
+    { id: "solar", ko: "태양신경총", en: "Solar Plexus", x: 53.6, y: 34.8, icon: "☀️", tagKo: "발바닥 중심 상단 오목부", tagEn: "Upper Center Arch Hollow", descKo: "교감신경 이완, 스트레스 해소, 심신 안정", descEn: "Deep stress release, autonomic relaxation, solar center calm" },
+    { id: "shoulder", ko: "어깨", en: "Shoulder", x: 21.8, y: 36.3, icon: "🦾", tagKo: "발바닥 외측 볼 패드", tagEn: "Lateral Ball Pad", descKo: "어깨 결림, 견관절 가동성 개선", descEn: "Shoulder joint mobility, scapular ease" },
+    { id: "arm", ko: "팔", en: "Arm", x: 16.6, y: 38.8, icon: "💪", tagKo: "발바닥 외측 가장자리", tagEn: "Lateral Edge Margin", descKo: "팔 근육 피로, 상완 신경 긴장 완화", descEn: "Arm fatigue relief, upper limb nerve release" },
+    { id: "diaphragm", ko: "횡격막", en: "Diaphragm Line", x: 66.4, y: 38.5, icon: "🌬️", tagKo: "발바닥 볼 아래 가로 경계선", tagEn: "Sub-Ball Horizontal Line", descKo: "횡격막 호흡근 이완, 소화기 압박 해소", descEn: "Diaphragm muscle ease, breathing depth expansion" },
+    { id: "liver", ko: "간", en: "Liver", x: 51.6, y: 40.8, icon: "🌿", tagKo: "발바닥 상부 아치 우측 구역", tagEn: "Right Upper Arch Liver Region", descKo: "간 해독 작용 촉진, 만성 피로 회복, 혈액 정화", descEn: "Hepatic detoxification, chronic fatigue recovery, blood purification" },
+    { id: "stomach", ko: "위장", en: "Stomach", x: 61.5, y: 44.5, icon: "🥣", tagKo: "발바닥 내측 아치 상단", tagEn: "Medial Upper Arch", descKo: "소화 기능 촉진, 속쓰림 및 식후 더부룩함 완화", descEn: "Gastric ease, digestive comfort, heartburn relief" },
+    { id: "gallbladder", ko: "담낭", en: "Gallbladder", x: 29.2, y: 49.8, icon: "💚", tagKo: "간 구역 외측 담낭 타원점", tagEn: "Lateral Liver Gallbladder Oval", descKo: "담즙 분비 조절, 지방 소화 촉진 (우측 고유)", descEn: "Bile secretion balance, fat metabolism (Right Sole exclusive)" },
+    { id: "adrenal", ko: "부신", en: "Adrenal Gland", x: 57.3, y: 48.6, icon: "⚡", tagKo: "신장 위 분홍 타원점", tagEn: "Above Kidney Adrenal Point", descKo: "코르티솔 호르몬 조절, 만성 피로 극복, 항염증", descEn: "Cortisol regulation, adrenal fatigue recovery, inflammation control" },
+    { id: "pancreas", ko: "췌장", en: "Pancreas", x: 59.8, y: 52.8, icon: "🧪", tagKo: "내측 아치 췌장 청색띠", tagEn: "Medial Arch Pancreas Strip", descKo: "인슐린 분비 조절, 혈당 균형, 소화 효소 분비", descEn: "Insulin regulation, blood sugar balance, digestive enzymes" },
+    { id: "kidney", ko: "신장 (콩팥)", en: "Kidney", x: 48.7, y: 54.8, icon: "💧", tagKo: "발바닥 중심 녹색 강낭콩 구역", tagEn: "Center Arch Green Kidney Zone", descKo: "노폐물 배출, 수분 대사 조절, 요산 정체 해소", descEn: "Waste filtration, fluid balance, metabolic detoxification" },
+    { id: "transverse_colon", ko: "횡행결장", en: "Transverse Colon", x: 57.3, y: 58.5, icon: "🔄", tagKo: "발바닥 중간 가로 보라색띠", tagEn: "Mid-Arch Transverse Purple Band", descKo: "장 내용물 횡행 이동, 복부 팽만 완화", descEn: "Transverse colonic transit, gas and bloating relief" },
+    { id: "ascending_colon", ko: "상행결장", en: "Ascending Colon", x: 28.5, y: 61.8, icon: "⬆️", tagKo: "발바닥 외측 종렬 보라색띠", tagEn: "Lateral Ascending Colon Band", descKo: "우측 상행 결장 운동 촉진, 배변 유도 (우측 고유)", descEn: "Ascending colon stimulation, bowel motility (Right Sole exclusive)" },
+    { id: "spine", ko: "척추 내측선", en: "Spinal Column Line", x: 62.7, y: 62.0, icon: "🦴", tagKo: "발 안쪽 모서리 척추 능선", tagEn: "Medial Edge Spinal Ridge", descKo: "척추 정렬, 경추·흉추·요추 신경 순환", descEn: "Spinal alignment, postural relief, vertebral nerve flow" },
+    { id: "small_intestine", ko: "소장", en: "Small Intestine", x: 53.0, y: 65.2, icon: "🌾", tagKo: "발바닥 하부 아치 중심", tagEn: "Central Lower Arch Field", descKo: "영양소 흡수 촉진, 복부 냉증 개선, 장 건강", descEn: "Nutrient absorption, core abdominal warmth, gut vitality" },
+    { id: "ileocecal_valve", ko: "회맹판", en: "Ileocecal Valve", x: 31.8, y: 73.2, icon: "🔘", tagKo: "상행결장 하단 청색 원형점", tagEn: "Base of Ascending Colon Dot", descKo: "소장-대장 경계 판막 조절, 역류 방지 (우측 고유)", descEn: "Ileocecal valve regulation, reflux prevention (Right Sole exclusive)" },
+    { id: "bladder", ko: "방광", en: "Urinary Bladder", x: 58.5, y: 74.8, icon: "🫧", tagKo: "발 안쪽 뒤꿈치 직전 녹색 타원", tagEn: "Medial Pre-Heel Green Oval", descKo: "배뇨 원활, 빈뇨·잔뇨감 완화, 방광 긴장 해소", descEn: "Urinary comfort, smooth flow, bladder toning" },
+    { id: "lower_back_upper", ko: "하배부 / 허리 (상단)", en: "Lower Back (Upper)", x: 50.3, y: 78.8, icon: "🦴", tagKo: "뒤꿈치 직전 정중선", tagEn: "Pre-Heel Center Line", descKo: "요통 완화, 골반 기저 안정", descEn: "Lower back ease, pelvic stabilization" },
+    { id: "sciatic", ko: "좌골신경", en: "Sciatic Nerve", x: 56.5, y: 82.8, icon: "⚡", tagKo: "뒤꿈치 패드 가로 주황선", tagEn: "Heel Pad Transverse Orange Line", descKo: "좌골신경통, 둔부 저림, 다리 당김 완화", descEn: "Sciatica alleviation, buttock numbness, leg tension ease" },
+    { id: "tailbone", ko: "미골 (꼬리뼈)", en: "Tailbone / Coccyx", x: 58.4, y: 85.8, icon: "🦴", tagKo: "뒤꿈치 내측 하단 모서리", tagEn: "Medial Lower Heel Margin", descKo: "꼬리뼈 통증, 골반저근 긴장 완화", descEn: "Coccyx pain relief, pelvic floor relaxation" },
+    { id: "lower_back_lower", ko: "하배부 / 허리 (하단)", en: "Lower Back (Lower)", x: 50.4, y: 88.0, icon: "🦴", tagKo: "뒤꿈치 하단 중심부", tagEn: "Bottom Heel Center", descKo: "만성 요추 피로, 골반 긴장 해소", descEn: "Chronic lumbar fatigue, pelvic release" }
+  ],
+  left_sole: [
+    { id: "brain", ko: "머리 / 뇌", en: "Head / Brain", x: 40.8, y: 7.8, icon: "🧠", tagKo: "엄지발가락 끝단", tagEn: "Great Toe Tip", descKo: "대뇌 피질 자극, 중추신경 안정, 두통 및 스트레스 완화", descEn: "Cerebral cortex stimulation, central nervous calming, headache ease" },
+    { id: "pituitary", ko: "뇌하수체", en: "Pituitary Gland", x: 41.5, y: 11.8, icon: "⚡", tagKo: "엄지발가락 지문 중심", tagEn: "Toe Print Center", descKo: "내분비계 총괄 조율, 성장 및 대사 호르몬 조절", descEn: "Master endocrine control, hormonal balance and metabolism" },
+    { id: "stem", ko: "목 / 뇌간", en: "Neck / Brainstem", x: 31.2, y: 14.8, icon: "🧣", tagKo: "엄지발가락 기저 안쪽 모서리", tagEn: "Medial Big Toe Base", descKo: "뇌혈류 촉진, 연수 자극, 경추 긴장 해소", descEn: "Brainstem reflex, cranial circulation, cervical tension release" },
+    { id: "thyroid", ko: "갑상선", en: "Thyroid Gland", x: 39.5, y: 17.2, icon: "🦋", tagKo: "엄지발가락 관절 기저", tagEn: "Great Toe Joint Base", descKo: "체온 및 대사율 조절, 에너지 활성화", descEn: "Metabolic rate regulation, temperature balance, energy boost" },
+    { id: "parathyroid", ko: "부갑상선", en: "Parathyroid Glands", x: 35.1, y: 18.9, icon: "✨", tagKo: "엄지발가락 기저 내측 능선", tagEn: "Medial Metatarsal Edge", descKo: "칼슘 농도 조절, 근육 경련 예방, 신경계 안정", descEn: "Calcium balance, muscle spasm prevention, neuromuscular calm" },
+    { id: "eyes", ko: "눈 (시신경)", en: "Eye", x: 54.6, y: 19.8, icon: "👁️", tagKo: "2·3지 기저부", tagEn: "Base of Toes 2 & 3", descKo: "시각 피로 회복, 안구건조증 완화, 시신경 혈류", descEn: "Optic nerve support, eye strain relief, ocular circulation" },
+    { id: "thymus", ko: "흉선", en: "Thymus Gland", x: 30.6, y: 22.2, icon: "🛡️", tagKo: "발 안쪽 상부 모서리", tagEn: "Medial Upper Ball Edge", descKo: "T세포 면역 활성화, 림프 방어력 증강", descEn: "T-cell immune activation, lymphatic defense enhancement" },
+    { id: "inner_ear", ko: "내이", en: "Inner Ear", x: 65.5, y: 24.0, icon: "🌀", tagKo: "발가락 아래 외측 패드", tagEn: "Sub-Toes Lateral Pad", descKo: "평형감각 조절, 어지럼증 및 이명 완화", descEn: "Equilibrium regulation, vertigo easing, motion stability" },
+    { id: "sinus", ko: "부비동 (전두동)", en: "Sinus", x: 77.5, y: 24.5, icon: "👃", tagKo: "발가락 끝단 부비동 연결선", tagEn: "Toe Tips Sinus Line", descKo: "비강 순환 촉진, 비염 및 부비동염 완화", descEn: "Sinus pressure release, rhinitis and nasal clearing" },
+    { id: "neck_lateral", ko: "목 (외측)", en: "Neck (Lateral)", x: 76.5, y: 27.2, icon: "🧣", tagKo: "새끼발가락 아래 외측", tagEn: "Under 5th Toe Lateral Edge", descKo: "측경부 근육 긴장 완화, 림프 배농", descEn: "Lateral neck muscle release, cervical lymph drainage" },
+    { id: "ear", ko: "귀 (청신경)", en: "Ear", x: 78.8, y: 29.7, icon: "👂", tagKo: "외측 볼 상단", tagEn: "Lateral Ball Upper Margin", descKo: "청각 피로 회복, 중이 순환 개선", descEn: "Auditory fatigue relief, inner ear circulation" },
+    { id: "heart", ko: "심장 / 흉부", en: "Heart / Chest", x: 37.0, y: 29.8, icon: "❤️", tagKo: "발바닥 볼 상부 내측 청색 대역", tagEn: "Upper Medial Blue Heart Zone (Left prominent)", descKo: "심혈관 순환 촉진, 가슴 두근거림 및 부정맥 안정", descEn: "Cardiovascular flow, heartbeat stabilization, chest easing (Left prominent)" },
+    { id: "lungs", ko: "폐 / 가슴 / 등 상부", en: "Lung / Chest / Upper Back", x: 67.2, y: 34.2, icon: "🫁", tagKo: "발바닥 볼 융기부 중심", tagEn: "Center Ball Pad", descKo: "호흡 깊이 확장, 기침 및 흉곽 긴장 완화", descEn: "Respiratory expansion, thoracic ease, lung clearing" },
+    { id: "solar", ko: "태양신경총", en: "Solar Plexus", x: 46.4, y: 34.8, icon: "☀️", tagKo: "발바닥 중심 상단 오목부", tagEn: "Upper Center Arch Hollow", descKo: "교감신경 이완, 스트레스 해소, 심신 안정", descEn: "Deep stress release, autonomic relaxation, solar center calm" },
+    { id: "shoulder", ko: "어깨", en: "Shoulder", x: 78.2, y: 36.3, icon: "🦾", tagKo: "발바닥 외측 볼 패드", tagEn: "Lateral Ball Pad", descKo: "어깨 결림, 견관절 가동성 개선", descEn: "Shoulder joint mobility, scapular ease" },
+    { id: "arm", ko: "팔", en: "Arm", x: 83.4, y: 38.8, icon: "💪", tagKo: "발바닥 외측 가장자리", tagEn: "Lateral Edge Margin", descKo: "팔 근육 피로, 상완 신경 긴장 완화", descEn: "Arm fatigue relief, upper limb nerve release" },
+    { id: "diaphragm", ko: "횡격막", en: "Diaphragm Line", x: 33.6, y: 38.5, icon: "🌬️", tagKo: "발바닥 볼 아래 가로 경계선", tagEn: "Sub-Ball Horizontal Line", descKo: "횡격막 호흡근 이완, 소화기 압박 해소", descEn: "Diaphragm muscle ease, breathing depth expansion" },
+    { id: "liver", ko: "간", en: "Liver", x: 38.5, y: 41.5, icon: "🌿", tagKo: "발바닥 상부 아치 내측 구역", tagEn: "Left Medial Upper Arch Liver Region", descKo: "간 해독 작용 촉진, 만성 피로 회복", descEn: "Hepatic detoxification, chronic fatigue recovery" },
+    { id: "stomach", ko: "위장", en: "Stomach", x: 48.5, y: 44.5, icon: "🥣", tagKo: "발바닥 아치 중앙 상단", tagEn: "Mid-Upper Arch", descKo: "소화 기능 촉진, 속쓰림 및 식후 더부룩함 완화", descEn: "Gastric ease, digestive comfort, heartburn relief" },
+    { id: "spleen", ko: "비장", en: "Spleen", x: 76.8, y: 44.8, icon: "🩸", tagKo: "발바닥 외측 주황색 비장 구역", tagEn: "Lateral Spleen Orange Zone (Left Sole exclusive)", descKo: "적혈구 정화, 혈액 면역계 지원, 림프 순환 (좌측 고유)", descEn: "Blood purification, lymphatic immunity, vital defense (Left Sole exclusive)" },
+    { id: "adrenal", ko: "부신", en: "Adrenal Gland", x: 42.7, y: 48.6, icon: "⚡", tagKo: "신장 위 분홍 타원점", tagEn: "Above Kidney Adrenal Point", descKo: "코르티솔 호르몬 조절, 만성 피로 극복, 항염증", descEn: "Cortisol regulation, adrenal fatigue recovery, inflammation control" },
+    { id: "pancreas", ko: "췌장", en: "Pancreas", x: 40.2, y: 52.8, icon: "🧪", tagKo: "내측 아치 췌장 청색띠", tagEn: "Medial Arch Pancreas Strip", descKo: "인슐린 분비 조절, 혈당 균형, 소화 효소 분비", descEn: "Insulin regulation, blood sugar balance, digestive enzymes" },
+    { id: "kidney", ko: "신장 (콩팥)", en: "Kidney", x: 51.3, y: 54.8, icon: "💧", tagKo: "발바닥 중심 녹색 강낭콩 구역", tagEn: "Center Arch Green Kidney Zone", descKo: "노폐물 배출, 수분 대사 조절, 요산 정체 해소", descEn: "Waste filtration, fluid balance, metabolic detoxification" },
+    { id: "transverse_colon", ko: "횡행결장", en: "Transverse Colon", x: 71.5, y: 52.0, icon: "🔄", tagKo: "발바닥 외측 횡행결장 굴곡", tagEn: "Left Colic Flexure Band", descKo: "좌측 대장 연결부 이송 촉진", descEn: "Splenic flexure transit, abdominal ease" },
+    { id: "descending_colon", ko: "하행결장", en: "Descending Colon", x: 72.5, y: 64.8, icon: "⬇️", tagKo: "발바닥 외측 종렬 보라색띠", tagEn: "Lateral Descending Colon Band", descKo: "하행결장 배변 유도, 직장 압력 완화 (좌측 고유)", descEn: "Descending colonic motility, stool evacuation (Left Sole exclusive)" },
+    { id: "spine", ko: "척추 내측선", en: "Spinal Column Line", x: 37.3, y: 62.0, icon: "🦴", tagKo: "발 안쪽 모서리 척추 능선", tagEn: "Medial Edge Spinal Ridge", descKo: "척추 정렬, 경추·흉추·요추 신경 순환", descEn: "Spinal alignment, postural relief, vertebral nerve flow" },
+    { id: "small_intestine", ko: "소장", en: "Small Intestine", x: 47.0, y: 65.2, icon: "🌾", tagKo: "발바닥 하부 아치 중심", tagEn: "Central Lower Arch Field", descKo: "영양소 흡수 촉진, 복부 냉증 개선, 장 건강", descEn: "Nutrient absorption, core abdominal warmth, gut vitality" },
+    { id: "sigmoid_colon", ko: "S자 결장", en: "Sigmoid Colon", x: 71.0, y: 73.2, icon: "🔀", tagKo: "발바닥 외측 하부 곡선 보라색띠", tagEn: "Lateral Lower Sigmoid Curve Band", descKo: "S상결장 긴장 완화, 만성 변비 해소 (좌측 고유)", descEn: "Sigmoid release, evacuation ease, constipation relief (Left Sole exclusive)" },
+    { id: "bladder", ko: "방광", en: "Urinary Bladder", x: 41.5, y: 74.8, icon: "🫧", tagKo: "발 안쪽 뒤꿈치 직전 녹색 타원", tagEn: "Medial Pre-Heel Green Oval", descKo: "배뇨 원활, 빈뇨·잔뇨감 완화, 방광 긴장 해소", descEn: "Urinary comfort, smooth flow, bladder toning" },
+    { id: "lower_back_upper", ko: "하배부 / 허리 (상단)", en: "Lower Back (Upper)", x: 49.7, y: 78.8, icon: "🦴", tagKo: "뒤꿈치 직전 정중선", tagEn: "Pre-Heel Center Line", descKo: "요통 완화, 골반 기저 안정", descEn: "Lower back ease, pelvic stabilization" },
+    { id: "sciatic", ko: "좌골신경", en: "Sciatic Nerve", x: 43.5, y: 82.8, icon: "⚡", tagKo: "뒤꿈치 패드 가로 주황선", tagEn: "Heel Pad Transverse Orange Line", descKo: "좌골신경통, 둔부 저림, 다리 당김 완화", descEn: "Sciatica alleviation, buttock numbness, leg tension ease" },
+    { id: "tailbone", ko: "미골 (꼬리뼈)", en: "Tailbone / Coccyx", x: 41.6, y: 85.8, icon: "🦴", tagKo: "뒤꿈치 내측 하단 모서리", tagEn: "Medial Lower Heel Margin", descKo: "꼬리뼈 통증, 골반저근 긴장 완화", descEn: "Coccyx pain relief, pelvic floor relaxation" },
+    { id: "lower_back_lower", ko: "하배부 / 허리 (하단)", en: "Lower Back (Lower)", x: 64.5, y: 88.0, icon: "🦴", tagKo: "뒤꿈치 하단 중심부", tagEn: "Bottom Heel Center", descKo: "만성 요추 피로, 골반 긴장 해소", descEn: "Chronic lumbar fatigue, pelvic release" }
+  ],
+  right_top: [
+    { id: "top_brain", ko: "머리 / 뇌", en: "Head / Brain", x: 36.6, y: 12.0, icon: "🧠", tagKo: "엄지발가락 등쪽 끝단", tagEn: "Dorsal Great Toe Tip", descKo: "대뇌 혈류 순환, 두통 완화, 두뇌 명료화", descEn: "Cranial circulation, headache relief, mental clarity" },
+    { id: "top_neck", ko: "목", en: "Neck", x: 31.8, y: 15.6, icon: "🧣", tagKo: "엄지발가락 관절 기저", tagEn: "Dorsal Toe Joint Base", descKo: "경추 근육 이완, 목덜미 뻐근함 해소", descEn: "Cervical muscle ease, stiff neck relief" },
+    { id: "top_sinus", ko: "얼굴 / 부비동", en: "Face / Sinus", x: 71.0, y: 25.0, icon: "👃", tagKo: "발가락 등쪽 청록색 띠", tagEn: "Dorsal Toe Sinus Band", descKo: "안면 순환, 부비동 압력 완화, 비염 개선", descEn: "Facial circulation, sinus pressure relief, rhinitis ease" },
+    { id: "top_teeth", ko: "치아 / 잇몸 / 턱", en: "Teeth / Gums / Jaw", x: 70.0, y: 27.2, icon: "🦷", tagKo: "발가락 기저 청록색 띠", tagEn: "Dorsal Toe Base Dental Band", descKo: "턱관절 긴장 완화, 치아 신경 안정, 잇몸 혈류", descEn: "Jaw tension release, dental comfort, gum circulation" },
+    { id: "top_neck_stem", ko: "목 / 뇌간", en: "Neck / Brain stem", x: 24.5, y: 22.8, icon: "🧣", tagKo: "발등 내측 상단 모서리", tagEn: "Medial Upper Dorsal Margin", descKo: "뇌간 신경 안정, 뇌혈류 개선", descEn: "Brainstem stability, cranial vascular support" },
+    { id: "top_shoulders", ko: "어깨 상부", en: "Tops of shoulders", x: 30.5, y: 26.5, icon: "🦾", tagKo: "발등 상부 주황색 가로띠", tagEn: "Upper Dorsal Orange Band", descKo: "승모근 긴장 완화, 어깨 결림 해소", descEn: "Trapezius release, shoulder stiffness ease" },
+    { id: "top_thymus", ko: "흉선", en: "Thymus Gland", x: 24.5, y: 29.2, icon: "🛡️", tagKo: "발등 내측 녹색 쐐기", tagEn: "Medial Dorsal Green Wedge", descKo: "림프 면역력 증진, 흉부 보호", descEn: "Immunity support, chest protection" },
+    { id: "top_spine", ko: "척추", en: "Spine", x: 24.6, y: 34.0, icon: "🦴", tagKo: "발등 내측 연보라 능선", tagEn: "Medial Dorsal Spinal Ridge", descKo: "척추 정렬, 등 통증 완화", descEn: "Spinal alignment, dorsal column relief" },
+    { id: "top_lung_chest", ko: "폐 / 가슴 / 유방 / 등 상부", en: "Lung / Chest / Breast / Upper back", x: 64.8, y: 34.8, icon: "🫁", tagKo: "발등 상부 분홍색 구역", tagEn: "Upper Dorsal Pink Field", descKo: "흉곽 개방, 호흡 순환, 가슴 답답함 해소", descEn: "Thoracic opening, lung clearing, chest ease" },
+    { id: "top_arm", ko: "팔", en: "Arm", x: 71.8, y: 37.8, icon: "💪", tagKo: "발등 외측 녹색 구역", tagEn: "Lateral Dorsal Green Field", descKo: "상완 근육 피로, 팔 움직임 개선", descEn: "Arm fatigue relief, upper limb circulation" },
+    { id: "top_upper_back", ko: "등 상부", en: "Upper back", x: 36.8, y: 41.5, icon: "🦾", tagKo: "발등 중간 청색 대역", tagEn: "Mid-Dorsal Blue Zone", descKo: "견갑골 주변 결림 해소, 등 통증 완화", descEn: "Scapular muscle ease, mid-back comfort" },
+    { id: "top_elbow", ko: "팔꿈치", en: "Elbow", x: 71.8, y: 44.0, icon: "🦾", tagKo: "발등 외측 청록색 돌출부", tagEn: "Lateral Dorsal Teal Area", descKo: "팔꿈치 관절통, 테니스 엘보 완화", descEn: "Elbow joint relief, arm tendon comfort" },
+    { id: "top_waistline", ko: "허리선", en: "Waistline", x: 34.2, y: 47.8, icon: "〰️", tagKo: "발등 중간 가로 경계선", tagEn: "Midfoot Waistline Boundary", descKo: "복부 순환, 요추 경계 긴장 완화", descEn: "Abdominal circulation, lumbar boundary ease" },
+    { id: "top_knee_leg", ko: "무릎 / 다리", en: "Knee / Leg", x: 67.2, y: 53.5, icon: "🦵", tagKo: "발등 외측 하단 주황색 구역", tagEn: "Lateral Lower Dorsal Orange Zone", descKo: "무릎 관절통, 다리 피로 및 부종 완화", descEn: "Knee arthritis relief, leg fatigue easing" },
+    { id: "top_bladder", ko: "방광", en: "Bladder", x: 29.6, y: 54.0, icon: "🫧", tagKo: "발등 내측 올리브 녹색 돌출부", tagEn: "Medial Dorsal Olive Bulge", descKo: "배뇨 원활, 비뇨기 순환 개선", descEn: "Urinary flow support, bladder comfort" },
+    { id: "top_lower_back", ko: "하배부 / 허리", en: "Lower back", x: 65.5, y: 60.0, icon: "🦴", tagKo: "발목 직전 청록색 곡선띠", tagEn: "Pre-Ankle Dark Teal Curve", descKo: "요통 완화, 허리 신경 긴장 해소", descEn: "Lower back pain ease, lumbar relaxation" },
+    { id: "top_lymph_groin", ko: "림프샘 / 나팔관 / 서혜부", en: "Lymph glands / Fallopian tubes / Groin", x: 29.6, y: 64.8, icon: "🌱", tagKo: "발목 앞쪽 주름선", tagEn: "Anterior Ankle Crease", descKo: "전신 림프 배농, 서혜부 순환, 하지 부종 완화", descEn: "Lymphatic drainage, groin flow, leg de-puffing" }
+  ],
+  left_top: [
+    { id: "top_brain", ko: "머리 / 뇌", en: "Head / Brain", x: 63.4, y: 12.0, icon: "🧠", tagKo: "엄지발가락 등쪽 끝단", tagEn: "Dorsal Great Toe Tip", descKo: "대뇌 혈류 순환, 두통 완화, 두뇌 명료화", descEn: "Cranial circulation, headache relief, mental clarity" },
+    { id: "top_neck", ko: "목", en: "Neck", x: 68.2, y: 15.6, icon: "🧣", tagKo: "엄지발가락 관절 기저", tagEn: "Dorsal Toe Joint Base", descKo: "경추 근육 이완, 목덜미 뻐근함 해소", descEn: "Cervical muscle ease, stiff neck relief" },
+    { id: "top_sinus", ko: "얼굴 / 부비동", en: "Face / Sinus", x: 29.0, y: 25.0, icon: "👃", tagKo: "발가락 등쪽 청록색 띠", tagEn: "Dorsal Toe Sinus Band", descKo: "안면 순환, 부비동 압력 완화, 비염 개선", descEn: "Facial circulation, sinus pressure relief, rhinitis ease" },
+    { id: "top_teeth", ko: "치아 / 잇몸 / 턱", en: "Teeth / Gums / Jaw", x: 30.0, y: 27.2, icon: "🦷", tagKo: "발가락 기저 청록색 띠", tagEn: "Dorsal Toe Base Dental Band", descKo: "턱관절 긴장 완화, 치아 신경 안정, 잇몸 혈류", descEn: "Jaw tension release, dental comfort, gum circulation" },
+    { id: "top_neck_stem", ko: "목 / 뇌간", en: "Neck / Brain stem", x: 75.5, y: 22.8, icon: "🧣", tagKo: "발등 내측 상단 모서리", tagEn: "Medial Upper Dorsal Margin", descKo: "뇌간 신경 안정, 뇌혈류 개선", descEn: "Brainstem stability, cranial vascular support" },
+    { id: "top_shoulders", ko: "어깨 상부", en: "Tops of shoulders", x: 69.5, y: 26.5, icon: "🦾", tagKo: "발등 상부 주황색 가로띠", tagEn: "Upper Dorsal Orange Band", descKo: "승모근 긴장 완화, 어깨 결림 해소", descEn: "Trapezius release, shoulder stiffness ease" },
+    { id: "top_thymus", ko: "흉선", en: "Thymus Gland", x: 75.5, y: 29.2, icon: "🛡️", tagKo: "발등 내측 녹색 쐐기", tagEn: "Medial Dorsal Green Wedge", descKo: "림프 면역력 증진, 흉부 보호", descEn: "Immunity support, chest protection" },
+    { id: "top_spine", ko: "척추", en: "Spine", x: 75.4, y: 34.0, icon: "🦴", tagKo: "발등 내측 연보라 능선", tagEn: "Medial Dorsal Spinal Ridge", descKo: "척추 정렬, 등 통증 완화", descEn: "Spinal alignment, dorsal column relief" },
+    { id: "top_lung_chest", ko: "폐 / 가슴 / 유방 / 등 상부", en: "Lung / Chest / Breast / Upper back", x: 35.2, y: 34.8, icon: "🫁", tagKo: "발등 상부 분홍색 구역", tagEn: "Upper Dorsal Pink Field", descKo: "흉곽 개방, 호흡 순환, 가슴 답답함 해소", descEn: "Thoracic opening, lung clearing, chest ease" },
+    { id: "top_arm", ko: "팔", en: "Arm", x: 28.2, y: 37.8, icon: "💪", tagKo: "발등 외측 녹색 구역", tagEn: "Lateral Dorsal Green Field", descKo: "상완 근육 피로, 팔 움직임 개선", descEn: "Arm fatigue relief, upper limb circulation" },
+    { id: "top_upper_back", ko: "등 상부", en: "Upper back", x: 63.2, y: 41.5, icon: "🦾", tagKo: "발등 중간 청색 대역", tagEn: "Mid-Dorsal Blue Zone", descKo: "견갑골 주변 결림 해소, 등 통증 완화", descEn: "Scapular muscle ease, mid-back comfort" },
+    { id: "top_elbow", ko: "팔꿈치", en: "Elbow", x: 28.2, y: 44.0, icon: "🦾", tagKo: "발등 외측 청록색 돌출부", tagEn: "Lateral Dorsal Teal Area", descKo: "팔꿈치 관절통, 테니스 엘보 완화", descEn: "Elbow joint relief, arm tendon comfort" },
+    { id: "top_waistline", ko: "허리선", en: "Waistline", x: 65.8, y: 47.8, icon: "〰️", tagKo: "발등 중간 가로 경계선", tagEn: "Midfoot Waistline Boundary", descKo: "복부 순환, 요추 경계 긴장 완화", descEn: "Abdominal circulation, lumbar boundary ease" },
+    { id: "top_knee_leg", ko: "무릎 / 다리", en: "Knee / Leg", x: 32.8, y: 53.5, icon: "🦵", tagKo: "발등 외측 하단 주황색 구역", tagEn: "Lateral Lower Dorsal Orange Zone", descKo: "무릎 관절통, 다리 피로 및 부종 완화", descEn: "Knee arthritis relief, leg fatigue easing" },
+    { id: "top_bladder", ko: "방광", en: "Bladder", x: 70.4, y: 54.0, icon: "🫧", tagKo: "발등 내측 올리브 녹색 돌출부", tagEn: "Medial Dorsal Olive Bulge", descKo: "배뇨 원활, 비뇨기 순환 개선", descEn: "Urinary flow support, bladder comfort" },
+    { id: "top_lower_back", ko: "하배부 / 허리", en: "Lower back", x: 34.5, y: 60.0, icon: "🦴", tagKo: "발목 직전 청록색 곡선띠", tagEn: "Pre-Ankle Dark Teal Curve", descKo: "요통 완화, 허리 신경 긴장 해소", descEn: "Lower back pain ease, lumbar relaxation" },
+    { id: "top_lymph_groin", ko: "림프샘 / 나팔관 / 서혜부", en: "Lymph glands / Fallopian tubes / Groin", x: 70.4, y: 64.8, icon: "🌱", tagKo: "발목 앞쪽 주름선", tagEn: "Anterior Ankle Crease", descKo: "전신 림프 배농, 서혜부 순환, 하지 부종 완화", descEn: "Lymphatic drainage, groin flow, leg de-puffing" }
+  ],
+  right_palm: [
+    { id: "palm_brain_fingers", ko: "머리 / 뇌 / 부비동 (손가락)", en: "Head / Brain / Sinus (Fingers)", x: 40.0, y: 20.0, icon: "🧠", tagKo: "손가락 끝 지문부", tagEn: "Fingertip Pads", descKo: "두통 완화, 안면 혈류 촉진, 맑은 정신", descEn: "Headache relief, facial flow, mental clarity" },
+    { id: "palm_neck_fingers", ko: "목 (손가락 기저)", en: "Neck (Finger Base)", x: 52.8, y: 32.5, icon: "🧣", tagKo: "손가락 기저 관절선", tagEn: "Finger Base Joints", descKo: "목 긴장 해소, 인후통 완화", descEn: "Neck tension ease, throat comfort" },
+    { id: "palm_inner_ear", ko: "내이", en: "Inner ear", x: 30.0, y: 43.5, icon: "🌀", tagKo: "약지·소지 사이 손바닥 상부", tagEn: "Upper Palm Between 4th & 5th", descKo: "평형감각 조절, 어지럼증 완화", descEn: "Balance regulation, vertigo ease" },
+    { id: "palm_ear", ko: "귀 (청신경)", en: "Ear", x: 25.5, y: 45.8, icon: "👂", tagKo: "소지 기저 외측", tagEn: "Base of Little Finger", descKo: "청각 피로 회복, 귀 혈류 개선", descEn: "Auditory fatigue ease, ear flow" },
+    { id: "palm_shoulders_top", ko: "어깨 상부", en: "Tops of shoulders", x: 15.0, y: 52.0, icon: "🦾", tagKo: "소지구 외측 상단", tagEn: "Lateral Hypothenar Upper", descKo: "어깨 결림, 견갑골 이완", descEn: "Shoulder stiffness release, scapular ease" },
+    { id: "palm_solar", ko: "태양신경총", en: "Solar plexus", x: 45.8, y: 55.0, icon: "☀️", tagKo: "손바닥 정중앙 점선 타원", tagEn: "Center Palm Dashed Circle", descKo: "스트레스 즉각 해소, 횡격막 이완", descEn: "Instant stress release, diaphragmatic calm" },
+    { id: "palm_shoulder", ko: "어깨", en: "Shoulder", x: 21.0, y: 58.0, icon: "🦾", tagKo: "소지구 주황색 구역", tagEn: "Hypothenar Orange Area", descKo: "견관절 가동성 증진, 어깨 통증 완화", descEn: "Shoulder mobility, joint comfort" },
+    { id: "palm_arm", ko: "팔", en: "Arm", x: 16.5, y: 60.5, icon: "💪", tagKo: "소지구 바깥 가장자리", tagEn: "Outer Hypothenar Edge", descKo: "팔 근육 피로 회복, 전완 순환", descEn: "Forearm fatigue relief, limb flow" },
+    { id: "palm_diaphragm", ko: "횡격막", en: "Diaphragm", x: 21.5, y: 63.8, icon: "🌬️", tagKo: "손바닥 중간 가로 경계선", tagEn: "Mid-Palm Transverse Line", descKo: "호흡근 이완, 소화기 압박 해소", descEn: "Diaphragm relaxation, deep breathing" },
+    { id: "palm_gallbladder", ko: "담낭", en: "Gallbladder", x: 35.5, y: 65.5, icon: "💚", tagKo: "간 구역 내 보라색 타원", tagEn: "Purple Oval in Liver Area", descKo: "담즙 분비 촉진, 지방 대사 조절 (우측 고유)", descEn: "Bile regulation, lipid digestion (Right exclusive)" },
+    { id: "palm_liver", ko: "간", en: "Liver", x: 25.8, y: 69.5, icon: "🌿", tagKo: "손바닥 우측 간 구역", tagEn: "Right Palm Liver Zone", descKo: "간 해독 작용 촉진, 만성 피로 회복", descEn: "Hepatic detox, fatigue reduction" },
+    { id: "palm_transverse_colon", ko: "횡행결장", en: "Transverse colon", x: 30.5, y: 73.0, icon: "🔄", tagKo: "손바닥 하부 가로 보라색띠", tagEn: "Lower Palm Transverse Band", descKo: "대장 이송 촉진, 복부 팽만 해소", descEn: "Colonic transit, bloating relief" },
+    { id: "palm_ascending_colon", ko: "상행결장", en: "Ascending colon", x: 24.5, y: 75.8, icon: "⬆️", tagKo: "손바닥 외측 세로 보라색띠", tagEn: "Lateral Ascending Band", descKo: "상행 결장 자극, 배변 활성화 (우측 고유)", descEn: "Ascending colon activation (Right exclusive)" },
+    { id: "palm_ileocecal_valve", ko: "회맹판", en: "Ileocecal valve", x: 28.5, y: 79.5, icon: "🔘", tagKo: "상행결장 기저 청색 원형점", tagEn: "Blue Dot at Ascending Colon Base", descKo: "소장-대장 판막 기능 정상화 (우측 고유)", descEn: "Ileocecal valve balance (Right exclusive)" },
+    { id: "palm_small_intestine", ko: "소장", en: "Small intestine", x: 46.5, y: 83.5, icon: "🌾", tagKo: "손바닥 하부 중앙 원형 구역", tagEn: "Lower Center Palm Circle", descKo: "영양 흡수 촉진, 장내 온기 유지", descEn: "Nutrient absorption, intestinal warmth" },
+    { id: "palm_shoulders_mid", ko: "어깨 상부 (내측)", en: "Tops of shoulders (Medial)", x: 55.5, y: 42.0, icon: "🦾", tagKo: "검지 기저 아래 갈색 구역", tagEn: "Below Index Finger Base", descKo: "경견부 긴장 완화", descEn: "Cervicothoracic ease" },
+    { id: "palm_eye", ko: "눈 (시신경)", en: "Eye", x: 49.5, y: 43.5, icon: "👁️", tagKo: "검지·중지 사이 손바닥", tagEn: "Between Index & Middle Palm", descKo: "시각 피로 완화, 안구 혈류", descEn: "Visual strain ease, optic nerve flow" },
+    { id: "palm_upper_back_lung", ko: "등 상부 / 폐 / 가슴", en: "Upper back / Lung / Chest", x: 52.5, y: 49.0, icon: "🫁", tagKo: "손바닥 상부 분홍색 구역", tagEn: "Upper Center Palm Pink Zone", descKo: "흉곽 개방, 호흡 순환 촉진", descEn: "Chest opening, thoracic circulation" },
+    { id: "palm_pituitary", ko: "뇌하수체", en: "Pituitary gland", x: 79.5, y: 45.2, icon: "⚡", tagKo: "엄지손가락 지문 중심 원형", tagEn: "Thumb Center Target Circle", descKo: "내분비계 총괄 조율, 호르몬 균형", descEn: "Master endocrine regulation, hormonal balance" },
+    { id: "palm_brain_thumb", ko: "머리 / 뇌 / 부비동 (엄지)", en: "Head / Brain / Sinus (Thumb)", x: 82.5, y: 49.5, icon: "🧠", tagKo: "엄지손가락 끝 패드", tagEn: "Thumb Pad Center", descKo: "두뇌 혈류 촉진, 집중력 향상", descEn: "Cranial circulation, mental focus" },
+    { id: "palm_thyroid_para", ko: "갑상선 / 부갑상선", en: "Thyroid / Parathyroid glands", x: 65.8, y: 55.0, icon: "🦋", tagKo: "엄지구 내측 보라색 띠", tagEn: "Medial Thenar Purple Strip", descKo: "대사 조절, 체온 유지, 칼슘 밸런스", descEn: "Metabolism, body heat, calcium harmony" },
+    { id: "palm_heart", ko: "심장", en: "Heart", x: 61.2, y: 61.0, icon: "❤️", tagKo: "엄지구 기저 청색 구역", tagEn: "Thenar Base Blue Zone", descKo: "심혈관 순환 촉진, 가슴 안정", descEn: "Cardiovascular flow, cardiac ease" },
+    { id: "palm_neck_thumb", ko: "목", en: "Neck", x: 77.2, y: 53.5, icon: "🧣", tagKo: "엄지손가락 등쪽 관절", tagEn: "Dorsal Thumb Joint", descKo: "경추 이완, 인후부 청결", descEn: "Cervical relaxation, pharyngeal ease" },
+    { id: "palm_spine", ko: "척추 대역 (경추-요추)", en: "Spinal Area", x: 77.8, y: 56.5, icon: "🦴", tagKo: "엄지 외측 능선 척추선", tagEn: "Outer Thumb Ridge Spinal Line", descKo: "척추 정렬, 경추·흉추·요추 신경 순환", descEn: "Spine alignment, vertebral nerve flow" },
+    { id: "palm_adrenal", ko: "부신", en: "Adrenal gland", x: 56.8, y: 70.8, icon: "⚡", tagKo: "신장 위 분홍색 타원점", tagEn: "Above Kidney Adrenal Dot", descKo: "항염 작용, 스트레스 극복, 활력 증진", descEn: "Anti-inflammation, cortisol balance, stamina" },
+    { id: "palm_kidney", ko: "신장 (콩팥)", en: "Kidney", x: 49.5, y: 72.8, icon: "💧", tagKo: "손바닥 중앙 녹색 타원", tagEn: "Center Palm Green Oval", descKo: "노폐물 배출, 수분 대사 조절", descEn: "Waste filtration, fluid balance" },
+    { id: "palm_stomach", ko: "위장", en: "Stomach", x: 64.5, y: 79.0, icon: "🥣", tagKo: "엄지구 하부 분홍색 구역", tagEn: "Lower Thenar Pink Zone", descKo: "소화 기능 촉진, 복부 편안함", descEn: "Gastric ease, digestive comfort" },
+    { id: "palm_pancreas", ko: "췌장", en: "Pancreas", x: 60.5, y: 81.5, icon: "🧪", tagKo: "손목 직전 청록색 구역", tagEn: "Pre-Wrist Teal Pancreas Area", descKo: "인슐린 분비, 소화 효소 지원", descEn: "Insulin support, enzymatic digestion" },
+    { id: "palm_bladder", ko: "방광", en: "Bladder", x: 58.0, y: 88.0, icon: "🫧", tagKo: "손목 직전 녹색 구역", tagEn: "Pre-Wrist Green Bladder Zone", descKo: "배뇨 원활, 비뇨기 긴장 해소", descEn: "Smooth urination, urinary ease" },
+    { id: "palm_upper_back", ko: "등 상부", en: "Upper back", x: 80.5, y: 72.0, icon: "🦾", tagKo: "척추 대역 등 상부선", tagEn: "Spinal Area Upper Back Line", descKo: "흉추 기립근 이완, 등 결림 해소", descEn: "Thoracic erector ease, back relief" },
+    { id: "palm_lower_back", ko: "하배부 / 허리", en: "Lower back", x: 73.2, y: 86.5, icon: "🦴", tagKo: "척추 대역 요추선", tagEn: "Spinal Area Lower Back Line", descKo: "만성 요통 완화, 골반 연결부 안정", descEn: "Lumbar pain relief, pelvic stability" }
+  ],
+  left_palm: [
+    { id: "palm_brain_fingers", ko: "머리 / 뇌 / 부비동 (손가락)", en: "Head / Brain / Sinus (Fingers)", x: 47.2, y: 19.5, icon: "🧠", tagKo: "손가락 끝 지문부", tagEn: "Fingertip Pads", descKo: "두통 완화, 안면 혈류 촉진, 맑은 정신", descEn: "Headache relief, facial flow, mental clarity" },
+    { id: "palm_neck_fingers", ko: "목 (손가락 기저)", en: "Neck (Finger Base)", x: 47.2, y: 32.5, icon: "🧣", tagKo: "손가락 기저 관절선", tagEn: "Finger Base Joints", descKo: "목 긴장 해소, 인후통 완화", descEn: "Neck tension ease, throat comfort" },
+    { id: "palm_eye", ko: "눈 (시신경)", en: "Eye", x: 50.5, y: 43.5, icon: "👁️", tagKo: "검지·중지 사이 손바닥", tagEn: "Between Index & Middle Palm", descKo: "시각 피로 완화, 안구 혈류", descEn: "Visual strain ease, optic nerve flow" },
+    { id: "palm_shoulders_mid", ko: "어깨 상부 (내측)", en: "Top of shoulders (Medial)", x: 44.5, y: 42.0, icon: "🦾", tagKo: "검지 기저 아래 갈색 구역", tagEn: "Below Index Finger Base", descKo: "경견부 긴장 완화", descEn: "Cervicothoracic ease" },
+    { id: "palm_upper_back_lung", ko: "폐 / 가슴 / 등 상부", en: "Lung / Chest / Upper back", x: 47.5, y: 49.0, icon: "🫁", tagKo: "손바닥 상부 분홍색 구역", tagEn: "Upper Center Palm Pink Zone", descKo: "흉곽 개방, 호흡 순환 촉진", descEn: "Chest opening, thoracic circulation" },
+    { id: "palm_pituitary", ko: "뇌하수체", en: "Pituitary gland", x: 20.5, y: 45.2, icon: "⚡", tagKo: "엄지손가락 지문 중심 원형", tagEn: "Thumb Center Target Circle", descKo: "내분비계 총괄 조율, 호르몬 균형", descEn: "Master endocrine regulation, hormonal balance" },
+    { id: "palm_brain_thumb", ko: "머리 / 뇌 / 부비동 (엄지)", en: "Head / Brain / Sinus (Thumb)", x: 17.5, y: 49.5, icon: "🧠", tagKo: "엄지손가락 끝 패드", tagEn: "Thumb Pad Center", descKo: "두뇌 혈류 촉진, 집중력 향상", descEn: "Cranial circulation, mental focus" },
+    { id: "palm_neck_thumb", ko: "목", en: "Neck", x: 22.8, y: 53.5, icon: "🧣", tagKo: "엄지손가락 등쪽 관절", tagEn: "Dorsal Thumb Joint", descKo: "경추 이완, 인후부 청결", descEn: "Cervical relaxation, pharyngeal ease" },
+    { id: "palm_spine", ko: "척추 대역 (경추-요추)", en: "Spinal Area", x: 22.2, y: 56.5, icon: "🦴", tagKo: "엄지 외측 능선 척추선", tagEn: "Outer Thumb Ridge Spinal Line", descKo: "척추 정렬, 경추·흉추·요추 신경 순환", descEn: "Spine alignment, vertebral nerve flow" },
+    { id: "palm_thyroid_para", ko: "갑상선 / 부갑상선", en: "Thyroid / Parathyroid glands", x: 34.2, y: 55.0, icon: "🦋", tagKo: "엄지구 내측 보라색 띠", tagEn: "Medial Thenar Purple Strip", descKo: "대사 조절, 체온 유지, 칼슘 밸런스", descEn: "Metabolism, body heat, calcium harmony" },
+    { id: "palm_heart", ko: "심장", en: "Heart", x: 38.8, y: 61.0, icon: "❤️", tagKo: "엄지구 기저 청색 구역", tagEn: "Thenar Base Blue Heart Area", descKo: "심혈관 순환 촉진, 가슴 안정, 혈압 조절", descEn: "Cardiovascular flow, cardiac ease, circulation" },
+    { id: "palm_adrenal", ko: "부신", en: "Adrenal gland", x: 43.2, y: 70.8, icon: "⚡", tagKo: "신장 위 분홍색 타원점", tagEn: "Above Kidney Adrenal Dot", descKo: "항염 작용, 스트레스 극복, 활력 증진", descEn: "Anti-inflammation, cortisol balance, stamina" },
+    { id: "palm_kidney", ko: "신장 (콩팥)", en: "Kidney", x: 50.5, y: 72.8, icon: "💧", tagKo: "손바닥 중앙 녹색 타원", tagEn: "Center Palm Green Oval", descKo: "노폐물 배출, 수분 대사 조절", descEn: "Waste filtration, fluid balance" },
+    { id: "palm_pancreas", ko: "췌장", en: "Pancreas", x: 39.5, y: 81.5, icon: "🧪", tagKo: "손목 직전 청록색 구역", tagEn: "Pre-Wrist Teal Pancreas Area", descKo: "인슐린 분비, 소화 효소 지원", descEn: "Insulin support, enzymatic digestion" },
+    { id: "palm_bladder", ko: "방광", en: "Bladder", x: 42.0, y: 88.0, icon: "🫧", tagKo: "손목 직전 녹색 구역", tagEn: "Pre-Wrist Green Bladder Zone", descKo: "배뇨 원활, 비뇨기 긴장 해소", descEn: "Smooth urination, urinary ease" },
+    { id: "palm_upper_back", ko: "등 상부", en: "Upper back", x: 19.5, y: 72.0, icon: "🦾", tagKo: "척추 대역 등 상부선", tagEn: "Spinal Area Upper Back Line", descKo: "흉추 기립근 이완, 등 결림 해소", descEn: "Thoracic erector ease, back relief" },
+    { id: "palm_lower_back", ko: "하배부 / 허리", en: "Lower back", x: 26.8, y: 86.5, icon: "🦴", tagKo: "척추 대역 요추선", tagEn: "Spinal Area Lower Back Line", descKo: "만성 요통 완화, 골반 연결부 안정", descEn: "Lumbar pain relief, pelvic stability" },
+    { id: "palm_inner_ear", ko: "내이", en: "Inner ear", x: 70.0, y: 43.5, icon: "🌀", tagKo: "약지·소지 사이 손바닥 상부", tagEn: "Upper Palm Between 4th & 5th", descKo: "평형감각 조절, 어지럼증 완화", descEn: "Balance regulation, vertigo ease" },
+    { id: "palm_ear", ko: "귀 (청신경)", en: "Ear", x: 74.5, y: 45.8, icon: "👂", tagKo: "소지 기저 외측", tagEn: "Base of Little Finger", descKo: "청각 피로 회복, 귀 혈류 개선", descEn: "Auditory fatigue ease, ear flow" },
+    { id: "palm_shoulders_top", ko: "어깨 상부", en: "Tops of shoulders", x: 85.0, y: 52.0, icon: "🦾", tagKo: "소지구 외측 상단", tagEn: "Lateral Hypothenar Upper", descKo: "어깨 결림, 견갑골 이완", descEn: "Shoulder stiffness release, scapular ease" },
+    { id: "palm_solar", ko: "태양신경총", en: "Solar plexus", x: 54.2, y: 55.0, icon: "☀️", tagKo: "손바닥 정중앙 점선 타원", tagEn: "Center Palm Dashed Circle", descKo: "스트레스 즉각 해소, 횡격막 이완", descEn: "Instant stress release, diaphragmatic calm" },
+    { id: "palm_shoulder", ko: "어깨", en: "Shoulder", x: 79.0, y: 58.0, icon: "🦾", tagKo: "소지구 주황색 구역", tagEn: "Hypothenar Orange Area", descKo: "견관절 가동성 증진, 어깨 통증 완화", descEn: "Shoulder mobility, joint comfort" },
+    { id: "palm_arm", ko: "팔", en: "Arm", x: 83.5, y: 60.5, icon: "💪", tagKo: "소지구 바깥 가장자리", tagEn: "Outer Hypothenar Edge", descKo: "팔 근육 피로 회복, 전완 순환", descEn: "Forearm fatigue relief, limb flow" },
+    { id: "palm_diaphragm", ko: "횡격막", en: "Diaphragm", x: 78.5, y: 63.8, icon: "🌬️", tagKo: "손바닥 중간 가로 경계선", tagEn: "Mid-Palm Transverse Line", descKo: "호흡근 이완, 소화기 압박 해소", descEn: "Diaphragm relaxation, deep breathing" },
+    { id: "palm_spleen", ko: "비장", en: "Spleen", x: 73.5, y: 65.5, icon: "🩸", tagKo: "소지구 내측 보라색 비장 구역", tagEn: "Hypothenar Spleen Purple Area (Left exclusive)", descKo: "혈액 정화, 면역계 지원 (좌측 고유)", descEn: "Blood purification, immune defense (Left exclusive)" },
+    { id: "palm_stomach", ko: "위장", en: "Stomach", x: 65.5, y: 68.0, icon: "🥣", tagKo: "손바닥 중앙 위장 구역", tagEn: "Center Mid-Palm Stomach Zone", descKo: "위장 편안함, 소화 기능 개선", descEn: "Stomach ease, digestive comfort" },
+    { id: "palm_colon", ko: "결장 (대장)", en: "Colon", x: 69.5, y: 73.0, icon: "🔄", tagKo: "손바닥 하부 가로 보라색띠", tagEn: "Mid-Lower Palm Colon Band", descKo: "장 연동운동 촉진, 복부 팽만 완화", descEn: "Colonic motility, bloating relief" },
+    { id: "palm_descending_colon", ko: "하행결장", en: "Descending colon", x: 75.5, y: 75.8, icon: "⬇️", tagKo: "손바닥 외측 세로 보라색띠", tagEn: "Lateral Descending Band (Left exclusive)", descKo: "배변 유도, 하행 결장 소통 (좌측 고유)", descEn: "Evacuation ease, colonic transit (Left exclusive)" },
+    { id: "palm_sigmoid_colon", ko: "S자 결장", en: "Sigmoid colon", x: 71.5, y: 79.5, icon: "🔀", tagKo: "손목 위 외측 보라색 곡선띠", tagEn: "Lower Lateral Sigmoid Band (Left exclusive)", descKo: "S결장 경련 완화, 변비 해소 (좌측 고유)", descEn: "Sigmoid spasm relief, evacuation comfort (Left exclusive)" },
+    { id: "palm_small_intestine", ko: "소장", en: "Small intestine", x: 53.5, y: 83.5, icon: "🌾", tagKo: "손바닥 하부 중앙 원형 구역", tagEn: "Lower Center Palm Circle", descKo: "영양 흡수 촉진, 장내 온기 유지", descEn: "Nutrient absorption, intestinal warmth" }
+  ],
+  right_back: [
+    { id: "back_sinus_fingers", ko: "머리 / 부비동 (손가락)", en: "Head / Sinus", x: 42.5, y: 19.5, icon: "🧠", tagKo: "손등 손가락 끝 보라색 대역", tagEn: "Dorsal Fingertip Purple Zone", descKo: "두통 완화, 부비동 압력 해소, 전두부 맑음", descEn: "Headache relief, sinus clearing, frontal ease" },
+    { id: "back_sinus_thumb", ko: "머리 / 부비동 (엄지)", en: "Head / Sinus (Thumb)", x: 18.5, y: 39.0, icon: "🧠", tagKo: "엄지손가락 등쪽 끝단", tagEn: "Dorsal Thumb Tip", descKo: "대뇌 순환 촉진, 두통 완화", descEn: "Cranial flow, headache relief" },
+    { id: "back_neck_upper", ko: "목 (상단)", en: "Neck (Upper)", x: 43.5, y: 30.5, icon: "🧣", tagKo: "손등 손가락 첫째 관절선", tagEn: "Dorsal Finger 1st Joint Line", descKo: "경추 신경 이완, 목덜미 결림 해소", descEn: "Cervical relaxation, neck stiffness ease" },
+    { id: "back_teeth_jaw", ko: "치아 · 턱 · 잇몸", en: "Teeth / Gums / Jaw", x: 53.5, y: 34.5, icon: "🦷", tagKo: "손가락 사이 웹 청록색 띠", tagEn: "Finger Web Spaces Teal Band", descKo: "턱관절 긴장 완화, 치아 통증 완화", descEn: "TMJ tension release, dental comfort" },
+    { id: "back_neck_lower", ko: "목 (하단 / 엄지)", en: "Neck (Lower)", x: 23.5, y: 48.0, icon: "🧣", tagKo: "엄지손등 뿌리 관절", tagEn: "Dorsal Thumb Root Joint", descKo: "목 근육 이완, 편도선 편안함", descEn: "Neck muscle ease, throat comfort" },
+    { id: "back_shoulders", ko: "어깨 상부", en: "Tops of shoulders", x: 77.5, y: 52.5, icon: "🦾", tagKo: "손등 중간 주황색 물결띠", tagEn: "Mid-Dorsal Orange Wave Band", descKo: "어깨 결림, 견갑골 긴장 완화", descEn: "Shoulder stiffness release, scapular ease" },
+    { id: "back_thyroid_para", ko: "갑상선 / 부갑상선", en: "Thyroid / Parathyroid glands", x: 29.5, y: 56.5, icon: "🦋", tagKo: "엄지-검지 사이 손등 회색 구역", tagEn: "Dorsal Thumb-Index Web Gray Zone", descKo: "대사 조절, 체온 유지, 신경 안정", descEn: "Metabolic regulation, vitality, nerve calm" },
+    { id: "back_lung_chest", ko: "폐 / 가슴 / 유방 / 등 상부", en: "Lung / Chest / Breast / Upper back", x: 72.8, y: 59.5, icon: "🫁", tagKo: "손등 상부 분홍색 구역", tagEn: "Upper Dorsal Pink Field", descKo: "흉곽 개방, 호흡 순환, 가슴 답답함 해소", descEn: "Thoracic opening, lung clearing, chest comfort" },
+    { id: "back_spine", ko: "척추선", en: "Spine", x: 24.5, y: 62.0, icon: "🦴", tagKo: "엄지손가락 등쪽 능선", tagEn: "Medial Dorsal Thumb Ridge", descKo: "척추 정렬, 경추·흉추·요추 통증 완화", descEn: "Spine alignment, back pain relief" },
+    { id: "back_diaphragm_solar", ko: "횡격막 / 태양신경총", en: "Diaphragm / Solar plexus", x: 69.5, y: 66.5, icon: "🌬️", tagKo: "손등 중앙 청색 구역 경계선", tagEn: "Mid-Dorsal Blue Field Margin", descKo: "호흡 안정, 가슴 답답함 해소, 스트레스 완화", descEn: "Respiratory calm, visceral relief, stress ease" },
+    { id: "back_upper_back", ko: "등 상부", en: "Upper back", x: 65.5, y: 73.0, icon: "🦾", tagKo: "손등 중앙 대형 청색 구역", tagEn: "Center Dorsal Blue Zone", descKo: "등 결림 해소, 흉추 기립근 이완", descEn: "Mid-back tension release, erector comfort" },
+    { id: "back_waistline", ko: "허리선", en: "Waistline", x: 69.5, y: 76.0, icon: "〰️", tagKo: "손등 하부 외측 경계 홈", tagEn: "Lower Lateral Dorsal Notch", descKo: "허리 경계선 긴장 이완", descEn: "Lumbar boundary comfort" },
+    { id: "back_knee_leg_hip", ko: "무릎 / 다리 / 골반", en: "Knee / Leg / Hip", x: 64.5, y: 79.5, icon: "🦵", tagKo: "손등 외측 하단 주황색 구역", tagEn: "Lower Lateral Dorsal Orange Zone", descKo: "무릎 관절통 완화, 골반 균형", descEn: "Knee joint ease, pelvic balance" },
+    { id: "back_lower_back", ko: "하배부 / 허리", en: "Lower back", x: 48.0, y: 82.5, icon: "🦴", tagKo: "손등 하단 정중선", tagEn: "Lower Dorsal Center Line", descKo: "만성 요통 완화, 골반 연결부 이완", descEn: "Lower back pain relief, lumbar ease" },
+    { id: "back_lymph_groin", ko: "림프관 / 나팔관 / 서혜부", en: "Lymph glands / Fallopian tubes / Groin", x: 67.0, y: 83.8, icon: "💧", tagKo: "손목 뒤쪽 가로 녹색 띠", tagEn: "Posterior Wrist Transverse Band", descKo: "상체 림프 순환, 서혜부 소통, 면역 증강", descEn: "Lymphatic drainage, groin flow, detox" },
+    { id: "back_uterus_prostate", ko: "자궁 / 전립선", en: "Uterus / Prostate gland", x: 46.5, y: 86.8, icon: "🌿", tagKo: "손목 뒤 내측 타원점", tagEn: "Posterior Medial Wrist Oval", descKo: "비뇨생식기 조화, 생리통 및 전립선 보호", descEn: "Genitourinary support, menstrual comfort" },
+    { id: "back_ovary_testicle", ko: "난소 / 고환", en: "Ovary / Testicle", x: 64.0, y: 86.2, icon: "✨", tagKo: "손목 뒤 외측 타원점", tagEn: "Posterior Lateral Wrist Oval", descKo: "호르몬 밸런스, 생식선 순환", descEn: "Hormone balance, gonadal vitality" }
+  ],
+  left_back: [
+    { id: "back_sinus_fingers", ko: "머리 / 부비동 (손가락)", en: "Head / Sinus", x: 57.5, y: 19.5, icon: "🧠", tagKo: "손등 손가락 끝 보라색 대역", tagEn: "Dorsal Fingertip Purple Zone", descKo: "두통 완화, 부비동 압력 해소, 전두부 맑음", descEn: "Headache relief, sinus clearing, frontal ease" },
+    { id: "back_sinus_thumb", ko: "머리 / 부비동 (엄지)", en: "Head / Sinus (Thumb)", x: 81.5, y: 39.0, icon: "🧠", tagKo: "엄지손가락 등쪽 끝단", tagEn: "Dorsal Thumb Tip", descKo: "대뇌 순환 촉진, 두통 완화", descEn: "Cranial flow, headache relief" },
+    { id: "back_neck_upper", ko: "목 (상단)", en: "Neck (Upper)", x: 56.5, y: 30.5, icon: "🧣", tagKo: "손등 손가락 첫째 관절선", tagEn: "Dorsal Finger 1st Joint Line", descKo: "경추 신경 이완, 목덜미 결림 해소", descEn: "Cervical relaxation, neck stiffness ease" },
+    { id: "back_teeth_jaw", ko: "치아 · 턱 · 잇몸", en: "Teeth / Gums / Jaw", x: 46.5, y: 34.5, icon: "🦷", tagKo: "손가락 사이 웹 청록색 띠", tagEn: "Finger Web Spaces Teal Band", descKo: "턱관절 긴장 완화, 치아 통증 완화", descEn: "TMJ tension release, dental comfort" },
+    { id: "back_neck_lower", ko: "목 (하단 / 엄지)", en: "Neck (Lower)", x: 76.5, y: 48.0, icon: "🧣", tagKo: "엄지손등 뿌리 관절", tagEn: "Dorsal Thumb Root Joint", descKo: "목 근육 이완, 편도선 편안함", descEn: "Neck muscle ease, throat comfort" },
+    { id: "back_shoulders", ko: "어깨 상부", en: "Tops of shoulders", x: 22.5, y: 52.5, icon: "🦾", tagKo: "손등 중간 주황색 물결띠", tagEn: "Mid-Dorsal Orange Wave Band", descKo: "어깨 결림, 견갑골 긴장 완화", descEn: "Shoulder stiffness release, scapular ease" },
+    { id: "back_thyroid_para", ko: "갑상선 / 부갑상선", en: "Thyroid / Parathyroid glands", x: 70.5, y: 56.5, icon: "🦋", tagKo: "엄지-검지 사이 손등 회색 구역", tagEn: "Dorsal Thumb-Index Web Gray Zone", descKo: "대사 조절, 체온 유지, 신경 안정", descEn: "Metabolic regulation, vitality, nerve calm" },
+    { id: "back_lung_chest", ko: "폐 / 가슴 / 유방 / 등 상부", en: "Lung / Chest / Breast / Upper back", x: 27.2, y: 59.5, icon: "🫁", tagKo: "손등 상부 분홍색 구역", tagEn: "Upper Dorsal Pink Field", descKo: "흉곽 개방, 호흡 순환, 가슴 답답함 해소", descEn: "Thoracic opening, lung clearing, chest comfort" },
+    { id: "back_spine", ko: "척추선", en: "Spine", x: 75.5, y: 62.0, icon: "🦴", tagKo: "엄지손가락 등쪽 능선", tagEn: "Medial Dorsal Thumb Ridge", descKo: "척추 정렬, 경추·흉추·요추 통증 완화", descEn: "Spine alignment, back pain relief" },
+    { id: "back_diaphragm_solar", ko: "횡격막 / 태양신경총", en: "Diaphragm / Solar plexus", x: 30.5, y: 66.5, icon: "🌬️", tagKo: "손등 중앙 청색 구역 경계선", tagEn: "Mid-Dorsal Blue Field Margin", descKo: "호흡 안정, 가슴 답답함 해소, 스트레스 완화", descEn: "Respiratory calm, visceral relief, stress ease" },
+    { id: "back_upper_back", ko: "등 상부", en: "Upper back", x: 34.5, y: 73.0, icon: "🦾", tagKo: "손등 중앙 대형 청색 구역", tagEn: "Center Dorsal Blue Zone", descKo: "등 결림 해소, 흉추 기립근 이완", descEn: "Mid-back tension release, erector comfort" },
+    { id: "back_waistline", ko: "허리선", en: "Waistline", x: 30.5, y: 76.0, icon: "〰️", tagKo: "손등 하부 외측 경계 홈", tagEn: "Lower Lateral Dorsal Notch", descKo: "허리 경계선 긴장 이완", descEn: "Lumbar boundary comfort" },
+    { id: "back_knee_leg_hip", ko: "무릎 / 다리 / 골반", en: "Knee / Leg / Hip", x: 35.5, y: 79.5, icon: "🦵", tagKo: "손등 외측 하단 주황색 구역", tagEn: "Lower Lateral Dorsal Orange Zone", descKo: "무릎 관절통 완화, 골반 균형", descEn: "Knee joint ease, pelvic balance" },
+    { id: "back_lower_back", ko: "하배부 / 허리", en: "Lower back", x: 52.0, y: 82.5, icon: "🦴", tagKo: "손등 하단 정중선", tagEn: "Lower Dorsal Center Line", descKo: "만성 요통 완화, 골반 연결부 이완", descEn: "Lower back pain relief, lumbar ease" },
+    { id: "back_lymph_groin", ko: "림프관 / 나팔관 / 서혜부", en: "Lymph glands / Fallopian tubes / Groin", x: 33.0, y: 83.8, icon: "💧", tagKo: "손목 뒤쪽 가로 녹색 띠", tagEn: "Posterior Wrist Transverse Band", descKo: "상체 림프 순환, 서혜부 소통, 면역 증강", descEn: "Lymphatic drainage, groin flow, detox" },
+    { id: "back_uterus_prostate", ko: "자궁 / 전립선", en: "Uterus / Prostate gland", x: 53.5, y: 86.8, icon: "🌿", tagKo: "손목 뒤 내측 타원점", tagEn: "Posterior Medial Wrist Oval", descKo: "비뇨생식기 조화, 생리통 및 전립선 보호", descEn: "Genitourinary support, menstrual comfort" },
+    { id: "back_ovary_testicle", ko: "난소 / 고환", en: "Ovary / Testicle", x: 36.0, y: 86.2, icon: "✨", tagKo: "손목 뒤 외측 타원점", tagEn: "Posterior Lateral Wrist Oval", descKo: "호르몬 밸런스, 생식선 순환", descEn: "Hormone balance, gonadal vitality" }
+  ]
+};
+
 
 const surfacePins = {
   sole: [
@@ -1290,8 +1506,21 @@ function renderMapGlossary(surfaceKey) {
     grid.querySelectorAll(".glossary-item").forEach(itemEl => {
       itemEl.onclick = () => {
         const ko = itemEl.dataset.glossaryKo;
-        const pins = surfacePins[surfaceKey] || [];
-        const match = pins.find(p => p.ko.includes(ko) || ko.includes(p.ko));
+        const en = itemEl.dataset.glossaryEn;
+        const currentMap = maps.find(x => x.id === state.mapId);
+        const pins = (typeof mapPins !== "undefined" && currentMap && mapPins[currentMap.id]) || surfacePins[surfaceKey] || [];
+        const match = pins.find(p => 
+          p.ko.includes(ko) || ko.includes(p.ko) ||
+          (p.en && en && (p.en.toLowerCase().includes(en.toLowerCase()) || en.toLowerCase().includes(p.en.toLowerCase()))) ||
+          (ko.includes("癒몃━") && p.id.includes("brain")) ||
+          (ko.includes("?ъ옣") && p.id.includes("heart")) ||
+          (ko.includes("媛?) && p.id.includes("liver")) ||
+          (ko.includes("?대궘") && p.id.includes("gallbladder")) ||
+          (ko.includes("鍮꾩옣") && p.id.includes("spleen")) ||
+          (ko.includes("?곹뻾") && p.id.includes("ascending")) ||
+          (ko.includes("?섑뻾") && p.id.includes("descending")) ||
+          (ko.includes("S??) && p.id.includes("sigmoid"))
+        );
         if (match) {
           inspectReflexPoint(match.id, surfaceKey, true);
         } else {
@@ -1305,8 +1534,21 @@ function renderMapGlossary(surfaceKey) {
       };
       itemEl.onmouseenter = () => {
         const ko = itemEl.dataset.glossaryKo;
-        const pins = surfacePins[surfaceKey] || [];
-        const match = pins.find(p => p.ko.includes(ko) || ko.includes(p.ko));
+        const en = itemEl.dataset.glossaryEn;
+        const currentMap = maps.find(x => x.id === state.mapId);
+        const pins = (typeof mapPins !== "undefined" && currentMap && mapPins[currentMap.id]) || surfacePins[surfaceKey] || [];
+        const match = pins.find(p => 
+          p.ko.includes(ko) || ko.includes(p.ko) ||
+          (p.en && en && (p.en.toLowerCase().includes(en.toLowerCase()) || en.toLowerCase().includes(p.en.toLowerCase()))) ||
+          (ko.includes("癒몃━") && p.id.includes("brain")) ||
+          (ko.includes("?ъ옣") && p.id.includes("heart")) ||
+          (ko.includes("媛?) && p.id.includes("liver")) ||
+          (ko.includes("?대궘") && p.id.includes("gallbladder")) ||
+          (ko.includes("鍮꾩옣") && p.id.includes("spleen")) ||
+          (ko.includes("?곹뻾") && p.id.includes("ascending")) ||
+          (ko.includes("?섑뻾") && p.id.includes("descending")) ||
+          (ko.includes("S??) && p.id.includes("sigmoid"))
+        );
         if (match) {
           inspectReflexPoint(match.id, surfaceKey, false);
         }
@@ -1320,7 +1562,7 @@ function renderSmartLabels() {
   if (!layer) return;
   const m = maps.find(x => x.id === state.mapId);
   if (!m) return;
-  const pins = surfacePins[m.surface] || [];
+  const pins = (typeof mapPins !== "undefined" && mapPins[m.id]) || surfacePins[m.surface] || [];
   const isEn = state.lang === "en";
 
   if (!state.showSmartLabels) {
@@ -1379,7 +1621,7 @@ function renderSmartLabels() {
 
       const currentMap = maps.find(x => x.id === state.mapId);
       if (!currentMap) return;
-      const currentPins = surfacePins[currentMap.surface] || [];
+      const currentPins = (typeof mapPins !== "undefined" && mapPins[currentMap.id]) || surfacePins[currentMap.surface] || [];
 
       // Find closest hotspot within 5.5% distance
       let closest = null;
@@ -1402,8 +1644,21 @@ function renderSmartLabels() {
 }
 
 function inspectReflexPoint(pinId, surfaceKey, playFeedback = true) {
-  const pins = surfacePins[surfaceKey] || [];
-  const p = pins.find(x => x.id === pinId);
+  const currentMap = maps.find(x => x.id === state.mapId);
+  const pins = (typeof mapPins !== "undefined" && currentMap && mapPins[currentMap.id]) || surfacePins[surfaceKey] || [];
+  let p = pins.find(x => x.id === pinId);
+  if (!p && typeof mapPins !== "undefined") {
+    for (const k in mapPins) {
+      p = mapPins[k].find(x => x.id === pinId);
+      if (p) break;
+    }
+  }
+  if (!p) {
+    for (const k in surfacePins) {
+      p = surfacePins[k].find(x => x.id === pinId);
+      if (p) break;
+    }
+  }
   if (!p) return;
 
   const isEn = state.lang === "en" || state.mapLang === "en";
@@ -3243,3 +3498,4 @@ window.startProgram = startProgram;
 window.toggleTimer = toggleTimer;
 window.resetTimer = resetTimer;
 window.nextStep = nextStep;
+

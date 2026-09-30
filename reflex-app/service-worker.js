@@ -1,4 +1,4 @@
-const CACHE = "novacell-reflex-therapy-v42-spotless-maps";
+const CACHE = "novacell-reflex-therapy-v43-spotless-maps";
 const ASSETS = [
   "./",
   "./index.html",
