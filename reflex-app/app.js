@@ -1287,6 +1287,7 @@ function speakCurrentPoint() {
 // Comprehensive Language Application
 // ==========================================================================
 function applyLanguage() {
+  if (typeof updateGateLanguageButtons === "function") updateGateLanguageButtons();
   const isEn = state.lang === "en";
   document.documentElement.lang = isEn ? "en" : "ko";
 
@@ -1407,8 +1408,27 @@ function load() {
     state.academy = saved.academy && typeof saved.academy === "object" ? { ...state.academy, ...saved.academy } : state.academy;
     state.academyCourse = saved.academyCourse || "urinary";
     state.mode = saved.mode || "self";
-    state.lang = saved.lang || "ko";
-    state.mapLang = saved.mapLang || state.lang || "ko";
+
+    // [핫픽스] URL 쿼리 파라미터(?lang=ko 또는 ?lang=en) 우선 처리 및 리퍼러 감지
+    let activeLang = "ko";
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryLang = urlParams.get("lang");
+      if (queryLang === "ko" || queryLang === "en") {
+        activeLang = queryLang;
+      } else if (saved.lang === "en" || saved.lang === "ko") {
+        activeLang = saved.lang;
+      } else if (document.referrer && document.referrer.includes("/en/")) {
+        activeLang = "en";
+      } else {
+        activeLang = "ko";
+      }
+    } catch(e) {
+      activeLang = saved.lang || "ko";
+    }
+
+    state.lang = activeLang;
+    state.mapLang = saved.mapLang || activeLang;
     state.voice = saved.voice !== false;
     state.sound = saved.sound !== false;
     state.defaultDuration = clampDuration(saved.defaultDuration || 20);
@@ -3357,13 +3377,41 @@ function bind() {
   }
 
   // Segmented Language Toggle [ 한글 / ENG ]
+  const updateGateLanguageButtons = () => {
+    const isKo = state.lang === "ko";
+    const gateKo = $("#gateLangKo");
+    const gateEn = $("#gateLangEn");
+    if (gateKo) {
+      gateKo.classList.toggle("active", isKo);
+      gateKo.style.background = isKo ? "rgba(56, 189, 248, 0.22)" : "rgba(255, 255, 255, 0.06)";
+      gateKo.style.borderColor = isKo ? "#38bdf8" : "rgba(255, 255, 255, 0.2)";
+      gateKo.style.color = isKo ? "#38bdf8" : "#94a3b8";
+    }
+    if (gateEn) {
+      gateEn.classList.toggle("active", !isKo);
+      gateEn.style.background = !isKo ? "rgba(56, 189, 248, 0.22)" : "rgba(255, 255, 255, 0.06)";
+      gateEn.style.borderColor = !isKo ? "#38bdf8" : "rgba(255, 255, 255, 0.2)";
+      gateEn.style.color = !isKo ? "#38bdf8" : "#94a3b8";
+    }
+    const welcomeStart = $("#welcomeStart");
+    if (welcomeStart) {
+      const textSpan = welcomeStart.querySelector("[data-i18n='welcomeStartBtn']");
+      if (textSpan) {
+        textSpan.textContent = isKo ? "NovaCell 반사요법 가이드 시작하기" : "Start NovaCell Reflex Therapy Guide";
+      }
+    }
+  };
+
   const setLanguage = (newLang) => {
     state.lang = newLang;
     state.mapLang = newLang;
     save();
     applyLanguage();
+    updateGateLanguageButtons();
     toast(state.lang === "en" ? "English mode enabled" : "한국어 모드로 변경되었습니다");
   };
+  window.setLanguage = setLanguage;
+  window.updateGateLanguageButtons = updateGateLanguageButtons;
 
   const langToggleBtn = $("#langToggleBtn");
   const optKo = $("#langOptKo");

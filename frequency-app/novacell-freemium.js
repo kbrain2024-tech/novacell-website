@@ -436,8 +436,10 @@
       eng.setVipVolume(preset.vipVolume || 0.35);
     }
 
-    // 7) 자연음 믹서 프리셋 세팅 (자연음 마스터 볼륨 확실히 80% 이상 보장)
-    if (preset.nature && Object.keys(preset.nature).length > 0) {
+    // 7) 자연음 믹서 프리셋 세팅 (사용자가 특정 앰비언트를 선택한 경우 보존)
+    if (window.currentAmbientType && window.currentAmbientType !== 'preset') {
+      window.setGlobalAmbientSound(window.currentAmbientType);
+    } else if (preset.nature && Object.keys(preset.nature).length > 0) {
       eng.isNatureActive = true;
       
       let natMaster = parseFloat(document.getElementById('slider-quick-nature')?.value || document.getElementById('slider-nature-master')?.value || 0.8);
@@ -1218,10 +1220,10 @@
       targetNature = { singingbowl: 0.45 };
       showToast('🥣 뇌파를 깊이 이완시키는 티벳 싱잉볼 배경음이 적용되었습니다.');
     } else if (ambientType === 'forestbirds') {
-      targetNature = { forestbirds: 0.50 };
+      targetNature = { forestbirds: 0.65, stream: 0.25 };
       showToast(isEn ? '🌲 Morning forest birds ambient sound applied.' : '🌲 상쾌한 아침을 깨우는 숲속 새소리 배경음이 적용되었습니다.');
     } else if (ambientType === 'seagull') {
-      targetNature = { seagull: 0.50, waves: 0.25 };
+      targetNature = { seagull: 0.70, waves: 0.45 };
       showToast(isEn ? '🕊️ Ocean Waves & Seagulls soundscape applied.' : '🕊️ 시원한 바다 파도와 갈매기소리 배경음이 적용되었습니다.');
     }
 
@@ -1235,7 +1237,46 @@
       if (tx) tx.textContent = Math.round(v * 100) + '%';
     });
 
-    if (eng.isPlaying) {
+    // 5) [핫픽스] 무음 방지 및 즉각적 사운드 피드백: 엔진이 정지 상태여도 즉시 기동 및 재생
+    if (!eng.isPlaying) {
+      eng.init();
+      if (eng.audioCtx && eng.audioCtx.state === 'suspended') {
+        eng.audioCtx.resume();
+      }
+      eng.isPlaying = true;
+      eng.isNatureActive = true;
+      
+      // 편안한 432Hz 베이스 바이노럴 톤과 함께 자연음 믹서 가동
+      if (!eng.isBeatsActive && !eng.isSolfeggioActive) {
+        eng.setSolfeggioFrequency('432');
+        eng.setSolfeggioVolume(0.35);
+        eng.isSolfeggioActive = true;
+        eng.setBeatsFrequency(200, 6);
+        eng.setBeatsVolume(0.35);
+        eng.isBeatsActive = true;
+        eng.start();
+      }
+      eng.startNatureMixer();
+
+      // 재생 버튼 UI 상태 즉시 활성화 동기화
+      const isEn = window.currentLang === 'en';
+      const stickyPlayBtn = document.getElementById('sticky-play-btn');
+      if (stickyPlayBtn) {
+        stickyPlayBtn.innerHTML = '<i class="ri-pause-fill"></i>';
+        stickyPlayBtn.classList.add('playing');
+      }
+      const heroPlayBtn = document.getElementById('hero-play-btn');
+      if (heroPlayBtn) {
+        heroPlayBtn.innerHTML = `<i class="ri-pause-fill" style="font-size: 1.2rem;"></i> <span id="hero-play-btn-text">${isEn ? 'Stop Sound' : '사운드 정지'}</span>`;
+        heroPlayBtn.classList.add('playing');
+      }
+      const masterPlayBtn = document.getElementById('btn-master-play');
+      if (masterPlayBtn) {
+        masterPlayBtn.classList.add('playing');
+        masterPlayBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+      }
+    } else {
+      eng.isNatureActive = true;
       eng.startNatureMixer();
     }
   };

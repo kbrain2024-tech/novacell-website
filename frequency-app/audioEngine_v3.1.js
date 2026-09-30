@@ -2269,24 +2269,32 @@ class AudioEngine {
    * 갈매기소리 주기적 자동 트리거 루프 (한 번 울릴 때 3번 연속 울도록 핫픽스 적용)
    */
   triggerSeagullLoop() {
+    if (this.seagullTimer) {
+      clearInterval(this.seagullTimer);
+      this.seagullTimer = null;
+    }
     const playSeagull = () => {
       // 재생 중이 아니거나 자연음 믹서가 비활성화 상태이면 스킵
       if (!this.isPlaying || !this.isNatureActive) return;
-      const currentVol = this.natureGains.seagull.gain.value;
+      const currentVol = (this.natureGains && this.natureGains.seagull) ? this.natureGains.seagull.gain.value : (this.natureVolumeSettings.seagull || 0.5);
       if (currentVol <= 0.01) return;
       
       const now = this.audioCtx.currentTime;
-      const baseFreq = 800 + Math.random() * 150; // 기본 주파수 랜덤 기복
+      const baseFreq = 820 + Math.random() * 160; // 갈매기 기본 주파수 랜덤 기복
       
-      // 3번 연속으로 시차를 두고 울도록 호출 (0초, 0.45초, 0.95초)
+      // 3번 연속으로 시차를 두고 울도록 호출 (0초, 0.42초, 0.90초)
       this.playSingleCawRife(baseFreq, currentVol, now);
-      this.playSingleCawRife(baseFreq * 0.95, currentVol, now + 0.45);
-      this.playSingleCawRife(baseFreq * 0.9, currentVol, now + 0.95);
+      this.playSingleCawRife(baseFreq * 0.96, currentVol, now + 0.42);
+      this.playSingleCawRife(baseFreq * 0.91, currentVol, now + 0.90);
     };
     
+    // [핫픽스] 즉시 1회 울음소리 재생 (사용자가 선택하자마자 0초 지연 없이 소리 청취)
+    playSeagull();
+
+    // 4.5초 주기로 활발하게 울도록 주기 설정 (85% 확률)
     this.seagullTimer = setInterval(() => {
-      if (Math.random() > 0.4) playSeagull();
-    }, 8000);
+      if (Math.random() > 0.15) playSeagull();
+    }, 4500);
   }
 
   /**
@@ -2300,7 +2308,7 @@ class AudioEngine {
     
     const volumeNode = this.audioCtx.createGain();
     volumeNode.gain.setValueAtTime(0, startTime);
-    volumeNode.gain.linearRampToValueAtTime(volume * 1.0, startTime + 0.08); 
+    volumeNode.gain.linearRampToValueAtTime(volume * 1.6, startTime + 0.08); 
     volumeNode.gain.exponentialRampToValueAtTime(0.001, startTime + 0.35);
     
     osc.frequency.setValueAtTime(frequency, startTime);
@@ -2502,7 +2510,7 @@ class AudioEngine {
       
       const vol = this.audioCtx.createGain();
       vol.gain.setValueAtTime(0, startTime);
-      const peakVol = currentVol * 0.25 * volScale;
+      const peakVol = currentVol * 0.55 * volScale;
       const attackTime = duration * attackRatio;
       vol.gain.linearRampToValueAtTime(peakVol, startTime + attackTime);
       vol.gain.setValueAtTime(peakVol, startTime + duration - 0.03);
@@ -2845,7 +2853,8 @@ class AudioEngine {
     
     // 6종 새 시간차 시작
     playChirper();
-    this._forestTimers.push(setTimeout(playForestOriole, 1500 + Math.random() * 2000));
+    playForestOriole();
+    this._forestTimers.push(setTimeout(playForestTitmouse, 1200 + Math.random() * 1500));
     this._forestTimers.push(setTimeout(playForestTitmouse, 3000 + Math.random() * 2000));
     this._forestTimers.push(setTimeout(playWoodpecker, 5000 + Math.random() * 3000));
     this._forestTimers.push(setTimeout(playKingfisher, 7000 + Math.random() * 3000));

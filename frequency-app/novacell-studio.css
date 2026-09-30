@@ -2900,7 +2900,8 @@ html, body {
     font-size: 1rem !important;
   }
   .m-tab-title {
-    font-size: 0.68rem !important;
+    font-size: 0.67rem !important;
+    letter-spacing: -0.04em !important;
   }
   .welcome-cover-screen {
     padding: 8px 6px 36px !important;

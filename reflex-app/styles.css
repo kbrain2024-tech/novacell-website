@@ -1884,3 +1884,74 @@ dialog.fullscreen-map-modal::backdrop {
     flex-direction: column;
   }
 }
+
+/* =========================================================================
+   [핫픽스] 모바일 헤더 언어 전환 [ 한글 / ENG ] 100% 온전 노출 및 잘림 방지
+   ========================================================================= */
+@media (max-width: 860px) {
+  .topbar {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .brand {
+    gap: 6px !important;
+  }
+  .brand small {
+    display: none !important;
+  }
+  .top-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+  /* 모바일 화면에서 공간을 과도하게 차지하는 PC 전용 텍스트 버튼 숨김 */
+  .nav-official-home,
+  .nav-healing-app,
+  .header-status-badge,
+  .mode-switch,
+  #safetyBtn {
+    display: none !important;
+  }
+  /* 메인 대문 버튼 컴팩트화 */
+  .home-gate-button {
+    padding: 4px 8px !important;
+    min-height: 32px !important;
+    font-size: 11px !important;
+    flex-shrink: 0 !important;
+  }
+  /* [한글 / ENG] 분할 버튼: 잘림 없이 완벽 노출 및 터치 면적 확보 */
+  .lang-toggle-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 86px !important;
+    max-width: 96px !important;
+    flex-shrink: 0 !important;
+    padding: 4px 8px !important;
+    min-height: 32px !important;
+    background: rgba(15, 23, 42, 0.9) !important;
+    border: 1.5px solid rgba(56, 189, 248, 0.55) !important;
+    border-radius: 999px !important;
+    box-sizing: border-box !important;
+    z-index: 10 !important;
+  }
+  .lang-toggle-btn .lang-opt {
+    padding: 2px 4px !important;
+    font-size: 11.5px !important;
+  }
+  .lang-toggle-btn .lang-opt.active {
+    color: #38bdf8 !important;
+    font-weight: 900 !important;
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.8) !important;
+  }
+  .header-icon-btn {
+    min-height: 32px !important;
+    padding: 4px 7px !important;
+    font-size: 11px !important;
+  }
+}

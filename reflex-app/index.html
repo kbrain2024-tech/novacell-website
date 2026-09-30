@@ -54,6 +54,15 @@
       </div>
       <div class="welcome-content">
         <button class="welcome-close" id="welcomeClose" aria-label="대문 닫기" onclick="dismissWelcomeGate()">×</button>
+        <!-- [핫픽스] 대문 모달 상단 한글 / English 즉시 전환 스위처 -->
+        <div class="welcome-gate-lang" style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
+          <button type="button" id="gateLangKo" class="gate-lang-btn active" onclick="if(window.setLanguage)window.setLanguage('ko');" style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:999px;border:1.5px solid #38bdf8;background:rgba(56,189,248,0.22);color:#38bdf8;font-size:12.5px;font-weight:800;cursor:pointer;transition:all 0.2s ease;">
+            <span>🇰🇷 한글</span>
+          </button>
+          <button type="button" id="gateLangEn" class="gate-lang-btn" onclick="if(window.setLanguage)window.setLanguage('en');" style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.06);color:#94a3b8;font-size:12.5px;font-weight:700;cursor:pointer;transition:all 0.2s ease;">
+            <span>🇺🇸 English</span>
+          </button>
+        </div>
         <div class="welcome-badges"><span data-i18n="badgeClinical">NOVACELL CLINICAL GUIDE</span><span data-i18n="badgeReflex">REFLEX THERAPY</span></div>
         <h1 id="welcomeTitle"><em>NovaCell</em> Reflex<br>Therapy Guide</h1>
         <p class="welcome-subtitle" data-i18n="welcomeSub">Hand &amp; Foot Reflexology Learning System</p>

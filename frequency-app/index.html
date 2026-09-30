@@ -77,19 +77,19 @@
       <!-- 5대 모드 세그먼트 네비게이션 (헤더 중앙) -->
       <nav class="nc-tabs-nav desktop-only-tabs" aria-label="스튜디오 주요 모드">
         <button id="btn-nav-tab-presets" class="nav-pill active" onclick="switchTab('tab-presets')">
-          <i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">바이오 힐링 프리셋</span>
+          <i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">프리셋</span>
         </button>
         <button id="btn-nav-tab-rife100" class="nav-pill" onclick="switchTab('tab-rife100')">
-          <i class="ri-dna-line" style="color: #34d399;"></i> <span data-i18n="tabRife100">NovaCell 100 힐링 코드</span>
+          <i class="ri-dna-line" style="color: #34d399;"></i> <span data-i18n="tabRife100">힐링 코드</span>
         </button>
         <button id="btn-nav-tab-vip" class="nav-pill" onclick="switchTab('tab-vip')">
-          <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i> <span data-i18n="tabVip">VIP 임상 웰니스 코드</span> <span class="badge-lock">🔒 VIP</span>
+          <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i> <span data-i18n="tabVip">웰니스 코드</span> <span class="badge-lock">🔒 VIP</span>
         </button>
         <button id="btn-nav-tab-care" class="nav-pill" onclick="switchTab('tab-care')">
-          <i class="ri-heart-pulse-fill" style="color: #ec4899;"></i> <span data-i18n="tabCare">AI 웰니스 & 호흡 테라피</span>
+          <i class="ri-heart-pulse-fill" style="color: #ec4899;"></i> <span data-i18n="tabCare">호흡 테라피</span>
         </button>
         <button id="btn-nav-tab-studio" class="nav-pill" onclick="switchTab('tab-studio')">
-          <i class="ri-sound-module-fill" style="color: #38bdf8;"></i> <span data-i18n="tabStudio">프로 스튜디오</span>
+          <i class="ri-sound-module-fill" style="color: #38bdf8;"></i> <span data-i18n="tabStudio">힐링 랩</span>
         </button>
       </nav>
 
@@ -126,19 +126,19 @@
       </button>
       <button class="m-tab-btn" data-tab="tab-rife100" onclick="switchTab('tab-rife100')" title="NovaCell 100 힐링 코드">
         <i class="ri-dna-line" style="color: #34d399;"></i>
-        <span class="m-tab-title" data-i18n="mTabRife">Rife 100</span>
+        <span class="m-tab-title" data-i18n="mTabRife">힐링 코드</span>
       </button>
       <button class="m-tab-btn" data-tab="tab-vip" onclick="switchTab('tab-vip')" title="VIP 임상 웰니스 코드">
         <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i>
-        <span class="m-tab-title" data-i18n="mTabVip">VIP 임상</span>
+        <span class="m-tab-title" data-i18n="mTabVip">웰니스 코드</span>
       </button>
       <button class="m-tab-btn" data-tab="tab-care" onclick="switchTab('tab-care')" title="AI 웰니스 & 호흡 테라피">
         <i class="ri-heart-pulse-fill" style="color: #ec4899;"></i>
-        <span class="m-tab-title" data-i18n="mTabCare">AI·호흡</span>
+        <span class="m-tab-title" data-i18n="mTabCare">호흡 테라피</span>
       </button>
       <button class="m-tab-btn" data-tab="tab-studio" onclick="switchTab('tab-studio')" title="프로 스튜디오">
         <i class="ri-sound-module-fill" style="color: #38bdf8;"></i>
-        <span class="m-tab-title" data-i18n="mTabStudio">스튜디오</span>
+        <span class="m-tab-title" data-i18n="mTabStudio">힐링 랩</span>
       </button>
     </nav>
 
@@ -1964,11 +1964,11 @@
     </div>
     <nav class="drawer-nav">
       <a href="javascript:void(0)" class="drawer-link" onclick="openWelcomeGate(); toggleDrawer();" style="color: #fef08a; font-weight: 700;"><i class="fa-solid fa-archway text-gold"></i> <span data-i18n="drawerGate">메인 대문 (스튜디오 가이드)</span></a>
-      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-presets'); toggleDrawer();"><i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">바이오 힐링 프리셋</span></a>
-      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-rife100'); toggleDrawer();" style="color: #34d399;"><i class="ri-dna-line"></i> <span data-i18n="tabRife100">NovaCell 100 힐링 코드</span></a>
-      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-vip'); toggleDrawer();" style="color: #f59e0b;"><i class="ri-vip-crown-fill"></i> <span data-i18n="tabVip">VIP 임상 웰니스 코드 (V01~V090)</span></a>
-      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-care'); toggleDrawer();" style="color: #60a5fa;"><i class="ri-heart-pulse-fill"></i> <span data-i18n="tabCare">AI 웰니스 & 호흡 테라피</span></a>
-      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-studio'); toggleDrawer();" style="color: #c084fc;"><i class="fa-solid fa-sliders"></i> <span data-i18n="tabStudio">프로 사운드 스튜디오</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-presets'); toggleDrawer();"><i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">프리셋</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-rife100'); toggleDrawer();" style="color: #34d399;"><i class="ri-dna-line"></i> <span data-i18n="tabRife100">힐링 코드</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-vip'); toggleDrawer();" style="color: #f59e0b;"><i class="ri-vip-crown-fill"></i> <span data-i18n="tabVip">웰니스 코드</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-care'); toggleDrawer();" style="color: #60a5fa;"><i class="ri-heart-pulse-fill"></i> <span data-i18n="tabCare">호흡 테라피</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-studio'); toggleDrawer();" style="color: #c084fc;"><i class="fa-solid fa-sliders"></i> <span data-i18n="tabStudio">힐링 랩</span></a>
       <a href="#mixer-section" class="drawer-link"><i class="fa-solid fa-tree"></i> <span data-i18n="rainSectionTitle">자연음 & 악기 믹서</span></a>
       <a href="#breathing-section" class="drawer-link"><i class="fa-solid fa-wind"></i> <span data-i18n="classicTitle">맞춤 호흡 가이드</span></a>
       <a href="#export-section" class="drawer-link"><i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="exportSectionTitle">BGM 내보내기</span></a>
