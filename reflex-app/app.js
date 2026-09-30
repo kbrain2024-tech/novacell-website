@@ -1242,10 +1242,11 @@ function renderMapWorkspace() {
 
   // Reset / Update HUD Inspector & Side Inspection Cards default prompt for current map
   const hudIcon = $("#hudPointIcon"); if (hudIcon) hudIcon.textContent = m.icon;
-  const hudTitle = $("#hudPointTitle"); if (hudTitle) hudTitle.textContent = isEn ? `Smart Inspector · ${m.en}` : `반사구 탐색 모드 · ${m.title}`;
+  const hudTitle = $("#hudPointTitle"); if (hudTitle) hudTitle.textContent = isEn ? m.en : m.title;
+  const hudLoc = $("#hudPointLoc"); if (hudLoc) hudLoc.textContent = isEn ? "Point Inspector" : "반사구 실시간 안내";
   const hudDesc = $("#hudPointDesc"); if (hudDesc) hudDesc.textContent = isEn
-    ? "Hover over any anatomical zone or text on the map. High-legibility clinical details will display at the side without covering the image."
-    : "지도 위의 인체 부위나 텍스트를 마우스로 가리키시면, 이미지를 가리지 않고 사이드 카드에 선명한 대형 명칭과 상세 해부학 효과가 즉시 표시됩니다.";
+    ? "Hover or touch any point on the map to inspect clinical details"
+    : "지도 위의 포인트를 가리키시면 임상 효과와 지압 요령이 안내됩니다";
 
   // Reset Floating Side Card inside Map Stage
   const sTitle = $("#sideCardTitle"); if (sTitle) sTitle.textContent = isEn ? `${m.en} Reflex Zones` : `${m.title} 반사구`;
@@ -1405,50 +1406,44 @@ function inspectReflexPoint(pinId, surfaceKey, playFeedback = true) {
 
   const isEn = state.lang === "en";
 
-  // 1. Update Dedicated Top Horizontal HUD Banner (이미지를 전혀 가리지 않는 상단 가로 공간)
+  // 1. Update Dedicated Top Horizontal HUD Banner (이미지를 전혀 가리지 않는 슬림 가로 바)
   const hud = $("#mapPointHUD");
   const icon = $("#hudPointIcon");
   const title = $("#hudPointTitle");
-  const enTitle = $("#hudPointEnTitle");
-  const tag = $("#hudPointTag");
   const loc = $("#hudPointLoc");
   const desc = $("#hudPointDesc");
 
   if (icon) icon.textContent = p.icon || "📍";
   if (title) title.textContent = isEn ? p.en : p.ko;
-  if (enTitle) enTitle.textContent = isEn ? p.ko : p.en;
-  if (tag) tag.textContent = isEn ? p.tagEn : p.tagKo;
-  if (loc) loc.textContent = isEn ? `Location: ${p.tagEn}` : `위치: ${p.tagKo}`;
+  if (loc) loc.textContent = isEn ? p.tagEn : p.tagKo;
   if (desc) desc.textContent = isEn
-    ? `${p.descEn} · Apply firm circular pressure for 20-30s.`
-    : `${p.descKo} · 엄지로 부드러운 원을 그리며 20~30초간 지그시 압박하세요.`;
+    ? `${p.descEn} (Apply 20-30s pressure)`
+    : `${p.descKo} · 20~30초간 지그시 압박`;
 
   if (hud) {
     hud.classList.add("active");
     clearTimeout(hud._timer);
-    hud._timer = setTimeout(() => hud.classList.remove("active"), 2000);
+    hud._timer = setTimeout(() => hud.classList.remove("active"), 2500);
   }
 
   // 2. Update Fullscreen Dedicated Top Horizontal HUD Banner
   const fsHud = $("#fsMapHUD");
   const fsIcon = $("#fsHudIcon");
   const fsTitle = $("#fsHudTitle");
-  const fsEnTitle = $("#fsHudEnTitle");
   const fsLoc = $("#fsHudLoc");
   const fsDesc = $("#fsHudDesc");
 
   if (fsIcon) fsIcon.textContent = p.icon || "📍";
   if (fsTitle) fsTitle.textContent = isEn ? p.en : p.ko;
-  if (fsEnTitle) fsEnTitle.textContent = isEn ? p.ko : p.en;
-  if (fsLoc) fsLoc.textContent = isEn ? `Location: ${p.tagEn}` : `위치: ${p.tagKo}`;
+  if (fsLoc) fsLoc.textContent = isEn ? p.tagEn : p.tagKo;
   if (fsDesc) fsDesc.textContent = isEn
-    ? `${p.descEn} · Apply firm circular pressure for 20-30s.`
-    : `${p.descKo} · 엄지로 부드러운 원을 그리며 20~30초간 지그시 압박하세요.`;
+    ? `${p.descEn} (Apply 20-30s pressure)`
+    : `${p.descKo} · 20~30초간 지그시 압박`;
 
   if (fsHud) {
     fsHud.classList.add("active");
     clearTimeout(fsHud._timer);
-    fsHud._timer = setTimeout(() => fsHud.classList.remove("active"), 2000);
+    fsHud._timer = setTimeout(() => fsHud.classList.remove("active"), 2500);
   }
 
   // 3. Update Dedicated Right Side Panel Live Card

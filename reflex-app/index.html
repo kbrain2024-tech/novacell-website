@@ -7,7 +7,7 @@
   <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 528Hz 치유 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
   <title>NovaCell Reflex Therapy APP | 손·발 반사요법 가이드</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=40">
+  <link rel="stylesheet" href="./styles.css?v=41">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
@@ -167,24 +167,16 @@
             </div>
           </div>
 
-          <!-- Dedicated Top Horizontal Reflex Inspector (이미지를 전혀 가리지 않는 상단 가로 인스펙션 바) -->
+          <!-- Dedicated Top Horizontal Reflex Inspector (이미지를 전혀 가리지 않는 슬림 가로 인스펙션 바) -->
           <div class="map-horizontal-hud" id="mapPointHUD" aria-live="polite">
             <div class="hud-left-col">
               <span class="hud-main-icon" id="hudPointIcon">🦶</span>
-              <div class="hud-title-wrap">
-                <div class="hud-title-row">
-                  <strong class="hud-title" id="hudPointTitle">반사구를 가리켜보세요</strong>
-                  <span class="hud-en-title" id="hudPointEnTitle">Point Inspector</span>
-                  <span class="hud-pill-tag" id="hudPointTag">HD ATLAS</span>
-                </div>
-                <div class="hud-sub-row">
-                  <span class="hud-loc-badge" id="hudPointLoc">위치: 지도 위의 포인트에 마우스를 올리거나 터치하세요</span>
-                </div>
-              </div>
+              <strong class="hud-title" id="hudPointTitle">오른발 발바닥</strong>
+              <span class="hud-loc-badge" id="hudPointLoc">반사구 탐색</span>
             </div>
             <div class="hud-center-col">
-              <span class="hud-desc-label">💡 해부학 임상 효과 &amp; 지압 요령</span>
-              <p class="hud-desc-text" id="hudPointDesc">지도 위의 포인트 원형 링을 가리키시면 이미지를 전혀 가리지 않고 이곳에 선명한 대형 명칭과 치료 효과가 즉시 안내됩니다.</p>
+              <span class="hud-desc-label">💡</span>
+              <p class="hud-desc-text" id="hudPointDesc">지도 위의 포인트 링을 가리키시면 임상 효과가 안내됩니다.</p>
             </div>
             <div class="hud-actions-col">
               <button type="button" id="toggleSmartLabelsBtn" class="hud-label-toggle active" title="지도 위 포인트 표시 토글">
@@ -585,23 +577,15 @@
         <button id="fsCloseBtn" class="fs-close-btn" aria-label="닫기">✕</button>
       </div>
     </div>
-    <!-- Fullscreen Dedicated Top Horizontal HUD (이미지를 전혀 가리지 않는 상단 가로 인스펙션 바) -->
+    <!-- Fullscreen Dedicated Top Horizontal HUD (슬림 가로 인스펙션 바) -->
     <div class="fs-horizontal-hud" id="fsMapHUD" aria-live="polite">
       <div class="hud-left-col">
         <span class="hud-main-icon" id="fsHudIcon">🦶</span>
-        <div class="hud-title-wrap">
-          <div class="hud-title-row">
-            <strong class="hud-title" id="fsHudTitle">반사구를 가리켜보세요</strong>
-            <span class="hud-en-title" id="fsHudEnTitle">Point Inspector</span>
-            <span class="hud-pill-tag">300 DPI ULTRA HD</span>
-          </div>
-          <div class="hud-sub-row">
-            <span class="hud-loc-badge" id="fsHudLoc">원하는 부위나 텍스트를 마우스로 가리키거나 터치하세요</span>
-          </div>
-        </div>
+        <strong class="hud-title" id="fsHudTitle">오른발 발바닥</strong>
+        <span class="hud-loc-badge" id="fsHudLoc">반사구 탐색</span>
       </div>
       <div class="hud-center-col">
-        <span class="hud-desc-label">💡 상세 해부학 효과 &amp; 치료 적응증</span>
+        <span class="hud-desc-label">💡</span>
         <p class="hud-desc-text" id="fsHudDesc">가리키는 반사점의 세부 설명과 치료 적응증이 상단에서 즉시 안내됩니다.</p>
       </div>
     </div>
@@ -614,8 +598,8 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./program-data.js?v=40"></script>
-  <script src="./app.js?v=40"></script>
+  <script src="./program-data.js?v=41"></script>
+  <script src="./app.js?v=41"></script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="reflex_therapy_1y" data-lang="ko"></script>
