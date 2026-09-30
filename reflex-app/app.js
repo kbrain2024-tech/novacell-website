@@ -1203,17 +1203,43 @@ function updateAccessButtons() {
     optEn.classList.toggle("active", !isKo);
   }
 
-  // Voice button
-  const voiceLabel = $("#voiceLabel");
-  if (voiceLabel) voiceLabel.textContent = isKo ? "음성" : "Voice";
+  // Voice button: High-contrast icon & dynamic label [ 🔊 음성 ON ] vs [ 🔇 음성 OFF ]
   const voiceBtn = $("#voiceToggle");
-  if (voiceBtn) voiceBtn.classList.toggle("active", state.voice);
+  const voiceIcon = $("#voiceIcon");
+  const voiceLabel = $("#voiceLabel");
+  if (voiceBtn) {
+    const isVoiceOn = Boolean(state.voice);
+    voiceBtn.classList.toggle("active", isVoiceOn);
+    voiceBtn.setAttribute("aria-pressed", isVoiceOn ? "true" : "false");
+    if (voiceIcon) voiceIcon.textContent = isVoiceOn ? "🔊" : "🔇";
+    if (voiceLabel) {
+      voiceLabel.textContent = isKo 
+        ? (isVoiceOn ? "음성 ON" : "음성 OFF")
+        : (isVoiceOn ? "Voice ON" : "Voice OFF");
+    }
+    voiceBtn.title = isKo
+      ? (isVoiceOn ? "치료점 음성 안내 켜짐 (클릭시 끄기)" : "치료점 음성 안내 꺼짐 (클릭시 켜기)")
+      : (isVoiceOn ? "Voice guidance ON (Click to turn off)" : "Voice guidance OFF (Click to turn on)");
+  }
 
-  // Sound button
-  const soundLabel = $("#soundLabel");
-  if (soundLabel) soundLabel.textContent = isKo ? "알림" : "Sound";
+  // Sound button: High-contrast icon & dynamic label [ ♪ 알림 ON ] vs [ ✕ 알림 OFF ]
   const soundBtn = $("#soundToggle");
-  if (soundBtn) soundBtn.classList.toggle("active", state.sound);
+  const soundIcon = $("#soundIcon");
+  const soundLabel = $("#soundLabel");
+  if (soundBtn) {
+    const isSoundOn = Boolean(state.sound);
+    soundBtn.classList.toggle("active", isSoundOn);
+    soundBtn.setAttribute("aria-pressed", isSoundOn ? "true" : "false");
+    if (soundIcon) soundIcon.textContent = isSoundOn ? "♪" : "✕";
+    if (soundLabel) {
+      soundLabel.textContent = isKo
+        ? (isSoundOn ? "알림 ON" : "알림 OFF")
+        : (isSoundOn ? "Sound ON" : "Sound OFF");
+    }
+    soundBtn.title = isKo
+      ? (isSoundOn ? "알림음 켜짐 (클릭시 끄기)" : "알림음 꺼짐 (클릭시 켜기)")
+      : (isSoundOn ? "Sound alert ON (Click to turn off)" : "Sound alert OFF (Click to turn on)");
+  }
 
   // Timer Sound Button
   const timerSoundBtn = $("#timerSoundBtn");
@@ -1312,6 +1338,9 @@ function speak(text) {
   if (!text || typeof text !== "string") return;
 
   try {
+    // 1. Resume paused/suspended queue (crucial for Chrome mobile & Safari mobile)
+    try { window.speechSynthesis.resume(); } catch(e) {}
+
     // 말하고 있을 때만 이전 음성 중단 (말하고 있지 않을 때는 cancel 호출 금지 - iOS 사파리 버그 방지)
     if (window.speechSynthesis.speaking) {
       try { window.speechSynthesis.cancel(); } catch(e) {}
@@ -1342,8 +1371,10 @@ function speak(text) {
       if (_activeUtterance === u) _activeUtterance = null;
     };
 
-    // [핵심] 절대 setTimeout을 쓰지 않고 즉각 동기식으로 speak() 실행하여 사용자 제스처 컨텍스트 100% 보존!
+    // [핵심] 즉각 동기식으로 speak() 실행하여 사용자 제스처 컨텍스트 100% 보존!
     window.speechSynthesis.speak(u);
+    // 모바일 WebKit 버그 방지: 발성 큐 즉시 재개
+    try { window.speechSynthesis.resume(); } catch(e) {}
 
   } catch (e) {
     console.warn("TTS Error:", e);
@@ -1351,10 +1382,22 @@ function speak(text) {
 }
 
 function forceSpeakCurrentPoint() {
+  getAudioContext();
+  if ("speechSynthesis" in window) {
+    try { window.speechSynthesis.resume(); } catch(e) {}
+  }
   state.voice = true;
   save();
   updateAccessButtons();
-  speakCurrentPoint();
+  playNotice("start");
+
+  if (state.activeProgram && state.activeProgram.points && state.activeProgram.points[state.step]) {
+    speakCurrentPoint();
+  } else {
+    const isEn = state.lang === "en";
+    speak(isEn ? "NovaCell Reflex Therapy. Please select a program or point." : "NovaCell 반사요법 가이드입니다. 프로그램을 선택하세요.");
+    toast(isEn ? "🔊 Voice guidance: Please select a program" : "🔊 음성 안내: 프로그램을 선택하세요");
+  }
 }
 window.forceSpeakCurrentPoint = forceSpeakCurrentPoint;
 
@@ -3545,28 +3588,67 @@ function bind() {
     };
   }
 
-  // Voice toggle
+  // Voice toggle: Instant mobile touch & click handler with audio unlock
   const voiceBtn = $("#voiceToggle");
   if (voiceBtn) {
-    voiceBtn.onclick = () => {
-      state.voice = !state.voice;
-      if (!state.voice && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
+    let lastVoiceTap = 0;
+    const toggleVoice = (e) => {
+      if (e && e.type === "touchend") {
+        e.preventDefault();
       }
+      const now = Date.now();
+      if (now - lastVoiceTap < 280) return; // Prevent double trigger
+      lastVoiceTap = now;
+
+      // 1. Unlock AudioContext & resume SpeechSynthesis inside direct user gesture
+      getAudioContext();
+      if ("speechSynthesis" in window) {
+        try { window.speechSynthesis.resume(); } catch(err) {}
+      }
+
+      state.voice = !state.voice;
       save();
       updateAccessButtons();
+
+      const isKo = state.lang !== "en";
       if (state.voice) {
-        speak(state.lang === "en" ? "Voice guidance on" : "음성 안내가 켜졌습니다");
+        // 즉각적인 528Hz 알림음 재생으로 스마트폰 무음 스위치나 TTS 로딩 지연과 무관하게 100% 소리 피드백 제공!
+        playNotice("start");
+        speak(isKo ? "음성 안내가 켜졌습니다" : "Voice guidance on");
+        toast(isKo ? "🔊 음성 안내가 켜졌습니다" : "🔊 Voice guidance on");
+      } else {
+        if ("speechSynthesis" in window) {
+          try { window.speechSynthesis.cancel(); } catch(err) {}
+        }
+        toast(isKo ? "🔇 음성 안내가 꺼졌습니다" : "🔇 Voice guidance off");
       }
     };
+
+    voiceBtn.addEventListener("click", toggleVoice);
+    voiceBtn.addEventListener("touchend", toggleVoice, { passive: false });
   }
 
-  // Sound toggle
+  // Sound toggle: Instant mobile touch & click handler
   const soundBtn = $("#soundToggle");
   if (soundBtn) {
-    soundBtn.onclick = () => {
+    let lastSoundTap = 0;
+    const toggleSoundAction = (e) => {
+      if (e && e.type === "touchend") {
+        e.preventDefault();
+      }
+      const now = Date.now();
+      if (now - lastSoundTap < 280) return;
+      lastSoundTap = now;
+
       toggleSound();
+      const isKo = state.lang !== "en";
+      toast(state.sound 
+        ? (isKo ? "♪ 시작·완료 알림음이 켜졌습니다" : "♪ Sound alerts enabled")
+        : (isKo ? "✕ 알림음이 꺼졌습니다" : "✕ Sound alerts disabled"));
     };
+
+    soundBtn.addEventListener("click", toggleSoundAction);
+    soundBtn.addEventListener("touchend", toggleSoundAction, { passive: false });
   }
 
   // Timer Sound Button
