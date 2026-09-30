@@ -2604,3 +2604,182 @@
   color: #94a3b8;
   margin-top: 4px;
 }
+
+
+/* ==========================================================================
+   Mobile Responsive Enhancements for Sound Studio (Issues 1, 3, 4 Fixes)
+   ========================================================================== */
+
+/* Mobile Tabs Subnav is hidden on desktop by default */
+.mobile-tabs-subnav {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  /* Fix 1: Welcome Cover Modal on Mobile starts at top and scrolls cleanly */
+  .welcome-cover-screen {
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding: 12px 10px 48px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .cover-content-card {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 520px !important;
+    grid-template-columns: 1fr !important;
+    max-height: none !important;
+  }
+  .cover-image-container {
+    min-height: 220px !important;
+    max-height: 270px !important;
+  }
+  .cover-visual-column {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2) !important;
+  }
+
+  /* Fix 3 & 4: Header clean single-row layout */
+  .app-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px 14px !important;
+    background: rgba(7, 10, 19, 0.96) !important;
+    backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .nc-brand {
+    flex-shrink: 0 !important;
+    gap: 8px !important;
+  }
+  .nc-brand-text p {
+    display: none !important;
+  }
+  .nc-brand-text h1 {
+    font-size: 1.15rem !important;
+    white-space: nowrap !important;
+  }
+
+  /* Hide the 900px wide 5-tab bar inside the top header row */
+  .app-header .desktop-only-tabs {
+    display: none !important;
+  }
+
+  /* In header, hide desktop-only buttons */
+  .wellness-check-entry {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-left: auto !important;
+  }
+  .desktop-only-btn {
+    display: none !important;
+  }
+  .btn-header-gate {
+    padding: 6px 10px !important;
+    font-size: 0.78rem !important;
+    white-space: nowrap !important;
+  }
+  .header-variant {
+    padding: 3px 5px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* Hamburger button: ALWAYS visible, fixed to right, never obscured */
+  .btn-hamburger-menu,
+  #btn-hamburger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    min-height: 42px !important;
+    padding: 0 !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.22) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    font-size: 1.25rem !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+    z-index: 1005 !important;
+    transition: all 0.2s ease !important;
+  }
+  .btn-hamburger-menu:hover,
+  .btn-hamburger-menu:active {
+    background: rgba(56, 189, 248, 0.2) !important;
+    border-color: #38bdf8 !important;
+    color: #38bdf8 !important;
+  }
+
+  /* 3. Sleek Horizontal Swipeable Mode Tab Bar for Mobile */
+  .mobile-tabs-subnav {
+    display: flex !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 8px !important;
+    padding: 8px 12px !important;
+    background: rgba(11, 19, 41, 0.95) !important;
+    backdrop-filter: blur(14px) !important;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.25) !important;
+    position: sticky !important;
+    top: 60px !important;
+    z-index: 990 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .mobile-tabs-subnav::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .m-nav-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 8px 14px !important;
+    border-radius: 9999px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #94a3b8 !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    user-select: none !important;
+  }
+  .m-nav-pill:active {
+    transform: scale(0.96);
+  }
+  .m-nav-pill.active {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(56, 189, 248, 0.2)) !important;
+    border-color: #f59e0b !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.3) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .welcome-cover-screen {
+    padding: 6px 6px 36px !important;
+  }
+  .cover-content-card {
+    border-radius: 18px !important;
+  }
+  .cover-image-container {
+    min-height: 190px !important;
+  }
+}

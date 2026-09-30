@@ -75,7 +75,7 @@
       </a>
 
       <!-- 5대 모드 세그먼트 네비게이션 (헤더 중앙) -->
-      <nav class="nc-tabs-nav" aria-label="스튜디오 주요 모드">
+      <nav class="nc-tabs-nav desktop-only-tabs" aria-label="스튜디오 주요 모드">
         <button id="btn-nav-tab-presets" class="nav-pill active" onclick="switchTab('tab-presets')">
           <i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">바이오 힐링 프리셋</span>
         </button>
@@ -104,10 +104,10 @@
         <button id="btn-open-welcome-gate" class="btn-wellness-check-trigger btn-header-gate" onclick="openWelcomeGate()" title="NovaCell 메인 대문 열기" data-i18n-title="btnGateHeaderTitle" style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(99, 102, 241, 0.25)); border-color: rgba(212, 175, 55, 0.5); color: #fef08a;">
           <i class="fa-solid fa-archway"></i> <span class="btn-text" data-i18n="btnGateHeader">메인 대문</span>
         </button>
-        <button id="btn-start-wellness-check" class="btn-wellness-check-trigger" title="나의 맞춤형 사운드 체크 및 처방" data-i18n-title="btnAiCheckTitle">
+        <button id="btn-start-wellness-check" class="btn-wellness-check-trigger desktop-only-btn" title="나의 맞춤형 사운드 체크 및 처방" data-i18n-title="btnAiCheckTitle">
           <i class="fa-solid fa-clipboard-check"></i> <span class="btn-text" data-i18n="btnAiCheck">AI 맞춤 진단</span>
         </button>
-        <button id="btn-nav-custom-studio" class="btn-wellness-check-trigger btn-nav-custom-studio" onclick="switchTab('tab-studio')" title="나만의 주파수 음원 생성기" data-i18n-title="btnStudioHeaderTitle">
+        <button id="btn-nav-custom-studio" class="btn-wellness-check-trigger btn-nav-custom-studio desktop-only-btn" onclick="switchTab('tab-studio')" title="나만의 주파수 음원 생성기" data-i18n-title="btnStudioHeaderTitle">
           <i class="fa-solid fa-wand-magic-sparkles"></i> <span class="btn-text" data-i18n="btnStudioHeader">프로 스튜디오</span>
         </button>
       </div>
@@ -117,6 +117,25 @@
         <i class="fa-solid fa-bars"></i>
       </button>
     </header>
+    <!-- 모바일 전용 5대 모드 가로 스크롤 탭 바 -->
+    <div class="mobile-tabs-subnav" id="mobile-tabs-subnav" aria-label="모바일 주요 모드 탭">
+      <button class="m-nav-pill active" data-tab="tab-presets" onclick="switchTab('tab-presets')">
+        <i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">바이오 힐링 프리셋</span>
+      </button>
+      <button class="m-nav-pill" data-tab="tab-rife100" onclick="switchTab('tab-rife100')">
+        <i class="ri-dna-line" style="color: #34d399;"></i> <span data-i18n="tabRife100">NovaCell 100</span>
+      </button>
+      <button class="m-nav-pill" data-tab="tab-vip" onclick="switchTab('tab-vip')">
+        <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i> <span data-i18n="tabVip">VIP 임상 웰니스</span> 🔒
+      </button>
+      <button class="m-nav-pill" data-tab="tab-care" onclick="switchTab('tab-care')">
+        <i class="ri-heart-pulse-fill" style="color: #ec4899;"></i> <span data-i18n="tabCare">AI & 호흡</span>
+      </button>
+      <button class="m-nav-pill" data-tab="tab-studio" onclick="switchTab('tab-studio')">
+        <i class="ri-sound-module-fill" style="color: #38bdf8;"></i> <span data-i18n="tabStudio">프로 스튜디오</span>
+      </button>
+    </div>
+
 
     <!-- ====================================================================
          [TAB 1] 바이오 힐링 프리셋 (Bio-Healing Presets / Easy Mode)

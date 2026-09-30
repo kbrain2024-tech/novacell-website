@@ -1730,9 +1730,13 @@ body.mobile-menu-open {
   .nav-link {
     min-height: 48px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 8px;
     padding: 11px 4px;
     font-size: 1rem;
+  }
+  .nav-link:has(.ri-arrow-down-s-line) {
+    justify-content: space-between;
   }
   .dropdown-menu {
     position: static;

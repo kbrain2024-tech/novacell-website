@@ -3977,42 +3977,49 @@ function initApp() {
   const drawerLinks = document.querySelectorAll('.drawer-link');
   const btnDrawerWellnessCheck = document.getElementById('btn-drawer-wellness-check');
 
-  // 드로어 열기
+  // [개선] 모바일 햄버거 메뉴 및 내비게이션 드로어 (Drawer) 안전 바인딩
   if (btnHamburger) {
-    btnHamburger.addEventListener('click', () => {
-      mobileDrawer.classList.remove('hidden');
-      drawerOverlay.classList.remove('hidden');
-    });
-  }
-
-  // 드로어 닫기 기능
-  function closeDrawer() {
-    if (mobileDrawer) mobileDrawer.classList.add('hidden');
-    if (drawerOverlay) drawerOverlay.classList.add('hidden');
+    btnHamburger.onclick = function(e) {
+      e.preventDefault();
+      if (typeof window.toggleDrawer === 'function') window.toggleDrawer();
+      else { mobileDrawer?.classList.remove('hidden'); drawerOverlay?.classList.remove('hidden'); }
+    };
   }
 
   if (btnCloseDrawer) {
-    btnCloseDrawer.addEventListener('click', closeDrawer);
+    btnCloseDrawer.onclick = function(e) {
+      e.preventDefault();
+      if (typeof window.closeDrawer === 'function') window.closeDrawer();
+      else { mobileDrawer?.classList.add('hidden'); drawerOverlay?.classList.add('hidden'); }
+    };
   }
 
   if (drawerOverlay) {
-    drawerOverlay.addEventListener('click', closeDrawer);
+    drawerOverlay.onclick = function() {
+      if (typeof window.closeDrawer === 'function') window.closeDrawer();
+      else { mobileDrawer?.classList.add('hidden'); drawerOverlay?.classList.add('hidden'); }
+    };
   }
 
-  // 드로어 메뉴 링크 클릭 시 스무스 스크롤 이동 및 드로어 닫기
+  // 드로어 메뉴 링크 클릭 시 안전 처리 (javascript:void(0) 에러 방지)
   drawerLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      
-      closeDrawer(); // 드로어 먼저 닫기
-
-      if (targetElement) {
-        // 모바일 기기에서의 헤더 가림 현상 등을 고려하여 여유 간격을 둔 스무스 스크롤 이동
-        setTimeout(() => {
-          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300); // 드로어가 닫히는 애니메이션 시간 확보 후 이동
+      const href = link.getAttribute('href') || '';
+      if (href.startsWith('#') && href.length > 1) {
+        e.preventDefault();
+        try {
+          const targetElement = document.querySelector(href);
+          if (typeof window.closeDrawer === 'function') window.closeDrawer();
+          if (targetElement) {
+            setTimeout(() => {
+              targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 250);
+          }
+        } catch(err) {
+          if (typeof window.closeDrawer === 'function') window.closeDrawer();
+        }
+      } else {
+        if (typeof window.closeDrawer === 'function') window.closeDrawer();
       }
     });
   });

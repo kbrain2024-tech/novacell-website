@@ -1,3 +1,35 @@
+
+  // Global drawer functions
+  window.toggleDrawer = function() {
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    if (!drawer || !overlay) return;
+    const isHidden = drawer.classList.contains('hidden');
+    if (isHidden) {
+      drawer.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+      document.body.classList.add('drawer-open');
+    } else {
+      drawer.classList.add('hidden');
+      overlay.classList.add('hidden');
+      document.body.classList.remove('drawer-open');
+    }
+  };
+  window.closeDrawer = function() {
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    if (drawer) drawer.classList.add('hidden');
+    if (overlay) overlay.classList.add('hidden');
+    document.body.classList.remove('drawer-open');
+  };
+  window.openDrawer = function() {
+    const drawer = document.getElementById('mobile-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    if (drawer) drawer.classList.remove('hidden');
+    if (overlay) overlay.classList.remove('hidden');
+    document.body.classList.add('drawer-open');
+  };
+
 /**
  * ==========================================================================
  * NovaCell Therapy Bio-Frequency Studio (novacell-freemium.js)
@@ -578,6 +610,9 @@
     if (!tabs.includes(tabId)) return;
 
     window.NovaCellStudio.currentTab = tabId;
+    document.querySelectorAll('.m-nav-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+    });
 
     tabs.forEach(id => {
       const panel = document.getElementById(id);
