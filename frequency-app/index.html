@@ -118,23 +118,29 @@
       </button>
     </header>
     <!-- 모바일 전용 5대 모드 가로 스크롤 탭 바 -->
-    <div class="mobile-tabs-subnav" id="mobile-tabs-subnav" aria-label="모바일 주요 모드 탭">
-      <button class="m-nav-pill active" data-tab="tab-presets" onclick="switchTab('tab-presets')">
-        <i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">바이오 힐링 프리셋</span>
+    <!-- 모바일 전용 5대 모드 전체 한눈에 보기 그리드 탭 바 (화면 폭 100% 자동 맞춤) -->
+    <nav class="mobile-tabs-grid" id="mobile-tabs-grid" aria-label="모바일 주요 모드 탭">
+      <button class="m-tab-btn active" data-tab="tab-presets" onclick="switchTab('tab-presets')" title="바이오 힐링 프리셋">
+        <i class="ri-sparkling-fill text-gold"></i>
+        <span class="m-tab-title" data-i18n="mTabPresets">프리셋</span>
       </button>
-      <button class="m-nav-pill" data-tab="tab-rife100" onclick="switchTab('tab-rife100')">
-        <i class="ri-dna-line" style="color: #34d399;"></i> <span data-i18n="tabRife100">NovaCell 100</span>
+      <button class="m-tab-btn" data-tab="tab-rife100" onclick="switchTab('tab-rife100')" title="NovaCell 100 힐링 코드">
+        <i class="ri-dna-line" style="color: #34d399;"></i>
+        <span class="m-tab-title" data-i18n="mTabRife">Rife 100</span>
       </button>
-      <button class="m-nav-pill" data-tab="tab-vip" onclick="switchTab('tab-vip')">
-        <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i> <span data-i18n="tabVip">VIP 임상 웰니스</span> 🔒
+      <button class="m-tab-btn" data-tab="tab-vip" onclick="switchTab('tab-vip')" title="VIP 임상 웰니스 코드">
+        <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i>
+        <span class="m-tab-title" data-i18n="mTabVip">VIP 임상</span>
       </button>
-      <button class="m-nav-pill" data-tab="tab-care" onclick="switchTab('tab-care')">
-        <i class="ri-heart-pulse-fill" style="color: #ec4899;"></i> <span data-i18n="tabCare">AI & 호흡</span>
+      <button class="m-tab-btn" data-tab="tab-care" onclick="switchTab('tab-care')" title="AI 웰니스 & 호흡 테라피">
+        <i class="ri-heart-pulse-fill" style="color: #ec4899;"></i>
+        <span class="m-tab-title" data-i18n="mTabCare">AI·호흡</span>
       </button>
-      <button class="m-nav-pill" data-tab="tab-studio" onclick="switchTab('tab-studio')">
-        <i class="ri-sound-module-fill" style="color: #38bdf8;"></i> <span data-i18n="tabStudio">프로 스튜디오</span>
+      <button class="m-tab-btn" data-tab="tab-studio" onclick="switchTab('tab-studio')" title="프로 스튜디오">
+        <i class="ri-sound-module-fill" style="color: #38bdf8;"></i>
+        <span class="m-tab-title" data-i18n="mTabStudio">스튜디오</span>
       </button>
-    </div>
+    </nav>
 
 
     <!-- ====================================================================
@@ -197,26 +203,26 @@
           <button type="button" class="ambient-chip active" data-ambient="preset" onclick="setGlobalAmbientSound('preset')" title="현재 선택된 프리셋의 고유 맞춤 자연음 조합" data-i18n-title="ambPresetTitle">
             <span class="chip-icon">🌿</span> <span data-i18n="ambPreset">프리셋 맞춤음</span>
           </button>
+          <button type="button" class="ambient-chip" data-ambient="forestbirds" onclick="setGlobalAmbientSound('forestbirds')" title="기분 좋은 활력을 깨우는 숲속 새소리" data-i18n-title="ambForestbirdsTitle">
+            <span class="chip-icon">🌲</span> <span data-i18n="ambForestbirds">숲속 새소리</span>
+          </button>
           <button type="button" class="ambient-chip" data-ambient="rain" onclick="setGlobalAmbientSound('rain')" title="마음이 편안해지는 자연 빗소리" data-i18n-title="ambRainTitle">
             <span class="chip-icon">🌧️</span> <span data-i18n="ambRain">자연 빗소리</span>
           </button>
-          <button type="button" class="ambient-chip" data-ambient="stream" onclick="setGlobalAmbientSound('stream')" title="뇌를 맑게 씻어주는 청량한 계곡물" data-i18n-title="ambStreamTitle">
-            <span class="chip-icon">🌲</span> <span data-i18n="ambStream">청량한 계곡물</span>
+          <button type="button" class="ambient-chip" data-ambient="stream" onclick="setGlobalAmbientSound('stream')" title="머리를 맑게 씻어주는 청량한 계곡물" data-i18n-title="ambStreamTitle">
+            <span class="chip-icon">💧</span> <span data-i18n="ambStream">청량한 계곡물</span>
           </button>
           <button type="button" class="ambient-chip" data-ambient="waves" onclick="setGlobalAmbientSound('waves')" title="스트레스를 씻어내는 동해 파도소리" data-i18n-title="ambWavesTitle">
             <span class="chip-icon">🌊</span> <span data-i18n="ambWaves">동해 파도소리</span>
+          </button>
+          <button type="button" class="ambient-chip" data-ambient="seagull" onclick="setGlobalAmbientSound('seagull')" title="시원한 바다 파도와 갈매기소리" data-i18n-title="ambSeagullTitle">
+            <span class="chip-icon">🕊️</span> <span data-i18n="ambSeagull">바다 갈매기</span>
           </button>
           <button type="button" class="ambient-chip" data-ambient="campfire" onclick="setGlobalAmbientSound('campfire')" title="따스함과 안도감을 주는 모닥불 장작소리" data-i18n-title="ambCampfireTitle">
             <span class="chip-icon">🔥</span> <span data-i18n="ambCampfire">따스한 모닥불</span>
           </button>
           <button type="button" class="ambient-chip" data-ambient="singingbowl" onclick="setGlobalAmbientSound('singingbowl')" title="깊은 명상과 뇌파 이완을 돕는 티벳 싱잉볼" data-i18n-title="ambSingingbowlTitle">
             <span class="chip-icon">🥣</span> <span data-i18n="ambSingingbowl">힐링 싱잉볼</span>
-          </button>
-          <button type="button" class="ambient-chip" data-ambient="forestbirds" onclick="setGlobalAmbientSound('forestbirds')" title="기분 좋은 활력을 깨우는 숲속 새소리" data-i18n-title="ambForestbirdsTitle">
-            <span class="chip-icon">🐦</span> <span data-i18n="ambForestbirds">숲속 새소리</span>
-          </button>
-          <button type="button" class="ambient-chip" data-ambient="crickets" onclick="setGlobalAmbientSound('crickets')" title="깊은 수면을 유도하는 밤 풀벌레 ASMR" data-i18n-title="ambCricketsTitle">
-            <span class="chip-icon">🦗</span> <span data-i18n="ambCrickets">밤 풀벌레</span>
           </button>
           <button type="button" class="ambient-chip chip-off" data-ambient="off" onclick="setGlobalAmbientSound('off')" title="모든 배경음을 끄고 순수 치료 주파수만 집중 청취" data-i18n-title="ambOffTitle">
             <span class="chip-icon">🔇</span> <span data-i18n="ambOff">배경음 끄기 (순음만)</span>
@@ -2012,14 +2018,14 @@
         </button>
         <div class="sticky-timer-menu" style="min-width: 140px;">
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('preset')" data-i18n="ambPreset">🌿 프리셋 맞춤음</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('forestbirds')" data-i18n="ambForestbirds">🌲 숲속 새소리</button>
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('rain')" data-i18n="ambRain">🌧️ 자연 빗소리</button>
-          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('stream')" data-i18n="ambStream">🌲 청량한 계곡물</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('stream')" data-i18n="ambStream">💧 청량한 계곡물</button>
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('waves')" data-i18n="ambWaves">🌊 동해 파도소리</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('seagull')" data-i18n="ambSeagull">🕊️ 바다 갈매기</button>
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('campfire')" data-i18n="ambCampfire">🔥 따스한 모닥불</button>
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('singingbowl')" data-i18n="ambSingingbowl">🥣 힐링 싱잉볼</button>
-          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('forestbirds')" data-i18n="ambForestbirds">🐦 숲속 새소리</button>
-          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('crickets')" data-i18n="ambCrickets">🦗 밤 풀벌레</button>
-          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('off')" data-i18n="ambOff">🔇 배경음 끄기</button>
+          <button class="sticky-timer-item text-danger" onclick="setGlobalAmbientSound('off')" data-i18n="ambOff">🔇 배경음 끄기</button>
         </div>
       </div>
     </div>

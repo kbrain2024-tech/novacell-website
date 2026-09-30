@@ -1,3 +1,10 @@
+html {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden !important;
+  position: relative;
+}
+
 /* ==========================================================================
    Solavre Sound 프리미엄 힐링 테마 스타일시트 (style.css)
    초보자 교육용 상세 설명 한글 주석 포함
@@ -45,7 +52,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   position: relative;
   margin: 0;
   padding: 0;

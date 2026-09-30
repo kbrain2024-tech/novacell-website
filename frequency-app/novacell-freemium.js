@@ -69,7 +69,7 @@
         desc: '우주 자연과 동조되는 432Hz 치유 톤과 심층 이완 세타파의 조화',
         badge: '무료 체험',
         isVip: false,
-        nature: { singingbowl: 0.40, stream: 0.30 }
+        nature: { forestbirds: 0.50, stream: 0.20 }
       },
       'dna-healing': {
         name: '세포 기적 & DNA 회복 (528Hz)',
@@ -124,7 +124,7 @@
         desc: '잡념을 가라앉히고 뇌파를 수면 델타파로 유도하는 딥 릴랙스',
         badge: 'VIP 전용',
         isVip: true,
-        nature: { rain: 0.45, crickets: 0.35 }
+        nature: { rain: 0.45, stream: 0.35 }
       },
       'pain-relief': {
         name: '만성 통증 & 근골격 이완',
@@ -610,8 +610,8 @@
     if (!tabs.includes(tabId)) return;
 
     window.NovaCellStudio.currentTab = tabId;
-    document.querySelectorAll('.m-nav-pill').forEach(btn => {
-      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+    document.querySelectorAll('.m-tab-btn, .m-nav-pill, .nav-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId || btn.id === 'btn-nav-' + tabId);
     });
 
     tabs.forEach(id => {
@@ -1164,8 +1164,8 @@
       waves: '🌊 파도소리',
       campfire: '🔥 모닥불',
       singingbowl: '🥣 싱잉볼',
-      forestbirds: '🐦 새소리',
-      crickets: '🦗 풀벌레',
+      forestbirds: '🌲 숲속 새소리',
+      seagull: '🕊️ 바다 갈매기',
       off: '🔇 끔'
     };
     if (stickyAmbientText) {
@@ -1218,11 +1218,11 @@
       targetNature = { singingbowl: 0.45 };
       showToast('🥣 뇌파를 깊이 이완시키는 티벳 싱잉볼 배경음이 적용되었습니다.');
     } else if (ambientType === 'forestbirds') {
-      targetNature = { forestbirds: 0.45 };
-      showToast('🐦 상쾌한 아침을 깨우는 숲속 새소리 배경음이 적용되었습니다.');
-    } else if (ambientType === 'crickets') {
-      targetNature = { crickets: 0.50 };
-      showToast('🦗 고요한 밤의 풀벌레 ASMR 배경음이 적용되었습니다.');
+      targetNature = { forestbirds: 0.50 };
+      showToast(isEn ? '🌲 Morning forest birds ambient sound applied.' : '🌲 상쾌한 아침을 깨우는 숲속 새소리 배경음이 적용되었습니다.');
+    } else if (ambientType === 'seagull') {
+      targetNature = { seagull: 0.50, waves: 0.25 };
+      showToast(isEn ? '🕊️ Ocean Waves & Seagulls soundscape applied.' : '🕊️ 시원한 바다 파도와 갈매기소리 배경음이 적용되었습니다.');
     }
 
     // 4) 타겟 자연음 실시간 적용
@@ -1509,6 +1509,8 @@
     if (gate) {
       gate.classList.remove('closed');
       document.body.style.overflow = 'hidden';
+      gate.scrollTop = 0;
+      window.scrollTo(0, 0);
       if (typeof window.applyLanguage === 'function') {
         window.applyLanguage(window.currentLang || 'ko');
       }
@@ -1520,6 +1522,7 @@
     if (gate) {
       gate.classList.add('closed');
       document.body.style.overflow = '';
+      window.scrollTo(0, 0);
       try {
         sessionStorage.setItem('novacell_gate_dismissed', 'true');
       } catch (e) {}
