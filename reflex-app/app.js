@@ -229,12 +229,66 @@ const mapGlossaries = {
   }
 };
 
+const surfacePins = {
+  sole: [
+    { id: "brain", ko: "머리 / 뇌", en: "Head / Brain", x: 48, y: 10, icon: "🧠", tagKo: "엄지발가락 중앙", tagEn: "Great Toe Center", descKo: "뇌 기능 활성화, 두통 완화, 수면 유도 및 중추신경계 안정", descEn: "Brain function stimulation, headache relief, central nervous system calming" },
+    { id: "pituitary", ko: "뇌하수체", en: "Pituitary Gland", x: 48, y: 16, icon: "⚡", tagKo: "엄지발가락 지문 중심", tagEn: "Toe Print Center", descKo: "전체 호르몬 분비 및 내분비계 총괄 조절 핵심점", descEn: "Master gland regulating endocrine balance and hormone secretion" },
+    { id: "sinuses", ko: "부비강 (축농증)", en: "Sinuses", x: 23, y: 12, icon: "👃", tagKo: "발가락 끝단", tagEn: "Toe Tips", descKo: "비염, 부비동염, 코막힘 완화 및 안면 순환", descEn: "Relieves sinus pressure, rhinitis, and nasal congestion" },
+    { id: "eyes_ears", ko: "눈 · 귀", en: "Eyes & Ears", x: 74, y: 22, icon: "👁️", tagKo: "2·3·4지 기저부", tagEn: "Base of Toes 2-4", descKo: "눈의 피로, 시력 보호, 이명 및 청각 신경 완화", descEn: "Eye strain relief, vision support, and ear fatigue reduction" },
+    { id: "thyroid", ko: "갑상선 · 부갑상선", en: "Thyroid & Parathyroid", x: 40, y: 28, icon: "🦋", tagKo: "엄지발가락 기저부", tagEn: "Base of Big Toe", descKo: "신진대사 조절, 체온 유지, 칼슘 대사 촉진", descEn: "Metabolism regulation, body temperature and calcium balance" },
+    { id: "lungs", ko: "폐 / 기관지 / 가슴", en: "Lungs & Chest", x: 50, y: 31, icon: "🫁", tagKo: "발바닥 상부 융기부", tagEn: "Ball of Foot", descKo: "호흡기 기능 강화, 기침·가래 완화, 흉부 답답함 해소", descEn: "Respiratory vitality, bronchial ease, chest opening" },
+    { id: "solar", ko: "태양신경총", en: "Solar Plexus", x: 50, y: 40, icon: "☀️", tagKo: "발바닥 정중앙 상단", tagEn: "Center Upper Arch", descKo: "교감신경 이완, 스트레스 즉각 완화, 심신 안정", descEn: "Deep relaxation, nervous tension release, stress reduction" },
+    { id: "stomach", ko: "위 · 췌장 · 십이지장", en: "Stomach & Pancreas", x: 38, y: 48, icon: "🥣", tagKo: "발바닥 안쪽 중간", tagEn: "Medial Arch Middle", descKo: "소화불량, 속쓰림 완화, 혈당 조절 및 효소 분비 촉진", descEn: "Digestive comfort, enzyme support, blood sugar balance" },
+    { id: "kidney", ko: "신장 · 부신", en: "Kidney & Adrenal", x: 50, y: 55, icon: "💧", tagKo: "발바닥 중심부", tagEn: "Plantar Core", descKo: "체내 수분 대사, 피로 회복, 요산 및 노폐물 배출", descEn: "Fluid balance, fatigue recovery, filtration and detox" },
+    { id: "spine", ko: "척추 (경추-요추)", en: "Spinal Column", x: 26, y: 58, icon: "🦴", tagKo: "발 안쪽 측면선", tagEn: "Medial Edge Line", descKo: "목·등·허리 통증 완화, 자세 교정 및 신경 흐름 원활", descEn: "Spine alignment, neck, thoracic, and lumbar back pain relief" },
+    { id: "colon", ko: "대장 / 소장", en: "Colon & Intestines", x: 52, y: 68, icon: "🔄", tagKo: "발바닥 중앙 하부", tagEn: "Lower Arch Cavity", descKo: "장 연동 운동 촉진, 변비·복부 팽만감 해소", descEn: "Bowel motility, bloating relief, intestinal vitality" },
+    { id: "bladder", ko: "방광", en: "Bladder", x: 30, y: 76, icon: "🫧", tagKo: "안쪽 뒤꿈치 상단", tagEn: "Medial Pre-Heel", descKo: "배뇨 기능 원활, 방광염 예방 및 수분 배출", descEn: "Urinary bladder tone, smooth urination, fluid drainage" },
+    { id: "sciatic", ko: "좌골신경 · 뒤꿈치", en: "Sciatic & Heel", x: 50, y: 88, icon: "⚡", tagKo: "뒤꿈치 패드 중앙", tagEn: "Heel Pad Center", descKo: "좌골신경통, 골반 통증 완화 및 하체 피로 해소", descEn: "Sciatica relief, pelvic stability, heel pressure easing" }
+  ],
+  top: [
+    { id: "face", ko: "얼굴 / 부비동", en: "Face / Sinuses", x: 50, y: 10, icon: "👤", tagKo: "발등 발가락 관절", tagEn: "Dorsal Toe Joints", descKo: "안면 신경 순환, 두통 및 안면 피로 완화", descEn: "Facial nerve flow, headache and facial tension release" },
+    { id: "jaw", ko: "턱 · 치아 · 잇몸", en: "Jaw, Teeth & Gums", x: 30, y: 17, icon: "🦷", tagKo: "발가락 사이 기저", tagEn: "Interdigital Base", descKo: "턱관절 장애, 치통 및 잇몸 염증 완화", descEn: "TMJ tension, toothache, and gingival comfort" },
+    { id: "neck", ko: "목 / 뇌간", en: "Neck / Brainstem", x: 50, y: 22, icon: "🧣", tagKo: "엄지발등 뿌리", tagEn: "Dorsal Big Toe Root", descKo: "목 결림, 거북목 통증, 경추 긴장 이완", descEn: "Cervical spine ease, stiff neck relief" },
+    { id: "thymus", ko: "흉선 / 흉부", en: "Thymus & Chest", x: 50, y: 32, icon: "🛡️", tagKo: "발등 중앙 상단", tagEn: "Upper Dorsum", descKo: "면역력 강화, 가슴 답답함 및 호흡기 보호", descEn: "Immune system support, upper chest opening" },
+    { id: "shoulder", ko: "어깨 관절", en: "Shoulder Joint", x: 74, y: 30, icon: "🦾", tagKo: "발등 바깥쪽 상단", tagEn: "Lateral Upper Dorsum", descKo: "오십견, 어깨 뭉침, 관절 가동 범위 회복", descEn: "Frozen shoulder relief, scapular tension ease" },
+    { id: "spine_top", ko: "척추 내측선", en: "Spinal Dorsal Line", x: 32, y: 46, icon: "🦴", tagKo: "발등 안쪽 모서리", tagEn: "Medial Dorsal Border", descKo: "등 통증 완화 및 중추신경 경로 활성화", descEn: "Mid-back tension relief, neural stimulation" },
+    { id: "knee", ko: "무릎 · 다리", en: "Knee & Leg", x: 72, y: 56, icon: "🦵", tagKo: "발등 외측 중간", tagEn: "Lateral Midfoot", descKo: "무릎 관절통, 다리 저림 및 하체 순환 개선", descEn: "Knee joint comfort, leg fatigue alleviation" },
+    { id: "lymph", ko: "상부 림프샘", en: "Upper Lymphatics", x: 50, y: 74, icon: "💧", tagKo: "발목 앞쪽 주름", tagEn: "Anterior Ankle Crease", descKo: "전신 림프 배농, 부종 감소, 면역 순환 촉진", descEn: "Lymphatic drainage, anti-edema, immune circulation" },
+    { id: "groin", ko: "서혜부 · 나팔관", en: "Groin & Pelvis", x: 34, y: 84, icon: "🌱", tagKo: "발목 안쪽 하부", tagEn: "Medial Ankle Space", descKo: "생식선 순환, 서혜부 림프 및 골반 혈류 개선", descEn: "Groin lymph flow, reproductive organ vitality" }
+  ],
+  palm: [
+    { id: "palm_head", ko: "머리 / 부비동 (손끝)", en: "Head / Sinuses", x: 50, y: 10, icon: "🧠", tagKo: "손가락 끝 지문부", tagEn: "Fingertip Pads", descKo: "집중력 향상, 두통 완화, 안면 혈류 촉진", descEn: "Focus enhancement, headache relief, cranial circulation" },
+    { id: "palm_eyes", ko: "눈 · 귀 (2·3·4지)", en: "Eyes & Ears", x: 74, y: 28, icon: "👁️", tagKo: "중지·약지 기저부", tagEn: "Base of Middle & Ring", descKo: "시각 피로, 시력 보호, 청각 피로 회복", descEn: "Eye strain relief, auditory comfort" },
+    { id: "palm_solar", ko: "태양신경총", en: "Solar Plexus", x: 48, y: 40, icon: "☀️", tagKo: "손바닥 정중앙 오목한 곳", tagEn: "Center Palm Hollow", descKo: "스트레스 해소, 긴장 완화, 호흡 안정", descEn: "Instant calm, stress relief, diaphragm opening" },
+    { id: "palm_thyroid", ko: "갑상선 (엄지 기저)", en: "Thyroid Area", x: 30, y: 44, icon: "🦋", tagKo: "엄지구 안쪽", tagEn: "Thenar Base", descKo: "체온 및 대사 조절, 만성 피로 회복", descEn: "Metabolism balance, fatigue reduction" },
+    { id: "palm_heart", ko: "심장 / 간", en: "Heart / Liver", x: 68, y: 48, icon: "❤️", tagKo: "소지구 상단", tagEn: "Hypothenar Upper", descKo: "심혈관 순환(좌손) / 간 해독 및 피로 회복(우손)", descEn: "Cardiovascular flow (left) / liver detox (right)" },
+    { id: "palm_stomach", ko: "위 · 췌장", en: "Stomach & Pancreas", x: 44, y: 52, icon: "🥣", tagKo: "손바닥 중앙 안쪽", tagEn: "Medial Mid-Palm", descKo: "소화 기능 촉진, 복부 팽만 및 속쓰림 완화", descEn: "Digestion aid, indigestion relief" },
+    { id: "palm_kidney", ko: "신장 · 부신", en: "Kidney & Adrenal", x: 48, y: 62, icon: "💧", tagKo: "손바닥 중심부 하단", tagEn: "Lower Mid-Palm", descKo: "노폐물 배출, 수분 대사 및 에너지 활성화", descEn: "Filtration, adrenal boost, fluid regulation" },
+    { id: "palm_intestine", ko: "대장 · 소장", en: "Intestines", x: 50, y: 72, icon: "🔄", tagKo: "손바닥 하부 중앙", tagEn: "Lower Palm Center", descKo: "장 건강, 배변 원활 및 복부 편안함", descEn: "Intestinal comfort, digestive regularity" },
+    { id: "palm_pelvis", ko: "생식선 / 방광", en: "Pelvis & Bladder", x: 50, y: 84, icon: "🌱", tagKo: "손목 주름 중앙", tagEn: "Wrist Crease Center", descKo: "생식기능 활성화, 골반 순환 및 비뇨기 지원", descEn: "Pelvic vitality, urinary and reproductive support" }
+  ],
+  back: [
+    { id: "back_head", ko: "머리 / 뇌 / 부비동", en: "Head & Sinuses", x: 50, y: 10, icon: "🧠", tagKo: "손등 손가락 끝", tagEn: "Dorsal Fingertips", descKo: "뇌 신경 자극, 맑은 정신, 두통 완화", descEn: "Mental clarity, sinus opening, headache easing" },
+    { id: "back_jaw", ko: "치아 · 턱 · 편도선", en: "Teeth, Jaw & Tonsils", x: 32, y: 22, icon: "🦷", tagKo: "손가락 사이 웹 공간", tagEn: "Web Spaces", descKo: "목 통증, 치아 긴장, 편도선 염증 완화", descEn: "Throat ease, jaw relaxation, tonsil support" },
+    { id: "back_neck", ko: "목 · 경추", en: "Neck & Cervical Spine", x: 50, y: 32, icon: "🧣", tagKo: "엄지-검지 사이 손등", tagEn: "Dorsal Thumb-Index", descKo: "목 결림 해소, 경추 안정, 견갑골 이완", descEn: "Cervical spine ease, neck muscle comfort" },
+    { id: "back_shoulder", ko: "어깨 / 견갑골", en: "Shoulder & Scapula", x: 74, y: 38, icon: "🦾", tagKo: "손등 바깥쪽 관절", tagEn: "Lateral Knuckles", descKo: "어깨 결림, 팔 저림, 견관절 통증 완화", descEn: "Shoulder stiffness release, arm circulation" },
+    { id: "back_chest", ko: "가슴 / 등 상부", en: "Chest & Upper Back", x: 50, y: 46, icon: "🫁", tagKo: "손등 중앙 상부", tagEn: "Upper Dorsum Center", descKo: "상체 혈액 순환, 등 결림 및 흉통 완화", descEn: "Upper back ease, thoracic flow" },
+    { id: "back_waist", ko: "허리 / 척추선", en: "Waistline & Spine", x: 48, y: 58, icon: "🦴", tagKo: "손등 정중선", tagEn: "Mid Dorsal Line", descKo: "요통 완화, 척추 기립근 긴장 이완", descEn: "Lumbar support, back tension relief" },
+    { id: "back_pelvis", ko: "골반 / 엉덩이", en: "Pelvis & Hip", x: 50, y: 70, icon: "⚡", tagKo: "손등 하단부", tagEn: "Lower Dorsum", descKo: "골반 불균형 완화, 엉덩이 신경 압박 해소", descEn: "Pelvic balance, hip nerve ease" },
+    { id: "back_lymph", ko: "림프관 / 사타구니", en: "Lymph & Groin", x: 50, y: 82, icon: "💧", tagKo: "손목 뒤쪽 주름", tagEn: "Posterior Wrist Crease", descKo: "상체 림프 순환, 부종 예방, 면역력 증진", descEn: "Lymphatic flow, detox, immune activation" }
+  ]
+};
+
 const key = "novacell_reflex_therapy_v1";
 
 const state = {
   mode: "self",
   lang: "ko",
   mapLang: "auto",
+  showSmartLabels: true,
+  fsZoom: 1,
+  fsPanX: 0,
+  fsPanY: 0,
   voice: true,
   sound: true,
   masterVolume: 0.70,
@@ -925,6 +979,18 @@ function applyLanguage() {
   const tPlu = $("#timerPlus"); if (tPlu) tPlu.textContent = tr("plus10");
   const tSet = $("#openTimerSettings"); if (tSet) tSet.textContent = isEn ? "Custom" : "설정";
 
+  // Map workspace labels & fullscreen buttons
+  const smartLabelText = $("#smartLabelToggleText");
+  if (smartLabelText) {
+    smartLabelText.textContent = state.showSmartLabels
+      ? (isEn ? "Smart Labels ON" : "대형 라벨 ON")
+      : (isEn ? "Smart Labels OFF" : "대형 라벨 OFF");
+  }
+  const openFsBtn = $("#openFullscreenMapBtn");
+  if (openFsBtn) {
+    openFsBtn.textContent = isEn ? "⛶ Fullscreen HD" : "⛶ 크게보기";
+  }
+
   updateAccessButtons();
   renderMaps();
   renderMapWorkspace();
@@ -1067,10 +1133,19 @@ function renderMapWorkspace() {
   const rSub = $("#mapRegionSub");
   if (rSub) rSub.textContent = isEn ? m.regionSubEn : m.regionSubKo;
 
-  // Render Interactive Bilingual Anatomical Atlas Glossary
+  // Reset / Update HUD Inspector default prompt for current map
+  const hudIcon = $("#hudPointIcon"); if (hudIcon) hudIcon.textContent = m.icon;
+  const hudTitle = $("#hudPointTitle"); if (hudTitle) hudTitle.textContent = isEn ? `Smart Inspector · ${m.en}` : `반사구 탐색 모드 · ${m.title}`;
+  const hudDesc = $("#hudPointDesc"); if (hudDesc) hudDesc.textContent = isEn
+    ? "Click any smart badge or glossary item below for instant high-legibility anatomical details."
+    : "지도 위의 대형 라벨이나 아래 대역표를 클릭하시면 선명한 명칭과 상세 해부학 정보가 안내됩니다.";
+
+  // Render Interactive Bilingual Anatomical Atlas Glossary & Smart Vector Labels
   renderMapGlossary(m.surface);
+  renderSmartLabels();
 
   applyTransform();
+  updateZoomPresetsUI();
   renderCustomPoints();
 }
 
@@ -1088,17 +1163,194 @@ function renderMapGlossary(surfaceKey) {
   const grid = $("#glossaryGrid");
   if (grid) {
     grid.innerHTML = gl.items.map(item => `
-      <div class="glossary-item">
+      <div class="glossary-item" data-glossary-ko="${item.ko}" data-glossary-en="${item.en}">
         <span class="glossary-item-primary">${isEn ? item.en : item.ko}</span>
         <span class="glossary-item-secondary">${isEn ? item.ko : item.en}</span>
       </div>
     `).join("");
+
+    grid.querySelectorAll(".glossary-item").forEach(itemEl => {
+      itemEl.onclick = () => {
+        const ko = itemEl.dataset.glossaryKo;
+        const pins = surfacePins[surfaceKey] || [];
+        const match = pins.find(p => p.ko.includes(ko) || ko.includes(p.ko));
+        if (match) {
+          inspectReflexPoint(match.id, surfaceKey);
+        } else {
+          const hudTitle = $("#hudPointTitle");
+          const hudDesc = $("#hudPointDesc");
+          const hudTag = $("#hudPointTag");
+          if (hudTitle) hudTitle.textContent = isEn ? `${itemEl.dataset.glossaryEn} (${ko})` : `${ko} · ${itemEl.dataset.glossaryEn}`;
+          if (hudTag) hudTag.textContent = isEn ? "ATLAS REFLEX POINT" : "해부학 표준 반사구";
+          if (hudDesc) hudDesc.textContent = isEn ? `Target reflex zone for ${itemEl.dataset.glossaryEn}. Refer to highlighted areas on the map.` : `${ko} 반사구 위치입니다. 지도 내 해당 구역을 확인해 주세요.`;
+        }
+      };
+    });
+  }
+}
+
+function renderSmartLabels() {
+  const layer = $("#smartLabelLayer");
+  if (!layer) return;
+  const m = maps.find(x => x.id === state.mapId);
+  if (!m) return;
+  const pins = surfacePins[m.surface] || [];
+  const isEn = state.lang === "en";
+
+  if (!state.showSmartLabels) {
+    layer.classList.add("hidden");
+  } else {
+    layer.classList.remove("hidden");
+  }
+
+  layer.innerHTML = pins.map(p => `
+    <div class="smart-label-pin" style="left:${p.x}%;top:${p.y}%" data-pin-id="${p.id}" title="${isEn ? p.en : p.ko}">
+      <span class="pin-dot"></span>
+      <span class="pin-ko">${isEn ? p.en : p.ko}</span>
+      <span class="pin-en">${isEn ? p.ko : p.en}</span>
+    </div>
+  `).join("");
+
+  layer.querySelectorAll(".smart-label-pin").forEach(pinEl => {
+    pinEl.onclick = e => {
+      e.stopPropagation();
+      inspectReflexPoint(pinEl.dataset.pinId, m.surface);
+    };
+    pinEl.onmouseenter = () => {
+      inspectReflexPoint(pinEl.dataset.pinId, m.surface, false);
+    };
+  });
+
+  // Also mirror to Fullscreen layer if present
+  const fsLayer = $("#fsSmartLabelLayer");
+  if (fsLayer) {
+    fsLayer.innerHTML = layer.innerHTML;
+    fsLayer.classList.toggle("hidden", !state.showSmartLabels);
+    fsLayer.querySelectorAll(".smart-label-pin").forEach(pinEl => {
+      pinEl.onclick = e => {
+        e.stopPropagation();
+        inspectReflexPoint(pinEl.dataset.pinId, m.surface);
+      };
+    });
+  }
+}
+
+function inspectReflexPoint(pinId, surfaceKey, playFeedback = true) {
+  const pins = surfacePins[surfaceKey] || [];
+  const p = pins.find(x => x.id === pinId);
+  if (!p) return;
+
+  const isEn = state.lang === "en";
+  const hud = $("#mapPointHUD");
+  const icon = $("#hudPointIcon");
+  const title = $("#hudPointTitle");
+  const tag = $("#hudPointTag");
+  const desc = $("#hudPointDesc");
+
+  if (icon) icon.textContent = p.icon || "📍";
+  if (title) title.textContent = isEn ? `${p.en} (${p.ko})` : `${p.ko} · ${p.en}`;
+  if (tag) tag.textContent = isEn ? p.tagEn : p.tagKo;
+  if (desc) desc.textContent = isEn ? p.descEn : p.descKo;
+
+  if (hud) {
+    hud.style.borderColor = "var(--cyan)";
+    hud.style.boxShadow = "0 0 20px rgba(85,219,232,0.35)";
+    setTimeout(() => {
+      hud.style.borderColor = "";
+      hud.style.boxShadow = "";
+    }, 1200);
+  }
+
+  $$(".smart-label-pin").forEach(el => {
+    el.classList.toggle("active", el.dataset.pinId === pinId);
+  });
+
+  if (playFeedback && state.sound && typeof playSessionTone === "function") {
+    playSessionTone("step");
   }
 }
 
 function applyTransform() {
   $("#mapCanvas").style.transform = `translate(${state.panX}px,${state.panY}px) scale(${state.zoom})`;
   $("#zoomValue").textContent = `${Math.round(state.zoom * 100)}%`;
+}
+
+function updateZoomPresetsUI() {
+  const z = state.zoom;
+  const p100 = $("#zoomPreset100");
+  const p150 = $("#zoomPreset150");
+  const p200 = $("#zoomPreset200");
+  if (p100) p100.classList.toggle("active", Math.abs(z - 1.0) < 0.05);
+  if (p150) p150.classList.toggle("active", Math.abs(z - 1.5) < 0.05);
+  if (p200) p200.classList.toggle("active", Math.abs(z - 2.0) < 0.05);
+}
+
+function openFullscreenMap() {
+  const m = maps.find(x => x.id === state.mapId);
+  if (!m) return;
+  const isEn = state.lang === "en";
+  const isMapEn = state.mapLang === "en" || (state.mapLang !== "ko" && isEn);
+  const activeImage = (isMapEn && m.imageEn) ? m.imageEn : m.image;
+
+  const dlg = $("#fullscreenMapDialog");
+  if (!dlg) return;
+
+  $("#fsMapSide").textContent = m.side;
+  $("#fsMapTitle").textContent = isEn ? `${m.en} (Ultra HD 300 DPI)` : `${m.title} · ${m.en} (초고해상도)`;
+  $("#fsMapImage").src = `./assets/${activeImage}`;
+
+  state.fsZoom = 1;
+  state.fsPanX = 0;
+  state.fsPanY = 0;
+  applyFsTransform();
+
+  dlg.showModal();
+  renderSmartLabels();
+}
+
+function closeFullscreenMap() {
+  const dlg = $("#fullscreenMapDialog");
+  if (dlg && dlg.open) dlg.close();
+}
+
+function setFsZoom(next) {
+  state.fsZoom = Math.max(1, Math.min(4.5, Number(next.toFixed(2))));
+  applyFsTransform();
+}
+
+function applyFsTransform() {
+  const canvas = $("#fsMapCanvas");
+  if (canvas) {
+    canvas.style.transform = `translate(${state.fsPanX}px,${state.fsPanY}px) scale(${state.fsZoom})`;
+  }
+  const val = $("#fsZoomValue");
+  if (val) val.textContent = `${Math.round(state.fsZoom * 100)}%`;
+}
+
+function setupFsPan() {
+  const stage = $("#fsMapStage");
+  if (!stage) return;
+  let start = null;
+  stage.onpointerdown = e => {
+    if (e.target.closest(".smart-label-pin")) return;
+    start = { x: e.clientX, y: e.clientY, px: state.fsPanX, py: state.fsPanY };
+    stage.setPointerCapture?.(e.pointerId);
+    stage.classList.add("dragging");
+  };
+  stage.onpointermove = e => {
+    if (!start) return;
+    state.fsPanX = start.px + e.clientX - start.x;
+    state.fsPanY = start.py + e.clientY - start.y;
+    applyFsTransform();
+  };
+  stage.onpointerup = () => {
+    start = null;
+    stage.classList.remove("dragging");
+  };
+  stage.onwheel = e => {
+    e.preventDefault();
+    setFsZoom(state.fsZoom + (e.deltaY < 0 ? 0.2 : -0.2));
+  };
 }
 
 function mapPoints() {
@@ -1194,15 +1446,16 @@ function makePointDraggable(el) {
 }
 
 function setZoom(next) {
-  state.zoom = Math.max(1, Math.min(2.2, next));
+  state.zoom = Math.max(1, Math.min(4.0, Number(next.toFixed(2))));
   applyTransform();
+  updateZoomPresetsUI();
 }
 
 function setupMapPan() {
   const stage = $("#mapStage");
   let start = null;
   stage.onpointerdown = e => {
-    if (e.target.closest(".custom-point")) return;
+    if (e.target.closest(".custom-point") || e.target.closest(".smart-label-pin")) return;
     if (state.pendingPoint) {
       placePoint(e);
       return;
@@ -2403,13 +2656,55 @@ function bind() {
   });
 
   // Map workspace zoom & pan
-  $("#zoomIn").onclick = () => setZoom(state.zoom + 0.15);
-  $("#zoomOut").onclick = () => setZoom(state.zoom - 0.15);
+  $("#zoomIn").onclick = () => setZoom(state.zoom + 0.2);
+  $("#zoomOut").onclick = () => setZoom(state.zoom - 0.2);
   $("#resetMapBtn").onclick = () => {
     state.zoom = 1;
     state.panX = state.panY = 0;
     applyTransform();
+    updateZoomPresetsUI();
   };
+
+  // High-Legibility Zoom Presets (100%, 150%, 200%)
+  const p100 = $("#zoomPreset100"); if (p100) p100.onclick = () => setZoom(1.0);
+  const p150 = $("#zoomPreset150"); if (p150) p150.onclick = () => setZoom(1.5);
+  const p200 = $("#zoomPreset200"); if (p200) p200.onclick = () => setZoom(2.0);
+
+  // Smart High-Legibility Vector Label Toggle
+  const toggleSmartBtn = $("#toggleSmartLabelsBtn");
+  if (toggleSmartBtn) {
+    toggleSmartBtn.onclick = () => {
+      state.showSmartLabels = !state.showSmartLabels;
+      toggleSmartBtn.classList.toggle("active", state.showSmartLabels);
+      const textSpan = $("#smartLabelToggleText");
+      if (textSpan) {
+        textSpan.textContent = state.showSmartLabels
+          ? (state.lang === "en" ? "Smart Labels ON" : "대형 라벨 ON")
+          : (state.lang === "en" ? "Smart Labels OFF" : "대형 라벨 OFF");
+      }
+      renderSmartLabels();
+      toast(state.showSmartLabels
+        ? (state.lang === "en" ? "High-legibility smart labels visible" : "대형 고가독성 라벨이 켜졌습니다.")
+        : (state.lang === "en" ? "Smart labels hidden" : "대형 라벨이 숨겨졌습니다."));
+    };
+  }
+
+  // Fullscreen High-Definition Lightbox Modal
+  const fsOpenBtn = $("#openFullscreenMapBtn");
+  if (fsOpenBtn) fsOpenBtn.onclick = () => openFullscreenMap();
+  const fsCloseBtn = $("#fsCloseBtn");
+  if (fsCloseBtn) fsCloseBtn.onclick = () => closeFullscreenMap();
+  const fsIn = $("#fsZoomIn");
+  if (fsIn) fsIn.onclick = () => setFsZoom(state.fsZoom + 0.25);
+  const fsOut = $("#fsZoomOut");
+  if (fsOut) fsOut.onclick = () => setFsZoom(state.fsZoom - 0.25);
+  const fs100 = $("#fsZoom100");
+  if (fs100) fs100.onclick = () => setFsZoom(1.0);
+  const fs150 = $("#fsZoom150");
+  if (fs150) fs150.onclick = () => setFsZoom(1.5);
+  const fs200 = $("#fsZoom200");
+  if (fs200) fs200.onclick = () => setFsZoom(2.0);
+  setupFsPan();
 
   // Map Language Toggle (Original Korean Textbook Map <-> 100% English Atlas Map)
   const mapLangToggleBtn = $("#mapLangToggleBtn");

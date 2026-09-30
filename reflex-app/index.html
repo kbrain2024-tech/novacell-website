@@ -7,7 +7,7 @@
   <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 528Hz 치유 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
   <title>NovaCell Reflex Therapy APP | 손·발 반사요법 가이드</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=36">
+  <link rel="stylesheet" href="./styles.css?v=37">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
@@ -147,9 +147,13 @@
               <p id="mapSource">교재 27쪽 · 기본 지도 보호</p>
             </div>
             <div class="zoom-actions">
+              <button id="zoomPreset100" class="zoom-preset" title="100% 기본 보기">100%</button>
+              <button id="zoomPreset150" class="zoom-preset" title="150% 가독성 권장 확대">150%</button>
+              <button id="zoomPreset200" class="zoom-preset" title="200% 정밀 확대">200%</button>
               <button id="zoomOut" aria-label="축소">−</button>
               <span id="zoomValue">100%</span>
               <button id="zoomIn" aria-label="확대">＋</button>
+              <button id="openFullscreenMapBtn" class="fullscreen-toggle-btn" title="전체화면 고해상도 확대 모드">⛶ 크게보기</button>
             </div>
           </div>
 
@@ -162,9 +166,30 @@
             </div>
           </div>
 
+          <!-- Smart High-Legibility Point Inspector HUD Banner -->
+          <div class="map-point-hud" id="mapPointHUD">
+            <div class="hud-main">
+              <span class="hud-icon" id="hudPointIcon">🦶</span>
+              <div class="hud-text">
+                <div class="hud-title-row">
+                  <strong class="hud-title" id="hudPointTitle">반사구 탐색 모드 · Smart Reflex Inspector</strong>
+                  <span class="hud-tag" id="hudPointTag">HD ATLAS</span>
+                </div>
+                <p class="hud-desc" id="hudPointDesc">지도나 아래 대역표의 반사구를 클릭하시면 고선명 대형 명칭과 상세 해부학 정보가 표시됩니다.</p>
+              </div>
+            </div>
+            <div class="hud-actions">
+              <button type="button" id="toggleSmartLabelsBtn" class="hud-label-toggle active" title="지도 위에 대형 고가독성 라벨 표시 토글">
+                <span class="hud-toggle-indicator"></span>
+                <span id="smartLabelToggleText">대형 라벨 ON</span>
+              </button>
+            </div>
+          </div>
+
           <div class="map-stage" id="mapStage">
             <div class="map-canvas" id="mapCanvas">
               <img id="mapImage" src="./assets/foot-sole-map.webp" alt="교재 발바닥 반사 지도" draggable="false">
+              <div id="smartLabelLayer" class="smart-label-layer"></div>
               <div id="customLayer"></div>
             </div>
           </div>
@@ -512,9 +537,35 @@
     </div>
   </dialog>
 
+  <!-- Fullscreen High-Definition Atlas Lightbox Dialog -->
+  <dialog id="fullscreenMapDialog" class="fullscreen-map-modal">
+    <div class="fs-modal-header">
+      <div class="fs-modal-info">
+        <span class="eyebrow" id="fsMapSide">RIGHT · FOOT</span>
+        <h2 id="fsMapTitle">오른발 발바닥 · Right Sole</h2>
+        <span class="fs-map-badge">300 DPI ULTRA HD</span>
+      </div>
+      <div class="fs-modal-controls">
+        <button id="fsZoomOut" aria-label="축소">−</button>
+        <span id="fsZoomValue">100%</span>
+        <button id="fsZoomIn" aria-label="확대">＋</button>
+        <button id="fsZoom100" class="fs-preset-btn">100%</button>
+        <button id="fsZoom150" class="fs-preset-btn">150%</button>
+        <button id="fsZoom200" class="fs-preset-btn">200%</button>
+        <button id="fsCloseBtn" class="fs-close-btn" aria-label="닫기">✕</button>
+      </div>
+    </div>
+    <div class="fs-modal-stage" id="fsMapStage">
+      <div class="fs-modal-canvas" id="fsMapCanvas">
+        <img id="fsMapImage" src="./assets/foot-sole-map-en.png" alt="전체화면 고해상도 반사 지도" draggable="false">
+        <div id="fsSmartLabelLayer" class="smart-label-layer"></div>
+      </div>
+    </div>
+  </dialog>
+
   <div class="toast" id="toast" role="status"></div>
-  <script src="./program-data.js?v=36"></script>
-  <script src="./app.js?v=36"></script>
+  <script src="./program-data.js?v=37"></script>
+  <script src="./app.js?v=37"></script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="reflex_therapy_1y" data-lang="ko"></script>
