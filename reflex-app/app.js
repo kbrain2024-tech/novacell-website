@@ -573,7 +573,7 @@ const key = "novacell_reflex_therapy_v1";
 const state = {
   mode: "self",
   lang: "ko",
-  mapLang: "en",
+  mapLang: "ko",
   showSmartLabels: true,
   fsZoom: 1,
   fsPanX: 0,
@@ -1186,17 +1186,33 @@ function speak(text) {
 }
 
 // Natural voice guidance with clear spacing between step number and point name
+function getKoreanOrdinal(num) {
+  const ordinals = [
+    "",
+    "첫 번째", "두 번째", "세 번째", "네 번째", "다섯 번째",
+    "여섯 번째", "일곱 번째", "여덟 번째", "아홉 번째", "열 번째",
+    "열한 번째", "열두 번째", "열세 번째", "열네 번째", "열다섯 번째",
+    "열여섯 번째", "열일곱 번째", "열여덟 번째", "열아홉 번째", "스무 번째",
+    "스물한 번째", "스물두 번째", "스물세 번째", "스물네 번째", "스물다섯 번째",
+    "스물여섯 번째", "스물일곱 번째", "스물여덟 번째", "스물아홉 번째", "서른 번째"
+  ];
+  if (num > 0 && num < ordinals.length) {
+    return ordinals[num];
+  }
+  return `${num}번째`;
+}
+
 function speakCurrentPoint() {
   if (!state.activeProgram || !state.voice) return;
   const num = state.step + 1;
   const point = state.activeProgram.points[state.step];
   const name = pointLabel(point);
 
-  // In Korean: Using "1번,   상행결장" forces TTS to speak "일 번", pause naturally, and then clearly enunciate the name!
-  // In English: "Step 1,   Ascending colon"
+  // In Korean: "첫 번째,   뇌하수체", "두 번째,   갑상선"
+  // In English: "Step 1,   Pituitary gland", "Step 2,   Thyroid"
   const phrase = state.lang === "en"
     ? `Step ${num},   ${name}`
-    : `${num}번,   ${name}`;
+    : `${getKoreanOrdinal(num)},   ${name}`;
 
   speak(phrase);
 }
@@ -1326,6 +1342,7 @@ function load() {
     state.academyCourse = saved.academyCourse || "urinary";
     state.mode = saved.mode || "self";
     state.lang = saved.lang || "ko";
+    state.mapLang = saved.mapLang || state.lang || "ko";
     state.voice = saved.voice !== false;
     state.sound = saved.sound !== false;
     state.defaultDuration = clampDuration(saved.defaultDuration || 20);
@@ -1344,6 +1361,7 @@ function save() {
     savedAt: new Date().toISOString(),
     mode: state.mode,
     lang: state.lang,
+    mapLang: state.mapLang,
     voice: state.voice,
     sound: state.sound,
     defaultDuration: state.defaultDuration,
@@ -1398,11 +1416,9 @@ function renderMaps() {
 function renderMapWorkspace() {
   const m = maps.find(x => x.id === state.mapId);
   if (!m) return;
-  const isEn = state.lang === "en" || state.mapLang === "en";
-
-  // Automatic language sync or explicit user override
-  const isMapEn = state.mapLang === "en" || (state.mapLang !== "ko" && isEn);
-  const activeImage = (isMapEn && m.imageEn) ? m.imageEn : m.image;
+  const isEn = state.lang === "en";
+  const isMapEn = state.mapLang === "en";
+  const activeImage = (isMapEn && m.imageEn) ? m.imageEn : (m.image || m.imageEn);
 
   $("#mapSide").textContent = m.side;
   $("#mapTitle").textContent = isEn ? m.en : m.title;
@@ -1829,8 +1845,8 @@ function openFullscreenMap() {
   const m = maps.find(x => x.id === state.mapId);
   if (!m) return;
   const isEn = state.lang === "en";
-  const isMapEn = state.mapLang === "en" || (state.mapLang !== "ko" && isEn);
-  const activeImage = (isMapEn && m.imageEn) ? m.imageEn : m.image;
+  const isMapEn = state.mapLang === "en";
+  const activeImage = (isMapEn && m.imageEn) ? m.imageEn : (m.image || m.imageEn);
 
   const dlg = $("#fullscreenMapDialog");
   if (!dlg) return;
@@ -2169,7 +2185,7 @@ function programCard(p) {
 }
 
 function renderPrograms(query = "") {
-  const q = query.trim().toLowerCase();
+  const q = String(query || "").trim().toLowerCase();
   const en = state.lang === "en";
   const grid = $("#systemGrid");
   const head = $("#subcategoryHead");
@@ -3254,13 +3270,33 @@ function bind() {
   }
 
   // Segmented Language Toggle [ 한글 / ENG ]
+  const setLanguage = (newLang) => {
+    state.lang = newLang;
+    state.mapLang = newLang;
+    save();
+    applyLanguage();
+    toast(state.lang === "en" ? "English mode enabled" : "한국어 모드로 변경되었습니다");
+  };
+
   const langToggleBtn = $("#langToggleBtn");
+  const optKo = $("#langOptKo");
+  const optEn = $("#langOptEn");
+
+  if (optKo) {
+    optKo.onclick = (e) => {
+      e.stopPropagation();
+      setLanguage("ko");
+    };
+  }
+  if (optEn) {
+    optEn.onclick = (e) => {
+      e.stopPropagation();
+      setLanguage("en");
+    };
+  }
   if (langToggleBtn) {
     langToggleBtn.onclick = () => {
-      state.lang = state.lang === "ko" ? "en" : "ko";
-      save();
-      applyLanguage();
-      toast(state.lang === "en" ? "English mode enabled" : "한국어 모드로 변경되었습니다");
+      setLanguage(state.lang === "ko" ? "en" : "ko");
     };
   }
 
@@ -3381,9 +3417,11 @@ function bind() {
   const mapLangToggleBtn = $("#mapLangToggleBtn");
   if (mapLangToggleBtn) {
     mapLangToggleBtn.onclick = () => {
-      const isCurrentlyEn = state.mapLang === "en" || (state.mapLang !== "ko" && state.lang === "en");
-      state.mapLang = isCurrentlyEn ? "ko" : "en";
+      state.mapLang = state.mapLang === "en" ? "ko" : "en";
+      save();
       renderMapWorkspace();
+      renderSmartLabels();
+      if ($("#fullscreenMapDialog")?.open) openFullscreenMap();
       toast(state.mapLang === "en"
         ? (state.lang === "en" ? "Switched to English Reflex Map" : "영문 정밀 지도로 전환되었습니다.")
         : (state.lang === "en" ? "Switched to Original Textbook Map" : "한글 원본 교재 지도로 전환되었습니다."));
