@@ -2475,6 +2475,7 @@ function programCard(p) {
 }
 
 function renderPrograms(query = "") {
+  const isVip = checkReflexVip();
   const q = String(query || "").trim().toLowerCase();
   const en = state.lang === "en";
   const grid = $("#systemGrid");

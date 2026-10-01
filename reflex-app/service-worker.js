@@ -1,10 +1,10 @@
-const CACHE = "novacell-reflex-therapy-v51-freemium-cardio-digestive-free";
+const CACHE = "novacell-reflex-therapy-v52-render-programs-fixed";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=51",
-  "./program-data.js?v=51",
-  "./app.js?v=51",
+  "./styles.css?v=52",
+  "./program-data.js?v=52",
+  "./app.js?v=52",
   "./manifest.webmanifest",
   "./assets/foot-sole-map.webp",
   "./assets/foot-top-map.webp",
