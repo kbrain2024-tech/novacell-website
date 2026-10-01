@@ -42,13 +42,17 @@ export async function requireUser(request) {
   try {
     const user = await supabase("/auth/v1/user", { token });
     return { user, token };
-  } catch (_) {
+  } catch (err) {
+    console.error("requireUser failure:", err);
+    if (/^MISSING_/.test(err?.message || "")) {
+      return { error: json(503, { message: `결제 서버 환경변수 설정 확인 필요: ${err.message}` }) };
+    }
     return { error: json(401, { message: "로그인 정보가 만료되었습니다. 다시 로그인해 주세요." }) };
   }
 }
 
 export function safeError(error, fallback = "요청을 처리하지 못했습니다.") {
   console.error(error);
-  if (/^MISSING_/.test(error?.message || "")) return json(503, { message: "결제 서버 설정이 아직 완료되지 않았습니다." });
+  if (/^MISSING_/.test(error?.message || "")) return json(503, { message: `결제 서버 설정이 아직 완료되지 않았습니다: ${error.message}` });
   return json(error?.status && error.status < 500 ? error.status : 500, { message: fallback });
 }
