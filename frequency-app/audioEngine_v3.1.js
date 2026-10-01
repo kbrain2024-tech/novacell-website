@@ -2274,54 +2274,65 @@ class AudioEngine {
       this.seagullTimer = null;
     }
     const playSeagull = () => {
-      // 재생 중이 아니거나 자연음 믹서가 비활성화 상태이면 스킵
       if (!this.isPlaying || !this.isNatureActive) return;
-      const currentVol = (this.natureGains && this.natureGains.seagull) ? this.natureGains.seagull.gain.value : (this.natureVolumeSettings.seagull || 0.5);
+      const currentVol = Math.max(
+        (this.natureVolumeSettings && this.natureVolumeSettings.seagull) ? this.natureVolumeSettings.seagull : 0,
+        (this.natureGains && this.natureGains.seagull && this.natureGains.seagull.gain) ? this.natureGains.seagull.gain.value : 0,
+        0.75
+      );
       if (currentVol <= 0.01) return;
       
-      const now = this.audioCtx.currentTime;
-      const baseFreq = 820 + Math.random() * 160; // 갈매기 기본 주파수 랜덤 기복
+      const now = this.audioCtx ? this.audioCtx.currentTime : 0;
+      const baseFreq = 820 + Math.random() * 160;
       
-      // 3번 연속으로 시차를 두고 울도록 호출 (0초, 0.42초, 0.90초)
+      // 3번 연속으로 시차를 두고 울도록 호출
       this.playSingleCawRife(baseFreq, currentVol, now);
-      this.playSingleCawRife(baseFreq * 0.96, currentVol, now + 0.42);
-      this.playSingleCawRife(baseFreq * 0.91, currentVol, now + 0.90);
+      this.playSingleCawRife(baseFreq * 0.96, currentVol, now + 0.38);
+      this.playSingleCawRife(baseFreq * 0.91, currentVol, now + 0.82);
     };
     
-    // [핫픽스] 즉시 1회 울음소리 재생 (사용자가 선택하자마자 0초 지연 없이 소리 청취)
     playSeagull();
 
-    // 4.5초 주기로 활발하게 울도록 주기 설정 (85% 확률)
+    // 4.0초 주기로 자연스럽게 울도록 주기 설정
     this.seagullTimer = setInterval(() => {
       if (Math.random() > 0.15) playSeagull();
-    }, 4500);
+    }, 4000);
   }
 
   /**
-   * Rife 엔진용 갈매기 1회 울음소리 합성 및 재생
+   * Rife 엔진용 갈매기 1회 울음소리 합성 및 재생 (듀얼 라우팅으로 무음 원천 차단)
    */
   playSingleCawRife(frequency, volume, startTime) {
     if (!this.audioCtx) return;
+    if (this.audioCtx.state === 'suspended') {
+      try { this.audioCtx.resume(); } catch(e) {}
+    }
+    const now = Math.max(this.audioCtx.currentTime, startTime || 0);
     
     const osc = this.audioCtx.createOscillator();
     osc.type = 'triangle';
     
     const volumeNode = this.audioCtx.createGain();
-    volumeNode.gain.setValueAtTime(0, startTime);
-    volumeNode.gain.linearRampToValueAtTime(volume * 1.6, startTime + 0.08); 
-    volumeNode.gain.exponentialRampToValueAtTime(0.001, startTime + 0.35);
+    const effectiveVol = Math.max(0.45, (volume || 0.75) * 1.4);
+    volumeNode.gain.setValueAtTime(0.0001, now);
+    volumeNode.gain.linearRampToValueAtTime(effectiveVol, now + 0.08); 
+    volumeNode.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
     
-    osc.frequency.setValueAtTime(frequency, startTime);
-    osc.frequency.exponentialRampToValueAtTime(frequency * 1.5, startTime + 0.12);
-    osc.frequency.exponentialRampToValueAtTime(frequency * 1.1, startTime + 0.35);
+    osc.frequency.setValueAtTime(frequency, now);
+    osc.frequency.exponentialRampToValueAtTime(frequency * 1.5, now + 0.12);
+    osc.frequency.exponentialRampToValueAtTime(frequency * 1.1, now + 0.38);
     
     osc.connect(volumeNode);
-    volumeNode.connect(this.natureGains.seagull);
+    if (this.natureGains && this.natureGains.seagull) {
+      volumeNode.connect(this.natureGains.seagull);
+    }
+    if (this.natureMasterGain) {
+      volumeNode.connect(this.natureMasterGain);
+    }
     
-    osc.start(startTime);
-    osc.stop(startTime + 0.4);
+    osc.start(now);
+    osc.stop(now + 0.42);
 
-    // 가비지 컬렉션(GC)을 위한 연결 해제 예약
     osc.onended = () => {
       try { osc.disconnect(); } catch(e) {}
       try { volumeNode.disconnect(); } catch(e) {}
@@ -2494,7 +2505,11 @@ class AudioEngine {
     
     // ── 배음 포함 새소리 합성 헬퍼 ──
     const playTone = (startTime, duration, freqStart, freqEnd, pan, volScale, attackRatio = 0.15) => {
-      const currentVol = this.natureGains.forestbirds.gain.value;
+      const currentVol = Math.max(
+        (this.natureVolumeSettings && this.natureVolumeSettings.forestbirds) ? this.natureVolumeSettings.forestbirds : 0,
+        (this.natureGains && this.natureGains.forestbirds && this.natureGains.forestbirds.gain) ? this.natureGains.forestbirds.gain.value : 0,
+        0.70
+      );
       if (currentVol <= 0.01) return;
       
       const osc = this.audioCtx.createOscillator();
@@ -2528,7 +2543,12 @@ class AudioEngine {
       g2.connect(mix);
       mix.connect(panner);
       panner.connect(vol);
-      vol.connect(this.natureGains.forestbirds);
+      if (this.natureGains && this.natureGains.forestbirds) {
+        vol.connect(this.natureGains.forestbirds);
+      }
+      if (this.natureMasterGain) {
+        vol.connect(this.natureMasterGain);
+      }
       
       // 숲 잔향
       let rs = null;
@@ -2625,7 +2645,12 @@ class AudioEngine {
         g2.connect(mix);
         mix.connect(panner);
         panner.connect(vol);
+      if (this.natureGains && this.natureGains.forestbirds) {
         vol.connect(this.natureGains.forestbirds);
+      }
+      if (this.natureMasterGain) {
+        vol.connect(this.natureMasterGain);
+      }
         
         let rs = null;
         if (this._forestReverbDelay) {
@@ -2860,10 +2885,20 @@ class AudioEngine {
     this._forestTimers.push(setTimeout(playKingfisher, 7000 + Math.random() * 3000));
     this._forestTimers.push(setTimeout(playCuckoo, 2000 + Math.random() * 3000));
     
+    // 활발한 숲속 새들의 합창 주기 루프 (3.2초 주기)
     this.forestBirdsTimer = setInterval(() => {
       if (!this.isPlaying || !this.isNatureActive) return;
-      if (this.natureGains.forestbirds.gain.value <= 0.01) return;
-    }, 5000);
+      const r = Math.random();
+      if (r < 0.40) {
+        playChirper();
+      } else if (r < 0.65) {
+        playForestOriole();
+      } else if (r < 0.85) {
+        playForestTitmouse();
+      } else {
+        playCuckoo();
+      }
+    }, 3200);
   }
 
   /**
@@ -5014,72 +5049,14 @@ class AudioEngine {
   /**
    * [신규] 갈매기 1회성 테스트 재생 API (볼륨 조절 피드백용)
    */
-  playSeagullOnce(volume = 0.5) {
-    if (!this.audioCtx || !this.isPlaying) return;
-    const now = this.audioCtx.currentTime;
-    
-    const osc = this.audioCtx.createOscillator();
-    osc.type = 'triangle';
-    
-    const vNode = this.audioCtx.createGain();
-    vNode.gain.setValueAtTime(0, now);
-    vNode.gain.linearRampToValueAtTime(volume * 0.8, now + 0.1);
-    vNode.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
-    
-    osc.frequency.setValueAtTime(750, now);
-    osc.frequency.exponentialRampToValueAtTime(1150, now + 0.15);
-    osc.frequency.exponentialRampToValueAtTime(550, now + 0.5);
-    
-    osc.connect(vNode);
-    vNode.connect(this.natureMasterGain);
-    
-    osc.start(now);
-    osc.stop(now + 0.8);
-    this.activeNodes.push(osc);
-    setTimeout(() => {
-      try { osc.disconnect(); } catch(e) {}
-      this.activeNodes = this.activeNodes.filter(n => n !== osc);
-    }, 1000);
-  }
-
-  /**
-   * [신규] 숲속 새소리 1회성 테스트 재생 API (볼륨 조절 피드백용)
-   */
-  playForestBirdsOnce(volume = 0.5) {
-    if (!this.audioCtx || !this.isPlaying) return;
-    const now = this.audioCtx.currentTime;
-    const count = 3;
-    const baseFreq = 2000 + Math.random() * 500;
-    
-    for (let j = 0; j < count; j++) {
-      const time = now + j * 0.15 + Math.random() * 0.05;
-      const duration = 0.08 + Math.random() * 0.04;
-      
-      const osc = this.audioCtx.createOscillator();
-      osc.type = 'sine';
-      
-      const vNode = this.audioCtx.createGain();
-      vNode.gain.setValueAtTime(0, time);
-      vNode.gain.linearRampToValueAtTime(volume * 0.7, time + 0.01);
-      vNode.gain.exponentialRampToValueAtTime(0.001, time + duration);
-      
-      osc.frequency.setValueAtTime(baseFreq, time);
-      osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.5, time + duration * 0.4);
-      osc.frequency.exponentialRampToValueAtTime(baseFreq * 0.8, time + duration);
-      
-      osc.connect(vNode);
-      vNode.connect(this.natureMasterGain);
-      
-      osc.start(time);
-      osc.stop(time + duration + 0.02);
-      this.activeNodes.push(osc);
-      
-      const targetOsc = osc;
-      setTimeout(() => {
-        try { targetOsc.disconnect(); } catch(e) {}
-        this.activeNodes = this.activeNodes.filter(n => n !== targetOsc);
-      }, (duration + 0.5) * 1000);
+  playSeagullOnce(volume = 0.75) {
+    if (!this.audioCtx) return;
+    if (this.audioCtx.state === 'suspended') {
+      try { this.audioCtx.resume(); } catch(e) {}
     }
+    const now = this.audioCtx.currentTime;
+    this.playSingleCawRife(880, volume, now);
+    this.playSingleCawRife(840, volume, now + 0.35);
   }
 
   /**

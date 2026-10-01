@@ -173,6 +173,9 @@
 
   // 1.5. [신규] 모든 재생/일시정지 버튼 및 UI 완벽 동기화 함수
   window.syncAllPlayButtons = function (isPlaying, title) {
+    if (typeof window.updateBreathingPlayButtonUI === 'function') {
+      window.updateBreathingPlayButtonUI();
+    }
     const btnMasterPlay = document.getElementById('btn-master-play');
     if (btnMasterPlay) {
       btnMasterPlay.innerHTML = isPlaying ? '<i class="fa-solid fa-pause"></i>' : '<i class="fa-solid fa-play"></i>';
@@ -329,8 +332,14 @@
     if (!eng) return;
     if (eng.isPlaying) {
       window.stopAllAudio();
+      if (typeof window.pauseBreathingSession === 'function' && window.isBreathingPlaying) {
+        window.pauseBreathingSession();
+      }
     } else {
-      if (window.NovaCellStudio.activePresetKey) {
+      const isCareTab = document.getElementById('tab-care')?.classList.contains('active');
+      if (isCareTab && typeof window.startBreathingSession === 'function') {
+        window.startBreathingSession();
+      } else if (window.NovaCellStudio.activePresetKey) {
         window.playPreset(window.NovaCellStudio.activePresetKey);
       } else {
         window.playPreset('cosmos-harmony');
@@ -1237,6 +1246,15 @@
       if (tx) tx.textContent = Math.round(v * 100) + '%';
     });
 
+    // 4.5) 숲속 새소리 및 갈매기소리 선택 즉시 0초 피드백 재생
+    if (ambientType === 'forestbirds') {
+      try { eng.playForestBirdsOnce(0.75); } catch(e) {}
+      if (typeof eng.triggerForestBirdsLoop === 'function') eng.triggerForestBirdsLoop();
+    } else if (ambientType === 'seagull') {
+      try { eng.playSeagullOnce(0.85); } catch(e) {}
+      if (typeof eng.triggerSeagullLoop === 'function') eng.triggerSeagullLoop();
+    }
+
     // 5) [핫픽스] 무음 방지 및 즉각적 사운드 피드백: 엔진이 정지 상태여도 즉시 기동 및 재생
     if (!eng.isPlaying) {
       eng.init();
@@ -1575,3 +1593,18 @@
 
 })();
 
+
+  // 6. [모바일 최적화] 스마트폰 환경에서 기본 맞춤음을 "숲속 새소리"로 초기 세팅
+  const isMobileViewport = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+  if (isMobileViewport) {
+    window.currentAmbientType = 'forestbirds';
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.ambient-chip').forEach(chip => {
+        chip.classList.toggle('active', chip.getAttribute('data-ambient') === 'forestbirds');
+      });
+      const stickyAmbientText = document.getElementById('sticky-ambient-text');
+      if (stickyAmbientText) {
+        stickyAmbientText.textContent = '🌲 숲속 새소리';
+      }
+    });
+  }

@@ -861,6 +861,8 @@ function toggleBreathingPlayback() {
  */
 function startBreathingSession() {
   isBreathingPlaying = true;
+  window._breathWasPaused = false;
+  window.isBreathingPlaying = true;
   breathingCycleStartTime = performance.now();
 
   // 1) 팝업 닫기
@@ -894,6 +896,17 @@ function startBreathingSession() {
  */
 function pauseBreathingSession() {
   isBreathingPlaying = false;
+  window._breathWasPaused = true;
+  window.isBreathingPlaying = false;
+
+  // 사운드 동기화 활성화 시 오디오 엔진도 함께 일시 정지
+  if (isSoundSyncEnabled && window.engine && window.engine.isPlaying) {
+    if (typeof window.stopAllAudio === 'function') {
+      window.stopAllAudio();
+    } else {
+      window.engine.stop();
+    }
+  }
 
   // 1) 썸네일 배경 유지 & 카드 활성 상태 해제 (대기 펄스로 복원)
   const mediaCard = document.getElementById("breathing-media-card");
@@ -1033,9 +1046,7 @@ function run14sBreathingLoop(timestamp) {
  */
 function onBreathingCycleCompleted() {
   breathingCycleCount++;
-
-  // 긍정 확언 새로운 문장으로 순환
-  rotateHeroAffirmation();
+  // 확언은 12초 정주기 인터벌로 평온하게 유지
 
   if (isBreathingLoop || is1HourSessionActive) {
     // 연속 루프 또는 1시간 모드: 끊김 없이 계속 순환
@@ -1234,10 +1245,24 @@ function updatePlayButtonUI() {
 
   if (isBreathingPlaying) {
     btnBreathActionMain.innerHTML = `<i class="fa-solid fa-pause"></i> <span>${lang === "ko" ? "일시 정지 (Pause)" : "Pause"}</span>`;
+    btnBreathActionMain.style.background = "linear-gradient(135deg, #a855f7, #6366f1)";
+    btnBreathActionMain.style.boxShadow = "0 6px 20px rgba(168, 85, 247, 0.45)";
     btnBreathActionMain.style.filter = "brightness(1.15)";
+    btnBreathActionMain.title = lang === "ko" ? "호흡 세션 및 사운드 일시 정지" : "Pause Breathing Session and Audio";
   } else {
-    btnBreathActionMain.innerHTML = `<i class="fa-solid fa-play"></i> <span>${lang === "ko" ? "14초 바이오 챌린지 시작" : "Start 14s Bio-Challenge"}</span>`;
+    const hasStartedBefore = (typeof breathingCycleCount !== 'undefined' && breathingCycleCount > 0) || window._breathWasPaused;
+    const label = hasStartedBefore
+      ? (lang === "ko" ? "계속 재생 (Resume)" : "Resume")
+      : (lang === "ko" ? "14초 바이오 챌린지 시작" : "Start 14s Bio-Challenge");
+    btnBreathActionMain.innerHTML = `<i class="fa-solid fa-play"></i> <span>${label}</span>`;
+    btnBreathActionMain.style.background = hasStartedBefore
+      ? "linear-gradient(135deg, #10b981, #059669)"
+      : "linear-gradient(135deg, #6366f1, #a855f7)";
+    btnBreathActionMain.style.boxShadow = hasStartedBefore
+      ? "0 6px 20px rgba(16, 185, 129, 0.45)"
+      : "none";
     btnBreathActionMain.style.filter = "none";
+    btnBreathActionMain.title = lang === "ko" ? "호흡 테라피 & 사운드 계속 재생" : "Resume Breathing and Audio";
   }
 }
 
@@ -1325,12 +1350,12 @@ function rotateHeroAffirmation() {
 
   [elHero, elClassic].forEach(el => {
     if (!el) return;
-    el.style.transition = "opacity 0.4s ease";
+    el.style.transition = "opacity 0.7s ease";
     el.style.opacity = "0";
     setTimeout(() => {
       el.textContent = quote;
       el.style.opacity = "1";
-    }, 400);
+    }, 700);
   });
 }
 
@@ -1561,10 +1586,10 @@ function initBreathingGuide() {
   selectBreathingColor("red");
   setBreathingLanguage(window.currentLang || "ko");
 
-  // 6초 주기로 긍정 확언 자동 지속 순환 (호흡 훈련 중에도 계속 전환)
+  // 12초 주기로 긍정 확언 자동 지속 순환 (확언 교대 시간을 2배로 연장하여 깊은 음미 유도)
   setInterval(() => {
     rotateHeroAffirmation();
-  }, 6000);
+  }, 12000);
 
   // 클래식 5대 호흡 버튼 바인딩
   document.querySelectorAll(".btn-pattern").forEach(btn => {
@@ -1875,3 +1900,7 @@ if (document.readyState === "loading") {
   initBreathingGuide();
 }
 
+
+window.pauseBreathingSession = pauseBreathingSession;
+window.startBreathingSession = startBreathingSession;
+window.updateBreathingPlayButtonUI = updatePlayButtonUI;

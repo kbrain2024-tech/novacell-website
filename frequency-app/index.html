@@ -40,8 +40,7 @@
         <span class="lang-opt lang-ko active">KO</span>
         <span class="lang-opt lang-en">EN</span>
       </button>
-      <span>·</span>
-      <a href="javascript:void(0)" onclick="openWelcomeGate()" class="nc-link text-gold" style="font-weight: 700;"><i class="fa-solid fa-archway"></i> <span data-i18n="navGate">메인 대문</span></a>
+      
       <span>·</span>
       <a href="https://novacell.kr" target="_blank" rel="noopener noreferrer" class="nc-link text-gold"><i class="ri-home-4-line"></i> <span data-i18n="navHome">NovaCell 홈</span></a>
       <span>·</span>
@@ -80,7 +79,7 @@
           <i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">프리셋</span>
         </button>
         <button id="btn-nav-tab-rife100" class="nav-pill" onclick="switchTab('tab-rife100')">
-          <i class="ri-dna-line" style="color: #34d399;"></i> <span data-i18n="tabRife100">힐링 코드</span>
+          <span style="font-size: 1.05rem; line-height: 1; margin-right: 3px;">🌿</span> <span data-i18n="tabRife100">힐링 코드</span>
         </button>
         <button id="btn-nav-tab-vip" class="nav-pill" onclick="switchTab('tab-vip')">
           <i class="ri-vip-crown-fill" style="color: #f59e0b;"></i> <span data-i18n="tabVip">웰니스 코드</span> <span class="badge-lock">🔒 VIP</span>
@@ -125,7 +124,7 @@
         <span class="m-tab-title" data-i18n="mTabPresets">프리셋</span>
       </button>
       <button class="m-tab-btn" data-tab="tab-rife100" onclick="switchTab('tab-rife100')" title="NovaCell 100 힐링 코드">
-        <i class="ri-dna-line" style="color: #34d399;"></i>
+        <span style="font-size: 1.22rem; line-height: 1; display: inline-block;">🌿</span>
         <span class="m-tab-title" data-i18n="mTabRife">힐링 코드</span>
       </button>
       <button class="m-tab-btn" data-tab="tab-vip" onclick="switchTab('tab-vip')" title="VIP 임상 웰니스 코드">
@@ -1965,7 +1964,7 @@
     <nav class="drawer-nav">
       <a href="javascript:void(0)" class="drawer-link" onclick="openWelcomeGate(); toggleDrawer();" style="color: #fef08a; font-weight: 700;"><i class="fa-solid fa-archway text-gold"></i> <span data-i18n="drawerGate">메인 대문 (스튜디오 가이드)</span></a>
       <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-presets'); toggleDrawer();"><i class="ri-sparkling-fill text-gold"></i> <span data-i18n="tabPresets">프리셋</span></a>
-      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-rife100'); toggleDrawer();" style="color: #34d399;"><i class="ri-dna-line"></i> <span data-i18n="tabRife100">힐링 코드</span></a>
+      <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-rife100'); toggleDrawer();" style="color: #34d399;"><span style="font-size: 1.1rem; margin-right: 6px;">🌿</span> <span data-i18n="tabRife100">힐링 코드</span></a>
       <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-vip'); toggleDrawer();" style="color: #f59e0b;"><i class="ri-vip-crown-fill"></i> <span data-i18n="tabVip">웰니스 코드</span></a>
       <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-care'); toggleDrawer();" style="color: #60a5fa;"><i class="ri-heart-pulse-fill"></i> <span data-i18n="tabCare">호흡 테라피</span></a>
       <a href="javascript:void(0)" class="drawer-link" onclick="switchTab('tab-studio'); toggleDrawer();" style="color: #c084fc;"><i class="fa-solid fa-sliders"></i> <span data-i18n="tabStudio">힐링 랩</span></a>
