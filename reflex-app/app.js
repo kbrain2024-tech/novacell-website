@@ -1290,7 +1290,44 @@ if ("speechSynthesis" in window) {
   };
 }
 
-// 스마트폰 OS별 최적 음성 매칭
+// ==========================================================================
+// [스마트폰 100% 발성 보장] 하이브리드 듀얼 보이스 엔진 (클라우드 오디오 + 네이티브 TTS 폴백)
+// 스마트폰(카카오톡/네이버 인앱브라우저, 아이폰 사파리 무음 스위치, 안드로이드 TTS 미설치 기기)에서도
+// 고품질 오디오 스트림을 통해 100% 선명하고 자연스러운 음성을 발성합니다.
+// ==========================================================================
+let _ttsAudioEl = null;
+
+function getTtsAudioElement() {
+  if (!_ttsAudioEl) {
+    _ttsAudioEl = document.getElementById("ttsAudio");
+    if (!_ttsAudioEl) {
+      _ttsAudioEl = new Audio();
+      _ttsAudioEl.id = "ttsAudio";
+      _ttsAudioEl.setAttribute("playsinline", "true");
+      _ttsAudioEl.preload = "auto";
+      document.body.appendChild(_ttsAudioEl);
+    }
+  }
+  return _ttsAudioEl;
+}
+
+// 터치 제스처 시 오디오 요소 사전 언락 (iOS 사파리 & 안드로이드 웹뷰 필수)
+function unlockTtsAudio() {
+  getAudioContext();
+  if ("speechSynthesis" in window) {
+    try { window.speechSynthesis.resume(); } catch(e) {}
+  }
+  const audio = getTtsAudioElement();
+  if (audio && !audio._unlocked) {
+    audio.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
+    const p = audio.play();
+    if (p && typeof p.then === "function") {
+      p.then(() => { audio._unlocked = true; }).catch(() => {});
+    }
+  }
+}
+
+// 스마트폰 OS별 최적 음성 매칭 (로컬 폴백용)
 function getBestVoice(targetLang) {
   if (!("speechSynthesis" in window)) return null;
   let voices = _ttsVoices;
@@ -1333,43 +1370,27 @@ function getBestVoice(targetLang) {
   return null;
 }
 
-function speak(text) {
-  if (!state.voice || !("speechSynthesis" in window)) return;
-  if (!text || typeof text !== "string") return;
-
+function fallbackNativeSpeech(text, isEn) {
+  if (!("speechSynthesis" in window)) return;
   try {
-    // 1. Resume paused/suspended queue (crucial for Chrome mobile & Safari mobile)
     try { window.speechSynthesis.resume(); } catch(e) {}
-
-    // 말하고 있을 때만 이전 음성 중단 (말하고 있지 않을 때는 cancel 호출 금지 - iOS 사파리 버그 방지)
     if (window.speechSynthesis.speaking) {
       try { window.speechSynthesis.cancel(); } catch(e) {}
     }
 
     const u = new SpeechSynthesisUtterance(text);
-    const isEn = state.lang === "en";
     u.lang = isEn ? "en-US" : "ko-KR";
-
-    // 스마트폰에서 알맞은 음성 객체 매핑
     const bestVoice = getBestVoice(state.lang);
-    if (bestVoice) {
-      u.voice = bestVoice;
-    }
-
-    // 표준 음성 속도 1.0 (모든 스마트폰 기기에서 왜곡 없이 안정 발성)
+    if (bestVoice) u.voice = bestVoice;
     u.rate = 1.0;
     u.pitch = 1.0;
     u.volume = 1.0;
 
-    // 모바일 가비지 컬렉션(GC) 방지 글로벌 보관
     _activeUtterance = u;
-    u.onend = () => {
-      if (_activeUtterance === u) _activeUtterance = null;
-    };
+    u.onend = () => { if (_activeUtterance === u) _activeUtterance = null; };
     u.onerror = (e) => {
-      console.warn("TTS speak error:", e);
+      console.warn("Native TTS error:", e);
       if (_activeUtterance === u) _activeUtterance = null;
-      // [스마트폰 폴백] 특정 음성 객체 에러 시, 시스템 기본 음성으로 100% 즉시 재발성
       if (u.voice) {
         try {
           const fallbackU = new SpeechSynthesisUtterance(text);
@@ -1383,21 +1404,52 @@ function speak(text) {
       }
     };
 
-    // [핵심] 즉각 동기식으로 speak() 실행하여 사용자 제스처 컨텍스트 100% 보존!
     window.speechSynthesis.speak(u);
-    // 모바일 WebKit 버그 방지: 발성 큐 즉시 재개
     try { window.speechSynthesis.resume(); } catch(e) {}
-
-  } catch (e) {
-    console.warn("TTS Error:", e);
+  } catch(e) {
+    console.warn("fallbackNativeSpeech exception:", e);
   }
 }
 
-function forceSpeakCurrentPoint() {
-  getAudioContext();
-  if ("speechSynthesis" in window) {
-    try { window.speechSynthesis.resume(); } catch(e) {}
+function speak(text) {
+  if (!state.voice) return;
+  if (!text || typeof text !== "string") return;
+
+  const isEn = state.lang === "en";
+  const tl = isEn ? "en" : "ko";
+  const cleanText = text.replace(/·/g, " ").replace(/\s+/g, " ").trim();
+  if (!cleanText) return;
+
+  // 1. 하이브리드 1순위: 클라우드 오디오 스트리밍 (스마트폰 카카오톡/네이버/사파리/크롬 100% 발성)
+  try {
+    const audio = getTtsAudioElement();
+    if (audio) {
+      try { audio.pause(); audio.currentTime = 0; } catch(e) {}
+
+      const enc = encodeURIComponent(cleanText);
+      const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${enc}`;
+      audio.src = audioUrl;
+      audio.volume = 1.0;
+
+      const playPromise = audio.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch((err) => {
+          console.warn("Audio play prevented or failed, using native speech fallback:", err);
+          fallbackNativeSpeech(cleanText, isEn);
+        });
+      }
+      return;
+    }
+  } catch(e) {
+    console.warn("Audio TTS error:", e);
   }
+
+  // 2. 하이브리드 2순위: 네이티브 브라우저 SpeechSynthesis (오프라인 폴백)
+  fallbackNativeSpeech(cleanText, isEn);
+}
+
+function forceSpeakCurrentPoint() {
+  unlockTtsAudio();
   state.voice = true;
   save();
   updateAccessButtons();
@@ -2603,11 +2655,8 @@ function startProgram(id) {
     return;
   }
 
-  // 1. Unlock AudioContext & resume SpeechSynthesis inside direct user tap
-  getAudioContext();
-  if ("speechSynthesis" in window) {
-    try { window.speechSynthesis.resume(); } catch(e) {}
-  }
+  // 1. Unlock AudioContext, SpeechSynthesis & HTML5 Audio in direct user tap
+  unlockTtsAudio();
 
   state.activeProgram = target;
 
@@ -2898,11 +2947,8 @@ function toggleTimer() {
     return;
   }
 
-  // 1. Unlock AudioContext & resume SpeechSynthesis inside direct user tap
-  getAudioContext();
-  if ("speechSynthesis" in window) {
-    try { window.speechSynthesis.resume(); } catch(e) {}
-  }
+  // 1. Unlock AudioContext, SpeechSynthesis & HTML5 Audio inside direct user tap
+  unlockTtsAudio();
 
   if (state.timer) {
     // Pause
@@ -2956,7 +3002,10 @@ function toggleTimer() {
         : (hasNext ? "단계가 완료되었습니다. 다음 반사구로 진행하세요." : "모든 반사요법 단계가 완료되었습니다. 수고하셨습니다.");
       toast(`🎉 ${finishMsg}`);
       if (state.voice) {
-        speak(finishMsg);
+        // 싱잉볼 차임벨이 풍성하게 울린 뒤 자연스럽게 음성 멘트 발성
+        setTimeout(() => {
+          speak(finishMsg);
+        }, 1100);
       }
     }
   }, 1000);
@@ -2974,10 +3023,7 @@ function resetTimer() {
 
 function nextStep() {
   if (!state.activeProgram) return;
-  getAudioContext();
-  if ("speechSynthesis" in window) {
-    try { window.speechSynthesis.resume(); } catch(e) {}
-  }
+  unlockTtsAudio();
   if (state.step < state.activeProgram.points.length - 1) {
     state.step++;
     stopTimer();
@@ -3669,11 +3715,8 @@ function bind() {
       if (now - lastVoiceTap < 280) return; // Prevent double trigger
       lastVoiceTap = now;
 
-      // 1. Unlock AudioContext & resume SpeechSynthesis inside direct user gesture
-      getAudioContext();
-      if ("speechSynthesis" in window) {
-        try { window.speechSynthesis.resume(); } catch(err) {}
-      }
+      // 1. Unlock Audio inside direct user gesture
+      unlockTtsAudio();
 
       state.voice = !state.voice;
       save();
@@ -3689,6 +3732,10 @@ function bind() {
         if ("speechSynthesis" in window) {
           try { window.speechSynthesis.cancel(); } catch(err) {}
         }
+        try {
+          const a = getTtsAudioElement();
+          if (a) { a.pause(); a.currentTime = 0; }
+        } catch(err) {}
         toast(isKo ? "🔇 음성 안내가 꺼졌습니다" : "🔇 Voice guidance off");
       }
     };
