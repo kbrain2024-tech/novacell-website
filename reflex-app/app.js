@@ -26,7 +26,7 @@ function openReflexVipModal(featureName) {
   }
   const linkEl = document.getElementById('reflexVipBuyLink');
   if (linkEl) {
-    linkEl.href = en ? 'https://novacell.kr/en/reflex-guide.html' : 'https://novacell.kr/ko/reflex-therapy-guide.html';
+    linkEl.href = en ? 'https://novacell.kr/checkout.html?product=reflex_therapy_1y&lang=en' : 'https://novacell.kr/checkout.html?product=reflex_therapy_1y&lang=ko';
   }
   const priceEl = document.getElementById('reflexVipPrice');
   const termEl = document.getElementById('reflexVipTerm');
