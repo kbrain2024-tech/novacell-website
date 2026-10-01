@@ -2438,7 +2438,7 @@ function programCard(p) {
   const pSummary = en ? (p.summaryEn || p.summary) : p.summary;
   const pCaution = en ? (p.cautionEn || p.caution) : p.caution;
   const isVip = checkReflexVip();
-  const isFreeProgram = (p.systemId === 'urinary' || p.id === 'urinary-foot' || p.id === 'urinary-infection');
+  const isFreeProgram = (p.systemId === 'cardio' || p.systemId === 'digestive');
   const locked = !isVip && !isFreeProgram;
 
   const badgeHtml = locked
@@ -2507,21 +2507,29 @@ function renderPrograms(query = "") {
     grid.hidden = false;
     head.hidden = true;
     list.innerHTML = "";
-    grid.innerHTML = systems.map(s => `
-      <button class="system-card" data-system="${s.id}">
-        <span class="system-no">${s.no}</span>
-        <figure class="system-image">
-          <img src="./assets/${s.image}" alt="${en ? s.en : s.title} ${en ? "anatomy" : "해부학 이미지"}" loading="lazy">
-        </figure>
-        <div class="system-card-copy">
-          <i>${s.icon}</i>
-          <strong>${en ? s.en : s.title}</strong>
-          <small>${en ? s.title : s.en}</small>
-          <p>${en ? (s.summaryEn || s.summary) : s.summary}</p>
-          <b>${en ? `${s.count} programs →` : `${s.count}개 소분류 →`}</b>
-        </div>
-      </button>
-    `).join("");
+    grid.innerHTML = systems.map(s => {
+      const isFree = (s.id === 'cardio' || s.id === 'digestive');
+      const locked = !isVip && !isFree;
+      const badge = locked
+        ? `<span class="sys-status-badge sys-locked">🔒 ${en ? "1-Year Pass VIP" : "1년 패스 VIP 전용"}</span>`
+        : `<span class="sys-status-badge sys-free">🌿 ${en ? "Free Experience" : "무료 체험 가능"}</span>`;
+      return `
+        <button class="system-card ${locked ? "is-vip-system" : "is-free-system"}" data-system="${s.id}">
+          <span class="system-no">${s.no}</span>
+          <figure class="system-image">
+            <img src="./assets/${s.image}" alt="${en ? s.en : s.title} ${en ? "anatomy" : "해부학 이미지"}" loading="lazy">
+          </figure>
+          <div class="system-card-copy">
+            <i>${s.icon}</i>
+            <strong>${en ? s.en : s.title}</strong>
+            <small>${en ? s.title : s.en}</small>
+            ${badge}
+            <p>${en ? (s.summaryEn || s.summary) : s.summary}</p>
+            <b>${en ? `${s.count} programs →` : `${s.count}개 소분류 →`}</b>
+          </div>
+        </button>
+      `;
+    }).join("");
   }
 
   $$("[data-system]").forEach(b => b.onclick = () => {
@@ -2626,7 +2634,7 @@ function startProgram(id) {
   if (!target) return;
 
   const isVip = checkReflexVip();
-  const isFreeProgram = (target.systemId === 'urinary' || target.id === 'urinary-foot' || target.id === 'urinary-infection');
+  const isFreeProgram = (target.systemId === 'cardio' || target.systemId === 'digestive');
   if (!isVip && !isFreeProgram) {
     openReflexVipModal(state.lang === 'en' ? target.en : target.title);
     return;
@@ -3239,6 +3247,26 @@ function renderAcademy() {
   renderQuiz();
   renderPractice();
   renderAcademyDashboard();
+
+  const isAcademyVip = checkReflexVip();
+  const quizTabBtn = $('[data-academy-tab="quiz"]');
+  const practiceTabBtn = $('[data-academy-tab="practice"]');
+  if (quizTabBtn) {
+    const qStrong = quizTabBtn.querySelector("strong");
+    if (qStrong) {
+      qStrong.innerHTML = isAcademyVip
+        ? tr("academyQuiz")
+        : `${tr("academyQuiz")} <span style="font-size:0.72rem;padding:1px 5px;border-radius:4px;background:rgba(245,158,11,0.22);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);margin-left:4px;">🔒 VIP</span>`;
+    }
+  }
+  if (practiceTabBtn) {
+    const pStrong = practiceTabBtn.querySelector("strong");
+    if (pStrong) {
+      pStrong.innerHTML = isAcademyVip
+        ? tr("academyPractice")
+        : `${tr("academyPractice")} <span style="font-size:0.72rem;padding:1px 5px;border-radius:4px;background:rgba(245,158,11,0.22);color:#fbbf24;border:1px solid rgba(245,158,11,0.5);margin-left:4px;">🔒 VIP</span>`;
+    }
+  }
 }
 
 function academyStatsFor(id) {
@@ -3368,6 +3396,10 @@ function renderQuiz() {
 }
 
 function answerQuiz(ok, button) {
+  if (!checkReflexVip()) {
+    openReflexVipModal(state.lang === "en" ? "Academy Image Quiz Evaluation" : "아카데미 그림 퀴즈 평가");
+    return;
+  }
   if (button) {
     $$("[data-quiz-answer]").forEach(x => x.disabled = true);
     button.classList.add(ok ? "correct" : "wrong");
@@ -3497,6 +3529,10 @@ function renderPractice() {
 }
 
 function startPractice() {
+  if (!checkReflexVip()) {
+    openReflexVipModal(state.lang === "en" ? "Academy Location Practical Test" : "아카데미 위치 실기평가");
+    return;
+  }
   state.practiceActive = true;
   state.practiceTime = 60;
   state.practiceStep = 0;
@@ -3557,6 +3593,15 @@ function renderAcademyDashboard() {
 }
 
 function setAcademyTab(tab) {
+  const isVip = checkReflexVip();
+  if ((tab === "quiz" || tab === "practice") && !isVip) {
+    const en = state.lang === "en";
+    const title = tab === "quiz"
+      ? (en ? "Academy Image Quiz Evaluation" : "아카데미 그림 퀴즈 평가")
+      : (en ? "Academy Location Practical Test" : "아카데미 위치 실기평가");
+    openReflexVipModal(title);
+    return;
+  }
   state.academyTab = tab;
   if (tab !== "practice") {
     clearInterval(state.practiceTimer);

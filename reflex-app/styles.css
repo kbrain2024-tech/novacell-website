@@ -1898,6 +1898,34 @@ dialog.fullscreen-map-modal::backdrop {
   font-weight: 800;
   margin-top: 4px;
 }
+.system-card .sys-status-badge {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  margin: 6px 0 8px;
+  letter-spacing: -0.01em;
+}
+.system-card .sys-status-badge.sys-free {
+  background: rgba(74, 222, 128, 0.16);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  color: #86efac;
+}
+.system-card .sys-status-badge.sys-locked {
+  background: rgba(245, 158, 11, 0.16);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+}
+.system-card.is-vip-system {
+  border-color: rgba(245, 158, 11, 0.25);
+}
+.system-card.is-free-system {
+  border-color: rgba(74, 222, 128, 0.25);
+}
 @media (max-width: 520px) {
   .nc-vip-dialog-actions {
     flex-direction: column;
