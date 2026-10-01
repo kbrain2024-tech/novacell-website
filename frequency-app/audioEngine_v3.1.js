@@ -1077,23 +1077,35 @@ class AudioEngine {
       this.natureSources.ambientpad.start();
     }
     
-    // 3-6) 갈매기소리 (기존 스케줄러 자체적으로 볼륨이 0이면 리턴함)
-    this.triggerSeagullLoop();
+    // 3-6) 갈매기소리 (Seagull): 볼륨이 0.01보다 클 때만 가동
+    if (this.natureVolumeSettings && this.natureVolumeSettings.seagull > 0.01) {
+      this.triggerSeagullLoop();
+    }
     
-    // 3-7) 싱잉볼 (기존 스케줄러 자체적으로 볼륨이 0이면 리턴함)
-    this.triggerSingingBowlLoop();
+    // 3-7) 싱잉볼 (Singing Bowl): 볼륨이 0.01보다 클 때만 가동
+    if (this.natureVolumeSettings && this.natureVolumeSettings.singingbowl > 0.01) {
+      this.triggerSingingBowlLoop();
+    }
     
-    // 3-8) 숲 속의 새소리
-    this.triggerForestBirdsLoop();
+    // 3-8) 숲 속의 새소리 (Forest Birds): 볼륨이 0.01보다 클 때만 가동
+    if (this.natureVolumeSettings && this.natureVolumeSettings.forestbirds > 0.01) {
+      this.triggerForestBirdsLoop();
+    }
     
-    // 3-9) 수면 유도 뻐꾸기소리
-    this.triggerCuckooSleepLoop();
+    // 3-9) 수면 유도 뻐꾸기소리 (Cuckoo): 볼륨이 0.01보다 클 때만 가동
+    if (this.natureVolumeSettings && this.natureVolumeSettings.cuckoo > 0.01) {
+      this.triggerCuckooSleepLoop();
+    }
     
-    // 3-10) 밤의 풀벌레소리
-    this.triggerCricketsLoop();
+    // 3-10) 밤의 풀벌레소리 (Crickets): 볼륨이 0.01보다 클 때만 가동
+    if (this.natureVolumeSettings && this.natureVolumeSettings.crickets > 0.01) {
+      this.triggerCricketsLoop();
+    }
     
-    // 3-11) 깊은 산속 새소리 앙상블
-    this.triggerMountainBirdsLoop();
+    // 3-11) 깊은 산속 새소리 앙상블 (Mountain Birds): 볼륨이 0.01보다 클 때만 가동
+    if (this.natureVolumeSettings && this.natureVolumeSettings.mountainbirds > 0.01) {
+      this.triggerMountainBirdsLoop();
+    }
   }
 
   /**
@@ -2273,14 +2285,26 @@ class AudioEngine {
       clearInterval(this.seagullTimer);
       this.seagullTimer = null;
     }
+    const getVol = () => {
+      return (this.natureVolumeSettings && typeof this.natureVolumeSettings.seagull === 'number')
+        ? this.natureVolumeSettings.seagull
+        : (this.natureGains && this.natureGains.seagull && this.natureGains.seagull.gain)
+          ? this.natureGains.seagull.gain.value
+          : 0;
+    };
+    if (getVol() <= 0.01) {
+      return;
+    }
     const playSeagull = () => {
       if (!this.isPlaying || !this.isNatureActive) return;
-      const currentVol = Math.max(
-        (this.natureVolumeSettings && this.natureVolumeSettings.seagull) ? this.natureVolumeSettings.seagull : 0,
-        (this.natureGains && this.natureGains.seagull && this.natureGains.seagull.gain) ? this.natureGains.seagull.gain.value : 0,
-        0.75
-      );
-      if (currentVol <= 0.01) return;
+      const currentVol = getVol();
+      if (currentVol <= 0.01) {
+        if (this.seagullTimer) {
+          clearInterval(this.seagullTimer);
+          this.seagullTimer = null;
+        }
+        return;
+      }
       
       const now = this.audioCtx ? this.audioCtx.currentTime : 0;
       const baseFreq = 820 + Math.random() * 160;
@@ -2313,7 +2337,7 @@ class AudioEngine {
     osc.type = 'triangle';
     
     const volumeNode = this.audioCtx.createGain();
-    const effectiveVol = Math.max(0.45, (volume || 0.75) * 1.4);
+    const effectiveVol = Math.max(0.02, (volume || 0.7) * 1.2);
     volumeNode.gain.setValueAtTime(0.0001, now);
     volumeNode.gain.linearRampToValueAtTime(effectiveVol, now + 0.08); 
     volumeNode.gain.exponentialRampToValueAtTime(0.0001, now + 0.38);
@@ -2325,8 +2349,7 @@ class AudioEngine {
     osc.connect(volumeNode);
     if (this.natureGains && this.natureGains.seagull) {
       volumeNode.connect(this.natureGains.seagull);
-    }
-    if (this.natureMasterGain) {
+    } else if (this.natureMasterGain) {
       volumeNode.connect(this.natureMasterGain);
     }
     
@@ -2414,6 +2437,25 @@ class AudioEngine {
     if (this._forestTimers) {
       this._forestTimers.forEach(t => clearTimeout(t));
       this._forestTimers = [];
+    }
+
+    const getForestVol = () => {
+      return (this.natureVolumeSettings && typeof this.natureVolumeSettings.forestbirds === 'number')
+        ? this.natureVolumeSettings.forestbirds
+        : (this.natureGains && this.natureGains.forestbirds && this.natureGains.forestbirds.gain)
+          ? this.natureGains.forestbirds.gain.value
+          : 0;
+    };
+
+    if (getForestVol() <= 0.01) {
+      if (this._forestBgSource) { try { this._forestBgSource.stop(); } catch(e) {} this._forestBgSource.disconnect(); this._forestBgSource = null; }
+      if (this._forestBgLfo) { try { this._forestBgLfo.stop(); } catch(e) {} this._forestBgLfo.disconnect(); this._forestBgLfo = null; }
+      if (this._forestBgGain) { this._forestBgGain.disconnect(); this._forestBgGain = null; }
+      if (this._forestBgBpf) { this._forestBgBpf.disconnect(); this._forestBgBpf = null; }
+      if (this._forestStreamSource) { try { this._forestStreamSource.stop(); } catch(e) {} this._forestStreamSource.disconnect(); this._forestStreamSource = null; }
+      if (this._forestStreamGain) { this._forestStreamGain.disconnect(); this._forestStreamGain = null; }
+      if (this._forestStreamBpf) { this._forestStreamBpf.disconnect(); this._forestStreamBpf = null; }
+      return;
     }
     
     // ── 숲 잔향 리버브 (딜레이 + 피드백) ──
@@ -2505,11 +2547,7 @@ class AudioEngine {
     
     // ── 배음 포함 새소리 합성 헬퍼 ──
     const playTone = (startTime, duration, freqStart, freqEnd, pan, volScale, attackRatio = 0.15) => {
-      const currentVol = Math.max(
-        (this.natureVolumeSettings && this.natureVolumeSettings.forestbirds) ? this.natureVolumeSettings.forestbirds : 0,
-        (this.natureGains && this.natureGains.forestbirds && this.natureGains.forestbirds.gain) ? this.natureGains.forestbirds.gain.value : 0,
-        0.70
-      );
+      const currentVol = getForestVol();
       if (currentVol <= 0.01) return;
       
       const osc = this.audioCtx.createOscillator();
@@ -2545,8 +2583,7 @@ class AudioEngine {
       panner.connect(vol);
       if (this.natureGains && this.natureGains.forestbirds) {
         vol.connect(this.natureGains.forestbirds);
-      }
-      if (this.natureMasterGain) {
+      } else if (this.natureMasterGain) {
         vol.connect(this.natureMasterGain);
       }
       
@@ -2647,8 +2684,7 @@ class AudioEngine {
         panner.connect(vol);
       if (this.natureGains && this.natureGains.forestbirds) {
         vol.connect(this.natureGains.forestbirds);
-      }
-      if (this.natureMasterGain) {
+      } else if (this.natureMasterGain) {
         vol.connect(this.natureMasterGain);
       }
         
@@ -4345,7 +4381,7 @@ class AudioEngine {
       }
       // 갈매기 타이머 정리
       if (key === 'seagull') {
-        if (this.seagullTimer) { clearTimeout(this.seagullTimer); this.seagullTimer = null; }
+        if (this.seagullTimer) { clearInterval(this.seagullTimer); this.seagullTimer = null; }
       }
     }
   }
@@ -5044,6 +5080,58 @@ class AudioEngine {
    */
   getRifeFadeInTime(freq, isLowToAudible) {
     return 2.5;
+  }
+
+  /**
+   * [신규] 숲속 새소리 1회성 즉시 피드백 재생 API (선택 시 0초 피드백용)
+   */
+  playForestBirdsOnce(volume = 0.75) {
+    if (!this.audioCtx) return;
+    if (this.audioCtx.state === 'suspended') {
+      try { this.audioCtx.resume(); } catch(e) {}
+    }
+    const now = this.audioCtx.currentTime;
+    const osc = this.audioCtx.createOscillator();
+    osc.type = 'sine';
+    const gain = this.audioCtx.createGain();
+    const effVol = Math.max(0.05, volume * 0.45);
+    gain.gain.setValueAtTime(0, now);
+    gain.gain.linearRampToValueAtTime(effVol, now + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+    osc.frequency.setValueAtTime(3200, now);
+    osc.frequency.exponentialRampToValueAtTime(3700, now + 0.06);
+    osc.frequency.exponentialRampToValueAtTime(2900, now + 0.16);
+    osc.connect(gain);
+    if (this.natureGains && this.natureGains.forestbirds) {
+      gain.connect(this.natureGains.forestbirds);
+    } else if (this.natureMasterGain) {
+      gain.connect(this.natureMasterGain);
+    }
+    osc.start(now);
+    osc.stop(now + 0.17);
+
+    const now2 = now + 0.18;
+    const osc2 = this.audioCtx.createOscillator();
+    osc2.type = 'sine';
+    const gain2 = this.audioCtx.createGain();
+    gain2.gain.setValueAtTime(0, now2);
+    gain2.gain.linearRampToValueAtTime(effVol * 0.85, now2 + 0.02);
+    gain2.gain.exponentialRampToValueAtTime(0.001, now2 + 0.22);
+    osc2.frequency.setValueAtTime(2800, now2);
+    osc2.frequency.exponentialRampToValueAtTime(3400, now2 + 0.09);
+    osc2.frequency.exponentialRampToValueAtTime(2600, now2 + 0.22);
+    osc2.connect(gain2);
+    if (this.natureGains && this.natureGains.forestbirds) {
+      gain2.connect(this.natureGains.forestbirds);
+    } else if (this.natureMasterGain) {
+      gain2.connect(this.natureMasterGain);
+    }
+    osc2.start(now2);
+    osc2.stop(now2 + 0.23);
+
+    setTimeout(() => {
+      try { osc.disconnect(); gain.disconnect(); osc2.disconnect(); gain2.disconnect(); } catch(e) {}
+    }, 500);
   }
 
   /**

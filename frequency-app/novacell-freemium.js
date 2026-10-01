@@ -1160,6 +1160,7 @@
     window.currentAmbientType = ambientType;
     const eng = window.engine;
     if (!eng) return;
+    const isEn = window.currentLang === 'en';
 
     // 1) 칩 UI active 상태 동기화
     document.querySelectorAll('.ambient-chip').forEach(chip => {
@@ -1169,21 +1170,29 @@
     // 2) 하단 고정 바 텍스트 동기화
     const stickyAmbientText = document.getElementById('sticky-ambient-text');
     const labelMap = {
-      preset: '🌿 맞춤음',
-      rain: '🌧️ 빗소리',
-      stream: '🌲 계곡물',
-      waves: '🌊 파도소리',
-      campfire: '🔥 모닥불',
-      singingbowl: '🥣 싱잉볼',
-      forestbirds: '🌲 숲속 새소리',
-      seagull: '🕊️ 바다 갈매기',
-      off: '🔇 끔'
+      preset: isEn ? '🌿 Preset' : '🌿 맞춤음',
+      rain: isEn ? '🌧️ Rain' : '🌧️ 빗소리',
+      stream: isEn ? '💧 Stream' : '💧 계곡물',
+      waves: isEn ? '🌊 Ocean Waves' : '🌊 파도소리',
+      campfire: isEn ? '🔥 Campfire' : '🔥 모닥불',
+      singingbowl: isEn ? '🥣 Singing Bowl' : '🥣 싱잉볼',
+      forestbirds: isEn ? '🌲 Forest Birds' : '🌲 숲속 새소리',
+      seagull: isEn ? '🕊️ Ocean Seagulls' : '🕊️ 바다 갈매기',
+      off: isEn ? '🔇 Off' : '🔇 끔'
     };
     if (stickyAmbientText) {
-      stickyAmbientText.textContent = labelMap[ambientType] || '🌿 배경음';
+      stickyAmbientText.textContent = labelMap[ambientType] || (isEn ? '🌿 Ambient' : '🌿 배경음');
     }
 
-    // 3) 먼저 기존의 모든 자연음 볼륨을 0으로 소거
+    // 3) 먼저 기존의 모든 자연음 볼륨을 0으로 소거 및 활성 타이머 리셋
+    if (eng.seagullTimer) { clearInterval(eng.seagullTimer); eng.seagullTimer = null; }
+    if (eng.forestBirdsTimer) { clearInterval(eng.forestBirdsTimer); eng.forestBirdsTimer = null; }
+    if (eng._forestTimers) { eng._forestTimers.forEach(t => clearTimeout(t)); eng._forestTimers = []; }
+    if (eng.singingBowlTimer) { clearInterval(eng.singingBowlTimer); eng.singingBowlTimer = null; }
+    if (eng.mountainBirdsTimer) { clearTimeout(eng.mountainBirdsTimer); eng.mountainBirdsTimer = null; }
+    if (eng.cricketsTimer) { clearInterval(eng.cricketsTimer); eng.cricketsTimer = null; }
+    if (eng.cuckooTimer) { clearInterval(eng.cuckooTimer); eng.cuckooTimer = null; }
+
     if (eng.natureVolumeSettings) {
       Object.keys(eng.natureVolumeSettings).forEach(k => {
         eng.setNatureVolume(k, 0);
@@ -1196,7 +1205,7 @@
 
     if (ambientType === 'off') {
       eng.isNatureActive = false;
-      showToast('🔇 배경 자연음이 음소거되었습니다. (순수 주파수 전용 청취)');
+      showToast(isEn ? '🔇 Ambient nature sound muted (Pure frequency mode).' : '🔇 배경 자연음이 음소거되었습니다. (순수 주파수 전용 청취)');
       return;
     }
 
@@ -1212,27 +1221,27 @@
       const activeKey = window.NovaCellStudio.activePresetKey || 'cosmos-harmony';
       const preset = window.NovaCellStudio.presets[activeKey];
       targetNature = (preset && preset.nature) ? preset.nature : { singingbowl: 0.35, stream: 0.25 };
-      showToast(`🌿 프리셋 권장 자연음(${preset ? preset.name : '맞춤음'})으로 전환되었습니다.`);
+      showToast(isEn ? `🌿 Switched to preset ambient (${preset ? preset.name : 'Custom'}).` : `🌿 프리셋 권장 자연음(${preset ? preset.name : '맞춤음'})으로 전환되었습니다.`);
     } else if (ambientType === 'rain') {
-      targetNature = { rain: 0.50 };
-      showToast('🌧️ 마음을 적시는 자연 빗소리 배경음이 적용되었습니다.');
+      targetNature = { rain: 0.55 };
+      showToast(isEn ? '🌧️ Natural rain ambient sound applied.' : '🌧️ 마음을 적시는 자연 빗소리 배경음이 적용되었습니다.');
     } else if (ambientType === 'stream') {
-      targetNature = { stream: 0.50 };
-      showToast('🌲 머리를 맑게 씻어주는 청량한 계곡물 배경음이 적용되었습니다.');
+      targetNature = { stream: 0.55 };
+      showToast(isEn ? '💧 Crystal stream ambient sound applied.' : '💧 머리를 맑게 씻어주는 청량한 계곡물 배경음이 적용되었습니다.');
     } else if (ambientType === 'waves') {
       targetNature = { waves: 0.55 };
-      showToast('🌊 긴장을 내려놓는 동해 파도소리 배경음이 적용되었습니다.');
+      showToast(isEn ? '🌊 East Sea ocean waves ambient sound applied.' : '🌊 긴장을 내려놓는 동해 파도소리 배경음이 적용되었습니다.');
     } else if (ambientType === 'campfire') {
-      targetNature = { campfire: 0.50 };
-      showToast('🔥 따스한 모닥불 장작소리 배경음이 적용되었습니다.');
+      targetNature = { campfire: 0.55 };
+      showToast(isEn ? '🔥 Warm campfire ambient sound applied.' : '🔥 따스한 모닥불 장작소리 배경음이 적용되었습니다.');
     } else if (ambientType === 'singingbowl') {
-      targetNature = { singingbowl: 0.45 };
-      showToast('🥣 뇌파를 깊이 이완시키는 티벳 싱잉볼 배경음이 적용되었습니다.');
+      targetNature = { singingbowl: 0.50 };
+      showToast(isEn ? '🥣 Tibetan singing bowl ambient sound applied.' : '🥣 뇌파를 깊이 이완시키는 힐링 싱잉볼 배경음이 적용되었습니다.');
     } else if (ambientType === 'forestbirds') {
-      targetNature = { forestbirds: 0.65, stream: 0.25 };
+      targetNature = { forestbirds: 0.70 };
       showToast(isEn ? '🌲 Morning forest birds ambient sound applied.' : '🌲 상쾌한 아침을 깨우는 숲속 새소리 배경음이 적용되었습니다.');
     } else if (ambientType === 'seagull') {
-      targetNature = { seagull: 0.70, waves: 0.45 };
+      targetNature = { seagull: 0.70, waves: 0.40 };
       showToast(isEn ? '🕊️ Ocean Waves & Seagulls soundscape applied.' : '🕊️ 시원한 바다 파도와 갈매기소리 배경음이 적용되었습니다.');
     }
 
@@ -1277,7 +1286,6 @@
       eng.startNatureMixer();
 
       // 재생 버튼 UI 상태 즉시 활성화 동기화
-      const isEn = window.currentLang === 'en';
       const stickyPlayBtn = document.getElementById('sticky-play-btn');
       if (stickyPlayBtn) {
         stickyPlayBtn.innerHTML = '<i class="ri-pause-fill"></i>';
