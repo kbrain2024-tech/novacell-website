@@ -51,17 +51,17 @@
       gateTitle1: 'NovaCell',
       gateTitle2: 'Sound Studio',
       gateSlogan: 'Bio-Voltage & Acoustic Frequency Resonance System',
-      gateDesc: '박창혁 박사의 <strong>세포 전압(-50mV) 치유 원리</strong>를 기반으로 <strong>100대 전신 생체 공명 주파수(Rife &amp; Solfeggio)</strong>와 <strong>VIP 임상 웰니스 코드</strong>, <strong>7색 차크라 바이오 호흡 동기화</strong>를 통합한 차세대 음향 바이오테라피 시스템입니다.',
-      gateFeat1Title: '100대 생체 힐링 코드',
+      gateDesc: '박창혁 박사의 <strong>세포 전압(-50mV) 치유 원리</strong>를 기반으로 <strong>100가지 전신 생체 공명 주파수(Rife &amp; Solfeggio)</strong>와 <strong>VIP 임상 웰니스 코드</strong>, <strong>7색 차크라 바이오 호흡 동기화</strong>를 통합한 차세대 음향 바이오테라피 시스템입니다.',
+      gateFeat1Title: '100개 생체 힐링 코드',
       gateFeat1Desc: '세포 전위 정상화 & 100종 주파수',
       gateFeat2Title: 'VIP 임상 웰니스',
-      gateFeat2Desc: '90대 질환·증상별 듀얼 레시피',
+      gateFeat2Desc: '90개 질환·증상별 듀얼 레시피',
       gateFeat3Title: '7색 호흡 테라피',
       gateFeat3Desc: '4-2-6-2 리듬 & 솔페지오 공명',
       gateFeat4Title: '프로 사운드 스튜디오',
       gateFeat4Desc: '양이 비트·주파수 조율 생성기',
       gateEnterBtn: 'NovaCell 사운드 스튜디오 시작하기',
-      gateSubHint: '클릭하시면 100대 생체 주파수 및 7색 바이오 호흡 테라피 스튜디오로 즉시 입장합니다',
+      gateSubHint: '클릭하시면 100개 생체 주파수 및 7색 바이오 호흡 테라피 스튜디오로 즉시 입장합니다',
       gateCloseQuickTitle: '대문 닫기 (스튜디오 바로 시작하기)',
       gateHeroAlt: 'NovaCell Sound Studio AI 모델',
 
@@ -158,7 +158,7 @@
       // Tab 2: NovaCell 100 힐링 코드
       rifeHeroBadge: '100가지 전신 생체 주파수 매트릭스',
       rifeHeroTitle: 'NovaCell 100 생체 에너지 힐링 코드',
-      rifeHeroDesc: '박창혁 박사의 세포 전압(-50mV) 원리를 기반으로 일상 속 긴장 해소, 깊은 숙면, 만성 피로, 소화 대사, 뇌 인지 기능을 조율하는 100대 전신 생체 공명 주파수를 한눈에 탐색하고 원클릭으로 청취하세요.',
+      rifeHeroDesc: '박창혁 박사의 세포 전압(-50mV) 원리를 기반으로 일상 속 긴장 해소, 깊은 숙면, 만성 피로, 소화 대사, 뇌 인지 기능을 조율하는 100가지 전신 생체 공명 주파수를 한눈에 탐색하고 원클릭으로 청취하세요.',
       rifeHeroStatus: '현재 선택된 주파수 코드',
       rifeHeroPlay: '재생 / 정지',
       rifeSearchPlaceholder: '100개 코드 번호, 웰니스 테마 또는 증상 검색 (예: 001, 수면, 피로, 두뇌, 528, 자율신경)',
@@ -177,7 +177,7 @@
 
       // Tab 3: VIP 임상 웰니스 코드
       vipHeroBadge: 'VIP 정회원 전용 임상 라이브러리',
-      vipSubSeries: 'V01 ~ V090 전편 수록 (총 90대 임상 코드)',
+      vipSubSeries: 'V01 ~ V090 전편 수록 (총 90개 임상 코드)',
       vipHeroTitle: 'NovaCell VIP 임상 웰니스 코드',
       vipHeroDesc: '박창혁 박사의 양자물리학 및 세포 전압(-50mV) 원리를 기반으로 순환기, 뇌신경, 근골격, 호흡기, 소화대사, 종양 타겟 등 90여 개 질환 및 증상별 최적화된 공명 주파수를 한눈에 분별하여 선택하세요.',
       vipHeroStatus: '현재 선택된 VIP 임상 코드',
@@ -243,7 +243,7 @@
 
       // Tab 5: 프로 스튜디오 헤더 & 공통
       studioHeaderTitle: 'NovaCell Pro Bio-Frequency Studio',
-      studioHeaderSub: '100대 Rife 생체 공명 주파수, VIP 웰니스 코드 V001~V082, 12종 빗소리 믹서 및 무손실 음원 내보내기',
+      studioHeaderSub: '100개 Rife 생체 공명 주파수, VIP 웰니스 코드 V001~V082, 12종 빗소리 믹서 및 무손실 음원 내보내기',
       studioMasterVol: '마스터 볼륨 (전체 통제)',
 
       // Tab 5: 3) Rife Section
@@ -464,7 +464,7 @@
       // VIP 모달
       vipModalTitle: 'NovaCell 정회원 전용 기능',
       vipModalFeature: 'NovaCell Bio-Frequency VIP 이용권이 필요합니다.',
-      vipBenefit1: '<strong>100대 Rife 생체 공명 주파수</strong> 및 세포 전압(-50mV) 복원 프로토콜 무제한 이용',
+      vipBenefit1: '<strong>100개 Rife 생체 공명 주파수</strong> 및 세포 전압(-50mV) 복원 프로토콜 무제한 이용',
       vipBenefit2: '<strong>VIP 임상 웰니스 코드 V001~V082</strong> 전편 즉시 잠금 해제',
       vipBenefit3: '<strong>12종 고음질 자연음 & 멀티 트랙 믹서</strong> 자유 조율',
       vipBenefit4: '<strong>유튜브 힐링 BGM / 무손실 WAV 음원</strong> 무제한 내보내기 & 다운로드',
@@ -472,7 +472,7 @@
       vipPassBtn: 'NovaCell 이용권 가입 및 안내 보기',
       vipPhone: '전화 상담: 010-9726-7012',
       vipClose: '체험 모드로 계속하기',
-      vipPriceSub: '100대 Rife 주파수 · VIP 임상코드 · 고음질 음원 무제한 다운로드',
+      vipPriceSub: '100개 Rife 주파수 · VIP 임상코드 · 고음질 음원 무제한 다운로드',
       vipPriceAmount: '330,000원',
       vipPriceTerm: '/ 1년 무제한 이용 (US $300)',
       vipPassBtn: '1년 정기 패스 가입 (33만원 / $300)',
@@ -978,7 +978,7 @@
     }
   };
 
-  // 2. VIP 90대 임상 코드 영문 질환명 매핑
+  // 2. VIP 90개 임상 코드 영문 질환명 매핑
   const VIP_TITLES_EN = {
     'V001': 'Breast Cancer Protocol',
     'V002': 'Bladder Cancer (Transitional Cell)',
@@ -1072,7 +1072,7 @@
     'V090': 'Whole-Body Energy Field Alignment'
   };
 
-  // 2.1. VIP 90대 임상 코드 영문 상세 설명 매핑
+  // 2.1. VIP 90개 임상 코드 영문 상세 설명 매핑
   const VIP_DESCS_EN = {
     'V001': 'Inhibition of breast cancer cell proliferation, breakdown of tumor nodules, lymph circulation and systemic toxin elimination.',
     'V002': 'Suppression of bladder mucosal tumors, soothing of chronic urinary tract inflammation, and relief from painful urination.',

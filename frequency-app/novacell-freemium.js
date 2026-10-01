@@ -1451,7 +1451,7 @@
   // 15. VIP 버튼 인터셉터 설정 (체험 모드일 때만 안내 모달 표시)
   function setupVipInterceptors() {
     const vipTargets = [
-      { id: 'btn-rife-play', name: 'Rife 100대 생체 공명 주파수' },
+      { id: 'btn-rife-play', name: 'Rife 100개 생체 공명 주파수' },
       { id: 'btn-vip-play', name: '솔라브르 VIP 임상 웰니스 코드' },
       { id: 'btn-custom-play', name: '나만의 주파수 음원 생성기' },
       { id: 'btn-export-audio', name: '유튜브 무손실 WAV 음원 내보내기' },
