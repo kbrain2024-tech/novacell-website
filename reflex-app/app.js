@@ -1291,9 +1291,9 @@ if ("speechSynthesis" in window) {
 }
 
 // ==========================================================================
-// [스마트폰 100% 발성 보장] 하이브리드 듀얼 보이스 엔진 (클라우드 오디오 + 네이티브 TTS 폴백)
-// 스마트폰(카카오톡/네이버 인앱브라우저, 아이폰 사파리 무음 스위치, 안드로이드 TTS 미설치 기기)에서도
-// 고품질 오디오 스트림을 통해 100% 선명하고 자연스러운 음성을 발성합니다.
+// [스마트폰 100% 발성 보장] 네이티브 Web Speech + 클라우드 오디오 하이브리드 엔진
+// 스마트폰(iOS 사파리, 안드로이드 크롬, 삼성 인터넷, 인앱브라우저)에서
+// 100% 선명하고 자연스러운 음성을 발성하며 치유음 재생 중 음성 덕킹(Ducking)을 지원합니다.
 // ==========================================================================
 let _ttsAudioEl = null;
 
@@ -1304,9 +1304,15 @@ function getTtsAudioElement() {
       _ttsAudioEl = new Audio();
       _ttsAudioEl.id = "ttsAudio";
       _ttsAudioEl.setAttribute("playsinline", "true");
+      _ttsAudioEl.setAttribute("referrerpolicy", "no-referrer");
+      _ttsAudioEl.referrerPolicy = "no-referrer";
       _ttsAudioEl.preload = "auto";
       document.body.appendChild(_ttsAudioEl);
     }
+  }
+  if (_ttsAudioEl) {
+    _ttsAudioEl.setAttribute("referrerpolicy", "no-referrer");
+    _ttsAudioEl.referrerPolicy = "no-referrer";
   }
   return _ttsAudioEl;
 }
@@ -1327,87 +1333,38 @@ function unlockTtsAudio() {
   }
 }
 
-// 스마트폰 OS별 최적 음성 매칭 (로컬 폴백용)
-function getBestVoice(targetLang) {
-  if (!("speechSynthesis" in window)) return null;
-  let voices = _ttsVoices;
-  if (!voices || !voices.length) {
-    voices = loadTtsVoices();
-  }
-  if (!voices || !voices.length) return null;
-
-  const isEn = targetLang === "en";
-  const prefix = isEn ? "en" : "ko";
-
-  // 1. 해당 언어의 시스템 기본 음성 우선 (가장 안정적이며 무음 버그 없음)
-  const defaultVoice = voices.find(v => 
-    v.default && v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(prefix)
-  );
-  if (defaultVoice) return defaultVoice;
-
-  // 2. 기기 로컬 내장 음성 (localService: true - 오프라인 발성 100% 보장)
-  const localVoice = voices.find(v => 
-    v.localService && v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(prefix)
-  );
-  if (localVoice) return localVoice;
-
-  // 3. 고품질 이름 매칭
-  const priority = isEn 
-    ? ["Google US English", "Samsung English", "Samantha", "Karen", "Daniel", "en-US", "en_US", "en-GB"]
-    : ["Google 한국어", "Samsung 한국어", "Yuna", "Sora", "ko-KR", "ko_KR", "ko"];
-  for (const name of priority) {
-    const match = voices.find(v => 
-      (v.name && v.name.toLowerCase().includes(name.toLowerCase())) ||
-      (v.lang && v.lang.toLowerCase().replace('_', '-') === name.toLowerCase())
-    );
-    if (match) return match;
-  }
-
-  // 4. 언어 코드가 일치하는 모든 음성
-  const anyVoice = voices.find(v => v.lang && v.lang.toLowerCase().replace('_', '-').startsWith(prefix));
-  if (anyVoice) return anyVoice;
-
-  return null;
+// 음성 발성 시 배경 치유 주파수(528Hz) 자동 감쇄(Ducking) 처리
+function duckHealingSound(isDucking) {
+  try {
+    if (timerGainNode && audioContext) {
+      const now = audioContext.currentTime;
+      const vol = Math.max(0.05, Math.min(1, state.masterVolume || 0.7));
+      const targetVol = isDucking ? 0.025 : (0.20 * vol);
+      timerGainNode.gain.cancelScheduledValues(now);
+      timerGainNode.gain.linearRampToValueAtTime(targetVol, now + 0.12);
+    }
+  } catch (e) {}
 }
 
-function fallbackNativeSpeech(text, isEn) {
-  if (!("speechSynthesis" in window)) return;
+function speakWithAudio(cleanText, tl) {
   try {
-    try { window.speechSynthesis.resume(); } catch(e) {}
-    if (window.speechSynthesis.speaking) {
-      try { window.speechSynthesis.cancel(); } catch(e) {}
-    }
-
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = isEn ? "en-US" : "ko-KR";
-    const bestVoice = getBestVoice(state.lang);
-    if (bestVoice) u.voice = bestVoice;
-    u.rate = 1.0;
-    u.pitch = 1.0;
-    u.volume = 1.0;
-
-    _activeUtterance = u;
-    u.onend = () => { if (_activeUtterance === u) _activeUtterance = null; };
-    u.onerror = (e) => {
-      console.warn("Native TTS error:", e);
-      if (_activeUtterance === u) _activeUtterance = null;
-      if (u.voice) {
-        try {
-          const fallbackU = new SpeechSynthesisUtterance(text);
-          fallbackU.lang = isEn ? "en-US" : "ko-KR";
-          fallbackU.rate = 1.0;
-          fallbackU.pitch = 1.0;
-          fallbackU.volume = 1.0;
-          _activeUtterance = fallbackU;
-          window.speechSynthesis.speak(fallbackU);
-        } catch(err) {}
+    const audio = getTtsAudioElement();
+    if (audio) {
+      duckHealingSound(true);
+      try { audio.pause(); audio.currentTime = 0; } catch(e) {}
+      audio.setAttribute("referrerpolicy", "no-referrer");
+      audio.referrerPolicy = "no-referrer";
+      audio.src = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${encodeURIComponent(cleanText)}`;
+      audio.volume = 1.0;
+      audio.onended = () => { duckHealingSound(false); };
+      audio.onerror = () => { duckHealingSound(false); };
+      const p = audio.play();
+      if (p && typeof p.catch === "function") {
+        p.catch(() => { duckHealingSound(false); });
       }
-    };
-
-    window.speechSynthesis.speak(u);
-    try { window.speechSynthesis.resume(); } catch(e) {}
+    }
   } catch(e) {
-    console.warn("fallbackNativeSpeech exception:", e);
+    duckHealingSound(false);
   }
 }
 
@@ -1420,32 +1377,52 @@ function speak(text) {
   const cleanText = text.replace(/·/g, " ").replace(/\s+/g, " ").trim();
   if (!cleanText) return;
 
-  // 1. 하이브리드 1순위: 클라우드 오디오 스트리밍 (스마트폰 카카오톡/네이버/사파리/크롬 100% 발성)
-  try {
-    const audio = getTtsAudioElement();
-    if (audio) {
-      try { audio.pause(); audio.currentTime = 0; } catch(e) {}
+  // 1. 하이브리드 1순위: 네이티브 브라우저 SpeechSynthesis (지연시간 0ms, 완벽한 오프라인 시스템 음성)
+  if ("speechSynthesis" in window) {
+    try {
+      try { window.speechSynthesis.resume(); } catch(e) {}
 
-      const enc = encodeURIComponent(cleanText);
-      const audioUrl = `https://translate.google.com/translate_tts?ie=UTF-8&tl=${tl}&client=tw-ob&q=${enc}`;
-      audio.src = audioUrl;
-      audio.volume = 1.0;
+      const u = new SpeechSynthesisUtterance(cleanText);
+      u.lang = isEn ? "en-US" : "ko-KR";
+      u.rate = isEn ? 0.95 : 0.92;
+      u.pitch = 1.0;
+      u.volume = 1.0;
 
-      const playPromise = audio.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch((err) => {
-          console.warn("Audio play prevented or failed, using native speech fallback:", err);
-          fallbackNativeSpeech(cleanText, isEn);
-        });
-      }
+      let didStart = false;
+      u.onstart = () => {
+        didStart = true;
+        duckHealingSound(true);
+      };
+      u.onend = () => {
+        duckHealingSound(false);
+        if (_activeUtterance === u) _activeUtterance = null;
+      };
+      u.onerror = (e) => {
+        duckHealingSound(false);
+        if (_activeUtterance === u) _activeUtterance = null;
+        console.warn("SpeechSynthesis error, trying Audio TTS fallback:", e);
+        speakWithAudio(cleanText, tl);
+      };
+
+      _activeUtterance = u;
+      window._activeUtterance = u; // 모바일 Safari 가비지 컬렉션 차단
+      window.speechSynthesis.speak(u);
+
+      // 모바일 기기에서 350ms 동안 음성 합성이 개시되지 않으면 오디오 스트림 폴백 실행
+      setTimeout(() => {
+        if (!didStart && !window.speechSynthesis.speaking) {
+          speakWithAudio(cleanText, tl);
+        }
+      }, 350);
+
       return;
+    } catch(err) {
+      console.warn("Native TTS exception, trying Audio TTS fallback:", err);
     }
-  } catch(e) {
-    console.warn("Audio TTS error:", e);
   }
 
-  // 2. 하이브리드 2순위: 네이티브 브라우저 SpeechSynthesis (오프라인 폴백)
-  fallbackNativeSpeech(cleanText, isEn);
+  // 2. 하이브리드 2순위: 클라우드 오디오 스트리밍 폴백 (TTS 미지원 웹뷰 및 오류 환경)
+  speakWithAudio(cleanText, tl);
 }
 
 function forceSpeakCurrentPoint() {
@@ -3596,6 +3573,11 @@ function setAcademyTab(tab) {
 // ==========================================================================
 function bind() {
   const closeWelcome = () => {
+    try {
+      sessionStorage.setItem("novacell_reflex_gate_dismissed", "1");
+      localStorage.setItem("novacell_reflex_gate_dismissed", "1");
+    } catch(e) {}
+    document.documentElement.classList.add("gate-dismissed-state");
     if (typeof window.dismissWelcomeGate === "function") {
       window.dismissWelcomeGate();
       return;
@@ -3612,6 +3594,11 @@ function bind() {
   };
 
   const openWelcome = () => {
+    try {
+      sessionStorage.removeItem("novacell_reflex_gate_dismissed");
+      localStorage.removeItem("novacell_reflex_gate_dismissed");
+    } catch(e) {}
+    document.documentElement.classList.remove("gate-dismissed-state");
     if (typeof window.revealWelcomeGate === "function") {
       window.revealWelcomeGate();
       return;
@@ -3971,35 +3958,32 @@ function bind() {
 // ==========================================================================
 // App Initialization
 // ==========================================================================
-document.body.classList.add("welcome-open");
+const isGateDismissed = (() => {
+  try {
+    return sessionStorage.getItem("novacell_reflex_gate_dismissed") === "1" ||
+           localStorage.getItem("novacell_reflex_gate_dismissed") === "1";
+  } catch(e) { return false; }
+})();
+
+if (!isGateDismissed) {
+  document.body.classList.add("welcome-open");
+} else {
+  document.documentElement.classList.add("gate-dismissed-state");
+  const gateEl = document.getElementById("welcomeGate");
+  if (gateEl) {
+    gateEl.style.display = "none";
+    gateEl.hidden = true;
+    gateEl.classList.add("hidden");
+  }
+}
 load();
 bind();
 applyLanguage();
 $$("[data-mode]").forEach(b => b.classList.toggle("active", b.dataset.mode === state.mode));
 
 if ("serviceWorker" in navigator) {
-  let refreshing = false;
-  navigator.serviceWorker.addEventListener("controllerchange", () => {
-    if (!refreshing) {
-      refreshing = true;
-      window.location.reload();
-    }
-  });
   navigator.serviceWorker.register("./service-worker.js").then(reg => {
     try { reg.update(); } catch (e) {}
-    reg.onupdatefound = () => {
-      const installing = reg.installing;
-      if (installing) {
-        installing.onstatechange = () => {
-          if (installing.state === "installed" && navigator.serviceWorker.controller) {
-            if (!refreshing) {
-              refreshing = true;
-              window.location.reload();
-            }
-          }
-        };
-      }
-    };
   }).catch(() => {});
 }
 

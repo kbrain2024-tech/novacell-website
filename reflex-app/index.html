@@ -7,17 +7,31 @@
   <meta name="description" content="교재 기반 손·발 반사구 지도, 프로그램, 528Hz 치유 타이머, 기록과 백업을 제공하는 NovaCell Reflex Therapy APP">
   <title>NovaCell Reflex Therapy APP | 손·발 반사요법 가이드</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071426'/%3E%3Ccircle cx='32' cy='32' r='21' fill='none' stroke='%2355dbe8' stroke-width='4'/%3E%3Cpath d='M32 13l4 13 13 6-13 5-4 14-5-14-12-5 12-6z' fill='%23e7b85a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="./styles.css?v=49">
+  <link rel="stylesheet" href="./styles.css?v=50">
   <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer-when-downgrade">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>
     body.novacell-access-blocked:not(.novacell-access-freemium)>*:not(#novacellAccessGate){visibility:hidden!important}
     #novacellAccessGate{display:none;}
     body.novacell-access-blocked:not(.novacell-access-freemium) #novacellAccessGate{display:grid!important;visibility:visible!important}
     .welcome-gate[hidden],.welcome-gate.hidden{display:none!important}
+    html.gate-dismissed-state #welcomeGate{display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+    html.gate-dismissed-state body.welcome-open{overflow:auto!important}
   </style>
   <script>
+    try {
+      if (sessionStorage.getItem("novacell_reflex_gate_dismissed") === "1" ||
+          localStorage.getItem("novacell_reflex_gate_dismissed") === "1") {
+        document.documentElement.classList.add("gate-dismissed-state");
+      }
+    } catch(e) {}
     function dismissWelcomeGate() {
+      try {
+        sessionStorage.setItem("novacell_reflex_gate_dismissed", "1");
+        localStorage.setItem("novacell_reflex_gate_dismissed", "1");
+      } catch(e) {}
+      document.documentElement.classList.add("gate-dismissed-state");
       var g = document.getElementById("welcomeGate");
       if (g) {
         g.classList.add("closing");
@@ -30,6 +44,11 @@
       }
     }
     function revealWelcomeGate() {
+      try {
+        sessionStorage.removeItem("novacell_reflex_gate_dismissed");
+        localStorage.removeItem("novacell_reflex_gate_dismissed");
+      } catch(e) {}
+      document.documentElement.classList.remove("gate-dismissed-state");
       var g = document.getElementById("welcomeGate");
       if (g) {
         g.style.display = "";
@@ -53,7 +72,7 @@
         <div class="welcome-signal"><i></i> BOOK-BASED REFLEX MAP</div>
       </div>
       <div class="welcome-content">
-        <button class="welcome-close" id="welcomeClose" aria-label="대문 닫기" onclick="dismissWelcomeGate()">×</button>
+        <button type="button" class="welcome-close" id="welcomeClose" aria-label="대문 닫기" onclick="dismissWelcomeGate()">×</button>
         <!-- [핫픽스] 대문 모달 상단 한글 / English 즉시 전환 스위처 -->
         <div class="welcome-gate-lang" style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
           <button type="button" id="gateLangKo" class="gate-lang-btn active" onclick="if(window.setLanguage)window.setLanguage('ko');" style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:999px;border:1.5px solid #38bdf8;background:rgba(56,189,248,0.22);color:#38bdf8;font-size:12.5px;font-weight:800;cursor:pointer;transition:all 0.2s ease;">
@@ -73,7 +92,7 @@
           <div><b>⏱</b><span><strong data-i18n="feat3Title">528Hz 치유 타이머</strong><small data-i18n="feat3Sub">차임벨 &amp; 음성 안내</small></span></div>
           <div><b>🎓</b><span><strong data-i18n="feat4Title">NovaCell Academy</strong><small data-i18n="feat4Sub">학습·퀴즈·실기평가</small></span></div>
         </div>
-        <button class="welcome-start" id="welcomeStart" onclick="dismissWelcomeGate()"><span data-i18n="welcomeStartBtn">NovaCell 반사요법 가이드 시작하기</span> <span>→</span></button>
+        <button type="button" class="welcome-start" id="welcomeStart" onclick="dismissWelcomeGate()"><span data-i18n="welcomeStartBtn">NovaCell 반사요법 가이드 시작하기</span> <span>→</span></button>
         <p class="welcome-note" data-i18n="welcomeNote">교재 기반 교육·자가관리 보조 도구이며 의료적 진단과 치료를 대신하지 않습니다.</p>
       </div>
     </div>
@@ -695,9 +714,9 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <audio id="ttsAudio" playsinline preload="auto" style="display:none"></audio>
-  <script src="./program-data.js?v=49"></script>
-  <script src="./app.js?v=49"></script>
+  <audio id="ttsAudio" referrerpolicy="no-referrer" playsinline preload="auto" style="display:none"></audio>
+  <script src="./program-data.js?v=50"></script>
+  <script src="./app.js?v=50"></script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
   <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="reflex_therapy_1y" data-mode="freemium" data-lang="ko"></script>
