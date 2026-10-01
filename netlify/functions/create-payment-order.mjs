@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
 import { json, requireUser, requiredEnv, safeError, supabase } from "./_payment.mjs";
 
-const ALLOWED_PRODUCTS = new Set(["reflex_therapy_1y", "healing_points_1y"]);
+const ALLOWED_PRODUCTS = new Set(["reflex_therapy_1y", "healing_points_1y", "sound_studio_1y"]);
 
 export default async (request) => {
   if (request.method !== "POST") return json(405, { message: "POST 요청만 허용됩니다." });

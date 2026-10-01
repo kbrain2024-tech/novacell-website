@@ -582,7 +582,7 @@
     const passLinkEl = modal.querySelector('.btn-nc-vip-pass');
     if (priceAmountEl) priceAmountEl.textContent = isEn ? 'US $300' : '330,000원';
     if (priceTermEl) priceTermEl.textContent = isEn ? '/ 1-Year Unlimited (₩330,000)' : '/ 1년 무제한 이용 (US $300)';
-    if (passLinkEl) passLinkEl.href = isEn ? 'https://novacell.kr/en/sound-studio.html' : 'https://novacell.kr/ko/sound-studio.html';
+    if (passLinkEl) passLinkEl.href = isEn ? 'https://novacell.kr/checkout.html?product=sound_studio_1y&lang=en' : 'https://novacell.kr/checkout.html?product=sound_studio_1y&lang=ko';
     modal.classList.add('active');
     document.body.classList.add('modal-open');
   }

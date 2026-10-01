@@ -698,7 +698,7 @@
       </div>
 
       <div class="nc-vip-dialog-actions">
-        <button type="button" class="btn-nc-vip-login" id="reflexVipLoginBtn" onclick="if(window.NovaCellGate&&window.NovaCellGate.showLogin){closeReflexVipModal();window.NovaCellGate.showLogin();}else{window.open('https://novacell.kr/login.html','_blank');}">
+        <button type="button" class="btn-nc-vip-login" id="reflexVipLoginBtn" onclick="window.open('https://novacell.kr/login.html?lang=' + (typeof state !== 'undefined' && state.lang === 'en' ? 'en' : 'ko') + '&return=' + encodeURIComponent('https://novacell.kr/checkout.html?product=reflex_therapy_1y&lang=' + (typeof state !== 'undefined' && state.lang === 'en' ? 'en' : 'ko')), '_blank');">
           <span>기존 계정으로 로그인</span>
         </button>
         <a href="https://novacell.kr/checkout.html?product=reflex_therapy_1y&lang=ko" target="_blank" rel="noopener noreferrer" class="btn-nc-vip-buy" id="reflexVipBuyLink">
