@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NovaCell Pain Clinic APP - Main Application Engine
  * Responsive Navigation, Real-time Search, 3D Translucent X-Ray Body Map,
  * Multi-Color Custom Target System, Drag-to-Position Pin Engine with Lock/Unlock,
@@ -93,6 +93,24 @@
       pinDragHint: '위치 이동 모드 활성화: T1, T2 핀을 마우스/터치로 원하는 위치로 자유롭게 끌어다 놓으세요.',
       pinResetTitle: 'T1, T2 기본 위치로 되돌리기',
       labelsTitle: '주요 해부학 구조 (English Anatomical Labels)',
+      xrayTag: '3D 해부학 정밀 치료 타깃',
+      modalCloseText: '닫기 (목록으로)',
+      modalReturnList: '통증 질환 목록으로 돌아가기',
+      targetTissues: '타깃 조직',
+      palpationLocation: '촉진 및 위치',
+      noCustomTargets: '등록된 사용자 맞춤 타깃이 없습니다. [+ 치료 타깃 추가] 버튼이나 우측 해부도를 클릭해 추가하세요.',
+      docTitle: 'NovaCell Healing & Pain Clinic | 3D 통증 클리닉 46종 해부 타깃 가이드',
+      navTherapy: '질환별 힐링 포인트',
+      navPain: '3D 통증 클리닉',
+      navChakra: '차크라 바이오 포인트',
+      navCircuit: '신경 생체 회로',
+      navHome: '🌐 공식 홈페이지 ↗',
+      navCover: '메인 대문',
+      mNavTherapy: '힐링 포인트',
+      mNavPain: '3D 통증 클리닉',
+      mNavChakra: '차크라 바이오',
+      mNavCircuit: '신경 생체 회로',
+      mNavHome: '공식 홈 ↗',
       footerText1: 'NovaCell Pain Clinic APP은 생체 전압(Cellular Voltage) 정상화와 공명 주파수를 통한 비침습 웰니스 프로토콜을 제공합니다.',
       footerText2: '본 애플리케이션의 모든 콘텐츠는 특허 및 독점 저작권 가이드라인을 준수하여 제작되었습니다. © 2026 NovaCell.kr All Rights Reserved.'
     },
@@ -157,6 +175,24 @@
       pinDragHint: 'Move mode active: Drag T1, T2, or custom pins freely to adjust their positions.',
       pinResetTitle: 'Reset T1, T2 to defaults',
       labelsTitle: 'English Anatomical Labels',
+      xrayTag: '3D Anatomical Precision Targets',
+      modalCloseText: 'Close (Back to List)',
+      modalReturnList: 'Back to 46 Pain Conditions List',
+      targetTissues: 'Target Tissues',
+      palpationLocation: 'Palpation Location',
+      noCustomTargets: 'No custom targets added. Click [+ Add Target Pin] or tap on the 3D diagram to place custom pins.',
+      docTitle: 'NovaCell Healing & Pain Clinic | 3D Pain Clinic 46 Conditions Anatomy Guide',
+      navTherapy: 'Therapy Points',
+      navPain: '3D Pain Clinic',
+      navChakra: 'Chakra Bio Points',
+      navCircuit: 'Biological Circuits',
+      navHome: '🌐 Official Home ↗',
+      navCover: 'Main Welcome',
+      mNavTherapy: 'Therapy Points',
+      mNavPain: '3D Pain Clinic',
+      mNavChakra: 'Chakra Bio',
+      mNavCircuit: 'Bio Circuits',
+      mNavHome: 'Official Home ↗',
       footerText1: 'NovaCell Pain Clinic APP provides non-invasive cellular voltage modulation and bio-resonance wellness protocols.',
       footerText2: 'All content complies with copyright guidelines and patent-pending methodologies. © 2026 NovaCell.kr All Rights Reserved.'
     }
@@ -199,6 +235,8 @@
     el.langBtn?.addEventListener('click', () => {
       state.lang = state.lang === 'ko' ? 'en' : 'ko';
       localStorage.setItem('novacell_pain_lang', state.lang);
+      localStorage.setItem('novacell_site_lang', state.lang);
+      localStorage.setItem('nc_lang', state.lang);
       renderStaticUI();
       renderCategories();
       renderConditions();
@@ -288,16 +326,75 @@
 
   // Update Static UI Texts based on language
   function renderStaticUI() {
-    if (el.langBtn) el.langBtn.textContent = t('langBtn');
+    const isEn = state.lang === 'en';
 
+    // 1. Language Toggle Segmented Pill Indicator ("한글" / "ENG")
+    if (el.langBtn) {
+      let koOpt = el.langBtn.querySelector('.lang-opt.ko');
+      let enOpt = el.langBtn.querySelector('.lang-opt.en');
+      if (!koOpt || !enOpt) {
+        el.langBtn.innerHTML = `
+          <span class="lang-opt ko ${!isEn ? 'active' : ''}">한글</span>
+          <span class="lang-divider">/</span>
+          <span class="lang-opt en ${isEn ? 'active' : ''}">ENG</span>
+        `;
+      } else {
+        if (isEn) {
+          koOpt.classList.remove('active');
+          enOpt.classList.add('active');
+        } else {
+          koOpt.classList.add('active');
+          enOpt.classList.remove('active');
+        }
+      }
+    }
+
+    // 2. Localize all data-i18n elements
     document.querySelectorAll('[data-i18n]').forEach(elem => {
       const key = elem.getAttribute('data-i18n');
-      elem.textContent = t(key);
+      const val = t(key);
+      if (val) {
+        if (val.includes('<') && val.includes('>')) {
+          elem.innerHTML = val;
+        } else {
+          elem.textContent = val;
+        }
+      }
     });
 
+    // 3. Search input placeholder
     if (el.searchInput) {
       el.searchInput.placeholder = t('searchPlaceholder');
     }
+
+    // 4. Update Navigation Links across Header and Mobile quick bar
+    const navTherapy = document.getElementById('nav-therapy');
+    if (navTherapy) { const sp = navTherapy.querySelector('span'); if (sp) sp.textContent = t('navTherapy'); }
+    const navPain = document.getElementById('nav-pain');
+    if (navPain) { const sp = navPain.querySelector('span:not(.text-cyan)'); if (sp) sp.textContent = t('navPain'); }
+    const navChakra = document.getElementById('nav-chakra');
+    if (navChakra) { const sp = navChakra.querySelector('span'); if (sp) sp.textContent = t('navChakra'); }
+    const navCircuit = document.getElementById('nav-circuit');
+    if (navCircuit) { const sp = navCircuit.querySelector('span'); if (sp) sp.textContent = t('navCircuit'); }
+    const navHome = document.getElementById('nav-home');
+    if (navHome) { const sp = navHome.querySelector('span'); if (sp) sp.textContent = t('navHome'); }
+    const openCoverBtn = document.getElementById('open-cover-btn');
+    if (openCoverBtn) { const sp = openCoverBtn.querySelector('span'); if (sp) sp.textContent = t('navCover'); }
+
+    // Mobile Quick Nav Pills
+    const mTherapy = document.querySelector('#m-nav-therapy .m-pill-text');
+    if (mTherapy) mTherapy.textContent = t('mNavTherapy');
+    const mPain = document.querySelector('#m-nav-pain .m-pill-text');
+    if (mPain) mPain.textContent = t('mNavPain');
+    const mChakra = document.querySelector('#m-nav-chakra .m-pill-text');
+    if (mChakra) mChakra.textContent = t('mNavChakra');
+    const mCircuit = document.querySelector('#m-nav-circuit .m-pill-text');
+    if (mCircuit) mCircuit.textContent = t('mNavCircuit');
+    const mHome = document.querySelector('#m-nav-home .m-pill-text');
+    if (mHome) mHome.textContent = t('mNavHome');
+
+    // Document title
+    document.title = t('docTitle');
   }
 
   // Render Category Navigation List
@@ -428,7 +525,7 @@
           <div class="cond-card-footer">
             <span class="cond-targets-count">
               <i class="fa-solid fa-crosshairs text-cyan"></i>
-              <span>${t('targetsCount')} ${totalTargets}곳</span>
+              <span>${isEn ? `${totalTargets} Targets` : `${t('targetsCount')} ${totalTargets}곳`}</span>
             </span>
             <span class="btn-open-protocol">
               <span>${t('btnViewProtocol')}</span>
@@ -560,15 +657,15 @@
             <div class="timer-body">
               <div class="timer-controls-row">
                 <div class="timer-preset-group">
-                  <button type="button" class="preset-btn active" data-sec="60">1분</button>
-                  <button type="button" class="preset-btn" data-sec="120">2분</button>
-                  <button type="button" class="preset-btn" data-sec="180">3분</button>
-                  <button type="button" class="preset-btn" data-sec="300">5분</button>
-                  <button type="button" class="preset-btn" data-sec="600">10분</button>
+                  <button type="button" class="preset-btn active" data-sec="60">${isEn ? '1m' : '1분'}</button>
+                  <button type="button" class="preset-btn" data-sec="120">${isEn ? '2m' : '2분'}</button>
+                  <button type="button" class="preset-btn" data-sec="180">${isEn ? '3m' : '3분'}</button>
+                  <button type="button" class="preset-btn" data-sec="300">${isEn ? '5m' : '5분'}</button>
+                  <button type="button" class="preset-btn" data-sec="600">${isEn ? '10m' : '10분'}</button>
                 </div>
                 <div class="timer-adjust-group">
-                  <button type="button" id="btn-timer-dec" class="timer-adjust-btn" title="30초 감소">-30초</button>
-                  <button type="button" id="btn-timer-inc" class="timer-adjust-btn" title="30초 증가">+30초</button>
+                  <button type="button" id="btn-timer-dec" class="timer-adjust-btn" title="${isEn ? 'Decrease 30s' : '30초 감소'}">${isEn ? '-30s' : '-30초'}</button>
+                  <button type="button" id="btn-timer-inc" class="timer-adjust-btn" title="${isEn ? 'Increase 30s' : '30초 증가'}">${isEn ? '+30s' : '+30초'}</button>
                 </div>
               </div>
 
@@ -618,10 +715,10 @@
               <h4 class="step-title">${t('modalStep3')}</h4>
             </div>
             <p class="step-content-text" style="margin-bottom: 8px;">
-              <strong>${isEn ? 'Target Tissues' : '타깃 조직'}:</strong> ${isEn ? cond.targetTissues.en : cond.targetTissues.ko}
+              <strong>${t('targetTissues')}:</strong> ${isEn ? cond.targetTissues.en : cond.targetTissues.ko}
             </p>
             <p class="step-content-text" style="font-size: 0.84rem; color: #94a3b8; margin-bottom: 12px;">
-              <strong>${isEn ? 'Palpation Location' : '촉진 및 위치'}:</strong> ${isEn ? cond.palpation.en : cond.palpation.ko}
+              <strong>${t('palpationLocation')}:</strong> ${isEn ? cond.palpation.en : cond.palpation.ko}
             </p>
             
             <!-- Default Targets 1 & 2 -->
@@ -779,7 +876,7 @@
       if (customTargets.length === 0) {
         container.innerHTML = `
           <p style="font-size: 0.78rem; color: #64748b; font-style: italic; padding: 6px 0;">
-            등록된 사용자 맞춤 타깃이 없습니다. [+ 치료 타깃 추가] 버튼이나 우측 해부도를 클릭해 추가하세요.
+            ${t('noCustomTargets')}
           </p>
         `;
       } else {

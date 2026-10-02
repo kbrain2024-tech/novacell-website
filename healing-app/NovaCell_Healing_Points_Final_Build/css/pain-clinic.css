@@ -158,25 +158,61 @@ body {
   transform: translateY(-1px);
 }
 
+/* Segmented Bilingual Toggle Button Standard: [ 한글 / ENG ] */
 .lang-toggle-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: var(--radius-full);
-  background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
-  border: 1px solid var(--border-accent);
-  color: #fff;
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-weight: 700;
-  transition: all 0.2s ease;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 3px !important;
+  padding: 3px 6px !important;
+  border-radius: 9999px !important;
+  background: rgba(15, 23, 42, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+  vertical-align: middle !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 .lang-toggle-btn:hover {
-  background: linear-gradient(135deg, #06b6d4, #3b82f6);
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.5);
-  transform: translateY(-1px);
+  border-color: #f7d58b !important;
+  box-shadow: 0 0 16px rgba(212, 163, 89, 0.4) !important;
+}
+
+.lang-toggle-btn .lang-opt {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 9999px !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  transition: all 0.2s ease !important;
+  line-height: 1 !important;
+}
+
+/* Active Highlight for Korean ("한글") - Vivid Gold Capsule */
+.lang-toggle-btn .lang-opt.ko.active {
+  background: linear-gradient(135deg, #fce2a6 0%, #d4a359 100%) !important;
+  color: #071328 !important;
+  font-weight: 900 !important;
+  box-shadow: 0 1px 7px rgba(212, 163, 89, 0.6) !important;
+}
+
+/* Active Highlight for English ("ENG") - Vivid Cyan Capsule */
+.lang-toggle-btn .lang-opt.en.active {
+  background: linear-gradient(135deg, #93e2fd 0%, #38bdf8 100%) !important;
+  color: #071328 !important;
+  font-weight: 900 !important;
+  box-shadow: 0 1px 7px rgba(56, 189, 248, 0.6) !important;
+}
+
+.lang-toggle-btn .lang-divider {
+  color: rgba(255, 255, 255, 0.25) !important;
+  font-size: 0.72rem !important;
+  padding: 0 2px !important;
+  user-select: none !important;
 }
 
 /* ==========================================================================
