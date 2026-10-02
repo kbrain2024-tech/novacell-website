@@ -560,10 +560,10 @@
             <div class="timer-body">
               <div class="timer-controls-row">
                 <div class="timer-preset-group">
-                  <button type="button" class="preset-btn" data-sec="60">1분</button>
+                  <button type="button" class="preset-btn active" data-sec="60">1분</button>
                   <button type="button" class="preset-btn" data-sec="120">2분</button>
                   <button type="button" class="preset-btn" data-sec="180">3분</button>
-                  <button type="button" class="preset-btn active" data-sec="300">5분</button>
+                  <button type="button" class="preset-btn" data-sec="300">5분</button>
                   <button type="button" class="preset-btn" data-sec="600">10분</button>
                 </div>
                 <div class="timer-adjust-group">
@@ -573,7 +573,7 @@
               </div>
 
               <div class="timer-display-wrap">
-                <output id="timer-display-text" class="timer-time-text">05:00</output>
+                <output id="timer-display-text" class="timer-time-text">01:00</output>
                 <div class="timer-freq-indicator">
                   <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
                   <span>528Hz Cell Voltage Frequency</span>

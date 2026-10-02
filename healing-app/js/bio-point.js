@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NovaCell Chakra Bio Points Interactive Application Logic
  * Comprehensive bilingual support, 528Hz Cellular Voltage Healing Timer,
  * Interactive Front/Back Body Mapping, and NovaCell Clinical Protocol Guide.
@@ -273,8 +273,8 @@ let activePointIndex = 3; // Default to Anahata Heart Chakra (index 3 in front)
 let currentSiteLang = "ko";
 
 // Timer State
-let totalTimerSeconds = 300; // 5 mins
-let remainingTimerSeconds = 300;
+let totalTimerSeconds = 60; // 5 mins
+let remainingTimerSeconds = 60;
 let isTimerRunning = false;
 let timerInterval = null;
 

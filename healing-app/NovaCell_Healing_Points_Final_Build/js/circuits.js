@@ -816,8 +816,8 @@ function handleSearch(query) {
 /* ==========================================================================
    Timer & Audio Engine
    ========================================================================== */
-let totalTimerSeconds = 300;
-let remainingTimerSeconds = 300;
+let totalTimerSeconds = 60;
+let remainingTimerSeconds = 60;
 let isTimerRunning = false;
 let isAudioMuted = false;
 let masterVolume = 0.65;

@@ -2139,9 +2139,9 @@
               <!-- ?쒓컙 議곗젅 踰꾪듉 (1遺?~ 10遺??꾨━??諛?+-30珥? -->
               <div class="timer-controls-row">
                 <div class="timer-preset-group" aria-label="&#xD0C0;&#xC774;&#xBA38; &#xC2DC;&#xAC04; &#xD504;&#xB9AC;&#xC14B;">
-                  <button type="button" class="preset-btn" data-min="1" id="preset-1min">1m</button>
+                  <button type="button" class="preset-btn active" data-min="1" id="preset-1min">1m</button>
                   <button type="button" class="preset-btn" data-min="3" id="preset-3min">3m</button>
-                  <button type="button" class="preset-btn active" data-min="5" id="preset-5min">5m</button>
+                  <button type="button" class="preset-btn" data-min="5" id="preset-5min">5m</button>
                   <button type="button" class="preset-btn" data-min="7" id="preset-7min">7m</button>
                   <button type="button" class="preset-btn" data-min="10" id="preset-10min">10m</button>
                 </div>
@@ -2153,7 +2153,7 @@
 
               <!-- ??대㉧ ?붿뒪?뚮젅??諛?528Hz 諛쒖쭊 ?쒖떆 -->
               <div class="timer-display-wrap">
-                <output id="timer-display" class="timer-time-text" aria-label="&#xB0A8;&#xC740; &#xC2DC;&#xAC04;">05:00</output>
+                <output id="timer-display" class="timer-time-text" aria-label="&#xB0A8;&#xC740; &#xC2DC;&#xAC04;">01:00</output>
                 <div class="timer-freq-indicator">
                   <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
                   
@@ -6705,7 +6705,7 @@ class Workspace extends NovaCellApp {
     const p = hp || this.getActiveHealingPoint();
     if(!p) return;
     this.pauseTimer();
-    this.timerTotalSeconds = this.state.durations[p.id] || this.state.defaultDuration || 300;
+    this.timerTotalSeconds = this.state.durations[p.id] || this.state.defaultDuration || 60;
     this.timerSeconds = this.timerTotalSeconds;
     const curIdx = this.currentCondition.healingPoints.findIndex(x => x.id === p.id);
     const totalCount = this.currentCondition.healingPoints.length;
@@ -7570,7 +7570,7 @@ function patchWorkspaceClass(wsClass) {
     const p = hp || this.getActiveHealingPoint();
     if (!p) return;
     this.pauseTimer();
-    this.timerTotalSeconds = this.state.durations[p.id] || this.state.defaultDuration || 300;
+    this.timerTotalSeconds = this.state.durations[p.id] || this.state.defaultDuration || 60;
     this.timerSeconds = this.timerTotalSeconds;
     const curIdx = this.currentCondition.healingPoints.findIndex(x => x.id === p.id);
     const totalCount = this.currentCondition.healingPoints.length;
