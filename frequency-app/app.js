@@ -1625,7 +1625,6 @@ const wellnessCheckQuestions = [
       { text: "파도소리 (Waves)", tag: "waves" },
       { text: "갈매기소리 (Seagull)", tag: "seagull" },
       { text: "싱잉볼소리 (Singing Bowl)", tag: "singingbowl" },
-      { text: "숲 속의 새소리 (Forest Birds)", tag: "forestbirds" },
       { text: "계곡물 흐르는 소리 (Stream)", tag: "stream" },
       { text: "깊은 산속 새소리 (Mountain Birds)", tag: "mountainbirds" }
     ]
@@ -4587,7 +4586,7 @@ function calculateWellnessRecipe() {
     singingbowl: "싱잉볼소리 (Singing Bowl)",
     campfire: "모닥불소리 (Campfire)",
     stream: "계곡물 흐르는 소리 (Stream)",
-    forestbirds: "숲 속의 새소리 (Forest Birds)",
+    forestbirds: "깊은 산속 새소리 (Mountain Birds)",
     mountainbirds: "깊은 산속 새소리 (Mountain Birds)"
   };
 

@@ -2378,6 +2378,7 @@ class AudioEngine {
    * 숲 속의 새소리 주기적 자동 트리거 루프
    */
   triggerForestBirdsLoop() {
+    return this.triggerMountainBirdsLoop();
     // ══════════════════════════════════════════════════════════════
     // [ASMR] 깊은 숲의 새소리 (Deep Forest Birds)
     //   숲 속의 새소리 + 수면 뻐꾸기 통합 ASMR 업그레이드
@@ -5028,6 +5029,7 @@ class AudioEngine {
    * [신규] 숲속 새소리 1회성 테스트 재생 API (볼륨 조절 피드백용)
    */
   playForestBirdsOnce(volume = 0.5) {
+    return this.playMountainBirdsOnce(volume);
     if (!this.audioCtx || !this.isPlaying) return;
     const now = this.audioCtx.currentTime;
     const count = 3;

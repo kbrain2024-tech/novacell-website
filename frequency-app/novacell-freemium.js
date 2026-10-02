@@ -69,7 +69,7 @@
         desc: '우주 자연과 동조되는 432Hz 치유 톤과 심층 이완 세타파의 조화',
         badge: '무료 체험',
         isVip: false,
-        nature: { forestbirds: 0.50, stream: 0.20 }
+        nature: { mountainbirds: 0.50, stream: 0.20 }
       },
       'dna-healing': {
         name: '세포 기적 & DNA 회복 (528Hz)',
@@ -152,7 +152,7 @@
         desc: '교감신경 과항진을 낮추고 부교감신경을 활성화하여 심박 안정과 자율신경 균형 유도',
         badge: 'VIP 전용',
         isVip: true,
-        nature: { stream: 0.35, forestbirds: 0.30, rain: 0.15 }
+        nature: { stream: 0.35, mountainbirds: 0.30, rain: 0.15 }
       },
       'focus-brain': {
         name: '감마파 초집중 & 뇌 활력 (40Hz)',
@@ -1176,7 +1176,8 @@
       waves: isEn ? '🌊 Ocean Waves' : '🌊 파도소리',
       campfire: isEn ? '🔥 Campfire' : '🔥 모닥불',
       singingbowl: isEn ? '🥣 Singing Bowl' : '🥣 싱잉볼',
-      forestbirds: isEn ? '🌲 Forest Birds' : '🌲 숲속 새소리',
+      mountainbirds: isEn ? '🕊️ Mountain Birds' : '🕊️ 깊은 산속 새소리',
+      forestbirds: isEn ? '🕊️ Mountain Birds' : '🕊️ 깊은 산속 새소리',
       seagull: isEn ? '🕊️ Ocean Seagulls' : '🕊️ 바다 갈매기',
       off: isEn ? '🔇 Off' : '🔇 끔'
     };
@@ -1237,9 +1238,9 @@
     } else if (ambientType === 'singingbowl') {
       targetNature = { singingbowl: 0.50 };
       showToast(isEn ? '🥣 Tibetan singing bowl ambient sound applied.' : '🥣 뇌파를 깊이 이완시키는 힐링 싱잉볼 배경음이 적용되었습니다.');
-    } else if (ambientType === 'forestbirds') {
-      targetNature = { forestbirds: 0.70 };
-      showToast(isEn ? '🌲 Morning forest birds ambient sound applied.' : '🌲 상쾌한 아침을 깨우는 숲속 새소리 배경음이 적용되었습니다.');
+    } else if (ambientType === 'mountainbirds' ) {
+      targetNature = { mountainbirds: 0.70 };
+      showToast(isEn ? '🕊️ Deep mountain birds ambient sound applied.' : '🕊️ 고요하고 맑은 깊은 산속 새소리 배경음이 적용되었습니다.');
     } else if (ambientType === 'seagull') {
       targetNature = { seagull: 0.70, waves: 0.40 };
       showToast(isEn ? '🕊️ Ocean Waves & Seagulls soundscape applied.' : '🕊️ 시원한 바다 파도와 갈매기소리 배경음이 적용되었습니다.');
@@ -1256,9 +1257,9 @@
     });
 
     // 4.5) 숲속 새소리 및 갈매기소리 선택 즉시 0초 피드백 재생
-    if (ambientType === 'forestbirds') {
-      try { eng.playForestBirdsOnce(0.75); } catch(e) {}
-      if (typeof eng.triggerForestBirdsLoop === 'function') eng.triggerForestBirdsLoop();
+    if (ambientType === 'mountainbirds') {
+      try { eng.playMountainBirdsOnce(0.75); } catch(e) {}
+      if (typeof eng.triggerMountainBirdsLoop === 'function') eng.triggerMountainBirdsLoop();
     } else if (ambientType === 'seagull') {
       try { eng.playSeagullOnce(0.85); } catch(e) {}
       if (typeof eng.triggerSeagullLoop === 'function') eng.triggerSeagullLoop();
@@ -1605,14 +1606,14 @@
   // 6. [모바일 최적화] 스마트폰 환경에서 기본 맞춤음을 "숲속 새소리"로 초기 세팅
   const isMobileViewport = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
   if (isMobileViewport) {
-    window.currentAmbientType = 'forestbirds';
+    window.currentAmbientType = 'mountainbirds';
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.ambient-chip').forEach(chip => {
-        chip.classList.toggle('active', chip.getAttribute('data-ambient') === 'forestbirds');
+        chip.classList.toggle('active', chip.getAttribute('data-ambient') === 'mountainbirds');
       });
       const stickyAmbientText = document.getElementById('sticky-ambient-text');
       if (stickyAmbientText) {
-        stickyAmbientText.textContent = '🌲 숲속 새소리';
+        stickyAmbientText.textContent = '🕊️ 깊은 산속 새소리';
       }
     });
   }

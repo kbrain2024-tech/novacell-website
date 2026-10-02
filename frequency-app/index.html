@@ -202,8 +202,8 @@
           <button type="button" class="ambient-chip active" data-ambient="preset" onclick="setGlobalAmbientSound('preset')" title="현재 선택된 프리셋의 고유 맞춤 자연음 조합" data-i18n-title="ambPresetTitle">
             <span class="chip-icon">🌿</span> <span data-i18n="ambPreset">프리셋 맞춤음</span>
           </button>
-          <button type="button" class="ambient-chip" data-ambient="forestbirds" onclick="setGlobalAmbientSound('forestbirds')" title="기분 좋은 활력을 깨우는 숲속 새소리" data-i18n-title="ambForestbirdsTitle">
-            <span class="chip-icon">🌲</span> <span data-i18n="ambForestbirds">숲속 새소리</span>
+          <button type="button" class="ambient-chip" data-ambient="mountainbirds" onclick="setGlobalAmbientSound('mountainbirds')" title="마음이 맑아지는 깊은 산속 새소리" data-i18n-title="ambMountainbirdsTitle">
+            <span class="chip-icon">🕊️</span> <span data-i18n="ambMountainbirds">깊은 산속 새소리</span>
           </button>
           <button type="button" class="ambient-chip" data-ambient="rain" onclick="setGlobalAmbientSound('rain')" title="마음이 편안해지는 자연 빗소리" data-i18n-title="ambRainTitle">
             <span class="chip-icon">🌧️</span> <span data-i18n="ambRain">자연 빗소리</span>
@@ -1733,9 +1733,8 @@
               <input type="range" id="slider-stream" min="0" max="1" step="0.01" value="0.0">
               <span id="txt-stream" class="val-display">0%</span>
             </div>
-            <!-- 깊은 숲의 새소리 채널 (숲새 + 뻐꾸기 통합) -->
-            <div class="slider-item">
-              <span class="label"><i class="fa-solid fa-tree" style="color: var(--color-neon-green);"></i> <span data-i18n="natForestBirds">깊은 숲의 새소리 (Deep Forest Birds)</span></span>
+            <!-- 깊은 숲의 새소리 제거됨 (산속 새소리로 단일화) -->
+            <div class="slider-item" style="display: none !important;">
               <input type="range" id="slider-forest-birds" min="0" max="1" step="0.01" value="0.0">
               <span id="txt-forest-birds" class="val-display">0%</span>
             </div>
@@ -2017,7 +2016,7 @@
         </button>
         <div class="sticky-timer-menu" style="min-width: 140px;">
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('preset')" data-i18n="ambPreset">🌿 프리셋 맞춤음</button>
-          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('forestbirds')" data-i18n="ambForestbirds">🌲 숲속 새소리</button>
+          <button class="sticky-timer-item" onclick="setGlobalAmbientSound('mountainbirds')" data-i18n="ambMountainbirds">🕊️ 깊은 산속 새소리</button>
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('rain')" data-i18n="ambRain">🌧️ 자연 빗소리</button>
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('stream')" data-i18n="ambStream">💧 청량한 계곡물</button>
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('waves')" data-i18n="ambWaves">🌊 동해 파도소리</button>

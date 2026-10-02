@@ -64,7 +64,7 @@ const CHAKRA_COLORS = {
   yellow: {
     key: "yellow",
     hz: 528,
-    soundKey: "forestbirds",
+    soundKey: "mountainbirds",
     themeColor: "#eab308",
     themeGlow: "rgba(234, 179, 8, 0.55)",
     themeDark: "#a16207",
