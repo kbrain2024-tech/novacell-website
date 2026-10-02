@@ -1,9 +1,14 @@
-/robots.txt    /robots.txt   200
+﻿/robots.txt    /robots.txt   200
 /sitemap.xml   /sitemap.xml  200
 
 /healing-app/bio-point*        /bio-point.html   200!
 /healing-app/circuits*         /circuits.html    200!
+/healing-app/pain-clinic*      /pain-clinic.html 200!
+/healing-app/pain*             /pain-clinic.html 200!
+
 /bio-point*                    /bio-point.html   200!
 /circuits*                     /circuits.html    200!
+/pain-clinic*                  /pain-clinic.html 200!
+/pain*                         /pain-clinic.html 200!
 
 /*    /index.html   200

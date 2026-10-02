@@ -1,0 +1,482 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>NovaCell Healing & Pain Clinic | 3D 통증 클리닉 46종 해부 타깃 가이드</title>
+  <meta name="description" content="NovaCell Healing & Pain Clinic - 46대 신경근골격계 질환의 병태생리, 3D 반투명 X-Ray 투시 타깃, 사용자 맞춤 타깃 및 528Hz 세포 전압 타이머 가이드" />
+  
+  <!-- Font Awesome & Remixicon Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" />
+
+  <!-- App Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/workspace.css" />
+  <link rel="stylesheet" href="css/pain-clinic.css" />
+  <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css" />
+
+  <style>
+    /* NovaCell Responsive Header & Zero Text Truncation */
+    .app-header { overflow: visible !important; }
+    .header-actions { display: flex !important; align-items: center !important; flex-wrap: nowrap !important; min-width: 0 !important; flex-shrink: 0 !important; gap: 8px !important; }
+    .header-cover-btn, .header-actions a, .header-actions button, .header-status-badge, .lang-toggle-btn { white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; line-height: 1.2 !important; }
+    .header-cover-btn span, .header-actions a span, .header-actions button span { white-space: nowrap !important; display: inline-block !important; }
+    .header-tools { min-width: 130px !important; flex: 1 1 auto !important; max-width: 400px !important; }
+    .search-box-wrapper { min-width: 120px !important; }
+    @media (min-width: 1401px) { .header-actions { padding-right: 140px !important; } }
+    @media (max-width: 1400px) {
+      .header-status-badge { display: none !important; }
+      .brand-sub span:last-child { display: none !important; }
+      .header-actions { gap: 6px !important; padding-right: 125px !important; }
+      .header-cover-btn { padding: 5px 10px !important; font-size: 0.74rem !important; gap: 5px !important; }
+    }
+    @media (max-width: 1260px) {
+      .brand-sub { display: none !important; }
+      .brand-titles h1 { font-size: 1.05rem !important; }
+      .header-actions { gap: 5px !important; padding-right: 115px !important; }
+      .header-cover-btn, .header-actions a.nav-official-home { padding: 5px 8px !important; font-size: 0.72rem !important; }
+      .lang-toggle-btn { height: 30px !important; padding: 2px 7px !important; font-size: 11px !important; }
+    }
+    @media (max-width: 1120px) and (min-width: 901px) {
+      #nav-therapy, #nav-chakra, #nav-circuit { display: none !important; }
+      .mobile-menu-toggle { display: flex !important; }
+      .header-actions { gap: 6px !important; padding-right: 110px !important; }
+      .header-cover-btn, .header-actions a.nav-official-home { padding: 6px 11px !important; font-size: 0.76rem !important; }
+      .header-tools { min-width: 160px !important; }
+    }
+
+    /* VIP Modal Dialog */
+    .nc-vip-modal-dialog {
+      border: 0; padding: 0; background: transparent; width: min(92%, 540px); max-width: 540px; color: #f8fafc; z-index: 2147483640;
+    }
+    .nc-vip-modal-dialog::backdrop { background: rgba(7, 10, 19, 0.85); backdrop-filter: blur(12px); }
+    .nc-vip-modal-dialog.active { display: grid; place-items: center; }
+    .nc-vip-dialog-box {
+      background: linear-gradient(135deg, #0b1d33 0%, #050e1a 100%); border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 24px; padding: 30px 26px; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.25);
+    }
+  </style>
+</head>
+<body class="novacell-access-granted novacell-access-freemium">
+
+  <!-- =========================================================================
+       Header Navigation (Unified NovaCell Healing & Pain Clinic)
+       ========================================================================= -->
+  <header class="app-header">
+    <div class="brand-section">
+      <a href="index.html" class="brand-link" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
+        <div class="brand-logo-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1>NovaCell Healing & Pain Clinic</h1>
+          <div class="brand-sub">
+            <span class="brand-tag">NOVACELL CLINICAL GUIDE</span>
+            <span>3D 통증 해부 타깃 & 힐링 포인트 가이드</span>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Real-time Clinical Search -->
+    <div class="header-tools">
+      <div class="search-box-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          aria-label="통증 질환·증상 검색" id="input-search" 
+          class="search-input" 
+          placeholder="질환명, 증상, 신경명 검색 (예: 두통, 삼차신경, C5-6...)"
+          autocomplete="off"
+        >
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <a class="header-cover-btn" href="index.html" id="nav-therapy" title="질환별 힐링 포인트 32종">
+        <span>질환별 힐링 포인트</span>
+      </a>
+      <a class="header-cover-btn active" href="pain-clinic.html" id="nav-pain" title="3D 통증 클리닉 46종 해부 타깃">
+        <i class="fa-solid fa-bolt text-cyan" style="font-size:0.75rem;margin-right:2px;"></i>
+        <span>3D 통증 클리닉</span>
+      </a>
+      <a class="header-cover-btn bio-point-link" href="bio-point.html" id="nav-chakra" title="차크라 바이오 포인트 안내 열기">
+        <span>차크라 바이오 포인트</span>
+      </a>
+      <a class="header-cover-btn circuit-guide-link" href="circuits.html" id="nav-circuit" title="신경 생체 회로 노바셀 통치 요법 열기">
+        <span>신경 생체 회로</span>
+      </a>
+      <a class="header-cover-btn nav-official-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="nav-home" title="공식 홈페이지 바로가기">
+        <span>🌐 공식 홈페이지 ↗</span>
+      </a>
+      <a href="index.html#cover" class="header-cover-btn" id="open-cover-btn" title="NovaCell 웰컴 대문 열기">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span>메인 대문</span>
+      </a>
+      <button id="btn-lang-toggle" class="lang-toggle-btn" type="button" title="언어 변경 / Change Language">
+        <span class="lang-opt ko active">한글</span>
+        <span class="lang-divider">/</span>
+        <span class="lang-opt en">ENG</span>
+      </button>
+      <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-label="전체 메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <line x1="4" y1="6" x2="20" y2="6"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="18" x2="20" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Smartphone Quick Navigation Bar -->
+  <nav class="mobile-quick-nav-bar" aria-label="Quick Nav">
+    <div class="mobile-quick-nav-track">
+      <a class="mobile-quick-pill" href="index.html" id="m-nav-therapy">
+        <span class="m-pill-icon">&#x2695;</span>
+        <span class="m-pill-text">힐링 포인트</span>
+      </a>
+      <a class="mobile-quick-pill active" href="pain-clinic.html" id="m-nav-pain">
+        <span class="m-pill-icon">&#x26A1;</span>
+        <span class="m-pill-text">3D 통증 클리닉</span>
+      </a>
+      <a class="mobile-quick-pill bio-point-link" href="bio-point.html" id="m-nav-chakra">
+        <span class="m-pill-icon">&#x25C9;</span>
+        <span class="m-pill-text">차크라 바이오</span>
+      </a>
+      <a class="mobile-quick-pill circuit-guide-link" href="circuits.html" id="m-nav-circuit">
+        <span class="m-pill-icon">&#x21BB;</span>
+        <span class="m-pill-text">신경 생체 회로</span>
+      </a>
+      <a class="mobile-quick-pill m-nav-home" href="https://novacell.kr/" target="_blank" rel="noopener" id="m-nav-home" title="공식 홈페이지 바로가기">
+        <span class="m-pill-icon">&#x1F310;</span>
+        <span class="m-pill-text">공식 홈 ↗</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Smartphone Hamburger Navigation Overlay -->
+  <div id="mobile-menu-overlay" class="mobile-menu-overlay" hidden>
+    <aside id="mobile-menu-panel" class="mobile-menu-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
+      <div class="mobile-menu-head">
+        <div>
+          <span class="mobile-menu-kicker">NOVACELL CLINICAL SUITE</span>
+          <h2 id="mobile-menu-title">전체 메뉴</h2>
+        </div>
+        <button id="mobile-menu-close" class="mobile-menu-close" type="button" aria-label="전체 메뉴 닫기">×</button>
+      </div>
+
+      <nav class="mobile-menu-links" aria-label="NovaCell 전체 메뉴">
+        <a href="index.html"><span>&#x2695;</span><strong>질환별 힐링 포인트 (32종)</strong><small>고전압 미세전류 펜 도자 가이드</small></a>
+        <a href="pain-clinic.html" style="border-color:#1cdde8;background:#142a3d;"><span>&#x26A1;</span><strong>3D 통증 클리닉 (46종)</strong><small>3D X-Ray 투시 해부 타깃</small></a>
+        <a href="bio-point.html"><span>&#x25C9;</span><strong>차크라 바이오 포인트</strong><small>Chakra Bio Points</small></a>
+        <a href="circuits.html"><span>&#x21BB;</span><strong>신경 생체 회로</strong><small>Neural Circuit Therapy</small></a>
+        <a href="https://novacell.kr/" target="_blank" rel="noopener"><span>&#x1F310;</span><strong>공식 홈페이지 바로가기</strong><small>novacell.kr &#x2197;</small></a>
+        <a href="index.html#cover"><span>☆</span><strong>메인 대문</strong><small>웰컴 시작 화면 열기</small></a>
+      </nav>
+    </aside>
+  </div>
+
+  <!-- =========================================================================
+       Hero Section & Live Search
+       ========================================================================= -->
+  <section class="pain-hero">
+    <div class="hero-badge">
+      <i class="fa-solid fa-bolt"></i>
+      <span data-i18n="heroBadge">46대 신경근골격계 질환 반투명 X-Ray 투시 타깃</span>
+    </div>
+
+    <h2 data-i18n="heroTitle">NovaCell 3D 통증 클리닉</h2>
+    <p class="hero-sub" data-i18n="heroSub">
+      통증의 3대 핵심 병태생리(신경포착·힘줄견인·자율신경 기능실조)를 분석하고, 3D 반투명 X-Ray 투시 이미지와 정밀 치료 타깃을 통해 NovaCell Therapy(노바셀 치료) 프로토콜을 제시합니다.
+    </p>
+
+    <!-- Pathophysiology Mechanism Filter Tabs -->
+    <div class="mechanism-tabs" id="mechanism-tabs">
+      <button type="button" class="btn-mech active" data-mech="all" data-i18n="mechAll">전체 병태기전</button>
+      <button type="button" class="btn-mech" data-mech="nerve" data-i18n="mechNerve">신경포착 (Nerve)</button>
+      <button type="button" class="btn-mech" data-mech="tendon" data-i18n="mechTendon">힘줄견인 (Tendon)</button>
+      <button type="button" class="btn-mech" data-mech="autonomic" data-i18n="mechAutonomic">자율신경 (Autonomic Nerve)</button>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Main Clinical Workspace (Anatomical Region Body Map + Conditions Grid)
+       ========================================================================= -->
+  <main class="pain-main-workspace">
+    <!-- Left Panel: 3D Anatomical Body Map & Category Filter -->
+    <aside class="body-nav-sidebar">
+      <div class="sidebar-header">
+        <h3 data-i18n="sidebarTitle">인체 구역별 질환 탐색</h3>
+      </div>
+
+      <!-- 3D Translucent Anatomical X-Ray Full-Body Viewer -->
+      <div class="body-xray-card">
+        <div class="body-xray-container">
+          <img src="images/fullbody_xray_3d.jpg" alt="3D Translucent Anatomical X-Ray" class="body-xray-img" />
+          
+          <!-- 6 Anatomical Interactive Hotzones with Tooltips -->
+          <div class="body-xray-hotzone zone-1" data-cat-num="1" title="01. 두경부 및 안면 질환">
+            <span class="hotzone-badge">01</span>
+            <span class="hotzone-tooltip" data-i18n="zoneHead">두경부·안면</span>
+          </div>
+
+          <div class="body-xray-hotzone zone-2" data-cat-num="2" title="02. 어깨, 상지 및 수부 질환">
+            <span class="hotzone-badge">02</span>
+            <span class="hotzone-tooltip" data-i18n="zoneUpper">어깨·상지·수부</span>
+          </div>
+
+          <div class="body-xray-hotzone zone-3" data-cat-num="3" title="03. 흉부, 복부 및 몸통 질환">
+            <span class="hotzone-badge">03</span>
+            <span class="hotzone-tooltip" data-i18n="zoneTorso">흉복부·몸통</span>
+          </div>
+
+          <div class="body-xray-hotzone zone-4" data-cat-num="4" title="04. 요추, 골반, 둔부 및 고관절 질환">
+            <span class="hotzone-badge">04</span>
+            <span class="hotzone-tooltip" data-i18n="zoneLumbar">요추·골반·고관절</span>
+          </div>
+
+          <div class="body-xray-hotzone zone-5" data-cat-num="5" title="05. 무릎, 발목 및 족부 질환">
+            <span class="hotzone-badge">05</span>
+            <span class="hotzone-tooltip" data-i18n="zoneLower">무릎·발목·족부</span>
+          </div>
+
+          <div class="body-xray-hotzone zone-6" data-cat-num="6" title="06. 자율신경계(Autonomic Nerve) 및 전신/특수 질환">
+            <span class="hotzone-badge">06</span>
+            <span class="hotzone-tooltip" data-i18n="zoneAutonomic">자율신경계</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Navigation List -->
+      <nav class="category-nav-list" id="category-nav-list">
+        <!-- Injected via pain_app.js -->
+      </nav>
+    </aside>
+
+    <!-- Right Panel: 46 Conditions Grid -->
+    <section class="conditions-panel">
+      <div class="conditions-status-bar">
+        <p class="status-text" id="status-text">
+          <!-- Injected via pain_app.js -->
+        </p>
+      </div>
+
+      <div class="conditions-grid" id="conditions-grid">
+        <!-- 46 Conditions Injected via pain_app.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       Detailed Inspector Modal (4-Step Treatment Protocol, Timer & 3D Diagram)
+       ========================================================================= -->
+  <div class="modal-overlay" id="protocol-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog" id="protocol-modal-dialog">
+      <header class="modal-header">
+        <div class="modal-title-wrap">
+          <span class="cond-id-badge" id="modal-id-badge">No. 01</span>
+          <div class="modal-title-text">
+            <h3 id="modal-disease-title">질환명</h3>
+            <p id="modal-disease-sub">카테고리</p>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span class="cond-mech-badge" id="modal-mech-badge">병태기전</span>
+          <button type="button" class="modal-close-btn" id="modal-close-btn" title="닫기 (Esc)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="modal-body" id="modal-body-container">
+        <!-- Injected dynamically via pain_app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Custom Target Point Editor Dialog (Healing Points Multi-Color Standard)
+       ========================================================================= -->
+  <dialog class="custom-target-dialog" id="custom-target-dialog">
+    <div class="dialog-content">
+      <header class="dialog-header">
+        <div class="dialog-title-wrap">
+          <i class="fa-solid fa-crosshairs text-cyan"></i>
+          <h4 id="dialog-target-title" data-i18n="dialogTitle">치료 타깃 추가</h4>
+        </div>
+        <button type="button" class="dialog-close-btn" id="dialog-target-close"><i class="fa-solid fa-xmark"></i></button>
+      </header>
+      
+      <form id="custom-target-form" class="target-form">
+        <label class="form-field-label">
+          <span data-i18n="formTargetName">타깃 명칭 / 위치</span>
+          <input type="text" id="target-name-input" class="form-text-input" placeholder="예: 두판상근 상부 압통점, 외측 광근 부착부" required maxlength="60" />
+        </label>
+
+        <div class="form-row">
+          <label class="form-field-label">
+            <span data-i18n="formTargetGroup">치료 분류</span>
+            <select id="target-group-select" class="form-select">
+              <option value="treat">치료 계획 (Treatment)</option>
+              <option value="observe">관찰점 (Observation)</option>
+              <option value="tender">압통 기록 (Tenderness)</option>
+            </select>
+          </label>
+          <label class="form-field-label">
+            <span data-i18n="formTargetSize">타깃 원 크기</span>
+            <select id="target-size-select" class="form-select">
+              <option value="small">소 (14px)</option>
+              <option value="medium" selected>중 (22px)</option>
+              <option value="large">대 (32px)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-field-label">
+          <span data-i18n="formTargetColor">타깃 색상 선택 (다양한 색상 팔레트)</span>
+          <div class="color-palette-wrap" id="color-palette-wrap">
+            <button type="button" class="color-swatch active" data-color="#ef4444" style="--c:#ef4444;" title="레드 (통증/염증점)"></button>
+            <button type="button" class="color-swatch" data-color="#06b6d4" style="--c:#06b6d4;" title="사이언 (신경포착점)"></button>
+            <button type="button" class="color-swatch" data-color="#f59e0b" style="--c:#f59e0b;" title="골드 (힘줄견인점)"></button>
+            <button type="button" class="color-swatch" data-color="#10b981" style="--c:#10b981;" title="에메랄드 (이완점)"></button>
+            <button type="button" class="color-swatch" data-color="#8b5cf6" style="--c:#8b5cf6;" title="바이올렛 (근막유착점)"></button>
+            <button type="button" class="color-swatch" data-color="#ec4899" style="--c:#ec4899;" title="핑크 (자율신경점)"></button>
+            <button type="button" class="color-swatch" data-color="#f97316" style="--c:#f97316;" title="오렌지 (압통점)"></button>
+            <button type="button" class="color-swatch" data-color="#ffffff" style="--c:#ffffff;" title="화이트 (기준점)"></button>
+            <div class="custom-color-input-wrap" title="직접 색상 지정">
+              <input type="color" id="target-custom-color" class="custom-color-picker" value="#ef4444" />
+            </div>
+          </div>
+        </div>
+
+        <label class="form-field-label">
+          <span data-i18n="formTargetNotes">임상 메모 / 촉진 가이드</span>
+          <textarea id="target-notes-input" class="form-textarea" rows="3" placeholder="증상 및 촉진 위치, 통전 반응을 기록하세요 (환자 개인정보 제외)"></textarea>
+        </label>
+
+        <div class="target-coords-hint">
+          <i class="fa-solid fa-hand-pointer text-cyan"></i>
+          <span id="coords-hint-text">해부도 이미지를 클릭하면 해당 위치에 타깃 조준점이 지정됩니다. (현재: X 50.0%, Y 50.0%)</span>
+          <input type="hidden" id="target-coord-x" value="50.0" />
+          <input type="hidden" id="target-coord-y" value="50.0" />
+        </div>
+
+        <div class="dialog-actions">
+          <button type="button" class="btn-cancel" id="btn-target-cancel" data-i18n="btnCancel">취소</button>
+          <button type="submit" class="btn-save-target" id="btn-target-save" data-i18n="btnSave">타깃 저장</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- NovaCell VIP 이용권 안내 팝업 모달 (Freemium Gate Modal) -->
+  <dialog id="healingVipModal" class="nc-vip-modal-dialog">
+    <div class="nc-vip-dialog-box">
+      <div class="nc-vip-dialog-header" style="text-align:center;margin-bottom:18px;">
+        <div style="font-size:2.4rem;margin-bottom:8px;">👑</div>
+        <h2 id="healingVipTitle" style="font-size:1.45rem;color:#fef08a;margin-bottom:6px;">NovaCell Healing & Pain Clinic 1년 VIP 패스</h2>
+        <p id="healingVipFeatureDesc" style="font-size:0.9rem;color:#cbd5e1;line-height:1.5;">선택하신 질환의 3D 반투명 해부 타깃과 임상 프로토콜은 1년 VIP 이용권 전용입니다.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:16px;text-align:center;margin-bottom:20px;">
+        <div style="font-size:1.8rem;font-weight:900;color:#38bdf8;">330,000원 <span style="font-size:0.95rem;color:#94a3b8;font-weight:500;">/ 1년 무제한</span></div>
+        <p style="font-size:0.8rem;color:#94a3b8;margin-top:6px;">힐링 포인트 32종 + 3D 통증 클리닉 46종 + 바이오 포인트 + 생체 회로 통합 제공</p>
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <button type="button" onclick="closeHealingVipModal()" style="flex:1;min-height:44px;background:transparent;border:1px solid #475569;border-radius:10px;color:#cbd5e1;font-weight:700;cursor:pointer;">둘러보기</button>
+        <a href="https://novacell.kr/ko/checkout.html?product=healing_points_1y" style="flex:2;min-height:44px;background:linear-gradient(135deg,#38bdf8,#0284c7);border:0;border-radius:10px;color:#041325;font-weight:900;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;">1년 VIP 이용권 신청하기</a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Audio Element for Singing Bowl Chime upon Timer Completion -->
+  <audio id="singing-bowl-audio" src="audio/singing-bowl.mp3" preload="auto"></audio>
+
+  <!-- =========================================================================
+       Footer
+       ========================================================================= -->
+  <footer class="pain-footer">
+    <p data-i18n="footerText1">NovaCell Healing & Pain Clinic APP은 세포 전압(Cellular Voltage) 정상화와 공명 주파수를 통한 비침습 클리닉 프로토콜을 제공합니다.</p>
+    <p data-i18n="footerText2">본 애플리케이션의 모든 콘텐츠는 특허 및 독점 저작권 가이드라인을 준수하여 제작되었습니다. © 2026 NovaCell.kr All Rights Reserved.</p>
+  </footer>
+
+  <!-- Auth & VIP Gate Scripts -->
+  <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
+  <script src="https://novacell.kr/js/novacell-auth.js"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-mode="freemium" data-lang="ko"></script>
+
+  <script>
+    // Freemium & VIP Gate helpers for Pain Clinic
+    function checkHealingVip() {
+      try {
+        if (window.NovaCellGate && window.NovaCellGate.isVip) return true;
+        if (window.NovaCellAuth && typeof window.NovaCellAuth.hasPass === 'function' && window.NovaCellAuth.hasPass('healing_points_1y')) return true;
+        if (localStorage.getItem('novacell_vip_status') === 'active') return true;
+        if (localStorage.getItem('novacell_healing_vip') === 'true') return true;
+        return false;
+      } catch(e) {
+        return false;
+      }
+    }
+    function openHealingVipModal(featureName) {
+      const modal = document.getElementById('healingVipModal');
+      const desc = document.getElementById('healingVipFeatureDesc');
+      if (desc && featureName) {
+        desc.textContent = `선택하신 [${featureName}]의 3D 반투명 해부 타깃과 임상 프로토콜은 1년 VIP 이용권 전용입니다.`;
+      }
+      if (modal) {
+        if (typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+        modal.classList.add('active');
+      }
+    }
+    function closeHealingVipModal() {
+      const modal = document.getElementById('healingVipModal');
+      if (modal) {
+        if (typeof modal.close === 'function') {
+          modal.close();
+        }
+        modal.classList.remove('active');
+      }
+    }
+    window.checkHealingVip = checkHealingVip;
+    window.openHealingVipModal = openHealingVipModal;
+    window.closeHealingVipModal = closeHealingVipModal;
+
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuBtn = document.getElementById('mobile-menu-toggle');
+      const overlay = document.getElementById('mobile-menu-overlay');
+      const closeBtn = document.getElementById('mobile-menu-close');
+      if (menuBtn && overlay) {
+        menuBtn.addEventListener('click', function() {
+          overlay.hidden = false;
+        });
+      }
+      if (closeBtn && overlay) {
+        closeBtn.addEventListener('click', function() {
+          overlay.hidden = true;
+        });
+      }
+      if (overlay) {
+        overlay.addEventListener('click', function(e) {
+          if (e.target === overlay) overlay.hidden = true;
+        });
+      }
+    });
+  </script>
+
+  <!-- Master Data & App Scripts -->
+  <script src="js/pain_data.js"></script>
+  <script src="js/pain_app.js"></script>
+</body>
+</html>

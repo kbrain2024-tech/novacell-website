@@ -1,4 +1,4 @@
-[[redirects]]
+﻿[[redirects]]
   from = "/healing-app/bio-point*"
   to = "/bio-point.html"
   status = 200
@@ -11,6 +11,18 @@
   force = true
 
 [[redirects]]
+  from = "/healing-app/pain-clinic*"
+  to = "/pain-clinic.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/healing-app/pain*"
+  to = "/pain-clinic.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/bio-point*"
   to = "/bio-point.html"
   status = 200
@@ -19,6 +31,18 @@
 [[redirects]]
   from = "/circuits*"
   to = "/circuits.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pain-clinic*"
+  to = "/pain-clinic.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pain*"
+  to = "/pain-clinic.html"
   status = 200
   force = true
 
