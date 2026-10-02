@@ -159,10 +159,15 @@ document.addEventListener('DOMContentLoaded', () => {
         openModal(targetType);
       } else {
         const href = btn.getAttribute('href');
-        if (!href || href === '#' || href === '#consultation') {
+        if (!href || href === '#' || href.startsWith('#consultation')) {
           e.preventDefault();
           const isEnglish = window.location.pathname.replace(/\\/g, '/').indexOf('/en/') !== -1;
-          window.location.href = isEnglish ? 'education.html#consultation' : 'education.html#consultation';
+          const contactUrl = isEnglish ? '/en/contact' : '/ko/contact';
+          let query = '';
+          if (targetType && targetType !== 'all') {
+            query = '?type=' + encodeURIComponent(targetType);
+          }
+          window.location.href = contactUrl + query + '#inquiry-form';
         }
       }
     });

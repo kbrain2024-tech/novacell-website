@@ -41,5 +41,9 @@ http://academy.novacell.kr/*    https://novacell.kr/ko/education.html  302!
 /ko/reflex-guide.html        /ko/reflex-therapy-guide       301!
 /ko/reflex-therapy-guide     /ko/reflex-therapy-guide.html  200
 
+# 5-1. Contact Pages Clean Routing
+/ko/contact    /ko/contact.html   200
+/en/contact    /en/contact.html   200
+
 # 6. Main Site Fallback (Default)
 /*    /index.html   200

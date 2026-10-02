@@ -453,5 +453,56 @@
     <script src="../js/novacell-auth-config.js"></script>
   <script src="../js/novacell-auth.js"></script>
   <script src="../js/novacell-member-nav.js"></script>
+
+  <script>
+    function initContactUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const type = (params.get('type') || '').toLowerCase();
+      const prog = (params.get('program') || '').toLowerCase();
+      const catSelect = document.getElementById('inqCategory');
+      const progGroup = document.getElementById('groupEducationProgram');
+      const progSelect = document.getElementById('inqProgram');
+
+      function updateEduGroup() {
+        if (!catSelect || !progGroup) return;
+        const isEdu = catSelect.value === '교육세미나' || catSelect.value.includes('교육');
+        progGroup.style.display = isEdu ? 'block' : 'none';
+      }
+
+      if (type.includes('edu') || type.includes('master') || type.includes('seminar') || type.includes('class') || prog) {
+        if (catSelect) {
+          for (let i = 0; i < catSelect.options.length; i++) {
+            if (catSelect.options[i].value === '교육세미나') {
+              catSelect.selectedIndex = i;
+              break;
+            }
+          }
+        }
+        if (progSelect && prog) {
+          for (let i = 0; i < progSelect.options.length; i++) {
+            if (progSelect.options[i].value.toLowerCase().includes(prog) || prog.includes(progSelect.options[i].value.toLowerCase())) {
+              progSelect.selectedIndex = i;
+              break;
+            }
+          }
+        }
+      } else if (type.includes('demo') || type.includes('device')) {
+        if (catSelect) catSelect.value = '기기데모';
+      }
+
+      updateEduGroup();
+      if (catSelect) catSelect.addEventListener('change', updateEduGroup);
+
+      if (window.location.hash === '#inquiry-form' || type || prog) {
+        const formEl = document.getElementById('inquiry-form');
+        if (formEl) {
+          setTimeout(() => {
+            formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 200);
+        }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initContactUrlParams);
+  </script>
 </body>
 </html>

@@ -122,13 +122,39 @@
     </div>
   </section>
 
-  <section class="feature-block-section alt-bg" id="contact-form">
+  <section class="feature-block-section alt-bg" id="inquiry-form" data-alias="contact-form">
     <div class="container" style="max-width: 700px;">
       <div style="background: #fff; padding: 40px; border-radius: 16px; border: 1px solid var(--color-navy-100); box-shadow: 0 10px 30px rgba(8,22,47,0.06);">
         <h3 style="color: var(--color-navy-900); margin-bottom: 20px;">Send a Direct Message</h3>
         <form id="contactPageForm" name="contact-page" method="POST" data-netlify="true" netlify-honeypot="contact-bot-field">
           <input type="hidden" name="form-name" value="contact-page">
-          <input type="hidden" name="category" value="English website inquiry">
+          <div style="margin-bottom: 16px;">
+            <label style="display:block; font-weight:600; margin-bottom:6px;">Inquiry Type *</label>
+            <select id="inqCategory" name="category" required style="width:100%; padding:12px; border:1px solid #ccc; border-radius:8px; background:#fff;">
+              <option value="Education">🎓 Master Class & Clinical Training Registration</option>
+              <option value="Device Demo">Device Purchase & Consultation Demo</option>
+              <option value="Consultation">1:1 Chronic Symptom & Voltage Consultation</option>
+              <option value="Partnership">Clinic & Hospital Partnership Inquiry</option>
+              <option value="General">General Inquiries & Customer Support</option>
+            </select>
+          </div>
+
+          <!-- Education Course Selection -->
+          <div id="groupEducationProgram" style="margin-bottom: 16px; background: rgba(212, 175, 55, 0.08); border: 1.5px solid var(--color-gold-500); border-radius: 12px; padding: 16px;">
+            <label for="inqProgram" style="display: block; font-size: 0.9rem; font-weight: 700; color: var(--color-navy-900); margin-bottom: 6px;">
+              <i class="ri-graduation-cap-fill text-gold"></i> Select Training Course *
+            </label>
+            <select id="inqProgram" name="education_program" style="width: 100%; padding: 12px 14px; border: 1px solid var(--color-gold-400); border-radius: 8px; font-size: 0.92rem; background: #fff; font-weight: 600; color: var(--color-navy-900);">
+              <option value="masterclass">NovaCell Therapy® Master Class (Weekend Intensive Training)</option>
+              <option value="intro_seminar">Bio-Voltage & Cellular Healing Introductory Seminar</option>
+              <option value="energy_webinar">Governing Vessel & Full-Body Energy Webinar (2-Hour)</option>
+              <option value="clinical_pro">Healthcare Professional Clinical Training Course</option>
+              <option value="custom_edu">Institutional & Custom Group Seminar Inquiries</option>
+            </select>
+            <small style="display: block; margin-top: 6px; color: var(--color-gold-700); font-size: 0.8rem;">
+              Our clinical specialist will contact you with syllabus details and registration confirmation.
+            </small>
+          </div>
           <p class="form-honeypot" aria-hidden="true"><label>Leave this field empty <input name="contact-bot-field" tabindex="-1" autocomplete="off"></label></p>
           <div style="margin-bottom: 16px;">
             <label style="display:block; font-weight:600; margin-bottom:6px;">Your Name *</label>
@@ -169,5 +195,49 @@
     <script src="../js/novacell-auth-config.js"></script>
   <script src="../js/novacell-auth.js"></script>
   <script src="../js/novacell-member-nav.js"></script>
+
+  <script>
+    function initContactUrlParamsEn() {
+      const params = new URLSearchParams(window.location.search);
+      const type = (params.get('type') || '').toLowerCase();
+      const prog = (params.get('program') || '').toLowerCase();
+      const catSelect = document.getElementById('inqCategory');
+      const progGroup = document.getElementById('groupEducationProgram');
+      const progSelect = document.getElementById('inqProgram');
+
+      function updateEduGroup() {
+        if (!catSelect || !progGroup) return;
+        const isEdu = catSelect.value === 'Education' || catSelect.value.toLowerCase().includes('edu');
+        progGroup.style.display = isEdu ? 'block' : 'none';
+      }
+
+      if (type.includes('edu') || type.includes('master') || type.includes('seminar') || type.includes('class') || prog) {
+        if (catSelect) catSelect.value = 'Education';
+        if (progSelect && prog) {
+          for (let i = 0; i < progSelect.options.length; i++) {
+            if (progSelect.options[i].value.toLowerCase().includes(prog) || prog.includes(progSelect.options[i].value.toLowerCase())) {
+              progSelect.selectedIndex = i;
+              break;
+            }
+          }
+        }
+      } else if (type.includes('demo') || type.includes('device')) {
+        if (catSelect) catSelect.value = 'Device Demo';
+      }
+
+      updateEduGroup();
+      if (catSelect) catSelect.addEventListener('change', updateEduGroup);
+
+      if (window.location.hash === '#inquiry-form' || window.location.hash === '#contact-form' || type || prog) {
+        const formEl = document.getElementById('inquiry-form') || document.getElementById('contact-form');
+        if (formEl) {
+          setTimeout(() => {
+            formEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 200);
+        }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', initContactUrlParamsEn);
+  </script>
 </body>
 </html>
