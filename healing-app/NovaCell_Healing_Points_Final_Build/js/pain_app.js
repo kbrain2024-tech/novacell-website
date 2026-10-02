@@ -19,8 +19,8 @@
     editingTargetId: null,
     pinLocked: true, // Default: Position Locked
     // Timer State
-    timerSeconds: 300,
-    timerTotalSeconds: 300,
+    timerSeconds: 60,
+    timerTotalSeconds: 60,
     isTimerRunning: false,
     timerInterval: null,
     timerSoundEnabled: true,
