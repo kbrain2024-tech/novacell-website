@@ -1,4 +1,4 @@
-.novacell-access-pending>*:not(#novacellAccessGate),.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}
+﻿.novacell-access-pending>*:not(#novacellAccessGate),.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}
 .novacell-access-granted #novacellAccessGate{display:none!important}
 #novacellAccessGate{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 20% 15%,rgba(27,194,207,.17),transparent 30%),linear-gradient(145deg,#040d1b,#0b2745 62%,#0c4652);font-family:Inter,"Noto Sans KR",Arial,sans-serif;color:#fff;visibility:visible!important}
 .nc-gate-card{width:min(540px,100%);padding:34px;border:1px solid rgba(106,220,229,.33);border-radius:24px;background:rgba(7,22,42,.94);box-shadow:0 28px 80px rgba(0,0,0,.48);backdrop-filter:blur(16px)}
@@ -6,10 +6,10 @@
 .nc-gate-card h1{margin:0 0 9px;font-size:clamp(1.6rem,5vw,2.2rem);line-height:1.15}.nc-gate-card>p{margin:0 0 22px;color:#b9c9da;line-height:1.65}.nc-gate-form{display:grid;gap:14px}.nc-gate-form label{display:grid;gap:7px;color:#d9e6f2;font-size:.86rem;font-weight:800}.nc-gate-form input{width:100%;padding:13px 14px;border:1px solid #365470;border-radius:10px;background:#0d243d;color:#fff;font:inherit}.nc-gate-form input:focus{outline:3px solid rgba(61,207,220,.17);border-color:#3dcfdb}.nc-gate-primary,.nc-gate-secondary{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 16px;border-radius:10px;font-weight:900;text-decoration:none;cursor:pointer}.nc-gate-primary{border:0;background:linear-gradient(135deg,#5ce0ea,#23aebc);color:#06172c}.nc-gate-secondary{border:1px solid #5c7793;background:transparent;color:#e4edf5}.nc-gate-primary:disabled{opacity:.55;cursor:wait}.nc-gate-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.nc-gate-actions>*{flex:1}.nc-gate-message{display:none;margin-bottom:16px;padding:12px 14px;border-radius:10px;background:#4a1e26;color:#ffd8dc;line-height:1.5;font-size:.86rem}.nc-gate-message.show{display:block}.nc-gate-note{margin-top:18px!important;color:#7f96ad!important;font-size:.78rem}.nc-gate-user{padding:13px 15px;margin:14px 0;border-radius:11px;background:#102b49;color:#dce9f4}.nc-gate-user strong,.nc-gate-user span{display:block}.nc-gate-user span{margin-top:4px;color:#8ea9c0;font-size:.82rem}
 .nc-member-chip {
   position: fixed;
-  top: 14px;
+  top: 76px;
   right: 18px;
   bottom: auto;
-  z-index: 2147483000;
+  z-index: 990;
   border: 1px solid rgba(80,210,220,.55);
   border-radius: 999px;
   padding: 7px 14px;
@@ -43,17 +43,62 @@
 /* Mobile Member Chip Relocation to Top Right (Prevents obscuring bottom menu tabs) */
 @media (max-width: 900px) {
   .nc-member-chip {
-    top: 12px !important;
-    bottom: auto !important;
-    right: 125px !important;
-    padding: 7px 12px !important;
-    font-size: 0.78rem !important;
-    max-width: 180px !important;
+    top: auto !important;
+    bottom: 74px !important;
+    right: 14px !important;
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+    max-width: 175px !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
   }
+}
+
+/* Auto-hide Member Chip when Modals / Dialogs are active so it NEVER blocks the close (X) button */
+body.modal-open .nc-member-chip,
+body:has(.modal-overlay.open) .nc-member-chip,
+body:has(dialog[open]) .nc-member-chip,
+.modal-overlay.open ~ .nc-member-chip,
+.modal-overlay.open .nc-member-chip,
+#protocol-modal.open ~ .nc-member-chip {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-24px) scale(0.9) !important;
+  transition: opacity 0.2s ease, visibility 0.2s, transform 0.2s ease !important;
+}
+
+/* Minimized Chip State */
+.nc-member-chip.minimized {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+}
+.nc-member-chip.minimized .nc-chip-text,
+.nc-member-chip.minimized .nc-chip-min {
+  display: none !important;
+}
+.nc-member-chip .nc-chip-min {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  margin-left: 6px;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.nc-member-chip .nc-chip-min:hover {
+  background: rgba(239, 68, 68, 0.6);
+  color: #fff;
 }
 
 /* Gate Modal Keyboard Clearance */

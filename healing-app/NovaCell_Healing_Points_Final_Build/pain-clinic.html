@@ -55,6 +55,139 @@
     .nc-vip-dialog-box {
       background: linear-gradient(135deg, #0b1d33 0%, #050e1a 100%); border: 1px solid rgba(212, 175, 55, 0.5); border-radius: 24px; padding: 30px 26px; box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.25);
     }
+      /* Prominent Return/Close Button for Modals */
+    .modal-close-btn {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 7px !important;
+      padding: 7px 16px !important;
+      border-radius: 999px !important;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.38)) !important;
+      border: 1.5px solid #ef4444 !important;
+      color: #ffffff !important;
+      font-size: 0.88rem !important;
+      font-weight: 800 !important;
+      cursor: pointer !important;
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.45) !important;
+      transition: all 0.2s ease !important;
+      white-space: nowrap !important;
+      z-index: 1000 !important;
+    }
+    .modal-close-btn:hover {
+      background: #ef4444 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 24px rgba(239, 68, 68, 0.8) !important;
+      transform: translateY(-1px) scale(1.03) !important;
+    }
+
+    /* Modal Bottom Sticky Return Bar */
+    .modal-footer-bar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 12px 24px !important;
+      background: rgba(10, 16, 30, 0.95) !important;
+      border-top: 1px solid rgba(6, 182, 212, 0.2) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      flex-shrink: 0 !important;
+    }
+    .btn-return-list {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      padding: 10px 26px !important;
+      border-radius: 999px !important;
+      background: linear-gradient(135deg, #1e293b, #0f172a) !important;
+      border: 1.5px solid rgba(6, 182, 212, 0.55) !important;
+      color: #38bdf8 !important;
+      font-size: 0.92rem !important;
+      font-weight: 800 !important;
+      cursor: pointer !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 14px rgba(6, 182, 212, 0.2) !important;
+      transition: all 0.22s ease !important;
+    }
+    .btn-return-list:hover {
+      background: linear-gradient(135deg, #0e7490, #0891b2) !important;
+      border-color: #38bdf8 !important;
+      color: #ffffff !important;
+      box-shadow: 0 6px 24px rgba(6, 182, 212, 0.6) !important;
+      transform: translateY(-2px) !important;
+    }
+
+    /* Auto-hide Member Chip when Modals / Dialogs are active so it NEVER blocks the close (X) button */
+    body.modal-open #ncMemberChip,
+    body:has(.modal-overlay.open) #ncMemberChip,
+    body:has(dialog[open]) #ncMemberChip,
+    .modal-overlay.open ~ #ncMemberChip,
+    .modal-overlay.open #ncMemberChip,
+    #protocol-modal.open ~ #ncMemberChip {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translateY(-24px) scale(0.9) !important;
+      transition: opacity 0.2s ease, visibility 0.2s, transform 0.2s ease !important;
+    }
+
+    /* 3D Anatomical Target Card in Sidebar (Compact 1024x1024 Showcase) */
+    .body-xray-card {
+      width: 100% !important;
+      position: relative !important;
+      background: radial-gradient(circle at 50% 35%, rgba(14, 116, 144, 0.2) 0%, rgba(6, 12, 26, 0.95) 100%) !important;
+      border: 1px solid rgba(6, 182, 212, 0.35) !important;
+      border-radius: 12px !important;
+      padding: 8px !important;
+      margin-bottom: 14px !important;
+      overflow: hidden !important;
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    }
+    .body-xray-container {
+      position: relative !important;
+      width: 100% !important;
+      aspect-ratio: 1 / 1 !important;
+      max-height: 290px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+      background: #030712 !important;
+    }
+    .body-xray-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      border-radius: 8px !important;
+      filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.35)) !important;
+      transition: transform 0.35s ease !important;
+      user-select: none !important;
+    }
+    .body-xray-card:hover .body-xray-img {
+      transform: scale(1.02) !important;
+    }
+    .body-xray-tag {
+      position: absolute !important;
+      top: 8px !important;
+      left: 8px !important;
+      background: rgba(11, 20, 38, 0.88) !important;
+      border: 1px solid rgba(6, 182, 212, 0.5) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      padding: 4px 9px !important;
+      border-radius: 6px !important;
+      font-size: 0.72rem !important;
+      font-weight: 700 !important;
+      color: #38bdf8 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      pointer-events: none !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+      z-index: 15 !important;
+    }
+    .body-xray-tag i {
+      color: #f43f5e !important;
+    }
   </style>
 </head>
 <body class="novacell-access-granted novacell-access-freemium">
@@ -216,40 +349,13 @@
         <h3 data-i18n="sidebarTitle">인체 구역별 질환 탐색</h3>
       </div>
 
-      <!-- 3D Translucent Anatomical X-Ray Full-Body Viewer -->
-      <div class="body-xray-card">
+            <!-- 3D Anatomical X-Ray Clinical Target Showcase -->
+      <div class="body-xray-card" title="3D 신경근골격계 정밀 치료 타깃 투시">
         <div class="body-xray-container">
-          <img src="images/fullbody_xray_3d.jpg" alt="3D Translucent Anatomical X-Ray" class="body-xray-img" />
-          
-          <!-- 6 Anatomical Interactive Hotzones with Tooltips -->
-          <div class="body-xray-hotzone zone-1" data-cat-num="1" title="01. 두경부 및 안면 질환">
-            <span class="hotzone-badge">01</span>
-            <span class="hotzone-tooltip" data-i18n="zoneHead">두경부·안면</span>
-          </div>
-
-          <div class="body-xray-hotzone zone-2" data-cat-num="2" title="02. 어깨, 상지 및 수부 질환">
-            <span class="hotzone-badge">02</span>
-            <span class="hotzone-tooltip" data-i18n="zoneUpper">어깨·상지·수부</span>
-          </div>
-
-          <div class="body-xray-hotzone zone-3" data-cat-num="3" title="03. 흉부, 복부 및 몸통 질환">
-            <span class="hotzone-badge">03</span>
-            <span class="hotzone-tooltip" data-i18n="zoneTorso">흉복부·몸통</span>
-          </div>
-
-          <div class="body-xray-hotzone zone-4" data-cat-num="4" title="04. 요추, 골반, 둔부 및 고관절 질환">
-            <span class="hotzone-badge">04</span>
-            <span class="hotzone-tooltip" data-i18n="zoneLumbar">요추·골반·고관절</span>
-          </div>
-
-          <div class="body-xray-hotzone zone-5" data-cat-num="5" title="05. 무릎, 발목 및 족부 질환">
-            <span class="hotzone-badge">05</span>
-            <span class="hotzone-tooltip" data-i18n="zoneLower">무릎·발목·족부</span>
-          </div>
-
-          <div class="body-xray-hotzone zone-6" data-cat-num="6" title="06. 자율신경계(Autonomic Nerve) 및 전신/특수 질환">
-            <span class="hotzone-badge">06</span>
-            <span class="hotzone-tooltip" data-i18n="zoneAutonomic">자율신경계</span>
+          <img src="images/fullbody_xray_3d.jpg?v=2" alt="NovaCell 3D 해부학 정밀 치료 타깃" class="body-xray-img" />
+          <div class="body-xray-tag">
+            <i class="fa-solid fa-crosshairs"></i>
+            <span>3D 해부학 정밀 치료 타깃</span>
           </div>
         </div>
       </div>
@@ -289,7 +395,9 @@
         </div>
         <div style="display: flex; align-items: center; gap: 10px;">
           <span class="cond-mech-badge" id="modal-mech-badge">병태기전</span>
-          <button type="button" class="modal-close-btn" id="modal-close-btn" title="닫기 (Esc)">
+          <button type="button" class="modal-close-btn" id="modal-close-btn" title="닫기 (Esc 또는 배경 클릭)">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>닫기 (목록으로)</span>
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -298,6 +406,15 @@
       <div class="modal-body" id="modal-body-container">
         <!-- Injected dynamically via pain_app.js -->
       </div>
+
+      <!-- Modal Bottom Sticky Return Bar -->
+      <footer class="modal-footer-bar">
+        <button type="button" class="btn-return-list" onclick="window.NovaCellPainApp.closeModal()">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>통증 질환 목록으로 돌아가기</span>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </footer>
     </div>
   </div>
 

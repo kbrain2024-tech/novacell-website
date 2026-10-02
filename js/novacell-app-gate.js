@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   'use strict';
   const script = document.currentScript;
   const product = script?.dataset.product || '';
@@ -237,9 +237,18 @@
       makeDraggable(chip);
     }
     const memberName = user?.user_metadata?.full_name || user?.email || text.member;
-    chip.innerHTML = '<span style="color:#f5ce6a;margin-right:4px;">👑</span> <span>' + memberName + ' (VIP)</span>';
+    chip.innerHTML = '<span style="color:#f5ce6a;margin-right:4px;">👑</span> <span class="nc-chip-text">' + memberName + ' (VIP)</span> <span class="nc-chip-min" title="최소화">×</span>';
     chip.onclick = e => {
       if (chip.skipClick) { chip.skipClick = false; return; }
+      if (e.target.closest('.nc-chip-min')) {
+        e.stopPropagation();
+        chip.classList.toggle('minimized');
+        return;
+      }
+      if (chip.classList.contains('minimized')) {
+        chip.classList.remove('minimized');
+        return;
+      }
       location.href = accountUrl;
     };
 
@@ -265,9 +274,18 @@
       makeDraggable(chip);
     }
     chip.className = 'nc-member-chip nc-trial-chip';
-    chip.innerHTML = '<span style="color:#4ade80;margin-right:4px;">🌿</span> <span>' + text.trialChip + '</span>';
+    chip.innerHTML = '<span style="color:#4ade80;margin-right:4px;">🌿</span> <span class="nc-chip-text">' + text.trialChip + '</span> <span class="nc-chip-min" title="최소화">×</span>';
     chip.onclick = e => {
       if (chip.skipClick) { chip.skipClick = false; return; }
+      if (e.target.closest('.nc-chip-min')) {
+        e.stopPropagation();
+        chip.classList.toggle('minimized');
+        return;
+      }
+      if (chip.classList.contains('minimized')) {
+        chip.classList.remove('minimized');
+        return;
+      }
       if (typeof window.openAppVipModal === 'function') {
         window.openAppVipModal();
       } else if (typeof window.openReflexVipModal === 'function') {

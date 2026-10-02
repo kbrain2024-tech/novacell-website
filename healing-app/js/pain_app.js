@@ -728,12 +728,14 @@
 
     el.modal?.classList.add('open');
     document.documentElement.style.overflow = 'hidden'; document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
   }
 
   function closeModal() {
     pauseTimer();
     el.modal?.classList.remove('open');
     document.documentElement.style.overflow = ''; document.body.style.overflow = '';
+    document.body.classList.remove('modal-open');
     state.activeConditionId = null;
   }
 
