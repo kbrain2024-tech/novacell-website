@@ -29,7 +29,11 @@
   <link rel="stylesheet" href="css/workspace.css">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
-  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}
+  <style>
+    body.novacell-access-blocked:not(.novacell-access-freemium)>*:not(#novacellAccessGate){visibility:hidden!important}
+    #novacellAccessGate{display:none;}
+    body.novacell-access-blocked:not(.novacell-access-freemium) #novacellAccessGate{display:grid!important;visibility:visible!important}
+
     /* NovaCell Responsive Header & Zero Text Truncation */
     .app-header { overflow: visible !important; }
     .header-actions { display: flex !important; align-items: center !important; flex-wrap: nowrap !important; min-width: 0 !important; flex-shrink: 0 !important; gap: 8px !important; }
@@ -58,7 +62,7 @@
       .header-cover-btn, .header-actions a.nav-official-home { padding: 6px 11px !important; font-size: 0.76rem !important; }
       .header-tools { min-width: 160px !important; }
     }
-</style>
+  </style>
 
 <script id="ext-dict-data" type="application/json">
 {
@@ -1606,8 +1610,213 @@
     "슬개건 기시부, 슬개하 지방체(Hoffa\u0027s fat pad) 상단":  "Patellar tendon origin, superior aspect of Hoffa\u0027s infrapatellar fat pad"
 }
 </script>
+
+<style>
+/* NovaCell Healing Points VIP Modal (Freemium Gate) */
+.nc-vip-modal-dialog {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  width: min(92%, 540px);
+  max-width: 540px;
+  color: #f8fafc;
+  z-index: 2147483640;
+}
+.nc-vip-modal-dialog::backdrop {
+  background: rgba(7, 10, 19, 0.85);
+  backdrop-filter: blur(12px);
+}
+.nc-vip-modal-dialog.active {
+  display: grid;
+  place-items: center;
+}
+.nc-vip-dialog-box {
+  background: linear-gradient(135deg, #0b1d33 0%, #050e1a 100%);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 24px;
+  padding: 30px 26px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7), 0 0 35px rgba(212, 175, 55, 0.25);
+  animation: ncModalIn 0.25s ease-out;
+}
+@keyframes ncModalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.nc-vip-dialog-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+.nc-vip-badge-crown {
+  font-size: 2.2rem;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 10px;
+  display: grid;
+  place-items: center;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+.nc-vip-dialog-header h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+  color: #fff;
+}
+.nc-vip-feature-desc {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.45;
+}
+.nc-vip-price-box {
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+.nc-vip-price-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.nc-vip-price-amount {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #fbbf24;
+}
+.nc-vip-price-term {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+.nc-vip-price-sub {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+.nc-vip-benefit-list {
+  display: grid;
+  gap: 9px;
+  margin-bottom: 22px;
+  font-size: 0.84rem;
+  color: #e2e8f0;
+}
+.nc-vip-benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+.nc-vip-benefit-row .check-icon {
+  color: #38bdf8;
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+.nc-vip-dialog-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.nc-vip-dialog-actions > * {
+  flex: 1;
+}
+.btn-nc-vip-login {
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.8);
+  color: #f1f5f9;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-nc-vip-login:hover {
+  background: rgba(51, 65, 85, 0.9);
+  border-color: #475569;
+}
+.btn-nc-vip-buy {
+  min-height: 46px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 0;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #0f172a;
+  font-weight: 800;
+  font-size: 0.88rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-nc-vip-buy:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.nc-vip-dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.78rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+}
+.nc-vip-contact {
+  color: #94a3b8;
+  text-decoration: none;
+}
+.btn-nc-vip-dismiss {
+  background: transparent;
+  border: 0;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.78rem;
+  text-decoration: underline;
+  padding: 4px;
+}
+.btn-nc-vip-dismiss:hover {
+  color: #94a3b8;
+}
+
+/* Card badges */
+.condition-item-card .vip-lock-pill {
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.condition-item-card .free-trial-pill {
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.5);
+  color: #86efac;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+@media (max-width: 520px) {
+  .nc-vip-dialog-actions {
+    flex-direction: column;
+  }
+}
+</style>
+
 </head>
-<body class="novacell-access-pending">
+<body class="novacell-access-granted novacell-access-freemium">
   <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell 회원 이용권을 확인하고 있습니다...</p></div>
   <!-- Ambient High-Tech Glow Effects -->
   <div class="ambient-glow glow-cyan"></div>
@@ -1652,6 +1861,9 @@
         <a class="header-cover-btn active" href="index.html" id="nav-therapy" title="&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8; &#xBA54;&#xC778;">
           <span>&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</span>
         </a>
+        <a class="header-cover-btn" href="pain-clinic.html" id="nav-pain" title="3D 통증 클리닉 46종 해부 타깃">
+          <span>3D 통증 클리닉</span>
+        </a>
         <a class="header-cover-btn bio-point-link" href="bio-point.html" id="nav-chakra" title="&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8; &#xC548;&#xB0B4; &#xC5F4;&#xAE30;">
           <span>&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</span>
         </a>
@@ -1693,6 +1905,10 @@
     <a class="mobile-quick-pill active" href="index.html" id="m-nav-therapy">
       <span class="m-pill-icon">&#x2695;</span>
       <span class="m-pill-text">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</span>
+    </a>
+    <a class="mobile-quick-pill" href="pain-clinic.html" id="m-nav-pain">
+      <span class="m-pill-icon">&#x26A1;</span>
+      <span class="m-pill-text">3D 통증 클리닉</span>
     </a>
     <a class="mobile-quick-pill bio-point-link" href="bio-point.html" id="m-nav-chakra">
       <span class="m-pill-icon">&#x25C9;</span>
@@ -6811,7 +7027,7 @@ setTimeout(__initNovaCellWorkspace, 100);
 </script>
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
-  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="en"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-mode="freemium" data-lang="ko"></script>
 
 <script>
 // Clean Unified Bilingual Workspace Methods for NovaCell Healing Points
@@ -8146,6 +8362,251 @@ if (typeof Workspace !== 'undefined') {
   });
 })();
 </script>
+
+  <!-- NovaCell Healing Points VIP 이용권 안내 팝업 모달 (Freemium Gate Modal) -->
+  <dialog id="healingVipModal" class="nc-vip-modal-dialog">
+    <div class="nc-vip-dialog-box">
+      <div class="nc-vip-dialog-header">
+        <div class="nc-vip-badge-crown">👑</div>
+        <h2 id="healingVipTitle">NovaCell Healing Points 1년 정기 패스</h2>
+        <p id="healingVipFeatureDesc" class="nc-vip-feature-desc">선택하신 질환 및 회로 프로토콜은 1년 정기 이용권 전용입니다.</p>
+      </div>
+
+      <div class="nc-vip-price-box">
+        <div class="nc-vip-price-main">
+          <span class="nc-vip-price-amount" id="healingVipPrice">330,000원</span>
+          <span class="nc-vip-price-term" id="healingVipTerm">/ 1년 무제한 정기 패스 (US $300)</span>
+        </div>
+        <div class="nc-vip-price-sub" id="healingVipPriceSub">32대 전신 임상 질환 · 14대 신경 생체 회로 · 528Hz 세포 전압 타이머</div>
+      </div>
+
+      <div class="nc-vip-benefit-list">
+        <div class="nc-vip-benefit-row">
+          <span class="check-icon">✓</span>
+          <span id="healingVipB1"><strong>32대 전신 만성·난치성 질환별</strong> 정밀 펜 도자 임상 통전 포인트 전체 열람</span>
+        </div>
+        <div class="nc-vip-benefit-row">
+          <span class="check-icon">✓</span>
+          <span id="healingVipB2"><strong>14대 신경 생체 전기 순환 회로(Circuits)</strong> 및 림프 순환 특수 프로토콜</span>
+        </div>
+        <div class="nc-vip-benefit-row">
+          <span class="check-icon">✓</span>
+          <span id="healingVipB3"><strong>528Hz 세포 전압(-50mV) 충전 타이머</strong> & 솔페지오 싱잉볼 바이오 사운드</span>
+        </div>
+        <div class="nc-vip-benefit-row">
+          <span class="check-icon">✓</span>
+          <span id="healingVipB4"><strong>3D 전신/해부학 상세 모델</strong> 및 환자별 맞춤 포인트 위치 저장/백업</span>
+        </div>
+      </div>
+
+      <div class="nc-vip-dialog-actions">
+        <button type="button" class="btn-nc-vip-login" id="healingVipLoginBtn" onclick="if(window.NovaCellGate&&window.NovaCellGate.showLogin){closeHealingVipModal();window.NovaCellGate.showLogin();}else{window.open('https://novacell.kr/login.html','_blank');}">
+          <span>기존 계정으로 로그인</span>
+        </button>
+        <a href="https://novacell.kr/ko/healing-points.html" target="_blank" rel="noopener noreferrer" class="btn-nc-vip-buy" id="healingVipBuyLink">
+          <span>1년 이용권 신청하기 (330,000원 / $300)</span>
+        </a>
+      </div>
+
+      <div class="nc-vip-dialog-footer">
+        <a href="tel:+82-10-9726-7012" class="nc-vip-contact">📞 고객센터: 010-9726-7012</a>
+        <button type="button" class="btn-nc-vip-dismiss" onclick="closeHealingVipModal()">체험 모드로 계속하기</button>
+      </div>
+    </div>
+  </dialog>
+
+
+<script>
+// ==========================================================================
+// NovaCell Healing Points Freemium Gate Helpers
+// ==========================================================================
+function checkHealingVip() {
+  try {
+    if (window.NovaCellGate && window.NovaCellGate.isVip) return true;
+    if (window.NovaCellAuth && typeof window.NovaCellAuth.hasPass === 'function' && window.NovaCellAuth.hasPass('healing_points_1y')) return true;
+    if (localStorage.getItem('novacell_vip_status') === 'active') return true;
+    if (localStorage.getItem('novacell_healing_vip') === 'true') return true;
+    return false;
+  } catch(e) {
+    return false;
+  }
+}
+
+const FREE_HEALING_CONDITION_IDS = ['cervicogenic-headache', 'frozen-shoulder', 'sgb-autonomic-dysfunction'];
+
+function isFreeHealingCondition(id) {
+  return FREE_HEALING_CONDITION_IDS.includes(id);
+}
+
+function openHealingVipModal(featureName) {
+  const modal = document.getElementById('healingVipModal');
+  if (!modal) return;
+  const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+  const descEl = document.getElementById('healingVipFeatureDesc');
+  if (descEl) {
+    descEl.textContent = featureName 
+      ? (isEn ? `[${featureName}] is exclusive to NovaCell 1-Year Pass Members.` : `[${featureName}] 프로토콜은 NovaCell 1년 정기 이용권 회원 전용입니다.`)
+      : (isEn ? 'Full clinical access requires a NovaCell 1-Year VIP Pass.' : '전체 32대 질환 및 생체 회로 이용을 위해 1년 정기 패스가 필요합니다.');
+  }
+  const linkEl = document.getElementById('healingVipBuyLink');
+  if (linkEl) {
+    linkEl.href = isEn ? 'https://novacell.kr/en/healing-points.html' : 'https://novacell.kr/ko/healing-points.html';
+  }
+  const priceEl = document.getElementById('healingVipPrice');
+  const termEl = document.getElementById('healingVipTerm');
+  if (priceEl) priceEl.textContent = isEn ? 'US $300' : '330,000원';
+  if (termEl) termEl.textContent = isEn ? '/ 1-Year Unlimited (₩330,000)' : '/ 1년 무제한 정기 패스 (US $300)';
+
+  if (typeof modal.showModal === 'function') {
+    modal.showModal();
+  } else {
+    modal.setAttribute('open', '');
+  }
+  modal.classList.add('active');
+}
+
+function closeHealingVipModal() {
+  const modal = document.getElementById('healingVipModal');
+  if (!modal) return;
+  if (typeof modal.close === 'function') {
+    modal.close();
+  } else {
+    modal.removeAttribute('open');
+  }
+  modal.classList.remove('active');
+}
+window.checkHealingVip = checkHealingVip;
+window.openHealingVipModal = openHealingVipModal;
+window.closeHealingVipModal = closeHealingVipModal;
+window.openAppVipModal = openHealingVipModal;
+
+// Close on backdrop click
+document.addEventListener('click', function(e) {
+  const modal = document.getElementById('healingVipModal');
+  if (modal && e.target === modal) {
+    closeHealingVipModal();
+  }
+});
+
+// Intercept circuits button clicks
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll("a[href*='circuits'], #nav-circuit, #m-nav-circuit").forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      if (!checkHealingVip()) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+        openHealingVipModal(isEn ? '14 Neural Circuits Protocol' : '14대 신경 생체 회로 프로토콜');
+      }
+    }, true);
+  });
+});
+
+// Intercept condition list rendering & selection in Workspace
+(function hookWorkspaceFreemium() {
+  function applyHooks() {
+    if (typeof Workspace === 'undefined' || !Workspace.prototype) return;
+    const proto = Workspace.prototype;
+
+    // Hook renderConditionsList
+    const origRenderConditionsList = proto.renderConditionsList;
+    proto.renderConditionsList = function() {
+      const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+      const isVip = checkHealingVip();
+      const list = this.getFilteredConditions();
+      this.conditionsCounter.textContent = isEn ? `${list.length} Conditions` : `${list.length}개 질환`;
+      this.conditionsList.innerHTML = '';
+
+      if (list.length === 0) {
+        this.conditionsList.innerHTML = `
+          <div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+            ${isEn ? 'No matching symptoms or conditions found.' : '검색된 증상 또는 질환이 없습니다.'}
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach(cond => {
+        const card = document.createElement('div');
+        const isFree = isFreeHealingCondition(cond.id);
+        const locked = !isVip && !isFree;
+
+        card.className = `condition-item-card ${this.currentCondition.id === cond.id ? 'active' : ''} ${locked ? 'is-vip-locked' : ''}`;
+        const titleMain = isEn ? cond.titleEn : cond.titleKo;
+        const titleSub = isEn ? (cond.badgeEn || '') : cond.titleEn;
+        const badge = isEn ? (cond.badgeEn || cond.badge) : cond.badge;
+        const overview = isEn ? (cond.overviewEn || cond.overview) : cond.overview;
+        const hpUnit = isEn ? 'Points' : '포인트';
+
+        const statusPill = locked 
+          ? `<span class="vip-lock-pill">🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`
+          : `<span class="free-trial-pill">🌿 ${isEn ? 'Free Trial' : '무료 체험'}</span>`;
+
+        card.setAttribute('title', `${titleMain}\n${overview}`);
+        card.innerHTML = `
+          <div class="card-header-line">
+            <span class="card-badge">${badge}</span>
+            ${statusPill}
+            <span class="card-hp-count">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="10" />
+              </svg>
+              HP ${cond.healingPoints.length} ${hpUnit}
+            </span>
+          </div>
+          <div class="card-title-ko">${titleMain}</div>
+          <div class="card-title-en">${titleSub}</div>
+          <div class="card-preview-text" title="${overview}">${overview}</div>
+        `;
+
+        card.addEventListener('mouseenter', () => {
+          this.showConditionTooltip(cond, card);
+        });
+
+        card.addEventListener('mousemove', (e) => {
+          this.positionConditionTooltip(e, card);
+        });
+
+        card.addEventListener('mouseleave', () => {
+          this.hideConditionTooltip();
+        });
+
+        card.addEventListener('click', () => {
+          this.hideConditionTooltip();
+          if (locked) {
+            openHealingVipModal(titleMain);
+            return;
+          }
+          this.selectCondition(cond);
+        });
+
+        this.conditionsList.appendChild(card);
+      });
+    };
+
+    // Hook selectCondition
+    const origSelectCondition = proto.selectCondition;
+    proto.selectCondition = function(c) {
+      const isVip = checkHealingVip();
+      if (!isVip && !isFreeHealingCondition(c.id)) {
+        const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+        openHealingVipModal(isEn ? c.titleEn : c.titleKo);
+        return;
+      }
+      if (origSelectCondition) {
+        origSelectCondition.call(this, c);
+      }
+    };
+  }
+
+  if (typeof Workspace !== 'undefined') {
+    applyHooks();
+  } else {
+    document.addEventListener('DOMContentLoaded', applyHooks);
+  }
+})();
+</script>
+
 </body>
 
 </html>
