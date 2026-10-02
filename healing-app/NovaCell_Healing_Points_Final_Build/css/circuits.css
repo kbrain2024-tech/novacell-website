@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg: #030712;
   --panel: #0a1120;
   --panel-elevated: #0f1c34;
@@ -95,6 +95,8 @@ html, body {
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 .header-actions a:hover {
   color: #ffffff;

@@ -29,7 +29,36 @@
   <link rel="stylesheet" href="css/workspace.css">
   <meta name="robots" content="noindex,nofollow">
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
-  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
+  <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}
+    /* NovaCell Responsive Header & Zero Text Truncation */
+    .app-header { overflow: visible !important; }
+    .header-actions { display: flex !important; align-items: center !important; flex-wrap: nowrap !important; min-width: 0 !important; flex-shrink: 0 !important; gap: 8px !important; }
+    .header-cover-btn, .header-actions a, .header-actions button, .header-status-badge, .lang-toggle-btn { white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; line-height: 1.2 !important; }
+    .header-cover-btn span, .header-actions a span, .header-actions button span { white-space: nowrap !important; display: inline-block !important; }
+    .header-tools { min-width: 130px !important; flex: 1 1 auto !important; max-width: 400px !important; }
+    .search-box-wrapper { min-width: 120px !important; }
+    @media (min-width: 1401px) { .header-actions { padding-right: 140px !important; } }
+    @media (max-width: 1400px) {
+      .header-status-badge { display: none !important; }
+      .brand-sub span:last-child { display: none !important; }
+      .header-actions { gap: 6px !important; padding-right: 125px !important; }
+      .header-cover-btn { padding: 5px 10px !important; font-size: 0.74rem !important; gap: 5px !important; }
+    }
+    @media (max-width: 1260px) {
+      .brand-sub { display: none !important; }
+      .brand-titles h1 { font-size: 1.05rem !important; }
+      .header-actions { gap: 5px !important; padding-right: 115px !important; }
+      .header-cover-btn, .header-actions a.nav-official-home { padding: 5px 8px !important; font-size: 0.72rem !important; }
+      .lang-toggle-btn { height: 30px !important; padding: 2px 7px !important; font-size: 11px !important; }
+    }
+    @media (max-width: 1120px) and (min-width: 901px) {
+      #nav-therapy, #nav-chakra, #nav-circuit { display: none !important; }
+      .mobile-menu-toggle { display: flex !important; }
+      .header-actions { gap: 6px !important; padding-right: 110px !important; }
+      .header-cover-btn, .header-actions a.nav-official-home { padding: 6px 11px !important; font-size: 0.76rem !important; }
+      .header-tools { min-width: 160px !important; }
+    }
+</style>
 
 <script id="ext-dict-data" type="application/json">
 {

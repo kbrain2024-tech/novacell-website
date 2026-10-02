@@ -1,4 +1,4 @@
-/**
+﻿/**
  * NovaCell Chakra Bio Points Interactive Application Styles
  * Dark Cyber-Medical Aesthetic, Responsive Two-Column Layout,
  * Interactive Hotspot Pins, Floating Information Card, and 528Hz Timer.
@@ -110,6 +110,8 @@ html, body {
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   transition: all 0.2s ease;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
 .header-actions a:hover {

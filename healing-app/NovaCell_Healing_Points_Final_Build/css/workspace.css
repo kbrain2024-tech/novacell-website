@@ -1,4 +1,4 @@
-/* v2: legible controls, image-native coordinates and unobstructed viewing. */
+﻿/* v2: legible controls, image-native coordinates and unobstructed viewing. */
 :root{--font-body:'Pretendard','Noto Sans KR','Malgun Gothic',system-ui,sans-serif;--font-display:var(--font-body)}
 *{box-sizing:border-box}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,[tabindex]:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #ffd08b;outline-offset:3px}
 [hidden]{display:none!important}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
@@ -715,13 +715,140 @@ body.pins-editable .live-pin.dragging {
 }
 
 /* ==========================================================================
-   Universal Header & Navigation System (Desktop + Mobile)
+   Universal Header & Navigation System (Desktop + Mobile) - Zero Text Truncation
    ========================================================================== */
 
+/* 1. Base Anti-Wrapping & Layout Integrity */
+.app-header {
+  overflow: visible !important;
+}
+
+.header-actions {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  min-width: 0 !important;
+  flex-shrink: 0 !important;
+  gap: 8px !important;
+}
+
+/* Ensure no header text or button ever stacks into vertical character towers */
+.header-cover-btn,
+.header-actions a,
+.header-actions button,
+.header-status-badge,
+.lang-toggle-btn {
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  flex-shrink: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.header-cover-btn span,
+.header-actions a span,
+.header-actions button span {
+  white-space: nowrap !important;
+  display: inline-block !important;
+}
+
+/* Search Box minimum width protection against flex squashing */
+.header-tools {
+  min-width: 130px !important;
+  flex: 1 1 auto !important;
+  max-width: 400px !important;
+}
+
+.search-box-wrapper {
+  min-width: 120px !important;
+}
+
 /* Desktop Header Actions Clearance for User Member Chip */
-@media (min-width: 901px) {
+@media (min-width: 1401px) {
   .header-actions {
     padding-right: 140px !important;
+  }
+}
+
+/* 2. Breakpoint: Width <= 1400px (Laptops & Non-maximized Desktop Windows) */
+@media (max-width: 1400px) {
+  /* Hide static status badge to free up ~165px */
+  .header-status-badge {
+    display: none !important;
+  }
+
+  /* Hide verbose system description in brand subtitle to free up ~150px */
+  .brand-sub span:last-child {
+    display: none !important;
+  }
+
+  .header-actions {
+    gap: 6px !important;
+    padding-right: 125px !important;
+  }
+
+  .header-cover-btn {
+    padding: 5px 10px !important;
+    font-size: 0.74rem !important;
+    gap: 5px !important;
+  }
+}
+
+/* 3. Breakpoint: Width <= 1260px (Standard Laptops & Split Windows) */
+@media (max-width: 1260px) {
+  .brand-sub {
+    display: none !important;
+  }
+
+  .brand-titles h1 {
+    font-size: 1.05rem !important;
+  }
+
+  .header-actions {
+    gap: 5px !important;
+    padding-right: 115px !important;
+  }
+
+  .header-cover-btn,
+  .header-actions a.nav-official-home {
+    padding: 5px 8px !important;
+    font-size: 0.72rem !important;
+  }
+
+  .lang-toggle-btn {
+    height: 30px !important;
+    padding: 2px 7px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* 4. Breakpoint: Width <= 1120px and >= 901px (Narrow Desktop Windows) */
+@media (max-width: 1120px) and (min-width: 901px) {
+  /* Hide the 3 internal sub-service links from the cramped top bar */
+  /* (Users can access all of them instantly via the mobile menu overlay) */
+  #nav-therapy,
+  #nav-chakra,
+  #nav-circuit {
+    display: none !important;
+  }
+
+  /* Show the mobile menu hamburger button so all services remain 1-click away */
+  .mobile-menu-toggle {
+    display: flex !important;
+  }
+
+  .header-actions {
+    gap: 6px !important;
+    padding-right: 110px !important;
+  }
+
+  .header-cover-btn,
+  .header-actions a.nav-official-home {
+    padding: 6px 11px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .header-tools {
+    min-width: 160px !important;
   }
 }
 
