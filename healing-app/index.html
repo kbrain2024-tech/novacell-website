@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -34,33 +34,189 @@
     #novacellAccessGate{display:none;}
     body.novacell-access-blocked:not(.novacell-access-freemium) #novacellAccessGate{display:grid!important;visibility:visible!important}
 
-    /* NovaCell Responsive Header & Zero Text Truncation */
-    .app-header { overflow: visible !important; }
-    .header-actions { display: flex !important; align-items: center !important; flex-wrap: nowrap !important; min-width: 0 !important; flex-shrink: 0 !important; gap: 8px !important; }
-    .header-cover-btn, .header-actions a, .header-actions button, .header-status-badge, .lang-toggle-btn { white-space: nowrap !important; word-break: keep-all !important; flex-shrink: 0 !important; line-height: 1.2 !important; }
-    .header-cover-btn span, .header-actions a span, .header-actions button span { white-space: nowrap !important; display: inline-block !important; }
-    .header-tools { min-width: 130px !important; flex: 1 1 auto !important; max-width: 400px !important; }
-    .search-box-wrapper { min-width: 120px !important; }
-    @media (min-width: 1401px) { .header-actions { padding-right: 140px !important; } }
-    @media (max-width: 1400px) {
+    /* NovaCell Responsive Header - Zero Clipping & Fluid Zoom Protection */
+    .app-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      min-height: 68px !important;
+      height: auto !important;
+      padding: 6px 20px !important;
+      box-sizing: border-box !important;
+      overflow: visible !important;
+      position: relative !important;
+      gap: 12px !important;
+    }
+
+    /* Brand Section: Never crushed, single-line title guarantee */
+    .brand-section {
+      display: flex !important;
+      align-items: center !important;
+      flex-shrink: 0 !important;
+      min-width: 0 !important;
+      gap: 12px !important;
+    }
+    .brand-link {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      text-decoration: none !important;
+      color: inherit !important;
+      flex-shrink: 0 !important;
+      min-width: 0 !important;
+    }
+    .brand-logo-badge {
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
+      flex-shrink: 0 !important;
+      border-radius: 10px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .brand-titles {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      min-width: 0 !important;
+      flex-shrink: 0 !important;
+      line-height: 1.2 !important;
+    }
+    .brand-titles h1 {
+      margin: 0 !important;
+      padding: 0 !important;
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      font-size: clamp(0.92rem, 1.15vw, 1.22rem) !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.02em !important;
+    }
+    .brand-sub {
+      margin: 2px 0 0 0 !important;
+      padding: 0 !important;
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-size: 0.72rem !important;
+      line-height: 1.2 !important;
+    }
+    .brand-sub .brand-tag {
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      font-size: 0.65rem !important;
+      padding: 2px 6px !important;
+    }
+    .brand-sub span:not(.brand-tag) {
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      max-width: 260px !important;
+    }
+
+    /* Clinical Search Bar */
+    .header-tools {
+      min-width: 100px !important;
+      flex: 1 1 180px !important;
+      max-width: 320px !important;
+    }
+    .search-box-wrapper {
+      min-width: 90px !important;
+      width: 100% !important;
+    }
+
+    /* Header Action Buttons */
+    .header-actions {
+      display: flex !important;
+      align-items: center !important;
+      flex-wrap: nowrap !important;
+      min-width: 0 !important;
+      flex-shrink: 0 !important;
+      gap: 6px !important;
+      padding-right: 90px !important; /* Space for VIP member chip */
+    }
+    .header-cover-btn, .header-actions a, .header-actions button, .header-status-badge, .lang-toggle-btn {
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      flex-shrink: 0 !important;
+      line-height: 1.2 !important;
+      padding: 5px 10px !important;
+      font-size: 0.76rem !important;
+    }
+    .header-cover-btn span, .header-actions a span, .header-actions button span {
+      white-space: nowrap !important;
+      display: inline-block !important;
+    }
+    .lang-toggle-btn {
+      height: 30px !important;
+      padding: 2px 8px !important;
+      font-size: 11.5px !important;
+    }
+
+    /* Responsive Adaptation for Smooth Horizontal Zoom & Resize */
+    @media (min-width: 1441px) {
+      .header-actions { padding-right: 95px !important; gap: 7px !important; }
+      .header-cover-btn { padding: 6px 12px !important; font-size: 0.78rem !important; }
+    }
+    @media (max-width: 1440px) {
       .header-status-badge { display: none !important; }
       .brand-sub span:last-child { display: none !important; }
-      .header-actions { gap: 6px !important; padding-right: 125px !important; }
-      .header-cover-btn { padding: 5px 10px !important; font-size: 0.74rem !important; gap: 5px !important; }
+      .header-actions { gap: 5px !important; padding-right: 85px !important; }
+      .header-cover-btn { padding: 5px 9px !important; font-size: 0.74rem !important; }
     }
-    @media (max-width: 1260px) {
+    @media (max-width: 1320px) {
+      /* Secondary tabs collapse first to ensure brand title and search bar NEVER get squished */
+      #nav-chakra, #nav-circuit { display: none !important; }
+      .mobile-menu-toggle { display: flex !important; }
       .brand-sub { display: none !important; }
       .brand-titles h1 { font-size: 1.05rem !important; }
-      .header-actions { gap: 5px !important; padding-right: 115px !important; }
+      .header-actions { gap: 5px !important; padding-right: 80px !important; }
       .header-cover-btn, .header-actions a.nav-official-home { padding: 5px 8px !important; font-size: 0.72rem !important; }
-      .lang-toggle-btn { height: 30px !important; padding: 2px 7px !important; font-size: 11px !important; }
     }
-    @media (max-width: 1120px) and (min-width: 901px) {
-      #nav-therapy, #nav-chakra, #nav-circuit { display: none !important; }
-      .mobile-menu-toggle { display: flex !important; }
-      .header-actions { gap: 6px !important; padding-right: 110px !important; }
-      .header-cover-btn, .header-actions a.nav-official-home { padding: 6px 11px !important; font-size: 0.76rem !important; }
-      .header-tools { min-width: 160px !important; }
+    @media (max-width: 1180px) {
+      #nav-therapy { display: none !important; }
+      .header-tools { min-width: 120px !important; }
+      .header-actions { padding-right: 75px !important; }
+    }
+    @media (max-width: 900px) {
+      .app-header {
+        min-height: 52px !important;
+        padding: 0 10px !important;
+        gap: 8px !important;
+      }
+      .header-cover-btn, .header-actions a.nav-official-home, #open-cover-btn {
+        display: none !important;
+      }
+      .mobile-menu-toggle {
+        display: flex !important;
+      }
+      .header-actions {
+        padding-right: 0 !important;
+        gap: 6px !important;
+      }
+      .brand-titles h1 {
+        font-size: 0.95rem !important;
+      }
+      .header-tools {
+        min-width: 90px !important;
+        flex: 1 1 auto !important;
+      }
+    }
+    @media (max-width: 600px) {
+      .app-header {
+        min-height: 48px !important;
+        padding: 0 8px !important;
+      }
+      .brand-logo-badge {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+      }
+      .brand-titles h1 {
+        font-size: 0.88rem !important;
+      }
     }
   </style>
 
