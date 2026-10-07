@@ -448,6 +448,402 @@
       }
     }
 
+  
+
+    /* ==========================================================================
+       Pro Split Workspace: Readability & 2-Column Responsive Card Enhancement
+       ========================================================================== */
+
+    /* Slim & Compact Hero Section (Brings cards Above the Fold) */
+    .pain-hero {
+      max-width: 1200px !important;
+      margin: 14px auto 16px !important;
+      padding: 0 16px !important;
+      text-align: center !important;
+    }
+    .pain-hero .hero-badge {
+      margin-bottom: 8px !important;
+      padding: 4px 12px !important;
+      font-size: 0.74rem !important;
+    }
+    .pain-hero h2 {
+      font-size: clamp(1.4rem, 2.2vw, 1.85rem) !important;
+      font-weight: 900 !important;
+      letter-spacing: -0.03em !important;
+      margin-bottom: 6px !important;
+      line-height: 1.25 !important;
+    }
+    .pain-hero .hero-sub {
+      font-size: 0.86rem !important;
+      line-height: 1.5 !important;
+      max-width: 860px !important;
+      margin: 0 auto 12px !important;
+      color: rgba(255, 255, 255, 0.65) !important;
+    }
+    .mechanism-tabs {
+      display: flex !important;
+      justify-content: center !important;
+      gap: 6px !important;
+      flex-wrap: wrap !important;
+      margin: 0 auto 4px !important;
+    }
+    .mechanism-tabs .btn-mech {
+      padding: 6px 14px !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      border-radius: 999px !important;
+    }
+
+    /* Main Clinical Workspace 2-Column Desktop Grid */
+    .pain-main-workspace,
+    .pain-workspace {
+      display: grid !important;
+      grid-template-columns: 330px minmax(0, 1fr) !important;
+      gap: 22px !important;
+      max-width: 1720px !important;
+      margin: 0 auto 50px !important;
+      padding: 0 20px !important;
+      align-items: start !important;
+    }
+
+    /* Left Sidebar: Compact & Sticky */
+    .body-nav-sidebar,
+    .sidebar-panel {
+      position: sticky !important;
+      top: 66px !important;
+      background: rgba(13, 20, 36, 0.85) !important;
+      border: 1px solid rgba(56, 189, 248, 0.22) !important;
+      border-radius: 16px !important;
+      padding: 14px !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+      width: 330px !important;
+      max-width: 330px !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Sidebar Header with Toggle */
+    .sidebar-header {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 10px !important;
+      padding-bottom: 8px !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .sidebar-header h3 {
+      font-size: 0.86rem !important;
+      font-weight: 800 !important;
+      color: #f1f5f9 !important;
+      letter-spacing: -0.01em !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+    }
+    .btn-xray-toggle {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      background: rgba(255, 255, 255, 0.06) !important;
+      border: 1px solid rgba(6, 182, 212, 0.35) !important;
+      color: #7dd3fc !important;
+      font-size: 0.7rem !important;
+      font-weight: 700 !important;
+      padding: 3px 8px !important;
+      border-radius: 6px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .btn-xray-toggle:hover {
+      background: rgba(6, 182, 212, 0.25) !important;
+      color: #ffffff !important;
+      border-color: #38bdf8 !important;
+    }
+
+    /* 3D X-Ray Anatomical Card in Sidebar (Compact Aspect Ratio) */
+    .body-xray-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-bottom: 10px !important;
+      border-radius: 12px !important;
+      padding: 6px !important;
+      box-sizing: border-box !important;
+      transition: opacity 0.25s ease, max-height 0.3s ease !important;
+    }
+    .body-xray-card.xray-hidden {
+      display: none !important;
+    }
+    .body-xray-container {
+      width: 100% !important;
+      max-height: 200px !important;
+      aspect-ratio: 4 / 3 !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+      position: relative !important;
+    }
+    .body-xray-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      border-radius: 8px !important;
+    }
+
+    /* Category Nav List: Modern 2-Column Grid (Like Index.html) */
+    .category-nav-list {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 6px !important;
+      margin-top: 6px !important;
+    }
+    /* Button 1: Entire 46 Condition Wide Header Pill */
+    .category-nav-list .cat-btn[data-cat-num="all"],
+    .category-nav-list .cat-btn:first-child {
+      grid-column: 1 / -1 !important;
+      padding: 9px 12px !important;
+      border-radius: 10px !important;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(59, 130, 246, 0.16)) !important;
+      border: 1px solid rgba(6, 182, 212, 0.45) !important;
+      color: #67e8f9 !important;
+      font-weight: 800 !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      min-height: 42px !important;
+    }
+    /* Buttons 2-7: 2-Column Compact Tiles */
+    .category-nav-list .cat-btn:not([data-cat-num="all"]):not(:first-child) {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      justify-content: space-between !important;
+      padding: 7px 9px !important;
+      min-height: 52px !important;
+      border-radius: 10px !important;
+      background: rgba(15, 23, 42, 0.6) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      text-align: left !important;
+      gap: 3px !important;
+      box-sizing: border-box !important;
+      transition: all 0.2s ease !important;
+    }
+    .category-nav-list .cat-btn:hover {
+      background: rgba(6, 182, 212, 0.14) !important;
+      border-color: rgba(6, 182, 212, 0.4) !important;
+      transform: translateY(-1px) !important;
+    }
+    .category-nav-list .cat-btn.active {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(14, 116, 144, 0.25)) !important;
+      border-color: #06b6d4 !important;
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.35) !important;
+      color: #ffffff !important;
+    }
+    .category-nav-list .cat-btn-content {
+      display: flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      line-height: 1.22 !important;
+      color: #f1f5f9 !important;
+      width: 100% !important;
+    }
+    .category-nav-list .cat-btn-content i {
+      font-size: 0.82rem !important;
+      flex-shrink: 0 !important;
+    }
+    .category-nav-list .cat-count-badge {
+      align-self: flex-end !important;
+      font-size: 0.68rem !important;
+      font-weight: 800 !important;
+      padding: 1px 6px !important;
+      border-radius: 999px !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #94a3b8 !important;
+    }
+    .category-nav-list .cat-btn.active .cat-count-badge {
+      background: rgba(6, 182, 212, 0.4) !important;
+      color: #67e8f9 !important;
+    }
+
+    /* Right Column: Conditions Panel & 3-Column Card Grid */
+    .conditions-panel {
+      min-width: 0 !important;
+      width: 100% !important;
+    }
+    .conditions-status-bar {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 14px !important;
+      padding: 8px 14px !important;
+      background: rgba(15, 23, 42, 0.6) !important;
+      border: 1px solid rgba(56, 189, 248, 0.18) !important;
+      border-radius: 12px !important;
+      backdrop-filter: blur(10px) !important;
+    }
+    .conditions-status-bar .status-text {
+      font-size: 0.88rem !important;
+      font-weight: 700 !important;
+      color: #cbd5e1 !important;
+    }
+    .conditions-status-bar .status-text strong {
+      color: #38bdf8 !important;
+    }
+
+    /* Conditions Grid: Highly Readable 3-Column Responsive Cards */
+    .conditions-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)) !important;
+      gap: 16px !important;
+    }
+
+    /* Condition Card Polish */
+    .cond-card {
+      background: rgba(13, 20, 36, 0.8) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 14px !important;
+      padding: 14px !important;
+      cursor: pointer !important;
+      display: flex !important;
+      flex-direction: column !important;
+      position: relative !important;
+      overflow: hidden !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .cond-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: rgba(6, 182, 212, 0.45) !important;
+      background: rgba(20, 32, 56, 0.9) !important;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(6, 182, 212, 0.2) !important;
+    }
+    .cond-card-top {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      margin-bottom: 10px !important;
+    }
+    .cond-id-badge {
+      font-size: 0.72rem !important;
+      font-weight: 800 !important;
+      padding: 2px 7px !important;
+      background: rgba(6, 182, 212, 0.15) !important;
+      border: 1px solid rgba(6, 182, 212, 0.3) !important;
+      color: #38bdf8 !important;
+      border-radius: 6px !important;
+    }
+    .cond-mech-badge {
+      font-size: 0.7rem !important;
+      font-weight: 700 !important;
+      padding: 2px 8px !important;
+      border-radius: 999px !important;
+      background: rgba(245, 158, 11, 0.14) !important;
+      border: 1px solid rgba(245, 158, 11, 0.35) !important;
+      color: #fbbf24 !important;
+    }
+    .cond-card-thumb-wrap {
+      width: 100% !important;
+      height: 155px !important;
+      background: #020617 !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      margin-bottom: 10px !important;
+      position: relative !important;
+      border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    }
+    .cond-card-thumb {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.3s ease !important;
+    }
+    .cond-card:hover .cond-card-thumb {
+      transform: scale(1.05) !important;
+    }
+    .cond-title-ko {
+      font-size: 1.05rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      line-height: 1.3 !important;
+      margin-bottom: 4px !important;
+      letter-spacing: -0.01em !important;
+    }
+    .cond-title-en {
+      font-size: 0.75rem !important;
+      color: #7dd3fc !important;
+      font-weight: 500 !important;
+      margin-bottom: 8px !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+    }
+    .cond-symptoms-snippet {
+      font-size: 0.82rem !important;
+      color: rgba(255, 255, 255, 0.65) !important;
+      line-height: 1.45 !important;
+      margin-bottom: 12px !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      flex-grow: 1 !important;
+    }
+    .cond-card-footer {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-top: 10px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+    .cond-targets-count {
+      font-size: 0.76rem !important;
+      font-weight: 700 !important;
+      color: #94a3b8 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+    }
+    .btn-open-protocol {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      font-size: 0.76rem !important;
+      font-weight: 800 !important;
+      color: #38bdf8 !important;
+      background: rgba(6, 182, 212, 0.12) !important;
+      padding: 4px 10px !important;
+      border-radius: 999px !important;
+      border: 1px solid rgba(6, 182, 212, 0.3) !important;
+      transition: all 0.2s ease !important;
+    }
+    .cond-card:hover .btn-open-protocol {
+      background: #06b6d4 !important;
+      color: #04101e !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.6) !important;
+    }
+
+    /* Mobile / Tablet Responsive Fallback */
+    @media (max-width: 1024px) {
+      .pain-main-workspace,
+      .pain-workspace {
+        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        padding: 0 14px 60px !important;
+      }
+      .body-nav-sidebar,
+      .sidebar-panel {
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
   </style>
 </head>
 <body class="novacell-access-granted novacell-access-freemium">
@@ -606,11 +1002,15 @@
     <!-- Left Panel: 3D Anatomical Body Map & Category Filter -->
     <aside class="body-nav-sidebar">
       <div class="sidebar-header">
-        <h3 data-i18n="sidebarTitle">인체 구역별 질환 탐색</h3>
+        <h3 data-i18n="sidebarTitle"><i class="fa-solid fa-street-view text-cyan"></i> 인체 구역별 탐색</h3>
+        <button type="button" class="btn-xray-toggle" id="btnToggleXray" title="3D 해부도 보기/숨기기">
+          <i class="fa-solid fa-eye-slash" id="xrayToggleIcon"></i>
+          <span id="xrayToggleText">해부도 숨김</span>
+        </button>
       </div>
 
             <!-- 3D Anatomical X-Ray Clinical Target Showcase -->
-      <div class="body-xray-card" title="3D 신경근골격계 정밀 치료 타깃 투시">
+      <div class="body-xray-card" id="bodyXrayCard" title="3D 신경근골격계 정밀 치료 타깃 투시">
         <div class="body-xray-container">
           <img src="images/fullbody_xray_3d.jpg?v=2" alt="NovaCell 3D 해부학 정밀 치료 타깃" class="body-xray-img" />
           <div class="body-xray-tag">

@@ -231,6 +231,20 @@
 
   // Setup Event Listeners
   function setupEventListeners() {
+
+    // 3D X-Ray Show/Hide Toggle Button
+    const btnToggleXray = document.getElementById('btnToggleXray');
+    const xrayCard = document.getElementById('bodyXrayCard');
+    const xrayIcon = document.getElementById('xrayToggleIcon');
+    const xrayText = document.getElementById('xrayToggleText');
+    if (btnToggleXray && xrayCard) {
+      btnToggleXray.addEventListener('click', () => {
+        const isHidden = xrayCard.classList.toggle('xray-hidden');
+        if (xrayIcon) xrayIcon.className = isHidden ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
+        if (xrayText) xrayText.textContent = isHidden ? '해부도 보기' : '해부도 숨김';
+      });
+    }
+
     // Language Toggle
     el.langBtn?.addEventListener('click', () => {
       state.lang = state.lang === 'ko' ? 'en' : 'ko';
