@@ -344,6 +344,110 @@
     .body-xray-tag i {
       color: #f43f5e !important;
     }
+  
+
+    /* ==========================================================================
+       Pain Clinic Mobile & Narrow PC Screen Scroll Unfreeze Fix
+       ========================================================================== */
+    html {
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      height: auto !important;
+      min-height: 100% !important;
+      position: static !important;
+      -webkit-overflow-scrolling: touch !important;
+    }
+
+    body {
+      position: static !important;
+      width: 100% !important;
+      min-height: 100vh !important;
+      height: auto !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      touch-action: pan-y !important;
+    }
+
+    body.modal-open {
+      overflow: hidden !important;
+    }
+
+    body.mobile-menu-open {
+      overflow: hidden !important;
+    }
+
+    /* Cancel fixed layout from styles.css when viewport width <= 1024px / 900px */
+    @media (max-width: 1024px) {
+      html, body {
+        position: static !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+      }
+
+      .pain-main-workspace,
+      .pain-workspace {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding: 0 16px 60px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+      }
+
+      .body-nav-sidebar,
+      .sidebar-panel {
+        position: static !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+      }
+
+      .conditions-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      /* Strictly override styles.css @media(max-width:900px) { body { position: fixed; overflow: hidden; } } */
+      html, body {
+        position: static !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+      }
+
+      #app-container {
+        height: auto !important;
+        overflow: visible !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      html, body {
+        position: static !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        height: auto !important;
+        min-height: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
+        touch-action: pan-y !important;
+      }
+      .conditions-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
   </style>
 </head>
 <body class="novacell-access-granted novacell-access-freemium">
