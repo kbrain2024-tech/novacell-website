@@ -786,28 +786,253 @@ function renderDetail(circuit) {
   if (prevBtn) prevBtn.disabled = selected === 0;
   if (nextBtn) nextBtn.disabled = selected === CIRCUITS.length - 1;
 
-  history.replaceState(null, "", `#${circuit.order.toString().padStart(2, "0")}`);
-}
-
-function selectById(id) {
-  const idx = CIRCUITS.findIndex((c) => c.id === id);
-  if (idx !== -1) {
-    const target = CIRCUITS[idx];
-    const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
-    if (!isVip && !isFreeCircuit(target)) {
-      if (typeof openHealingVipModal === "function") {
-        openHealingVipModal(isEn() ? target.en : target.name);
-      }
-      return;
-    }
-    selected = idx;
-    renderList();
-    renderDetail(CIRCUITS[selected]);
+  if (document.body.getAttribute("data-circuit-view-mode") === "detail") {
+    history.replaceState(null, "", `#${circuit.order.toString().padStart(2, "0")}`);
   }
 }
 
+/* ==========================================================================
+   Overview Grid Mode (01 폐 ~ 14 독맥 한눈에 보기 - 3D 통증 클리닉 동일 패턴)
+   ========================================================================== */
+let currentCircuitCategory = "all";
+let currentSearchQuery = "";
+
+const CIRCUIT_CATEGORIES = [
+  { id: "all", icon: "🌐", ko: "14대 생체 회로 전체보기", en: "All 14 Neural Circuits", count: 14 },
+  { id: "upper-yin", icon: "🫁", ko: "상지 음경맥 (폐·심장·심포)", en: "Upper Yin (LU·HT·PC)", count: 3 },
+  { id: "upper-yang", icon: "💪", ko: "상지 양경맥 (대장·소장·삼초)", en: "Upper Yang (LI·SI·TE)", count: 3 },
+  { id: "lower-yin", icon: "🦵", ko: "하지 음경맥 (비장·신장·간)", en: "Lower Yin (SP·KI·LR)", count: 3 },
+  { id: "lower-yang", icon: "🦴", ko: "하지 양경맥 (위장·방광·담낭)", en: "Lower Yang (ST·BL·GB)", count: 3 },
+  { id: "central-vessel", icon: "⚡", ko: "중심 기경팔맥 (임맥·독맥)", en: "Central Vessels (CV·GV)", count: 2 }
+];
+
+function getCircuitCategory(circuit) {
+  if (!circuit) return "all";
+  const o = circuit.order;
+  if (o === 1 || o === 3 || o === 11) return "upper-yin";
+  if (o === 2 || o === 4 || o === 12) return "upper-yang";
+  if (o === 5 || o === 7 || o === 9) return "lower-yin";
+  if (o === 6 || o === 8 || o === 10) return "lower-yang";
+  if (o === 13 || o === 14) return "central-vessel";
+  return "all";
+}
+
+function getOverviewFilteredCircuits() {
+  const q = currentSearchQuery.trim().toLowerCase();
+  return CIRCUITS.filter((c) => {
+    const catMatch = currentCircuitCategory === "all" || getCircuitCategory(c) === currentCircuitCategory;
+    if (!catMatch) return false;
+    if (!q) return true;
+    const matchName = c.name.toLowerCase().includes(q) || c.en.toLowerCase().includes(q);
+    const matchCode = c.code.toLowerCase().includes(q);
+    const matchUses = c.uses.toLowerCase().includes(q) || (c.usesEn && c.usesEn.toLowerCase().includes(q));
+    const matchMuscles = c.muscles.some((m) => m.ko.toLowerCase().includes(q) || m.en.toLowerCase().includes(q));
+    const matchPoints = c.extraPoints && c.extraPoints.some((p) => p.name.toLowerCase().includes(q) || (p.nameEn && p.nameEn.toLowerCase().includes(q)));
+    return matchName || matchCode || matchUses || matchMuscles || matchPoints;
+  });
+}
+
+function renderOverviewCategories() {
+  const nav = $("circuit-category-bar");
+  if (nav) {
+    nav.innerHTML = "";
+    CIRCUIT_CATEGORIES.forEach((cat) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "circuit-cat-btn" + (currentCircuitCategory === cat.id ? " active" : "");
+      btn.innerHTML = `
+        <span class="circuit-cat-btn-content">
+          <span>${cat.icon}</span>
+          <span class="circuit-cat-label">${isEn() ? cat.en : cat.ko}</span>
+        </span>
+        <span class="circuit-cat-count">${cat.count}</span>
+      `;
+      btn.addEventListener("click", () => {
+        setCircuitCategoryFilter(cat.id);
+      });
+      nav.appendChild(btn);
+    });
+  }
+
+  document.querySelectorAll("#circuitHeroFilterChips .circuit-filter-chip").forEach((chip) => {
+    chip.classList.toggle("active", chip.dataset.cat === currentCircuitCategory);
+    const labelSpan = chip.querySelector("[data-ko]");
+    if (labelSpan) {
+      labelSpan.textContent = isEn() ? labelSpan.getAttribute("data-en") : labelSpan.getAttribute("data-ko");
+    }
+  });
+
+  document.querySelectorAll("#circuitBodyXrayCard .body-xray-hotzone").forEach((zone) => {
+    zone.classList.toggle("active", zone.dataset.cat === currentCircuitCategory);
+    const tip = zone.querySelector(".hotzone-tooltip");
+    if (tip) {
+      tip.textContent = isEn() ? tip.getAttribute("data-en") : tip.getAttribute("data-ko");
+    }
+  });
+}
+
+function renderOverviewCards() {
+  const grid = $("circuit-cards-grid");
+  if (!grid) return;
+
+  const list = getOverviewFilteredCircuits();
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+
+  const statusText = $("circuitStatusText");
+  if (statusText) {
+    statusText.innerHTML = isEn()
+      ? `Showing <strong id="circuitDisplayCount">${list.length}</strong> Neural Biological Circuit AI Model Guides (01 Lung ~ 14 Governor Vessel).`
+      : `총 <strong id="circuitDisplayCount">${list.length}개</strong>의 신경 생체 회로 (01 폐 ~ 14 독맥) 인체 AI 모델 도해가 표시 중입니다.`;
+  }
+
+  const jumpWrap = $("overview-quick-pills");
+  if (jumpWrap) {
+    jumpWrap.innerHTML = "";
+    CIRCUITS.forEach((c) => {
+      const isFree = isFreeCircuit(c);
+      const isLocked = !isVip && !isFree;
+      const pill = document.createElement("button");
+      pill.type = "button";
+      pill.className = "overview-jump-pill";
+      const orderStr = c.order.toString().padStart(2, "0");
+      const shortName = isEn() ? c.code : c.name.replace(" 회로", "");
+      pill.textContent = `${orderStr} ${shortName}${isLocked ? " 🔒" : ""}`;
+      pill.title = isEn() ? c.en : c.name;
+      pill.addEventListener("click", () => {
+        openCircuitDetail(c.id);
+      });
+      jumpWrap.appendChild(pill);
+    });
+  }
+
+  grid.innerHTML = "";
+  if (list.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "empty-search";
+    empty.style.gridColumn = "1 / -1";
+    empty.style.padding = "48px 20px";
+    empty.style.textAlign = "center";
+    empty.textContent = isEn() ? "No matching neural circuits found." : "검색 조건에 일치하는 신경 생체 회로가 없습니다.";
+    grid.appendChild(empty);
+    return;
+  }
+
+  list.forEach((circuit) => {
+    const isFree = isFreeCircuit(circuit);
+    const orderStr = circuit.order.toString().padStart(2, "0");
+    const primaryName = isEn() ? circuit.en : circuit.name;
+    const secondaryName = isEn() ? circuit.name : circuit.en;
+    const routeText = isEn() ? (circuit.routeEn || circuit.route) : circuit.route;
+    const usesText = isEn() ? (circuit.usesEn || circuit.uses) : circuit.uses;
+
+    const tierBadge = !isFree
+      ? `<span class="nc-circuit-tier-badge vip">🔒 ${isEn() ? "1-Year Pass VIP" : "1년 패스 VIP"}</span>`
+      : `<span class="nc-circuit-tier-badge free">🌿 ${isEn() ? "Free Trial" : "무료 체험 가능"}</span>`;
+
+    let pointBadgeText = "";
+    if (circuit.order === 13) {
+      pointBadgeText = isEn() ? "Yin Energy Master (CV)" : "중심 음(Yin) 총괄";
+    } else if (circuit.order === 14) {
+      pointBadgeText = isEn() ? "Yang Energy Master (GV)" : "중심 양(Yang) 총괄";
+    } else {
+      pointBadgeText = isEn()
+        ? `Check ${circuit.checkEn || circuit.check} · Supply ${circuit.supplyEn || circuit.supply}`
+        : `체크 ${circuit.check} · 공급 ${circuit.supply}`;
+    }
+
+    const firstMuscle = circuit.muscles && circuit.muscles[0];
+    const showInset = !isNoHoverCircuit(circuit) && firstMuscle && firstMuscle.anatomyImg;
+    const insetHtml = showInset
+      ? `
+        <div class="circuit-thumb-anatomy-inset">
+          <div class="circuit-thumb-anatomy-head">
+            <small>[${firstMuscle.num}] ${isEn() ? "Muscle Battery" : circuit.name.replace(" 회로", "") + " 배터리 근육"}</small>
+            <strong>${isEn() ? firstMuscle.en : firstMuscle.ko}</strong>
+          </div>
+          <img src="${firstMuscle.anatomyImg}" alt="" loading="lazy">
+        </div>
+      `
+      : "";
+
+    const card = document.createElement("article");
+    card.className = "circuit-overview-card";
+    card.dataset.circuitId = circuit.id;
+    card.innerHTML = `
+      <div class="cond-card-top">
+        <div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;">
+          <span class="cond-id-badge">No. ${orderStr} · ${circuit.code}</span>
+          ${tierBadge}
+        </div>
+        <span class="cond-mech-badge" title="${pointBadgeText}">${pointBadgeText}</span>
+      </div>
+      <div class="circuit-card-thumb-wrap">
+        <span class="circuit-thumb-page-tag">${isEn() ? "p." + circuit.page : "책 " + circuit.page + "쪽"}</span>
+        <img src="${circuit.image}" alt="${primaryName}" class="circuit-card-thumb" loading="lazy">
+        ${insetHtml}
+      </div>
+      <h3 class="cond-title-ko">${orderStr}. ${primaryName}</h3>
+      <div class="cond-title-en">${secondaryName} · ${routeText}</div>
+      <p class="cond-symptoms-snippet">${usesText}</p>
+      <div class="cond-card-footer">
+        <span class="cond-targets-count">⚡ ${isEn() ? circuit.muscles.length + " Muscle Batteries" : "배터리 근육 " + circuit.muscles.length + "곳"}</span>
+        <span class="btn-open-protocol">${isEn() ? "View Circuit →" : "회로 도해 보기 →"}</span>
+      </div>
+    `;
+
+    card.addEventListener("click", () => {
+      openCircuitDetail(circuit.id);
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+function setCircuitCategoryFilter(catId) {
+  currentCircuitCategory = catId || "all";
+  renderOverviewCategories();
+  renderOverviewCards();
+}
+
+function openCircuitDetail(id) {
+  const idx = CIRCUITS.findIndex((c) => c.id === id);
+  if (idx === -1) return;
+  const target = CIRCUITS[idx];
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+  if (!isVip && !isFreeCircuit(target)) {
+    if (typeof openHealingVipModal === "function") {
+      openHealingVipModal(isEn() ? target.en : target.name);
+    }
+    return;
+  }
+  selected = idx;
+  document.body.setAttribute("data-circuit-view-mode", "detail");
+  renderList();
+  renderDetail(CIRCUITS[selected]);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function openCircuitOverview() {
+  document.body.setAttribute("data-circuit-view-mode", "overview");
+  history.replaceState(null, "", location.pathname + location.search);
+  renderOverviewCategories();
+  renderOverviewCards();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+window.openCircuitOverview = openCircuitOverview;
+window.openCircuitDetail = openCircuitDetail;
+
+function selectById(id) {
+  openCircuitDetail(id);
+}
+
 function handleSearch(query) {
-  const q = query.trim().toLowerCase();
+  currentSearchQuery = query || "";
+  const topInput = $("circuit-top-search");
+  const sideInput = $("circuit-search");
+  if (topInput && topInput.value !== currentSearchQuery) topInput.value = currentSearchQuery;
+  if (sideInput && sideInput.value !== currentSearchQuery) sideInput.value = currentSearchQuery;
+
+  const q = currentSearchQuery.trim().toLowerCase();
   if (!q) {
     filtered = [...CIRCUITS];
   } else {
@@ -830,6 +1055,7 @@ function handleSearch(query) {
     }
   }
 
+  renderOverviewCards();
   renderList();
   if (filtered.length > 0) {
     renderDetail(CIRCUITS[selected]);
@@ -1620,6 +1846,62 @@ function applyLang(lang) {
       : "이 페이지는 박창혁 저 『노바셀 통치 요법』 인쇄 페이지 204~217의 내용을 앱에서 찾기 쉽게 옮긴 교육·작업용 화면입니다. 책에 기재된 적용 질환, 회로 설명과 포인트를 안내하며, 앱이 치료 효과나 환자별 위치를 독립적으로 검증했다는 뜻은 아닙니다. 실제 적용 전 환자 상태, 금기, 해부학적 구조와 임상 판단을 별도로 확인해 주세요.";
   }
 
+  // 8. Overview Grid Hero & Return Buttons Localization
+  const heroBadge = $("circuitHeroBadge");
+  if (heroBadge) {
+    heroBadge.textContent = lang === "en"
+      ? "14 Neural Bio-Electric Circuits (01 Lung ~ 14 Governor Vessel) AI Body Models & 3D Muscle Batteries"
+      : "14대 신경 생체 전기 순환 회로 (01 폐 ~ 14 독맥) 인체 AI 모델 & 3D 배터리 근육 도해";
+  }
+  const heroTitle = $("circuitHeroTitle");
+  if (heroTitle) {
+    heroTitle.textContent = lang === "en"
+      ? "NovaCell Neural Biological Circuit Clinic"
+      : "NovaCell 신경 생체 회로 클리닉";
+  }
+  const heroSub = $("circuitHeroSub");
+  if (heroSub) {
+    heroSub.textContent = lang === "en"
+      ? "Explore all 14 interactive AI human body diagrams, voltage check/supply points, and 3D muscle battery anatomy guides (01 Lung ~ 14 Governor Vessel) from 『NovaCell Master Therapy』 (pp. 204–217) at a glance."
+      : "박창혁 저 『노바셀 통치 요법』 (204~217쪽) 기반 01 폐 회로부터 14 독맥 회로까지 14대 인체 AI 모델 상호작용 도해, 전압 체크·공급 포인트 및 배터리 근육 3D 해부도를 한눈에 확인하세요.";
+  }
+  const navTitle = $("circuitNavTitle");
+  if (navTitle) {
+    navTitle.textContent = lang === "en" ? "Explore Circuits by Region" : "인체 구역별 회로 탐색";
+  }
+  const xrayCard = $("circuitBodyXrayCard");
+  const txtToggleXray = $("txtToggleCircuitXray");
+  if (txtToggleXray) {
+    const isHidden = xrayCard && xrayCard.style.display === "none";
+    txtToggleXray.textContent = lang === "en"
+      ? (isHidden ? "Show 3D Map" : "Hide 3D Map")
+      : (isHidden ? "해부도 보기" : "해부도 숨김");
+  }
+  const xrayTag = $("circuitXrayTag");
+  if (xrayTag) {
+    xrayTag.textContent = lang === "en" ? "14 Neural Circuit Targets" : "14대 신경 생체 회로 타깃";
+  }
+  const topSearch = $("circuit-top-search");
+  if (topSearch) {
+    topSearch.placeholder = lang === "en"
+      ? "Search circuits, symptoms, or muscles (e.g. Lung, Headache, LU 7)..."
+      : "회로명, 질환, 근육, 경혈 검색 (예: 폐, 두통, 이명, LU 7)...";
+  }
+  const backSidebar = $("btnBackSidebarText");
+  if (backSidebar) {
+    backSidebar.textContent = lang === "en" ? "View All 14 Circuits (Overview)" : "14대 회로 전체보기 (한눈에 보기)";
+  }
+  const backTop = $("btnBackTopText");
+  if (backTop) {
+    backTop.textContent = lang === "en" ? "Back to All 14 Circuits" : "14대 생체 회로 전체 목록으로 돌아가기";
+  }
+  const backBottom = $("btnBackBottomText");
+  if (backBottom) {
+    backBottom.textContent = lang === "en" ? "Back to All 14 Circuits (Overview Grid)" : "14대 생체 회로 전체 목록으로 돌아가기 (한눈에 보기)";
+  }
+
+  renderOverviewCategories();
+  renderOverviewCards();
   renderList();
   renderDetail(CIRCUITS[selected]);
 }
@@ -1648,6 +1930,48 @@ document.addEventListener("DOMContentLoaded", () => {
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       handleSearch(e.target.value);
+    });
+  }
+
+  const topSearchInput = $("circuit-top-search");
+  if (topSearchInput) {
+    topSearchInput.addEventListener("input", (e) => {
+      handleSearch(e.target.value);
+      if (document.body.getAttribute("data-circuit-view-mode") === "detail" && e.target.value.trim()) {
+        document.body.setAttribute("data-circuit-view-mode", "overview");
+      }
+    });
+  }
+
+  document.querySelectorAll("#circuitHeroFilterChips .circuit-filter-chip").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      setCircuitCategoryFilter(chip.dataset.cat);
+    });
+  });
+
+  document.querySelectorAll("#circuitBodyXrayCard .body-xray-hotzone").forEach((zone) => {
+    zone.addEventListener("click", () => {
+      const targetCat = zone.dataset.cat;
+      if (currentCircuitCategory === targetCat) {
+        setCircuitCategoryFilter("all");
+      } else {
+        setCircuitCategoryFilter(targetCat);
+      }
+    });
+  });
+
+  const btnToggleXray = $("btnToggleCircuitXray");
+  const xrayCard = $("circuitBodyXrayCard");
+  if (btnToggleXray && xrayCard) {
+    btnToggleXray.addEventListener("click", () => {
+      const isHidden = xrayCard.style.display === "none";
+      xrayCard.style.display = isHidden ? "" : "none";
+      const txtToggleXray = $("txtToggleCircuitXray");
+      if (txtToggleXray) {
+        txtToggleXray.textContent = isEn()
+          ? (isHidden ? "Hide 3D Map" : "Show 3D Map")
+          : (isHidden ? "해부도 숨김" : "해부도 보기");
+      }
     });
   }
 
@@ -1698,6 +2022,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
       if (isVip || isFreeCircuit(CIRCUITS[foundIdx])) {
         selected = foundIdx;
+        document.body.setAttribute("data-circuit-view-mode", "detail");
       } else {
         selected = 0;
       }
@@ -1705,6 +2030,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("novacell:vip-status-changed", () => {
+    renderOverviewCategories();
+    renderOverviewCards();
     renderList();
     renderDetail(CIRCUITS[selected]);
   });

@@ -10,13 +10,22 @@
   <link rel="stylesheet" href="https://novacell.kr/css/novacell-app-gate.css">
   <style>body.novacell-access-pending>*:not(#novacellAccessGate),body.novacell-access-blocked>*:not(#novacellAccessGate){visibility:hidden!important}#novacellAccessGate{visibility:visible!important}</style>
 </head>
-<body class="novacell-access-pending">
+<body class="novacell-access-pending" data-circuit-view-mode="overview">
   <div id="novacellAccessGate" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;padding:24px;background:#07172d;color:#fff;font-family:Arial,sans-serif;visibility:visible!important"><p>NovaCell &#xD68C;&#xC6D0; &#xC774;&#xC6A9;&#xAD8C;&#xC744; &#xD655;&#xC778;&#xD558;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;...</p></div>
   <header class="circuit-header">
     <a class="brand" href="index.html" aria-label="&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8; &#xBA54;&#xC778;&#xC73C;&#xB85C; &#xC774;&#xB3D9;">
       <span class="brand-mark" aria-hidden="true">&#x25C7;</span>
       <span><strong>NovaCell Healing & Pain Clinic</strong><small id="brand-sub-title">NEURAL CIRCUIT THERAPY GUIDE</small></span>
     </a>
+    <div class="header-search-wrap" role="search">
+      <div class="header-search-box">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="circuit-top-search" type="search" placeholder="회로명, 증상, 혈자리 검색 (예: 폐, 두통, 이명, LU 7)">
+      </div>
+    </div>
     <nav class="header-actions" aria-label="&#xD398;&#xC774;&#xC9C0; &#xC774;&#xB3D9;">
       <a href="index.html" id="nav-therapy">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</a>
       <a href="pain-clinic.html" id="nav-pain">3D 통증 클리닉</a>
@@ -88,8 +97,116 @@
   </aside>
 </div>
 
-  <main class="circuit-shell">
+  <!-- ==========================================================================
+       1. Overview Grid Hero & 14-Circuit Gallery (3D 통증 클리닉 동일 패턴)
+       ========================================================================== -->
+  <section id="circuit-overview-hero" class="circuit-overview-hero">
+    <div class="circuit-hero-badge">
+      <span>⚡</span>
+      <span id="circuitHeroBadge">14대 신경 생체 전기 순환 회로 (01 폐 ~ 14 독맥) 인체 AI 모델 &amp; 3D 배터리 근육 도해</span>
+    </div>
+    <h2 id="circuitHeroTitle">NovaCell 신경 생체 회로 클리닉</h2>
+    <p class="circuit-hero-sub" id="circuitHeroSub">
+      박창혁 저 『노바셀 통치 요법』 (204~217쪽) 기반 01 폐 회로부터 14 독맥 회로까지 14대 인체 AI 모델 상호작용 도해, 전압 체크·공급 포인트 및 배터리 근육 3D 해부도를 한눈에 확인하세요.
+    </p>
+
+    <div class="circuit-mech-chips-wrap" id="circuitHeroFilterChips">
+      <button type="button" class="circuit-filter-chip active" data-cat="all">
+        <span>✨</span> <span data-ko="전신 생체 회로 전체보기 (14종)" data-en="All 14 Neural Circuits">전신 생체 회로 전체보기 (14종)</span>
+      </button>
+      <button type="button" class="circuit-filter-chip" data-cat="upper-yin">
+        <span>🫁</span> <span data-ko="상지 음경맥 회로 · 폐/심장/심포 (3)" data-en="Upper Yin · LU / HT / PC (3)">상지 음경맥 회로 · 폐/심장/심포 (3)</span>
+      </button>
+      <button type="button" class="circuit-filter-chip" data-cat="upper-yang">
+        <span>💪</span> <span data-ko="상지 양경맥 회로 · 대장/소장/삼초 (3)" data-en="Upper Yang · LI / SI / TE (3)">상지 양경맥 회로 · 대장/소장/삼초 (3)</span>
+      </button>
+      <button type="button" class="circuit-filter-chip" data-cat="lower-yin">
+        <span>🦵</span> <span data-ko="하지 음경맥 회로 · 비장/신장/간 (3)" data-en="Lower Yin · SP / KI / LR (3)">하지 음경맥 회로 · 비장/신장/간 (3)</span>
+      </button>
+      <button type="button" class="circuit-filter-chip" data-cat="lower-yang">
+        <span>🦴</span> <span data-ko="하지 양경맥 회로 · 위장/방광/담낭 (3)" data-en="Lower Yang · ST / BL / GB (3)">하지 양경맥 회로 · 위장/방광/담낭 (3)</span>
+      </button>
+      <button type="button" class="circuit-filter-chip" data-cat="central-vessel">
+        <span>⚡</span> <span data-ko="중심 기경팔맥 · 임맥/독맥 (2)" data-en="Central Vessels · CV / GV (2)">중심 기경팔맥 · 임맥/독맥 (2)</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="circuit-overview-workspace" class="circuit-overview-workspace">
+    <!-- Left Sidebar: Interactive 3D Body Map & 2-Column Region Navigator -->
+    <aside class="circuit-overview-sidebar">
+      <div class="circuit-sidebar-top-header">
+        <div class="circuit-sidebar-top-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#06b6d4" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+          </svg>
+          <span id="circuitNavTitle">인체 구역별 회로 탐색</span>
+        </div>
+        <button type="button" id="btnToggleCircuitXray" class="btn-toggle-xray">
+          <span id="txtToggleCircuitXray">해부도 숨김</span>
+        </button>
+      </div>
+
+      <!-- 3D Translucent X-Ray Full-Body Interactive Map -->
+      <div class="body-xray-card" id="circuitBodyXrayCard">
+        <div class="body-xray-frame">
+          <img src="assets/body_full_posterior_3d.jpg" alt="3D 전신 신경 생체 회로 해부도" class="body-xray-img" />
+          <div class="body-xray-tag">
+            <span>🎯</span>
+            <span id="circuitXrayTag">14대 신경 생체 회로 타깃</span>
+          </div>
+
+          <div class="body-xray-hotzone cz-upper-yin" data-cat="upper-yin" title="상지 음경맥 · 폐/심장/심포 (3종)">
+            <span class="hotzone-badge">3</span>
+            <span class="hotzone-tooltip" data-ko="상지 음경맥 · LU/HT/PC (3)" data-en="Upper Yin (3)">상지 음경맥 · LU/HT/PC (3)</span>
+          </div>
+          <div class="body-xray-hotzone cz-upper-yang" data-cat="upper-yang" title="상지 양경맥 · 대장/소장/삼초 (3종)">
+            <span class="hotzone-badge">3</span>
+            <span class="hotzone-tooltip" data-ko="상지 양경맥 · LI/SI/TE (3)" data-en="Upper Yang (3)">상지 양경맥 · LI/SI/TE (3)</span>
+          </div>
+          <div class="body-xray-hotzone cz-central" data-cat="central-vessel" title="중심 기경팔맥 · 임맥/독맥 (2종)">
+            <span class="hotzone-badge">2</span>
+            <span class="hotzone-tooltip" data-ko="중심 임맥·독맥 · CV/GV (2)" data-en="Central CV/GV (2)">중심 임맥·독맥 · CV/GV (2)</span>
+          </div>
+          <div class="body-xray-hotzone cz-lower-yin" data-cat="lower-yin" title="하지 음경맥 · 비장/신장/간 (3종)">
+            <span class="hotzone-badge">3</span>
+            <span class="hotzone-tooltip" data-ko="하지 음경맥 · SP/KI/LR (3)" data-en="Lower Yin (3)">하지 음경맥 · SP/KI/LR (3)</span>
+          </div>
+          <div class="body-xray-hotzone cz-lower-yang" data-cat="lower-yang" title="하지 양경맥 · 위장/방광/담낭 (3종)">
+            <span class="hotzone-badge">3</span>
+            <span class="hotzone-tooltip" data-ko="하지 양경맥 · ST/BL/GB (3)" data-en="Lower Yang (3)">하지 양경맥 · ST/BL/GB (3)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2-Column Category Navigation Grid -->
+      <nav id="circuit-category-bar" class="circuit-category-nav-list"></nav>
+    </aside>
+
+    <!-- Right Overview Panel: 14-Circuit AI Model Card Grid -->
+    <div id="circuit-overview-panel" class="circuit-overview-panel">
+      <div class="circuit-status-bar">
+        <div class="status-text" id="circuitStatusText">
+          총 <strong id="circuitDisplayCount">14개</strong>의 신경 생체 회로 인체 AI 모델 도해가 표시 중입니다.
+        </div>
+        <div class="overview-quick-jump" id="overview-quick-pills" aria-label="01~14 빠른 회로 선택"></div>
+      </div>
+
+      <!-- 14 Circuit Cards 4-Column Responsive Grid -->
+      <div id="circuit-cards-grid" class="circuit-cards-grid"></div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       2. Detail Inspector Mode (회로 카드 클릭 시 상세 상호작용 도해 화면)
+       ========================================================================== -->
+  <main class="circuit-shell" id="circuit-detail-shell">
     <aside class="circuit-sidebar">
+      <button type="button" class="btn-back-to-overview-sidebar" onclick="window.openCircuitOverview()">
+        <span>←</span>
+        <span id="btnBackSidebarText">14대 회로 전체보기 (한눈에 보기)</span>
+      </button>
       <div class="sidebar-heading">
         <p class="eyebrow" id="sidebar-eyebrow">NEURAL BIOLOGICAL CIRCUIT</p>
         <h1 id="sidebar-main-title">&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;<br><span id="sidebar-sub-title" style="font-size:0.62em; font-weight:600; color:var(--text-sub);">Neural Circuit Therapy</span><br><span id="sidebar-book-title" class="accent-title">&#xB178;&#xBC14;&#xC14B; &#xD1B5;&#xCE58; &#xC694;&#xBC95;</span></h1>
@@ -123,7 +240,13 @@
           <h2 id="circuit-title">&#xD3D0; &#xD68C;&#xB85C;</h2>
           <p id="circuit-title-en" class="title-en">Lung (LU) Circuit</p>
         </div>
-        <span id="source-page" class="source-page">&#xCC45; 204&#xCABD;</span>
+        <div class="detail-topline-actions">
+          <span id="source-page" class="source-page">&#xCC45; 204&#xCABD;</span>
+          <button type="button" class="btn-back-to-overview-top" onclick="window.openCircuitOverview()">
+            <span>←</span>
+            <span id="btnBackTopText">14대 생체 회로 전체 목록으로 돌아가기</span>
+          </button>
+        </div>
       </div>
 
       <div class="detail-grid">
@@ -350,12 +473,747 @@
         <strong id="evidence-title">&#xC790;&#xB8CC; &#xBC94;&#xC704;&#xC640; &#xC8FC;&#xC758;</strong>
         <p id="evidence-text">&#xC774; &#xD398;&#xC774;&#xC9C0;&#xB294; &#xBC15;&#xCC3D;&#xD601; &#xC800; &#x300E;&#xB178;&#xBC14;&#xC14B; &#xD1B5;&#xCE58; &#xC694;&#xBC95;&#x300F; &#xC778;&#xC1C4; &#xD398;&#xC774;&#xC9C0; 204~217&#xC758; &#xB0B4;&#xC6A9;&#xC744; &#xC571;&#xC5D0;&#xC11C; &#xCC3E;&#xAE30; &#xC27D;&#xAC8C; &#xC62E;&#xAE34; &#xAD50;&#xC721;&middot;&#xC791;&#xC5C5;&#xC6A9; &#xD654;&#xBA74;&#xC785;&#xB2C8;&#xB2E4;. &#xCC45;&#xC5D0; &#xAE30;&#xC7AC;&#xB41C; &#xC801;&#xC6A9; &#xC9C8;&#xD658;, &#xD68C;&#xB85C; &#xC124;&#xBA85;&#xACFC; &#xD3EC;&#xC778;&#xD2B8;&#xB97C; &#xC548;&#xB0B4;&#xD558;&#xBA70;, &#xC571;&#xC774; &#xCE58;&#xB8CC; &#xD6A8;&#xACFC;&#xB098; &#xD658;&#xC790;&#xBCC4; &#xC704;&#xCE58;&#xB97C; &#xB3C5;&#xB9BD;&#xC801;&#xC73C;&#xB85C; &#xAC80;&#xC99D;&#xD588;&#xB2E4;&#xB294; &#xB73B;&#xC740; &#xC544;&#xB2D9;&#xB2C8;&#xB2E4;. &#xC2E4;&#xC81C; &#xC801;&#xC6A9; &#xC804; &#xD658;&#xC790; &#xC0C1;&#xD0DC;, &#xAE08;&#xAE30;, &#xD574;&#xBD80;&#xD559;&#xC801; &#xAD6C;&#xC870;&#xC640; &#xC784;&#xC111; &#xD310;&#xB2E8;&#xC744; &#xBCC4;&#xB3C4;&#xB85C; &#xD655;&#xC778;&#xD574; &#xC8FC;&#xC138;&#xC694;.</p>
       </aside>
+      <div class="detail-bottom-return-bar">
+        <button type="button" class="btn-back-to-overview-bottom" onclick="window.openCircuitOverview()">
+          <span>←</span>
+          <span id="btnBackBottomText">14대 생체 회로 전체 목록으로 돌아가기 (한눈에 보기)</span>
+        </button>
+      </div>
     </section>
   </main>
 
     <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
 
   <style>
+    /* ==========================================================================
+       NovaCell 신경 생체 회로 (14종) - 3D 통증 클리닉 동일 패턴 Overview Grid & Detail View
+       ========================================================================== */
+    .header-search-wrap {
+      flex: 1 1 240px;
+      max-width: 360px;
+      margin: 0 12px;
+    }
+    .header-search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      border-radius: 999px;
+      padding: 6px 14px;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
+    }
+    .header-search-box:focus-within {
+      border-color: #38bdf8;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+    }
+    .header-search-box svg {
+      stroke: #38bdf8;
+      flex-shrink: 0;
+    }
+    .header-search-box input {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: #f8fafc;
+      font-size: 0.82rem;
+    }
+    .header-search-box input::placeholder {
+      color: #64748b;
+    }
+
+    /* View Mode Switching */
+    body[data-circuit-view-mode="overview"] #circuit-detail-shell {
+      display: none !important;
+    }
+    body[data-circuit-view-mode="detail"] #circuit-overview-hero,
+    body[data-circuit-view-mode="detail"] #circuit-overview-workspace {
+      display: none !important;
+    }
+
+    /* 1. Hero Banner (Matches 3D 통증 클리닉 .pain-hero) */
+    .circuit-overview-hero {
+      max-width: 1080px;
+      margin: 26px auto 22px;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .circuit-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 15px;
+      border-radius: 9999px;
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      color: #38bdf8;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.15);
+    }
+    .circuit-overview-hero h2 {
+      font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: #ffffff;
+      margin: 0 0 10px;
+      background: linear-gradient(135deg, #ffffff 40%, #7dd3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .circuit-hero-sub {
+      font-size: 0.94rem;
+      color: #94a3b8;
+      max-width: 860px;
+      margin: 0 auto 18px;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+    .circuit-mech-chips-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .circuit-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #94a3b8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .circuit-filter-chip:hover {
+      background: rgba(255, 255, 255, 0.09);
+      color: #fff;
+      border-color: rgba(56, 189, 248, 0.35);
+      transform: translateY(-1px);
+    }
+    .circuit-filter-chip.active {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.28), rgba(59, 130, 246, 0.28));
+      border-color: #06b6d4;
+      color: #67e8f9;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
+    }
+
+    /* 2. Overview Workspace (Matches 3D 통증 클리닉) */
+    .circuit-overview-workspace {
+      max-width: 1580px;
+      width: 100%;
+      margin: 0 auto 64px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    /* 3. Left Sticky Sidebar */
+    .circuit-overview-sidebar {
+      position: sticky;
+      top: 86px;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 14px 12px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+    }
+    .circuit-sidebar-top-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2px 10px;
+      margin-bottom: 6px;
+    }
+    .circuit-sidebar-top-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .btn-toggle-xray {
+      background: rgba(6, 182, 212, 0.14);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: #38bdf8;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .btn-toggle-xray:hover {
+      background: rgba(6, 182, 212, 0.28);
+      color: #fff;
+    }
+
+    /* 3D Translucent X-Ray Full-Body Preview Card */
+    .body-xray-card {
+      width: 100%;
+      position: relative;
+      background: radial-gradient(circle at 50% 35%, rgba(14, 116, 144, 0.2) 0%, rgba(6, 12, 26, 0.95) 100%);
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      border-radius: 12px;
+      padding: 6px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .body-xray-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-height: 225px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #030712;
+    }
+    .body-xray-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+      filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.35));
+      transition: transform 0.35s ease;
+      user-select: none;
+    }
+    .body-xray-card:hover .body-xray-img {
+      transform: scale(1.02);
+    }
+    .body-xray-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(11, 20, 38, 0.88);
+      border: 1px solid rgba(6, 182, 212, 0.5);
+      backdrop-filter: blur(8px);
+      padding: 4px 9px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      pointer-events: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      z-index: 15;
+    }
+    .body-xray-hotzone {
+      position: absolute;
+      cursor: pointer;
+      border-radius: 10px;
+      background: rgba(6, 182, 212, 0.06);
+      border: 1px dashed rgba(6, 182, 212, 0.3);
+      transition: all 0.22s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .body-xray-hotzone:hover {
+      background: rgba(6, 182, 212, 0.28);
+      border: 1.5px solid #38bdf8;
+      box-shadow: 0 0 18px rgba(6, 182, 212, 0.6);
+      z-index: 20;
+    }
+    .body-xray-hotzone.active {
+      background: rgba(245, 158, 11, 0.34);
+      border: 1.8px solid #fbbf24;
+      box-shadow: 0 0 22px rgba(245, 158, 11, 0.75);
+      z-index: 21;
+    }
+    .cz-upper-yin  { top: 18%; left: 16%; width: 32%; height: 28%; }
+    .cz-upper-yang { top: 18%; left: 52%; width: 32%; height: 28%; }
+    .cz-central    { top: 8%;  left: 44%; width: 12%; height: 48%; border-radius: 999px; background: rgba(236, 72, 153, 0.16); border-color: rgba(236, 72, 153, 0.45); z-index: 14; }
+    .cz-lower-yin  { top: 50%; left: 22%; width: 26%; height: 44%; }
+    .cz-lower-yang { top: 50%; left: 52%; width: 26%; height: 44%; }
+
+    .hotzone-badge {
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      font-size: 0.63rem;
+      font-weight: 850;
+      padding: 1px 5px;
+      border-radius: 6px;
+      background: rgba(2, 6, 23, 0.85);
+      border: 1px solid rgba(6, 182, 212, 0.45);
+      color: #38bdf8;
+    }
+    .body-xray-hotzone.active .hotzone-badge {
+      background: #f59e0b;
+      color: #000;
+      border-color: #fde68a;
+    }
+    .hotzone-tooltip {
+      position: absolute;
+      bottom: -20px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid #38bdf8;
+      color: #fff;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: all 0.2s ease;
+      z-index: 30;
+    }
+    .body-xray-hotzone:hover .hotzone-tooltip,
+    .body-xray-hotzone.active .hotzone-tooltip {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 2-Column Category Navigation Grid */
+    .circuit-category-nav-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      padding: 0;
+    }
+    .circuit-cat-btn {
+      padding: 8px 9px;
+      font-size: 0.74rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 4px;
+      min-height: 52px;
+      line-height: 1.25;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: #94a3b8;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      width: 100%;
+    }
+    .circuit-cat-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    .circuit-cat-btn.active {
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.22), rgba(59, 130, 246, 0.14));
+      border-color: rgba(6, 182, 212, 0.5);
+      color: #67e8f9;
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.2);
+    }
+    .circuit-cat-btn:first-child,
+    .circuit-cat-btn:last-child {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 40px;
+      padding: 8px 12px;
+      font-size: 0.81rem;
+    }
+    .circuit-cat-btn-content {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+    }
+    .circuit-cat-btn:not(:first-child):not(:last-child) .circuit-cat-label {
+      white-space: normal;
+      word-break: keep-all;
+      padding-right: 20px;
+    }
+    .circuit-cat-count {
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #64748b;
+    }
+    .circuit-cat-btn:not(:first-child):not(:last-child) .circuit-cat-count {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      padding: 1px 5px;
+      font-size: 0.66rem;
+    }
+    .circuit-cat-btn.active .circuit-cat-count {
+      background: rgba(6, 182, 212, 0.32);
+      color: #67e8f9;
+    }
+
+    /* 4. Right 14-Circuit Card Grid */
+    .circuit-overview-panel {
+      min-height: 500px;
+      width: 100%;
+    }
+    .circuit-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .circuit-status-bar .status-text {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .circuit-status-bar .status-text strong {
+      color: #06b6d4;
+      font-weight: 800;
+    }
+    .overview-quick-jump {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .overview-jump-pill {
+      padding: 4px 8px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .overview-jump-pill:hover {
+      background: rgba(6, 182, 212, 0.22);
+      border-color: #38bdf8;
+      color: #fff;
+    }
+
+    .circuit-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+      gap: 16px;
+    }
+
+    /* Circuit Overview Card (Exact 3D 통증 클리닉 .cond-card style) */
+    .circuit-overview-card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .circuit-overview-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .circuit-overview-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(6, 182, 212, 0.45);
+      background: rgba(30, 41, 59, 0.88);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.48), 0 0 20px rgba(6, 182, 212, 0.18);
+    }
+    .circuit-overview-card:hover::before {
+      opacity: 1;
+    }
+
+    .cond-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .cond-id-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.32);
+      color: #38bdf8;
+      border-radius: 8px;
+      letter-spacing: 0.4px;
+      white-space: nowrap;
+    }
+    .cond-mech-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 145px;
+    }
+
+    /* Human AI Model Thumbnail + 3D Muscle Battery Inset */
+    .circuit-card-thumb-wrap {
+      width: 100%;
+      height: 235px;
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      position: relative;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      box-shadow: inset 0 0 18px rgba(15, 23, 42, 0.08);
+    }
+    .circuit-card-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      padding: 4px;
+      transition: transform 0.32s ease;
+    }
+    .circuit-overview-card:hover .circuit-card-thumb {
+      transform: scale(1.03);
+    }
+    .circuit-thumb-page-tag {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(15, 23, 42, 0.84);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      font-size: 0.68rem;
+      font-weight: 800;
+      z-index: 4;
+    }
+    .circuit-thumb-anatomy-inset {
+      position: absolute;
+      left: 7px;
+      bottom: 7px;
+      width: 44%;
+      background: rgba(248, 250, 252, 0.96);
+      border: 1px solid rgba(14, 165, 233, 0.38);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.24);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .circuit-thumb-anatomy-head {
+      padding: 4px 6px;
+      background: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .circuit-thumb-anatomy-head small {
+      display: block;
+      font-size: 0.56rem;
+      font-weight: 800;
+      color: #0284c7;
+      line-height: 1.1;
+    }
+    .circuit-thumb-anatomy-head strong {
+      display: block;
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #0f172a;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 1px;
+    }
+    .circuit-thumb-anatomy-inset img {
+      display: block;
+      width: 100%;
+      height: 68px;
+      object-fit: cover;
+      background: #020617;
+    }
+
+    .cond-title-ko {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #f8fafc;
+      line-height: 1.35;
+      margin: 0 0 4px;
+      word-break: keep-all;
+    }
+    .cond-title-en {
+      font-size: 0.77rem;
+      color: #38bdf8;
+      font-weight: 600;
+      margin-bottom: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .cond-symptoms-snippet {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      line-height: 1.48;
+      margin: 0 0 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex-grow: 1;
+    }
+    .cond-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      gap: 8px;
+    }
+    .cond-targets-count {
+      font-size: 0.74rem;
+      color: #38bdf8;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 700;
+    }
+    .btn-open-protocol {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3));
+      border: 1px solid rgba(6, 182, 212, 0.42);
+      padding: 5px 12px;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .circuit-overview-card:hover .btn-open-protocol {
+      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      box-shadow: 0 0 14px rgba(6, 182, 212, 0.5);
+    }
+
+    /* Return to Overview Buttons in Detail Mode */
+    .btn-back-to-overview-sidebar {
+      width: 100%;
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.22), rgba(59, 130, 246, 0.22));
+      border: 1.5px solid #06b6d4;
+      color: #67e8f9;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.25);
+      transition: all 0.2s ease;
+    }
+    .btn-back-to-overview-sidebar:hover {
+      background: linear-gradient(135deg, #06b6d4, #2563eb);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .detail-topline-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-back-to-overview-top,
+    .btn-back-to-overview-bottom {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(185, 28, 28, 0.38));
+      border: 1.5px solid #ef4444;
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.4);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-back-to-overview-top:hover,
+    .btn-back-to-overview-bottom:hover {
+      background: #ef4444;
+      box-shadow: 0 0 24px rgba(239, 68, 68, 0.75);
+      transform: translateY(-1px);
+    }
+    .detail-bottom-return-bar {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 1100px) {
+      .circuit-overview-workspace {
+        grid-template-columns: 1fr;
+      }
+      .circuit-overview-sidebar {
+        position: static;
+      }
+      .body-xray-card {
+        display: none !important;
+      }
+      .btn-toggle-xray {
+        display: none !important;
+      }
+      .header-search-wrap {
+        display: none;
+      }
+    }
+
     .nc-circuit-tier-badge {
       display: inline-flex;
       align-items: center;
