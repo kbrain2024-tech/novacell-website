@@ -1628,26 +1628,40 @@ function load() {
 
     const savedVol = parseFloat(localStorage.getItem("novacell_reflex_vol") || "0.70");
     if (!isNaN(savedVol)) state.masterVolume = Math.max(0, Math.min(1, savedVol));
+
+    if (typeof programs !== "undefined" && programs.length > 0) {
+      const savedProg = saved.activeProgramId ? programs.find(p => p.id === saved.activeProgramId) : null;
+      state.activeProgram = savedProg || programs[0];
+      state.sessionMap = saved.sessionMap === "hand" ? "hand" : "foot";
+      state.sessionDurations = state.activeProgram.points.map(() => state.defaultDuration);
+    }
   } catch (e) {
-    toast("저장 자료를 읽지 못했습니다.");
+    if (typeof programs !== "undefined" && programs.length > 0 && !state.activeProgram) {
+      state.activeProgram = programs[0];
+      state.sessionDurations = state.activeProgram.points.map(() => state.defaultDuration);
+    }
   }
 }
 
 function save() {
-  localStorage.setItem(key, JSON.stringify({
-    version: 6,
-    savedAt: new Date().toISOString(),
-    mode: state.mode,
-    lang: state.lang,
-    mapLang: state.mapLang,
-    voice: state.voice,
-    sound: state.sound,
-    defaultDuration: state.defaultDuration,
-    points: state.points,
-    records: state.records,
-    academy: state.academy,
-    academyCourse: state.academyCourse
-  }));
+  try {
+    localStorage.setItem(key, JSON.stringify({
+      version: 6,
+      savedAt: new Date().toISOString(),
+      mode: state.mode,
+      lang: state.lang,
+      mapLang: state.mapLang,
+      voice: state.voice,
+      sound: state.sound,
+      defaultDuration: state.defaultDuration,
+      activeProgramId: state.activeProgram ? state.activeProgram.id : "cardio-foot",
+      sessionMap: state.sessionMap || "foot",
+      points: state.points,
+      records: state.records,
+      academy: state.academy,
+      academyCourse: state.academyCourse
+    }));
+  } catch (e) {}
   const saveStatus = $("#saveStatus");
   if (saveStatus) saveStatus.textContent = tr("saveStatusDone");
 }
@@ -1658,6 +1672,15 @@ function setView(view) {
   $$("[data-view]").forEach(b => b.classList.toggle("active", b.dataset.view === view));
   $$(".view").forEach(v => v.classList.remove("active"));
   $(`#${view}View`).classList.add("active");
+  if (view === "session") {
+    if (!state.activeProgram && typeof programs !== "undefined" && programs.length > 0) {
+      state.activeProgram = programs[0];
+      state.step = 0;
+      state.sessionDurations = state.activeProgram.points.map(() => state.defaultDuration);
+      state.time = pointDuration(0);
+    }
+    renderSession();
+  }
   if (view === "records") renderRecords();
   if (view === "academy") renderAcademy();
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -2463,13 +2486,13 @@ function programCard(p) {
       <p>${pSummary}</p>
       ${pCaution ? `<p class="program-caution" style="font-size:0.75rem;color:#f59e0b;margin:3px 0 6px;">⚠ ${pCaution}</p>` : ""}
       <div class="program-preview point-only-preview" aria-label="${en ? "Numbered reflex maps" : "작업 순서에 해당하는 번호 표시 지도"}">
-        <figure><img src="./assets/${p.footMap}" alt="${en ? p.en : p.title}"><figcaption>${tr("footMap")}</figcaption></figure>
-        <figure><img src="./assets/${p.handMap}" alt="${en ? p.en : p.title}"><figcaption>${tr("handMap")}</figcaption></figure>
+        <figure data-start-map="${p.id}:foot" role="button" tabindex="0" style="cursor:pointer;" onclick="if(window.startProgram){window.startProgram('${p.id}','foot')}"><img src="./assets/${p.footMap}" alt="${en ? p.en : p.title}"><figcaption>${tr("footMap")}</figcaption></figure>
+        <figure data-start-map="${p.id}:hand" role="button" tabindex="0" style="cursor:pointer;" onclick="if(window.startProgram){window.startProgram('${p.id}','hand')}"><img src="./assets/${p.handMap}" alt="${en ? p.en : p.title}"><figcaption>${tr("handMap")}</figcaption></figure>
       </div>
       <div class="program-points">
         ${p.points.map((x, i) => `<span>${i + 1}. ${pointLabel(x)}</span>`).join("")}
       </div>
-      <button class="${locked ? 'secondary' : 'primary'}" data-start="${p.id}">${buttonText}</button>
+      <button type="button" class="${locked ? 'secondary' : 'primary'}" data-start="${p.id}" onclick="if(window.startProgram){window.startProgram('${p.id}','foot')}">${buttonText}</button>
     </article>
   `;
 }
@@ -2515,7 +2538,7 @@ function renderPrograms(query = "") {
         ? `<span class="sys-status-badge sys-locked">🔒 ${en ? "1-Year Pass VIP" : "1년 패스 VIP 전용"}</span>`
         : `<span class="sys-status-badge sys-free">🌿 ${en ? "Free Experience" : "무료 체험 가능"}</span>`;
       return `
-        <button class="system-card ${locked ? "is-vip-system" : "is-free-system"}" data-system="${s.id}">
+        <button type="button" class="system-card ${locked ? "is-vip-system" : "is-free-system"}" data-system="${s.id}">
           <span class="system-no">${s.no}</span>
           <figure class="system-image">
             <img src="./assets/${s.image}" alt="${en ? s.en : s.title} ${en ? "anatomy" : "해부학 이미지"}" loading="lazy">
@@ -2539,7 +2562,11 @@ function renderPrograms(query = "") {
     window.scrollTo({ top: $("#programsView").offsetTop - 80, behavior: "smooth" });
   });
 
-  $$("[data-start]").forEach(b => b.onclick = () => startProgram(b.dataset.start));
+  $$("[data-start]").forEach(b => b.onclick = () => startProgram(b.dataset.start, "foot"));
+  $$("[data-start-map]").forEach(fig => fig.onclick = () => {
+    const [progId, mapType] = (fig.dataset.startMap || "").split(":");
+    if (progId) startProgram(progId, mapType || "foot");
+  });
 }
 
 // ==========================================================================
@@ -2630,7 +2657,17 @@ function applyPreset(sec) {
   toast(state.lang === "en" ? `Duration set to ${durationLabel(sec)}` : `${durationLabel(sec)}로 설정되었습니다.`);
 }
 
-function startProgram(id) {
+function preloadProgramMaps(prog) {
+  if (!prog) return;
+  try {
+    const fImg = new Image();
+    fImg.src = `./assets/${prog.footMap || `reflex-split/p${prog.page}-feet.webp`}`;
+    const hImg = new Image();
+    hImg.src = `./assets/${prog.handMap || `reflex-split/p${prog.page}-hands.webp`}`;
+  } catch (e) {}
+}
+
+function startProgram(id, initialMap = "foot") {
   const target = programs.find(p => p.id === id);
   if (!target) return;
 
@@ -2645,13 +2682,14 @@ function startProgram(id) {
   unlockTtsAudio();
 
   state.activeProgram = target;
-
-  state.sessionMap = "foot";
+  state.sessionMap = initialMap === "hand" ? "hand" : "foot";
+  preloadProgramMaps(target);
   resetSessionMap();
   state.step = 0;
   state.sessionDurations = state.activeProgram.points.map(() => state.defaultDuration);
   state.time = pointDuration(0);
   stopTimer();
+  save();
   renderSession();
   setView("session");
 
@@ -2668,6 +2706,25 @@ function startProgram(id) {
     toast(`🔊 ${msg}`);
   }
 }
+
+function switchSessionMap(mapType, ev) {
+  if (ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+  const nextMap = mapType === "hand" ? "hand" : "foot";
+  if (!state.activeProgram && typeof programs !== "undefined" && programs.length > 0) {
+    state.activeProgram = programs[0];
+    state.step = 0;
+    state.sessionDurations = state.activeProgram.points.map(() => state.defaultDuration);
+    state.time = pointDuration(0);
+  }
+  state.sessionMap = nextMap;
+  resetSessionMap();
+  renderSessionMap();
+  save();
+}
+window.switchSessionMap = switchSessionMap;
 
 function applySessionMapTransform() {
   const canvas = $("#sessionMapCanvas");
@@ -2696,25 +2753,40 @@ function setSessionZoom(next) {
 }
 
 function renderSessionMap() {
-  const p = state.activeProgram;
+  let p = state.activeProgram;
+  if (!p && typeof programs !== "undefined" && programs.length > 0) {
+    p = programs[0];
+    state.activeProgram = p;
+  }
   if (!p) return;
-  const isFoot = state.sessionMap === "foot";
+  const isFoot = state.sessionMap !== "hand";
   const label = isFoot ? tr("footWork") : tr("handWork");
   const title = state.lang === "en" ? p.en : p.title;
   const image = $("#sessionMapImage");
   if (image) {
+    const relPath = isFoot
+      ? (p.footMap || `reflex-split/p${p.page}-feet.webp?v=9`)
+      : (p.handMap || `reflex-split/p${p.page}-hands.webp?v=9`);
+    const nextSrc = `./assets/${relPath}`;
     image.onload = () => {
       if (state.sessionFit) applySessionMapTransform();
     };
-    image.src = `./assets/${isFoot ? p.footMap : p.handMap}`;
+    image.onerror = () => {
+      const cleanPath = nextSrc.split("?")[0];
+      if (image.getAttribute("src") !== cleanPath) {
+        image.src = cleanPath;
+      }
+    };
+    image.src = nextSrc;
     image.alt = `${title} ${label}`;
   }
   const mapTitle = $("#sessionMapTitle");
   if (mapTitle) mapTitle.textContent = `${title} · ${label}`;
 
   const activePoint = $("#sessionActivePoint");
-  if (activePoint) {
-    activePoint.textContent = `${tr("current")} ${state.step + 1}. ${pointLabel(p.points[state.step])}`;
+  if (activePoint && p.points && p.points.length > 0) {
+    const stepIdx = Math.min(state.step || 0, p.points.length - 1);
+    activePoint.textContent = `${tr("current")} ${stepIdx + 1}. ${pointLabel(p.points[stepIdx])}`;
   }
 
   const caption = $("#sessionMapCaption");
@@ -2724,7 +2796,7 @@ function renderSessionMap() {
       : "전체 지도가 표시됩니다. 마우스나 손가락으로 움직일 수 있습니다.";
   }
 
-  $$("[data-session-map]").forEach(b => b.classList.toggle("active", b.dataset.sessionMap === state.sessionMap));
+  $$("[data-session-map]").forEach(b => b.classList.toggle("active", b.dataset.sessionMap === (isFoot ? "foot" : "hand")));
   applySessionMapTransform();
 }
 
@@ -3935,15 +4007,8 @@ function bind() {
   };
 
   // Session map switcher
-  $$("[data-session-map]").forEach(b => b.onclick = () => {
-    if (!state.activeProgram) {
-      toast(tr("chooseProgram"));
-      setView("programs");
-      return;
-    }
-    state.sessionMap = b.dataset.sessionMap;
-    resetSessionMap();
-    renderSessionMap();
+  $$("[data-session-map]").forEach(b => {
+    b.onclick = (e) => switchSessionMap(b.dataset.sessionMap, e);
   });
 
   $("#sessionZoomIn").onclick = () => setSessionZoom(state.sessionZoom + 0.2);
@@ -4027,14 +4092,23 @@ bind();
 applyLanguage();
 $$("[data-mode]").forEach(b => b.classList.toggle("active", b.dataset.mode === state.mode));
 
+window.addEventListener("novacell:vip-status-changed", () => {
+  const progSearch = $("#programSearch");
+  renderPrograms(progSearch ? progSearch.value : "");
+  if (state.view === "session" || state.activeProgram) {
+    renderSession();
+  }
+});
+
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./service-worker.js").then(reg => {
+  navigator.serviceWorker.register("./service-worker.js?v=53").then(reg => {
     try { reg.update(); } catch (e) {}
   }).catch(() => {});
 }
 
 window.state = state;
 window.startProgram = startProgram;
+window.switchSessionMap = switchSessionMap;
 window.toggleTimer = toggleTimer;
 window.resetTimer = resetTimer;
 window.nextStep = nextStep;

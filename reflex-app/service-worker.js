@@ -1,10 +1,10 @@
-const CACHE = "novacell-reflex-therapy-v52-render-programs-fixed";
+const CACHE = "novacell-reflex-therapy-v53-map-switch-fixed";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=52",
-  "./program-data.js?v=52",
-  "./app.js?v=52",
+  "./styles.css?v=53",
+  "./program-data.js?v=53",
+  "./app.js?v=53",
   "./manifest.webmanifest",
   "./assets/foot-sole-map.webp",
   "./assets/foot-top-map.webp",
@@ -38,7 +38,23 @@ const ASSETS = [
   "./assets/system-nervous.webp",
   "./assets/system-respiratory.webp",
   "./assets/system-reproductive.webp",
-  "./assets/system-urinary.webp"
+  "./assets/system-urinary.webp",
+  "./assets/reflex-split/p48-feet.webp?v=9",
+  "./assets/reflex-split/p48-hands.webp?v=9",
+  "./assets/reflex-split/p49-feet.webp?v=9",
+  "./assets/reflex-split/p49-hands.webp?v=9",
+  "./assets/reflex-split/p50-feet.webp?v=9",
+  "./assets/reflex-split/p50-hands.webp?v=9",
+  "./assets/reflex-split/p51-feet.webp?v=9",
+  "./assets/reflex-split/p51-hands.webp?v=9",
+  "./assets/reflex-split/p52-feet.webp?v=9",
+  "./assets/reflex-split/p52-hands.webp?v=9",
+  "./assets/reflex-split/p55-feet.webp?v=9",
+  "./assets/reflex-split/p55-hands.webp?v=9",
+  "./assets/reflex-split/p56-feet.webp?v=9",
+  "./assets/reflex-split/p56-hands.webp?v=9",
+  "./assets/reflex-split/p57-feet.webp?v=9",
+  "./assets/reflex-split/p57-hands.webp?v=9"
 ];
 
 self.addEventListener("install", event => {
@@ -60,7 +76,10 @@ self.addEventListener("activate", event => {
 
 // Network-First for HTML documents, scripts, styles to guarantee instant deployment
 self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
   const url = event.request.url;
+  if (!url.startsWith(self.location.origin)) return;
+
   const isCodeOrDoc = event.request.mode === "navigate" ||
                       event.request.destination === "document" ||
                       url.includes(".js") ||
@@ -77,16 +96,16 @@ self.addEventListener("fetch", event => {
           }
           return response;
         })
-        .catch(() => caches.match(event.request))
+        .catch(() => caches.match(event.request, { ignoreSearch: true }))
     );
     return;
   }
 
   event.respondWith(
-    caches.match(event.request).then(cached => {
+    caches.match(event.request, { ignoreSearch: true }).then(cached => {
       if (cached) return cached;
       return fetch(event.request).then(response => {
-        if (response && response.status === 200 && event.request.method === "GET") {
+        if (response && response.status === 200) {
           const copy = response.clone();
           caches.open(CACHE).then(cache => cache.put(event.request, copy));
         }
