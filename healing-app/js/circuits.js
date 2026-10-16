@@ -472,7 +472,7 @@ function renderList() {
 
     const primaryName = isEn() ? circuit.en : circuit.name;
     const secondaryName = isEn() ? circuit.name : circuit.en;
-    const tierBadge = isLocked
+    const tierBadge = !isFree
       ? `<span class="nc-circuit-tier-badge vip">🔒 ${isEn() ? "1-Year Pass VIP" : "1년 패스 VIP"}</span>`
       : `<span class="nc-circuit-tier-badge free">🌿 ${isEn() ? "Free Trial" : "무료 체험 가능"}</span>`;
 

@@ -462,7 +462,7 @@ function renderSidebarList() {
     const titleText = isEn() ? item.en : item.ko;
     const meridianText = isEn() ? item.meridianEn : item.meridianKo;
     const organText = isEn() ? item.organEn : item.organKo;
-    const tierBadge = isLocked
+    const tierBadge = !isFree
       ? `<span class="nc-bio-tier-badge vip">🔒 ${isEn() ? "1-Year Pass VIP" : "1년 패스 VIP"}</span>`
       : `<span class="nc-bio-tier-badge free">🌿 ${isEn() ? "Free Trial" : "무료 체험 가능"}</span>`;
 

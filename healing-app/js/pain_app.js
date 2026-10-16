@@ -523,7 +523,7 @@
       const totalTargets = 2 + customTargets.length;
       const isFree = isFreePainCondition(c.id);
       const isLocked = !isVip && !isFree;
-      const tierBadge = isLocked
+      const tierBadge = !isFree
         ? `<span class="nc-pain-tier-badge vip-locked">🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`
         : `<span class="nc-pain-tier-badge free-trial">🌿 ${isEn ? 'Free Trial' : '무료 체험 가능'}</span>`;
       const protocolBtnHtml = isLocked

@@ -2114,31 +2114,142 @@
       </aside>
     </div>
 
-    <!-- 3-Panel Main Workspace (Responsive on Desktop, Tablet & Mobile) -->
-    <main id="main-workspace" class="main-workspace" data-active-tab="conditions">
-      <!-- Left Panel: Disease & Symptom Navigation -->
-      <aside class="panel panel-left">
-        <div class="panel-header">
+    <!-- Hero Section & Quick Filter Bar (3D 통증 클리닉 동일 패턴) -->
+    <section id="hp-overview-hero" class="hp-overview-hero">
+      <div class="hp-hero-badge">
+        <span>⚡</span>
+        <span id="hpHeroBadge">32대 전신 신경·근막 질환 3D 정밀 해부도 &amp; 힐링 포인트</span>
+      </div>
+      <h2 id="hpHeroTitle">NovaCell 질환별 치료 포인트 클리닉</h2>
+      <p class="hp-hero-sub" id="hpHeroSub">
+        부위별 3D 정밀 해부도와 무극성 고전압 미세전류 단일 펜 도자(Monopolar Pen Probe) 핵심 힐링 포인트(HP), 528Hz 세포 전압 타이머 및 임상 치유 레시피를 한눈에 확인하세요.
+      </p>
+
+      <!-- Quick Category Filter Chips -->
+      <div class="hp-mech-chips-wrap" id="hpHeroFilterChips">
+        <button type="button" class="hp-filter-chip active" data-cat="all">
+          <span>✨</span> <span data-ko="전신 질환 전체보기 (32종)" data-en="All 32 Conditions">전신 질환 전체보기 (32종)</span>
+        </button>
+        <button type="button" class="hp-filter-chip" data-cat="head-neck">
+          <span>🧠</span> <span data-ko="두경부 / 안면 / 턱관절 (5)" data-en="Head, Neck &amp; TMJ (5)">두경부 / 안면 / 턱관절 (5)</span>
+        </button>
+        <button type="button" class="hp-filter-chip" data-cat="shoulder-arm">
+          <span>💪</span> <span data-ko="견관절 / 상지부 (4)" data-en="Shoulder &amp; Arm (4)">견관절 / 상지부 (4)</span>
+        </button>
+        <button type="button" class="hp-filter-chip" data-cat="hand-wrist">
+          <span>🖐️</span> <span data-ko="팔꿈치 / 손목 / 수부 (5)" data-en="Elbow, Wrist &amp; Hand (5)">팔꿈치 / 손목 / 수부 (5)</span>
+        </button>
+        <button type="button" class="hp-filter-chip" data-cat="trunk-chest">
+          <span>🫁</span> <span data-ko="흉부 / 복부 / 흉배부 (4)" data-en="Thorax &amp; Back (4)">흉부 / 복부 / 흉배부 (4)</span>
+        </button>
+        <button type="button" class="hp-filter-chip" data-cat="lumbar-pelvis">
+          <span>🦴</span> <span data-ko="요추 / 둔부 / 골반 (6)" data-en="Lumbar &amp; Pelvis (6)">요추 / 둔부 / 골반 (6)</span>
+        </button>
+        <button type="button" class="hp-filter-chip" data-cat="knee-foot">
+          <span>🦵</span> <span data-ko="슬관절 / 족부 / 하지 (6)" data-en="Knee, Leg &amp; Foot (6)">슬관절 / 족부 / 하지 (6)</span>
+        </button>
+        <button type="button" class="hp-filter-chip" data-cat="autonomic">
+          <span>⚡</span> <span data-ko="자율신경 / 전신 질환 (2)" data-en="Autonomic &amp; Systemic (2)">자율신경 / 전신 질환 (2)</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Main Workspace (Overview Grid Mode + Detail Inspector Mode) -->
+    <main id="main-workspace" class="main-workspace" data-active-tab="conditions" data-view-mode="overview">
+      <!-- Left Sidebar: Interactive 3D Body Map & 2-Column Region Navigator -->
+      <aside class="panel panel-left body-nav-sidebar">
+        <div class="panel-header hp-sidebar-header">
           <div class="panel-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="8" y1="6" x2="21" y2="6"></line>
-              <line x1="8" y1="12" x2="21" y2="12"></line>
-              <line x1="8" y1="18" x2="21" y2="18"></line>
-              <line x1="3" y1="6" x2="3.01" y2="6"></line>
-              <line x1="3" y1="12" x2="3.01" y2="12"></line>
-              <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
             </svg>
-            질환 및 증상 선택
+            <span id="hpNavTitle">인체 구역별 질환 탐색</span>
           </div>
-          <span id="conditions-counter" class="panel-counter">32개 질환</span>
+          <button type="button" id="btnToggleHpXray" class="btn-toggle-xray" title="3D 해부도 접기/펼치기">
+            <span id="txtToggleHpXray">해부도 숨김</span>
+          </button>
+          <span id="conditions-counter" class="panel-counter" hidden>32개 질환</span>
         </div>
 
-        <!-- Body Region Filter Category Bar -->
-        <nav id="category-bar" class="category-bar"></nav>
+        <!-- 3D Translucent X-Ray Full-Body Interactive Map -->
+        <div class="body-xray-card" id="hpBodyXrayCard">
+          <div class="body-xray-frame">
+            <img src="assets/body_full_posterior_3d.jpg" alt="3D 전신 신경·근골격 해부도" class="body-xray-img" />
+            <div class="body-xray-tag">
+              <span>🎯</span>
+              <span id="hpXrayTag">3D 해부학 정밀 치료 포인트</span>
+            </div>
 
-        <!-- Condition Cards Scrollable List -->
-        <div id="conditions-list" class="conditions-scroll-list"></div>
+            <!-- Interactive Hotzones for 7 Categories -->
+            <div class="body-xray-hotzone hp-zone-head" data-cat="head-neck" title="두경부 / 안면 / 턱관절 (5종)">
+              <span class="hotzone-badge">5</span>
+              <span class="hotzone-tooltip" data-ko="두경부·안면 (5)" data-en="Head &amp; Neck (5)">두경부·안면 (5)</span>
+            </div>
+            <div class="body-xray-hotzone hp-zone-shoulder" data-cat="shoulder-arm" title="견관절 / 상지부 (4종)">
+              <span class="hotzone-badge">4</span>
+              <span class="hotzone-tooltip" data-ko="견관절·상지 (4)" data-en="Shoulder &amp; Arm (4)">견관절·상지 (4)</span>
+            </div>
+            <div class="body-xray-hotzone hp-zone-trunk" data-cat="trunk-chest" title="흉부 / 복부 / 흉배부 (4종)">
+              <span class="hotzone-badge">4</span>
+              <span class="hotzone-tooltip" data-ko="흉부·흉배부 (4)" data-en="Thorax &amp; Back (4)">흉부·흉배부 (4)</span>
+            </div>
+            <div class="body-xray-hotzone hp-zone-hand" data-cat="hand-wrist" title="팔꿈치 / 손목 / 수부 (5종)">
+              <span class="hotzone-badge">5</span>
+              <span class="hotzone-tooltip" data-ko="팔꿈치·수부 (5)" data-en="Elbow &amp; Hand (5)">팔꿈치·수부 (5)</span>
+            </div>
+            <div class="body-xray-hotzone hp-zone-lumbar" data-cat="lumbar-pelvis" title="요추 / 둔부 / 골반 (6종)">
+              <span class="hotzone-badge">6</span>
+              <span class="hotzone-tooltip" data-ko="요추·골반 (6)" data-en="Lumbar &amp; Pelvis (6)">요추·골반 (6)</span>
+            </div>
+            <div class="body-xray-hotzone hp-zone-knee" data-cat="knee-foot" title="슬관절 / 족부 / 하지 (6종)">
+              <span class="hotzone-badge">6</span>
+              <span class="hotzone-tooltip" data-ko="슬관절·족부 (6)" data-en="Knee &amp; Foot (6)">슬관절·족부 (6)</span>
+            </div>
+            <div class="body-xray-hotzone hp-zone-auto" data-cat="autonomic" title="자율신경 / 전신 질환 (2종)">
+              <span class="hotzone-badge">2</span>
+              <span class="hotzone-tooltip" data-ko="자율신경·전신 (2)" data-en="Autonomic (2)">자율신경·전신 (2)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body Region Filter Category Bar (2-Column Tile Grid) -->
+        <nav id="category-bar" class="category-bar category-nav-list"></nav>
       </aside>
+
+      <!-- Right Overview Panel: 32-Condition 3D Anatomy Card Grid (3D 통증 클리닉 동일 패턴) -->
+      <section id="hp-overview-panel" class="conditions-panel">
+        <div class="conditions-status-bar">
+          <div class="status-text" id="hpStatusText">
+            총 <strong id="hpDisplayCount">32개</strong>의 질환별 치료 포인트 프로토콜이 표시 중입니다.
+          </div>
+        </div>
+
+        <!-- 32 Condition Cards 4-Column Responsive Grid -->
+        <div id="conditions-list" class="conditions-scroll-list conditions-grid"></div>
+      </section>
+
+      <!-- Detail Inspector Top Header Bar (Shown when a Condition Card is clicked) -->
+      <div id="hp-detail-header-bar" class="hp-detail-header-bar">
+        <div class="hp-detail-header-left">
+          <div class="hp-detail-badges">
+            <span id="hp-detail-num-badge" class="cond-id-badge">No. 01</span>
+            <span id="hp-detail-tier-badge"></span>
+            <span id="hp-detail-cat-badge" class="cond-mech-badge">두경부 / 안면 / 턱관절</span>
+          </div>
+          <div class="hp-detail-titles">
+            <h3 id="hp-detail-title" class="hp-detail-title">경추성 두통 / 후두신경통</h3>
+            <span id="hp-detail-subtitle" class="hp-detail-subtitle">Cervicogenic Headache &amp; Occipital Neuralgia</span>
+          </div>
+        </div>
+        <div class="hp-detail-header-actions">
+          <select id="hp-detail-cond-select" class="hp-detail-cond-select" aria-label="질환 빠른 전환"></select>
+          <button type="button" id="btn-back-to-overview-top" class="btn-back-to-overview">
+            <span>←</span>
+            <span id="btnBackOverviewTopText">전신 질환 전체보기 (32종) 목록으로 돌아가기</span>
+          </button>
+        </div>
+      </div>
 
       <!-- Center Panel: Interactive Anatomical Pinpoint Stage -->
       <section class="panel panel-center">
@@ -2412,6 +2523,18 @@
           </div>
         </div>
       </aside>
+
+      <!-- Detail Inspector Bottom Return Bar (Shown in Detail Mode) -->
+      <div id="hp-detail-footer-bar" class="hp-detail-footer-bar">
+        <div class="hp-detail-footer-tip">
+          <span>💡</span>
+          <span id="hpDetailFooterTip">해부도 위의 힐링 포인트(HP)를 클릭하거나 우측 528Hz 타이머로 도자 통전을 시작하세요.</span>
+        </div>
+        <button type="button" id="btn-back-to-overview-bottom" class="btn-back-to-overview-bottom">
+          <span>📋</span>
+          <span id="btnBackOverviewBottomText">전신 질환 전체보기 (32종) 목록으로 돌아가기</span>
+        </button>
+      </div>
     </main>
 
     <!-- Mobile Clinical Tab Navigation Bar (스마트폰/태블릿 전용 하단 고정 탭 바) -->
@@ -8087,9 +8210,9 @@ if (typeof Workspace !== 'undefined') {
       }
 
       // Left Panel title & search
-      var panelTitle = document.querySelector('.panel-left .panel-title');
-      if (panelTitle) {
-        panelTitle.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg> ' + (lang === 'en' ? 'Select Disease & Condition' : '질환 및 증상 선택');
+      var hpNavTitle = document.getElementById('hpNavTitle');
+      if (hpNavTitle) {
+        hpNavTitle.textContent = (lang === 'en' ? 'Explore by Body Region' : '인체 구역별 질환 탐색');
       }
       var searchInput = document.getElementById('search-input');
       if (searchInput) {
@@ -8572,9 +8695,861 @@ if (typeof Workspace !== 'undefined') {
   </dialog>
 
 
+<style id="hp-overview-grid-styles">
+  /* ==========================================================================
+     NovaCell 질환별 치료 포인트 (32종) - 3D 통증 클리닉 동일 패턴 Overview Grid & Detail View
+     ========================================================================== */
+
+  /* Allow natural vertical scrolling in Overview Mode */
+  html, body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+
+  #app-container {
+    width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .app-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 500 !important;
+  }
+
+  /* 1. Hero Banner (Matches .pain-hero in 3D 통증 클리닉) */
+  .hp-overview-hero {
+    max-width: 1060px;
+    margin: 26px auto 22px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  body[data-hp-view-mode="detail"] .hp-overview-hero {
+    display: none !important;
+  }
+
+  .hp-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 15px;
+    border-radius: 9999px;
+    background: rgba(6, 182, 212, 0.12);
+    border: 1px solid rgba(6, 182, 212, 0.35);
+    color: #38bdf8;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.15);
+  }
+
+  .hp-overview-hero h2 {
+    font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    color: #ffffff;
+    margin: 0 0 10px;
+    background: linear-gradient(135deg, #ffffff 40%, #7dd3fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hp-hero-sub {
+    font-size: 0.94rem;
+    color: #94a3b8;
+    max-width: 840px;
+    margin: 0 auto 18px;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .hp-mech-chips-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .hp-filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .hp-filter-chip:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+    border-color: rgba(56, 189, 248, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .hp-filter-chip.active {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.28), rgba(59, 130, 246, 0.28));
+    border-color: #06b6d4;
+    color: #67e8f9;
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
+  }
+
+  /* 2. Main Workspace in Overview Mode (Matches .pain-main-workspace) */
+  #main-workspace[data-view-mode="overview"] {
+    max-width: 1580px !important;
+    width: 100% !important;
+    margin: 0 auto 60px !important;
+    padding: 0 20px !important;
+    display: grid !important;
+    grid-template-columns: 290px 1fr !important;
+    gap: 22px !important;
+    align-items: start !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: transparent !important;
+  }
+
+  #main-workspace[data-view-mode="overview"] .panel-center,
+  #main-workspace[data-view-mode="overview"] .panel-right,
+  #main-workspace[data-view-mode="overview"] #hp-detail-header-bar,
+  #main-workspace[data-view-mode="overview"] #hp-detail-footer-bar {
+    display: none !important;
+  }
+
+  /* 3. Left Sidebar in Overview Mode (Matches .body-nav-sidebar in 3D 통증 클리닉) */
+  #main-workspace[data-view-mode="overview"] .panel-left.body-nav-sidebar {
+    position: sticky !important;
+    top: 86px !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: rgba(15, 23, 42, 0.78) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 14px 12px !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .hp-sidebar-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 2px 10px !important;
+    margin-bottom: 6px !important;
+    border-bottom: none !important;
+    background: transparent !important;
+  }
+
+  .hp-sidebar-header .panel-title {
+    font-size: 0.88rem !important;
+    font-weight: 800 !important;
+    color: #f1f5f9 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    margin: 0 !important;
+  }
+
+  .hp-sidebar-header .panel-title svg {
+    width: 16px !important;
+    height: 16px !important;
+    stroke: #06b6d4 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .btn-toggle-xray {
+    background: rgba(6, 182, 212, 0.14) !important;
+    border: 1px solid rgba(6, 182, 212, 0.4) !important;
+    color: #38bdf8 !important;
+    border-radius: 6px !important;
+    padding: 3px 8px !important;
+    font-size: 0.72rem !important;
+    cursor: pointer !important;
+    font-weight: 700 !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .btn-toggle-xray:hover {
+    background: rgba(6, 182, 212, 0.28) !important;
+    color: #fff !important;
+  }
+
+  /* 3D Translucent X-Ray Full-Body Preview Card */
+  .body-xray-card {
+    width: 100%;
+    position: relative;
+    background: radial-gradient(circle at 50% 35%, rgba(14, 116, 144, 0.2) 0%, rgba(6, 12, 26, 0.95) 100%);
+    border: 1px solid rgba(6, 182, 212, 0.35);
+    border-radius: 12px;
+    padding: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .body-xray-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    max-height: 225px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #030712;
+  }
+
+  .body-xray-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.35));
+    transition: transform 0.35s ease;
+    user-select: none;
+  }
+
+  .body-xray-card:hover .body-xray-img {
+    transform: scale(1.02);
+  }
+
+  .body-xray-tag {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(11, 20, 38, 0.88);
+    border: 1px solid rgba(6, 182, 212, 0.5);
+    backdrop-filter: blur(8px);
+    padding: 4px 9px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 15;
+  }
+
+  .body-xray-hotzone {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 10px;
+    background: rgba(6, 182, 212, 0.06);
+    border: 1px dashed rgba(6, 182, 212, 0.3);
+    transition: all 0.22s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .body-xray-hotzone:hover {
+    background: rgba(6, 182, 212, 0.28);
+    border: 1.5px solid #38bdf8;
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.6);
+    z-index: 20;
+  }
+
+  .body-xray-hotzone.active {
+    background: rgba(245, 158, 11, 0.34);
+    border: 1.8px solid #fbbf24;
+    box-shadow: 0 0 22px rgba(245, 158, 11, 0.75);
+    z-index: 21;
+  }
+
+  .hp-zone-head     { top: 3%;  left: 36%; width: 28%; height: 15%; border-radius: 50% 50% 30% 30%; }
+  .hp-zone-shoulder { top: 18%; left: 20%; width: 60%; height: 14%; }
+  .hp-zone-trunk    { top: 24%; left: 34%; width: 32%; height: 16%; z-index: 11; }
+  .hp-zone-hand     { top: 32%; left: 10%; width: 80%; height: 18%; }
+  .hp-zone-lumbar   { top: 40%; left: 30%; width: 40%; height: 15%; z-index: 12; }
+  .hp-zone-knee     { top: 55%; left: 24%; width: 52%; height: 42%; }
+  .hp-zone-auto     { top: 17%; left: 47.5%; width: 5%; height: 35%; border-radius: 999px; background: rgba(236, 72, 153, 0.18); border-color: rgba(236, 72, 153, 0.45); z-index: 14; }
+
+  .hotzone-badge {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    font-size: 0.63rem;
+    font-weight: 850;
+    padding: 1px 5px;
+    border-radius: 6px;
+    background: rgba(2, 6, 23, 0.85);
+    border: 1px solid rgba(6, 182, 212, 0.45);
+    color: #38bdf8;
+  }
+
+  .body-xray-hotzone.active .hotzone-badge {
+    background: #f59e0b;
+    color: #000;
+    border-color: #fde68a;
+  }
+
+  .hotzone-tooltip {
+    position: absolute;
+    bottom: -20px;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid #38bdf8;
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: all 0.2s ease;
+    z-index: 30;
+  }
+
+  .body-xray-hotzone:hover .hotzone-tooltip,
+  .body-xray-hotzone.active .hotzone-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 2-Column Category Navigation Grid (Matches #categoryNavList in 3D 통증 클리닉) */
+  #category-bar.category-nav-list {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    overflow: visible !important;
+  }
+
+  #category-bar.category-nav-list .cat-btn {
+    padding: 8px 9px !important;
+    font-size: 0.75rem !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    gap: 4px !important;
+    min-height: 52px !important;
+    line-height: 1.25 !important;
+    background: rgba(15, 23, 42, 0.65) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  #category-bar.category-nav-list .cat-btn:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #fff !important;
+    border-color: rgba(56, 189, 248, 0.3) !important;
+  }
+
+  #category-bar.category-nav-list .cat-btn.active {
+    background: linear-gradient(90deg, rgba(6, 182, 212, 0.22), rgba(59, 130, 246, 0.14)) !important;
+    border-color: rgba(6, 182, 212, 0.5) !important;
+    color: #67e8f9 !important;
+    box-shadow: 0 0 14px rgba(6, 182, 212, 0.2) !important;
+  }
+
+  /* First button (전신 질환 전체보기 [32]) & last button (자율신경 / 전신 질환 [2]) span full width */
+  #category-bar.category-nav-list .cat-btn:first-child,
+  #category-bar.category-nav-list .cat-btn:last-child {
+    grid-column: 1 / -1 !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 40px !important;
+    padding: 8px 12px !important;
+    font-size: 0.82rem !important;
+  }
+
+  .cat-btn-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+
+  #category-bar.category-nav-list .cat-btn:not(:first-child):not(:last-child) .cat-btn-content span.cat-label-text {
+    white-space: normal;
+    word-break: keep-all;
+    padding-right: 22px;
+  }
+
+  .cat-count-badge {
+    font-size: 0.68rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.08);
+    color: #64748b;
+  }
+
+  #category-bar.category-nav-list .cat-btn:not(:first-child):not(:last-child) .cat-count-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    padding: 1px 5px;
+    font-size: 0.66rem;
+  }
+
+  #category-bar.category-nav-list .cat-btn.active .cat-count-badge {
+    background: rgba(6, 182, 212, 0.32);
+    color: #67e8f9;
+  }
+
+  /* 4. Right Conditions Grid Panel (Matches .conditions-panel & .conditions-grid in 3D 통증 클리닉) */
+  #hp-overview-panel.conditions-panel {
+    min-height: 500px;
+    width: 100%;
+  }
+
+  #main-workspace[data-view-mode="detail"] #hp-overview-panel,
+  #main-workspace[data-view-mode="detail"] .panel-left {
+    display: none !important;
+  }
+
+  .conditions-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .conditions-status-bar .status-text {
+    font-size: 0.92rem;
+    color: #94a3b8;
+  }
+
+  .conditions-status-bar .status-text strong {
+    color: #06b6d4;
+    font-weight: 800;
+  }
+
+  #conditions-list.conditions-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)) !important;
+    gap: 16px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+
+  /* Condition Card (Exact 3D 통증 클리닉 .cond-card style) */
+  .cond-card {
+    background: rgba(15, 23, 42, 0.78);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .cond-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .cond-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(6, 182, 212, 0.45);
+    background: rgba(30, 41, 59, 0.88);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.48), 0 0 20px rgba(6, 182, 212, 0.18);
+  }
+
+  .cond-card:hover::before {
+    opacity: 1;
+  }
+
+  .cond-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .cond-id-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    background: rgba(6, 182, 212, 0.15);
+    border: 1px solid rgba(6, 182, 212, 0.32);
+    color: #38bdf8;
+    border-radius: 8px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+
+  .cond-mech-badge {
+    font-size: 0.71rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 9999px;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #fbbf24;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 135px;
+  }
+
+  .cond-card-thumb-wrap {
+    width: 100%;
+    height: 165px;
+    background: #020617;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .cond-card-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.32s ease;
+  }
+
+  .cond-card:hover .cond-card-thumb {
+    transform: scale(1.05);
+  }
+
+  .cond-title-ko {
+    font-size: 1.04rem;
+    font-weight: 800;
+    color: #f8fafc;
+    line-height: 1.35;
+    margin: 0 0 4px;
+    word-break: keep-all;
+  }
+
+  .cond-title-en {
+    font-size: 0.77rem;
+    color: #64748b;
+    font-weight: 500;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .cond-symptoms-snippet {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.48;
+    margin: 0 0 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  .cond-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    gap: 8px;
+  }
+
+  .cond-targets-count {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 700;
+  }
+
+  .btn-open-protocol {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3));
+    border: 1px solid rgba(6, 182, 212, 0.42);
+    padding: 5px 12px;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .cond-card:hover .btn-open-protocol {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    box-shadow: 0 0 14px rgba(6, 182, 212, 0.5);
+  }
+
+  /* 5. Detail Inspector Mode (#main-workspace[data-view-mode="detail"]) */
+  #main-workspace[data-view-mode="detail"] {
+    max-width: 1640px !important;
+    width: 100% !important;
+    margin: 12px auto 36px !important;
+    padding: 0 16px !important;
+    display: grid !important;
+    grid-template-columns: minmax(480px, 1.15fr) minmax(420px, 0.95fr) !important;
+    grid-template-rows: auto minmax(640px, calc(100vh - 185px)) auto !important;
+    gap: 14px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .hp-detail-header-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 20px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(6, 182, 212, 0.38);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(6, 182, 212, 0.15);
+    flex-wrap: wrap;
+  }
+
+  .hp-detail-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .hp-detail-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .hp-detail-titles {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hp-detail-title {
+    font-size: 1.32rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .hp-detail-subtitle {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
+  }
+
+  .hp-detail-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hp-detail-cond-select {
+    height: 40px;
+    padding: 0 12px;
+    border-radius: 10px;
+    background: #0b1528;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #e2e8f0;
+    font-size: 0.83rem;
+    font-weight: 600;
+    max-width: 280px;
+    outline: none;
+  }
+
+  .btn-back-to-overview {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 42px;
+    padding: 0 18px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: 1px solid rgba(252, 165, 165, 0.5);
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .btn-back-to-overview:hover {
+    background: linear-gradient(135deg, #f87171, #ef4444);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+  }
+
+  #main-workspace[data-view-mode="detail"] .panel-center,
+  #main-workspace[data-view-mode="detail"] .panel-right {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    overflow-y: auto !important;
+    height: 100% !important;
+    max-height: calc(100vh - 185px) !important;
+    background: rgba(11, 18, 33, 0.92) !important;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45) !important;
+  }
+
+  .hp-detail-footer-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 20px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+    border-radius: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hp-detail-footer-tip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #cbd5e1;
+  }
+
+  .btn-back-to-overview-bottom {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #06b6d4, #2563eb);
+    border: 1px solid rgba(103, 232, 249, 0.5);
+    color: #ffffff;
+    font-size: 0.86rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+    transition: all 0.2s ease;
+  }
+
+  .btn-back-to-overview-bottom:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(6, 182, 212, 0.55);
+  }
+
+  /* Responsive Tablet & Mobile Rules */
+  @media (max-width: 1080px) {
+    #main-workspace[data-view-mode="overview"] {
+      grid-template-columns: 1fr !important;
+    }
+    #main-workspace[data-view-mode="overview"] .panel-left.body-nav-sidebar {
+      position: static !important;
+    }
+    .body-xray-frame {
+      max-height: 260px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    #main-workspace[data-view-mode="overview"] {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 0 12px 80px !important;
+      gap: 16px !important;
+    }
+    #main-workspace[data-view-mode="overview"] .panel-left.body-nav-sidebar,
+    #main-workspace[data-view-mode="overview"] #hp-overview-panel {
+      position: static !important;
+      display: flex !important;
+      flex-direction: column !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+      width: 100% !important;
+      height: auto !important;
+    }
+    #main-workspace[data-view-mode="detail"] {
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 0 10px 80px !important;
+      gap: 12px !important;
+    }
+    #main-workspace[data-view-mode="detail"] .panel-center,
+    #main-workspace[data-view-mode="detail"] .panel-right {
+      position: static !important;
+      width: 100% !important;
+      height: auto !important;
+      max-height: none !important;
+      opacity: 1 !important;
+      pointer-events: auto !important;
+    }
+    #main-workspace[data-view-mode="detail"][data-active-tab="anatomy"] .panel-center {
+      display: flex !important;
+    }
+    #main-workspace[data-view-mode="detail"][data-active-tab="anatomy"] .panel-right {
+      display: none !important;
+    }
+    #main-workspace[data-view-mode="detail"][data-active-tab="recipe"] .panel-right {
+      display: flex !important;
+    }
+    #main-workspace[data-view-mode="detail"][data-active-tab="recipe"] .panel-center {
+      display: none !important;
+    }
+  }
+</style>
+
 <script>
 // ==========================================================================
-// NovaCell Healing & Pain Clinic Freemium Gate Helpers
+// NovaCell Healing & Pain Clinic Freemium Gate & 3D Overview Grid Controller
 // ==========================================================================
 function checkHealingVip() {
   try {
@@ -8588,11 +9563,39 @@ function checkHealingVip() {
   }
 }
 
-const FREE_HEALING_CONDITION_IDS = ['cervicogenic-headache', 'frozen-shoulder', 'sgb-autonomic-dysfunction'];
+const FREE_HEALING_CONDITION_IDS = [
+  'cervicogenic-headache',
+  'frozen-shoulder',
+  'lateral-epicondylitis',
+  'intercostal-neuralgia',
+  'lumbar-facet-pain',
+  'knee-osteoarthritis',
+  'sgb-autonomic-dysfunction'
+];
 
 function isFreeHealingCondition(id) {
   return FREE_HEALING_CONDITION_IDS.includes(id);
 }
+
+function getConditionThumbSrc(cond) {
+  let src = cond.illustrationImage || 'assets/regions/cervicogenic-headache-occipital-neuralgia.webp';
+  if (src === 'assets/regions/lumbar-disc-radiculopathy-posterior.webp') return src + '?v=13';
+  if (src === 'assets/regions/carpal-tunnel-bilateral.webp') return src + '?v=16';
+  if (src === 'assets/regions/postpartum-cervical-sacral-posterior.webp') return src + '?v=17';
+  if (src === 'assets/regions/frozen-shoulder-biceps-bilateral.webp') return src + '?v=18';
+  return src;
+}
+
+const CATEGORY_ICONS = {
+  'all': '✨',
+  'head-neck': '🧠',
+  'shoulder-arm': '💪',
+  'hand-wrist': '🖐️',
+  'trunk-chest': '🫁',
+  'lumbar-pelvis': '🦴',
+  'knee-foot': '🦵',
+  'autonomic': '⚡'
+};
 
 function openHealingVipModal(featureName) {
   const modal = document.getElementById('healingVipModal');
@@ -8644,103 +9647,307 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Intercept circuits button clicks
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll("a[href*='circuits'], #nav-circuit, #m-nav-circuit").forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      if (!checkHealingVip()) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
-        openHealingVipModal(isEn ? '14 Neural Circuits Protocol' : '14대 신경 생체 회로 프로토콜');
-      }
-    }, true);
-  });
-});
-
-// Intercept condition list rendering & selection in Workspace
-(function hookWorkspaceFreemium() {
+// Upgrade Workspace to 3D Pain Clinic Overview Grid + Detail Inspector Architecture
+(function hookWorkspace3DOverview() {
   function applyHooks() {
     if (typeof Workspace === 'undefined' || !Workspace.prototype) return;
     const proto = Workspace.prototype;
+    if (proto.__hp3DOverviewHooked) return;
+    proto.__hp3DOverviewHooked = true;
 
-    // Hook renderConditionsList
-    const origRenderConditionsList = proto.renderConditionsList;
+    // 1. View Mode Switching ('overview' vs 'detail')
+    proto.setWorkspaceViewMode = function(mode) {
+      this.viewMode = (mode === 'detail') ? 'detail' : 'overview';
+      const ws = this.mainWorkspace || document.getElementById('main-workspace');
+      if (ws) {
+        ws.dataset.viewMode = this.viewMode;
+        if (this.viewMode === 'overview') {
+          ws.dataset.activeTab = 'conditions';
+        } else if (ws.dataset.activeTab === 'conditions') {
+          ws.dataset.activeTab = 'anatomy';
+        }
+      }
+      document.body.dataset.hpViewMode = this.viewMode;
+
+      if (this.viewMode === 'overview') {
+        if (typeof this.pauseTimer === 'function' && this.isTimerRunning) {
+          this.pauseTimer();
+        }
+        this.renderCategories();
+        this.renderConditionsList();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        this.updateDetailHeaderBar();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const fitAll = () => {
+          this.detailStage?.reset();
+          this.detailStage?.fit();
+          this.bodyStage?.fit();
+          this.renderHealingPins();
+        };
+        requestAnimationFrame(fitAll);
+        setTimeout(fitAll, 60);
+        setTimeout(fitAll, 200);
+      }
+    };
+
+    // 2. Update Detail Inspector Header Bar
+    proto.updateDetailHeaderBar = function() {
+      const cond = this.currentCondition;
+      if (!cond) return;
+      const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+      const globalIdx = this.conditions.findIndex(c => c.id === cond.id);
+      const condNum = globalIdx >= 0 ? globalIdx + 1 : 1;
+      const isFree = isFreeHealingCondition(cond.id);
+
+      const numBadge = document.getElementById('hp-detail-num-badge');
+      if (numBadge) numBadge.textContent = `No. ${String(condNum).padStart(2, '0')}`;
+
+      const tierBadge = document.getElementById('hp-detail-tier-badge');
+      if (tierBadge) {
+        tierBadge.innerHTML = isFree
+          ? `<span class="free-trial-pill">🌿 ${isEn ? 'Free Trial' : '무료 체험 가능'}</span>`
+          : `<span class="vip-lock-pill">🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`;
+      }
+
+      const catObj = this.categories.find(c => c.id === cond.categoryId);
+      const catBadge = document.getElementById('hp-detail-cat-badge');
+      if (catBadge) {
+        catBadge.textContent = catObj ? (isEn ? (catObj.nameEn || catObj.nameKo) : catObj.nameKo) : (isEn ? 'All' : '전체');
+      }
+
+      const titleEl = document.getElementById('hp-detail-title');
+      if (titleEl) titleEl.textContent = isEn ? cond.titleEn : cond.titleKo;
+
+      const subEl = document.getElementById('hp-detail-subtitle');
+      if (subEl) subEl.textContent = isEn ? (cond.badgeEn || cond.badge || '') : cond.titleEn;
+
+      const backTopTxt = document.getElementById('btnBackOverviewTopText');
+      if (backTopTxt) backTopTxt.textContent = isEn ? 'Back to All 32 Conditions Overview' : '전신 질환 전체보기 (32종) 목록으로 돌아가기';
+
+      const backBotTxt = document.getElementById('btnBackOverviewBottomText');
+      if (backBotTxt) backBotTxt.textContent = isEn ? 'Back to All 32 Conditions Overview' : '전신 질환 전체보기 (32종) 목록으로 돌아가기';
+
+      const footerTip = document.getElementById('hpDetailFooterTip');
+      if (footerTip) {
+        footerTip.textContent = isEn
+          ? 'Click any Healing Point (HP) on the anatomy image or start the 528Hz conduction timer on the right.'
+          : '해부도 위의 힐링 포인트(HP)를 클릭하거나 우측 528Hz 타이머로 도자 통전을 시작하세요.';
+      }
+
+      // Populate Quick Condition Select Dropdown
+      const selectEl = document.getElementById('hp-detail-cond-select');
+      if (selectEl) {
+        selectEl.innerHTML = '';
+        this.conditions.forEach((c, idx) => {
+          const opt = document.createElement('option');
+          opt.value = c.id;
+          const freeTag = isFreeHealingCondition(c.id) ? '🌿' : '🔒';
+          const cTitle = isEn ? c.titleEn : c.titleKo;
+          opt.textContent = `No.${String(idx + 1).padStart(2, '0')} ${freeTag} ${cTitle}`;
+          if (c.id === cond.id) opt.selected = true;
+          selectEl.appendChild(opt);
+        });
+      }
+    };
+
+    // 3. Open Condition Detail Inspector
+    proto.openConditionDetail = function(cond) {
+      const isVip = checkHealingVip();
+      const isFree = isFreeHealingCondition(cond.id);
+      const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+      if (!isVip && !isFree) {
+        openHealingVipModal(isEn ? cond.titleEn : cond.titleKo);
+        return;
+      }
+      this.selectCondition(cond);
+      this.setWorkspaceViewMode('detail');
+    };
+
+    // 4. Render 2-Column Sidebar Categories & Sync Hero Chips + 3D X-Ray Hotzones
+    proto.renderCategories = function() {
+      if (!this.categoryBar) return;
+      this.categoryBar.innerHTML = '';
+      const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+
+      this.categories.forEach(cat => {
+        const count = (cat.id === 'all')
+          ? this.conditions.length
+          : this.conditions.filter(c => c.categoryId === cat.id).length;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `cat-btn ${this.currentCategory === cat.id ? 'active' : ''}`;
+        btn.dataset.cat = cat.id;
+        btn.setAttribute('aria-pressed', String(this.currentCategory === cat.id));
+
+        const iconEmoji = CATEGORY_ICONS[cat.id] || '🎯';
+        let catName = isEn ? (cat.nameEn || cat.nameKo) : cat.nameKo;
+        if (cat.id === 'all') {
+          catName = isEn ? 'All Body Conditions' : '전신 질환 전체보기';
+        }
+
+        btn.innerHTML = `
+          <span class="cat-btn-content">
+            <span>${iconEmoji}</span>
+            <span class="cat-label-text">${catName}</span>
+          </span>
+          <span class="cat-count-badge">${count}</span>
+        `;
+
+        btn.addEventListener('click', () => {
+          this.currentCategory = cat.id;
+          this.renderCategories();
+          this.renderConditionsList();
+        });
+
+        this.categoryBar.appendChild(btn);
+      });
+
+      // Sync Hero Filter Chips
+      document.querySelectorAll('#hpHeroFilterChips .hp-filter-chip').forEach(chip => {
+        chip.classList.toggle('active', chip.dataset.cat === this.currentCategory);
+        const spanTxt = chip.querySelector('span[data-ko]');
+        if (spanTxt) {
+          spanTxt.textContent = isEn ? spanTxt.dataset.en : spanTxt.dataset.ko;
+        }
+      });
+
+      // Sync 3D Body X-Ray Hotzones
+      document.querySelectorAll('#hpBodyXrayCard .body-xray-hotzone').forEach(zone => {
+        zone.classList.toggle('active', zone.dataset.cat === this.currentCategory);
+        const tip = zone.querySelector('.hotzone-tooltip');
+        if (tip && tip.dataset.ko) {
+          tip.textContent = isEn ? tip.dataset.en : tip.dataset.ko;
+        }
+      });
+
+      // Sync Sidebar & Hero localized texts
+      const navTitle = document.getElementById('hpNavTitle');
+      if (navTitle) navTitle.textContent = isEn ? 'Explore by Body Region' : '인체 구역별 질환 탐색';
+
+      const xrayCard = document.getElementById('hpBodyXrayCard');
+      const txtToggle = document.getElementById('txtToggleHpXray');
+      if (txtToggle && xrayCard) {
+        const isHidden = xrayCard.style.display === 'none';
+        txtToggle.textContent = isHidden
+          ? (isEn ? 'Show Map' : '해부도 표시')
+          : (isEn ? 'Hide Map' : '해부도 숨김');
+      }
+
+      const xrayTag = document.getElementById('hpXrayTag');
+      if (xrayTag) xrayTag.textContent = isEn ? '3D Clinical Therapy Points' : '3D 해부학 정밀 치료 포인트';
+
+      const heroBadge = document.getElementById('hpHeroBadge');
+      if (heroBadge) heroBadge.textContent = isEn ? '32 Neuromuscular Conditions 3D Clinical Anatomy & Healing Points' : '32대 전신 신경·근막 질환 3D 정밀 해부도 & 힐링 포인트';
+
+      const heroTitle = document.getElementById('hpHeroTitle');
+      if (heroTitle) heroTitle.textContent = isEn ? 'NovaCell Disease-Specific Therapy Points Clinic' : 'NovaCell 질환별 치료 포인트 클리닉';
+
+      const heroSub = document.getElementById('hpHeroSub');
+      if (heroSub) {
+        heroSub.textContent = isEn
+          ? 'Explore 3D regional anatomy illustrations, Monopolar High-Voltage Microcurrent core Healing Points (HP), 528Hz cellular voltage timers, and clinical recipes at a glance.'
+          : '부위별 3D 정밀 해부도와 무극성 고전압 미세전류 단일 펜 도자(Monopolar Pen Probe) 핵심 힐링 포인트(HP), 528Hz 세포 전압 타이머 및 임상 치유 레시피를 한눈에 확인하세요.';
+      }
+    };
+
+    // 5. Render 32 Condition Cards in 3D Pain Clinic 4-Column Grid Pattern
     proto.renderConditionsList = function() {
       const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
       const isVip = checkHealingVip();
       const list = this.getFilteredConditions();
-      this.conditionsCounter.textContent = isEn ? `${list.length} Conditions` : `${list.length}개 질환`;
+
+      if (this.conditionsCounter) {
+        this.conditionsCounter.textContent = isEn ? `${list.length} Conditions` : `${list.length}개 질환`;
+      }
+
+      const statusEl = document.getElementById('hpStatusText');
+      if (statusEl) {
+        statusEl.innerHTML = isEn
+          ? `Showing <strong id="hpDisplayCount">${list.length}</strong> Disease-Specific Therapy Point Protocols.`
+          : `총 <strong id="hpDisplayCount">${list.length}개</strong>의 질환별 치료 포인트 프로토콜이 표시 중입니다.`;
+      }
+
+      if (!this.conditionsList) return;
       this.conditionsList.innerHTML = '';
 
       if (list.length === 0) {
         this.conditionsList.innerHTML = `
-          <div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+          <div style="grid-column: 1 / -1; padding: 48px 24px; text-align: center; color: #94a3b8; font-size: 0.95rem; background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(255,255,255,0.12); border-radius: 16px;">
             ${isEn ? 'No matching symptoms or conditions found.' : '검색된 증상 또는 질환이 없습니다.'}
           </div>
         `;
         return;
       }
 
-      list.forEach(cond => {
+      list.forEach((cond, idx) => {
         const card = document.createElement('div');
         const isFree = isFreeHealingCondition(cond.id);
         const locked = !isVip && !isFree;
+        const globalIdx = this.conditions.findIndex(c => c.id === cond.id);
+        const condNum = globalIdx >= 0 ? globalIdx + 1 : idx + 1;
 
-        card.className = `condition-item-card ${this.currentCondition.id === cond.id ? 'active' : ''} ${locked ? 'is-vip-locked' : ''}`;
+        card.className = `cond-card condition-item-card ${this.currentCondition && this.currentCondition.id === cond.id ? 'active' : ''} ${locked ? 'is-vip-locked' : ''}`;
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+
         const titleMain = isEn ? cond.titleEn : cond.titleKo;
-        const titleSub = isEn ? (cond.badgeEn || '') : cond.titleEn;
+        const titleSub = isEn ? (cond.badgeEn || cond.badge || '') : cond.titleEn;
         const badge = isEn ? (cond.badgeEn || cond.badge) : cond.badge;
         const overview = isEn ? (cond.overviewEn || cond.overview) : cond.overview;
-        const hpUnit = isEn ? 'Points' : '포인트';
+        const imgSrc = getConditionThumbSrc(cond);
 
-        const statusPill = locked 
-          ? `<span class="vip-lock-pill">🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`
-          : `<span class="free-trial-pill">🌿 ${isEn ? 'Free Trial' : '무료 체험'}</span>`;
+        // Always display canonical tier badge (Free Trial vs 1-Year Pass VIP) so users & admins clearly see which 7 are free and which 25 are VIP
+        const tierBadge = isFree
+          ? `<span class="free-trial-pill">🌿 ${isEn ? 'Free Trial' : '무료 체험 가능'}</span>`
+          : `<span class="vip-lock-pill">🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`;
 
-        card.setAttribute('title', `${titleMain}\n${overview}`);
         card.innerHTML = `
-          <div class="card-header-line">
-            <span class="card-badge">${badge}</span>
-            ${statusPill}
-            <span class="card-hp-count">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10" />
-              </svg>
-              HP ${cond.healingPoints.length} ${hpUnit}
+          <div class="cond-card-top">
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+              <span class="cond-id-badge">No. ${String(condNum).padStart(2, '0')}</span>
+              ${tierBadge}
+            </div>
+            <span class="cond-mech-badge">${badge}</span>
+          </div>
+          <div class="cond-card-thumb-wrap">
+            <img src="${imgSrc}" alt="${titleMain}" class="cond-card-thumb" loading="lazy" onerror="this.onerror=null;this.src='assets/image-not-loaded.svg';" />
+          </div>
+          <h4 class="cond-title-ko">${titleMain}</h4>
+          <div class="cond-title-en">${titleSub}</div>
+          <p class="cond-symptoms-snippet">${overview}</p>
+          <div class="cond-card-footer">
+            <span class="cond-targets-count">
+              🎯 ${isEn ? `${cond.healingPoints.length} Healing Points` : `힐링 포인트 지정 ${cond.healingPoints.length}곳`}
+            </span>
+            <span class="btn-open-protocol">
+              ${isEn ? 'View Protocol' : '치료 프로토콜 보기'} →
             </span>
           </div>
-          <div class="card-title-ko">${titleMain}</div>
-          <div class="card-title-en">${titleSub}</div>
-          <div class="card-preview-text" title="${overview}">${overview}</div>
         `;
 
-        card.addEventListener('mouseenter', () => {
-          this.showConditionTooltip(cond, card);
-        });
-
-        card.addEventListener('mousemove', (e) => {
-          this.positionConditionTooltip(e, card);
-        });
-
-        card.addEventListener('mouseleave', () => {
-          this.hideConditionTooltip();
-        });
-
         card.addEventListener('click', () => {
-          this.hideConditionTooltip();
+          this.hideConditionTooltip?.();
           if (locked) {
             openHealingVipModal(titleMain);
             return;
           }
-          this.selectCondition(cond);
+          this.openConditionDetail(cond);
+        });
+
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
         });
 
         this.conditionsList.appendChild(card);
       });
     };
 
-    // Hook selectCondition
+    // 6. Hook selectCondition to enforce VIP check and update Detail Header Bar
     const origSelectCondition = proto.selectCondition;
     proto.selectCondition = function(c) {
       const isVip = checkHealingVip();
@@ -8752,14 +9959,160 @@ document.addEventListener('DOMContentLoaded', function() {
       if (origSelectCondition) {
         origSelectCondition.call(this, c);
       }
+      if (this.updateDetailHeaderBar) {
+        this.updateDetailHeaderBar();
+      }
     };
+
+    // 7. Hook setMobileTab so clicking 'conditions' returns to 32-card overview, and 'anatomy'/'recipe' enters detail view
+    const origSetMobileTab = proto.setMobileTab;
+    proto.setMobileTab = function(tabName) {
+      if (tabName === 'conditions') {
+        this.setWorkspaceViewMode('overview');
+      } else if (tabName === 'anatomy' || tabName === 'recipe') {
+        if (this.viewMode !== 'detail') {
+          this.setWorkspaceViewMode('detail');
+        }
+      }
+      if (origSetMobileTab) {
+        origSetMobileTab.call(this, tabName);
+      }
+    };
+  }
+
+  function bindOverviewControls() {
+    applyHooks();
+    if (!window.app) return;
+
+    // Default to 'overview' mode on initial load so all 32 3D condition cards are visible at a glance
+    if (!window.app.viewMode) {
+      window.app.viewMode = 'overview';
+      document.body.dataset.hpViewMode = 'overview';
+      const ws = document.getElementById('main-workspace');
+      if (ws) ws.dataset.viewMode = 'overview';
+    }
+
+    // Bind Hero Filter Chips
+    document.querySelectorAll('#hpHeroFilterChips .hp-filter-chip').forEach(chip => {
+      if (chip.dataset.bound) return;
+      chip.dataset.bound = '1';
+      chip.addEventListener('click', () => {
+        window.app.currentCategory = chip.dataset.cat || 'all';
+        window.app.renderCategories();
+        window.app.renderConditionsList();
+      });
+    });
+
+    // Bind 3D Body X-Ray Hotzones
+    document.querySelectorAll('#hpBodyXrayCard .body-xray-hotzone').forEach(zone => {
+      if (zone.dataset.bound) return;
+      zone.dataset.bound = '1';
+      zone.addEventListener('click', () => {
+        const cat = zone.dataset.cat;
+        window.app.currentCategory = (window.app.currentCategory === cat) ? 'all' : cat;
+        window.app.renderCategories();
+        window.app.renderConditionsList();
+      });
+    });
+
+    // Bind Toggle 3D Body X-Ray Map button
+    const btnToggleXray = document.getElementById('btnToggleHpXray');
+    const xrayCard = document.getElementById('hpBodyXrayCard');
+    if (btnToggleXray && xrayCard && !btnToggleXray.dataset.bound) {
+      btnToggleXray.dataset.bound = '1';
+      btnToggleXray.addEventListener('click', () => {
+        const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+        const isHidden = xrayCard.style.display === 'none';
+        xrayCard.style.display = isHidden ? 'block' : 'none';
+        const txt = document.getElementById('txtToggleHpXray');
+        if (txt) {
+          txt.textContent = isHidden
+            ? (isEn ? 'Hide Map' : '해부도 숨김')
+            : (isEn ? 'Show Map' : '해부도 표시');
+        }
+      });
+    }
+
+    // Bind Return to Overview Buttons (Top & Bottom)
+    const btnBackTop = document.getElementById('btn-back-to-overview-top');
+    if (btnBackTop && !btnBackTop.dataset.bound) {
+      btnBackTop.dataset.bound = '1';
+      btnBackTop.addEventListener('click', () => {
+        window.app.setWorkspaceViewMode('overview');
+      });
+    }
+
+    const btnBackBottom = document.getElementById('btn-back-to-overview-bottom');
+    if (btnBackBottom && !btnBackBottom.dataset.bound) {
+      btnBackBottom.dataset.bound = '1';
+      btnBackBottom.addEventListener('click', () => {
+        window.app.setWorkspaceViewMode('overview');
+      });
+    }
+
+    // Bind Quick Condition Selector in Detail Header
+    const condSelect = document.getElementById('hp-detail-cond-select');
+    if (condSelect && !condSelect.dataset.bound) {
+      condSelect.dataset.bound = '1';
+      condSelect.addEventListener('change', (e) => {
+        const target = window.app.conditions.find(c => c.id === e.target.value);
+        if (!target) return;
+        const isVip = checkHealingVip();
+        if (!isVip && !isFreeHealingCondition(target.id)) {
+          const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+          openHealingVipModal(isEn ? target.titleEn : target.titleKo);
+          condSelect.value = window.app.currentCondition.id;
+          return;
+        }
+        window.app.selectCondition(target);
+      });
+    }
+
+    // Bind Header '질환별 치료 포인트' Nav Buttons so clicking them in Detail Mode returns to Overview Grid
+    ['nav-therapy', 'm-nav-therapy'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && !el.dataset.boundOverview) {
+        el.dataset.boundOverview = '1';
+        el.addEventListener('click', (e) => {
+          if (window.app && window.app.viewMode === 'detail') {
+            e.preventDefault();
+            window.app.setWorkspaceViewMode('overview');
+          }
+        });
+      }
+    });
+
+    // When user types in top header #search-input while in Detail Mode, switch to Overview Mode automatically
+    const searchInput = document.getElementById('search-input');
+    if (searchInput && !searchInput.dataset.boundOverviewSearch) {
+      searchInput.dataset.boundOverviewSearch = '1';
+      searchInput.addEventListener('input', () => {
+        if (window.app && window.app.viewMode === 'detail' && searchInput.value.trim().length > 0) {
+          window.app.setWorkspaceViewMode('overview');
+        }
+      });
+    }
+
+    window.app.renderCategories();
+    window.app.renderConditionsList();
+    window.app.updateDetailHeaderBar();
   }
 
   if (typeof Workspace !== 'undefined') {
     applyHooks();
-  } else {
-    document.addEventListener('DOMContentLoaded', applyHooks);
   }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => setTimeout(bindOverviewControls, 20));
+  } else {
+    setTimeout(bindOverviewControls, 20);
+  }
+  window.addEventListener('load', () => setTimeout(bindOverviewControls, 50));
+  window.addEventListener('novacell:vip-status-changed', function() {
+    if (window.app) {
+      window.app.renderConditionsList();
+      window.app.updateDetailHeaderBar?.();
+    }
+  });
 })();
 </script>
 
