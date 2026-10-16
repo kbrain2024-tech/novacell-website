@@ -864,6 +864,29 @@
                   <button type="button" onclick="clearActiveHealingCode()" title="코드 해제" data-i18n="btnClearCode" data-i18n-title="btnClearCodeTitle" style="background: rgba(255,255,255,0.1); border: none; color: #cbd5e1; cursor: pointer; font-size: 0.8rem; padding: 4px 8px; border-radius: 6px;">해제</button>
                 </div>
               </div>
+
+              <!-- 🌿 다음 단계: 맞춤 배경음(자연음) 선택 섹션 (초기 셋팅: 깊은 산속 새소리) -->
+              <div class="custom-breathing-ambient-panel" style="background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 14px; padding: 12px 14px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+                  <span style="font-size: 0.8rem; font-weight: 700; color: #f8fafc; display: flex; align-items: center; gap: 6px;">
+                    <i class="ri-leaf-line" style="color: #34d399;"></i> <span id="txt-care-ambient-title" data-i18n="careAmbientTitle">맞춤 배경음 선택 (다음 단계)</span>
+                  </span>
+                  <span id="txt-breathing-ambient-badge" class="badge" style="background: rgba(52, 211, 153, 0.16); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.4); font-size: 0.72rem; padding: 2px 9px; border-radius: 999px; font-weight: 700;">
+                    🕊️ 깊은 산속 새소리
+                  </span>
+                </div>
+                <div class="breathing-hz-chips" id="breathing-ambient-chips" style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip active" data-breath-ambient="mountainbirds" onclick="setBreathingAmbient('mountainbirds')">🕊️ 깊은 산속 새소리</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="rain" onclick="setBreathingAmbient('rain')">🌧️ 자연 빗소리</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="stream" onclick="setBreathingAmbient('stream')">💧 청량한 계곡물</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="waves" onclick="setBreathingAmbient('waves')">🌊 동해 파도소리</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="seagull" onclick="setBreathingAmbient('seagull')">🕊️ 바다 갈매기</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="campfire" onclick="setBreathingAmbient('campfire')">🔥 따스한 모닥불</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="singingbowl" onclick="setBreathingAmbient('singingbowl')">🥣 힐링 싱잉볼</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="chakra" onclick="setBreathingAmbient('chakra')">🧘 차크라 고유음</button>
+                  <button type="button" class="btn-hz-chip btn-breath-ambient-chip" data-breath-ambient="off" onclick="setBreathingAmbient('off')">🔇 배경음 끄기</button>
+                </div>
+              </div>
             </div>
 
             <div>
@@ -2024,7 +2047,7 @@
       <!-- 힐링 배경음 선택 드롭다운 -->
       <div class="sticky-timer-dropdown sticky-ambient-dropdown">
         <button id="sticky-ambient-btn" class="btn-sticky-timer" title="실시간 배경음 변경">
-          <i class="ri-sound-module-line"></i> <span id="sticky-ambient-text">🌿 맞춤음</span>
+          <i class="ri-sound-module-line"></i> <span id="sticky-ambient-text">🕊️ 깊은 산속 새소리</span>
         </button>
         <div class="sticky-timer-menu" style="min-width: 140px;">
           <button class="sticky-timer-item" onclick="setGlobalAmbientSound('preset')" data-i18n="ambPreset">🌿 프리셋 맞춤음</button>
@@ -2115,11 +2138,11 @@
   <!-- 비디오 로드 및 음원 파일 다운로드를 돕는 Javascript -->
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
-  <script src="audioEngine_v3.1.js?v=3.6.0"></script>
-  <script src="app_v3.1.js?v=3.6.0"></script>
-  <script src="novacell-i18n.js?v=3.6.0"></script>
-  <script src="breathingGuide.js?v=3.6.0"></script>
-  <script src="novacell-freemium.js?v=3.6.0"></script>
+  <script src="audioEngine_v3.1.js?v=3.6.1"></script>
+  <script src="app_v3.1.js?v=3.6.1"></script>
+  <script src="novacell-i18n.js?v=3.6.1"></script>
+  <script src="breathingGuide.js?v=3.6.1"></script>
+  <script src="novacell-freemium.js?v=3.6.1"></script>
   <!-- ====================================================================
        NovaCell 100 & VIP 임상 웰니스 코드 검색 & 호흡 연동 모달
        ==================================================================== -->

@@ -650,12 +650,119 @@ function setBreathingLanguage(lang) {
   if (activeHealingCode) {
     applyHealingCodeToBreathing(activeHealingCode.code, activeHealingCode.type);
   }
+
+  // 13) 호흡 테라피 맞춤 배경음 선택 칩 & 배지 바이링궐 동기화
+  updateBreathingAmbientUI(false);
 }
 
 // ==========================================================================
-// 4.1. 사용자 맞춤 치유 주파수 상태 관리
+// 4.1. 사용자 맞춤 치유 주파수 및 맞춤 배경음(초기값: 깊은 산속 새소리) 상태 관리
 // ==========================================================================
 let customBreathingHz = null; // null일 경우 해당 차크라 컬러의 고유 기본 주파수 사용
+let currentBreathingAmbient = "mountainbirds"; // 초기 셋팅: 깊은 산속 새소리
+
+const BREATHING_AMBIENT_META = {
+  mountainbirds: { ko: "🕊️ 깊은 산속 새소리", en: "🕊️ Mountain Birds", stickyKo: "🕊️ 깊은 산속 새소리", stickyEn: "🕊️ Mountain Birds" },
+  rain: { ko: "🌧️ 자연 빗소리", en: "🌧️ Natural Rain", stickyKo: "🌧️ 빗소리", stickyEn: "🌧️ Rain" },
+  stream: { ko: "💧 청량한 계곡물", en: "💧 Crystal Stream", stickyKo: "💧 계곡물", stickyEn: "💧 Stream" },
+  waves: { ko: "🌊 동해 파도소리", en: "🌊 Ocean Waves", stickyKo: "🌊 파도소리", stickyEn: "🌊 Ocean Waves" },
+  seagull: { ko: "🕊️ 바다 갈매기", en: "🕊️ Ocean Seagulls", stickyKo: "🕊️ 바다 갈매기", stickyEn: "🕊️ Ocean Seagulls" },
+  campfire: { ko: "🔥 따스한 모닥불", en: "🔥 Warm Campfire", stickyKo: "🔥 모닥불", stickyEn: "🔥 Campfire" },
+  singingbowl: { ko: "🥣 힐링 싱잉볼", en: "🥣 Singing Bowl", stickyKo: "🥣 싱잉볼", stickyEn: "🥣 Singing Bowl" },
+  chakra: { ko: "🧘 차크라 고유음", en: "🧘 Chakra Sound", stickyKo: "🧘 차크라 고유음", stickyEn: "🧘 Chakra Sound" },
+  off: { ko: "🔇 배경음 끄기", en: "🔇 Mute Ambient", stickyKo: "🔇 끔", stickyEn: "🔇 Off" }
+};
+
+function getResolvedBreathingAmbientKey() {
+  if (currentBreathingAmbient === "chakra") {
+    const meta = CHAKRA_COLORS[currentBreathingColor];
+    return (meta && meta.soundKey) ? meta.soundKey : "mountainbirds";
+  }
+  return currentBreathingAmbient || "mountainbirds";
+}
+
+function updateBreathingAmbientUI(syncStickyBar = false) {
+  const lang = currentBreathingLang === "en" ? "en" : "ko";
+  const titleEl = document.getElementById("txt-care-ambient-title");
+  if (titleEl) {
+    titleEl.textContent = lang === "en" ? "Custom Ambient Sound (Next Step)" : "맞춤 배경음 선택 (다음 단계)";
+  }
+
+  const chips = document.querySelectorAll("#breathing-ambient-chips .btn-breath-ambient-chip");
+  chips.forEach(chip => {
+    const key = chip.getAttribute("data-breath-ambient");
+    if (BREATHING_AMBIENT_META[key]) {
+      chip.textContent = BREATHING_AMBIENT_META[key][lang];
+    }
+    chip.classList.toggle("active", key === currentBreathingAmbient);
+  });
+
+  const badge = document.getElementById("txt-breathing-ambient-badge");
+  if (badge) {
+    let badgeText = BREATHING_AMBIENT_META[currentBreathingAmbient]
+      ? BREATHING_AMBIENT_META[currentBreathingAmbient][lang]
+      : BREATHING_AMBIENT_META.mountainbirds[lang];
+    if (currentBreathingAmbient === "chakra") {
+      const resolved = getResolvedBreathingAmbientKey();
+      const resolvedMeta = BREATHING_AMBIENT_META[resolved];
+      if (resolvedMeta) {
+        badgeText = `${resolvedMeta[lang]} (${lang === "en" ? "Chakra" : "차크라"})`;
+      }
+    }
+    badge.textContent = badgeText;
+    if (currentBreathingAmbient === "off") {
+      badge.style.color = "#94a3b8";
+      badge.style.borderColor = "rgba(148, 163, 184, 0.35)";
+      badge.style.background = "rgba(148, 163, 184, 0.12)";
+    } else {
+      badge.style.color = "#34d399";
+      badge.style.borderColor = "rgba(52, 211, 153, 0.4)";
+      badge.style.background = "rgba(52, 211, 153, 0.16)";
+    }
+  }
+
+  if (syncStickyBar) {
+    const resolvedKey = getResolvedBreathingAmbientKey();
+    window.currentAmbientType = resolvedKey;
+    document.querySelectorAll(".ambient-chip").forEach(chip => {
+      chip.classList.toggle("active", chip.getAttribute("data-ambient") === resolvedKey);
+    });
+    const stickyAmbientText = document.getElementById("sticky-ambient-text");
+    if (stickyAmbientText) {
+      const metaInfo = BREATHING_AMBIENT_META[resolvedKey] || BREATHING_AMBIENT_META.mountainbirds;
+      stickyAmbientText.textContent = lang === "en" ? metaInfo.stickyEn : metaInfo.stickyKo;
+    }
+  }
+}
+
+function setBreathingAmbient(ambientKey) {
+  if (!BREATHING_AMBIENT_META[ambientKey]) return;
+  currentBreathingAmbient = ambientKey;
+  updateBreathingAmbientUI(true);
+
+  if (isSoundSyncEnabled) {
+    applySoundSyncToEngine();
+  }
+
+  const lang = currentBreathingLang === "en" ? "en" : "ko";
+  const label = BREATHING_AMBIENT_META[ambientKey][lang];
+  const toastFn = window.showToast || window.showStudioToast;
+  if (typeof toastFn === "function") {
+    if (ambientKey === "off") {
+      toastFn(lang === "en" ? "🔇 Breathing ambient sound muted (Pure frequency mode)." : "🔇 호흡 테라피 배경 자연음이 음소거되었습니다.");
+    } else {
+      toastFn(lang === "en" ? `${label} ambient sound applied to Breathing Therapy.` : `${label} 맞춤 배경음이 호흡 테라피에 적용되었습니다.`);
+    }
+  }
+}
+
+function syncBreathingAmbientFromGlobal(ambientType) {
+  const mappedKey = ambientType === "preset" ? "mountainbirds" : (ambientType === "forestbirds" ? "mountainbirds" : ambientType);
+  if (BREATHING_AMBIENT_META[mappedKey]) {
+    currentBreathingAmbient = mappedKey;
+    updateBreathingAmbientUI(false);
+  }
+}
 
 /**
  * 7색 중 하나 선택 함수
@@ -672,6 +779,7 @@ function selectBreathingColor(colorKey) {
 
   // 2) UI 테마 및 미디어 갱신
   updateCurrentColorUI();
+  updateBreathingAmbientUI(false);
 
   // 3) 사운드 엔진 동기화 적용
   if (isSoundSyncEnabled && isBreathingPlaying) {
@@ -1182,49 +1290,108 @@ function applySoundSyncToEngine() {
   if (!meta) return;
 
   const targetHz = customBreathingHz ? customBreathingHz : meta.hz;
+  const eng = window.engine;
 
   try {
-    window.engine.init();
-    if (window.engine.audioCtx && window.engine.audioCtx.state === "suspended") {
-      window.engine.audioCtx.resume();
+    eng.init();
+    if (eng.audioCtx && eng.audioCtx.state === "suspended") {
+      eng.audioCtx.resume();
     }
 
     // NovaCell 100 or VIP 힐링 코드 우선 동기화
     if (activeHealingCode) {
-      if (activeHealingCode.type === 'rife' && typeof window.engine.setRifeFrequencyRecipe === 'function') {
-        window.engine.setRifeFrequencyRecipe(activeHealingCode.freqs);
-        if (typeof window.engine.toggleRife === 'function') window.engine.toggleRife(true);
-      } else if (activeHealingCode.type === 'vip' && typeof window.engine.setVipFrequencyRecipe === 'function') {
-        window.engine.setVipFrequencyRecipe(activeHealingCode.freqs);
-        if (typeof window.engine.toggleVip === 'function') window.engine.toggleVip(true);
+      if (activeHealingCode.type === 'rife' && typeof eng.setRifeFrequencyRecipe === 'function') {
+        eng.setRifeFrequencyRecipe(activeHealingCode.freqs);
+        if (typeof eng.toggleRife === 'function') eng.toggleRife(true);
+      } else if (activeHealingCode.type === 'vip' && typeof eng.setVipFrequencyRecipe === 'function') {
+        eng.setVipFrequencyRecipe(activeHealingCode.freqs);
+        if (typeof eng.toggleVip === 'function') eng.toggleVip(true);
       }
     } else {
-      if (typeof window.engine.toggleRife === 'function') window.engine.toggleRife(false);
-      if (typeof window.engine.toggleVip === 'function') window.engine.toggleVip(false);
-      if (typeof window.engine.toggleSolfeggio === 'function') window.engine.toggleSolfeggio(true);
-      if (typeof window.engine.setSolfeggioFrequency === "function") {
-        window.engine.setSolfeggioFrequency(targetHz);
+      if (typeof eng.toggleRife === 'function') eng.toggleRife(false);
+      if (typeof eng.toggleVip === 'function') eng.toggleVip(false);
+      if (typeof eng.toggleSolfeggio === 'function') eng.toggleSolfeggio(true);
+      if (typeof eng.setSolfeggioFrequency === "function") {
+        eng.setSolfeggioFrequency(targetHz);
       }
     }
-    if (typeof window.engine.setSolfeggioVolume === "function") {
-      let freqVol = window.engine.solfeggioVolume;
+    if (typeof eng.setSolfeggioVolume === "function") {
+      let freqVol = eng.solfeggioVolume;
       if (!freqVol || freqVol <= 0.05) freqVol = 0.70;
-      window.engine.setSolfeggioVolume(freqVol);
+      eng.setSolfeggioVolume(freqVol);
     }
 
-    if (typeof window.engine.setNatureVolume === "function") {
-      window.engine.setNatureVolume(meta.soundKey, 0.40);
-    }
-    if (typeof window.engine.setNatureMasterVolume === "function") {
-      let natVol = window.engine.natureMasterVolume;
-      if (!natVol || natVol <= 0.05) natVol = 0.80;
-      window.engine.setNatureMasterVolume(natVol);
+    // 맞춤 배경음(자연음) 동기화 (초기값: 깊은 산속 새소리 mountainbirds)
+    const ambientKey = getResolvedBreathingAmbientKey();
+    updateBreathingAmbientUI(true);
+
+    // 기존 자연음 타이머 및 볼륨 정리 (중첩 재생 방지)
+    if (eng.seagullTimer) { clearInterval(eng.seagullTimer); eng.seagullTimer = null; }
+    if (eng.forestBirdsTimer) { clearInterval(eng.forestBirdsTimer); eng.forestBirdsTimer = null; }
+    if (eng._forestTimers) { eng._forestTimers.forEach(t => clearTimeout(t)); eng._forestTimers = []; }
+    if (eng.singingBowlTimer) { clearInterval(eng.singingBowlTimer); eng.singingBowlTimer = null; }
+    if (eng.mountainBirdsTimer) { clearTimeout(eng.mountainBirdsTimer); eng.mountainBirdsTimer = null; }
+    if (eng.cricketsTimer) { clearInterval(eng.cricketsTimer); eng.cricketsTimer = null; }
+    if (eng.cuckooTimer) { clearInterval(eng.cuckooTimer); eng.cuckooTimer = null; }
+
+    if (eng.natureVolumeSettings && typeof eng.setNatureVolume === "function") {
+      Object.keys(eng.natureVolumeSettings).forEach(k => {
+        eng.setNatureVolume(k, 0);
+        const sl = document.getElementById(`slider-${k}`);
+        if (sl) sl.value = 0;
+        const tx = document.getElementById(`txt-${k}`);
+        if (tx) tx.textContent = "0%";
+      });
     }
 
-    if (!window.engine.isPlaying && typeof window.engine.start === "function") {
-      window.engine.start();
-    } else if (window.engine.isPlaying && typeof window.engine.startSolfeggio === "function") {
-      window.engine.startSolfeggio();
+    if (ambientKey === "off") {
+      eng.isNatureActive = false;
+    } else {
+      eng.isNatureActive = true;
+      if (typeof eng.setNatureMasterVolume === "function") {
+        let natVol = eng.natureMasterVolume;
+        if (!natVol || natVol <= 0.05) natVol = 0.80;
+        eng.setNatureMasterVolume(natVol);
+      }
+
+      let targetNature = {};
+      if (ambientKey === "mountainbirds" || ambientKey === "forestbirds") {
+        targetNature = { mountainbirds: 0.70 };
+      } else if (ambientKey === "seagull") {
+        targetNature = { seagull: 0.70, waves: 0.40 };
+      } else if (ambientKey === "singingbowl") {
+        targetNature = { singingbowl: 0.50 };
+      } else {
+        targetNature[ambientKey] = 0.55;
+      }
+
+      if (typeof eng.setNatureVolume === "function") {
+        Object.keys(targetNature).forEach(k => {
+          const v = targetNature[k];
+          eng.setNatureVolume(k, v);
+          const sl = document.getElementById(`slider-${k}`);
+          if (sl) sl.value = v;
+          const tx = document.getElementById(`txt-${k}`);
+          if (tx) tx.textContent = Math.round(v * 100) + "%";
+        });
+      }
+    }
+
+    if (!eng.isPlaying && typeof eng.start === "function") {
+      eng.start();
+    } else if (eng.isPlaying && typeof eng.startSolfeggio === "function") {
+      eng.startSolfeggio();
+    }
+
+    if (eng.isNatureActive && typeof eng.startNatureMixer === "function") {
+      eng.startNatureMixer();
+      if (ambientKey === "mountainbirds" || ambientKey === "forestbirds") {
+        try { eng.playMountainBirdsOnce(0.75); } catch (e) {}
+        if (typeof eng.triggerMountainBirdsLoop === "function") eng.triggerMountainBirdsLoop();
+      } else if (ambientKey === "seagull") {
+        try { eng.playSeagullOnce(0.85); } catch (e) {}
+        if (typeof eng.triggerSeagullLoop === "function") eng.triggerSeagullLoop();
+      }
     }
 
     if (typeof window.syncAllPlayButtons === "function") {
@@ -1582,9 +1749,11 @@ function initBreathingGuide() {
   txtModeBadge = document.getElementById("txt-mode-badge");
   txtHeroAffirmation = document.getElementById("txt-hero-affirmation");
 
-  // 초기 7색 호흡 렌더링
+  // 초기 7색 호흡 렌더링 및 맞춤 배경음(깊은 산속 새소리) 초기 셋팅
+  currentBreathingAmbient = "mountainbirds";
   selectBreathingColor("red");
   setBreathingLanguage(window.currentLang || "ko");
+  updateBreathingAmbientUI(true);
 
   // 12초 주기로 긍정 확언 자동 지속 순환 (확언 교대 시간을 2배로 연장하여 깊은 음미 유도)
   setInterval(() => {
@@ -1904,3 +2073,7 @@ if (document.readyState === "loading") {
 window.pauseBreathingSession = pauseBreathingSession;
 window.startBreathingSession = startBreathingSession;
 window.updateBreathingPlayButtonUI = updatePlayButtonUI;
+window.setBreathingAmbient = setBreathingAmbient;
+window.updateBreathingAmbientUI = updateBreathingAmbientUI;
+window.syncBreathingAmbientFromGlobal = syncBreathingAmbientFromGlobal;
+window.applyBreathingSoundSync = applySoundSyncToEngine;

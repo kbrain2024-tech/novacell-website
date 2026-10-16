@@ -646,6 +646,10 @@
       window.renderRife100Page(window.currentRifeCat || 'all', window.currentRifeSearch || '');
     } else if (tabId === 'tab-vip') {
       window.renderVipPage(window.currentVipCat || 'all', window.currentVipSearch || '');
+    } else if (tabId === 'tab-care') {
+      if (typeof window.updateBreathingAmbientUI === 'function') {
+        window.updateBreathingAmbientUI(true);
+      }
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1183,6 +1187,9 @@
     };
     if (stickyAmbientText) {
       stickyAmbientText.textContent = labelMap[ambientType] || (isEn ? '🌿 Ambient' : '🌿 배경음');
+    }
+    if (typeof window.syncBreathingAmbientFromGlobal === 'function') {
+      window.syncBreathingAmbientFromGlobal(ambientType);
     }
 
     // 3) 먼저 기존의 모든 자연음 볼륨을 0으로 소거 및 활성 타이머 리셋
