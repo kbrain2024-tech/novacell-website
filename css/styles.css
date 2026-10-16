@@ -100,23 +100,146 @@ button, input, select, textarea {
   padding: 0 24px;
 }
 
-.reflex-pass-section { padding: 96px 0; background: linear-gradient(135deg, #f8fafc 0%, #e8f2fc 100%); }
-.reflex-pass-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
-.reflex-pass-section h2 { font-family: var(--font-display); font-size: clamp(2rem,4vw,3.25rem); line-height: 1.1; color: var(--color-navy-900); margin: 8px 0 18px; }
-.reflex-pass-section h2 span { color: var(--color-gold-600); }
-.reflex-pass-section p { color: var(--color-text-muted); max-width: 640px; margin-bottom: 22px; }
-.reflex-pass-section .reflex-korean-name { color: var(--color-navy-700); font-weight: 700; margin: -4px 0 14px; }
-.reflex-pass-price { color: var(--color-navy-900); font-size: 2rem; font-weight: 800; margin-bottom: 26px; }
-.reflex-pass-price small { color: var(--color-text-muted); font-size: .95rem; font-weight: 600; }
-.reflex-hero-actions,.reflex-purchase-actions { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-.reflex-hero-actions { margin-top:8px; }
-.reflex-pass-card { background: var(--color-navy-900); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-xl); color: #fff; }
-.reflex-pass-card img { width: 100%; aspect-ratio: auto; object-fit: contain; background: var(--color-navy-950); }
-.reflex-pass-card div { padding: 22px 26px; }
-.reflex-pass-card strong, .reflex-pass-card span { display: block; }
-.reflex-pass-card strong { font-size: 1.2rem; margin-bottom: 4px; }
-.reflex-pass-card span { color: var(--color-gold-300); font-size: .9rem; }
-@media (max-width: 780px) { .reflex-pass-grid { grid-template-columns: 1fr; gap: 30px; } .reflex-pass-section { padding: 68px 0; } }
+.reflex-pass-section {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #06172d 0%, #0b3150 58%, #087687 100%);
+  border-top: 1px solid rgba(64, 221, 232, 0.22);
+  border-bottom: 1px solid rgba(64, 221, 232, 0.22);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.reflex-pass-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(380px, 1.08fr);
+  gap: 54px;
+  align-items: center;
+}
+.reflex-pass-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 4.5vw, 4.15rem);
+  line-height: 1.06;
+  color: #fff;
+  margin: 14px 0 18px;
+}
+.reflex-pass-section h2 span {
+  color: #39d8e7;
+  text-shadow: 0 0 22px rgba(57, 216, 231, 0.32);
+}
+.reflex-pass-section p {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 620px;
+  margin-bottom: 0;
+}
+.reflex-pass-section .reflex-korean-name { color: #aef4f7; font-weight: 700; margin: -4px 0 14px; }
+.reflex-pass-points {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0 0;
+}
+.reflex-pass-points span {
+  padding: 7px 13px;
+  border: 1px solid rgba(63, 225, 235, 0.34);
+  border-radius: 999px;
+  background: rgba(1, 16, 34, 0.42);
+  color: #b9f8fb;
+  font-size: 0.83rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.reflex-pass-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+.reflex-pass-price span,
+.reflex-pass-price small {
+  color: #aef4f7;
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+.reflex-pass-price strong {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3vw, 2.35rem);
+  font-weight: 800;
+  text-shadow: 0 0 16px rgba(57, 216, 231, 0.25);
+}
+.reflex-pass-actions,
+.reflex-hero-actions,
+.reflex-purchase-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.reflex-pass-actions { margin-top: 28px; }
+.reflex-hero-actions { margin-top: 8px; }
+.reflex-pass-card {
+  position: relative;
+  border: 1.5px solid rgba(64, 221, 232, 0.38);
+  border-radius: 24px;
+  padding: 10px;
+  background: rgba(5, 17, 36, 0.65);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.42), 0 0 30px rgba(57, 216, 231, 0.16);
+  overflow: hidden;
+  color: #fff;
+}
+.reflex-pass-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  background: var(--color-navy-950);
+  transition: transform 0.4s ease;
+}
+.reflex-pass-card:hover img {
+  transform: scale(1.02);
+}
+.reflex-pass-float-badge {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  right: 22px;
+  background: rgba(6, 20, 42, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(64, 221, 232, 0.42);
+  border-radius: 14px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #fff;
+}
+.reflex-pass-float-badge strong {
+  color: #39d8e7;
+  display: block;
+  font-size: 0.96rem;
+  margin-bottom: 2px;
+}
+.reflex-pass-float-badge span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.8rem;
+  display: block;
+}
+@media (max-width: 1050px) {
+  .reflex-pass-grid { grid-template-columns: 1fr; }
+  .reflex-pass-card { max-width: 760px; }
+}
+@media (max-width: 780px) {
+  .reflex-pass-grid { grid-template-columns: 1fr; gap: 30px; }
+  .reflex-pass-section { padding: 64px 0; }
+  .reflex-pass-actions { display: grid; grid-template-columns: 1fr; width: 100%; }
+  .reflex-pass-actions .btn { width: 100%; justify-content: center; }
+  .reflex-pass-float-badge { position: static; margin-top: 10px; border-radius: 12px; }
+}
 .reflex-main-gate-card { background: var(--color-navy-950); }
 .reflex-main-gate-card img { max-height: 390px; object-fit: contain; }
 .reflex-quick-actions { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:14px; margin:30px auto 0; max-width:1080px; }
