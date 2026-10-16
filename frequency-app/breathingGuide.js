@@ -1002,15 +1002,16 @@ function startBreathingSession() {
 /**
  * 호흡 세션 일시정지
  */
-function pauseBreathingSession() {
+function pauseBreathingSession(silent = false) {
   isBreathingPlaying = false;
   window._breathWasPaused = true;
   window.isBreathingPlaying = false;
+  const lang = currentBreathingLang;
 
   // 사운드 동기화 활성화 시 오디오 엔진도 함께 일시 정지
   if (isSoundSyncEnabled && window.engine && window.engine.isPlaying) {
     if (typeof window.stopAllAudio === 'function') {
-      window.stopAllAudio();
+      window.stopAllAudio({ silent: !!silent });
     } else {
       window.engine.stop();
     }
@@ -1053,7 +1054,6 @@ function pauseBreathingSession() {
   }
 
   // 5) 상태 표시 초기화 (호흡 동심원 텍스트 원본 구조 유지)
-  const lang = currentBreathingLang;
   if (txtBreathPhase) {
     txtBreathPhase.textContent = lang === "ko" ? "들숨 준비" : "Inhale Ready";
   }
@@ -1298,30 +1298,73 @@ function applySoundSyncToEngine() {
       eng.audioCtx.resume();
     }
 
-    // NovaCell 100 or VIP 힐링 코드 우선 동기화
+    // 0) 호흡 테라피 외 타 채널(바이노럴 비트, 커스텀 스튜디오) 잔여 발진 원천 차단
+    eng.isBeatsActive = false;
+    eng.isCustomActive = false;
+    if (eng.customSweepTimer) { clearInterval(eng.customSweepTimer); eng.customSweepTimer = null; }
+    if (typeof eng.stopCustomOscillators === "function") eng.stopCustomOscillators();
+    if (eng.oscL) { try { eng.oscL.stop(); } catch (e) {} try { eng.oscL.disconnect(); } catch (e) {} eng.oscL = null; }
+    if (eng.oscR) { try { eng.oscR.stop(); } catch (e) {} try { eng.oscR.disconnect(); } catch (e) {} eng.oscR = null; }
+    if (eng.beatsMerger) { try { eng.beatsMerger.disconnect(); } catch (e) {} eng.beatsMerger = null; }
+
+    // 1) NovaCell 100 or VIP 힐링 코드 연동 여부 판별 및 채널 단독 활성화
     if (activeHealingCode) {
+      eng.isSolfeggioActive = false;
+      if (typeof eng.clearSolfeggioOscillators === "function") eng.clearSolfeggioOscillators();
+
       if (activeHealingCode.type === 'rife' && typeof eng.setRifeFrequencyRecipe === 'function') {
+        eng.isVipActive = false;
+        if (eng.vipSweepTimer) { clearInterval(eng.vipSweepTimer); eng.vipSweepTimer = null; }
+        if (typeof eng.stopVipOscillators === "function") eng.stopVipOscillators();
+        if (typeof window.resetVipTimer === "function") window.resetVipTimer();
+
         eng.setRifeFrequencyRecipe(activeHealingCode.freqs);
-        if (typeof eng.toggleRife === 'function') eng.toggleRife(true);
+        eng.isRifeActive = true;
+        if (typeof eng.setRifeVolume === "function" && (!eng.rifeVolume || eng.rifeVolume <= 0.05)) {
+          eng.setRifeVolume(0.50);
+        }
       } else if (activeHealingCode.type === 'vip' && typeof eng.setVipFrequencyRecipe === 'function') {
+        eng.isRifeActive = false;
+        if (eng.rifeSweepTimer) { clearInterval(eng.rifeSweepTimer); eng.rifeSweepTimer = null; }
+        if (typeof eng.stopRifeOscillators === "function") eng.stopRifeOscillators();
+        if (typeof window.resetRifeTimer === "function") window.resetRifeTimer();
+
         eng.setVipFrequencyRecipe(activeHealingCode.freqs);
-        if (typeof eng.toggleVip === 'function') eng.toggleVip(true);
+        eng.isVipActive = true;
+        if (typeof eng.setVipVolume === "function" && (!eng.vipVolume || eng.vipVolume <= 0.05)) {
+          eng.setVipVolume(0.35);
+        }
       }
     } else {
-      if (typeof eng.toggleRife === 'function') eng.toggleRife(false);
-      if (typeof eng.toggleVip === 'function') eng.toggleVip(false);
-      if (typeof eng.toggleSolfeggio === 'function') eng.toggleSolfeggio(true);
+      // 일반 호흡 테라피 모드: Rife(힐링코드) 및 VIP(웰니스코드) 즉시 완전 정지
+      eng.isRifeActive = false;
+      if (eng.rifeSweepTimer) { clearInterval(eng.rifeSweepTimer); eng.rifeSweepTimer = null; }
+      if (typeof eng.stopRifeOscillators === "function") eng.stopRifeOscillators();
+      if (typeof window.resetRifeTimer === "function") window.resetRifeTimer();
+
+      eng.isVipActive = false;
+      if (eng.vipSweepTimer) { clearInterval(eng.vipSweepTimer); eng.vipSweepTimer = null; }
+      if (typeof eng.stopVipOscillators === "function") eng.stopVipOscillators();
+      if (typeof window.resetVipTimer === "function") window.resetVipTimer();
+
+      eng.isSolfeggioActive = true;
       if (typeof eng.setSolfeggioFrequency === "function") {
         eng.setSolfeggioFrequency(targetHz);
       }
     }
+
     if (typeof eng.setSolfeggioVolume === "function") {
       let freqVol = eng.solfeggioVolume;
       if (!freqVol || freqVol <= 0.05) freqVol = 0.70;
       eng.setSolfeggioVolume(freqVol);
     }
+    if (typeof eng.setMasterVolume === "function") {
+      let masterVol = eng.masterVolume;
+      if (!masterVol || masterVol <= 0.05) masterVol = 0.80;
+      eng.setMasterVolume(masterVol);
+    }
 
-    // 맞춤 배경음(자연음) 동기화 (초기값: 깊은 산속 새소리 mountainbirds)
+    // 2) 맞춤 배경음(자연음) 동기화 (초기값: 깊은 산속 새소리 mountainbirds)
     const ambientKey = getResolvedBreathingAmbientKey();
     updateBreathingAmbientUI(true);
 
@@ -1330,7 +1373,7 @@ function applySoundSyncToEngine() {
     if (eng.forestBirdsTimer) { clearInterval(eng.forestBirdsTimer); eng.forestBirdsTimer = null; }
     if (eng._forestTimers) { eng._forestTimers.forEach(t => clearTimeout(t)); eng._forestTimers = []; }
     if (eng.singingBowlTimer) { clearInterval(eng.singingBowlTimer); eng.singingBowlTimer = null; }
-    if (eng.mountainBirdsTimer) { clearTimeout(eng.mountainBirdsTimer); eng.mountainBirdsTimer = null; }
+    if (eng.mountainBirdsTimer) { clearTimeout(eng.mountainBirdsTimer); clearInterval(eng.mountainBirdsTimer); eng.mountainBirdsTimer = null; }
     if (eng.cricketsTimer) { clearInterval(eng.cricketsTimer); eng.cricketsTimer = null; }
     if (eng.cuckooTimer) { clearInterval(eng.cuckooTimer); eng.cuckooTimer = null; }
 
@@ -1377,10 +1420,17 @@ function applySoundSyncToEngine() {
       }
     }
 
+    // 3) 오디오 엔진 구동
     if (!eng.isPlaying && typeof eng.start === "function") {
       eng.start();
-    } else if (eng.isPlaying && typeof eng.startSolfeggio === "function") {
-      eng.startSolfeggio();
+    } else if (eng.isPlaying) {
+      if (eng.isSolfeggioActive && typeof eng.startSolfeggio === "function") {
+        eng.startSolfeggio();
+      } else if (eng.isRifeActive && typeof eng.startRifeFrequencySweep === "function") {
+        eng.startRifeFrequencySweep();
+      } else if (eng.isVipActive && typeof eng.startVipFrequencySweep === "function") {
+        eng.startVipFrequencySweep();
+      }
     }
 
     if (eng.isNatureActive && typeof eng.startNatureMixer === "function") {
@@ -1970,12 +2020,42 @@ function applyHealingCodeToBreathing(codeKey, type) {
 
   // 호흡 타이머 미작동 중이면 자동 시작
   if (!isBreathingPlaying) {
-    startBreathingPlayback();
+    startBreathingSession();
   }
 
   if (typeof showStudioToast === "function") {
     showStudioToast(`🫁 ${recipe.title} 치유 주파수가 호흡 테라피에 연동되었습니다!`);
   }
+}
+
+function clearActiveHealingCodeSilent() {
+  activeHealingCode = null;
+  const banner = document.getElementById("active-healing-code-banner");
+  if (banner) banner.style.display = "none";
+  customBreathingHz = null;
+  const customInput = document.getElementById("input-custom-breathing-hz");
+  if (customInput) customInput.value = "";
+  updateFrequencyUI();
+  updateAffirmationsUI();
+}
+
+function stopBreathingAll() {
+  if (oneHourIntervalId) {
+    clearInterval(oneHourIntervalId);
+    oneHourIntervalId = null;
+  }
+  is1HourSessionActive = false;
+  isBreathingLoop = false;
+  updateLoopButtonUI();
+  update1HourButtonUI();
+  updateModeBadgeUI();
+  if (isBreathingPlaying) {
+    pauseBreathingSession(true);
+  }
+  if (typeof pauseClassicBreathing === "function" && classicState && classicState.isPlaying) {
+    pauseClassicBreathing();
+  }
+  clearActiveHealingCodeSilent();
 }
 
 function clearActiveHealingCode() {
@@ -2054,6 +2134,8 @@ window.onHealingModalSearchInput = onHealingModalSearchInput;
 window.renderHealingCodesModal = renderHealingCodesModal;
 window.applyHealingCodeToBreathing = applyHealingCodeToBreathing;
 window.clearActiveHealingCode = clearActiveHealingCode;
+window.clearActiveHealingCodeSilent = clearActiveHealingCodeSilent;
+window.stopBreathingAll = stopBreathingAll;
 window.linkActiveRifeCodeToBreathing = linkActiveRifeCodeToBreathing;
 window.linkActiveVipCodeToBreathing = linkActiveVipCodeToBreathing;
 window.toggleTab1Breathing = toggleTab1Breathing;

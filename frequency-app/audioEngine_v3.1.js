@@ -1445,8 +1445,9 @@ class AudioEngine {
     if (this.vipSweepTimer) { clearInterval(this.vipSweepTimer); this.vipSweepTimer = null; }
     if (this.forestBirdsTimer) { clearInterval(this.forestBirdsTimer); this.forestBirdsTimer = null; }
     if (this.cuckooSleepTimer) { clearInterval(this.cuckooSleepTimer); this.cuckooSleepTimer = null; }
+    if (this.cuckooTimer) { clearInterval(this.cuckooTimer); this.cuckooTimer = null; }
     if (this.cricketsTimer) { clearInterval(this.cricketsTimer); this.cricketsTimer = null; }
-    if (this.mountainBirdsTimer) { clearInterval(this.mountainBirdsTimer); this.mountainBirdsTimer = null; }
+    if (this.mountainBirdsTimer) { clearTimeout(this.mountainBirdsTimer); clearInterval(this.mountainBirdsTimer); this.mountainBirdsTimer = null; }
     if (this._rifePreFadeTimer) { clearTimeout(this._rifePreFadeTimer); this._rifePreFadeTimer = null; }
     if (this._vipPreFadeTimer) { clearTimeout(this._vipPreFadeTimer); this._vipPreFadeTimer = null; }
     if (this._cricketTimers) { this._cricketTimers.forEach(t => clearTimeout(t)); this._cricketTimers = []; }
@@ -1537,6 +1538,11 @@ class AudioEngine {
     }
     if (this.customOscA) { try { this.customOscA.stop(); } catch(e) {} this.customOscA.disconnect(); this.customOscA = null; }
     if (this.customOscB) { try { this.customOscB.stop(); } catch(e) {} this.customOscB.disconnect(); this.customOscB = null; }
+    if (this.audioCtx) {
+      const now = this.audioCtx.currentTime;
+      if (this.customGainA) { try { this.customGainA.gain.cancelScheduledValues(now); this.customGainA.gain.setValueAtTime(0, now); } catch(e) {} }
+      if (this.customGainB) { try { this.customGainB.gain.cancelScheduledValues(now); this.customGainB.gain.setValueAtTime(0, now); } catch(e) {} }
+    }
   }
 
   /**
@@ -1565,6 +1571,12 @@ class AudioEngine {
     if (this._rifePreFadeTimer) { clearTimeout(this._rifePreFadeTimer); this._rifePreFadeTimer = null; }
     if (this._rifePreFadeOsc) { try { this._rifePreFadeOsc.stop(); } catch(e) {} try { this._rifePreFadeOsc.disconnect(); } catch(e) {} this._rifePreFadeOsc = null; }
     if (this._rifePreFadeGain) { this._rifePreFadeGain.gain.value = 0.0; }
+    if (this.audioCtx) {
+      const now = this.audioCtx.currentTime;
+      if (this.rifeGainA) { try { this.rifeGainA.gain.cancelScheduledValues(now); this.rifeGainA.gain.setValueAtTime(0, now); } catch(e) {} }
+      if (this.rifeGainB) { try { this.rifeGainB.gain.cancelScheduledValues(now); this.rifeGainB.gain.setValueAtTime(0, now); } catch(e) {} }
+      if (this.rifeBeatsGain) { try { this.rifeBeatsGain.gain.cancelScheduledValues(now); this.rifeBeatsGain.gain.setValueAtTime(0, now); } catch(e) {} }
+    }
   }
 
   /**
@@ -1593,6 +1605,12 @@ class AudioEngine {
     if (this._vipPreFadeTimer) { clearTimeout(this._vipPreFadeTimer); this._vipPreFadeTimer = null; }
     if (this._vipPreFadeOsc) { try { this._vipPreFadeOsc.stop(); } catch(e) {} try { this._vipPreFadeOsc.disconnect(); } catch(e) {} this._vipPreFadeOsc = null; }
     if (this._vipPreFadeGain) { this._vipPreFadeGain.gain.value = 0.0; }
+    if (this.audioCtx) {
+      const now = this.audioCtx.currentTime;
+      if (this.vipGainA) { try { this.vipGainA.gain.cancelScheduledValues(now); this.vipGainA.gain.setValueAtTime(0, now); } catch(e) {} }
+      if (this.vipGainB) { try { this.vipGainB.gain.cancelScheduledValues(now); this.vipGainB.gain.setValueAtTime(0, now); } catch(e) {} }
+      if (this.vipBeatsGain) { try { this.vipBeatsGain.gain.cancelScheduledValues(now); this.vipBeatsGain.gain.setValueAtTime(0, now); } catch(e) {} }
+    }
   }
 
   /**
@@ -3782,6 +3800,7 @@ class AudioEngine {
         if (this.rifeBeatsGain) { try { this.rifeBeatsGain.gain.cancelScheduledValues(now); this.rifeBeatsGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
         if (this.rifeGain) { try { this.rifeGain.gain.cancelScheduledValues(now); this.rifeGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
       }
+      this.stopRifeOscillators();
       setTimeout(() => {
         if (!this.isRifeActive) {
           this.stopRifeOscillators();
@@ -3819,6 +3838,7 @@ class AudioEngine {
         if (this.vipBeatsGain) { try { this.vipBeatsGain.gain.cancelScheduledValues(now); this.vipBeatsGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
         if (this.vipGain) { try { this.vipGain.gain.cancelScheduledValues(now); this.vipGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
       }
+      this.stopVipOscillators();
       setTimeout(() => {
         if (!this.isVipActive) {
           this.stopVipOscillators();
@@ -3855,6 +3875,7 @@ class AudioEngine {
         if (this.customGainB) { try { this.customGainB.gain.cancelScheduledValues(now); this.customGainB.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
         if (this.customGain) { try { this.customGain.gain.cancelScheduledValues(now); this.customGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
       }
+      this.stopCustomOscillators();
       setTimeout(() => {
         if (!this.isCustomActive) {
           this.stopCustomOscillators();

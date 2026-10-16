@@ -2022,7 +2022,12 @@ function applySpecificCodeToEngine(code) {
   }
   engine.setRifeVolume(rifeVol);
 
-  // 4) Rife 테라피 주파수 설정 및 활성화
+  // 4) 기존 VIP 채널 비활성화 후 Rife 테라피 주파수 설정 및 활성화
+  engine.isVipActive = false;
+  if (engine.vipSweepTimer) { clearInterval(engine.vipSweepTimer); engine.vipSweepTimer = null; }
+  if (typeof engine.stopVipOscillators === "function") engine.stopVipOscillators();
+  const btnVipPlayReset = document.getElementById("btn-vip-play");
+  if (btnVipPlayReset) { btnVipPlayReset.innerHTML = '<i class="fa-solid fa-play"></i>'; btnVipPlayReset.classList.remove("playing"); }
   engine.setRifeFrequencyRecipe(recipe.freqs);
   engine.toggleRife(true);
 
@@ -2114,7 +2119,12 @@ function applySpecificVipCodeToEngine(code) {
   }
   engine.setVipVolume(vipVol);
 
-  // 4) VIP 테라피 주파수 설정 및 활성화
+  // 4) 기존 Rife 채널 비활성화 후 VIP 테라피 주파수 설정 및 활성화
+  engine.isRifeActive = false;
+  if (engine.rifeSweepTimer) { clearInterval(engine.rifeSweepTimer); engine.rifeSweepTimer = null; }
+  if (typeof engine.stopRifeOscillators === "function") engine.stopRifeOscillators();
+  const btnRifePlayReset = document.getElementById("btn-rife-play");
+  if (btnRifePlayReset) { btnRifePlayReset.innerHTML = '<i class="fa-solid fa-play"></i>'; btnRifePlayReset.classList.remove("playing"); }
   engine.setVipFrequencyRecipe(recipe.freqs);
   engine.toggleVip(true);
 
@@ -2149,6 +2159,8 @@ function applySpecificVipCodeToEngine(code) {
 }
 window.applySpecificCodeToEngine = applySpecificCodeToEngine;
 window.applySpecificVipCodeToEngine = applySpecificVipCodeToEngine;
+window.resetRifeTimer = resetRifeTimer;
+window.resetVipTimer = resetVipTimer;
 
 /**
  * 4. 애플리케이션 초기화 및 이벤트 리스너 설정
@@ -3543,6 +3555,7 @@ function initApp() {
     }
     if (customStepProgressBar) customStepProgressBar.style.width = '0%';
   }
+  window.stopCustomMonitor = stopCustomMonitor;
 
   // 엔진 콜백: 주파수가 전환될 때 UI 업데이트
   engine.onCustomFrequencyChange = (index, freq) => {

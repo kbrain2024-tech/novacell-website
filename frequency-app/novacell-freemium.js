@@ -263,10 +263,11 @@
   };
 
   // 2. [핵심] 완벽한 마스터 정지 (Stop/Pause) 함수
-  window.stopAllAudio = function () {
+  window.stopAllAudio = function (options) {
+    const opts = options || {};
     const eng = window.engine || (typeof engine !== 'undefined' ? engine : null);
 
-    // 1) Web Audio API 오디오 엔진 정지
+    // 1) Web Audio API 오디오 엔진 정지 및 모든 채널 활성 플래그 초기화 (중복 재생 원천 차단)
     if (eng) {
       try {
         eng.stop();
@@ -274,6 +275,12 @@
         console.error('engine.stop error:', e);
       }
       eng.isPlaying = false;
+      eng.isBeatsActive = false;
+      eng.isSolfeggioActive = false;
+      eng.isRifeActive = false;
+      eng.isVipActive = false;
+      eng.isCustomActive = false;
+      eng.isNatureActive = false;
     }
 
     // 2) HTML5 Audio 요소들 (12종 빗소리 등) 일괄 정지 및 되감기
@@ -296,15 +303,26 @@
     });
 
     // 3) Rife / VIP / Custom 모니터 타이머 정지
-    if (typeof resetRifeTimer === 'function') resetRifeTimer();
-    if (typeof resetVipTimer === 'function') resetVipTimer();
-    if (typeof stopCustomMonitor === 'function') stopCustomMonitor();
+    if (typeof window.resetRifeTimer === 'function') window.resetRifeTimer();
+    else if (typeof resetRifeTimer === 'function') resetRifeTimer();
+    if (typeof window.resetVipTimer === 'function') window.resetVipTimer();
+    else if (typeof resetVipTimer === 'function') resetVipTimer();
+    if (typeof window.stopCustomMonitor === 'function') window.stopCustomMonitor();
+    else if (typeof stopCustomMonitor === 'function') stopCustomMonitor();
 
-    // 4) 모든 재생/정지 버튼 UI 복원
+    // 4) 활성 프리셋 및 코드 상태 초기화
+    window.NovaCellStudio.activePresetKey = null;
+    window.NovaCellStudio.activePreset = null;
+    window.activeRife100Code = null;
+    window.activeVipCode = null;
+
+    // 5) 모든 재생/정지 버튼 UI 복원
     window.syncAllPlayButtons(false);
 
-    window.NovaCellStudio.activePresetKey = null;
-    showToast('⏸️ 사운드가 일시 정지되었습니다.');
+    if (!opts.silent) {
+      const isEn = window.currentLang === 'en';
+      showToast(isEn ? '⏸️ Sound paused.' : '⏸️ 사운드가 일시 정지되었습니다.');
+    }
   };
 
   // 3. 마스터 시작 함수
@@ -368,7 +386,7 @@
     }
 
     // 이전 사운드 클린 정지 후 새 프리셋 재생
-    window.stopAllAudio();
+    window.stopAllAudio({ silent: true });
 
     window.NovaCellStudio.activePresetKey = presetKey;
     window.NovaCellStudio.activePreset = preset;
@@ -620,6 +638,21 @@
     const tabs = ['tab-presets', 'tab-rife100', 'tab-vip', 'tab-care', 'tab-studio'];
     if (!tabs.includes(tabId)) return;
 
+    // 화면(탭) 이동 시 사용 중이던 모든 사운드/주파수/호흡 세션 즉시 자동 정지 (중복 재생 원천 차단)
+    if (typeof window.stopBreathingAll === 'function') {
+      window.stopBreathingAll();
+    } else {
+      if (typeof window.pauseBreathingSession === 'function' && window.isBreathingPlaying) {
+        window.pauseBreathingSession(true);
+      }
+      if (typeof window.pauseClassicBreathing === 'function') {
+        window.pauseClassicBreathing();
+      }
+    }
+    if (typeof window.stopAllAudio === 'function') {
+      window.stopAllAudio({ silent: true });
+    }
+
     window.NovaCellStudio.currentTab = tabId;
     document.querySelectorAll('.m-tab-btn, .m-nav-pill, .nav-pill').forEach(btn => {
       btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId || btn.id === 'btn-nav-' + tabId);
@@ -659,6 +692,7 @@
   window.currentRifeCat = 'all';
   window.currentRifeSearch = '';
   window.activeRife100Code = null;
+  window.lastRife100Code = '001';
 
   const RIFE_CAT_LABELS = {
     sleep: '🌙 깊은 수면',
@@ -815,13 +849,14 @@
     }
 
     // 기존 재생 오디오 클린 정지
-    window.stopAllAudio();
+    window.stopAllAudio({ silent: true });
 
     // 엔진 매핑 및 재생
     if (typeof applySpecificCodeToEngine === 'function') {
       applySpecificCodeToEngine(code);
     }
     window.activeRife100Code = code;
+    window.lastRife100Code = code;
 
     // 상단 히어로 박스 정보 갱신
     const isEn = window.currentLang === 'en';
@@ -862,7 +897,7 @@
     if (eng && eng.isPlaying) {
       window.stopAllAudio();
     } else {
-      window.playRife100Code(window.activeRife100Code || '001');
+      window.playRife100Code(window.activeRife100Code || window.lastRife100Code || '001');
     }
   };
 
@@ -1041,13 +1076,14 @@
     }
 
     // 기존 재생 오디오 클린 정지
-    window.stopAllAudio();
+    window.stopAllAudio({ silent: true });
 
     // 엔진 매핑 및 재생
     if (typeof applySpecificVipCodeToEngine === 'function') {
       applySpecificVipCodeToEngine(code);
     }
     window.activeVipCode = code;
+    window.lastVipCode = code;
 
     // 상단 히어로 박스 정보 갱신
     const isEn = window.currentLang === 'en';
@@ -1088,7 +1124,7 @@
     if (eng && eng.isPlaying) {
       window.stopAllAudio();
     } else {
-      window.playVipCodeFromPage(window.activeVipCode || 'V001');
+      window.playVipCodeFromPage(window.activeVipCode || window.lastVipCode || 'V001');
     }
   };
 

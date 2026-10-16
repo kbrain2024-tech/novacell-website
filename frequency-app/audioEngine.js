@@ -1433,8 +1433,9 @@ class AudioEngine {
     if (this.vipSweepTimer) { clearInterval(this.vipSweepTimer); this.vipSweepTimer = null; }
     if (this.forestBirdsTimer) { clearInterval(this.forestBirdsTimer); this.forestBirdsTimer = null; }
     if (this.cuckooSleepTimer) { clearInterval(this.cuckooSleepTimer); this.cuckooSleepTimer = null; }
+    if (this.cuckooTimer) { clearInterval(this.cuckooTimer); this.cuckooTimer = null; }
     if (this.cricketsTimer) { clearInterval(this.cricketsTimer); this.cricketsTimer = null; }
-    if (this.mountainBirdsTimer) { clearInterval(this.mountainBirdsTimer); this.mountainBirdsTimer = null; }
+    if (this.mountainBirdsTimer) { clearTimeout(this.mountainBirdsTimer); clearInterval(this.mountainBirdsTimer); this.mountainBirdsTimer = null; }
     if (this._rifePreFadeTimer) { clearTimeout(this._rifePreFadeTimer); this._rifePreFadeTimer = null; }
     if (this._vipPreFadeTimer) { clearTimeout(this._vipPreFadeTimer); this._vipPreFadeTimer = null; }
     if (this._cricketTimers) { this._cricketTimers.forEach(t => clearTimeout(t)); this._cricketTimers = []; }
@@ -3704,6 +3705,7 @@ class AudioEngine {
         if (this.rifeBeatsGain) { try { this.rifeBeatsGain.gain.cancelScheduledValues(now); this.rifeBeatsGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
         if (this.rifeGain) { try { this.rifeGain.gain.cancelScheduledValues(now); this.rifeGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
       }
+      this.stopRifeOscillators();
       setTimeout(() => {
         if (!this.isRifeActive) {
           this.stopRifeOscillators();
@@ -3741,6 +3743,7 @@ class AudioEngine {
         if (this.vipBeatsGain) { try { this.vipBeatsGain.gain.cancelScheduledValues(now); this.vipBeatsGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
         if (this.vipGain) { try { this.vipGain.gain.cancelScheduledValues(now); this.vipGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
       }
+      this.stopVipOscillators();
       setTimeout(() => {
         if (!this.isVipActive) {
           this.stopVipOscillators();
@@ -3777,6 +3780,7 @@ class AudioEngine {
         if (this.customGainB) { try { this.customGainB.gain.cancelScheduledValues(now); this.customGainB.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
         if (this.customGain) { try { this.customGain.gain.cancelScheduledValues(now); this.customGain.gain.setTargetAtTime(0.0001, now, 0.015); } catch(e) {} }
       }
+      this.stopCustomOscillators();
       setTimeout(() => {
         if (!this.isCustomActive) {
           this.stopCustomOscillators();
