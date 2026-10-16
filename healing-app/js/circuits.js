@@ -798,7 +798,7 @@ let currentCircuitCategory = "all";
 let currentSearchQuery = "";
 
 const CIRCUIT_CATEGORIES = [
-  { id: "all", icon: "🌐", ko: "14대 생체 회로 전체보기", en: "All 14 Neural Circuits", count: 14 },
+  { id: "all", icon: "🌐", ko: "14종 생체 회로 전체보기", en: "All 14 Neural Circuits", count: 14 },
   { id: "upper-yin", icon: "🫁", ko: "상지 음경맥 (폐·심장·심포)", en: "Upper Yin (LU·HT·PC)", count: 3 },
   { id: "upper-yang", icon: "💪", ko: "상지 양경맥 (대장·소장·삼초)", en: "Upper Yang (LI·SI·TE)", count: 3 },
   { id: "lower-yin", icon: "🦵", ko: "하지 음경맥 (비장·신장·간)", en: "Lower Yin (SP·KI·LR)", count: 3 },
@@ -1851,7 +1851,7 @@ function applyLang(lang) {
   if (heroBadge) {
     heroBadge.textContent = lang === "en"
       ? "14 Neural Bio-Electric Circuits (01 Lung ~ 14 Governor Vessel) AI Body Models & 3D Muscle Batteries"
-      : "14대 신경 생체 전기 순환 회로 (01 폐 ~ 14 독맥) 인체 AI 모델 & 3D 배터리 근육 도해";
+      : "14종 신경 생체 전기 순환 회로 (01 폐 ~ 14 독맥) 인체 AI 모델 & 3D 배터리 근육 도해";
   }
   const heroTitle = $("circuitHeroTitle");
   if (heroTitle) {
@@ -1863,7 +1863,7 @@ function applyLang(lang) {
   if (heroSub) {
     heroSub.textContent = lang === "en"
       ? "Explore all 14 interactive AI human body diagrams, voltage check/supply points, and 3D muscle battery anatomy guides (01 Lung ~ 14 Governor Vessel) from 『NovaCell Master Therapy』 (pp. 204–217) at a glance."
-      : "박창혁 저 『노바셀 통치 요법』 (204~217쪽) 기반 01 폐 회로부터 14 독맥 회로까지 14대 인체 AI 모델 상호작용 도해, 전압 체크·공급 포인트 및 배터리 근육 3D 해부도를 한눈에 확인하세요.";
+      : "박창혁 저 『노바셀 통치 요법』 (204~217쪽) 기반 01 폐 회로부터 14 독맥 회로까지 14종 인체 AI 모델 상호작용 도해, 전압 체크·공급 포인트 및 배터리 근육 3D 해부도를 한눈에 확인하세요.";
   }
   const navTitle = $("circuitNavTitle");
   if (navTitle) {
@@ -1879,7 +1879,7 @@ function applyLang(lang) {
   }
   const xrayTag = $("circuitXrayTag");
   if (xrayTag) {
-    xrayTag.textContent = lang === "en" ? "14 Neural Circuit Targets" : "14대 신경 생체 회로 타깃";
+    xrayTag.textContent = lang === "en" ? "14 Neural Circuit Targets" : "14종 신경 생체 회로 타깃";
   }
   const topSearch = $("circuit-top-search");
   if (topSearch) {
@@ -1889,15 +1889,15 @@ function applyLang(lang) {
   }
   const backSidebar = $("btnBackSidebarText");
   if (backSidebar) {
-    backSidebar.textContent = lang === "en" ? "View All 14 Circuits (Overview)" : "14대 회로 전체보기 (한눈에 보기)";
+    backSidebar.textContent = lang === "en" ? "View All 14 Circuits (Overview)" : "14종 회로 전체보기 (한눈에 보기)";
   }
   const backTop = $("btnBackTopText");
   if (backTop) {
-    backTop.textContent = lang === "en" ? "Back to All 14 Circuits" : "14대 생체 회로 전체 목록으로 돌아가기";
+    backTop.textContent = lang === "en" ? "Back to All 14 Circuits" : "14종 생체 회로 전체 목록으로 돌아가기";
   }
   const backBottom = $("btnBackBottomText");
   if (backBottom) {
-    backBottom.textContent = lang === "en" ? "Back to All 14 Circuits (Overview Grid)" : "14대 생체 회로 전체 목록으로 돌아가기 (한눈에 보기)";
+    backBottom.textContent = lang === "en" ? "Back to All 14 Circuits (Overview Grid)" : "14종 생체 회로 전체 목록으로 돌아가기 (한눈에 보기)";
   }
 
   renderOverviewCategories();
