@@ -1500,10 +1500,10 @@
           <!-- 6. 고음질 BGM 음원 파일 내보내기 (Export) 카드 -->
           <div class="custom-subcard custom-export-card">
             <div class="subcard-header">
-              <i class="fa-solid fa-cloud-arrow-down"></i> <span data-i18n="customCard6Header">6. BGM 음원 파일 내보내기 (WAV 고음질 렌더링)</span>
+              <i class="fa-solid fa-lock" style="color: #f87171;"></i> <span data-i18n="customCard6Header">6. BGM 음원 파일 내보내기 (WAV 고음질 렌더링)</span>
             </div>
             
-            <div class="custom-export-controls-grid">
+            <div class="custom-export-controls-grid" style="opacity: 0.55; pointer-events: none;">
               <div class="export-option-item">
                 <label for="select-custom-export-duration"><i class="fa-solid fa-clock"></i> <span data-i18n="lblExportLen">내보낼 총 길이:</span></label>
                 <select id="select-custom-export-duration">
@@ -1544,10 +1544,16 @@
               </div>
             </div>
 
-            <div class="custom-export-action-bar">
-              <button id="btn-custom-export-audio" class="btn-custom-export-render">
-                <i class="fa-solid fa-file-audio"></i> <span data-i18n="btnRenderBgm">맞춤 BGM 음원 파일(WAV) 렌더링 및 다운로드</span>
+            <div class="custom-export-action-bar" style="flex-direction: column; align-items: stretch;">
+              <!-- Custom export button locked -->
+              <button id="btn-custom-export-audio" class="btn-custom-export-render is-export-blocked" aria-disabled="true" style="background: rgba(51, 65, 85, 0.55) !important; border: 1px solid rgba(148, 163, 184, 0.35) !important; color: #94a3b8 !important; cursor: not-allowed !important; box-shadow: none !important;">
+                <i class="fa-solid fa-lock" style="color: #f87171;"></i> <span data-i18n="btnRenderBgm">음원 보호를 위해 내보내기 기능이 제한되었습니다</span>
               </button>
+              <div class="export-blocked-notice" style="margin-top: 12px; padding: 10px 14px; border-radius: 10px; background: rgba(239, 68, 68, 0.08); border: 1px dashed rgba(239, 68, 68, 0.35); color: #fca5a5; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; line-height: 1.45;">
+                <i class="fa-solid fa-shield-halved" style="color: #f87171; flex-shrink: 0;"></i>
+                <span data-i18n="exportBlockedNotice">저작권 및 음원 보호를 위해 외부 음원 파일(WAV) 내보내기 기능이 제한되었습니다. (실시간 스트리밍 청취만 가능)</span>
+              </div>
+              <!-- End custom export notice -->
             </div>
 
             <!-- 렌더링 진행률 및 다운로드 결과 영역 -->
@@ -1756,7 +1762,7 @@
       <section class="glass-panel" style="padding: 24px; border-radius: 20px; margin-bottom: 24px;">
         <div class="control-group export-section" id="export-section">
           <div class="group-title">
-            <i class="fa-solid fa-cloud-arrow-down"></i>
+            <i class="fa-solid fa-lock" style="color: #f87171;"></i>
             <h2 data-i18n="exportSectionTitle">유튜브 BGM 내보내기 (Export)</h2>
           </div>
           <p class="group-desc" data-i18n="exportSectionDesc">설정한 볼륨과 주파수 그대로 고음질 음원(WAV) 파일을 즉시 다운로드하여 동영상 제작 소스로 사용합니다.</p>
@@ -1764,7 +1770,7 @@
           <div class="export-options">
             <div class="time-select-group">
               <label for="select-export-duration" data-i18n="exportDurationLabel">녹음/내보내기 시간 선택</label>
-              <select id="select-export-duration">
+              <select id="select-export-duration" disabled style="opacity: 0.55; cursor: not-allowed; pointer-events: none;">
                 <option value="300" data-i18n="opt5m">5 분 (영상 편집 루프용)</option>
                 <option value="1800" data-i18n="opt30m">30 분 (일반 명상용)</option>
                 <option value="3600" data-i18n="opt1h">1 시간 (집중 및 숙면용)</option>
@@ -1773,10 +1779,16 @@
               </select>
             </div>
             
-            <button id="btn-export-audio" class="btn-export">
-              <i class="fa-solid fa-download"></i> <span data-i18n="exportBtnStart">고화질 WAV 다운로드 시작</span>
+            <!-- Export button locked -->
+            <button id="btn-export-audio" class="btn-export is-export-blocked" aria-disabled="true" style="background: rgba(51, 65, 85, 0.55) !important; border: 1px solid rgba(148, 163, 184, 0.35) !important; color: #94a3b8 !important; cursor: not-allowed !important; box-shadow: none !important;">
+              <i class="fa-solid fa-lock" style="color: #f87171;"></i> <span data-i18n="exportBtnStart">음원 보호를 위해 내보내기 기능이 제한되었습니다</span>
             </button>
           </div>
+          <div class="export-blocked-notice" style="margin-top: 14px; padding: 12px 16px; border-radius: 10px; background: rgba(239, 68, 68, 0.08); border: 1px dashed rgba(239, 68, 68, 0.35); color: #fca5a5; font-size: 0.82rem; display: flex; align-items: center; gap: 8px; line-height: 1.45;">
+            <i class="fa-solid fa-shield-halved" style="color: #f87171; flex-shrink: 0;"></i>
+            <span data-i18n="exportBlockedNotice">저작권 및 음원 보호를 위해 외부 음원 파일(WAV) 내보내기 기능이 제한되었습니다. (실시간 스트리밍 청취만 가능)</span>
+          </div>
+          <!-- End export blocked notice -->
 
           <!-- 내보내기 진행 상태 프로그레스 바 -->
           <div id="progress-container" class="progress-container hidden">
@@ -2103,11 +2115,11 @@
   <!-- 비디오 로드 및 음원 파일 다운로드를 돕는 Javascript -->
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
-  <script src="audioEngine_v3.1.js?v=3.5.0"></script>
-  <script src="app_v3.1.js?v=3.5.0"></script>
-  <script src="novacell-i18n.js"></script>
-  <script src="breathingGuide.js?v=3.5.0"></script>
-  <script src="novacell-freemium.js"></script>
+  <script src="audioEngine_v3.1.js?v=3.6.0"></script>
+  <script src="app_v3.1.js?v=3.6.0"></script>
+  <script src="novacell-i18n.js?v=3.6.0"></script>
+  <script src="breathingGuide.js?v=3.6.0"></script>
+  <script src="novacell-freemium.js?v=3.6.0"></script>
   <!-- ====================================================================
        NovaCell 100 & VIP 임상 웰니스 코드 검색 & 호흡 연동 모달
        ==================================================================== -->

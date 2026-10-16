@@ -4408,6 +4408,7 @@ class AudioEngine {
     customBgmVol = 0.5,
     customMasterVol = null
   ) {
+    throw new Error('음원 보호를 위해 내보내기(Export) 기능이 제한되었습니다.');
     this.init();
 
     durationSeconds = Math.max(1, parseInt(durationSeconds) || 60);

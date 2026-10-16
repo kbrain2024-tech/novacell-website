@@ -2989,8 +2989,11 @@ function initApp() {
     });
   });
 
-  // 13) 유튜브 BGM 내보내기 (Export) 및 다운로드
-  btnExportAudio.addEventListener('click', async () => {
+  // 13) 유튜브 BGM 내보내기 (Export) 및 다운로드 - [작동 차단]
+  btnExportAudio.addEventListener('click', async (e) => {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    alert('🔒 음원 보호를 위해 내보내기(Export) 기능이 제한되었습니다.');
+    return;
     const duration = parseInt(selectExportDuration.value);
     
     btnExportAudio.disabled = true;
@@ -3869,7 +3872,10 @@ function initApp() {
   }
 
   if (btnCustomExportAudio) {
-    btnCustomExportAudio.addEventListener('click', async () => {
+    btnCustomExportAudio.addEventListener('click', async (e) => {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      alert('🔒 음원 보호를 위해 내보내기(Export) 기능이 제한되었습니다.');
+      return;
       if (parsedCustomFreqs.length === 0) {
         alert('먼저 렌더링할 주파수 레시피를 입력해 주세요.');
         return;

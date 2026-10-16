@@ -1457,14 +1457,31 @@
   }
   window.showStudioToast = showToast;
 
-  // 15. VIP 버튼 인터셉터 설정 (체험 모드일 때만 안내 모달 표시)
+  // 15. VIP 버튼 인터셉터 및 음원 내보내기(Export) 완전 차단 설정
   function setupVipInterceptors() {
+    // [음원 보호] 유튜브 BGM 내보내기 및 커스텀 WAV 내보내기 전 회원 완전 차단
+    const blockedExportIds = ['btn-export-audio', 'btn-custom-export-audio', 'btn-custom-download-link'];
+    blockedExportIds.forEach(id => {
+      const exportBtn = document.getElementById(id);
+      if (exportBtn) {
+        exportBtn.addEventListener('click', (e) => {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          const isEn = window.currentLang === 'en';
+          const msg = isEn
+            ? '🔒 Audio file (WAV) export is restricted for copyright and sound source protection.'
+            : '🔒 음원 보호를 위해 내보내기 기능이 제한되었습니다.';
+          showToast(msg);
+          alert(msg);
+          return false;
+        }, true);
+      }
+    });
+
     const vipTargets = [
       { id: 'btn-rife-play', name: 'Rife 100개 생체 공명 주파수' },
       { id: 'btn-vip-play', name: '솔라브르 VIP 임상 웰니스 코드' },
-      { id: 'btn-custom-play', name: '나만의 주파수 음원 생성기' },
-      { id: 'btn-export-audio', name: '유튜브 무손실 WAV 음원 내보내기' },
-      { id: 'btn-custom-export-audio', name: '커스텀 WAV 음원 내보내기' }
+      { id: 'btn-custom-play', name: '나만의 주파수 음원 생성기' }
     ];
 
     vipTargets.forEach(target => {
