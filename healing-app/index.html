@@ -8588,7 +8588,15 @@ function checkHealingVip() {
   }
 }
 
-const FREE_HEALING_CONDITION_IDS = ['cervicogenic-headache', 'frozen-shoulder', 'sgb-autonomic-dysfunction'];
+const FREE_HEALING_CONDITION_IDS = [
+  'cervicogenic-headache',
+  'frozen-shoulder',
+  'lateral-epicondylitis',
+  'intercostal-neuralgia',
+  'lumbar-facet-pain',
+  'knee-osteoarthritis',
+  'sgb-autonomic-dysfunction'
+];
 
 function isFreeHealingCondition(id) {
   return FREE_HEALING_CONDITION_IDS.includes(id);
@@ -8644,20 +8652,6 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// Intercept circuits button clicks
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll("a[href*='circuits'], #nav-circuit, #m-nav-circuit").forEach(function(el) {
-    el.addEventListener('click', function(e) {
-      if (!checkHealingVip()) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
-        openHealingVipModal(isEn ? '14 Neural Circuits Protocol' : '14대 신경 생체 회로 프로토콜');
-      }
-    }, true);
-  });
-});
-
 // Intercept condition list rendering & selection in Workspace
 (function hookWorkspaceFreemium() {
   function applyHooks() {
@@ -8696,7 +8690,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const statusPill = locked 
           ? `<span class="vip-lock-pill">🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`
-          : `<span class="free-trial-pill">🌿 ${isEn ? 'Free Trial' : '무료 체험'}</span>`;
+          : `<span class="free-trial-pill">🌿 ${isEn ? 'Free Trial' : '무료 체험 가능'}</span>`;
 
         card.setAttribute('title', `${titleMain}\n${overview}`);
         card.innerHTML = `
@@ -8753,6 +8747,10 @@ document.addEventListener('DOMContentLoaded', function() {
         origSelectCondition.call(this, c);
       }
     };
+
+    if (window.app && typeof window.app.renderConditionsList === 'function') {
+      window.app.renderConditionsList();
+    }
   }
 
   if (typeof Workspace !== 'undefined') {
@@ -8760,6 +8758,11 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     document.addEventListener('DOMContentLoaded', applyHooks);
   }
+  window.addEventListener('novacell:vip-status-changed', function() {
+    if (window.app && typeof window.app.renderConditionsList === 'function') {
+      window.app.renderConditionsList();
+    }
+  });
 })();
 </script>
 

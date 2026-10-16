@@ -67,7 +67,7 @@
         solfeggioFreq: '432',
         solfeggioVolume: 0.40,
         desc: '우주 자연과 동조되는 432Hz 치유 톤과 심층 이완 세타파의 조화',
-        badge: '무료 체험',
+        badge: '무료 체험 가능',
         isVip: false,
         nature: { mountainbirds: 0.50, stream: 0.20 }
       },
@@ -80,7 +80,7 @@
         solfeggioFreq: '528',
         solfeggioVolume: 0.40,
         desc: '손상된 세포의 회복과 DNA 재정렬을 촉진하는 미라클 솔페지오',
-        badge: '무료 체험',
+        badge: '무료 체험 가능',
         isVip: false,
         nature: { rain: 0.35, singingbowl: 0.25 }
       },
@@ -93,7 +93,7 @@
         solfeggioFreq: '396',
         solfeggioVolume: 0.40,
         desc: '내면의 무거운 불안과 두려움을 녹여내고 평온을 회복하는 주파수',
-        badge: '무료 체험',
+        badge: '무료 체험 가능',
         isVip: false,
         nature: { campfire: 0.45, rain: 0.20 }
       },
@@ -108,8 +108,8 @@
         rifeCode: '001',
         rifeVolume: 0.35,
         desc: '박창혁 박사의 전압 의학 기반 세포 전위 정상화 및 생체 에너지 충전',
-        badge: 'VIP 전용',
-        isVip: true,
+        badge: '무료 체험 가능',
+        isVip: false,
         nature: { rain: 0.35, stream: 0.30, singingbowl: 0.20 }
       },
       'deep-sleep': {
@@ -122,8 +122,8 @@
         rifeCode: '003', // 불면 해소
         rifeVolume: 0.35,
         desc: '잡념을 가라앉히고 뇌파를 수면 델타파로 유도하는 딥 릴랙스',
-        badge: 'VIP 전용',
-        isVip: true,
+        badge: '무료 체험 가능',
+        isVip: false,
         nature: { rain: 0.45, stream: 0.35 }
       },
       'pain-relief': {
@@ -136,8 +136,8 @@
         rifeCode: '013', // 통증 완화
         rifeVolume: 0.40,
         desc: '근육 긴장 해소 및 말초 신경 염증 신호 감쇠를 위한 세포 공명',
-        badge: 'VIP 전용',
-        isVip: true,
+        badge: '무료 체험 가능',
+        isVip: false,
         nature: { stream: 0.40, singingbowl: 0.30 }
       },
       'vagus-nerve': {
@@ -150,8 +150,8 @@
         rifeCode: '008', // Code 008 : 자율신경 수면 조율
         rifeVolume: 0.35,
         desc: '교감신경 과항진을 낮추고 부교감신경을 활성화하여 심박 안정과 자율신경 균형 유도',
-        badge: 'VIP 전용',
-        isVip: true,
+        badge: '무료 체험 가능',
+        isVip: false,
         nature: { stream: 0.35, mountainbirds: 0.30, rain: 0.15 }
       },
       'focus-brain': {
@@ -164,8 +164,8 @@
         rifeCode: '072', // Code 072 : 일 집중력 스위치
         rifeVolume: 0.35,
         desc: '인지 집중력 향상 및 두뇌 미토콘드리아 활성을 위한 정밀 40Hz 감마파 동조',
-        badge: 'VIP 전용',
-        isVip: true,
+        badge: '무료 체험 가능',
+        isVip: false,
         nature: { rain: 0.30, stream: 0.20 }
       }
     }
@@ -252,7 +252,17 @@
         const playBtn = card.querySelector('.btn-card-play, .btn-card-vip-play');
         if (playBtn) {
           const isVipBtn = playBtn.classList.contains('btn-card-vip-play');
-          playBtn.innerHTML = `<i class="ri-play-fill"></i> <span>${isVipBtn ? 'VIP 코드 청취' : '주파수 힐링'}</span>`;
+          const isLocked = playBtn.getAttribute('data-locked') === 'true' && !window.NovaCellStudio.isVip;
+          if (isLocked) {
+            playBtn.innerHTML = `<span>🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`;
+          } else {
+            const isFreeTrial = playBtn.getAttribute('data-free-trial') === 'true' && !window.NovaCellStudio.isVip;
+            if (isVipBtn) {
+              playBtn.innerHTML = `<i class="ri-play-fill"></i> <span>${isFreeTrial ? (isEn ? 'Free Trial Play' : '무료 체험 청취') : (isEn ? 'Play VIP Code' : 'VIP 코드 청취')}</span>`;
+            } else {
+              playBtn.innerHTML = `<i class="ri-play-fill"></i> <span>${isEn ? 'Frequency Healing' : '주파수 힐링'}</span>`;
+            }
+          }
         }
         const pulse = card.querySelector('.pulse-indicator');
         if (pulse) pulse.remove();
@@ -522,25 +532,38 @@
 
   // 6. VIP 인증 검사 및 초기화
   function initAuthAndVip() {
-    // 로컬 스토리지 확인 (기본값은 검토를 위해 true)
-    const storedVip = localStorage.getItem('novacell_vip_status');
-    if (storedVip === 'free') {
+    // 로컬 스토리지 확인 (기본값은 Freemium 무료 체험 모드로 false)
+    try {
+      const storedVip = localStorage.getItem('novacell_vip_status');
+      const studioVip = localStorage.getItem('novacell_studio_vip');
+      const vipPass = localStorage.getItem('novacell_vip_pass');
+      window.NovaCellStudio.isVip =
+        storedVip === 'active' ||
+        studioVip === 'true' ||
+        vipPass === 'true' ||
+        Boolean(window.NovaCellGate && window.NovaCellGate.isVip);
+    } catch (e) {
       window.NovaCellStudio.isVip = false;
-    } else {
-      window.NovaCellStudio.isVip = true;
     }
 
     // Supabase NovaCellAuth 연동 확인 (실제 배포 환경)
-    if (window.NovaCellAuth && typeof window.NovaCellAuth.getUser === 'function') {
+    if (window.NovaCellAuth && typeof window.NovaCellAuth.hasEntitlement === 'function') {
       try {
-        window.NovaCellAuth.getUser().then(user => {
-          if (user) {
+        window.NovaCellAuth.hasEntitlement('sound_studio_1y').then(res => {
+          if (res && res.allowed) {
             window.NovaCellStudio.isVip = true;
             updateVipUI();
           }
         }).catch(() => {});
       } catch (e) {}
     }
+
+    window.addEventListener('novacell:vip-status-changed', (e) => {
+      if (e && e.detail && typeof e.detail.isVip === 'boolean') {
+        window.NovaCellStudio.isVip = e.detail.isVip;
+        updateVipUI();
+      }
+    });
 
     updateVipUI();
   }
@@ -552,6 +575,8 @@
     const badge = document.getElementById('user-tier-badge');
     const demoBtn = document.getElementById('btn-toggle-demo-vip');
     const memberBtn = document.getElementById('btn-header-member-action');
+
+    document.body.classList.toggle('is-vip-member', isVip);
 
     if (badge) {
       if (isVip) {
@@ -588,6 +613,26 @@
     document.querySelectorAll('[data-vip-locked="true"]').forEach(el => {
       el.classList.toggle('is-vip-unlocked', isVip);
     });
+
+    // 힐링 코드, 웰니스 코드, 힐링 랩 그리드 상태 재렌더링
+    if (typeof window.renderRife100Page === 'function') {
+      window.renderRife100Page(window.currentRifeCat || 'all', window.currentRifeSearch || '');
+    }
+    if (typeof window.renderVipPage === 'function') {
+      window.renderVipPage(window.currentVipCat || 'all', window.currentVipSearch || '');
+    }
+    if (typeof window.renderRifeCodesGrid === 'function') {
+      const activeRifeTab = document.querySelector('.btn-rife-tab.active');
+      const cat = activeRifeTab ? activeRifeTab.getAttribute('data-cat') : 'sleep';
+      const searchEl = document.getElementById('input-rife-search');
+      window.renderRifeCodesGrid(cat, searchEl ? searchEl.value : '');
+    }
+    if (typeof window.renderVipCodesGrid === 'function') {
+      const activeVipTab = document.querySelector('.btn-vip-tab.active');
+      const cat = activeVipTab ? activeVipTab.getAttribute('data-cat') : 'all';
+      const searchEl = document.getElementById('input-vip-search');
+      window.renderVipCodesGrid(cat, searchEl ? searchEl.value : '');
+    }
   }
   window.updateVipUI = updateVipUI;
 
@@ -601,7 +646,7 @@
     if (titleEl) {
       titleEl.textContent = isEn 
         ? `The [${featureName}] feature is exclusive to NovaCell VIP Members.` 
-        : `[${featureName}] 기능은 NovaCell 정회원 전용입니다.`;
+        : `[${featureName}] 기능은 NovaCell 1년 패스 VIP 전용입니다.`;
     }
     
     const priceAmountEl = document.getElementById('vip-price-display');
@@ -613,12 +658,14 @@
     modal.classList.add('active');
     document.body.classList.add('modal-open');
   }
+  window.openVipModal = openVipModal;
 
   function closeVipModal() {
     let modal = document.getElementById('novacell-vip-modal');
     if (modal) modal.classList.remove('active');
     document.body.classList.remove('modal-open');
   }
+  window.closeVipModal = closeVipModal;
 
   // 9. 데모용 VIP 모드 토글 (관리자 및 테스트용)
   window.toggleDemoVip = function () {
@@ -764,9 +811,12 @@
     }
 
     const isEngPlaying = window.engine && window.engine.isPlaying;
+    const isVip = Boolean(window.NovaCellStudio && window.NovaCellStudio.isVip);
 
     const cardsHtml = filteredKeys.map(code => {
       const item = recipes[code];
+      const isFree = (code === '001');
+      const isLocked = !isFree && !isVip;
       const isPlayingThis = isEngPlaying && (window.activeRife100Code === code);
       const catLabel = typeof window.getBilingualRifeCatLabel === 'function'
         ? window.getBilingualRifeCatLabel(item.category)
@@ -795,17 +845,21 @@
       const freqChipsHtml = showFreqs.map(f => `<span class="freq-chip">${f}Hz</span>`).join('') +
         (moreCount > 0 ? `<span class="freq-chip-more">+${moreCount}${isEn ? ' more' : '개'}</span>` : '');
 
+      const tierBadgeHtml = isFree
+        ? `<span class="nc-tier-badge free-trial">🌿 ${isEn ? 'Free Trial' : '무료 체험 가능'}</span>`
+        : `<span class="nc-tier-badge ${isLocked ? 'vip-locked' : 'vip-unlocked'}">${isLocked ? '🔒' : '👑'} ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`;
+
       const playBtnText = isPlayingThis
         ? (isEn ? 'Pause' : '일시정지')
-        : (isEn ? 'Frequency Healing' : '주파수 힐링');
+        : (isLocked ? `🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}` : (isEn ? 'Frequency Healing' : '주파수 힐링'));
 
       return `
-        <article class="nc-code-card ${isPlayingThis ? 'active-playing' : ''}" id="card-rife-${code}">
+        <article class="nc-code-card ${isPlayingThis ? 'active-playing' : ''} ${isLocked ? 'is-vip-locked-card' : ''}" id="card-rife-${code}">
           <div>
             <div class="nc-card-header">
               <span class="nc-card-badge">Code ${code}</span>
               <span class="nc-card-cat">${catLabel}</span>
-              ${isPlayingThis ? '<span class="pulse-indicator" title="현재 공명 중"></span>' : ''}
+              ${isPlayingThis ? '<span class="pulse-indicator" title="현재 공명 중"></span>' : tierBadgeHtml}
             </div>
             <h3 class="nc-card-title">${displayTitle}</h3>
             <p class="nc-card-desc" title="${displayDesc}">${displayDesc}</p>
@@ -814,8 +868,8 @@
             </div>
           </div>
           <div class="nc-card-footer">
-            <button class="btn-card-play" onclick="playRife100Code('${code}')">
-              <i class="${isPlayingThis ? 'ri-pause-fill' : 'ri-play-fill'}"></i>
+            <button class="btn-card-play ${isLocked ? 'locked-play-btn' : ''}" data-locked="${isLocked ? 'true' : 'false'}" data-free-trial="${isFree ? 'true' : 'false'}" onclick="playRife100Code('${code}')">
+              ${isLocked ? '' : `<i class="${isPlayingThis ? 'ri-pause-fill' : 'ri-play-fill'}"></i>`}
               <span>${playBtnText}</span>
             </button>
           </div>
@@ -846,6 +900,12 @@
     const recipes = window.rifeRecipes || {};
     const recipe = recipes[code];
     if (!recipe) return;
+
+    // 무료 체험 가능: Code 001 (이너 피스) 외에는 1년 패스 VIP 잠금
+    if (code !== '001' && !window.NovaCellStudio.isVip) {
+      openVipModal(recipe.title || `Code ${code}`);
+      return;
+    }
 
     const eng = window.engine || (typeof engine !== 'undefined' ? engine : null);
     if (!eng) return;
@@ -890,9 +950,14 @@
       card.classList.toggle('active-playing', isThis);
       const btn = card.querySelector('.btn-card-play');
       if (btn) {
-        btn.innerHTML = isThis
-          ? `<i class="ri-pause-fill"></i> <span>${isEn ? 'Pause' : '일시정지'}</span>`
-          : `<i class="ri-play-fill"></i> <span>${isEn ? 'Frequency Healing' : '주파수 힐링'}</span>`;
+        const isLockedBtn = btn.getAttribute('data-locked') === 'true' && !window.NovaCellStudio.isVip;
+        if (isLockedBtn) {
+          btn.innerHTML = `<span>🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`;
+        } else {
+          btn.innerHTML = isThis
+            ? `<i class="ri-pause-fill"></i> <span>${isEn ? 'Pause' : '일시정지'}</span>`
+            : `<i class="ri-play-fill"></i> <span>${isEn ? 'Frequency Healing' : '주파수 힐링'}</span>`;
+        }
       }
     });
 
@@ -985,9 +1050,12 @@
     }
 
     const isEngPlaying = window.engine && window.engine.isPlaying;
+    const isVip = Boolean(window.NovaCellStudio && window.NovaCellStudio.isVip);
 
     const cardsHtml = filteredKeys.map(code => {
       const item = recipes[code];
+      const isFree = (code === 'V001');
+      const isLocked = !isFree && !isVip;
       const isPlayingThis = isEngPlaying && (window.activeVipCode === code);
       const catLabel = typeof window.getBilingualVipCatLabel === 'function'
         ? window.getBilingualVipCatLabel(item.category)
@@ -1016,17 +1084,23 @@
       const freqChipsHtml = showFreqs.map(f => `<span class="freq-chip vip-freq-chip">${f}Hz</span>`).join('') +
         (moreCount > 0 ? `<span class="freq-chip-more">+${moreCount}${isEn ? ' more' : '개'}</span>` : '');
 
+      const tierBadgeHtml = isFree
+        ? `<span class="nc-tier-badge free-trial">🌿 ${isEn ? 'Free Trial' : '무료 체험 가능'}</span>`
+        : `<span class="nc-tier-badge ${isLocked ? 'vip-locked' : 'vip-unlocked'}">${isLocked ? '🔒' : '👑'} ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`;
+
       const playBtnText = isPlayingThis
         ? (isEn ? 'Pause' : '일시정지')
-        : (isEn ? 'Play VIP Code' : 'VIP 코드 청취');
+        : (isLocked
+            ? `🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}`
+            : (isFree && !isVip ? (isEn ? 'Free Trial Play' : '무료 체험 청취') : (isEn ? 'Play VIP Code' : 'VIP 코드 청취')));
 
       return `
-        <article class="nc-code-card vip-card ${isPlayingThis ? 'active-vip-playing' : ''}" id="card-vip-${code}">
+        <article class="nc-code-card vip-card ${isPlayingThis ? 'active-vip-playing' : ''} ${isLocked ? 'is-vip-locked-card' : ''}" id="card-vip-${code}">
           <div>
             <div class="nc-card-header">
               <span class="nc-card-badge vip-badge">${code}</span>
               <span class="nc-card-cat">${catLabel}</span>
-              ${isPlayingThis ? '<span class="pulse-indicator vip-pulse" title="현재 VIP 코드 청취 중"></span>' : '<span style="font-size: 0.74rem; color: #fbbf24; font-weight: 700;"><i class="ri-vip-crown-fill"></i> VIP</span>'}
+              ${isPlayingThis ? '<span class="pulse-indicator vip-pulse" title="현재 VIP 코드 청취 중"></span>' : tierBadgeHtml}
             </div>
             <h3 class="nc-card-title vip-title">${diseaseTitle}</h3>
             <p class="nc-card-desc" title="${displayDesc}">${displayDesc}</p>
@@ -1035,8 +1109,8 @@
             </div>
           </div>
           <div class="nc-card-footer">
-            <button class="btn-card-vip-play" onclick="playVipCodeFromPage('${code}')">
-              <i class="${isPlayingThis ? 'ri-pause-fill' : 'ri-play-fill'}"></i>
+            <button class="btn-card-vip-play ${isLocked ? 'locked-play-btn' : ''}" data-locked="${isLocked ? 'true' : 'false'}" data-free-trial="${isFree ? 'true' : 'false'}" onclick="playVipCodeFromPage('${code}')">
+              ${isLocked ? '' : `<i class="${isPlayingThis ? 'ri-pause-fill' : 'ri-play-fill'}"></i>`}
               <span>${playBtnText}</span>
             </button>
           </div>
@@ -1068,9 +1142,9 @@
     const recipe = recipes[code];
     if (!recipe) return;
 
-    // VIP 권한 체크 (무료 모드일 시 안내 모달 표시)
-    if (!window.NovaCellStudio.isVip) {
-      openVipModal(recipe.title);
+    // 무료 체험 가능: Code V001 (유방암) 외에는 1년 패스 VIP 잠금
+    if (code !== 'V001' && !window.NovaCellStudio.isVip) {
+      openVipModal(recipe.title || `Code ${code}`);
       return;
     }
 
@@ -1117,9 +1191,15 @@
       card.classList.toggle('active-vip-playing', isThis);
       const btn = card.querySelector('.btn-card-vip-play');
       if (btn) {
-        btn.innerHTML = isThis
-          ? `<i class="ri-pause-fill"></i> <span>${isEn ? 'Pause' : '일시정지'}</span>`
-          : `<i class="ri-play-fill"></i> <span>${isEn ? 'Play VIP Code' : 'VIP 코드 청취'}</span>`;
+        const isLockedBtn = btn.getAttribute('data-locked') === 'true' && !window.NovaCellStudio.isVip;
+        if (isLockedBtn) {
+          btn.innerHTML = `<span>🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`;
+        } else {
+          const isFreeBtn = btn.getAttribute('data-free-trial') === 'true' && !window.NovaCellStudio.isVip;
+          btn.innerHTML = isThis
+            ? `<i class="ri-pause-fill"></i> <span>${isEn ? 'Pause' : '일시정지'}</span>`
+            : `<i class="ri-play-fill"></i> <span>${isFreeBtn ? (isEn ? 'Free Trial Play' : '무료 체험 청취') : (isEn ? 'Play VIP Code' : 'VIP 코드 청취')}</span>`;
+        }
       }
     });
 
@@ -1529,24 +1609,51 @@
       }
     });
 
-    const vipTargets = [
-      { id: 'btn-rife-play', name: 'Rife 100개 생체 공명 주파수' },
-      { id: 'btn-vip-play', name: '솔라브르 VIP 임상 웰니스 코드' },
-      { id: 'btn-custom-play', name: '나만의 주파수 음원 생성기' }
-    ];
-
-    vipTargets.forEach(target => {
-      const btn = document.getElementById(target.id);
-      if (btn) {
-        btn.addEventListener('click', (e) => {
-          if (!window.NovaCellStudio.isVip) {
+    // 5. 힐링 랩: Rife 100 재생 버튼 (깊은수면 카테고리 또는 Code 001은 무료 체험 허용, 나머지는 1년 패스 VIP 잠금)
+    const btnRifePlay = document.getElementById('btn-rife-play');
+    if (btnRifePlay) {
+      btnRifePlay.addEventListener('click', (e) => {
+        if (!window.NovaCellStudio.isVip) {
+          const activeBtn = document.querySelector('#rife-codes-container .btn-rife-code.active');
+          const activeCode = activeBtn ? activeBtn.getAttribute('data-code') : '001';
+          const recipe = (window.rifeRecipes && window.rifeRecipes[activeCode]) || null;
+          const isFreeLabRife = (activeCode === '001') || (recipe && recipe.category === 'sleep');
+          if (!isFreeLabRife) {
             e.stopImmediatePropagation();
             e.preventDefault();
-            openVipModal(target.name);
+            openVipModal((recipe && recipe.title) || '힐링 랩 생체 공명 주파수');
           }
-        }, true);
-      }
-    });
+        }
+      }, true);
+    }
+
+    // 5. 힐링 랩: 솔라브르 VIP 전용 웰니스 코드 (1년 패스 VIP 잠금)
+    const btnVipPlay = document.getElementById('btn-vip-play');
+    if (btnVipPlay) {
+      btnVipPlay.addEventListener('click', (e) => {
+        if (!window.NovaCellStudio.isVip) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          openVipModal('솔라브르 VIP 전용 웰니스 코드 (1년 패스 VIP)');
+        }
+      }, true);
+    }
+
+    // 5. 힐링 랩: 나만의 주파수 음원 생성기 (깊은 숙면 템플릿은 무료 체험 허용, 나머지는 1년 패스 VIP 잠금)
+    const btnCustomPlay = document.getElementById('btn-custom-play');
+    if (btnCustomPlay) {
+      btnCustomPlay.addEventListener('click', (e) => {
+        if (!window.NovaCellStudio.isVip) {
+          const selectCat = document.getElementById('select-custom-category');
+          const currentCat = selectCat ? selectCat.value : 'sleep';
+          if (currentCat !== 'sleep') {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+            openVipModal('나만의 주파수 음원 생성기 (1년 패스 VIP)');
+          }
+        }
+      }, true);
+    }
   }
 
   // 16. 이벤트 초기 바인딩 (DOM Ready)

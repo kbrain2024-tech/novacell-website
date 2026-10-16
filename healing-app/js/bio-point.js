@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NovaCell Chakra Bio Points Interactive Application Logic
  * Comprehensive bilingual support, 528Hz Cellular Voltage Healing Timer,
  * Interactive Front/Back Body Mapping, and NovaCell Clinical Protocol Guide.
@@ -269,7 +269,7 @@ const CIRCUIT_PAIRS = [
 
 // App State
 let currentView = "front"; // 'front' | 'back'
-let activePointIndex = 3; // Default to Anahata Heart Chakra (index 3 in front)
+let activePointIndex = 0; // Default to Sahasrara Crown Chakra (index 0 in front - Free Trial)
 let currentSiteLang = "ko";
 
 // Timer State
@@ -439,35 +439,45 @@ function getCurrentDataset() {
   return currentView === "front" ? CHAKRAS_FRONT : CHAKRAS_BACK;
 }
 
+function isFreeBioPoint(item) {
+  return Boolean(item && item.id === "crown");
+}
+
 function renderSidebarList() {
   const listEl = $("chakra-list");
   if (!listEl) return;
   listEl.innerHTML = "";
 
   const items = getCurrentDataset();
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
 
   items.forEach((item, idx) => {
+    const isFree = isFreeBioPoint(item);
+    const isLocked = !isVip && !isFree;
     const card = document.createElement("button");
     card.type = "button";
-    card.className = "chakra-item-card" + (idx === activePointIndex ? " active" : "");
+    card.className = "chakra-item-card" + (idx === activePointIndex ? " active" : "") + (isLocked ? " is-vip-locked" : "");
     card.setAttribute("aria-selected", idx === activePointIndex ? "true" : "false");
 
     const titleText = isEn() ? item.en : item.ko;
     const meridianText = isEn() ? item.meridianEn : item.meridianKo;
     const organText = isEn() ? item.organEn : item.organKo;
+    const tierBadge = isLocked
+      ? `<span class="nc-bio-tier-badge vip">🔒 ${isEn() ? "1-Year Pass VIP" : "1년 패스 VIP"}</span>`
+      : `<span class="nc-bio-tier-badge free">🌿 ${isEn() ? "Free Trial" : "무료 체험 가능"}</span>`;
 
     card.innerHTML = `
       <div class="chakra-card-badge" style="--c-accent: ${item.color}">
         <span class="chakra-num">${item.num}</span>
       </div>
       <div class="chakra-card-body">
-        <strong class="chakra-card-title">${titleText}</strong>
+        <strong class="chakra-card-title">${titleText} ${tierBadge}</strong>
         <div class="chakra-card-meta">
           <span class="chakra-meridian">${meridianText}</span>
           <span class="chakra-organ">${organText}</span>
         </div>
       </div>
-      <span class="chakra-arrow" aria-hidden="true">&rsaquo;</span>
+      <span class="chakra-arrow" aria-hidden="true">${isLocked ? "🔒" : "&rsaquo;"}</span>
     `;
 
     card.addEventListener("click", () => {
@@ -679,12 +689,28 @@ function updateProtocolGuide(point) {
 }
 
 function selectPoint(idx) {
+  const items = getCurrentDataset();
+  const target = items[idx];
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+  if (!isVip && !isFreeBioPoint(target)) {
+    if (typeof openHealingVipModal === "function") {
+      openHealingVipModal(target ? (isEn() ? target.en : target.ko) : "");
+    }
+    return;
+  }
   activePointIndex = idx;
   renderActivePoint();
 }
 
 window.switchView = switchView;
 function switchView(view) {
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+  if (view === "back" && !isVip) {
+    if (typeof openHealingVipModal === "function") {
+      openHealingVipModal(isEn() ? "Back Capacitors (GV)" : "후면 축전기 (Back Capacitors)");
+    }
+    return;
+  }
   currentView = view;
   activePointIndex = 0;
 
@@ -710,6 +736,11 @@ function switchView(view) {
   renderSidebarList();
   renderActivePoint();
 }
+
+window.addEventListener("novacell:vip-status-changed", () => {
+  renderSidebarList();
+  renderActivePoint();
+});
 
 // 4. Timer Controls & Logic
 function updateTimerDisplay() {

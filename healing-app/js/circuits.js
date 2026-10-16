@@ -1,4 +1,4 @@
-﻿const CIRCUITS = [
+const CIRCUITS = [
   {
     id: "lung",
     order: 1,
@@ -439,6 +439,10 @@ function isEn() {
   return currentSiteLang === "en";
 }
 
+function isFreeCircuit(c) {
+  return Boolean(c && (c.id === "lung" || c.order === 1));
+}
+
 function renderList() {
   const list = $("circuit-list");
   if (!list) return;
@@ -452,10 +456,14 @@ function renderList() {
     return;
   }
 
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+
   filtered.forEach((circuit) => {
+    const isFree = isFreeCircuit(circuit);
+    const isLocked = !isVip && !isFree;
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "circuit-item";
+    button.className = "circuit-item" + (isLocked ? " is-vip-locked" : "");
     button.setAttribute("role", "option");
     button.dataset.circuit = circuit.order.toString().padStart(2, "0");
     const isSelected = CIRCUITS[selected]?.id === circuit.id;
@@ -464,11 +472,14 @@ function renderList() {
 
     const primaryName = isEn() ? circuit.en : circuit.name;
     const secondaryName = isEn() ? circuit.name : circuit.en;
+    const tierBadge = isLocked
+      ? `<span class="nc-circuit-tier-badge vip">🔒 ${isEn() ? "1-Year Pass VIP" : "1년 패스 VIP"}</span>`
+      : `<span class="nc-circuit-tier-badge free">🌿 ${isEn() ? "Free Trial" : "무료 체험 가능"}</span>`;
 
     button.innerHTML = `
       <span class="circuit-order">${circuit.order.toString().padStart(2, "0")}</span>
       <span class="circuit-name-group">
-        <strong>${primaryName}</strong>
+        <strong>${primaryName} ${tierBadge}</strong>
         <small>${secondaryName}</small>
       </span>
       <span class="circuit-code">${circuit.code}</span>
@@ -478,7 +489,7 @@ function renderList() {
       selectById(circuit.id);
     });
 
-        list.appendChild(button);
+    list.appendChild(button);
   });
 
   const activeBtn = list.querySelector(".circuit-item.active");
@@ -496,14 +507,17 @@ function renderQuickPills() {
   if (!pillsContainer) return;
   pillsContainer.innerHTML = "";
 
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+
   CIRCUITS.forEach((circuit) => {
+    const isLocked = !isVip && !isFreeCircuit(circuit);
     const pill = document.createElement("button");
     pill.type = "button";
     const isSelected = CIRCUITS[selected]?.id === circuit.id;
-    pill.className = "quick-pill" + (isSelected ? " active" : "");
+    pill.className = "quick-pill" + (isSelected ? " active" : "") + (isLocked ? " is-vip-locked" : "");
     const orderStr = circuit.order.toString().padStart(2, "0");
     const shortName = isEn() ? circuit.code : circuit.name.replace(" \uD68C\uB85C", "");
-    pill.innerHTML = `<span class="pill-num">${orderStr}</span><span class="pill-name">${shortName}</span>`;
+    pill.innerHTML = `<span class="pill-num">${orderStr}</span><span class="pill-name">${shortName}${isLocked ? " 🔒" : ""}</span>`;
     pill.title = isEn() ? circuit.en : circuit.name;
 
     pill.addEventListener("click", () => {
@@ -778,6 +792,14 @@ function renderDetail(circuit) {
 function selectById(id) {
   const idx = CIRCUITS.findIndex((c) => c.id === id);
   if (idx !== -1) {
+    const target = CIRCUITS[idx];
+    const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+    if (!isVip && !isFreeCircuit(target)) {
+      if (typeof openHealingVipModal === "function") {
+        openHealingVipModal(isEn() ? target.en : target.name);
+      }
+      return;
+    }
     selected = idx;
     renderList();
     renderDetail(CIRCUITS[selected]);
@@ -801,8 +823,9 @@ function handleSearch(query) {
     });
   }
 
+  const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
   if (!filtered.some((c) => c.id === CIRCUITS[selected]?.id)) {
-    if (filtered.length > 0) {
+    if (filtered.length > 0 && (isVip || isFreeCircuit(filtered[0]))) {
       selected = CIRCUITS.findIndex((c) => c.id === filtered[0].id);
     }
   }
@@ -1632,6 +1655,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
       if (selected > 0) {
+        const target = CIRCUITS[selected - 1];
+        const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+        if (!isVip && !isFreeCircuit(target)) {
+          if (typeof openHealingVipModal === "function") {
+            openHealingVipModal(isEn() ? target.en : target.name);
+          }
+          return;
+        }
         selected--;
         renderList();
         renderDetail(CIRCUITS[selected]);
@@ -1643,6 +1674,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
       if (selected < CIRCUITS.length - 1) {
+        const target = CIRCUITS[selected + 1];
+        const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+        if (!isVip && !isFreeCircuit(target)) {
+          if (typeof openHealingVipModal === "function") {
+            openHealingVipModal(isEn() ? target.en : target.name);
+          }
+          return;
+        }
         selected++;
         renderList();
         renderDetail(CIRCUITS[selected]);
@@ -1656,9 +1695,19 @@ document.addEventListener("DOMContentLoaded", () => {
       (c) => c.id === initial || c.order.toString().padStart(2, "0") === initial
     );
     if (foundIdx !== -1) {
-      selected = foundIdx;
+      const isVip = (typeof checkHealingVip === "function" && checkHealingVip());
+      if (isVip || isFreeCircuit(CIRCUITS[foundIdx])) {
+        selected = foundIdx;
+      } else {
+        selected = 0;
+      }
     }
   }
+
+  window.addEventListener("novacell:vip-status-changed", () => {
+    renderList();
+    renderDetail(CIRCUITS[selected]);
+  });
 
   initTimerEvents();
   initLanguageToggle();

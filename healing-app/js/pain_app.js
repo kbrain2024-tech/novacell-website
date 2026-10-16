@@ -512,6 +512,7 @@
       return;
     }
 
+    const isVip = (typeof checkHealingVip === 'function' && checkHealingVip());
     let html = '';
     filtered.forEach(c => {
       const title = isEn ? c.title.en : c.title.ko;
@@ -520,11 +521,22 @@
       const symptoms = isEn ? c.symptoms.en : c.symptoms.ko;
       const customTargets = getCustomTargets(c.id);
       const totalTargets = 2 + customTargets.length;
+      const isFree = isFreePainCondition(c.id);
+      const isLocked = !isVip && !isFree;
+      const tierBadge = isLocked
+        ? `<span class="nc-pain-tier-badge vip-locked">🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span>`
+        : `<span class="nc-pain-tier-badge free-trial">🌿 ${isEn ? 'Free Trial' : '무료 체험 가능'}</span>`;
+      const protocolBtnHtml = isLocked
+        ? `<span class="btn-open-protocol locked-btn"><span>🔒 ${isEn ? '1-Year Pass VIP' : '1년 패스 VIP'}</span></span>`
+        : `<span class="btn-open-protocol"><span>${t('btnViewProtocol')}</span><i class="fa-solid fa-arrow-right"></i></span>`;
 
       html += `
-        <article class="cond-card" data-id="${c.id}" onclick="window.NovaCellPainApp.openModal(${c.id})">
+        <article class="cond-card ${isLocked ? 'is-vip-locked' : 'is-free-trial'}" data-id="${c.id}" onclick="window.NovaCellPainApp.openModal(${c.id})">
           <div class="cond-card-top">
-            <span class="cond-id-badge">No. ${String(c.id).padStart(2, '0')}</span>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <span class="cond-id-badge">No. ${String(c.id).padStart(2, '0')}</span>
+              ${tierBadge}
+            </div>
             <span class="cond-mech-badge">${mechName}</span>
           </div>
           
@@ -541,16 +553,18 @@
               <i class="fa-solid fa-crosshairs text-cyan"></i>
               <span>${isEn ? `${totalTargets} Targets` : `${t('targetsCount')} ${totalTargets}곳`}</span>
             </span>
-            <span class="btn-open-protocol">
-              <span>${t('btnViewProtocol')}</span>
-              <i class="fa-solid fa-arrow-right"></i>
-            </span>
+            ${protocolBtnHtml}
           </div>
         </article>
       `;
     });
 
     el.conditionsGrid.innerHTML = html;
+  }
+
+  const FREE_PAIN_CONDITION_IDS = [1, 9, 21, 27, 31, 42];
+  function isFreePainCondition(id) {
+    return FREE_PAIN_CONDITION_IDS.includes(Number(id));
   }
 
   // =========================================================================
@@ -600,7 +614,7 @@
     const cond = conditions.find(c => c.id === condId);
     if (!cond) return;
 
-    if (typeof checkHealingVip === 'function' && !checkHealingVip() && condId > 2) {
+    if (typeof checkHealingVip === 'function' && !checkHealingVip() && !isFreePainCondition(condId)) {
       const isEn = state.lang === 'en';
       if (typeof openHealingVipModal === 'function') {
         openHealingVipModal(isEn ? cond.title.en : cond.title.ko);
@@ -1495,6 +1509,7 @@
   window.NovaCellPainApp = {
     openModal: openConditionModal,
     closeModal: closeModal,
+    renderConditions: renderConditions,
     selectTarget: selectActiveTarget,
     openAddTargetDialog: () => openCustomTargetDialog(state.activeConditionId),
     openEditTargetDialog: (targetId) => {
@@ -1504,6 +1519,10 @@
     },
     deleteCustomTarget: deleteCustomTarget
   };
+
+  window.addEventListener('novacell:vip-status-changed', () => {
+    renderConditions();
+  });
 
   // Run on DOM ready
   if (document.readyState === 'loading') {

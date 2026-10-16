@@ -16,10 +16,11 @@
   <header class="circuit-header">
     <a class="brand" href="index.html" aria-label="메인 홈으로 이동">
       <span class="brand-mark" aria-hidden="true">&#x25C7;</span>
-      <span><strong>NovaCell Healing Points</strong><small id="brand-sub-title">CHAKRA BIO POINT GUIDE</small></span>
+      <span><strong>NovaCell Healing & Pain Clinic</strong><small id="brand-sub-title">CHAKRA BIO POINT GUIDE</small></span>
     </a>
     <nav class="header-actions" aria-label="페이지 이동">
-      <a href="index.html" id="nav-therapy">질환별 치료 포인트</a>
+      <a href="index.html" id="nav-therapy">질환별 힐링 포인트</a>
+        <a href="pain-clinic.html" id="nav-pain">3D 통증 클리닉</a>
       <a class="active" href="bio-point.html" id="nav-chakra" aria-current="page">차크라 바이오 포인트</a>
       <a href="circuits.html" id="nav-circuit">신경 생체 회로</a>
       <a href="https://novacell.kr/" class="nav-official-home" id="nav-home" target="_blank" rel="noopener" title="&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#xBC14;&#xB85C;&#xAC00;&#xAE30;">&#x1F310; &#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0; &#x2197;</a>
@@ -45,6 +46,10 @@
     <a class="mobile-quick-pill" href="index.html" id="m-nav-therapy">
       <span class="m-pill-icon">&#x2695;</span>
       <span class="m-pill-text">&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</span>
+    </a>
+    <a class="mobile-quick-pill" href="pain-clinic.html" id="m-nav-pain">
+      <span class="m-pill-icon">&#x26A1;</span>
+      <span class="m-pill-text">3D 통증 클리닉</span>
     </a>
     <a class="mobile-quick-pill active" href="bio-point.html" id="m-nav-chakra">
       <span class="m-pill-icon">&#x25C9;</span>
@@ -74,6 +79,7 @@
 
     <nav class="mobile-menu-links" aria-label="NovaCell &#xC804;&#xCCB4; &#xBA54;&#xB274;">
       <a href="index.html"><span>&#x2695;</span><strong>&#xC9C8;&#xD658;&#xBCC4; &#xCE58;&#xB8CC; &#xD3EC;&#xC778;&#xD2B8;</strong><small>Condition Therapy Guide</small></a>
+      <a href="pain-clinic.html"><span>&#x26A1;</span><strong>3D 통증 클리닉 (46종)</strong><small>3D Pain Clinic & X-Ray Guide</small></a>
       <a href="bio-point.html"><span>&#x25C9;</span><strong>&#xCC28;&#xD06C;&#xB77C; &#xBC14;&#xC774;&#xC624; &#xD3EC;&#xC778;&#xD2B8;</strong><small>Chakra Bio Points</small></a>
       <a href="circuits.html"><span>&#x21BB;</span><strong>&#xC2E0;&#xACBD; &#xC0DD;&#xCCB4; &#xD68C;&#xB85C;</strong><small>Neural Circuit Therapy</small></a>
       <a href="https://novacell.kr/" target="_blank" rel="noopener" class="drawer-official-home"><span>&#x1F310;</span><strong>&#xACF5;&#xC2DD; &#xD648;&#xD398;&#xC774;&#xC9C0;</strong><small>novacell.kr &#xBC14;&#xB85C;&#xAC00;&#xAE30; &#x2197;</small></a>
@@ -124,9 +130,9 @@
       <!-- Stage Topline -->
       <div class="stage-topline">
         <div class="topline-info">
-          <p id="chakra-sequence" class="eyebrow">FRONT CHAKRA 04 / 07</p>
-          <h2 id="chakra-main-title">아나하타 차크라 (심장)</h2>
-          <p id="chakra-sub-title" class="topline-sub">임맥(CV) CV17 전중혈 · 흉골 중앙 · 소장 (슬픔 해소 & 사랑·기쁨 회복)</p>
+          <p id="chakra-sequence" class="eyebrow">FRONT CHAKRA 01 / 07</p>
+          <h2 id="chakra-main-title">사하스라라 차크라 (크라운)</h2>
+          <p id="chakra-sub-title" class="topline-sub">독맥(GV) GV20 백회혈 · 정수리 · 송과체 · 대뇌 피질</p>
         </div>
         <div class="topline-actions">
           <div class="stage-quick-toggles">
@@ -192,16 +198,16 @@
 
         <!-- Presets -->
         <div class="timer-presets">
-          <button class="preset-btn" data-min="1" type="button">1분</button>
+          <button class="preset-btn active" data-min="1" type="button">1분</button>
           <button class="preset-btn" data-min="3" type="button">3분</button>
-          <button class="preset-btn active" data-min="5" type="button">5분</button>
+          <button class="preset-btn" data-min="5" type="button">5분</button>
           <button class="preset-btn" data-min="7" type="button">7분</button>
           <button class="preset-btn" data-min="10" type="button">10분</button>
         </div>
 
         <!-- Time Display & Progress -->
         <div class="timer-display-wrap">
-          <span id="timer-time-display" class="timer-time-text">05:00</span>
+          <span id="timer-time-display" class="timer-time-text">01:00</span>
           <div class="freq-indicator">
             <span id="freq-pulse-dot" class="freq-pulse-dot"></span>
             <span id="freq-label">528Hz 치유 주파수 준비</span>
@@ -325,10 +331,122 @@
 
     <audio id="singing-bowl-audio" src="assets/audio/singing-bowl.mp3" preload="auto"></audio>
 
+  <style>
+    .nc-bio-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .nc-bio-tier-badge.free {
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.45);
+      color: #34d399;
+    }
+    .nc-bio-tier-badge.vip {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: #fbbf24;
+    }
+    .chakra-item-card.is-vip-locked {
+      opacity: 0.85;
+    }
+    .nc-vip-modal-dialog {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 20px;
+      background: linear-gradient(160deg, #0b192c 0%, #050c18 100%);
+      color: #f8fafc;
+      padding: 26px 24px;
+      max-width: 440px;
+      width: calc(100% - 32px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+    }
+    .nc-vip-modal-dialog::backdrop {
+      background: rgba(2, 6, 23, 0.78);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+
+  <!-- NovaCell VIP 이용권 안내 팝업 모달 (Freemium Gate Modal) -->
+  <dialog id="healingVipModal" class="nc-vip-modal-dialog">
+    <div class="nc-vip-dialog-box">
+      <div class="nc-vip-dialog-header" style="text-align:center;margin-bottom:18px;">
+        <div style="font-size:2.4rem;margin-bottom:8px;">👑</div>
+        <h2 id="healingVipTitle" style="font-size:1.35rem;color:#fef08a;margin:0 0 8px;">NovaCell Healing & Pain Clinic 1년 패스 VIP</h2>
+        <p id="healingVipFeatureDesc" style="font-size:0.9rem;color:#cbd5e1;line-height:1.5;margin:0;">선택하신 차크라 바이오 포인트 및 축전기 프로토콜은 1년 패스 VIP 전용입니다.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(212,175,55,0.3);border-radius:16px;padding:16px;text-align:center;margin-bottom:20px;">
+        <div style="font-size:1.75rem;font-weight:900;color:#38bdf8;">330,000원 <span style="font-size:0.92rem;color:#94a3b8;font-weight:500;">/ 1년 무제한 (US $300)</span></div>
+        <p style="font-size:0.8rem;color:#94a3b8;margin:6px 0 0;">질환별 치료 포인트 32종 + 3D 통증 클리닉 46종 + 차크라 바이오 포인트 + 신경 생체 회로 통합 제공</p>
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <button type="button" onclick="closeHealingVipModal()" style="flex:1;min-height:44px;background:transparent;border:1px solid #475569;border-radius:10px;color:#cbd5e1;font-weight:700;cursor:pointer;">체험 계속하기</button>
+        <a id="healingVipBuyLink" href="https://novacell.kr/ko/healing-points.html" target="_blank" rel="noopener" style="flex:2;min-height:44px;background:linear-gradient(135deg,#38bdf8,#0284c7);border:0;border-radius:10px;color:#041325;font-weight:900;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;">1년 패스 VIP 신청하기</a>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    function checkHealingVip() {
+      try {
+        if (window.NovaCellGate && window.NovaCellGate.isVip) return true;
+        if (window.NovaCellAuth && typeof window.NovaCellAuth.hasPass === 'function' && window.NovaCellAuth.hasPass('healing_points_1y')) return true;
+        if (localStorage.getItem('novacell_vip_status') === 'active') return true;
+        if (localStorage.getItem('novacell_healing_vip') === 'true') return true;
+        return false;
+      } catch(e) {
+        return false;
+      }
+    }
+    function openHealingVipModal(featureName) {
+      const modal = document.getElementById('healingVipModal');
+      const desc = document.getElementById('healingVipFeatureDesc');
+      const isEn = (localStorage.getItem('novacell_site_lang') === 'en' || localStorage.getItem('nc_lang') === 'en');
+      if (desc && featureName) {
+        desc.textContent = isEn
+          ? `[${featureName}] is exclusive to NovaCell 1-Year Pass VIP members.`
+          : `선택하신 [${featureName}] 프로토콜은 NovaCell 1년 패스 VIP 전용입니다.`;
+      }
+      const linkEl = document.getElementById('healingVipBuyLink');
+      if (linkEl) {
+        linkEl.href = isEn ? 'https://novacell.kr/en/healing-points.html' : 'https://novacell.kr/ko/healing-points.html';
+      }
+      if (modal) {
+        if (typeof modal.showModal === 'function') modal.showModal();
+        else modal.setAttribute('open', '');
+        modal.classList.add('active');
+      }
+    }
+    function closeHealingVipModal() {
+      const modal = document.getElementById('healingVipModal');
+      if (modal) {
+        if (typeof modal.close === 'function') modal.close();
+        else modal.removeAttribute('open');
+        modal.classList.remove('active');
+      }
+    }
+    document.addEventListener('click', function(e) {
+      const modal = document.getElementById('healingVipModal');
+      if (modal && e.target === modal) closeHealingVipModal();
+    });
+    window.checkHealingVip = checkHealingVip;
+    window.openHealingVipModal = openHealingVipModal;
+    window.closeHealingVipModal = closeHealingVipModal;
+    window.openAppVipModal = openHealingVipModal;
+  </script>
+
   <!-- Auth and Gate Scripts -->
   <script src="https://novacell.kr/js/novacell-auth-config.js"></script>
   <script src="https://novacell.kr/js/novacell-auth.js"></script>
-  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-lang="ko"></script>
-  <script src="js/bio-point.js?v=39"></script>
+  <script src="https://novacell.kr/js/novacell-app-gate.js" data-product="healing_points_1y" data-mode="freemium" data-lang="ko"></script>
+  <script src="js/bio-point.js?v=40"></script>
 </body>
 </html>

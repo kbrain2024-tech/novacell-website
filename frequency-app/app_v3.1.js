@@ -1852,6 +1852,7 @@ function renderVipCodesGrid(category = 'all', search = '') {
 
   container.innerHTML = '';
   const searchLower = search.toLowerCase().trim();
+  const isVip = Boolean(window.NovaCellStudio && window.NovaCellStudio.isVip);
 
   // 두 배열의 값이 동일한지 체크하는 단순 유틸리티 함수
   function isArrayEqual(a, b) {
@@ -1882,10 +1883,10 @@ function renderVipCodesGrid(category = 'all', search = '') {
       }
     }
 
-    // 칩 버튼 동적 생성
+    // 칩 버튼 동적 생성 (힐링 랩 내 솔라브르 VIP 전용 웰니스 코드는 1년 패스 VIP 전용)
     const btn = document.createElement('button');
-    btn.className = 'btn-vip-code';
-    btn.textContent = `Code ${codeKey}`;
+    btn.className = 'btn-vip-code' + (!isVip ? ' is-vip-locked' : '');
+    btn.textContent = !isVip ? `🔒 Code ${codeKey}` : `Code ${codeKey}`;
     btn.title = recipe.title;
 
     // 현재 오디오 엔진에 적재된 주파수 세트와 동일하다면 active 하이라이트 활성화
@@ -1893,22 +1894,30 @@ function renderVipCodesGrid(category = 'all', search = '') {
       btn.classList.add('active');
     }
 
-    // 클릭 시 VIP 주파수 세트를 엔진에 주입하고 UI 갱신 (유기적 자동 재생 연동)
+    // 클릭 시 VIP 권한 확인 후 엔진에 주입
     btn.addEventListener('click', () => {
+      if (!(window.NovaCellStudio && window.NovaCellStudio.isVip)) {
+        if (typeof window.openVipModal === 'function') {
+          window.openVipModal(recipe.title || `Code ${codeKey}`);
+        }
+        return;
+      }
       applySpecificVipCodeToEngine(codeKey);
     });
 
     container.appendChild(btn);
   });
 }
+window.renderVipCodesGrid = renderVipCodesGrid;
 
 // Rife 100대 레시피 동적 그리드 렌더링 함수
-function renderRifeCodesGrid(category = 'all', search = '') {
+function renderRifeCodesGrid(category = 'sleep', search = '') {
   const container = document.getElementById('rife-codes-container');
   if (!container) return;
 
   container.innerHTML = '';
   const searchLower = search.toLowerCase().trim();
+  const isVip = Boolean(window.NovaCellStudio && window.NovaCellStudio.isVip);
 
   // 두 배열의 값이 동일한지 체크하는 단순 유틸리티 함수
   function isArrayEqual(a, b) {
@@ -1920,7 +1929,7 @@ function renderRifeCodesGrid(category = 'all', search = '') {
     return true;
   }
 
-// 100대 레시피 전체를 스캔하며 조건 필터링
+  // 100대 레시피 전체를 스캔하며 조건 필터링
   Object.keys(rifeRecipes).forEach(code => {
     const recipe = rifeRecipes[code];
     
@@ -1935,8 +1944,11 @@ function renderRifeCodesGrid(category = 'all', search = '') {
       recipe.category.toLowerCase().includes(searchLower);
 
     if (categoryMatch && searchMatch) {
+      const isFreeLab = (recipe.category === 'sleep') || (code === '001');
+      const isLocked = !isFreeLab && !isVip;
+
       const btn = document.createElement('button');
-      btn.className = 'btn-rife';
+      btn.className = 'btn-rife btn-rife-code' + (isLocked ? ' is-vip-locked' : '');
       btn.setAttribute('data-code', code);
       
       // 현재 엔진에 활성화되어 있는 주파수 레시피와 비교하여 활성 스타일 동기화
@@ -1950,9 +1962,15 @@ function renderRifeCodesGrid(category = 'all', search = '') {
         if (txtRifeCardDesc) txtRifeCardDesc.innerHTML = recipe.desc.replace(/\n/g, '<br>');
       }
 
-      btn.textContent = `Code ${code}`;
+      btn.textContent = isLocked ? `🔒 Code ${code}` : (isFreeLab && !isVip ? `🌿 Code ${code}` : `Code ${code}`);
       
       btn.addEventListener('click', () => {
+        if (!isFreeLab && !(window.NovaCellStudio && window.NovaCellStudio.isVip)) {
+          if (typeof window.openVipModal === 'function') {
+            window.openVipModal(recipe.title || `Code ${code}`);
+          }
+          return;
+        }
         applySpecificCodeToEngine(code);
       });
 
@@ -1960,6 +1978,7 @@ function renderRifeCodesGrid(category = 'all', search = '') {
     }
   });
 }
+window.renderRifeCodesGrid = renderRifeCodesGrid;
 
 /**
  * 특정 웰니스 코드를 오디오 엔진 및 UI에 다이내믹하게 매핑하여 즉시 재생하는 함수
@@ -2704,16 +2723,23 @@ function initApp() {
   const rifeCategoryTabs = document.querySelectorAll('.btn-rife-tab');
   const rifeSearchInput = document.getElementById('input-rife-search');
 
-  // 초기 100대 코드 전체 렌더링 실행
-  renderRifeCodesGrid('all', '');
+  // 초기 힐링 랩 Rife 코드는 무료 체험 카테고리인 '깊은수면(sleep)'으로 렌더링 실행
+  renderRifeCodesGrid('sleep', '');
 
-  // 카테고리 탭 클릭 시 필터링 처리
+  // 카테고리 탭 클릭 시 필터링 처리 (깊은수면 외 카테고리는 1년 패스 VIP 전용)
   rifeCategoryTabs.forEach(tab => {
     tab.addEventListener('click', () => {
+      const category = tab.getAttribute('data-cat') || tab.getAttribute('data-category') || 'sleep';
+      if (category !== 'sleep' && !(window.NovaCellStudio && window.NovaCellStudio.isVip)) {
+        if (typeof window.openVipModal === 'function') {
+          window.openVipModal('힐링 랩 프리미엄 카테고리 (1년 패스 VIP)');
+        }
+        return;
+      }
+
       rifeCategoryTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       
-      const category = tab.getAttribute('data-category');
       const searchVal = rifeSearchInput ? rifeSearchInput.value : '';
       renderRifeCodesGrid(category, searchVal);
     });
@@ -2723,7 +2749,7 @@ function initApp() {
   if (rifeSearchInput) {
     rifeSearchInput.addEventListener('input', (e) => {
       const activeTab = document.querySelector('.btn-rife-tab.active');
-      const category = activeTab ? activeTab.getAttribute('data-category') : 'all';
+      const category = activeTab ? (activeTab.getAttribute('data-cat') || activeTab.getAttribute('data-category') || 'sleep') : 'sleep';
       renderRifeCodesGrid(category, e.target.value);
     });
   }
@@ -2732,13 +2758,20 @@ function initApp() {
   // 초기 VIP 전체 렌더링 실행
   renderVipCodesGrid('all', '');
 
-  // VIP 카테고리 탭 클릭 시 필터링 처리
+  // VIP 카테고리 탭 클릭 시 필터링 처리 (힐링 랩 내 VIP 코드는 1년 패스 VIP 전용)
   vipCategoryTabs.forEach(tab => {
     tab.addEventListener('click', () => {
+      if (!(window.NovaCellStudio && window.NovaCellStudio.isVip)) {
+        if (typeof window.openVipModal === 'function') {
+          window.openVipModal('솔라브르 VIP 전용 웰니스 코드 (1년 패스 VIP)');
+        }
+        return;
+      }
+
       vipCategoryTabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       
-      const category = tab.getAttribute('data-category');
+      const category = tab.getAttribute('data-cat') || tab.getAttribute('data-category') || 'all';
       const searchVal = vipSearchInput ? vipSearchInput.value : '';
       renderVipCodesGrid(category, searchVal);
     });
@@ -2748,7 +2781,7 @@ function initApp() {
   if (vipSearchInput) {
     vipSearchInput.addEventListener('input', (e) => {
       const activeTab = document.querySelector('.btn-vip-tab.active');
-      const category = activeTab ? activeTab.getAttribute('data-category') : 'all';
+      const category = activeTab ? (activeTab.getAttribute('data-cat') || activeTab.getAttribute('data-category') || 'all') : 'all';
       renderVipCodesGrid(category, e.target.value);
     });
   }
@@ -3170,7 +3203,7 @@ function initApp() {
   // 내부 상태 객체
   let currentCustomIntervalSec = 300; // 기본 5분
   let currentCustomUnit = 'min'; // 'sec' | 'min'
-  let parsedCustomFreqs = [7.83, 10, 20, 6000, 10000, 5000, 880, 787, 727, 528, 432, 136.1, 40, 3.5, 0.5];
+  let parsedCustomFreqs = [6000, 1500, 802, 528, 432, 304, 10, 7.83, 3.59, 3, 1.5, 0.5];
   let customCycleStartTime = 0;
   let customMonitorTimer = null;
 
@@ -3443,10 +3476,16 @@ function initApp() {
     });
   });
 
-  // 추천 템플릿 로드 버튼 이벤트
+  // 추천 템플릿 로드 버튼 이벤트 (깊은 숙면 템플릿 외에는 1년 패스 VIP 전용)
   btnCustomTemplates.forEach(btn => {
     btn.addEventListener('click', () => {
       const key = btn.getAttribute('data-template');
+      if (key !== 'sleep' && !(window.NovaCellStudio && window.NovaCellStudio.isVip)) {
+        if (typeof window.openVipModal === 'function') {
+          window.openVipModal('나만의 주파수 음원 생성기 (1년 패스 VIP)');
+        }
+        return;
+      }
       const tpl = customStudioTemplates[key];
       if (tpl) {
         if (inputCustomTitle) inputCustomTitle.value = tpl.title;
@@ -3461,6 +3500,17 @@ function initApp() {
       }
     });
   });
+
+  if (selectCustomCategory) {
+    selectCustomCategory.addEventListener('change', () => {
+      if (selectCustomCategory.value !== 'sleep' && !(window.NovaCellStudio && window.NovaCellStudio.isVip)) {
+        selectCustomCategory.value = 'sleep';
+        if (typeof window.openVipModal === 'function') {
+          window.openVipModal('나만의 주파수 음원 생성기 (1년 패스 VIP)');
+        }
+      }
+    });
+  }
 
   // 주파수 입력 액션들 (적용, 정렬, 중복제거, 비우기)
   if (btnCustomApplyFreqs) {
