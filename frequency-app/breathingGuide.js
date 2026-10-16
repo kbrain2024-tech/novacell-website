@@ -2040,22 +2040,26 @@ function clearActiveHealingCodeSilent() {
 }
 
 function stopBreathingAll() {
-  if (oneHourIntervalId) {
-    clearInterval(oneHourIntervalId);
-    oneHourIntervalId = null;
+  try {
+    if (oneHourIntervalId) {
+      clearInterval(oneHourIntervalId);
+      oneHourIntervalId = null;
+    }
+    is1HourSessionActive = false;
+    isBreathingLoop = false;
+    updateLoopButtonUI();
+    update1HourButtonUI();
+    updateModeBadgeUI();
+    if (isBreathingPlaying) {
+      pauseBreathingSession(true);
+    }
+    if (typeof pauseClassicBreathing === "function" && typeof isClassicBreathingActive !== "undefined" && isClassicBreathingActive) {
+      pauseClassicBreathing();
+    }
+    clearActiveHealingCodeSilent();
+  } catch (e) {
+    console.warn("stopBreathingAll error:", e);
   }
-  is1HourSessionActive = false;
-  isBreathingLoop = false;
-  updateLoopButtonUI();
-  update1HourButtonUI();
-  updateModeBadgeUI();
-  if (isBreathingPlaying) {
-    pauseBreathingSession(true);
-  }
-  if (typeof pauseClassicBreathing === "function" && classicState && classicState.isPlaying) {
-    pauseClassicBreathing();
-  }
-  clearActiveHealingCodeSilent();
 }
 
 function clearActiveHealingCode() {

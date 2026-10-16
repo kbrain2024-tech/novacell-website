@@ -639,18 +639,26 @@
     if (!tabs.includes(tabId)) return;
 
     // 화면(탭) 이동 시 사용 중이던 모든 사운드/주파수/호흡 세션 즉시 자동 정지 (중복 재생 원천 차단)
-    if (typeof window.stopBreathingAll === 'function') {
-      window.stopBreathingAll();
-    } else {
-      if (typeof window.pauseBreathingSession === 'function' && window.isBreathingPlaying) {
-        window.pauseBreathingSession(true);
+    try {
+      if (typeof window.stopBreathingAll === 'function') {
+        window.stopBreathingAll();
+      } else {
+        if (typeof window.pauseBreathingSession === 'function' && window.isBreathingPlaying) {
+          window.pauseBreathingSession(true);
+        }
+        if (typeof window.pauseClassicBreathing === 'function') {
+          window.pauseClassicBreathing();
+        }
       }
-      if (typeof window.pauseClassicBreathing === 'function') {
-        window.pauseClassicBreathing();
-      }
+    } catch (e) {
+      console.warn('switchTab breathing stop error:', e);
     }
-    if (typeof window.stopAllAudio === 'function') {
-      window.stopAllAudio({ silent: true });
+    try {
+      if (typeof window.stopAllAudio === 'function') {
+        window.stopAllAudio({ silent: true });
+      }
+    } catch (e) {
+      console.warn('switchTab audio stop error:', e);
     }
 
     window.NovaCellStudio.currentTab = tabId;
