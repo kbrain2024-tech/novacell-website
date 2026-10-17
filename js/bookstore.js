@@ -1165,7 +1165,7 @@
 
       if (tab === "intro") {
         body.innerHTML = `
-          <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start;">
+          <div class="bs-modal-intro-grid">
             <img src="${book.cover}" alt="${title}" style="width:100%;border-radius:12px;border:1px solid rgba(212,163,89,0.45);">
             <div>
               <span class="bs-tag gold">${badge}</span>

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/bookstore.css">
 </head>
-<body>
+<body class="bookstore-page">
 
   <!-- 1. Top Announcement Bar -->
   <div class="top-bar">
@@ -53,7 +53,7 @@
         </div>
       </a>
 
-      <ul class="nav-menu" id="primaryNavigation">
+      <ul class="nav-menu" id="primaryNavigation" aria-hidden="true">
         <li class="nav-item"><a href="index.html" class="nav-link">홈</a></li>
         <li class="nav-item"><a href="how-it-works.html" class="nav-link">작동 원리</a></li>
         <li class="nav-item"><a href="system.html" class="nav-link">시스템</a></li>
@@ -66,6 +66,13 @@
           </a>
         </li>
         <li class="nav-item"><a href="contact.html" class="nav-link">고객지원</a></li>
+        <li class="nav-item mobile-language-item" aria-label="언어 선택">
+          <span class="mobile-language-label">언어 선택</span>
+          <div class="mobile-language-links">
+            <a class="mobile-language-link active" href="bookstore.html" lang="ko">한국어</a>
+            <a class="mobile-language-link" href="../en/bookstore.html" lang="en">English</a>
+          </div>
+        </li>
       </ul>
 
       <div class="header-cta-group">
@@ -77,6 +84,9 @@
           <span class="lang-divider">/</span>
           <span class="lang-opt en">ENG</span>
         </a>
+        <button class="mobile-menu-toggle" aria-label="메뉴 열기" type="button" aria-expanded="false" aria-controls="primaryNavigation">
+          <i class="ri-menu-line" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </header>
@@ -297,7 +307,7 @@
         </div>
 
         <form class="bs-lookup-form" id="bsLookupForm">
-          <input type="text" id="bsLookupInput" placeholder="주문하신 이메일 주소 (예: user@naver.com) 또는 인증키 (NVCLIC-...) 입력" required style="grid-column: span 2;">
+          <input type="text" id="bsLookupInput" placeholder="주문하신 이메일 주소 (예: user@naver.com) 또는 인증키 (NVCLIC-...) 입력" required>
           <button type="submit" class="bs-btn-buy-now" style="width:auto;padding:0 28px;">
             <i class="ri-search-eye-line"></i> 내 구매 도서 조회 및 PDF 다운로드
           </button>
@@ -369,7 +379,7 @@
         <div id="bsCheckoutItemsList" style="background:#070e1c;border:1px solid rgba(212,163,89,0.32);border-radius:14px;padding:18px;margin-bottom:20px;"></div>
 
         <form id="bsCheckoutForm" style="display:flex;flex-direction:column;gap:14px;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div class="bs-form-row-2">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               주문자 성명 *
               <input type="text" name="customerName" required placeholder="홍길동" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
@@ -385,7 +395,7 @@
             <input type="email" name="customerEmail" required placeholder="example@naver.com (입금 확인 즉시 이 메일로 PDF가 발송됩니다)" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(56,189,248,0.5);color:#fff;">
           </label>
 
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div class="bs-form-row-2">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               결제 방식 선택
               <select name="paymentMethod" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
@@ -482,6 +492,7 @@ function doPost(e) {
     </div>
   </footer>
 
+  <script src="../js/main.js"></script>
   <script src="../js/bookstore.js"></script>
 </body>
 </html>

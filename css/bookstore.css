@@ -329,8 +329,32 @@
 }
 
 /* --- 2. Dedicated Bookstore Page (ko/bookstore.html & en/bookstore.html) --- */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body.bookstore-page {
+  background-color: #060c18;
+  color: #f8fafc;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.bs-page-hero,
+.bs-toolbar-wrap,
+.bs-catalog-section,
+.bs-author-section,
+.bs-library-section,
+.bookstore-home-section {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 .bs-page-hero {
-  padding: 68px 0 54px;
+  padding: 56px 0 54px;
   background:
     radial-gradient(circle at 20% 20%, rgba(212, 163, 89, 0.2), transparent 45%),
     radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.16), transparent 45%),
@@ -339,19 +363,36 @@
   color: #ffffff;
 }
 
+.bs-page-hero .badge-tag,
+.bookstore-home-section .badge-tag {
+  letter-spacing: 0.04em;
+  white-space: normal;
+  max-width: 100%;
+  line-height: 1.4;
+}
+
 .bs-hero-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: 36px;
   align-items: center;
 }
 
+.bs-hero-grid > *,
+.bookstore-gate-top > *,
+.bs-author-full-grid > *,
+.bs-kyobo-card > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .bs-hero-title {
-  font-size: clamp(2.1rem, 3.8vw, 3.2rem);
+  font-size: clamp(1.85rem, 3.8vw, 3.2rem);
   font-weight: 850;
-  line-height: 1.18;
+  line-height: 1.22;
   margin: 14px 0 16px;
   color: #ffffff;
+  overflow-wrap: break-word;
 }
 
 .bs-hero-title span {
@@ -365,6 +406,7 @@
   line-height: 1.75;
   color: #dbe7f6;
   margin-bottom: 24px;
+  overflow-wrap: break-word;
 }
 
 /* Bundle Promotion Card in Hero */
@@ -375,6 +417,9 @@
   padding: 28px;
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55), 0 0 30px rgba(212, 163, 89, 0.18);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .bs-bundle-ribbon {
@@ -388,6 +433,8 @@
   padding: 5px 12px;
   border-radius: 999px;
   margin-bottom: 12px;
+  max-width: 100%;
+  white-space: normal;
 }
 
 .bs-bundle-card h3 {
@@ -406,8 +453,9 @@
 
 .bs-bundle-pricing {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
   margin-bottom: 18px;
   padding: 14px 16px;
   background: rgba(6, 12, 24, 0.75);
@@ -488,7 +536,9 @@
   border: 1px solid rgba(212, 163, 89, 0.35);
   border-radius: 999px;
   padding: 7px 16px;
-  min-width: 270px;
+  min-width: 240px;
+  max-width: 100%;
+  flex: 1 1 auto;
 }
 
 .bs-search-box input {
@@ -498,6 +548,7 @@
   color: #ffffff;
   font-size: 0.9rem;
   width: 100%;
+  min-width: 0;
 }
 
 /* Kyobo eBook Catalog Cards */
@@ -514,7 +565,7 @@
 
 .bs-kyobo-card {
   display: grid;
-  grid-template-columns: 230px 1fr 250px;
+  grid-template-columns: 230px minmax(0, 1fr) 250px;
   gap: 32px;
   background: linear-gradient(145deg, #0d182e 0%, #091122 100%);
   border: 1px solid rgba(212, 163, 89, 0.3);
@@ -522,6 +573,9 @@
   padding: 28px;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .bs-kyobo-card:hover {
@@ -980,11 +1034,19 @@
   border-radius: 22px;
   padding: 34px;
   box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+.bs-library-card code {
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 .bs-lookup-form {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 14px;
   margin-top: 20px;
 }
@@ -996,6 +1058,21 @@
   padding: 13px 16px;
   color: #ffffff;
   font-size: 0.95rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.bs-modal-intro-grid {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.bs-form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
 }
 
 /* --- 5. Floating Kyobo Cart Bar --- */
@@ -1078,6 +1155,7 @@
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .bs-modal-tabs {
@@ -1110,6 +1188,12 @@
   padding: 26px;
   overflow-y: auto;
   line-height: 1.75;
+  overflow-wrap: break-word;
+}
+
+.bs-modal-body code {
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 .bs-toc-chapter-card {
@@ -1138,39 +1222,163 @@
   .bookstore-gate-top,
   .bs-hero-grid,
   .bs-author-full-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .bookstore-gate-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .bs-kyobo-card {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 200px minmax(0, 1fr);
   }
   .bs-kyobo-buy-col {
     grid-column: 1 / -1;
   }
   .bs-degree-timeline {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 720px) {
-  .bookstore-gate-grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 768px) {
+  /* Unstick toolbar on mobile so it does not cover half the viewport while scrolling */
+  .bs-toolbar-wrap {
+    position: relative;
+    top: auto;
   }
-  .bs-kyobo-card {
+  .bs-page-hero {
+    padding: 34px 0 38px;
+  }
+  .bs-hero-grid {
+    gap: 26px;
+  }
+  .bs-hero-title {
+    font-size: 1.78rem;
+    line-height: 1.26;
+  }
+  .bs-hero-lead {
+    font-size: 0.96rem;
+    line-height: 1.68;
+  }
+  .bs-page-hero .btn,
+  .bookstore-gate-actions .btn,
+  .bs-btn-buy-now,
+  .bs-btn-cart,
+  .bs-btn-detail {
+    width: 100% !important;
+    white-space: normal;
+    padding: 13px 16px;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    justify-content: center;
+  }
+  .bs-bundle-card {
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+  .bs-bundle-card h3 {
+    font-size: 1.22rem;
+  }
+  .bs-bundle-pricing {
+    padding: 12px 14px;
+    gap: 8px 12px;
+  }
+  .bs-bundle-pricing strong {
+    font-size: 1.48rem;
+  }
+  .bs-category-tabs {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .bs-cat-btn {
+    padding: 9px 10px;
+    font-size: 0.8rem;
+    text-align: center;
+    white-space: normal;
+    line-height: 1.25;
+  }
+  .bs-search-box {
+    min-width: 0;
+    width: 100%;
+  }
+  .bookstore-gate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .bookstore-author-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .bookstore-author-degrees {
     grid-template-columns: 1fr;
   }
+  .bs-kyobo-card {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 16px;
+    gap: 20px;
+  }
   .bs-kyobo-cover-frame {
-    max-width: 220px;
+    max-width: 210px;
+    margin: 0 auto;
+  }
+  .bs-kyobo-title {
+    font-size: 1.3rem;
+  }
+  .bs-inline-toc-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .bs-inline-toc-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .bs-inline-toc-actions .bs-toc-pill-btn {
+    text-align: center;
+    padding: 7px 6px;
+    font-size: 0.78rem;
   }
   .bs-degree-timeline,
   .bs-career-columns,
-  .bs-lookup-form {
-    grid-template-columns: 1fr;
+  .bs-lookup-form,
+  .bs-form-row-2,
+  .bs-modal-intro-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bs-modal-intro-grid > img {
+    max-width: 170px;
+    margin: 0 auto;
+  }
+  .bs-library-card {
+    padding: 22px 16px;
   }
   .bs-floating-cart {
     flex-direction: column;
     align-items: stretch;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    padding: 14px 16px;
+    gap: 10px;
+  }
+  .bs-modal-backdrop {
+    padding: 10px;
+  }
+  .bs-modal-header {
+    padding: 14px 16px;
+  }
+  .bs-modal-header h3 {
+    font-size: 1.05rem;
+  }
+  .bs-modal-tabs {
+    padding: 8px 12px 0;
+  }
+  .bs-modal-tab {
+    padding: 8px 12px;
+    font-size: 0.84rem;
+  }
+  .bs-modal-body {
+    padding: 16px;
   }
 }
+

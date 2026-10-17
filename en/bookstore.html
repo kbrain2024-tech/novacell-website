@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/bookstore.css">
 </head>
-<body>
+<body class="bookstore-page">
 
   <!-- 1. Top Announcement Bar -->
   <div class="top-bar">
@@ -50,7 +50,7 @@
         </div>
       </a>
 
-      <ul class="nav-menu" id="primaryNavigation">
+      <ul class="nav-menu" id="primaryNavigation" aria-hidden="true">
         <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
         <li class="nav-item"><a href="how-it-works.html" class="nav-link">How It Works</a></li>
         <li class="nav-item"><a href="system.html" class="nav-link">System</a></li>
@@ -63,17 +63,27 @@
           </a>
         </li>
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item mobile-language-item" aria-label="Language">
+          <span class="mobile-language-label">LANGUAGE</span>
+          <div class="mobile-language-links">
+            <a class="mobile-language-link" href="../ko/bookstore.html" lang="ko">한국어</a>
+            <a class="mobile-language-link active" href="bookstore.html" lang="en">English</a>
+          </div>
+        </li>
       </ul>
 
       <div class="header-cta-group">
         <a href="#my-ebook-library" class="btn btn-gold">
           <i class="ri-folder-download-line"></i> My E-Book Library
         </a>
-        <a href="../ko/bookstore.html" class="header-lang-btn lang-btn-en" title="한국어로 전환">
+        <a href="../ko/bookstore.html" class="header-lang-btn lang-btn-en" title="Switch to Korean">
           <span class="lang-opt ko">한글</span>
           <span class="lang-divider">/</span>
           <span class="lang-opt en active">ENG</span>
         </a>
+        <button class="mobile-menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="primaryNavigation">
+          <i class="ri-menu-line" aria-hidden="true"></i>
+        </button>
       </div>
     </div>
   </header>
@@ -245,7 +255,7 @@
           Once your payment is confirmed, our automated system immediately dispatches your E-Book PDF download links and License Key (<code>NVCLIC-...</code>) to your email, and unlocks direct downloads below.
         </p>
         <form class="bs-lookup-form" id="bsLookupForm">
-          <input type="text" id="bsLookupInput" placeholder="Enter your Order Email or License Key (NVCLIC-...)" required style="grid-column: span 2;">
+          <input type="text" id="bsLookupInput" placeholder="Enter your Order Email or License Key (NVCLIC-...)" required>
           <button type="submit" class="bs-btn-buy-now" style="width:auto;padding:0 28px;">
             <i class="ri-search-eye-line"></i> Lookup & Download PDF
           </button>
@@ -308,7 +318,7 @@
       <div class="bs-modal-body">
         <div id="bsCheckoutItemsList" style="background:#070e1c;border:1px solid rgba(212,163,89,0.32);border-radius:14px;padding:18px;margin-bottom:20px;"></div>
         <form id="bsCheckoutForm" style="display:flex;flex-direction:column;gap:14px;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div class="bs-form-row-2">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               Full Name *
               <input type="text" name="customerName" required style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
@@ -322,7 +332,7 @@
             Email for Automated PDF Delivery *
             <input type="email" name="customerEmail" required style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(56,189,248,0.5);color:#fff;">
           </label>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div class="bs-form-row-2">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               Payment Method
               <select name="paymentMethod" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
@@ -373,11 +383,12 @@
   <footer class="footer-main">
     <div class="container">
       <div class="footer-bottom" style="padding:28px 0;text-align:center;color:#94a3b8;font-size:0.88rem;">
-        <p>© 2026 NovaCell Therapy & NovaCell Education Center (Dr. Park Chang-Hyuk). All Rights Reserved.</p>
+        <p>© 2026 NovaCell Therapy & NovaCell Education Center (Park Chang-Hyuk, Ph.D.). All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
+  <script src="../js/main.js"></script>
   <script src="../js/bookstore.js"></script>
 </body>
 </html>
