@@ -1,9 +1,14 @@
 /**
  * NovaCell Bookstore (노바셀 북스토어) — Kyobo eBook Style Storefront & Automated Order/Email System
- * Author: Dr. Park Chang-Hyuk (박창혁 박사) | Publisher: 노바셀 교육 센터 (NovaCell Education Center)
+ * Full Bilingual Support: Korean (ko/bookstore.html) & English (en/bookstore.html)
+ * Author: Park Chang-Hyuk, Ph.D. (박창혁 박사) | Publisher: NovaCell Education Center (노바셀 교육 센터)
  */
 (function () {
   "use strict";
+
+  const isEn =
+    (document.documentElement.lang || "").toLowerCase().startsWith("en") ||
+    location.pathname.toLowerCase().includes("/en/");
 
   const STORAGE_ORDERS_KEY = "novacell_bookstore_orders_v1";
   const STORAGE_CART_KEY = "novacell_bookstore_cart_v1";
@@ -46,8 +51,16 @@
         "질환별 통치 요법(머리~만성질환)",
         "14종 생체 회로 & 바이오 포인트 실습 도해"
       ],
+      highlightsEn: [
+        "-25mV Maintenance vs. -50mV Healing Voltage",
+        "500% ATP Amplification & Lymphatic Ionization",
+        "Condition-Specific Protocols (Head to Chronic Illness)",
+        "14 Bio-Circuits & Bio-Point Clinical Atlas"
+      ],
       summaryKo:
         "만성 피로와 난치성 통증, 질병의 근본 원인을 ‘세포 전압(Cellular Voltage)의 방전’에서 찾고, 세포막 전위를 치유 전압(-50mV)으로 회복시키는 노바셀 통치 요법의 이론과 실전 프로토콜을 총망라한 235쪽 공식 핸드북입니다.",
+      summaryEn:
+        "The official 235-page clinical handbook that identifies depleted cellular voltage as the root cause of chronic fatigue, pain, and disease—presenting complete protocols to restore cellular potential to the -50mV healing threshold.",
       introKo: `
         <p><strong>《노바셀 통치 요법 (NovaCell Pain Therapy)》</strong>은 박창혁 박사가 40년 임상 현장에서 검증한 바이오일렉트릭 전압 의학의 핵심 원리와 전신 실전 프로토콜을 집대성한 공식 마스터 핸드북입니다.</p>
         <p>현대 의학이 증상을 억제하는 데 머무는 동안, 노바셀 통치 요법은 <strong>“왜 내 몸의 세포 배터리가 방전되었는가?”</strong>라는 근본 질문에 답합니다. 건강한 세포는 <strong>-25mV</strong>의 전압을 유지하며, 손상된 조직을 재생하고 신생 세포를 만들기 위해서는 <strong>-50mV의 치유 전압</strong>이 필요합니다.</p>
@@ -56,11 +69,25 @@
           <li><strong>제2편 (실습 및 임상 프로토콜):</strong> 머리·얼굴·목·어깨·팔·허리·하지·복부·만성질환 등 부위별·질환별 노바셀 통치 요법과 <strong>바이오 포인트(Bio Point) & 14종 생체 회로(폐 회로~독맥 회로)</strong> 실전 적용법을 고해상도 인체 도해와 함께 수록했습니다.</li>
         </ul>
       `,
+      introEn: `
+        <p><strong><em>NovaCell Pain Therapy (NovaCell HandBook)</em></strong> is the definitive 235-page master handbook synthesizing 40 years of clinical bio-electric voltage medicine developed by Park Chang-Hyuk, Ph.D.</p>
+        <p>While conventional medicine focuses on suppressing symptoms, NovaCell Therapy addresses the fundamental question: <strong>"Why has the body's cellular battery lost its charge?"</strong> Healthy cells operate at <strong>-25mV</strong>, whereas tissue regeneration and new cell synthesis require a healing voltage of <strong>-50mV</strong>.</p>
+        <ul>
+          <li><strong>Part I (Core Principles):</strong> Explains cellular voltage stages (including +30mV polarity reversal in chronic illness), electron stealers and trans-fats that insulate cell membranes, and how bio-friendly microcurrent boosts ATP production by 500% while ionizing lymphatic sludge.</li>
+          <li><strong>Part II (Clinical Practice & Protocols):</strong> Step-by-step anatomical protocols covering Head, Face, Neck, Shoulder, Arm/Hand, Back, Lower Back, Hip/Leg, Abdomen, and Chronic Conditions, plus the complete <strong>Bio-Points & 14 Bio-Circuits (Lung Circuit to Governing Vessel)</strong>.</li>
+        </ul>
+      `,
       prefaceKo: `
         <h4>프롤로그 : 왜 우리는 매일 피곤하고 아픈 것일까?</h4>
         <p>“병원을 전전해도 원인을 알 수 없는 만성 피로와 통증, 그 해답은 화학 약물이 아니라 당신의 세포 속 ‘전압(Voltage)’에 있습니다.”</p>
         <p>우리 몸은 약 30조~100조 개의 세포로 이루어진 거대한 생체 전기 네트워크입니다. 휴대폰 배터리가 방전되면 아무리 좋은 앱도 작동하지 않듯, 세포 전압이 -15mV 이하로 떨어지면 만성 피로와 염증이 시작되고, +30mV로 극성이 뒤집히면 만성 난치성 질환으로 진행됩니다.</p>
         <p>이 책은 의료 전문가뿐만 아니라 가정에서 스스로와 가족의 건강을 지키고자 하는 모든 분이 하루 15분 투자로 방전된 세포 배터리를 충전하고 생체 회로를 깨울 수 있도록 가장 쉽고 체계적인 길잡이가 되어 줄 것입니다. — <strong>저자 박창혁 박사</strong></p>
+      `,
+      prefaceEn: `
+        <h4>Prologue: Why Are We Exhausted and in Pain Every Day?</h4>
+        <p>"The answer to unexplained chronic fatigue and intractable pain lies not in chemical suppression, but in the electrical <strong>Voltage</strong> of your cells."</p>
+        <p>The human body is a vast bio-electric network of 30 to 100 trillion cells. Just as a smartphone cannot run any app when its battery is dead, chronic fatigue and pain begin when cellular voltage drops below -15mV, and severe chronic disease develops when polarity reverses to +30mV.</p>
+        <p>This handbook is designed as a clear, systematic guide for both healthcare practitioners and families at home—showing how 15 minutes a day can recharge depleted cellular batteries and reopen the body's bio-circuits. — <strong>Park Chang-Hyuk, Ph.D.</strong></p>
       `,
       tocKo: [
         {
@@ -113,6 +140,47 @@
             "부록: 노바셀 통치 요법 사용자 가이드북 (p.221~235)"
           ]
         }
+      ],
+      tocEn: [
+        {
+          part: "Prologue — Why Are We Exhausted and in Pain Every Day?",
+          items: [
+            "The Hidden Root Cause of Modern Chronic Fatigue and Pain",
+            "Paradigm Shift from Chemical Medicine to Bio-Electric Voltage Medicine"
+          ]
+        },
+        {
+          part: "Part I. Core Principles — Section 1: The Real Reason Your Body Hurts Is 'Voltage'",
+          items: [
+            "Chapter 1. The Human Body Is a Giant Bio-Battery",
+            "Chapter 2. Two Numbers That Govern Health: -25mV (Maintenance) and -50mV (Healing Voltage)",
+            "Chapter 3. Pain Is Not a Disease—It Is a 'Low Battery' Warning Light",
+            "Chapter 4. The Secret of Chronic & Intractable Illness: The Inverted World of +30mV"
+          ]
+        },
+        {
+          part: "Part I. Section 2 & 3 — What Drains Your Cellular Battery & How NovaCell Awakens Cells",
+          items: [
+            "Insulating 'Plastic Fats', Invisible Electron Stealers, Electrolytes, Minerals & Structured Water",
+            "Three Miracles of NovaCell Therapy: 500% ATP Amplification, Lymphatic Sludge Ionization, New Cell Replacement",
+            "Unblocking the Bio-Highways: The Science of Meridians and Bio-Electric Circuits"
+          ]
+        },
+        {
+          part: "Part I. Section 4 — Practical 15-Minute Daily NovaCell Protocols",
+          items: [
+            "Pre-Session Preparation to Double Clinical Efficacy (Hydration, Minerals, Breathing)",
+            "Targeted Quick Therapy, Visceral Remote-Control Therapy, Hand & Foot Reflexology, and Family Care"
+          ]
+        },
+        {
+          part: "Part II. Clinical Atlas — Condition-Specific Protocols & 14 Bio-Circuits (p.72 ~ p.235)",
+          items: [
+            "Section 1. Condition Protocols: 01 Head / 02 Face / 03 Neck / 04 Shoulder / 05 Arm & Hand / 06 Back / 07 Lower Back / 08 Hip & Leg / 09 Chest & Abdomen / 10 Chronic Conditions",
+            "Section 2. Bio-Points & 14 Bio-Circuits: 01 Lung · 02 Large Intestine · 03 Stomach · 04 Spleen · 05 Heart · 06 Small Intestine · 07 Bladder · 08 Kidney · 09 Pericardium · 10 Triple Burner · 11 Gallbladder · 12 Liver · 13 Conception Vessel · 14 Governing Vessel",
+            "Appendix: Official NovaCell User Guidebook (p.221~235)"
+          ]
+        }
       ]
     },
     {
@@ -150,8 +218,16 @@
         "내면의 아이 치유 등 26가지 정화 실습",
         "양자물리학·판차 코샤·7대 차크라 호흡"
       ],
+      highlightsEn: [
+        "Raja Yoga 8 Stages & Samadhi Meditation",
+        "Map of Consciousness (1–1000), O-Ring & Pendulum Testing",
+        "26 Guided Inner Child & Subconscious Clearing Practices",
+        "Quantum Physics, Pancha Kosha & 7-Chakra Breathing"
+      ],
       summaryKo:
         "심신치유학 박사 박창혁 원장이 인도철학의 삼매 수행법, 데이비드 호킨스 의식 수준 측정법(근육반응·오링·펜듈럼), 호오포노포노 내면 정화 기법, 양자물리학과 7대 차크라 호흡을 하나로 통합한 308쪽 의식 각성 경전입니다.",
+      summaryEn:
+        "A comprehensive 308-page mind-body healing masterwork integrating Indian Samadhi meditation, Map of Consciousness muscle/O-Ring/pendulum testing, 26 subconscious purification practices, quantum observer principles, and 7-Chakra breathing.",
       introKo: `
         <p><strong>《디바인 코스 (Divine Course)》</strong>는 육체적 질병과 삶의 고통 뒤에 자리한 <strong>무의식(잠재의식)의 기억과 사념 에너지를 정화</strong>하여 순수 의식인 ‘제로(Zero) 상태’로 귀환하는 체계적인 심신치유 수련서입니다.</p>
         <p>서울불교대학원대학교 심신치유학 박사 학위를 취득하고 수십 년간 명상과 통합치유를 지도해 온 박창혁 박사의 깊이 있는 학문과 실전 수련법이 4개 장과 특별 부록에 걸쳐 치밀하게 펼쳐집니다.</p>
@@ -162,10 +238,24 @@
           <li><strong>부록:</strong> 양자물리학의 관찰자 효과, 사념파와 균형력, 판차 코샤(인간의 5가지 껍질), 7대 차크라 호흡 및 디바인 코스 제1~3부 정규 과정 커리큘럼.</li>
         </ul>
       `,
+      introEn: `
+        <p><strong><em>Divine Course</em></strong> is a systematic 308-page mind-body purification manual designed to clear subconscious trauma and thought-wave distortions that underlie physical illness and emotional suffering, guiding practitioners back to the pure 'Zero State'.</p>
+        <ul>
+          <li><strong>Chapter 1 (Perspective of Indian Philosophy):</strong> Samadhi practice, Japa meditation, Asana postures, Pranayama breathing, and the 8 limbs of Raja Yoga.</li>
+          <li><strong>Chapter 2 (Levels of Consciousness):</strong> Applied Kinesiology muscle testing, calibrating the Map of Consciousness (20 to 1,000), O-Ring testing, and Ideomotor Pendulum charts.</li>
+          <li><strong>Chapters 3 & 4 (Purification & Life Goals):</strong> Forgiveness, repentance, transformation, healing the Inner Child (Unihipili), <strong>26 step-by-step guided meditation exercises</strong>, and life goal blueprints.</li>
+          <li><strong>Special Appendix:</strong> Quantum physics and the observer effect, thought-wave energy, Pancha Kosha (five sheaths), 7-Chakra breathing, and the Divine Course Parts 1–3 curriculum.</li>
+        </ul>
+      `,
       prefaceKo: `
         <h4>머리말 : 제로(Zero) 상태로의 귀환과 내면의 정화</h4>
         <p>“우리의 삶에 나타나는 모든 문제와 질병은 잠재의식 속에 재생되는 과거의 기억 데이터에서 비롯됩니다. 기억을 정화하여 제로(Zero)의 상태로 돌아갈 때, 신성한 영감과 자연치유력이 비로소 흐르기 시작합니다.”</p>
         <p>《디바인 코스》는 단순한 이론서가 아닙니다. 독자 스스로 자신의 의식 수준을 측정하고, 상처받은 내면의 아이를 보듬으며, 호흡과 명상을 통해 세포 깊은 곳의 트라우마까지 정화할 수 있도록 설계된 실전 지침서입니다. — <strong>저자 박창혁 박사</strong></p>
+      `,
+      prefaceEn: `
+        <h4>Preface: Returning to the Zero State through Inner Purification</h4>
+        <p>"Every recurring problem and illness in life originates from stored memory data replaying in the subconscious mind. When those memories are purified and we return to the Zero State, divine inspiration and innate healing power flow effortlessly."</p>
+        <p><em>Divine Course</em> is a hands-on workbook that empowers you to measure your own consciousness level, embrace your wounded inner child, and clear cellular trauma through breath and meditation. — <strong>Park Chang-Hyuk, Ph.D.</strong></p>
       `,
       tocKo: [
         {
@@ -199,6 +289,41 @@
             "제4장 삶의 목표: 1. 목표설정 / 2. 결과지 작성 워크시트",
             "부록 1~5: 생명의 구조, 관찰, 양자물리학의 관점, 사념에너지와 사념파, 균형력의 작용",
             "부록 6~8: 판차 코샤(다섯 겹의 몸), 7대 차크라와 호흡, 디바인 코스 제1·2·3부 교육과정"
+          ]
+        }
+      ],
+      tocEn: [
+        {
+          part: "Preface & Chapter 1: Perspective of Indian Philosophy (p.4 ~ p.61)",
+          items: [
+            "1. Practice of Samadhi / 2. Japa Meditation / 3. Understanding Meditation",
+            "4. How the Mind Operates / 5. Asana Postures / 6. Pranayama Breathwork",
+            "7. Concentration, Meditation & Samadhi / 8. The Eight Limbs of Raja Yoga"
+          ]
+        },
+        {
+          part: "Chapter 2: Levels of Consciousness (p.62 ~ p.131)",
+          items: [
+            "1. Scientific Principles of Muscle Testing (Applied Kinesiology)",
+            "2. How to Calibrate Consciousness Levels & The Map of Consciousness (20 to 1,000)",
+            "3. In-Depth Analysis of Each Level / 4. Practical O-Ring Testing",
+            "5. Ideomotor Response & Pendulum Calibration Charts"
+          ]
+        },
+        {
+          part: "Chapter 3: Perspective of Purification & 26 Practical Exercises (p.132 ~ p.224)",
+          items: [
+            "1. Forgiveness, Repentance & Transformation / 2. Principles & Methods of Clearing",
+            "3. Healing the Inner Child (Unihipili) & The Four Healing Phrases",
+            "[Exercises 01–26] Meeting the Inner Child, Ha Breathing, Compassion Meditation, Relationship Reconciliation & Physical Pain Clearing"
+          ]
+        },
+        {
+          part: "Chapter 4: Life Goals & Special Appendices (p.225 ~ p.308)",
+          items: [
+            "Chapter 4: Goal Setting & Manifestation Blueprint Worksheets",
+            "Appendices 1–5: Structure of Life, Observation, Quantum Physics Perspective, Thought-Waves & Law of Balance",
+            "Appendices 6–8: Pancha Kosha (Five Sheaths), 7 Chakras & Breathwork, Divine Course Parts 1–3 Curriculum"
           ]
         }
       ]
@@ -238,8 +363,16 @@
         "25대 주요 증상별 & 생애주기별 맞춤 처방",
         "감정치유(스트레스·우울·불안) & 12대 해부학"
       ],
+      highlightsEn: [
+        "High-Precision Dorsal/Plantar Foot & Hand Reflex Charts",
+        "8 Organ-System Reflexology Protocols",
+        "25 Condition-Specific & Life-Stage Prescriptions",
+        "Emotional Healing (Stress, Depression, Anxiety) & 12 Anatomy Systems"
+      ],
       summaryKo:
         "손과 발에 분포한 7,000여 개의 신경 말단 반사구와 전신 장기·뇌 신경계의 연결 메커니즘을 규명하고, 8대 계통별·25대 증상별·남녀노소 생애주기별 반사 요법과 해부학 차트를 풀컬러로 수록한 206쪽 정밀 임상 가이드입니다.",
+      summaryEn:
+        "A full-color 206-page clinical encyclopedia mapping over 7,000 nerve-ending reflex zones on the hands and feet to the brain and visceral organs—covering 8 body systems, 25 major conditions, life-stage care, emotional healing, and human anatomy.",
       introKo: `
         <p><strong>《리플렉스 테라피 (Reflex Therapy)》</strong>는 NovaCell 리플렉스 테라피 가이드 앱의 원전이 되는 공식 교과서로, 손과 발의 반사 영역(Reflex Zones)을 자극하여 중추신경계와 자율신경계, 내분비계 및 오장육부의 항상성을 회복하는 과학적 반사 요법 대백과입니다.</p>
         <ul>
@@ -248,10 +381,23 @@
           <li><strong>제5장~제11장 생애주기·감정치유·인체 해부학:</strong> 남성·여성·임산부·노인·십대 맞춤 케어, 스트레스·우울증·불안 장애를 위한 감정치유 반사 요법, 그리고 12대 인체 해부학 시스템을 완벽히 수록했습니다.</li>
         </ul>
       `,
+      introEn: `
+        <p><strong><em>Reflex Therapy</em></strong> is the official textbook behind the NovaCell Reflex Therapy Guide app—demonstrating how targeted stimulation of hand and foot reflex zones modulates the central and autonomic nervous systems, endocrine glands, and internal organs.</p>
+        <ul>
+          <li><strong>Chapters 1 & 2 (Zone Theory & Precision Point Maps):</strong> Full-color plantar/dorsal foot and palmar/dorsal hand reflexology maps, skeletal correspondence, and Cross-Reflex principles.</li>
+          <li><strong>Chapters 3 & 4 (8 Body Systems & 25 Clinical Conditions):</strong> Step-by-step sequences for Cardiovascular, Digestive, Endocrine, Musculoskeletal, Nervous, Respiratory, Reproductive, and Urinary systems, plus 25 major conditions.</li>
+          <li><strong>Chapters 5–11 (Life-Stage Care, Emotional Healing & Anatomy):</strong> Dedicated protocols for Men, Women, Pregnancy, Seniors, and Teens, emotional reflex therapy for stress/depression/anxiety, and 12 illustrated anatomical systems.</li>
+        </ul>
+      `,
       prefaceKo: `
         <h4>저자 서문 : 전신적 연결의 언어, 리플렉스 테라피의 길잡이</h4>
         <p>“발은 제2의 심장이며, 손은 제2의 뇌입니다. 손과 발의 작은 반사점에 가해지는 정밀한 자극은 말초신경을 타고 척수와 대뇌 피질로 전달되어 해당 장기의 혈류를 증가시키고 생체 전기 회로를 재정렬합니다.”</p>
         <p>누구나 손쉽게 따라 할 수 있도록 모든 반사 포인트의 해부학적 위치와 자극 방향, 압력, 작업 순서를 시각적으로 정리했습니다. 임상가에게는 정확한 차트가, 가정에서는 평생의 주치의가 되어 줄 것입니다. — <strong>저자 박창혁 박사</strong></p>
+      `,
+      prefaceEn: `
+        <h4>Author's Preface: The Language of Systemic Connection</h4>
+        <p>"The feet are the second heart, and the hands are the second brain. Precise stimulation of micro-reflex points on the hands and feet travels via peripheral nerves through the spinal cord to the cerebral cortex, increasing organ blood flow and realigning bio-electric circuits."</p>
+        <p>Every reflex point's anatomical location, direction, pressure, and sequence has been visually organized so both clinicians and families can apply them with confidence. — <strong>Park Chang-Hyuk, Ph.D.</strong></p>
       `,
       tocKo: [
         {
@@ -282,6 +428,37 @@
             "제8장 노인을 위한 반사 요법 / 제9장 십대를 위한 반사 요법",
             "제10장 감정치유 반사 요법 (스트레스 · 우울증 · 불안 장애)",
             "제11장 인체 해부학 (족부·세포·피부·골격·순환·소화·신경·내분비·림프·호흡·비뇨·생식기계)"
+          ]
+        }
+      ],
+      tocEn: [
+        {
+          part: "Chapters 1 & 2: Overview of Reflexology & Hand/Foot Reflex Point Maps (p.4 ~ p.49)",
+          items: [
+            "Chapter 1: 5 Working Hypotheses of Reflexology, Zone Theory, Plantar/Dorsal Foot & Hand Charts, Cross-Reflexes",
+            "Chapter 2: Complete Hand Reflex Point Atlas (p.22) & Foot Reflex Point Atlas (p.33)"
+          ]
+        },
+        {
+          part: "Chapter 3: 8 Organ-System Reflexology Protocols (p.50 ~ p.69)",
+          items: [
+            "1. Cardiovascular / 2. Digestive / 3. Endocrine / 4. Musculoskeletal",
+            "5. Nervous System / 6. Respiratory / 7. Reproductive / 8. Urinary System"
+          ]
+        },
+        {
+          part: "Chapter 4: 25 Condition-Specific Reflexology Protocols (p.70 ~ p.111)",
+          items: [
+            "Head, Brain & Sinus / Eyes / Ears / Thyroid / Asthma / Bronchitis / Heart & Circulation / Hypertension / Liver & Gallbladder",
+            "Stomach / Intestines / Constipation / Kidney & Bladder / Prostate / Menstrual & Menopause / Neck, Shoulder, Back, Knee & Sciatica / Eczema & Psoriasis"
+          ]
+        },
+        {
+          part: "Chapters 5–11: Life-Stage Protocols, Emotional Healing & Human Anatomy (p.112 ~ p.206)",
+          items: [
+            "Chapters 5–9: Reflexology for Men, Women, Pregnancy, Seniors, and Adolescents",
+            "Chapter 10: Emotional Healing Reflexology (Stress, Depression, Anxiety Disorders)",
+            "Chapter 11: 12 Illustrated Human Anatomical Systems"
           ]
         }
       ]
@@ -321,8 +498,16 @@
         "장요근·둔근·흉곽·견배부 역학적 사슬 분석",
         "고정근·도피근·지지근 이학검사 및 맞춤 처방"
       ],
+      highlightsEn: [
+        "24 Core Muscles: Origin, Insertion & Trigger Point Atlas",
+        "TMJ, Upper Cervical (C1–C4) & Dura Mater Biomechanics",
+        "Iliopsoas–Gluteal & Thoracic–Scapular Kinetic Chains",
+        "Fixator, Escaper & Stabilizer Muscle Assessment System"
+      ],
       summaryKo:
         "물리치료학·대체의학·심신치유학을 아우른 박창혁 박사의 40년 통증 재활 임상 노하우가 담긴 326쪽 대작! 전신 24대 핵심 근육과 턱관절(TMJ)·경추·골반의 구조적 상관관계, 이학적 판정 검사법 및 밸런스 테이핑·에너지 도구 기법을 완벽 수록했습니다.",
+      summaryEn:
+        "A 326-page orthopedic and structural rehabilitation compendium distilling 40 years of physical therapy and integrative clinical practice—covering 24 key muscles, TMJ–cervical–pelvic chains, orthopedic assessment tests, balance taping, and energy tools.",
       introKo: `
         <p><strong>《밸런스 테라피 (Balance Therapy)》</strong>는 “통증이 나타나는 부위는 피해자일 뿐, 진짜 범인은 깨어진 구조적·근막적 밸런스에 있다”는 임상 원칙 아래 집필된 326쪽 분량의 근골격계 통합 재활 바이블입니다.</p>
         <ul>
@@ -331,10 +516,23 @@
           <li><strong>제12장~제17장 고난도 임상 상관관계 & 판정 프로그램:</strong> 턱관절(TMJ)과 상부경추(C1~C4) 및 뇌척수액 경막의 연결고리, 목 회선·고관절 개폐·족관절 배굴 이학검사 및 <strong>고정근·도피근·지지근 판정에 따른 맞춤 처방</strong>을 공개합니다.</li>
         </ul>
       `,
+      introEn: `
+        <p><strong><em>Balance Therapy</em></strong> is a 326-page musculoskeletal rehabilitation bible built on a core clinical truth: <em>"The site of pain is merely the victim; the true culprit lies in broken structural and myofascial balance."</em></p>
+        <ul>
+          <li><strong>Chapters 1–5 (Principles & Techniques):</strong> Structural homeostasis, neuro-endocrine balance, cutaneous reflex points, Balance Taping, and energy therapy instruments.</li>
+          <li><strong>Chapters 6–11 (Regional Pain & 24 Core Muscles):</strong> Detailed anatomical origin/insertion charts and release protocols for 24 key muscles from scalenes and rotator cuff to iliopsoas, piriformis, popliteus, and triceps surae.</li>
+          <li><strong>Chapters 12–17 (TMJ–Cervical Chains & Diagnostic Assessment):</strong> TMJ and upper cervical (C1–C4) dural relationships, cervical rotation/hip/ankle orthopedic evaluation, and <strong>Fixator, Escaper & Support Muscle classification protocols</strong>.</li>
+        </ul>
+      `,
       prefaceKo: `
         <h4>저자 서문 : 밸런스 테라피, 건강한 삶의 새로운 시작</h4>
         <p>“40여 년 전 물리치료사로 임상을 시작한 이래 수많은 난치성 통증 환자를 만나며 깨달은 진리가 있습니다. 인체는 단 하나의 근육도 독립적으로 움직이지 않으며, 머리끝에서 발끝까지 유기적인 텐세그리티(Tensegrity) 균형망으로 연결되어 있다는 사실입니다.”</p>
         <p>이 책은 통증의 원인을 정확히 판정(Assessment)하고, 최소한의 자극으로 즉각적인 관절 가동범위 회복과 통증 해소를 이끌어내는 밸런스 테라피의 정수를 담았습니다. — <strong>저자 박창혁 박사</strong></p>
+      `,
+      prefaceEn: `
+        <h4>Author's Preface: Balance Therapy, A New Beginning for Pain-Free Living</h4>
+        <p>"Since beginning my clinical career as a physical therapist over 40 years ago, one truth has stood above all: not a single muscle in the human body acts in isolation. From head to toe, the body is interconnected as a continuous tensegrity network."</p>
+        <p>This book presents the complete assessment and correction system of Balance Therapy to immediately restore range of motion and resolve chronic pain at its root. — <strong>Park Chang-Hyuk, Ph.D.</strong></p>
       `,
       tocKo: [
         {
@@ -367,6 +565,38 @@
             "제15장 밸런스 테라피 검사 프로그램 (좌우 방향성, 목 회선 제한, 관절형·근육형·신경형 판별, 고관절 개폐, 족관절 배굴 검사)",
             "제16장 판정에 따른 맞춤 밸런스 테라피 프로토콜",
             "제17장 베이직 요법: 고정근 · 도피근 · 지지근의 판정과 실전 교정"
+          ]
+        }
+      ],
+      tocEn: [
+        {
+          part: "Chapters 01–05: Principles of Structural Balance & Core Techniques (p.3 ~ p.48)",
+          items: [
+            "Chapter 01: Principles of Balance (Structural, Neurological & Endocrine Homeostasis)",
+            "Chapter 02: Cutaneous Reflex Zones & Viscerosomatic Connections",
+            "Chapters 03–05: Manual Application Techniques, Balance Taping Therapy & Energy Instruments"
+          ]
+        },
+        {
+          part: "Chapters 06–11: Regional Pain & 24 Core Muscle Protocols (p.49 ~ p.167)",
+          items: [
+            "Chapters 06–07: Neck Pain (Scalenes, SCM) & Shoulder Pain (Trapezius, Supraspinatus, Infraspinatus, Levator Scapulae, Teres Major, Pectoralis Major)",
+            "Chapter 08: Complete Atlas of 24 Core Trunk & Lower Extremity Muscles",
+            "Chapters 09–11: Chest/Back Balance Points, Lower Back Pain, and Knee/Calf/Ankle Protocols"
+          ]
+        },
+        {
+          part: "Chapters 12–14: TMJ, Upper Cervical (C1–C4), Thoracic & Pelvic Correlations (p.168 ~ p.255)",
+          items: [
+            "Chapter 12: TMJ Balance Therapy & Upper Cervical (C1–C4) Dura Mater Mechanics",
+            "Chapters 13–14: Anterior Chest–Posterior Scapular Chains & Iliopsoas–Gluteal Reciprocal Balance"
+          ]
+        },
+        {
+          part: "Chapters 15–17: Orthopedic Assessment Program & Customized Correction (p.256 ~ p.326)",
+          items: [
+            "Chapter 15: Directional Assessment, Cervical Rotation, Articular/Muscular/Neural Differentiation, Hip & Ankle Tests",
+            "Chapters 16–17: Customized Balance Protocols & Fixator / Escaper / Support Muscle Correction"
           ]
         }
       ]
@@ -406,8 +636,16 @@
         "엽록소 혈액 생성 & 13대 핵심 보충제 가이드",
         "간·대장 해독 프로토콜 및 타액·소변 pH 진단법"
       ],
+      highlightsEn: [
+        "pH 7.35–7.45 Alkaline Homeostasis & Cellular Voltage",
+        "4-Week Voltage Boosting Program & 7 Amplification Technologies",
+        "Chlorophyll Blood Synthesis & 13 Core Supplements Guide",
+        "Liver/Colon Detoxification & Saliva/Urine pH Diagnostics"
+      ],
       summaryKo:
         "총 471쪽에 달하는 방대한 분량으로 세포 생물학, 생체 전기 전압(-50mV), pH 알칼리성 식사요법, 13대 핵심 영양 보충제(L-아르기닌·풀빅산·글루타치온 등), 간·대장 해독 및 심층 Q&A를 총망라한 세포 부활의 결정판입니다.",
+      summaryEn:
+        "An encyclopedic 471-page treatise uniting cellular biology, bio-electric voltage (-50mV), alkaline nutrition, 13 essential supplements (L-Arginine, Fulvic Acid, Glutathione, etc.), liver/colon detoxification, saliva/urine pH testing, and clinical Q&As.",
       introKo: `
         <p><strong>《세포야 깨어나라! (세포 전압의 숨겨진 치유력)》</strong>은 왜 현대인이 만성 산성화(Acidosis)와 저전압 상태에 빠져 병들어가는지 과학적으로 규명하고, 식단·영양·해독·전압 부스팅을 통해 세포 수준에서 완전한 회춘과 치유를 이루는 471쪽 분량의 통합 영양·전압 의학 총서입니다.</p>
         <ul>
@@ -416,9 +654,21 @@
           <li><strong>제4부 실전 Q&A 및 임상 정리:</strong> 환자들이 가장 궁금해하는 심층 Q&A와 산성 체질 초기·중기·말기 증상 체크리스트 및 전문 용어집을 수록했습니다.</li>
         </ul>
       `,
+      introEn: `
+        <p><strong><em>Awakening Cell! (The Hidden Healing Power of Cellular Voltage)</em></strong> is a monumental 471-page reference explaining why modern humans fall into chronic metabolic acidosis and low cellular voltage—and how nutrition, detoxification, and voltage boosting awaken cellular regeneration.</p>
+        <ul>
+          <li><strong>Parts 1 & 2 (The World of Cells & Voltage Boosting):</strong> Biochemical relationship between pH (7.35–7.45) and voltage (-20mV to -50mV), the <strong>4-Week Cellular Voltage Boosting Program</strong>, 7 amplification technologies, and voltage-restoring recipes.</li>
+          <li><strong>Part 3 (Alkaline Diet & Systemic Detoxification):</strong> Complete acid/alkaline food charts, how chlorophyll builds healthy blood, <strong>13 core supplements (L-Arginine, Magnesium, Fulvic Acid, CoQ10, Glutathione, etc.)</strong>, Liver & Colon cleansing protocols, and saliva/urine pH testing.</li>
+          <li><strong>Part 4 (Clinical Q&A & Compendium):</strong> In-depth Q&As, early/middle/late stage acidosis symptom charts, and an integrative glossary.</li>
+        </ul>
+      `,
       prefaceKo: `
         <h4>프롤로그 : 세포야 깨어나라!</h4>
         <p>“인체라는 어항 속의 물(체액과 세포외기질)이 산성으로 오염되고 전기가 끊기면, 그 안의 물고기(세포)는 아무리 비싼 약을 주어도 살아남을 수 없습니다. 어항의 물을 약알칼리성(pH 7.35~7.45)으로 정화하고 전자를 공급해 주십시오. 세포는 스스로 깨어나 기적처럼 치유를 시작합니다.” — <strong>저자 박창혁 박사</strong></p>
+      `,
+      prefaceEn: `
+        <h4>Prologue: Awakening Cell!</h4>
+        <p>"When the water in the aquarium of the human body (extracellular fluid) becomes acidic and loses its electrical charge, the fish (your cells) cannot survive no matter how expensive the medication. Purify the internal terrain to a mildly alkaline pH of 7.35–7.45 and supply electrons—your cells will awaken and heal themselves." — <strong>Park Chang-Hyuk, Ph.D.</strong></p>
       `,
       tocKo: [
         {
@@ -444,6 +694,30 @@
             "제27장 알칼리성 식사요법 실전 Q&A",
             "제28장 《세포야 깨어나라!》 세포 전압 치유 심층 Q&A",
             "제29장 핵심 메커니즘 종합 분석 / 제30장 체내 산성화 초기·중기·말기 증상 도표 / 부록: 통합의학 용어집"
+          ]
+        }
+      ],
+      tocEn: [
+        {
+          part: "[Book I] Part 1: The World of Cells & Part 2: Cellular Voltage Boosting (p.8 ~ p.131)",
+          items: [
+            "Part 1 (Chapters 1–8): Cellular Structure, Membrane Potential, Mitochondria & Cellular Renewal Cycles",
+            "Part 2 (Chapters 1–9): Scientific Mechanism of pH and Voltage, Self-Assessment, 4-Week Voltage Boosting Program, 7 Amplification Technologies & Voltage Recipes"
+          ]
+        },
+        {
+          part: "[Book I] Part 3: Alkaline Nutrition & Systemic Detoxification (p.132 ~ p.320)",
+          items: [
+            "Chapters 1–17: Alkaline Diet Principles, Neutralizing Acid Toxins, Chlorophyll & Blood Synthesis, Superfood Meal Plans",
+            "Chapters 18–19: Natural Healing & 13 Core Supplements (L-Arginine, Magnesium, Fulvic Acid, Glutathione, Vitamin D3/K2, Omega-3)",
+            "Chapters 20–26: Liver Detoxification, Colon Cleansing, Lymphatic Drainage & Saliva/Urine pH Testing"
+          ]
+        },
+        {
+          part: "[Book II] Part 4: In-Depth Clinical Q&A & Master Compendium (p.321 ~ p.471)",
+          items: [
+            "Chapters 27–28: Practical Q&A on Alkaline Nutrition and Cellular Voltage Healing",
+            "Chapters 29–30: Comprehensive Mechanism Analysis, Acidosis Symptom Progression Charts & Glossary"
           ]
         }
       ]
@@ -483,8 +757,16 @@
         "내과·생활 질환 10선(비염·두통·불면·위장 등)",
         "만성·난치성 질환 20선(파킨슨·치매·뇌졸중·당뇨 등)"
       ],
+      highlightsEn: [
+        "Synthesis of 13 Medical Paradigms (Fractal, Quantum, Wave, etc.)",
+        "10 Musculoskeletal Pain Energy Protocols",
+        "10 Internal & Lifestyle Condition Protocols",
+        "20 Chronic & Intractable Disease Protocols (Parkinson's, Dementia, etc.)"
+      ],
       summaryKo:
         "프랙탈 원리, 에너지의학, 파동의학, 양자의학, 심신의학, 아유르베다 등 13대 의학 패러다임을 통섭하고, 근골격계 10대 통증·내과 질환 10선·만성 난치성 질환 20선(총 40대 질환)의 구체적인 에너지 치유 프로토콜을 제시한 321쪽 임상 지침서입니다.",
+      summaryEn:
+        "A 321-page clinical guide synthesizing 13 integrative medical paradigms (Fractal, Energy, Wave, Quantum, Mind-Body, Oriental, Ayurveda, etc.) and providing step-by-step energy healing protocols for 40 musculoskeletal, internal, and intractable conditions.",
       introKo: `
         <p><strong>《에너지 테라피 (Energy Therapy)》</strong>는 박창혁 박사가 4개 학위(물리치료학·보건학·대체의학·심신치유학)와 40년 임상을 통해 완성한 ‘통합 치유(Integrative Healing)’의 정수가 담긴 321쪽 분량의 질환별 임상 백과입니다.</p>
         <ul>
@@ -498,9 +780,26 @@
           </li>
         </ul>
       `,
+      introEn: `
+        <p><strong><em>Energy Therapy</em></strong> is a 321-page clinical encyclopedia representing the culmination of Dr. Park Chang-Hyuk's 4 academic degrees and 40 years of integrative clinical practice.</p>
+        <ul>
+          <li><strong>Part 1 (13 Integrative Medical Paradigms):</strong> Unifies Fractal Theory, Energy Medicine, Wave Medicine, Quantum Medicine, Mind-Body Medicine, Naturopathy, Oriental Medicine, Conventional Medicine, Homeopathy, Ayurveda, Regenerative Medicine, Alternative Medicine, and Integrative Medicine.</li>
+          <li><strong>Part 2 (40 Condition-Specific Clinical Protocols):</strong>
+            <ul>
+              <li><strong>Chapter 1 (10 Musculoskeletal Conditions):</strong> Neck, Shoulder, Elbow, Carpal Tunnel, Trigger Finger, Lower Back, Knee, Fibromyalgia, Gout, Osteoporosis.</li>
+              <li><strong>Chapter 2 (10 Internal Conditions):</strong> Rhinitis, Headache, Liver, Heart, Stomach, Cough, Constipation, Insomnia, Incontinence, Menopause.</li>
+              <li><strong>Chapter 3 (20 Chronic & Intractable Diseases):</strong> Diabetes, Hypertension, Autoimmune Disease, Tinnitus, Parkinson's, Stress, TMJ, Thyroid, Stroke, Dementia, Postherpetic Neuralgia, Facial Palsy, Depression, Atopy, ALS, Macular Degeneration, Spinal Stenosis, Psoriasis, BPH, Cerebellar Atrophy.</li>
+            </ul>
+          </li>
+        </ul>
+      `,
       prefaceKo: `
         <h4>저자 서문 : 당신 안에 잠든 위대한 치유자를 깨우십시오</h4>
         <p>“질병의 이름은 수천 가지이지만, 치유의 본질은 하나입니다. 막힌 에너지 회로를 열고, 깨어진 파동과 극성의 공명을 회복하는 것입니다. 40가지 주요 통증과 난치성 질환 앞에서 막막해하는 분들에게 이 책이 가장 명확하고 실질적인 치유의 나침반이 되기를 소망합니다.” — <strong>저자 박창혁 박사</strong></p>
+      `,
+      prefaceEn: `
+        <h4>Author's Preface: Awaken the Great Healer Within You</h4>
+        <p>"Though diseases have thousands of names, the essence of healing is one: reopening blocked energy circuits and restoring resonant polarity. May this book serve as a clear, practical compass for everyone facing chronic pain and intractable illness." — <strong>Park Chang-Hyuk, Ph.D.</strong></p>
       `,
       tocKo: [
         {
@@ -530,6 +829,37 @@
           items: [
             "01. 당뇨병 / 02. 고혈압 / 03. 자가면역질환 / 04. 이명 / 05. 파킨슨병 / 06. 스트레스 / 07. 턱관절(TMJ) 질환 / 08. 갑상선 질환 / 09. 뇌졸중 / 10. 치매",
             "11. 대상포진 후 신경통 / 12. 안면신경마비(구안와사) / 13. 우울증 / 14. 아토피 피부염 / 15. 루게릭병(ALS) / 16. 황반변성 / 17. 척추관 협착증 / 18. 건선 / 19. 전립선 비대증 / 20. 소뇌위축증"
+          ]
+        }
+      ],
+      tocEn: [
+        {
+          part: "1. Introduction — 13 Integrative Medical Paradigms (p.4 ~ p.48)",
+          items: [
+            "1. Fractal Principle / 2. Energy Medicine / 3. Wave Medicine / 4. Quantum Medicine",
+            "5. Mind-Body Medicine / 6. Naturopathy / 7. Oriental Medicine / 8. Modern Medicine / 9. Homeopathy",
+            "10. Ayurveda / 11. Regenerative Medicine / 12. Alternative Medicine / 13. Integrative Medicine"
+          ]
+        },
+        {
+          part: "2. Chapter 1 — 10 Musculoskeletal Pain Protocols (p.49 ~ p.114)",
+          items: [
+            "1. Neck Pain / 2. Shoulder Pain / 3. Elbow Pain / 4. Carpal Tunnel Syndrome / 5. Trigger Finger",
+            "6. Lower Back Pain / 7. Knee Pain / 8. Fibromyalgia / 9. Gout / 10. Osteoporosis"
+          ]
+        },
+        {
+          part: "Chapter 2 — 10 Internal & Lifestyle Condition Protocols (p.115 ~ p.175)",
+          items: [
+            "1. Rhinitis / 2. Headache / 3. Liver Disorders / 4. Heart Conditions / 5. Gastric Disorders",
+            "6. Chronic Cough / 7. Constipation / 8. Insomnia / 9. Urinary Incontinence / 10. Menopausal Syndrome"
+          ]
+        },
+        {
+          part: "Chapter 3 — 20 Chronic & Intractable Disease Protocols (p.176 ~ p.321)",
+          items: [
+            "01. Diabetes / 02. Hypertension / 03. Autoimmune Disorders / 04. Tinnitus / 05. Parkinson's Disease / 06. Chronic Stress / 07. TMJ Disorder / 08. Thyroid Disease / 09. Stroke / 10. Dementia",
+            "11. Postherpetic Neuralgia / 12. Facial Nerve Palsy / 13. Depression / 14. Atopic Dermatitis / 15. ALS / 16. Macular Degeneration / 17. Spinal Stenosis / 18. Psoriasis / 19. Prostate Enlargement / 20. Cerebellar Atrophy"
           ]
         }
       ]
@@ -583,6 +913,18 @@
     return "₩" + Number(n || 0).toLocaleString("ko-KR");
   }
 
+  function formatPrice(krw, usd) {
+    if (isEn) {
+      const u = usd || Math.round(Number(krw || 0) / 1250);
+      return `US$${u.toLocaleString("en-US")}`;
+    }
+    return formatKrw(krw);
+  }
+
+  function bookTitle(b) {
+    return isEn ? b.titleEn : b.titleKo;
+  }
+
   // Render Catalog List on bookstore.html
   let activeCategory = "all";
   let searchQuery = "";
@@ -596,69 +938,85 @@
       if (activeCategory !== "all" && b.category !== activeCategory) return false;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        const hay = `${b.titleKo} ${b.titleEn} ${b.subtitleKo} ${b.summaryKo} ${b.highlightsKo.join(" ")}`.toLowerCase();
+        const hay = `${b.titleKo} ${b.titleEn} ${b.subtitleKo} ${b.subtitleEn} ${b.summaryKo} ${b.summaryEn} ${b.highlightsKo.join(" ")} ${(b.highlightsEn || []).join(" ")}`.toLowerCase();
         return hay.includes(q);
       }
       return true;
     });
 
     if (filtered.length === 0) {
-      listEl.innerHTML = `<div style="padding:48px;text-align:center;color:#94a3b8;background:#0b1528;border-radius:18px;border:1px solid rgba(212,163,89,0.25);">검색 조건에 맞는 전자책이 없습니다.</div>`;
+      listEl.innerHTML = `<div style="padding:48px;text-align:center;color:#94a3b8;background:#0b1528;border-radius:18px;border:1px solid rgba(212,163,89,0.25);">${
+        isEn ? "No E-Books match your search criteria." : "검색 조건에 맞는 전자책이 없습니다."
+      }</div>`;
       return;
     }
 
     listEl.innerHTML = filtered
       .map((b, idx) => {
         const inCart = cart.includes(b.slug);
+        const title = isEn ? b.titleEn : b.titleKo;
+        const subtitle = isEn ? b.subtitleEn : b.subtitleKo;
+        const badge = isEn ? b.badgeEn : b.badgeKo;
+        const author = isEn ? b.authorEn : `${b.authorKo} (심신치유학 박사)`;
+        const publisher = isEn ? b.publisherEn : b.publisherKo;
+        const summary = isEn ? b.summaryEn : b.summaryKo;
+        const highlights = isEn ? b.highlightsEn : b.highlightsKo;
+        const toc = isEn ? b.tocEn : b.tocKo;
+        const priceDisplay = formatPrice(b.priceKrw, b.priceUsd);
+
         return `
         <article class="bs-kyobo-card" id="book-${b.slug}">
           <!-- Col 1: Cover & Sample Preview -->
           <div class="bs-kyobo-cover-col">
-            <div class="bs-kyobo-cover-frame" data-open-preview="${b.slug}" title="클릭하여 본문 미리보기">
-              <span class="bs-ebook-type-ribbon">PDF 전자책 · 제${idx + 1}권</span>
-              <img src="${b.cover}" alt="${b.titleKo} 표지" loading="lazy">
+            <div class="bs-kyobo-cover-frame" data-open-preview="${b.slug}" title="${isEn ? "Click to preview sample pages" : "클릭하여 본문 미리보기"}">
+              <span class="bs-ebook-type-ribbon">${isEn ? `PDF E-Book · Vol. ${idx + 1}` : `PDF 전자책 · 제${idx + 1}권`}</span>
+              <img src="${b.cover}" alt="${title}" loading="lazy">
             </div>
             <button type="button" class="bs-preview-trigger-btn" data-open-preview="${b.slug}">
-              <i class="ri-book-read-line"></i> 본문 미리보기 (5쪽)
+              <i class="ri-book-read-line"></i> ${isEn ? "Sample Preview (5 Pages)" : "본문 미리보기 (5쪽)"}
             </button>
           </div>
 
           <!-- Col 2: Kyobo Style Book Info & Quick TOC -->
           <div class="bs-kyobo-info-col">
             <div class="bs-kyobo-badges">
-              <span class="bs-tag gold">${b.badgeKo}</span>
-              <span class="bs-tag cyan">소장용 고해상도 PDF (${b.pages}쪽)</span>
-              <span class="bs-tag emerald"><i class="ri-mail-check-line"></i> 입금확인 후 이메일 자동발송</span>
+              <span class="bs-tag gold">${badge}</span>
+              <span class="bs-tag cyan">${isEn ? `High-Res PDF (${b.pages} Pages)` : `소장용 고해상도 PDF (${b.pages}쪽)`}</span>
+              <span class="bs-tag emerald"><i class="ri-mail-check-line"></i> ${isEn ? "Auto-Email on Payment Confirmation" : "입금확인 후 이메일 자동발송"}</span>
             </div>
 
-            <h3 class="bs-kyobo-title" data-open-detail="${b.slug}" data-tab="intro">${b.titleKo}</h3>
-            <p class="bs-kyobo-subtitle">${b.subtitleKo}</p>
+            <h3 class="bs-kyobo-title" data-open-detail="${b.slug}" data-tab="intro">${title}</h3>
+            <p class="bs-kyobo-subtitle">${subtitle}</p>
 
             <div class="bs-kyobo-publine">
-              <span><strong>${b.authorKo}</strong> (심신치유학 박사)</span>
+              <span><strong>${author}</strong></span>
               <span>|</span>
-              <span>${b.publisherKo}</span>
+              <span>${publisher}</span>
               <span>|</span>
-              <span>${b.pubDate} 출간</span>
+              <span>${isEn ? `Published ${b.pubDate}` : `${b.pubDate} 출간`}</span>
               <span>|</span>
-              <span>${b.pages}쪽 (${b.sizeMb})</span>
+              <span>${isEn ? `${b.pages} Pages (${b.sizeMb})` : `${b.pages}쪽 (${b.sizeMb})`}</span>
               <span>|</span>
-              <span class="bs-kyobo-rating">★★★★★ ${b.rating} (리뷰 ${b.reviewCount})</span>
+              <span class="bs-kyobo-rating">★★★★★ ${b.rating} (${isEn ? `${b.reviewCount} Reviews` : `리뷰 ${b.reviewCount}`})</span>
             </div>
 
-            <p class="bs-kyobo-desc">${b.summaryKo}</p>
+            <p class="bs-kyobo-desc">${summary}</p>
 
             <div class="bs-kyobo-highlights">
-              ${b.highlightsKo.map((h) => `<span><i class="ri-check-double-line" style="color:#d4a359;"></i> ${h}</span>`).join("")}
+              ${highlights.map((h) => `<span><i class="ri-check-double-line" style="color:#d4a359;"></i> ${h}</span>`).join("")}
             </div>
 
             <div class="bs-inline-toc-box">
               <div class="bs-inline-toc-header">
-                <strong><i class="ri-list-check-2"></i> 핵심 구성 (${b.tocKo.length}개 파트 · 전체 목차 및 서문 제공)</strong>
+                <strong><i class="ri-list-check-2"></i> ${
+                  isEn
+                    ? `Key Structure (${toc.length} Parts · Full TOC & Preface Included)`
+                    : `핵심 구성 (${toc.length}개 파트 · 전체 목차 및 서문 제공)`
+                }</strong>
                 <div class="bs-inline-toc-actions">
-                  <button type="button" class="bs-toc-pill-btn" data-open-detail="${b.slug}" data-tab="intro">책 소개</button>
-                  <button type="button" class="bs-toc-pill-btn" data-open-detail="${b.slug}" data-tab="preface">저자 서문</button>
-                  <button type="button" class="bs-toc-pill-btn" data-open-detail="${b.slug}" data-tab="toc">목차 전체보기</button>
+                  <button type="button" class="bs-toc-pill-btn" data-open-detail="${b.slug}" data-tab="intro">${isEn ? "Overview" : "책 소개"}</button>
+                  <button type="button" class="bs-toc-pill-btn" data-open-detail="${b.slug}" data-tab="preface">${isEn ? "Preface" : "저자 서문"}</button>
+                  <button type="button" class="bs-toc-pill-btn" data-open-detail="${b.slug}" data-tab="toc">${isEn ? "Full TOC" : "목차 전체보기"}</button>
                 </div>
               </div>
             </div>
@@ -668,28 +1026,36 @@
           <div class="bs-kyobo-buy-col">
             <div>
               <div class="bs-price-block">
-                <span class="bs-price-label">전자책(PDF) 소장 정가</span>
-                <div class="bs-price-value">${formatKrw(b.priceKrw)}</div>
-                <div class="bs-price-sub"><i class="ri-shield-check-line"></i> 평생 무제한 열람 · 영구 소장</div>
+                <span class="bs-price-label">${isEn ? "PDF E-Book Edition" : "전자책(PDF) 소장 정가"}</span>
+                <div class="bs-price-value">${priceDisplay}</div>
+                <div class="bs-price-sub"><i class="ri-shield-check-line"></i> ${isEn ? "Permanent Lifetime Ownership" : "평생 무제한 열람 · 영구 소장"}</div>
               </div>
 
               <div class="bs-delivery-specs">
-                <div>• <strong>발송 방식:</strong> 입금 확인 즉시 이메일 자동 발송 + 홈페이지 즉시 다운로드</div>
-                <div>• <strong>파일 형식:</strong> 원본 PDF (${b.pages}쪽 / ${b.sizeMb})</div>
-                <div>• <strong>열람 기기:</strong> PC · 태블릿 · 스마트폰 · 인쇄 가능</div>
+                <div>• <strong>${isEn ? "Delivery:" : "발송 방식:"}</strong> ${isEn ? "Automated Email + Instant Web Download" : "입금 확인 즉시 이메일 자동 발송 + 홈페이지 즉시 다운로드"}</div>
+                <div>• <strong>${isEn ? "Format:" : "파일 형식:"}</strong> ${isEn ? `Original PDF (${b.pages}p / ${b.sizeMb})` : `원본 PDF (${b.pages}쪽 / ${b.sizeMb})`}</div>
+                <div>• <strong>${isEn ? "Devices:" : "열람 기기:"}</strong> ${isEn ? "PC · Tablet · Smartphone · Printable" : "PC · 태블릿 · 스마트폰 · 인쇄 가능"}</div>
               </div>
             </div>
 
             <div class="bs-buy-buttons">
               <button type="button" class="bs-btn-buy-now" data-buy-single="${b.slug}">
-                <i class="ri-flashlight-fill"></i> 바로구매 (자동발송 신청)
+                <i class="ri-flashlight-fill"></i> ${isEn ? "Buy Now (Auto-Email)" : "바로구매 (자동발송 신청)"}
               </button>
               <button type="button" class="bs-btn-cart ${inCart ? "in-cart" : ""}" data-toggle-cart="${b.slug}">
                 <i class="${inCart ? "ri-check-line" : "ri-shopping-cart-2-line"}"></i>
-                ${inCart ? "장바구니에 담김 (선택해제)" : "장바구니 담기"}
+                ${
+                  inCart
+                    ? isEn
+                      ? "Added to Cart (Remove)"
+                      : "장바구니에 담김 (선택해제)"
+                    : isEn
+                    ? "Add to Cart"
+                    : "장바구니 담기"
+                }
               </button>
               <button type="button" class="bs-btn-detail" data-open-detail="${b.slug}" data-tab="toc">
-                <i class="ri-file-list-3-line"></i> 책 소개 · 목차 상세 보기
+                <i class="ri-file-list-3-line"></i> ${isEn ? "Book Details & Full TOC" : "책 소개 · 목차 상세 보기"}
               </button>
             </div>
           </div>
@@ -706,7 +1072,13 @@
       const inCart = cart.includes(slug);
       btn.classList.toggle("in-cart", inCart);
       btn.innerHTML = `<i class="${inCart ? "ri-check-line" : "ri-shopping-cart-2-line"}"></i> ${
-        inCart ? "장바구니에 담김 (선택해제)" : "장바구니 담기"
+        inCart
+          ? isEn
+            ? "Added to Cart (Remove)"
+            : "장바구니에 담김 (선택해제)"
+          : isEn
+          ? "Add to Cart"
+          : "장바구니 담기"
       }`;
     });
   }
@@ -721,19 +1093,47 @@
     }
     bar.classList.add("visible");
     const isFull = cart.length === 6;
-    const originalTotal = cart.length * 100000;
-    const finalTotal = isFull ? 480000 : originalTotal;
-    const titles = cart.map((s) => getBookBySlug(s)?.titleKo.split(" (")[0] || s).join(", ");
+    const originalTotalKrw = cart.length * 100000;
+    const finalTotalKrw = isFull ? 480000 : originalTotalKrw;
+    const originalTotalUsd = cart.length * 80;
+    const finalTotalUsd = isFull ? 380 : originalTotalUsd;
+    const titles = cart
+      .map((s) => {
+        const b = getBookBySlug(s);
+        if (!b) return s;
+        return isEn ? b.titleEn.split(" (")[0] : b.titleKo.split(" (")[0];
+      })
+      .join(", ");
 
-    document.getElementById("bsCartSummaryText").innerHTML = `
-      <div style="font-size:0.85rem;color:#7dd3fc;font-weight:700;">
-        장바구니 선택 도서 <strong>${cart.length}권</strong> ${isFull ? '<span style="background:#10b981;color:#051324;padding:2px 8px;border-radius:999px;margin-left:6px;font-weight:800;">전권 20% 패키지 할인 적용!</span>' : ""}
-      </div>
-      <div style="font-size:0.95rem;color:#ffffff;font-weight:700;margin-top:2px;">${titles}</div>
-    `;
-    document.getElementById("bsCartTotalPrice").innerHTML = isFull
-      ? `<del style="color:#94a3b8;font-size:0.9rem;margin-right:8px;">₩600,000</del><strong style="font-size:1.5rem;color:#f7d58b;">₩480,000</strong>`
-      : `<strong style="font-size:1.5rem;color:#f7d58b;">${formatKrw(finalTotal)}</strong>`;
+    if (isEn) {
+      document.getElementById("bsCartSummaryText").innerHTML = `
+        <div style="font-size:0.85rem;color:#7dd3fc;font-weight:700;">
+          Selected in Cart: <strong>${cart.length} ${cart.length === 1 ? "Book" : "Books"}</strong> ${
+            isFull
+              ? '<span style="background:#10b981;color:#051324;padding:2px 8px;border-radius:999px;margin-left:6px;font-weight:800;">20% Master Bundle Discount Applied!</span>'
+              : ""
+          }
+        </div>
+        <div style="font-size:0.95rem;color:#ffffff;font-weight:700;margin-top:2px;">${titles}</div>
+      `;
+      document.getElementById("bsCartTotalPrice").innerHTML = isFull
+        ? `<del style="color:#94a3b8;font-size:0.9rem;margin-right:8px;">US$480</del><strong style="font-size:1.5rem;color:#f7d58b;">US$380</strong>`
+        : `<strong style="font-size:1.5rem;color:#f7d58b;">US$${finalTotalUsd}</strong>`;
+    } else {
+      document.getElementById("bsCartSummaryText").innerHTML = `
+        <div style="font-size:0.85rem;color:#7dd3fc;font-weight:700;">
+          장바구니 선택 도서 <strong>${cart.length}권</strong> ${
+            isFull
+              ? '<span style="background:#10b981;color:#051324;padding:2px 8px;border-radius:999px;margin-left:6px;font-weight:800;">전권 20% 패키지 할인 적용!</span>'
+              : ""
+          }
+        </div>
+        <div style="font-size:0.95rem;color:#ffffff;font-weight:700;margin-top:2px;">${titles}</div>
+      `;
+      document.getElementById("bsCartTotalPrice").innerHTML = isFull
+        ? `<del style="color:#94a3b8;font-size:0.9rem;margin-right:8px;">₩600,000</del><strong style="font-size:1.5rem;color:#f7d58b;">₩480,000</strong>`
+        : `<strong style="font-size:1.5rem;color:#f7d58b;">${formatKrw(finalTotalKrw)}</strong>`;
+    }
   }
 
   // Modal 1: Book Detail & Full Table of Contents (Kyobo Style)
@@ -743,7 +1143,19 @@
     const modal = document.getElementById("bsDetailModal");
     if (!modal) return;
 
-    document.getElementById("bsDetailModalTitle").textContent = `${book.titleKo} — 도서 상세 정보 및 전체 목차`;
+    const title = isEn ? book.titleEn : book.titleKo;
+    const subtitle = isEn ? book.subtitleEn : book.subtitleKo;
+    const badge = isEn ? book.badgeEn : book.badgeKo;
+    const author = isEn ? book.authorEn : book.authorKo;
+    const publisher = isEn ? book.publisherEn : book.publisherKo;
+    const introHtml = isEn ? book.introEn : book.introKo;
+    const prefaceHtml = isEn ? book.prefaceEn : book.prefaceKo;
+    const tocList = isEn ? book.tocEn : book.tocKo;
+    const priceDisplay = formatPrice(book.priceKrw, book.priceUsd);
+
+    document.getElementById("bsDetailModalTitle").textContent = isEn
+      ? `${title} — Book Details & Full Table of Contents`
+      : `${title} — 도서 상세 정보 및 전체 목차`;
 
     function renderTab(tab) {
       const body = document.getElementById("bsDetailModalBody");
@@ -754,23 +1166,27 @@
       if (tab === "intro") {
         body.innerHTML = `
           <div style="display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:start;">
-            <img src="${book.cover}" alt="${book.titleKo}" style="width:100%;border-radius:12px;border:1px solid rgba(212,163,89,0.45);">
+            <img src="${book.cover}" alt="${title}" style="width:100%;border-radius:12px;border:1px solid rgba(212,163,89,0.45);">
             <div>
-              <span class="bs-tag gold">${book.badgeKo}</span>
-              <h3 style="margin:10px 0 6px;font-size:1.45rem;color:#ffffff;">${book.titleKo}</h3>
-              <p style="margin:0 0 12px;color:#7dd3fc;font-weight:600;">${book.subtitleKo}</p>
+              <span class="bs-tag gold">${badge}</span>
+              <h3 style="margin:10px 0 6px;font-size:1.45rem;color:#ffffff;">${title}</h3>
+              <p style="margin:0 0 12px;color:#7dd3fc;font-weight:600;">${subtitle}</p>
               <div style="font-size:0.88rem;color:#94a3b8;margin-bottom:16px;">
-                저자: <strong style="color:#fff;">${book.authorKo}</strong> | 출판사: ${book.publisherKo} | 발행일: ${book.pubDate} | 분량: ${book.pages}쪽 (${book.sizeMb}) | 정가: <strong style="color:#f7d58b;">${formatKrw(book.priceKrw)}</strong>
+                ${
+                  isEn
+                    ? `<strong style="color:#fff;">${author}</strong> | Publisher: ${publisher} | Date: ${book.pubDate} | Length: ${book.pages}p (${book.sizeMb}) | Price: <strong style="color:#f7d58b;">${priceDisplay}</strong>`
+                    : `저자: <strong style="color:#fff;">${author}</strong> | 출판사: ${publisher} | 발행일: ${book.pubDate} | 분량: ${book.pages}쪽 (${book.sizeMb}) | 정가: <strong style="color:#f7d58b;">${priceDisplay}</strong>`
+                }
               </div>
               <div style="color:#e2e8f0;font-size:0.96rem;line-height:1.8;">
-                ${book.introKo}
+                ${introHtml}
               </div>
               <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
                 <button type="button" class="bs-btn-buy-now" style="width:auto;padding:12px 24px;" data-buy-single="${book.slug}">
-                  <i class="ri-flashlight-fill"></i> 이 책 바로구매 (${formatKrw(book.priceKrw)})
+                  <i class="ri-flashlight-fill"></i> ${isEn ? `Buy This E-Book (${priceDisplay})` : `이 책 바로구매 (${priceDisplay})`}
                 </button>
                 <button type="button" class="bs-preview-trigger-btn" style="width:auto;padding:12px 20px;" data-open-preview="${book.slug}">
-                  <i class="ri-book-read-line"></i> 본문 미리보기 (5쪽)
+                  <i class="ri-book-read-line"></i> ${isEn ? "Sample Preview (5 Pages)" : "본문 미리보기 (5쪽)"}
                 </button>
               </div>
             </div>
@@ -779,15 +1195,15 @@
       } else if (tab === "preface") {
         body.innerHTML = `
           <div style="background:#070e1c;border:1px solid rgba(212,163,89,0.35);border-radius:16px;padding:26px;color:#e2e8f0;font-size:0.98rem;line-height:1.85;">
-            ${book.prefaceKo}
+            ${prefaceHtml}
           </div>
         `;
       } else if (tab === "toc") {
         body.innerHTML = `
           <div style="margin-bottom:16px;color:#cbd5e1;font-size:0.92rem;">
-            📘 <strong>${book.titleKo}</strong> (총 ${book.pages}쪽) 전체 목차 구성입니다.
+            📘 <strong>${title}</strong> (${isEn ? `${book.pages} Pages Total — Complete Table of Contents` : `총 ${book.pages}쪽 — 전체 목차 구성입니다`})
           </div>
-          ${book.tocKo
+          ${tocList
             .map(
               (section) => `
             <div class="bs-toc-chapter-card">
@@ -801,7 +1217,25 @@
             .join("")}
         `;
       } else if (tab === "author") {
-        body.innerHTML = `
+        body.innerHTML = isEn
+          ? `
+          <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;background:#070e1c;padding:24px;border-radius:16px;border:1px solid rgba(212,163,89,0.3);">
+            <img src="../images/books/dr-park-portrait.jpg" alt="Park Chang-Hyuk, Ph.D." style="width:120px;height:120px;border-radius:50%;border:3px solid #d4a359;object-fit:cover;">
+            <div style="flex:1;min-width:240px;">
+              <div style="color:#f7d58b;font-weight:800;font-size:0.85rem;">Leading Scholar in Mind-Body Healing & Integrative Alternative Medicine</div>
+              <h4 style="margin:6px 0;font-size:1.35rem;color:#ffffff;">Park Chang-Hyuk, Ph.D.</h4>
+              <p style="margin:0;color:#cbd5e1;font-size:0.92rem;line-height:1.7;">
+                • Ph.D. in Mind-Body Healing, Seoul University of Buddhism (2012)<br>
+                • M.S. in Alternative Medicine, Kyonggi University (2006) / M.P.H., Inje University (1993) / B.S. in Physical Therapy, Gwangju Health University (1982)<br>
+                • Doctoral Dissertation: <em>Effects of Ujjayi Breathing and Alpha Sound Meditation on Physical Function Indices</em><br>
+                • Master's Thesis: <em>Effects of Low-Frequency High-Intensity TENS on Plasma β-Endorphin, ACTH, Serum Cortisol, and Urinary 17-OHCS Levels</em><br>
+                • Former Full-Time Professor at Hanseo Univ. & Adjunct Professor at Kyonggi Univ.<br>
+                • Current Director of Intractable Pain Clinic at Bupyeong Jungang St. Mary's Clinic & Director of NovaCell Education Center
+              </p>
+            </div>
+          </div>
+        `
+          : `
           <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap;background:#070e1c;padding:24px;border-radius:16px;border:1px solid rgba(212,163,89,0.3);">
             <img src="../images/books/dr-park-portrait.jpg" alt="박창혁 박사" style="width:120px;height:120px;border-radius:50%;border:3px solid #d4a359;object-fit:cover;">
             <div style="flex:1;min-width:240px;">
@@ -819,7 +1253,18 @@
           </div>
         `;
       } else if (tab === "delivery") {
-        body.innerHTML = `
+        body.innerHTML = isEn
+          ? `
+          <div class="bs-toc-chapter-card">
+            <h4>⚡ Automated Order & Instant Email Delivery Guide</h4>
+            <ul>
+              <li><strong>Step 1 (Order Placement):</strong> Select your desired E-Book(s) via [Buy Now] or [Add to Cart] and enter your name, email address, phone number, and depositor name.</li>
+              <li><strong>Step 2 (Automated Payment Confirmation):</strong> Once your payment is confirmed, the automated delivery engine activates immediately.</li>
+              <li><strong>Step 3 (Automated Email & Instant Library Unlock):</strong> Your personal <strong>License Key (NVCLIC-XXXX)</strong> and <strong>direct high-resolution PDF download links</strong> are automatically emailed to you, and you can also download your PDFs anytime in the <strong>[My E-Book Library]</strong> section at the bottom of this page.</li>
+            </ul>
+          </div>
+        `
+          : `
           <div class="bs-toc-chapter-card">
             <h4>⚡ 교보문고 eBook 스타일 자동 주문 & 입금 확인 후 자동 이메일 발송 안내</h4>
             <ul>
@@ -849,12 +1294,15 @@
 
     let pageIdx = 0;
     const pages = [book.cover, ...book.previews];
+    const title = bookTitle(book);
 
     function updateView() {
-      document.getElementById("bsPreviewTitle").textContent = `📖 ${book.titleKo} — 미리보기 (${pageIdx + 1} / ${pages.length})`;
+      document.getElementById("bsPreviewTitle").textContent = isEn
+        ? `📖 ${title} — Sample Preview (${pageIdx + 1} / ${pages.length})`
+        : `📖 ${title} — 미리보기 (${pageIdx + 1} / ${pages.length})`;
       const img = document.getElementById("bsPreviewImage");
       img.src = pages[pageIdx];
-      img.alt = `${book.titleKo} 미리보기 ${pageIdx + 1}쪽`;
+      img.alt = `${title} (${pageIdx + 1}/${pages.length})`;
       document.getElementById("bsPreviewPrev").disabled = pageIdx === 0;
       document.getElementById("bsPreviewNext").disabled = pageIdx === pages.length - 1;
     }
@@ -887,24 +1335,28 @@
     if (!modal) return;
 
     const isFullBundle = checkoutSlugs.length === 6;
-    const totalAmount = isFullBundle ? 480000 : checkoutSlugs.length * 100000;
+    const totalAmountKrw = isFullBundle ? 480000 : checkoutSlugs.length * 100000;
+    const totalAmountUsd = isFullBundle ? 380 : checkoutSlugs.length * 80;
     const booksListHtml = checkoutSlugs
       .map((s) => {
         const b = getBookBySlug(s);
-        return b
-          ? `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(148,163,184,0.16);font-size:0.92rem;">
-              <span>📘 <strong>${b.titleKo}</strong> (${b.pages}쪽 · ${b.sizeMb})</span>
-              <span style="color:#f7d58b;font-weight:700;">₩100,000</span>
-            </div>`
-          : "";
+        if (!b) return "";
+        return `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(148,163,184,0.16);font-size:0.92rem;">
+            <span>📘 <strong>${bookTitle(b)}</strong> (${b.pages}p · ${b.sizeMb})</span>
+            <span style="color:#f7d58b;font-weight:700;">${formatPrice(b.priceKrw, b.priceUsd)}</span>
+          </div>`;
       })
       .join("");
 
     document.getElementById("bsCheckoutItemsList").innerHTML = `
       ${booksListHtml}
       <div style="display:flex;justify-content:space-between;align-items:center;padding-top:12px;margin-top:8px;font-size:1.08rem;">
-        <strong>총 결제 금액 (${checkoutSlugs.length}권 ${isFullBundle ? "· 전권 20% 특별할인 적용" : ""})</strong>
-        <strong style="font-size:1.45rem;color:#f7d58b;">${formatKrw(totalAmount)}</strong>
+        <strong>${
+          isEn
+            ? `Total Amount (${checkoutSlugs.length} ${checkoutSlugs.length === 1 ? "Book" : "Books"}${isFullBundle ? " · 20% Bundle Discount Applied" : ""})`
+            : `총 결제 금액 (${checkoutSlugs.length}권 ${isFullBundle ? "· 전권 20% 특별할인 적용" : ""})`
+        }</strong>
+        <strong style="font-size:1.45rem;color:#f7d58b;">${formatPrice(totalAmountKrw, totalAmountUsd)}</strong>
       </div>
     `;
 
@@ -925,7 +1377,7 @@
 
     const submitBtn = form.querySelector("button[type=submit]");
     submitBtn.disabled = true;
-    submitBtn.textContent = "자동 발송 주문 등록 중...";
+    submitBtn.textContent = isEn ? "Registering Automated Order..." : "자동 발송 주문 등록 중...";
 
     try {
       let orderObj = null;
@@ -947,9 +1399,7 @@
         if (res.ok && data.order) {
           orderObj = data.order;
         }
-      } catch (_) {
-        // Fallback local order creation if offline/static preview
-      }
+      } catch (_) {}
 
       if (!orderObj) {
         const isFullBundle = checkoutSlugs.length === 6;
@@ -963,7 +1413,7 @@
           customerPhone,
           depositorName,
           bookSlugs: [...checkoutSlugs],
-          bookTitles: checkoutSlugs.map((s) => getBookBySlug(s)?.titleKo || s).join(", "),
+          bookTitles: checkoutSlugs.map((s) => bookTitle(getBookBySlug(s)) || s).join(", "),
           amount,
           paymentMethod,
           status: "pending_deposit",
@@ -977,11 +1427,28 @@
       saveOrders(orders);
       saveCart([]);
 
-      // Show order completion & automatic delivery guide
       form.style.display = "none";
       const resultBox = document.getElementById("bsCheckoutResultBox");
       resultBox.style.display = "block";
-      resultBox.innerHTML = `
+      resultBox.innerHTML = isEn
+        ? `
+        <div style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.45);border-radius:16px;padding:24px;">
+          <div style="color:#6ee7b7;font-weight:850;font-size:0.9rem;margin-bottom:6px;">
+            <i class="ri-checkbox-circle-fill"></i> Order Registered & Automated Email Delivery Scheduled!
+          </div>
+          <h4 style="margin:0 0 12px;font-size:1.3rem;color:#ffffff;">Order ID: <span style="color:#f7d58b;">${orderObj.orderId}</span></h4>
+          <p style="margin:0 0 16px;font-size:0.94rem;color:#dbe7f6;line-height:1.7;">
+            Thank you, <strong>${orderObj.customerName}</strong>. Your order is registered in our automated system.<br>
+            As soon as payment is confirmed, your <strong>PDF E-Book download links and License Key (${orderObj.licenseKey})</strong> will be automatically sent to <strong>${orderObj.customerEmail}</strong>.
+          </p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <a href="#my-ebook-library" class="bs-btn-buy-now" style="width:auto;padding:11px 20px;text-decoration:none;" onclick="document.getElementById('bsCheckoutModal').classList.remove('open');">
+              <i class="ri-folder-download-line"></i> Check Status in My E-Book Library
+            </a>
+          </div>
+        </div>
+      `
+        : `
         <div style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.45);border-radius:16px;padding:24px;">
           <div style="color:#6ee7b7;font-weight:850;font-size:0.9rem;margin-bottom:6px;">
             <i class="ri-checkbox-circle-fill"></i> 전자책 주문 접수 및 자동 메일 발송 예약 완료!
@@ -995,7 +1462,7 @@
             • <strong>주문 도서 (${orderObj.bookSlugs.length}권):</strong> ${orderObj.bookTitles}<br>
             • <strong>결제 금액:</strong> <strong style="color:#f7d58b;">${formatKrw(orderObj.amount)}</strong><br>
             • <strong>입금자명:</strong> ${orderObj.depositorName}<br>
-            • <strong>무통장 입금 안내 및 즉시 승인 문의:</strong> 노바셀 고객지원 <strong>010-9726-7012</strong> (입금 후 문자/전화를 주시면 1분 내 원클릭 승인으로 이메일이 자동 발송됩니다.)
+            • <strong>무통장 입금 안내 및 즉시 승인 문의:</strong> 노바셀 고객지원 <strong>010-9726-7012</strong>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <a href="#my-ebook-library" class="bs-btn-buy-now" style="width:auto;padding:11px 20px;text-decoration:none;" onclick="document.getElementById('bsCheckoutModal').classList.remove('open');">
@@ -1009,7 +1476,9 @@
       renderCustomerLibrary(orderObj.customerEmail);
     } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = `<i class="ri-mail-send-line"></i> 전자책 주문 완료 및 입금확인 자동발송 등록`;
+      submitBtn.innerHTML = `<i class="ri-mail-send-line"></i> ${
+        isEn ? "Submit Order & Register Auto-Email" : "전자책 주문 완료 및 입금확인 자동발송 등록"
+      }`;
     }
   }
 
@@ -1045,7 +1514,6 @@
       resData = null;
     }
 
-    // Also if webhookUrl is configured in browser, call it directly (no-cors fallback for Google Apps Script)
     let gasSent = resData?.emailDispatched || false;
     if (!gasSent && cfg.webhookUrl && /^https:\/\/script\.google\.com\/macros\/s\//i.test(cfg.webhookUrl)) {
       try {
@@ -1055,14 +1523,14 @@
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             to: order.customerEmail,
-            subject: `[노바셀 북스토어] ${order.customerName}님, 박창혁 박사 전자책(${order.bookSlugs.length}권) 입금확인 및 PDF 다운로드 안내`,
+            subject: `[NovaCell Bookstore] ${order.customerName}, Your E-Book Download Links & License Key`,
             orderId: order.orderId,
             customerName: order.customerName,
             licenseKey: order.licenseKey,
             bookSlugs: order.bookSlugs,
             bookTitles: order.bookTitles,
             driveFolderUrl: cfg.driveFolderUrl || DEFAULT_DRIVE_FOLDER,
-            siteLibraryUrl: `${location.origin}/ko/bookstore.html?order=${encodeURIComponent(order.orderId)}&license=${encodeURIComponent(order.licenseKey)}#my-ebook-library`
+            siteLibraryUrl: `${location.origin}/${isEn ? "en" : "ko"}/bookstore.html?order=${encodeURIComponent(order.orderId)}&license=${encodeURIComponent(order.licenseKey)}#my-ebook-library`
           })
         });
         gasSent = true;
@@ -1078,10 +1546,9 @@
     renderCustomerLibrary(order.customerEmail);
 
     alert(
-      `✅ [${order.orderId}] 입금 확인 승인 완료!\n\n` +
-        `• 수신자: ${order.customerName} (${order.customerEmail})\n` +
-        `• 전용 인증키: ${order.licenseKey}\n` +
-        `• 상태: 전자책 다운로드 잠금 해제 완료 & 자동 메일 발송 신호 전송 완료!`
+      isEn
+        ? `✅ [${order.orderId}] Payment Confirmed & Auto-Email Dispatched!\n\n• Recipient: ${order.customerName} (${order.customerEmail})\n• License Key: ${order.licenseKey}`
+        : `✅ [${order.orderId}] 입금 확인 승인 완료!\n\n• 수신자: ${order.customerName} (${order.customerEmail})\n• 전용 인증키: ${order.licenseKey}\n• 상태: 전자책 다운로드 잠금 해제 완료 & 자동 메일 발송 신호 전송 완료!`
     );
   }
 
@@ -1103,7 +1570,6 @@
         (o.licenseKey && o.licenseKey.toLowerCase() === q)
     );
 
-    // Master VIP code or Admin email instant unlock for all 6 books
     const isVipUnlock =
       q === "kbrain2024@gmail.com" ||
       q === "emotionbrain@naver.com" ||
@@ -1114,19 +1580,24 @@
       out.innerHTML = `
         <div style="margin-top:22px;background:#071224;border:1px solid #10b981;border-radius:16px;padding:24px;">
           <div style="color:#6ee7b7;font-weight:800;margin-bottom:10px;">
-            <i class="ri-verified-badge-fill"></i> 마스터 VIP 인증 완료 — 박창혁 박사 전자책 6권 전권 즉시 다운로드 가능
+            <i class="ri-verified-badge-fill"></i> ${
+              isEn
+                ? "Master VIP Verified — Instant Download Unlocked for All 6 E-Books"
+                : "마스터 VIP 인증 완료 — 박창혁 박사 전자책 6권 전권 즉시 다운로드 가능"
+            }
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">
             ${BOOKS.map((b) => {
               const dlUrl = (cfg.bookLinks && cfg.bookLinks[b.slug]) || cfg.driveFolderUrl || DEFAULT_DRIVE_FOLDER;
+              const shortTitle = isEn ? b.titleEn.split(" (")[0] : b.titleKo.split(" (")[0];
               return `
                 <div style="background:#0c1830;border:1px solid rgba(212,163,89,0.35);border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
                   <div>
-                    <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${b.titleKo.split(" (")[0]}</strong>
-                    <span style="color:#94a3b8;font-size:0.78rem;">${b.pages}쪽 · ${b.sizeMb}</span>
+                    <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${shortTitle}</strong>
+                    <span style="color:#94a3b8;font-size:0.78rem;">${b.pages}p · ${b.sizeMb}</span>
                   </div>
                   <a href="${dlUrl}" target="_blank" rel="noopener noreferrer" class="bs-toc-pill-btn" style="text-decoration:none;background:#d4a359;color:#081120;white-space:nowrap;">
-                    <i class="ri-download-2-line"></i> PDF 다운로드
+                    <i class="ri-download-2-line"></i> ${isEn ? "Download PDF" : "PDF 다운로드"}
                   </a>
                 </div>
               `;
@@ -1140,7 +1611,11 @@
     if (localOrders.length === 0) {
       out.innerHTML = `
         <div style="margin-top:20px;padding:20px;background:#081120;border:1px solid rgba(148,163,184,0.25);border-radius:12px;color:#cbd5e1;">
-          입력하신 정보(<strong>${q}</strong>)로 조회된 주문 내역이 없습니다. 주문 시 입력한 이메일 주소 또는 라이선스 인증키(NVCLIC-...)를 확인해 주세요.
+          ${
+            isEn
+              ? `No order found for <strong>${q}</strong>. Please check the email address or License Key (NVCLIC-...) used during checkout.`
+              : `입력하신 정보(<strong>${q}</strong>)로 조회된 주문 내역이 없습니다. 주문 시 입력한 이메일 주소 또는 라이선스 인증키(NVCLIC-...)를 확인해 주세요.`
+          }
         </div>
       `;
       return;
@@ -1156,11 +1631,23 @@
         };border-radius:16px;padding:22px;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
             <div>
-              <span style="font-size:0.82rem;color:#94a3b8;">주문번호: <strong>${o.orderId}</strong></span>
-              <h4 style="margin:4px 0 0;color:#ffffff;font-size:1.1rem;">${o.customerName}님의 주문 도서 (${o.bookSlugs.length}권 · ${formatKrw(o.amount)})</h4>
+              <span style="font-size:0.82rem;color:#94a3b8;">${isEn ? "Order ID" : "주문번호"}: <strong>${o.orderId}</strong></span>
+              <h4 style="margin:4px 0 0;color:#ffffff;font-size:1.1rem;">${
+                isEn
+                  ? `${o.customerName}'s Ordered Books (${o.bookSlugs.length})`
+                  : `${o.customerName}님의 주문 도서 (${o.bookSlugs.length}권 · ${formatKrw(o.amount)})`
+              }</h4>
             </div>
             <span class="bs-tag ${isPaid ? "emerald" : "gold"}">
-              ${isPaid ? "✅ 입금 확인 완료 · 다운로드 가능" : "⏳ 입금 확인 대기 중 (확인 즉시 자동 열림)"}
+              ${
+                isPaid
+                  ? isEn
+                    ? "✅ Payment Confirmed · Ready to Download"
+                    : "✅ 입금 확인 완료 · 다운로드 가능"
+                  : isEn
+                  ? "⏳ Awaiting Payment Confirmation"
+                  : "⏳ 입금 확인 대기 중 (확인 즉시 자동 열림)"
+              }
             </span>
           </div>
           ${
@@ -1170,14 +1657,15 @@
                     .map((slug) => {
                       const b = getBookBySlug(slug);
                       const dlUrl = (cfg.bookLinks && cfg.bookLinks[slug]) || cfg.driveFolderUrl || DEFAULT_DRIVE_FOLDER;
+                      const shortTitle = b ? (isEn ? b.titleEn.split(" (")[0] : b.titleKo.split(" (")[0]) : slug;
                       return `
                         <div style="background:#0d1a33;border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;">
                           <div>
-                            <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${b ? b.titleKo.split(" (")[0] : slug}</strong>
-                            <span style="color:#94a3b8;font-size:0.78rem;">${b ? `${b.pages}쪽 · ${b.sizeMb}` : "PDF"}</span>
+                            <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${shortTitle}</strong>
+                            <span style="color:#94a3b8;font-size:0.78rem;">${b ? `${b.pages}p · ${b.sizeMb}` : "PDF"}</span>
                           </div>
                           <a href="${dlUrl}" target="_blank" rel="noopener noreferrer" class="bs-toc-pill-btn" style="text-decoration:none;background:#10b981;color:#04131a;border-color:#10b981;">
-                            <i class="ri-download-cloud-2-line"></i> PDF 받기
+                            <i class="ri-download-cloud-2-line"></i> ${isEn ? "Download PDF" : "PDF 받기"}
                           </a>
                         </div>
                       `;
@@ -1185,7 +1673,11 @@
                     .join("")}
                 </div>`
               : `<p style="margin:8px 0 0;font-size:0.9rem;color:#cbd5e1;">
-                  입금 확인이 완료되면 본 화면의 다운로드 버튼이 즉시 활성화되며, <strong>${o.customerEmail}</strong>로도 PDF 링크가 자동 발송됩니다.
+                  ${
+                    isEn
+                      ? `Once payment is confirmed, download buttons will unlock automatically here and links will be emailed to <strong>${o.customerEmail}</strong>.`
+                      : `입금 확인이 완료되면 본 화면의 다운로드 버튼이 즉시 활성화되며, <strong>${o.customerEmail}</strong>로도 PDF 링크가 자동 발송됩니다.`
+                  }
                 </p>`
           }
         </div>
@@ -1200,7 +1692,9 @@
     if (!tbody) return;
     const orders = getOrders();
     if (orders.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="6" style="padding:24px;text-align:center;color:#94a3b8;">아직 접수된 전자책 주문이 없습니다.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="6" style="padding:24px;text-align:center;color:#94a3b8;">${
+        isEn ? "No E-Book orders have been placed yet." : "아직 접수된 전자책 주문이 없습니다."
+      }</td></tr>`;
       return;
     }
     tbody.innerHTML = orders
@@ -1210,24 +1704,32 @@
         <tr style="border-bottom:1px solid rgba(148,163,184,0.16);">
           <td style="padding:12px;font-size:0.82rem;color:#cbd5e1;">
             <strong>${o.orderId}</strong><br>
-            <span style="color:#94a3b8;">${new Date(o.createdAt).toLocaleString("ko-KR")}</span>
+            <span style="color:#94a3b8;">${new Date(o.createdAt).toLocaleString(isEn ? "en-US" : "ko-KR")}</span>
           </td>
           <td style="padding:12px;font-size:0.88rem;">
-            <strong style="color:#fff;">${o.customerName}</strong> (입금자: ${o.depositorName})<br>
+            <strong style="color:#fff;">${o.customerName}</strong> (${o.depositorName})<br>
             <span style="color:#7dd3fc;">${o.customerEmail}</span> · ${o.customerPhone}
           </td>
           <td style="padding:12px;font-size:0.85rem;color:#dbe7f6;">${o.bookTitles}</td>
           <td style="padding:12px;font-weight:800;color:#f7d58b;white-space:nowrap;">${formatKrw(o.amount)}</td>
           <td style="padding:12px;">
             <span class="bs-tag ${isPaid ? "emerald" : "gold"}">
-              ${isPaid ? "입금확인·발송완료" : "입금대기"}
+              ${isPaid ? (isEn ? "Paid & Sent" : "입금확인·발송완료") : isEn ? "Pending" : "입금대기"}
             </span>
           </td>
           <td style="padding:12px;white-space:nowrap;">
             <button type="button" class="bs-toc-pill-btn" style="background:${
               isPaid ? "rgba(56,189,248,0.2)" : "linear-gradient(135deg,#10b981,#059669)"
             };color:${isPaid ? "#7dd3fc" : "#04131a"};border:none;padding:8px 14px;" data-confirm-order="${o.orderId}">
-              <i class="ri-mail-send-fill"></i> ${isPaid ? "메일 재발송" : "입금확인 승인 & 자동메일 발송"}
+              <i class="ri-mail-send-fill"></i> ${
+                isPaid
+                  ? isEn
+                    ? "Resend Email"
+                    : "메일 재발송"
+                  : isEn
+                  ? "Confirm Payment & Auto-Send Email"
+                  : "입금확인 승인 & 자동메일 발송"
+              }
             </button>
           </td>
         </tr>
@@ -1242,7 +1744,6 @@
     renderFloatingCart();
     renderAdminOrdersTable();
 
-    // Category filter buttons
     document.querySelectorAll("[data-bs-cat]").forEach((btn) => {
       btn.addEventListener("click", () => {
         document.querySelectorAll("[data-bs-cat]").forEach((b) => b.classList.remove("active"));
@@ -1252,7 +1753,6 @@
       });
     });
 
-    // Search input
     const searchInput = document.getElementById("bsSearchInput");
     if (searchInput) {
       searchInput.addEventListener("input", () => {
@@ -1261,7 +1761,6 @@
       });
     }
 
-    // Delegated clicks for cards & modals
     document.addEventListener("click", (e) => {
       const previewBtn = e.target.closest("[data-open-preview]");
       if (previewBtn) {
@@ -1318,26 +1817,22 @@
       }
     });
 
-    // Close modal on backdrop click
     document.querySelectorAll(".bs-modal-backdrop").forEach((backdrop) => {
       backdrop.addEventListener("click", (e) => {
         if (e.target === backdrop) backdrop.classList.remove("open");
       });
     });
 
-    // Checkout form submit
     const checkoutForm = document.getElementById("bsCheckoutForm");
     if (checkoutForm) {
       checkoutForm.addEventListener("submit", handleOrderSubmit);
     }
 
-    // Floating Cart Checkout button
     const cartCheckoutBtn = document.getElementById("bsCartCheckoutBtn");
     if (cartCheckoutBtn) {
       cartCheckoutBtn.addEventListener("click", () => openCheckoutModal(getCart()));
     }
 
-    // Library Lookup form
     const lookupForm = document.getElementById("bsLookupForm");
     if (lookupForm) {
       lookupForm.addEventListener("submit", (e) => {
@@ -1347,7 +1842,6 @@
       });
     }
 
-    // Admin Automation Config save
     const adminCfgForm = document.getElementById("bsAdminCfgForm");
     if (adminCfgForm) {
       const cfg = getAdminCfg();
@@ -1359,11 +1853,14 @@
           webhookUrl: adminCfgForm.webhookUrl.value.trim(),
           driveFolderUrl: adminCfgForm.driveFolderUrl.value.trim() || DEFAULT_DRIVE_FOLDER
         });
-        alert("✅ 전자책 자동 메일 발송 웹훅 및 구글 드라이브 연동 설정이 저장되었습니다.");
+        alert(
+          isEn
+            ? "✅ Auto-Mailer Webhook & Google Drive settings saved."
+            : "✅ 전자책 자동 메일 발송 웹훅 및 구글 드라이브 연동 설정이 저장되었습니다."
+        );
       });
     }
 
-    // Open book from URL query parameter (?book=novacell-therapy or ?license=...)
     const params = new URLSearchParams(location.search);
     const bookParam = params.get("book");
     const tabParam = params.get("tab") || "intro";
