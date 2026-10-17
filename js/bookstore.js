@@ -22,7 +22,7 @@
       subtitleKo: "내 몸의 방전된 배터리를 충전하는 기적의 세포 재생법",
       subtitleEn: "The Miraculous Cellular Regeneration Method to Recharge Your Body's Depleted Battery",
       authorKo: "박창혁 박사 저",
-      authorEn: "By Dr. Park Chang-Hyuk, Ph.D.",
+      authorEn: "By Park Chang-Hyuk, Ph.D.",
       publisherKo: "노바셀 교육 센터",
       publisherEn: "NovaCell Education Center",
       pubDate: "2026.07.07",
@@ -126,7 +126,7 @@
       subtitleKo: "수천 명의 삶을 바꾼 기적의 의식 성장 & 내면 정화 프로그램",
       subtitleEn: "The Miraculous Consciousness & Inner Purification Program That Transformed Thousands of Lives",
       authorKo: "박창혁 박사 저",
-      authorEn: "By Dr. Park Chang-Hyuk, Ph.D.",
+      authorEn: "By Park Chang-Hyuk, Ph.D.",
       publisherKo: "노바셀 교육 센터",
       publisherEn: "NovaCell Education Center",
       pubDate: "2026.07.07",
@@ -214,7 +214,7 @@
       subtitleKo: "손과 발의 자극은 신경계를 통해 뇌가 신호를 해석하여 치유한다",
       subtitleEn: "Hand and Foot Stimulation Activates Neural Pathways Decoded by the Brain for Systemic Healing",
       authorKo: "박창혁 박사 저",
-      authorEn: "By Dr. Park Chang-Hyuk, Ph.D.",
+      authorEn: "By Park Chang-Hyuk, Ph.D.",
       publisherKo: "노바셀 교육 센터",
       publisherEn: "NovaCell Education Center",
       pubDate: "2026.07.07",
@@ -297,7 +297,7 @@
       subtitleKo: "통증의 덫에서 벗어나는 치유의 열쇠 — 근육과 관절의 밸런스를 회복하면 낫지 않는 통증은 없다!",
       subtitleEn: "The Key to Escaping the Pain Trap — Restore Muscle and Joint Balance to Eliminate Chronic Pain",
       authorKo: "박창혁 박사 저",
-      authorEn: "By Dr. Park Chang-Hyuk, Ph.D.",
+      authorEn: "By Park Chang-Hyuk, Ph.D.",
       publisherKo: "노바셀 교육 센터",
       publisherEn: "NovaCell Education Center",
       pubDate: "2026.07.07",
@@ -382,7 +382,7 @@
       subtitleKo: "세포 전압의 숨겨진 치유력 — pH 균형 회복, 전압치유, 압전효과의 원리를 이해하면 낫지 않는 병은 없습니다",
       subtitleEn: "Restore pH Balance, Cellular Voltage, and Piezoelectricity to Awaken Natural Healing",
       authorKo: "박창혁 박사 저",
-      authorEn: "By Dr. Park Chang-Hyuk, Ph.D.",
+      authorEn: "By Park Chang-Hyuk, Ph.D.",
       publisherKo: "노바셀 교육 센터",
       publisherEn: "NovaCell Education Center",
       pubDate: "2026.03.03",
@@ -459,7 +459,7 @@
       subtitleKo: "수천 명의 삶을 바꾼 기적의 치유 프로그램 — 13대 통합의학 원리와 40대 주요 질환별 실전 치유 지침서",
       subtitleEn: "13 Integrative Medical Paradigms & Practical Energy Healing Protocols for 40 Major Conditions",
       authorKo: "박창혁 박사 저",
-      authorEn: "By Dr. Park Chang-Hyuk, Ph.D.",
+      authorEn: "By Park Chang-Hyuk, Ph.D.",
       publisherKo: "노바셀 교육 센터",
       publisherEn: "NovaCell Education Center",
       pubDate: "2026.07.07",
@@ -806,7 +806,7 @@
             <img src="../images/books/dr-park-portrait.jpg" alt="박창혁 박사" style="width:120px;height:120px;border-radius:50%;border:3px solid #d4a359;object-fit:cover;">
             <div style="flex:1;min-width:240px;">
               <div style="color:#f7d58b;font-weight:800;font-size:0.85rem;">대한민국의 심신치유 및 대체의학을 선도하는 석학</div>
-              <h4 style="margin:6px 0;font-size:1.35rem;color:#ffffff;">박창혁 박사 (Dr. Park Chang-Hyuk, Ph.D.)</h4>
+              <h4 style="margin:6px 0;font-size:1.35rem;color:#ffffff;">박창혁 박사 (Park Chang-Hyuk, Ph.D.)</h4>
               <p style="margin:0;color:#cbd5e1;font-size:0.92rem;line-height:1.7;">
                 • 서울불교대학원대학교 심신치유학 박사 (Ph.D., 2012)<br>
                 • 경기대학교 대체의학대학원 대체의학 석사 (2006) / 인제대학교 보건대학원 보건학 석사 (1993) / 광주보건대 물리치료학 학사 (1982)<br>
