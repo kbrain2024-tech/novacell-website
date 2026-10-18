@@ -151,14 +151,11 @@
         <button type="button" class="bs-cat-btn" data-bs-cat="mind">의식 · 명상 · 내면 정화 (1권)</button>
       </div>
 
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:1 1 260px;justify-content:flex-end;">
         <div class="bs-search-box">
           <i class="ri-search-line" style="color:#d4a359;"></i>
           <input type="search" id="bsSearchInput" placeholder="도서명, 목차 키워드, 질환명 검색...">
         </div>
-        <button type="button" class="bs-toc-pill-btn" onclick="document.getElementById('bsAdminModal').classList.add('open');" style="padding:9px 14px;">
-          <i class="ri-settings-4-line"></i> 자동발송 관리센터
-        </button>
       </div>
     </div>
   </div>
@@ -196,7 +193,7 @@
       <div class="bs-author-full-grid">
         <!-- Left Author Card -->
         <div class="bs-author-profile-card">
-          <img src="../images/books/dr-park-portrait.jpg" alt="박창혁 박사 (Dr. Park Chang-hyuk)">
+          <img src="../images/books/dr-park-portrait.jpg" alt="박창혁 박사 (Park Chang-Hyuk, Ph.D.)">
           <div style="color:#f7d58b;font-size:0.82rem;font-weight:800;letter-spacing:0.05em;">심신치유학 박사 (Ph.D.) · 대체의학 석사 · 보건학 석사</div>
           <h3 style="margin:6px 0 4px;font-size:1.55rem;color:#ffffff;">박창혁 박사</h3>
           <div style="color:#7dd3fc;font-size:0.92rem;font-weight:600;margin-bottom:16px;">Park Chang-Hyuk, Ph.D.</div>
@@ -282,12 +279,9 @@
             </h2>
             <p style="margin:0;color:#cbd5e1;font-size:0.95rem;line-height:1.7;">
               일일이 수동으로 메일을 기다릴 필요 없이, 입금이 확인되면 <strong>자동화 시스템이 고객님의 이메일로 PDF 다운로드 링크와 인증키를 즉시 전송</strong>합니다.<br>
-              아래에 <strong>주문 시 입력한 이메일 주소</strong> 또는 <strong>라이선스 인증키(NVCLIC-...)</strong>를 입력하시면 웹페이지에서도 즉시 PDF를 다운로드하실 수 있습니다.
+              아래에 <strong>주문 시 입력한 이메일 주소</strong> 또는 <strong>라이선스 인증키(NVCLIC-...)</strong>를 입력하시면 주문 상태 조회 및 즉시 PDF 다운로드가 가능합니다.
             </p>
           </div>
-          <button type="button" class="bs-toc-pill-btn" onclick="document.getElementById('bsAdminModal').classList.add('open');" style="padding:10px 16px;">
-            <i class="ri-shield-keyhole-line"></i> 관리자 입금승인 & 자동발송 대시보드 열기
-          </button>
         </div>
 
         <!-- 3-Step Automation Flow Cards -->
@@ -302,12 +296,12 @@
           </div>
           <div style="background:#060c18;border:1px solid rgba(16,185,129,0.28);border-radius:12px;padding:16px;">
             <strong style="color:#6ee7b7;font-size:0.86rem;">STEP 03 · 이메일 자동 전송 & 서재 열람</strong>
-            <p style="margin:6px 0 0;font-size:0.84rem;color:#94a3b8;">이메일 수신함으로 PDF 직링크가 도착하며, 아래 검색창에서도 바로 다운로드됩니다.</p>
+            <p style="margin:6px 0 0;font-size:0.84rem;color:#94a3b8;">이메일 수신함으로 PDF 직링크가 도착하며, 아래 검색창에 인증키 입력 시 즉시 다운로드됩니다.</p>
           </div>
         </div>
 
         <form class="bs-lookup-form" id="bsLookupForm">
-          <input type="text" id="bsLookupInput" placeholder="주문하신 이메일 주소 (예: user@naver.com) 또는 인증키 (NVCLIC-...) 입력" required>
+          <input type="text" id="bsLookupInput" placeholder="라이선스 인증키 (NVCLIC-...) 또는 주문 이메일 입력" required>
           <button type="submit" class="bs-btn-buy-now" style="width:auto;padding:0 28px;">
             <i class="ri-search-eye-line"></i> 내 구매 도서 조회 및 PDF 다운로드
           </button>
@@ -379,20 +373,23 @@
         <div id="bsCheckoutItemsList" style="background:#070e1c;border:1px solid rgba(212,163,89,0.32);border-radius:14px;padding:18px;margin-bottom:20px;"></div>
 
         <form id="bsCheckoutForm" style="display:flex;flex-direction:column;gap:14px;">
+          <!-- Anti-Spam Honeypot (invisible to humans) -->
+          <input type="text" name="website_hp" tabindex="-1" autocomplete="off" class="form-honeypot" aria-hidden="true">
+
           <div class="bs-form-row-2">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               주문자 성명 *
-              <input type="text" name="customerName" required placeholder="홍길동" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
+              <input type="text" name="customerName" required maxlength="60" placeholder="홍길동" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               연락처 (입금확인 알림용) *
-              <input type="tel" name="customerPhone" required placeholder="010-0000-0000" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
+              <input type="tel" name="customerPhone" required maxlength="40" placeholder="010-0000-0000" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
           </div>
 
           <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
             전자책(PDF)을 자동 수신할 이메일 주소 *
-            <input type="email" name="customerEmail" required placeholder="example@naver.com (입금 확인 즉시 이 메일로 PDF가 발송됩니다)" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(56,189,248,0.5);color:#fff;">
+            <input type="email" name="customerEmail" required maxlength="120" placeholder="example@naver.com (입금 확인 즉시 이 메일로 PDF가 발송됩니다)" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(56,189,248,0.5);color:#fff;">
           </label>
 
           <div class="bs-form-row-2">
@@ -405,7 +402,7 @@
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               입금자명 (무통장 입금 시)
-              <input type="text" name="depositorName" placeholder="주문자 성명과 동일 시 비워두세요" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
+              <input type="text" name="depositorName" maxlength="60" placeholder="주문자 성명과 동일 시 비워두세요" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
           </div>
 
@@ -419,21 +416,43 @@
     </div>
   </div>
 
-  <!-- MODAL 4: Admin Deposit Confirmation & Automated Email Dispatch Center -->
+  <!-- MODAL 4: Admin Security Password Gate Modal -->
+  <div class="bs-modal-backdrop" id="bsAdminAuthModal" role="dialog" aria-modal="true">
+    <div class="bs-modal-dialog" style="max-width:440px;">
+      <div class="bs-modal-header">
+        <h3><i class="ri-shield-keyhole-fill" style="color:#d4a359;"></i> 관리자 보안 인증</h3>
+        <button type="button" class="bs-modal-close" data-close-bs-modal aria-label="닫기">&times;</button>
+      </div>
+      <div class="bs-modal-body">
+        <p style="margin:0 0 14px;font-size:0.9rem;color:#cbd5e1;line-height:1.6;">
+          전자책 입금 승인 및 자동 발송 관리 센터는 <strong>관리자 전용 보안 구역</strong>입니다. 관리자 비밀번호를 입력해 주세요.
+        </p>
+        <form id="bsAdminAuthForm" style="display:flex;flex-direction:column;gap:12px;">
+          <input type="password" id="bsAdminPasswordInput" required autocomplete="current-password" placeholder="관리자 비밀번호 입력" style="padding:13px 16px;border-radius:10px;background:#060c18;border:1px solid rgba(212,163,89,0.5);color:#fff;font-size:0.98rem;">
+          <div id="bsAdminAuthError" style="display:none;color:#f87171;font-size:0.84rem;font-weight:700;"></div>
+          <button type="submit" class="bs-btn-buy-now">
+            <i class="ri-lock-unlock-line"></i> 보안 인증 및 관리 센터 열기
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5: Admin Deposit Confirmation & Automated Email Dispatch Center (Protected) -->
   <div class="bs-modal-backdrop" id="bsAdminModal" role="dialog" aria-modal="true">
     <div class="bs-modal-dialog" style="max-width:1040px;">
       <div class="bs-modal-header">
-        <h3><i class="ri-robot-2-line" style="color:#10b981;"></i> 전자책 주문 입금확인 & 자동 메일 발송 관리 센터</h3>
+        <h3><i class="ri-robot-2-line" style="color:#10b981;"></i> 전자책 주문 입금확인 & 자동 메일 발송 관리 센터 (보안 잠금 해제됨)</h3>
         <button type="button" class="bs-modal-close" data-close-bs-modal aria-label="닫기">&times;</button>
       </div>
       <div class="bs-modal-body">
         <div style="background:#071224;border:1px solid rgba(16,185,129,0.4);border-radius:14px;padding:18px;margin-bottom:20px;">
           <h4 style="margin:0 0 8px;color:#6ee7b7;font-size:1.02rem;">
-            💡 박창혁 박사님을 위한 ‘무수동(Zero-Manual) 전자책 자동 발송’ 작동 원리
+            🔒 박창혁 박사님 전용 ‘무수동(Zero-Manual) 전자책 자동 발송’ 보안 대시보드
           </h4>
           <p style="margin:0;font-size:0.88rem;color:#cbd5e1;line-height:1.7;">
-            1) 대용량 PDF(최대 114MB)를 일일이 메일에 첨부하실 필요가 없습니다. 구글 드라이브 전자책 폴더(<code>https://drive.google.com/drive/folders/1eRvos4uPAccEP8RVwCtDaFzu5jhIZ8_0</code>)와 연동되어 있습니다.<br>
-            2) 아래 주문 목록에서 <strong>[입금확인 승인 & 자동메일 발송]</strong> 버튼만 누르면, 고객 이메일로 <strong>HTML 전자책 다운로드 안내장과 라이선스 키</strong>가 자동 발송되며 홈페이지 서재에서도 즉시 다운로드 잠금이 해제됩니다.
+            1) 전자책 원본 보관소 링크는 암호화되어 일반 방문자나 소스 코드(F12)에 절대 노출되지 않습니다.<br>
+            2) 아래 주문 목록에서 <strong>[입금확인 승인 & 자동메일 발송]</strong> 버튼만 누르면, 고객 이메일로 <strong>HTML 전자책 다운로드 안내장과 전용 라이선스 키(NVCLIC)</strong>가 자동 발송됩니다.
           </p>
         </div>
 
@@ -456,16 +475,20 @@
 
         <details style="background:#070e1c;border:1px solid rgba(212,163,89,0.3);border-radius:12px;padding:16px;">
           <summary style="cursor:pointer;font-weight:800;color:#f7d58b;">
-            ⚙️ 지메일(Gmail) 100% 자동 메일 발송 웹훅(Google Apps Script) 연동 설정 (선택 사항)
+            ⚙️ 자동 메일 발송 웹훅(Google Apps Script) & 관리자 비밀번호 변경 설정
           </summary>
           <form id="bsAdminCfgForm" style="margin-top:14px;display:flex;flex-direction:column;gap:12px;">
             <label style="font-size:0.85rem;color:#cbd5e1;">
-              구글 드라이브 전자책 폴더 URL (기본 연결 완료)
-              <input type="url" name="driveFolderUrl" value="https://drive.google.com/drive/folders/1eRvos4uPAccEP8RVwCtDaFzu5jhIZ8_0" style="width:100%;padding:10px;margin-top:4px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.3);color:#fff;">
+              암호화된 전자책 보관소(구글 드라이브 폴더) URL (관리자 인증 시 자동 복호화됨)
+              <input type="url" name="driveFolderUrl" value="" style="width:100%;padding:10px;margin-top:4px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.3);color:#fff;">
             </label>
             <label style="font-size:0.85rem;color:#cbd5e1;">
               Google Apps Script 자동 메일 발송 웹앱 URL (입력 시 입금승인과 동시에 대표님 지메일에서 고객에게 자동 발송)
               <input type="url" name="webhookUrl" placeholder="https://script.google.com/macros/s/.../exec" style="width:100%;padding:10px;margin-top:4px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.3);color:#fff;">
+            </label>
+            <label style="font-size:0.85rem;color:#cbd5e1;">
+              새로운 관리자 비밀번호 변경 (변경 시에만 입력, 비워두면 현재 비밀번호 유지)
+              <input type="password" name="newAdminPassword" autocomplete="new-password" placeholder="새 관리자 비밀번호 입력 (8자 이상 권장)" style="width:100%;padding:10px;margin-top:4px;border-radius:8px;background:#060c18;border:1px solid rgba(56,189,248,0.4);color:#fff;">
             </label>
             <div style="background:#040811;padding:12px;border-radius:8px;font-size:0.78rem;color:#94a3b8;font-family:monospace;white-space:pre-wrap;">// [script.google.com] 새 프로젝트에 아래 10줄만 붙여넣고 [배포 -> 웹앱]으로 배포하면 평생 무료로 지메일이 자동 발송됩니다!
 function doPost(e) {
@@ -476,7 +499,7 @@ function doPost(e) {
   });
   return ContentService.createTextOutput(JSON.stringify({ok:true})).setMimeType(ContentService.MimeType.JSON);
 }</div>
-            <button type="submit" class="bs-toc-pill-btn" style="align-self:flex-start;padding:10px 20px;background:#d4a359;color:#081120;">설정 저장하기</button>
+            <button type="submit" class="bs-toc-pill-btn" style="align-self:flex-start;padding:10px 20px;background:#d4a359;color:#081120;">보안 및 발송 설정 저장하기</button>
           </form>
         </details>
       </div>
@@ -486,8 +509,11 @@ function doPost(e) {
   <!-- Footer -->
   <footer class="footer-main">
     <div class="container">
-      <div class="footer-bottom" style="padding:28px 0;text-align:center;color:#94a3b8;font-size:0.88rem;">
-        <p>© 2026 NovaCell Therapy & 노바셀 교육 센터 (저자: 박창혁 박사). All Rights Reserved. | 고객지원: 010-9726-7012 · emotionbrain@naver.com</p>
+      <div class="footer-bottom" style="padding:28px 0;text-align:center;color:#94a3b8;font-size:0.88rem;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;">
+        <p style="margin:0;">© 2026 NovaCell Therapy & 노바셀 교육 센터 (저자: 박창혁 박사). All Rights Reserved. | 고객지원: 010-9726-7012 · emotionbrain@naver.com</p>
+        <button type="button" data-open-bs-admin="true" style="background:transparent;border:1px solid rgba(148,163,184,0.22);color:#64748b;font-size:0.75rem;padding:3px 9px;border-radius:6px;cursor:pointer;" title="관리자 전용 보안 로그인 (단축키: Ctrl+Shift+A)">
+          <i class="ri-lock-2-line"></i> 관리자
+        </button>
       </div>
     </div>
   </footer>

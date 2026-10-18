@@ -147,14 +147,11 @@
         <button type="button" class="bs-cat-btn" data-bs-cat="mind">Consciousness & Meditation (1)</button>
       </div>
 
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:1 1 260px;justify-content:flex-end;">
         <div class="bs-search-box">
           <i class="ri-search-line" style="color:#d4a359;"></i>
           <input type="search" id="bsSearchInput" placeholder="Search title, TOC, condition...">
         </div>
-        <button type="button" class="bs-toc-pill-btn" onclick="document.getElementById('bsAdminModal').classList.add('open');" style="padding:9px 14px;">
-          <i class="ri-settings-4-line"></i> Auto-Mailer Admin
-        </button>
       </div>
     </div>
   </div>
@@ -255,7 +252,7 @@
           Once your payment is confirmed, our automated system immediately dispatches your E-Book PDF download links and License Key (<code>NVCLIC-...</code>) to your email, and unlocks direct downloads below.
         </p>
         <form class="bs-lookup-form" id="bsLookupForm">
-          <input type="text" id="bsLookupInput" placeholder="Enter your Order Email or License Key (NVCLIC-...)" required>
+          <input type="text" id="bsLookupInput" placeholder="Enter your License Key (NVCLIC-...) or Order Email" required>
           <button type="submit" class="bs-btn-buy-now" style="width:auto;padding:0 28px;">
             <i class="ri-search-eye-line"></i> Lookup & Download PDF
           </button>
@@ -318,19 +315,20 @@
       <div class="bs-modal-body">
         <div id="bsCheckoutItemsList" style="background:#070e1c;border:1px solid rgba(212,163,89,0.32);border-radius:14px;padding:18px;margin-bottom:20px;"></div>
         <form id="bsCheckoutForm" style="display:flex;flex-direction:column;gap:14px;">
+          <input type="text" name="website_hp" tabindex="-1" autocomplete="off" class="form-honeypot" aria-hidden="true">
           <div class="bs-form-row-2">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               Full Name *
-              <input type="text" name="customerName" required style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
+              <input type="text" name="customerName" required maxlength="60" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               Phone *
-              <input type="tel" name="customerPhone" required style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
+              <input type="tel" name="customerPhone" required maxlength="40" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
           </div>
           <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
             Email for Automated PDF Delivery *
-            <input type="email" name="customerEmail" required style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(56,189,248,0.5);color:#fff;">
+            <input type="email" name="customerEmail" required maxlength="120" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(56,189,248,0.5);color:#fff;">
           </label>
           <div class="bs-form-row-2">
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
@@ -342,7 +340,7 @@
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               Depositor Name
-              <input type="text" name="depositorName" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
+              <input type="text" name="depositorName" maxlength="60" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
           </div>
           <button type="submit" class="bs-btn-buy-now" style="margin-top:8px;padding:15px;">
@@ -354,10 +352,32 @@
     </div>
   </div>
 
+  <!-- Admin Security Password Gate Modal -->
+  <div class="bs-modal-backdrop" id="bsAdminAuthModal" role="dialog" aria-modal="true">
+    <div class="bs-modal-dialog" style="max-width:440px;">
+      <div class="bs-modal-header">
+        <h3><i class="ri-shield-keyhole-fill" style="color:#d4a359;"></i> Admin Security Verification</h3>
+        <button type="button" class="bs-modal-close" data-close-bs-modal>&times;</button>
+      </div>
+      <div class="bs-modal-body">
+        <p style="margin:0 0 14px;font-size:0.9rem;color:#cbd5e1;line-height:1.6;">
+          The E-Book Deposit Approval & Auto-Mailer Center is restricted to authorized administrators. Please enter the Admin Password.
+        </p>
+        <form id="bsAdminAuthForm" style="display:flex;flex-direction:column;gap:12px;">
+          <input type="password" id="bsAdminPasswordInput" required autocomplete="current-password" placeholder="Enter Admin Password" style="padding:13px 16px;border-radius:10px;background:#060c18;border:1px solid rgba(212,163,89,0.5);color:#fff;font-size:0.98rem;">
+          <div id="bsAdminAuthError" style="display:none;color:#f87171;font-size:0.84rem;font-weight:700;"></div>
+          <button type="submit" class="bs-btn-buy-now">
+            <i class="ri-lock-unlock-line"></i> Verify & Open Admin Center
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <div class="bs-modal-backdrop" id="bsAdminModal" role="dialog" aria-modal="true">
     <div class="bs-modal-dialog" style="max-width:1040px;">
       <div class="bs-modal-header">
-        <h3>Admin Deposit Confirmation & Auto-Email Center</h3>
+        <h3>Admin Deposit Confirmation & Auto-Email Center (Unlocked)</h3>
         <button type="button" class="bs-modal-close" data-close-bs-modal>&times;</button>
       </div>
       <div class="bs-modal-body">
@@ -382,8 +402,11 @@
 
   <footer class="footer-main">
     <div class="container">
-      <div class="footer-bottom" style="padding:28px 0;text-align:center;color:#94a3b8;font-size:0.88rem;">
-        <p>© 2026 NovaCell Therapy & NovaCell Education Center (Park Chang-Hyuk, Ph.D.). All Rights Reserved.</p>
+      <div class="footer-bottom" style="padding:28px 0;text-align:center;color:#94a3b8;font-size:0.88rem;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;">
+        <p style="margin:0;">© 2026 NovaCell Therapy & NovaCell Education Center (Park Chang-Hyuk, Ph.D.). All Rights Reserved.</p>
+        <button type="button" data-open-bs-admin="true" style="background:transparent;border:1px solid rgba(148,163,184,0.22);color:#64748b;font-size:0.75rem;padding:3px 9px;border-radius:6px;cursor:pointer;" title="Admin Security Login (Shortcut: Ctrl+Shift+A)">
+          <i class="ri-lock-2-line"></i> Admin
+        </button>
       </div>
     </div>
   </footer>

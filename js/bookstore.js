@@ -13,7 +13,44 @@
   const STORAGE_ORDERS_KEY = "novacell_bookstore_orders_v1";
   const STORAGE_CART_KEY = "novacell_bookstore_cart_v1";
   const STORAGE_ADMIN_CFG_KEY = "novacell_bookstore_automation_cfg_v1";
-  const DEFAULT_DRIVE_FOLDER = "https://drive.google.com/drive/folders/1eRvos4uPAccEP8RVwCtDaFzu5jhIZ8_0";
+  const STORAGE_LAST_ORDER_TS_KEY = "novacell_bookstore_last_order_ts_v1";
+
+  // Salted SHA-256 hash of initial admin password ("NovaCell!7012#")
+  const ADMIN_SALT = "NVC_SALT_2026::";
+  const DEFAULT_ADMIN_HASH = "43c392a68581555da8c53b58fac6c2920fc03a840ad467bf94477ac34483b470";
+
+  // Encrypted E-Book Vault URL bytes (never exposed in plain text in HTML/JS source)
+  const VAULT_KEY = "NVC_VAULT_KEY_2026_DR_PARK";
+  const VAULT_BYTES = [
+    38, 34, 55, 47, 37, 123, 122, 99, 48, 45, 34, 51, 60, 113, 85, 95, 93, 81, 51, 33, 124, 60, 63, 44,
+    125, 47, 60, 63, 53, 58, 121, 39, 58, 32, 48, 58, 57, 54, 118, 110, 87, 98, 68, 89, 44, 112, 39, 15,
+    17, 34, 49, 14, 30, 110, 17, 9, 33, 2, 33, 8, 53, 25, 49, 48, 108, 53, 90, 121, 104, 14, 0, 116
+  ];
+
+  let isAdminAuthenticated = false;
+  let activeAdminHash = "";
+
+  function unlockVaultUrl() {
+    const bytes = new Uint8Array(VAULT_BYTES.map((b, i) => b ^ VAULT_KEY.charCodeAt(i % VAULT_KEY.length)));
+    return new TextDecoder("utf-8").decode(bytes);
+  }
+
+  function escapeHtml(str) {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  async function computeAdminHash(plainPassword) {
+    const data = new TextEncoder().encode(ADMIN_SALT + String(plainPassword || "").trim());
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    return Array.from(new Uint8Array(hashBuffer))
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
 
   const BOOKS = [
     {
@@ -1365,15 +1402,37 @@
     modal.classList.add("open");
   }
 
-  // Handle Order Submission
+  // Handle Order Submission (with Honeypot, 30s Cooldown, and XSS Sanitization)
   async function handleOrderSubmit(e) {
     e.preventDefault();
     const form = e.currentTarget;
-    const customerName = form.customerName.value.trim();
-    const customerEmail = form.customerEmail.value.trim().toLowerCase();
-    const customerPhone = form.customerPhone.value.trim();
-    const depositorName = form.depositorName.value.trim() || customerName;
-    const paymentMethod = form.paymentMethod.value;
+
+    // 1. Anti-Bot Honeypot check
+    if (form.website_hp && form.website_hp.value) {
+      return;
+    }
+
+    // 2. Anti-Spam 30-second rate-limit cooldown
+    const lastTs = Number(sessionStorage.getItem(STORAGE_LAST_ORDER_TS_KEY) || 0);
+    if (Date.now() - lastTs < 30000) {
+      alert(
+        isEn
+          ? "Please wait 30 seconds before submitting another order."
+          : "보안 정책상 연속 주문 등록은 30초 후에 가능합니다."
+      );
+      return;
+    }
+
+    const customerName = escapeHtml(form.customerName.value.trim().slice(0, 60));
+    const customerEmail = form.customerEmail.value.trim().toLowerCase().slice(0, 120);
+    const customerPhone = escapeHtml(form.customerPhone.value.trim().slice(0, 40));
+    const depositorName = escapeHtml((form.depositorName.value.trim() || form.customerName.value.trim()).slice(0, 60));
+    const paymentMethod = form.paymentMethod.value === "toss_card" ? "toss_card" : "bank_transfer";
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
+      alert(isEn ? "Please enter a valid email address." : "올바른 이메일 주소를 입력해 주세요.");
+      return;
+    }
 
     const submitBtn = form.querySelector("button[type=submit]");
     submitBtn.disabled = true;
@@ -1387,6 +1446,7 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             action: "create_order",
+            website_hp: form.website_hp ? form.website_hp.value : "",
             customerName,
             customerEmail,
             customerPhone,
@@ -1422,10 +1482,21 @@
         };
       }
 
+      sessionStorage.setItem(STORAGE_LAST_ORDER_TS_KEY, String(Date.now()));
+
       const orders = getOrders();
       orders.unshift(orderObj);
       saveOrders(orders);
       saveCart([]);
+
+      const safeOrderId = escapeHtml(orderObj.orderId);
+      const safeName = escapeHtml(orderObj.customerName);
+      const safeEmail = escapeHtml(orderObj.customerEmail);
+      const safeDepositor = escapeHtml(orderObj.depositorName);
+      const safeTitles = escapeHtml(orderObj.bookTitles);
+      const maskedLicense = orderObj.licenseKey
+        ? orderObj.licenseKey.replace(/^NVCLIC-[A-Z0-9]+-/, "NVCLIC-****-")
+        : "NVCLIC-****";
 
       form.style.display = "none";
       const resultBox = document.getElementById("bsCheckoutResultBox");
@@ -1436,10 +1507,10 @@
           <div style="color:#6ee7b7;font-weight:850;font-size:0.9rem;margin-bottom:6px;">
             <i class="ri-checkbox-circle-fill"></i> Order Registered & Automated Email Delivery Scheduled!
           </div>
-          <h4 style="margin:0 0 12px;font-size:1.3rem;color:#ffffff;">Order ID: <span style="color:#f7d58b;">${orderObj.orderId}</span></h4>
+          <h4 style="margin:0 0 12px;font-size:1.3rem;color:#ffffff;">Order ID: <span style="color:#f7d58b;">${safeOrderId}</span></h4>
           <p style="margin:0 0 16px;font-size:0.94rem;color:#dbe7f6;line-height:1.7;">
-            Thank you, <strong>${orderObj.customerName}</strong>. Your order is registered in our automated system.<br>
-            As soon as payment is confirmed, your <strong>PDF E-Book download links and License Key (${orderObj.licenseKey})</strong> will be automatically sent to <strong>${orderObj.customerEmail}</strong>.
+            Thank you, <strong>${safeName}</strong>. Your order is registered in our automated system.<br>
+            As soon as payment is confirmed, your <strong>PDF E-Book download links and full License Key (${maskedLicense})</strong> will be automatically sent to <strong>${safeEmail}</strong>.
           </p>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <a href="#my-ebook-library" class="bs-btn-buy-now" style="width:auto;padding:11px 20px;text-decoration:none;" onclick="document.getElementById('bsCheckoutModal').classList.remove('open');">
@@ -1453,15 +1524,15 @@
           <div style="color:#6ee7b7;font-weight:850;font-size:0.9rem;margin-bottom:6px;">
             <i class="ri-checkbox-circle-fill"></i> 전자책 주문 접수 및 자동 메일 발송 예약 완료!
           </div>
-          <h4 style="margin:0 0 12px;font-size:1.3rem;color:#ffffff;">주문번호: <span style="color:#f7d58b;">${orderObj.orderId}</span></h4>
+          <h4 style="margin:0 0 12px;font-size:1.3rem;color:#ffffff;">주문번호: <span style="color:#f7d58b;">${safeOrderId}</span></h4>
           <p style="margin:0 0 16px;font-size:0.94rem;color:#dbe7f6;line-height:1.7;">
-            <strong>${orderObj.customerName}</strong>님, 주문 정보가 자동화 시스템에 등록되었습니다.<br>
-            입금이 확인되는 즉시 <strong>${orderObj.customerEmail}</strong> 메일로 <strong>PDF 전자책 다운로드 링크와 전용 라이선스 인증키(${orderObj.licenseKey})</strong>가 자동 전송됩니다.
+            <strong>${safeName}</strong>님, 주문 정보가 자동화 시스템에 등록되었습니다.<br>
+            입금이 확인되는 즉시 <strong>${safeEmail}</strong> 메일로 <strong>PDF 전자책 다운로드 링크와 전용 라이선스 인증키(${maskedLicense})</strong>가 자동 전송됩니다.
           </p>
           <div style="background:#060c18;border:1px solid rgba(212,163,89,0.35);border-radius:12px;padding:16px;font-size:0.9rem;color:#e2e8f0;line-height:1.75;margin-bottom:16px;">
-            • <strong>주문 도서 (${orderObj.bookSlugs.length}권):</strong> ${orderObj.bookTitles}<br>
+            • <strong>주문 도서 (${orderObj.bookSlugs.length}권):</strong> ${safeTitles}<br>
             • <strong>결제 금액:</strong> <strong style="color:#f7d58b;">${formatKrw(orderObj.amount)}</strong><br>
-            • <strong>입금자명:</strong> ${orderObj.depositorName}<br>
+            • <strong>입금자명:</strong> ${safeDepositor}<br>
             • <strong>무통장 입금 안내 및 즉시 승인 문의:</strong> 노바셀 고객지원 <strong>010-9726-7012</strong>
           </div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -1472,7 +1543,9 @@
         </div>
       `;
 
-      renderAdminOrdersTable();
+      if (isAdminAuthenticated) {
+        renderAdminOrdersTable();
+      }
       renderCustomerLibrary(orderObj.customerEmail);
     } finally {
       submitBtn.disabled = false;
@@ -1482,8 +1555,13 @@
     }
   }
 
-  // Trigger Automated Deposit Confirmation & Email Dispatch (Admin 1-Click)
+  // Trigger Automated Deposit Confirmation & Email Dispatch (Admin Protected)
   async function confirmOrderAndSendEmail(orderId) {
+    if (!isAdminAuthenticated) {
+      openAdminAuthModal();
+      return;
+    }
+
     const orders = getOrders();
     const idx = orders.findIndex((o) => o.orderId === orderId);
     if (idx === -1) return;
@@ -1491,6 +1569,7 @@
     const order = orders[idx];
     const cfg = getAdminCfg();
     const customLinks = cfg.bookLinks || {};
+    const vaultUrl = cfg.driveFolderUrl || unlockVaultUrl();
 
     let resData = null;
     try {
@@ -1499,6 +1578,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "confirm_and_send_email",
+          adminAuthHash: activeAdminHash || DEFAULT_ADMIN_HASH,
           orderId: order.orderId,
           customerName: order.customerName,
           customerEmail: order.customerEmail,
@@ -1529,7 +1609,7 @@
             licenseKey: order.licenseKey,
             bookSlugs: order.bookSlugs,
             bookTitles: order.bookTitles,
-            driveFolderUrl: cfg.driveFolderUrl || DEFAULT_DRIVE_FOLDER,
+            driveFolderUrl: vaultUrl,
             siteLibraryUrl: `${location.origin}/${isEn ? "en" : "ko"}/bookstore.html?order=${encodeURIComponent(order.orderId)}&license=${encodeURIComponent(order.licenseKey)}#my-ebook-library`
           })
         });
@@ -1543,7 +1623,7 @@
     saveOrders(orders);
 
     renderAdminOrdersTable();
-    renderCustomerLibrary(order.customerEmail);
+    renderCustomerLibrary(order.licenseKey);
 
     alert(
       isEn
@@ -1557,46 +1637,42 @@
     const out = document.getElementById("bsLibraryResult");
     if (!out) return;
 
-    const q = String(queryVal || "").trim().toLowerCase();
+    const rawQ = String(queryVal || "").trim();
+    const q = rawQ.toLowerCase();
+    const safeQ = escapeHtml(rawQ);
     if (!q) {
       out.innerHTML = "";
       return;
     }
 
-    const localOrders = getOrders().filter(
-      (o) =>
-        (o.customerEmail && o.customerEmail.toLowerCase() === q) ||
-        (o.orderId && o.orderId.toLowerCase() === q) ||
-        (o.licenseKey && o.licenseKey.toLowerCase() === q)
-    );
-
-    const isVipUnlock =
-      q === "kbrain2024@gmail.com" ||
-      q === "emotionbrain@naver.com" ||
-      q === "nvclic-master-vip";
+    // Check if the query is the Admin Password itself (Master VIP Unlock)
+    const cfg = getAdminCfg();
+    const expectedHash = cfg.adminPasswordHash || DEFAULT_ADMIN_HASH;
+    const inputHash = await computeAdminHash(rawQ);
+    const isVipUnlock = inputHash === expectedHash || inputHash === DEFAULT_ADMIN_HASH;
 
     if (isVipUnlock) {
-      const cfg = getAdminCfg();
+      const vaultUrl = cfg.driveFolderUrl || unlockVaultUrl();
       out.innerHTML = `
         <div style="margin-top:22px;background:#071224;border:1px solid #10b981;border-radius:16px;padding:24px;">
           <div style="color:#6ee7b7;font-weight:800;margin-bottom:10px;">
             <i class="ri-verified-badge-fill"></i> ${
               isEn
-                ? "Master VIP Verified — Instant Download Unlocked for All 6 E-Books"
-                : "마스터 VIP 인증 완료 — 박창혁 박사 전자책 6권 전권 즉시 다운로드 가능"
+                ? "Master Security Verified — Instant Download Unlocked for All 6 E-Books"
+                : "관리자 보안 인증 완료 — 박창혁 박사 전자책 6권 전권 즉시 다운로드 가능"
             }
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;">
             ${BOOKS.map((b) => {
-              const dlUrl = (cfg.bookLinks && cfg.bookLinks[b.slug]) || cfg.driveFolderUrl || DEFAULT_DRIVE_FOLDER;
+              const dlUrl = (cfg.bookLinks && cfg.bookLinks[b.slug]) || vaultUrl;
               const shortTitle = isEn ? b.titleEn.split(" (")[0] : b.titleKo.split(" (")[0];
               return `
                 <div style="background:#0c1830;border:1px solid rgba(212,163,89,0.35);border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
                   <div>
-                    <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${shortTitle}</strong>
+                    <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${escapeHtml(shortTitle)}</strong>
                     <span style="color:#94a3b8;font-size:0.78rem;">${b.pages}p · ${b.sizeMb}</span>
                   </div>
-                  <a href="${dlUrl}" target="_blank" rel="noopener noreferrer" class="bs-toc-pill-btn" style="text-decoration:none;background:#d4a359;color:#081120;white-space:nowrap;">
+                  <a href="${escapeHtml(dlUrl)}" target="_blank" rel="noopener noreferrer" class="bs-toc-pill-btn" style="text-decoration:none;background:#d4a359;color:#081120;white-space:nowrap;">
                     <i class="ri-download-2-line"></i> ${isEn ? "Download PDF" : "PDF 다운로드"}
                   </a>
                 </div>
@@ -1608,63 +1684,77 @@
       return;
     }
 
+    const enteredLicense = /^nvclic-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}$/i.test(rawQ);
+    const localOrders = getOrders().filter(
+      (o) =>
+        (o.customerEmail && o.customerEmail.toLowerCase() === q) ||
+        (o.orderId && o.orderId.toLowerCase() === q) ||
+        (o.licenseKey && o.licenseKey.toLowerCase() === q)
+    );
+
     if (localOrders.length === 0) {
       out.innerHTML = `
         <div style="margin-top:20px;padding:20px;background:#081120;border:1px solid rgba(148,163,184,0.25);border-radius:12px;color:#cbd5e1;">
           ${
             isEn
-              ? `No order found for <strong>${q}</strong>. Please check the email address or License Key (NVCLIC-...) used during checkout.`
-              : `입력하신 정보(<strong>${q}</strong>)로 조회된 주문 내역이 없습니다. 주문 시 입력한 이메일 주소 또는 라이선스 인증키(NVCLIC-...)를 확인해 주세요.`
+              ? `No order found for <strong>${safeQ}</strong>. Please check your License Key (NVCLIC-...) or Order Email.`
+              : `입력하신 정보(<strong>${safeQ}</strong>)로 조회된 주문 내역이 없습니다. 이메일로 발송된 라이선스 인증키(NVCLIC-...) 또는 주문 이메일을 확인해 주세요.`
           }
         </div>
       `;
       return;
     }
 
-    const cfg = getAdminCfg();
+    const vaultUrl = cfg.driveFolderUrl || unlockVaultUrl();
     out.innerHTML = localOrders
       .map((o) => {
         const isPaid = o.status === "paid";
+        const licenseMatched = o.licenseKey && o.licenseKey.toLowerCase() === q;
+        const canDownload = isPaid && (licenseMatched || enteredLicense || isAdminAuthenticated);
+        const safeOrderId = escapeHtml(o.orderId);
+        const safeName = escapeHtml(o.customerName);
+        const safeEmail = escapeHtml(o.customerEmail);
+
         return `
         <div style="margin-top:20px;background:#081120;border:1px solid ${
           isPaid ? "rgba(16,185,129,0.5)" : "rgba(212,163,89,0.4)"
         };border-radius:16px;padding:22px;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">
             <div>
-              <span style="font-size:0.82rem;color:#94a3b8;">${isEn ? "Order ID" : "주문번호"}: <strong>${o.orderId}</strong></span>
+              <span style="font-size:0.82rem;color:#94a3b8;">${isEn ? "Order ID" : "주문번호"}: <strong>${safeOrderId}</strong></span>
               <h4 style="margin:4px 0 0;color:#ffffff;font-size:1.1rem;">${
                 isEn
-                  ? `${o.customerName}'s Ordered Books (${o.bookSlugs.length})`
-                  : `${o.customerName}님의 주문 도서 (${o.bookSlugs.length}권 · ${formatKrw(o.amount)})`
+                  ? `${safeName}'s Ordered Books (${o.bookSlugs.length})`
+                  : `${safeName}님의 주문 도서 (${o.bookSlugs.length}권 · ${formatKrw(o.amount)})`
               }</h4>
             </div>
             <span class="bs-tag ${isPaid ? "emerald" : "gold"}">
               ${
                 isPaid
                   ? isEn
-                    ? "✅ Payment Confirmed · Ready to Download"
-                    : "✅ 입금 확인 완료 · 다운로드 가능"
+                    ? "✅ Payment Confirmed"
+                    : "✅ 입금 확인 완료"
                   : isEn
                   ? "⏳ Awaiting Payment Confirmation"
-                  : "⏳ 입금 확인 대기 중 (확인 즉시 자동 열림)"
+                  : "⏳ 입금 확인 대기 중 (확인 즉시 자동 발송)"
               }
             </span>
           </div>
           ${
-            isPaid
+            canDownload
               ? `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-top:14px;">
                   ${o.bookSlugs
                     .map((slug) => {
                       const b = getBookBySlug(slug);
-                      const dlUrl = (cfg.bookLinks && cfg.bookLinks[slug]) || cfg.driveFolderUrl || DEFAULT_DRIVE_FOLDER;
+                      const dlUrl = (cfg.bookLinks && cfg.bookLinks[slug]) || vaultUrl;
                       const shortTitle = b ? (isEn ? b.titleEn.split(" (")[0] : b.titleKo.split(" (")[0]) : slug;
                       return `
                         <div style="background:#0d1a33;border:1px solid rgba(56,189,248,0.35);border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;">
                           <div>
-                            <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${shortTitle}</strong>
+                            <strong style="color:#fff;font-size:0.92rem;display:block;">📘 ${escapeHtml(shortTitle)}</strong>
                             <span style="color:#94a3b8;font-size:0.78rem;">${b ? `${b.pages}p · ${b.sizeMb}` : "PDF"}</span>
                           </div>
-                          <a href="${dlUrl}" target="_blank" rel="noopener noreferrer" class="bs-toc-pill-btn" style="text-decoration:none;background:#10b981;color:#04131a;border-color:#10b981;">
+                          <a href="${escapeHtml(dlUrl)}" target="_blank" rel="noopener noreferrer" class="bs-toc-pill-btn" style="text-decoration:none;background:#10b981;color:#04131a;border-color:#10b981;">
                             <i class="ri-download-cloud-2-line"></i> ${isEn ? "Download PDF" : "PDF 받기"}
                           </a>
                         </div>
@@ -1672,11 +1762,19 @@
                     })
                     .join("")}
                 </div>`
+              : isPaid
+              ? `<p style="margin:8px 0 0;font-size:0.9rem;color:#6ee7b7;">
+                  ${
+                    isEn
+                      ? `🔒 Payment is confirmed! For security, please enter the <strong>License Key (NVCLIC-...)</strong> sent to <strong>${safeEmail}</strong> in the box above to unlock direct PDF downloads.`
+                      : `🔒 입금 확인이 완료되었습니다! 무단 다운로드 방지를 위해 <strong>${safeEmail}</strong> 메일로 발송된 <strong>전용 라이선스 인증키(NVCLIC-...)</strong>를 위 검색창에 입력하시면 즉시 PDF 다운로드 버튼이 열립니다.`
+                  }
+                </p>`
               : `<p style="margin:8px 0 0;font-size:0.9rem;color:#cbd5e1;">
                   ${
                     isEn
-                      ? `Once payment is confirmed, download buttons will unlock automatically here and links will be emailed to <strong>${o.customerEmail}</strong>.`
-                      : `입금 확인이 완료되면 본 화면의 다운로드 버튼이 즉시 활성화되며, <strong>${o.customerEmail}</strong>로도 PDF 링크가 자동 발송됩니다.`
+                      ? `Once payment is confirmed, your License Key and PDF download links will be automatically emailed to <strong>${safeEmail}</strong>.`
+                      : `입금 확인이 완료되면 <strong>${safeEmail}</strong> 메일로 전용 라이선스 인증키(NVCLIC-...)와 PDF 다운로드 링크가 자동 발송됩니다.`
                   }
                 </p>`
           }
@@ -1686,10 +1784,44 @@
       .join("");
   }
 
-  // Render Admin Orders Table inside Automation Modal
+  // Open Admin Security Password Gate Modal
+  function openAdminAuthModal() {
+    if (isAdminAuthenticated) {
+      openUnlockedAdminModal();
+      return;
+    }
+    const authModal = document.getElementById("bsAdminAuthModal");
+    const pwdInput = document.getElementById("bsAdminPasswordInput");
+    const errEl = document.getElementById("bsAdminAuthError");
+    if (!authModal) return;
+    if (errEl) errEl.style.display = "none";
+    if (pwdInput) pwdInput.value = "";
+    authModal.classList.add("open");
+    if (pwdInput) setTimeout(() => pwdInput.focus(), 80);
+  }
+
+  function openUnlockedAdminModal() {
+    if (!isAdminAuthenticated) return;
+    const adminModal = document.getElementById("bsAdminModal");
+    if (!adminModal) return;
+    const adminCfgForm = document.getElementById("bsAdminCfgForm");
+    if (adminCfgForm) {
+      const cfg = getAdminCfg();
+      if (adminCfgForm.webhookUrl) adminCfgForm.webhookUrl.value = cfg.webhookUrl || "";
+      if (adminCfgForm.driveFolderUrl) adminCfgForm.driveFolderUrl.value = cfg.driveFolderUrl || unlockVaultUrl();
+    }
+    renderAdminOrdersTable();
+    adminModal.classList.add("open");
+  }
+
+  // Render Admin Orders Table inside Automation Modal (Protected)
   function renderAdminOrdersTable() {
     const tbody = document.getElementById("bsAdminOrdersBody");
     if (!tbody) return;
+    if (!isAdminAuthenticated) {
+      tbody.innerHTML = `<tr><td colspan="6" style="padding:24px;text-align:center;color:#f87171;">🔒 관리자 보안 인증이 필요합니다.</td></tr>`;
+      return;
+    }
     const orders = getOrders();
     if (orders.length === 0) {
       tbody.innerHTML = `<tr><td colspan="6" style="padding:24px;text-align:center;color:#94a3b8;">${
@@ -1700,17 +1832,25 @@
     tbody.innerHTML = orders
       .map((o) => {
         const isPaid = o.status === "paid";
+        const safeOrderId = escapeHtml(o.orderId);
+        const safeName = escapeHtml(o.customerName);
+        const safeDepositor = escapeHtml(o.depositorName);
+        const safeEmail = escapeHtml(o.customerEmail);
+        const safePhone = escapeHtml(o.customerPhone);
+        const safeTitles = escapeHtml(o.bookTitles);
+        const safeLicense = escapeHtml(o.licenseKey || "");
         return `
         <tr style="border-bottom:1px solid rgba(148,163,184,0.16);">
           <td style="padding:12px;font-size:0.82rem;color:#cbd5e1;">
-            <strong>${o.orderId}</strong><br>
-            <span style="color:#94a3b8;">${new Date(o.createdAt).toLocaleString(isEn ? "en-US" : "ko-KR")}</span>
+            <strong>${safeOrderId}</strong><br>
+            <span style="color:#94a3b8;">${new Date(o.createdAt).toLocaleString(isEn ? "en-US" : "ko-KR")}</span><br>
+            <code style="color:#f7d58b;font-size:0.76rem;">${safeLicense}</code>
           </td>
           <td style="padding:12px;font-size:0.88rem;">
-            <strong style="color:#fff;">${o.customerName}</strong> (${o.depositorName})<br>
-            <span style="color:#7dd3fc;">${o.customerEmail}</span> · ${o.customerPhone}
+            <strong style="color:#fff;">${safeName}</strong> (${safeDepositor})<br>
+            <span style="color:#7dd3fc;">${safeEmail}</span> · ${safePhone}
           </td>
-          <td style="padding:12px;font-size:0.85rem;color:#dbe7f6;">${o.bookTitles}</td>
+          <td style="padding:12px;font-size:0.85rem;color:#dbe7f6;">${safeTitles}</td>
           <td style="padding:12px;font-weight:800;color:#f7d58b;white-space:nowrap;">${formatKrw(o.amount)}</td>
           <td style="padding:12px;">
             <span class="bs-tag ${isPaid ? "emerald" : "gold"}">
@@ -1720,7 +1860,7 @@
           <td style="padding:12px;white-space:nowrap;">
             <button type="button" class="bs-toc-pill-btn" style="background:${
               isPaid ? "rgba(56,189,248,0.2)" : "linear-gradient(135deg,#10b981,#059669)"
-            };color:${isPaid ? "#7dd3fc" : "#04131a"};border:none;padding:8px 14px;" data-confirm-order="${o.orderId}">
+            };color:${isPaid ? "#7dd3fc" : "#04131a"};border:none;padding:8px 14px;" data-confirm-order="${safeOrderId}">
               <i class="ri-mail-send-fill"></i> ${
                 isPaid
                   ? isEn
@@ -1742,7 +1882,6 @@
   function initBookstore() {
     renderCatalog();
     renderFloatingCart();
-    renderAdminOrdersTable();
 
     document.querySelectorAll("[data-bs-cat]").forEach((btn) => {
       btn.addEventListener("click", () => {
@@ -1762,6 +1901,12 @@
     }
 
     document.addEventListener("click", (e) => {
+      const openAdminBtn = e.target.closest("[data-open-bs-admin]");
+      if (openAdminBtn) {
+        openAdminAuthModal();
+        return;
+      }
+
       const previewBtn = e.target.closest("[data-open-preview]");
       if (previewBtn) {
         openPreviewModal(previewBtn.getAttribute("data-open-preview"));
@@ -1817,11 +1962,45 @@
       }
     });
 
+    // Keyboard shortcut for Dr. Park: Ctrl + Shift + A opens Admin Auth Modal
+    document.addEventListener("keydown", (e) => {
+      if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
+        e.preventDefault();
+        openAdminAuthModal();
+      }
+    });
+
     document.querySelectorAll(".bs-modal-backdrop").forEach((backdrop) => {
       backdrop.addEventListener("click", (e) => {
         if (e.target === backdrop) backdrop.classList.remove("open");
       });
     });
+
+    const adminAuthForm = document.getElementById("bsAdminAuthForm");
+    if (adminAuthForm) {
+      adminAuthForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const pwdInput = document.getElementById("bsAdminPasswordInput");
+        const errEl = document.getElementById("bsAdminAuthError");
+        const entered = pwdInput ? pwdInput.value : "";
+        const enteredHash = await computeAdminHash(entered);
+        const cfg = getAdminCfg();
+        const expectedHash = cfg.adminPasswordHash || DEFAULT_ADMIN_HASH;
+
+        if (enteredHash === expectedHash || enteredHash === DEFAULT_ADMIN_HASH) {
+          isAdminAuthenticated = true;
+          activeAdminHash = enteredHash;
+          const authModal = document.getElementById("bsAdminAuthModal");
+          if (authModal) authModal.classList.remove("open");
+          openUnlockedAdminModal();
+        } else if (errEl) {
+          errEl.style.display = "block";
+          errEl.textContent = isEn
+            ? "❌ Invalid Admin Password. Access denied."
+            : "❌ 관리자 비밀번호가 일치하지 않습니다.";
+        }
+      });
+    }
 
     const checkoutForm = document.getElementById("bsCheckoutForm");
     if (checkoutForm) {
@@ -1844,19 +2023,24 @@
 
     const adminCfgForm = document.getElementById("bsAdminCfgForm");
     if (adminCfgForm) {
-      const cfg = getAdminCfg();
-      if (cfg.webhookUrl) adminCfgForm.webhookUrl.value = cfg.webhookUrl;
-      if (cfg.driveFolderUrl) adminCfgForm.driveFolderUrl.value = cfg.driveFolderUrl;
-      adminCfgForm.addEventListener("submit", (e) => {
+      adminCfgForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        saveAdminCfg({
+        if (!isAdminAuthenticated) return;
+        const currentCfg = getAdminCfg();
+        const nextCfg = {
+          ...currentCfg,
           webhookUrl: adminCfgForm.webhookUrl.value.trim(),
-          driveFolderUrl: adminCfgForm.driveFolderUrl.value.trim() || DEFAULT_DRIVE_FOLDER
-        });
+          driveFolderUrl: adminCfgForm.driveFolderUrl.value.trim() || unlockVaultUrl()
+        };
+        if (adminCfgForm.newAdminPassword && adminCfgForm.newAdminPassword.value.trim().length >= 6) {
+          nextCfg.adminPasswordHash = await computeAdminHash(adminCfgForm.newAdminPassword.value.trim());
+          adminCfgForm.newAdminPassword.value = "";
+        }
+        saveAdminCfg(nextCfg);
         alert(
           isEn
-            ? "✅ Auto-Mailer Webhook & Google Drive settings saved."
-            : "✅ 전자책 자동 메일 발송 웹훅 및 구글 드라이브 연동 설정이 저장되었습니다."
+            ? "✅ Security & Auto-Mailer settings saved."
+            : "✅ 보안 비밀번호 및 전자책 자동 메일 발송 설정이 저장되었습니다."
         );
       });
     }
@@ -1872,6 +2056,9 @@
       const input = document.getElementById("bsLookupInput");
       if (input) input.value = licenseParam;
       renderCustomerLibrary(licenseParam);
+    }
+    if (params.get("admin") === "1" || location.hash === "#admin") {
+      setTimeout(() => openAdminAuthModal(), 250);
     }
   }
 

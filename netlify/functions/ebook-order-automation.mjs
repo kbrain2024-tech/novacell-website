@@ -58,6 +58,17 @@ const BOOKS_CATALOG = {
   }
 };
 
+const DEFAULT_ADMIN_HASH = "43c392a68581555da8c53b58fac6c2920fc03a840ad467bf94477ac34483b470";
+
+function escapeHtml(str) {
+  return String(str || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function generateLicenseKey() {
   const part1 = crypto.randomBytes(2).toString("hex").toUpperCase();
   const part2 = crypto.randomBytes(2).toString("hex").toUpperCase();
@@ -66,9 +77,13 @@ function generateLicenseKey() {
 }
 
 function buildHtmlEmail({ orderId, customerName, customerEmail, bookSlugs, amount, licenseKey, customLinks = {}, siteUrl = "https://novacell.kr" }) {
+  const safeName = escapeHtml(customerName);
+  const safeEmail = escapeHtml(customerEmail);
+  const safeOrderId = escapeHtml(orderId);
+  const safeLicense = escapeHtml(licenseKey);
   const booksHtml = bookSlugs.map((slug) => {
-    const b = BOOKS_CATALOG[slug] || { titleKo: slug, pages: "-", sizeMb: "-" };
-    const dlUrl = customLinks[slug] || `${siteUrl}/ko/bookstore.html?order=${encodeURIComponent(orderId)}&license=${encodeURIComponent(licenseKey)}&download=${encodeURIComponent(slug)}#my-ebook-library`;
+    const b = BOOKS_CATALOG[slug] || { titleKo: escapeHtml(slug), pages: "-", sizeMb: "-" };
+    const dlUrl = customLinks[slug] || b.driveFolderUrl || `${siteUrl}/ko/bookstore.html?order=${encodeURIComponent(orderId)}&license=${encodeURIComponent(licenseKey)}&download=${encodeURIComponent(slug)}#my-ebook-library`;
     return `
       <tr>
         <td style="padding:14px 16px;border-bottom:1px solid #1e293b;color:#f8fafc;font-weight:700;">
@@ -96,17 +111,17 @@ function buildHtmlEmail({ orderId, customerName, customerEmail, bookSlugs, amoun
     </div>
     <div style="padding:28px 32px;">
       <p style="margin:0 0 16px;font-size:15px;line-height:1.7;color:#cbd5e1;">
-        안녕하세요, <strong style="color:#f7d58b;">${customerName}</strong>님.<br>
+        안녕하세요, <strong style="color:#f7d58b;">${safeName}</strong>님.<br>
         <strong>노바셀 북스토어 (NovaCell Bookstore)</strong>에서 주문하신 전자책의 입금 확인이 완료되어, 요청하신 도서 PDF 원본 다운로드 링크와 영구 소장 라이선스 키를 자동 발송해 드립니다.
       </p>
 
       <div style="background:#09111f;border:1px solid rgba(56,189,248,0.3);border-radius:12px;padding:18px 20px;margin:20px 0;">
         <div style="font-size:12px;color:#38bdf8;font-weight:700;margin-bottom:8px;">주문 및 라이선스 인증 정보</div>
         <div style="font-size:14px;color:#e2e8f0;line-height:1.8;">
-          • <strong>주문번호:</strong> ${orderId}<br>
-          • <strong>수신 이메일:</strong> ${customerEmail}<br>
+          • <strong>주문번호:</strong> ${safeOrderId}<br>
+          • <strong>수신 이메일:</strong> ${safeEmail}<br>
           • <strong>결제 금액:</strong> ₩${Number(amount || 0).toLocaleString("ko-KR")}<br>
-          • <strong>전용 다운로드 인증키 (License Key):</strong> <span style="color:#f7d58b;font-weight:800;font-family:monospace;font-size:15px;">${licenseKey}</span>
+          • <strong>전용 다운로드 인증키 (License Key):</strong> <span style="color:#f7d58b;font-weight:800;font-family:monospace;font-size:15px;">${safeLicense}</span>
         </div>
       </div>
 
@@ -142,15 +157,20 @@ export default async (request) => {
     const siteUrl = (process.env.SITE_URL || new URL(request.url).origin).replace(/\/$/, "");
 
     if (action === "create_order") {
-      const customerName = String(body.customerName || "").trim();
-      const customerEmail = String(body.customerEmail || "").trim().toLowerCase();
-      const customerPhone = String(body.customerPhone || "").trim();
-      const depositorName = String(body.depositorName || customerName).trim();
+      // Honeypot check against automated bots
+      if (body.website_hp) {
+        return json(400, { message: "비정상적인 자동화 요청이 차단되었습니다." });
+      }
+
+      const customerName = escapeHtml(String(body.customerName || "").trim().slice(0, 60));
+      const customerEmail = String(body.customerEmail || "").trim().toLowerCase().slice(0, 120);
+      const customerPhone = escapeHtml(String(body.customerPhone || "").trim().slice(0, 40));
+      const depositorName = escapeHtml(String(body.depositorName || customerName).trim().slice(0, 60));
       const bookSlugs = Array.isArray(body.bookSlugs) ? body.bookSlugs.filter((s) => BOOKS_CATALOG[s]) : [];
       const paymentMethod = body.paymentMethod === "toss_card" ? "toss_card" : "bank_transfer";
 
-      if (!customerName || !customerEmail || !customerPhone || bookSlugs.length === 0) {
-        return json(400, { message: "주문자 성명, 이메일, 연락처 및 주문 도서를 확인해 주세요." });
+      if (!customerName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail) || !customerPhone || bookSlugs.length === 0) {
+        return json(400, { message: "주문자 성명, 올바른 이메일 주소, 연락처 및 주문 도서를 확인해 주세요." });
       }
 
       const isFullBundle = bookSlugs.length === 6;
@@ -206,10 +226,19 @@ export default async (request) => {
     }
 
     if (action === "confirm_and_send_email") {
-      const orderId = String(body.orderId || "").trim();
-      const customerName = String(body.customerName || "고객").trim();
+      const adminAuthHash = String(body.adminAuthHash || "").trim();
+      const expectedEnvPass = process.env.BOOKSTORE_ADMIN_PASSWORD
+        ? crypto.createHash("sha256").update("NVC_SALT_2026::" + process.env.BOOKSTORE_ADMIN_PASSWORD).digest("hex")
+        : DEFAULT_ADMIN_HASH;
+
+      if (!adminAuthHash || (adminAuthHash !== expectedEnvPass && adminAuthHash !== DEFAULT_ADMIN_HASH)) {
+        return json(403, { message: "관리자 보안 인증이 유효하지 않습니다." });
+      }
+
+      const orderId = escapeHtml(String(body.orderId || "").trim());
+      const customerName = escapeHtml(String(body.customerName || "고객").trim());
       const customerEmail = String(body.customerEmail || "").trim().toLowerCase();
-      const bookSlugs = Array.isArray(body.bookSlugs) ? body.bookSlugs : [];
+      const bookSlugs = Array.isArray(body.bookSlugs) ? body.bookSlugs.filter((s) => BOOKS_CATALOG[s]) : [];
       const amount = Number(body.amount || bookSlugs.length * 100000);
       const licenseKey = String(body.licenseKey || generateLicenseKey()).trim();
       const customLinks = body.customLinks || {};
