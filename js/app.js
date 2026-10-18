@@ -362,3 +362,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+// 7. NovaCell Content & Source Protection Shield (F12, View-Source, Right-Click, Drag & Copy Block)
+(function initNovaCellContentShield() {
+  if (window.__NOVACELL_CONTENT_SHIELD__) return;
+  window.__NOVACELL_CONTENT_SHIELD__ = true;
+
+  function isEditableTarget(el) {
+    if (!el || !el.tagName) return false;
+    const tag = el.tagName.toUpperCase();
+    return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
+  }
+
+  window.addEventListener('keydown', function (e) {
+    const key = (e.key || '').toLowerCase();
+    const code = e.keyCode || e.which;
+    const ctrlOrCmd = e.ctrlKey || e.metaKey;
+    if (
+      key === 'f12' ||
+      code === 123 ||
+      (ctrlOrCmd && e.shiftKey && (key === 'i' || key === 'j' || key === 'c' || code === 73 || code === 74 || code === 67)) ||
+      (e.metaKey && e.altKey && (key === 'i' || key === 'j' || key === 'c' || key === 'u')) ||
+      (ctrlOrCmd && !e.shiftKey && (key === 'u' || key === 's' || code === 85 || code === 83))
+    ) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  }, true);
+
+  window.addEventListener('contextmenu', function (e) {
+    if (isEditableTarget(e.target)) return;
+    e.preventDefault();
+    return false;
+  }, true);
+
+  window.addEventListener('dragstart', function (e) {
+    if (isEditableTarget(e.target)) return;
+    e.preventDefault();
+    return false;
+  }, true);
+
+  window.addEventListener('selectstart', function (e) {
+    if (isEditableTarget(e.target)) return;
+    e.preventDefault();
+    return false;
+  }, true);
+
+  window.addEventListener('copy', function (e) {
+    if (isEditableTarget(e.target)) return;
+    e.preventDefault();
+    return false;
+  }, true);
+})();
