@@ -4,6 +4,9 @@ const JSON_HEADERS = {
   "X-Content-Type-Options": "nosniff"
 };
 
+const SUPABASE_BASE = "https://pemxrfxzkprahhwuhqsi.supabase.co";
+const SUPABASE_ANON = "sb_publishable_9PSDP08GzyMYd4kXVn3bCw_Iwfdw7-w";
+
 export function json(status, body) {
   return new Response(JSON.stringify(body), { status, headers: JSON_HEADERS });
 }
@@ -15,13 +18,12 @@ export function requiredEnv(name) {
 }
 
 export async function supabase(path, { method = "GET", token, body, prefer } = {}) {
-  const base = (process.env.SUPABASE_URL || "https://pemxrfxzkprahhwuhqsi.supabase.co").replace(/\/+$/, "");
-  const anonKey = (process.env.SUPABASE_ANON_KEY || "sb_publishable_9PSDP08GzyMYd4kXVn3bCw_Iwfdw7-w").trim();
+  const base = (process.env.SUPABASE_URL || SUPABASE_BASE).replace(/\/+$/, "");
   const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   
-  // Use anonKey for user verification and fallback when serviceKey is not set or invalid
-  const activeKey = (cleanPath === "/auth/v1/user" || !serviceKey) ? anonKey : serviceKey;
+  // Use anonKey for public queries and auth, fallback if serviceKey is absent
+  const activeKey = (cleanPath === "/auth/v1/user" || !serviceKey) ? SUPABASE_ANON : serviceKey;
   
   const response = await fetch(`${base}${cleanPath}`, {
     method,
@@ -44,18 +46,33 @@ export async function supabase(path, { method = "GET", token, body, prefer } = {
 }
 
 export async function requireUser(request) {
-  const token = (request.headers.get("authorization") || "").replace(/^Bearer\s+/i, "").trim();
+  let authHeader = "";
+  if (request.headers && typeof request.headers.get === "function") {
+    authHeader = request.headers.get("authorization") || "";
+  } else if (request.headers && typeof request.headers === "object") {
+    authHeader = request.headers["authorization"] || request.headers["Authorization"] || "";
+  }
+  
+  const token = authHeader.replace(/^Bearer\s+/i, "").trim();
   if (!token) return { error: json(401, { message: "로그인이 필요합니다" }) };
+  
   try {
-    const user = await supabase("/auth/v1/user", { token });
-    if (!user || !user.id) throw new Error("INVALID_USER");
+    const res = await fetch(`${SUPABASE_BASE}/auth/v1/user`, {
+      method: "GET",
+      headers: {
+        apikey: SUPABASE_ANON,
+        Authorization: `Bearer ${token}`
+      }
+    });
+    const user = await res.json().catch(() => null);
+    if (!res.ok || !user || !user.id) {
+      console.error("User validation failed:", res.status, user);
+      throw new Error(user?.message || user?.msg || "INVALID_USER");
+    }
     return { user, token };
   } catch (err) {
     console.error("requireUser failure:", err);
-    if (/^MISSING_/.test(err?.message || "")) {
-      return { error: json(503, { message: `결제 서버 환경변수 설정 확인 필요: ${err.message}` }) };
-    }
-    return { error: json(401, { message: "로그인 정보가 만료되었습니다. 다시 로그인해 주세요." }) };
+    return { error: json(401, { message: `로그인 세션 확인 실패: ${err.message || "다시 로그인해 주세요."}` }) };
   }
 }
 
