@@ -334,8 +334,8 @@
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               Payment Method
               <select name="paymentMethod" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
+                <option value="toss_card">Card / EasyPay (Toss Payments)</option>
                 <option value="bank_transfer">Bank Transfer (Auto-Email on Deposit Confirmation)</option>
-                <option value="toss_card">Card / EasyPay</option>
               </select>
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
@@ -343,8 +343,11 @@
               <input type="text" name="depositorName" maxlength="60" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
           </div>
-          <button type="submit" class="bs-btn-buy-now" style="margin-top:8px;padding:15px;">
-            <i class="ri-mail-send-line"></i> Submit Order & Register Auto-Email
+          <p style="margin:2px 0 0;font-size:0.8rem;color:#94a3b8;line-height:1.55;">
+            ※ Delivery: Instant PDF download &amp; email upon payment · Full refund within 7 days if unopened (<a href="../terms.html" target="_blank" style="color:#7dd3fc;text-decoration:underline;">Terms &amp; Refund Policy</a>)
+          </p>
+          <button type="submit" class="bs-btn-buy-now" style="margin-top:6px;padding:15px;">
+            <i class="ri-secure-payment-line"></i> Proceed to Payment &amp; Auto-Email
           </button>
         </form>
         <div id="bsCheckoutResultBox" style="display:none;"></div>
@@ -402,17 +405,40 @@
 
   <footer class="footer-main">
     <div class="container">
-      <div class="footer-social-links" style="display:flex;justify-content:center;gap:12px;padding-top:24px;margin-bottom:4px;">
+      <div class="footer-social-links" style="display:flex;justify-content:center;gap:12px;padding-top:28px;margin-bottom:16px;">
         <a href="https://www.youtube.com/@lifestyletv365" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube" title="YouTube (@lifestyletv365)"><i class="ri-youtube-fill"></i></a>
         <a href="https://www.instagram.com/novacell_therapy/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram" title="Instagram (@novacell_therapy)"><i class="ri-instagram-fill"></i></a>
         <a href="https://www.threads.net/@novacell_therapy" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Threads" title="Threads (@novacell_therapy)"><i class="ri-threads-fill"></i></a>
         <a href="https://www.facebook.com/people/NovaCell/61595066252719/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook" title="Facebook (NovaCell)"><i class="ri-facebook-fill"></i></a>
       </div>
-      <div class="footer-bottom" style="padding:20px 0 28px;text-align:center;color:#94a3b8;font-size:0.88rem;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;">
-        <p style="margin:0;">© 2026 NovaCell Therapy & NovaCell Education Center (Park Chang-Hyuk, Ph.D.). All Rights Reserved.</p>
-        <button type="button" data-open-bs-admin="true" style="background:transparent;border:1px solid rgba(148,163,184,0.22);color:#64748b;font-size:0.75rem;padding:3px 9px;border-radius:6px;cursor:pointer;" title="Admin Security Login (Shortcut: Ctrl+Shift+A)">
-          <i class="ri-lock-2-line"></i> Admin
-        </button>
+      <div class="footer-business-info" style="padding:18px 0;border-top:1px solid rgba(148,163,184,0.16);border-bottom:1px solid rgba(148,163,184,0.16);text-align:center;font-size:0.84rem;color:#94a3b8;line-height:1.8;">
+        <div class="business-info-row" style="justify-content:center;">
+          <span><strong>Company:</strong> NovaCell</span>
+          <span class="info-divider">|</span>
+          <span><strong>CEO:</strong> Hyun-Ok Kim</span>
+          <span class="info-divider">|</span>
+          <span><strong>Business Registration:</strong> 206-30-95475</span>
+          <span class="info-divider">|</span>
+          <span><strong>Mail-Order License:</strong> 2026-Seoul Nowon-1068</span>
+        </div>
+        <div class="business-info-row" style="justify-content:center;">
+          <span><strong>Address:</strong> 209-405, 20, Dongil-ro 208-gil, Nowon-gu, Seoul, Korea</span>
+          <span class="info-divider">|</span>
+          <span><strong>Tel:</strong> +82-10-9726-7012</span>
+          <span class="info-divider">|</span>
+          <span><strong>Email:</strong> emotionbrain@naver.com</span>
+        </div>
+      </div>
+      <div class="footer-bottom" style="padding:18px 0 28px;text-align:center;color:#94a3b8;font-size:0.85rem;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <p style="margin:0;">© 2026 NovaCell. All rights reserved.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+          <a href="../privacy.html" style="color:#cbd5e1;text-decoration:none;">Privacy Policy</a>
+          <a href="../terms.html" style="color:#cbd5e1;text-decoration:none;">Terms &amp; Refund Policy</a>
+          <a href="../disclaimer.html" style="color:#cbd5e1;text-decoration:none;">Medical Disclaimer</a>
+          <button type="button" data-open-bs-admin="true" style="background:transparent;border:1px solid rgba(148,163,184,0.22);color:#64748b;font-size:0.75rem;padding:3px 9px;border-radius:6px;cursor:pointer;" title="Admin Security Login (Shortcut: Ctrl+Shift+A)">
+            <i class="ri-lock-2-line"></i> Admin
+          </button>
+        </div>
       </div>
     </div>
   </footer>

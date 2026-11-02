@@ -396,18 +396,22 @@
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
               결제 방식 선택
               <select name="paymentMethod" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
-                <option value="bank_transfer">무통장 계좌이체 (입금확인 즉시 자동 메일 발송)</option>
-                <option value="toss_card">카드/간편결제 요청</option>
+                <option value="toss_card">신용/체크카드 · 간편결제 (토스페이먼츠 안전결제)</option>
+                <option value="bank_transfer">계좌이체 주문 접수 (입금확인 즉시 자동 메일 발송)</option>
               </select>
             </label>
             <label style="display:flex;flex-direction:column;gap:6px;font-size:0.88rem;color:#cbd5e1;">
-              입금자명 (무통장 입금 시)
+              입금자명 (계좌이체 시)
               <input type="text" name="depositorName" maxlength="60" placeholder="주문자 성명과 동일 시 비워두세요" style="padding:12px;border-radius:8px;background:#060c18;border:1px solid rgba(148,163,184,0.35);color:#fff;">
             </label>
           </div>
 
-          <button type="submit" class="bs-btn-buy-now" style="margin-top:8px;padding:15px;font-size:1rem;">
-            <i class="ri-mail-send-line"></i> 전자책 주문 완료 및 입금확인 자동발송 등록
+          <p style="margin:2px 0 0;font-size:0.8rem;color:#94a3b8;line-height:1.55;">
+            ※ 전자책(PDF) 제공 방식: 결제 완료 즉시 다운로드 및 이메일 발송 · 미다운로드/미열람 시 결제일로부터 7일 이내 전액 환불 가능 (<a href="../terms.html" target="_blank" style="color:#7dd3fc;text-decoration:underline;">이용약관 및 환불규정</a>)
+          </p>
+
+          <button type="submit" class="bs-btn-buy-now" style="margin-top:6px;padding:15px;font-size:1rem;">
+            <i class="ri-secure-payment-line"></i> 결제 진행 및 전자책 자동발송 신청
           </button>
         </form>
 
@@ -509,17 +513,40 @@ function doPost(e) {
   <!-- Footer -->
   <footer class="footer-main">
     <div class="container">
-      <div class="footer-social-links" style="display:flex;justify-content:center;gap:12px;padding-top:24px;margin-bottom:4px;">
+      <div class="footer-social-links" style="display:flex;justify-content:center;gap:12px;padding-top:28px;margin-bottom:16px;">
         <a href="https://www.youtube.com/@lifestyletv365" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="유튜브" title="YouTube (@lifestyletv365)"><i class="ri-youtube-fill"></i></a>
         <a href="https://www.instagram.com/novacell_therapy/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="인스타그램" title="Instagram (@novacell_therapy)"><i class="ri-instagram-fill"></i></a>
         <a href="https://www.threads.net/@novacell_therapy" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="스레드" title="Threads (@novacell_therapy)"><i class="ri-threads-fill"></i></a>
         <a href="https://www.facebook.com/people/NovaCell/61595066252719/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="페이스북" title="Facebook (NovaCell)"><i class="ri-facebook-fill"></i></a>
       </div>
-      <div class="footer-bottom" style="padding:20px 0 28px;text-align:center;color:#94a3b8;font-size:0.88rem;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;">
-        <p style="margin:0;">© 2026 NovaCell Therapy & 노바셀 교육 센터 (저자: 박창혁 박사). All Rights Reserved. | 고객지원: 010-9726-7012 · emotionbrain@naver.com</p>
-        <button type="button" data-open-bs-admin="true" style="background:transparent;border:1px solid rgba(148,163,184,0.22);color:#64748b;font-size:0.75rem;padding:3px 9px;border-radius:6px;cursor:pointer;" title="관리자 전용 보안 로그인 (단축키: Ctrl+Shift+A)">
-          <i class="ri-lock-2-line"></i> 관리자
-        </button>
+      <div class="footer-business-info" style="padding:18px 0;border-top:1px solid rgba(148,163,184,0.16);border-bottom:1px solid rgba(148,163,184,0.16);text-align:center;font-size:0.84rem;color:#94a3b8;line-height:1.8;">
+        <div class="business-info-row" style="justify-content:center;">
+          <span><strong>상호명:</strong> 노바셀 (NovaCell)</span>
+          <span class="info-divider">|</span>
+          <span><strong>대표자명:</strong> 김현옥</span>
+          <span class="info-divider">|</span>
+          <span><strong>사업자등록번호:</strong> 206-30-95475</span>
+          <span class="info-divider">|</span>
+          <span><strong>통신판매업 신고번호:</strong> 제2026-서울노원-1068호</span>
+        </div>
+        <div class="business-info-row" style="justify-content:center;">
+          <span><strong>사업장 주소:</strong> 서울특별시 노원구 동일로 208길 20, 209동 405호 (중계동, 중계무지개아파트)</span>
+          <span class="info-divider">|</span>
+          <span><strong>유선전화번호:</strong> 010-9726-7012</span>
+          <span class="info-divider">|</span>
+          <span><strong>이메일:</strong> emotionbrain@naver.com</span>
+        </div>
+      </div>
+      <div class="footer-bottom" style="padding:18px 0 28px;text-align:center;color:#94a3b8;font-size:0.85rem;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <p style="margin:0;">© 2026 NovaCell. 모든 권리 보유.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+          <a href="../privacy.html" style="color:#cbd5e1;text-decoration:none;">개인정보처리방침</a>
+          <a href="../terms.html" style="color:#cbd5e1;text-decoration:none;">이용약관 및 환불규정</a>
+          <a href="../disclaimer.html" style="color:#cbd5e1;text-decoration:none;">의학적 면책 고지</a>
+          <button type="button" data-open-bs-admin="true" style="background:transparent;border:1px solid rgba(148,163,184,0.22);color:#64748b;font-size:0.75rem;padding:3px 9px;border-radius:6px;cursor:pointer;" title="관리자 전용 보안 로그인 (단축키: Ctrl+Shift+A)">
+            <i class="ri-lock-2-line"></i> 관리자
+          </button>
+        </div>
       </div>
     </div>
   </footer>

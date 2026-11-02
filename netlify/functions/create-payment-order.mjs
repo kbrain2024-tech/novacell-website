@@ -29,6 +29,41 @@ const FALLBACK_CATALOG = {
     name_ko: "NovaCell Sound Studio 1년 패스",
     name_en: "NovaCell Sound Studio 1-Year Pass",
     price_krw: 330000
+  },
+  ebook_novacell_therapy: {
+    name_ko: "노바셀 통치 요법 (PDF 전자책)",
+    name_en: "NovaCell Pain Therapy (PDF E-Book)",
+    price_krw: 100000
+  },
+  ebook_divine_course: {
+    name_ko: "디바인 코스 (PDF 전자책)",
+    name_en: "Divine Course (PDF E-Book)",
+    price_krw: 100000
+  },
+  ebook_reflex_therapy: {
+    name_ko: "리플렉스 테라피 (PDF 전자책)",
+    name_en: "Reflex Therapy (PDF E-Book)",
+    price_krw: 100000
+  },
+  ebook_balance_therapy: {
+    name_ko: "밸런스 테라피 (PDF 전자책)",
+    name_en: "Balance Therapy (PDF E-Book)",
+    price_krw: 100000
+  },
+  ebook_awakening_cell: {
+    name_ko: "세포야 깨어나라! (PDF 전자책)",
+    name_en: "Awakening Cell! (PDF E-Book)",
+    price_krw: 100000
+  },
+  ebook_energy_therapy: {
+    name_ko: "에너지 테라피 (PDF 전자책)",
+    name_en: "Energy Therapy (PDF E-Book)",
+    price_krw: 100000
+  },
+  ebook_master_bundle_6: {
+    name_ko: "박창혁 박사 전자책 6권 전권 마스터 패키지 (PDF)",
+    name_en: "Complete 6-Book Master Bundle (PDF E-Books)",
+    price_krw: 480000
   }
 };
 

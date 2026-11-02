@@ -1489,6 +1489,21 @@
       saveOrders(orders);
       saveCart([]);
 
+      // If Card / EasyPay (Toss Payments) is selected, open the official Toss Payments Checkout page
+      if (paymentMethod === "toss_card") {
+        let tossProductCode = "ebook_novacell_therapy";
+        if (checkoutSlugs.length === 6) {
+          tossProductCode = "ebook_master_bundle_6";
+        } else if (checkoutSlugs.length >= 1) {
+          const firstBook = getBookBySlug(checkoutSlugs[0]);
+          if (firstBook && firstBook.code) {
+            tossProductCode = firstBook.code;
+          }
+        }
+        window.location.href = `../checkout.html?product=${encodeURIComponent(tossProductCode)}&lang=${isEn ? "en" : "ko"}&ebookOrder=${encodeURIComponent(orderObj.orderId)}`;
+        return;
+      }
+
       const safeOrderId = escapeHtml(orderObj.orderId);
       const safeName = escapeHtml(orderObj.customerName);
       const safeEmail = escapeHtml(orderObj.customerEmail);
