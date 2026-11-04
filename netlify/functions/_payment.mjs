@@ -18,7 +18,9 @@ export function requiredEnv(name) {
 }
 
 export async function supabase(path, { method = "GET", token, body, prefer } = {}) {
-  const base = (process.env.SUPABASE_URL || SUPABASE_BASE).replace(/\/+$/, "");
+  const rawBase = String(process.env.SUPABASE_URL || "").trim();
+  const urlMatch = rawBase.match(/https:\/\/[a-zA-Z0-9.-]+/);
+  const base = (urlMatch ? urlMatch[0] : SUPABASE_BASE).replace(/\/+$/, "");
   const serviceKey = (process.env.SUPABASE_SERVICE_ROLE_KEY || "").trim();
   const cleanPath = path.startsWith("/") ? path : `/${path}`;
   

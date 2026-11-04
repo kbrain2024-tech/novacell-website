@@ -81,8 +81,13 @@ export default async (request) => {
       console.warn("Could not insert pending payment order record to DB:", dbErr.message);
     }
 
-    const siteUrl = (process.env.SITE_URL || new URL(request.url).origin).replace(/\/$/, "");
-    const clientKey = (process.env.TOSS_CLIENT_KEY || "test_ck_D5GePWvyJnrK0W0k6q8g3N97Eoq1").trim();
+    const rawSiteUrl = String(process.env.SITE_URL || "").trim();
+    const siteMatch = rawSiteUrl.match(/https?:\/\/[a-zA-Z0-9.:-]+/);
+    const siteUrl = (siteMatch ? siteMatch[0] : new URL(request.url).origin).replace(/\/$/, "");
+    const envClientKey = String(process.env.TOSS_CLIENT_KEY || "").trim();
+    const clientKey = /^live_gck_|^test_gck_/.test(envClientKey)
+      ? envClientKey
+      : "live_gck_E92LAa5PVbaAPEkml77937YmpXyJ";
 
     return json(200, {
       orderId,
