@@ -307,9 +307,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "경추 C5-C6 성상신경절(SGB) 후외측 및 경추 교감신경점 (②번 타깃)",
         "nameEn": "C5-C6 Stellate Ganglion & Cervical Sympathetic Chain (Target 2)",
-        "targetAnatomy": "중하부 경추(C5-C6) 횡돌기 및 성상신경절(Stellate ganglion) 자율신경 반사구역(`fig_2_9_2` ②).",
+        "targetAnatomy": "중하부 경추(C5-C6) 횡돌기 및 성상신경절(Stellate ganglion) 자율신경 반사구역(②).",
         "locationGuide": "안면신경과 내이(달팽이관)로 가는 혈류량을 급격히 증가시켜 신경 재생 속도를 배가시킵니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 43.5,
           "y": 20.5,
@@ -410,7 +410,7 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-TH-04",
         "code": "HP-04",
-        "nameKo": "유양돌기 후하방 소후두신경-두판상근 부착점 (골타치)",
+        "nameKo": "유양돌기 후하방 소후두신경-두판상근 부착점 (골막 부착부)",
         "nameEn": "Retro-Mastoid LON & Splenius Capitis Insertion",
         "targetAnatomy": "유양돌기 후하방 두판상근·흉쇄유돌근 상부 골막 부착부 및 소후두신경 상행로.",
         "locationGuide": "귀 뒤 유양돌기 바로 뒤쪽 오목한 골막 경계부(완골~풍지 구간).",
@@ -516,7 +516,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "하악절흔 외측익돌근·교근신경 심부 포착점 (①번 타깃)",
         "nameEn": "Mandibular Notch Lateral Pterygoid & Masseteric Nerve (Target 1)",
-        "targetAnatomy": "관골궁 하방 하악절흔(Mandibular notch) 심부의 외측익돌근 상·하두 및 교근신경(HP-TM-01, E: Ch.2 `fig_2_8_2` ①).",
+        "targetAnatomy": "관골궁 하방 하악절흔(Mandibular notch) 심부의 외측익돌근 상·하두 및 교근신경(HP-TM-01).",
         "locationGuide": "귀 앞 2.",
         "significance": "5cm 관골궁 바로 아래 입을 살짝 벌릴 때 열리는 반달형 함요처. 관절원판(디스크)을 앞으로 잡아당기는 주범을 직접 이완합니다.",
         "pinCoordinates": {
@@ -621,7 +621,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "견갑절흔·극관절와절흔 상견갑신경(Suprascapular N.) 차단점 (①번 타깃)",
         "nameEn": "Suprascapular Notch Suprascapular Nerve Gate (Target 1)",
-        "targetAnatomy": "견갑극(Scapular spine) 중내측 상방 극상와 바닥의 견갑절흔 및 극관절와절흔 상견갑신경(HP-FS-01, E: Ch.5 `fig_5_t04` ①).",
+        "targetAnatomy": "견갑극(Scapular spine) 중내측 상방 극상와 바닥의 견갑절흔 및 극관절와절흔 상견갑신경(HP-FS-01).",
         "locationGuide": "어깨 관절낭 감각의 70%를 담당하는 상견갑신경 포착을 해소하여 극심한 야간통과 외전 제한을 풀어줍니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -710,9 +710,9 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-RC-03",
         "code": "HP-03",
-        "nameKo": "오구견봉아치(Coracoacromial Arch) 및 오구돌기 인대군 골타치점 (①번 타깃)",
+        "nameKo": "오구견봉아치(Coracoacromial Arch) 및 오구돌기 인대군 골막 부착점 (①번 타깃)",
         "nameEn": "Coracoacromial Arch & Coracoid Ligament Complex (Target 1)",
-        "targetAnatomy": "견봉과 오훼돌기를 잇는 오구견봉인대(충돌 지붕) 및 오구쇄골인대(E: Ch.5 `fig_5_t06` ①).",
+        "targetAnatomy": "견봉과 오훼돌기를 잇는 오구견봉인대(충돌 지붕) 및 오구쇄골인대.",
         "locationGuide": "견봉 전연과 오훼돌기 사이 지붕 구조물의 긴장과 비후를 완화하여 충돌 공간을 확보합니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -726,9 +726,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "견봉 외측단 직하방 견봉하-삼각근하 점액낭(Subacromial Bursa) 타깃 (②번 타깃)",
         "nameEn": "Subacromial-Subdeltoid Bursa Gliding Space (Target 2)",
-        "targetAnatomy": "견봉 외측연 바로 아래 견봉하 점액낭 및 삼각근하 점액낭(HP-RC-02, `fig_5_t06` ②).",
+        "targetAnatomy": "견봉 외측연 바로 아래 견봉하 점액낭 및 삼각근하 점액낭(HP-RC-02, ②).",
         "locationGuide": "팔을 옆으로 들 때 마찰을 완충하는 점액낭의 염증·부종을 흡수하고 부드러운 활주를 복원합니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 36.5,
           "y": 30.5,
@@ -921,7 +921,7 @@ export const CONDITIONS_DATA = [
         "nameKo": "견쇄관절(AC Joint) 상면 관절낭 및 골막 타깃",
         "nameEn": "Acromioclavicular (AC) Joint Superior Capsule Point",
         "targetAnatomy": "쇄골 외측단과 견봉이 만나는 견쇄관절낭 상면 및 견쇄인대.",
-        "locationGuide": "어깨 꼭대기 쇄골 끝 오목한 관절 간극 골타치.",
+        "locationGuide": "어깨 꼭대기 쇄골 끝 오목한 관절 간극 골막 부착부.",
         "significance": "팔을 수평 내전할 때 발생하는 어깨 꼭대기 통증을 해소합니다.",
         "pinCoordinates": {
           "x": 47.5,
@@ -936,7 +936,7 @@ export const CONDITIONS_DATA = [
         "nameEn": "Scapular Spine, Acromion & Lateral Clavicle Trapezius Insertion",
         "targetAnatomy": "상부 승모근이 쇄골 외측 1/3, 견봉, 견갑극 상연에 정지하는 골막 부착선.",
         "locationGuide": "견쇄관절 주변 골막 견인통을 유발하는 힘줄 부착부 연속 타깃.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 41.5,
           "y": 34.5,
@@ -1022,10 +1022,10 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-LE-03",
         "code": "HP-03",
-        "nameKo": "주관절 외측 제1선: 상완골 외측상과능(ECRL·완요골근 기시부) 골타치점 (①번 타깃)",
+        "nameKo": "주관절 외측 제1선: 상완골 외측상과능(ECRL·완요골근 기시부) 골막 부착점 (①번 타깃)",
         "nameEn": "Lateral Elbow Line 1: Lateral Supracondylar Ridge ECRL Origin (Target 1)",
-        "targetAnatomy": "외측상과 바로 위 날카로운 뼈 능선인 외측상과능 하부 1/3 장요측수근신근(ECRL) 기시부 골막(E: Ch.6 `fig_6_t02` ①).",
-        "locationGuide": "외측상과 위쪽 1~2cm 능선 골타치.",
+        "targetAnatomy": "외측상과 바로 위 날카로운 뼈 능선인 외측상과능 하부 1/3 장요측수근신근(ECRL) 기시부 골막.",
+        "locationGuide": "외측상과 위쪽 1~2cm 능선 골막 부착부.",
         "significance": "손목을 젖힐 때 상완 하부에서 당기는 상류 골막통을 제거합니다.",
         "pinCoordinates": {
           "x": 34.5,
@@ -1038,7 +1038,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "주관절 전외측 고랑 요골신경 본간 제어점 (상완근-완요골근 경계 ⑤번 타깃)",
         "nameEn": "Anterolateral Elbow Furrow Radial Nerve Trunk Control Point (Target 5)",
-        "targetAnatomy": "팔꿈치 전외측 상완근과 완요골근 사이 고랑에서 요골신경이 천지(감각)와 심부지(PIN 운동)로 갈라지는 분기점(`fig_6_t02` ⑤).",
+        "targetAnatomy": "팔꿈치 전외측 상완근과 완요골근 사이 고랑에서 요골신경이 천지(감각)와 심부지(PIN 운동)로 갈라지는 분기점(⑤).",
         "locationGuide": "외측 전완 전체의 신경 과민도를 즉시 낮추는 신경 제어 스위치입니다.",
         "significance": "원위 연계·자율신경점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -1140,10 +1140,10 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-ME-04",
         "code": "HP-04",
-        "nameKo": "상완골 외측상과능(Lateral Supracondylar Ridge) 기시부 골타치점",
-        "nameEn": "Lateral Supracondylar Ridge Bone-Touch Origin",
+        "nameKo": "상완골 외측상과능(Lateral Supracondylar Ridge) 기시부 골막 부착점",
+        "nameEn": "Lateral Supracondylar Ridge Periosteal Contact Origin",
         "targetAnatomy": "상완골 원위 외측능 상부 2/3(상완요골근 기시부) 및 하부 1/3(장요측수근신근 ECRL 기시부) 골막.",
-        "locationGuide": "외측상과 바로 위 능선 골막(E: Ch.",
+        "locationGuide": "외측상과 바로 위 능선 골막",
         "significance": "6 주관절 외측 제1선). 팔꿈치 외측 심부 견인통을 소실시킵니다.",
         "pinCoordinates": {
           "x": 30.5,
@@ -1230,11 +1230,11 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-CuT-03",
         "code": "HP-03",
-        "nameKo": "상완골 내측상과 공통굴근건 기시부 골타치점 (Medial Epicondyle)",
-        "nameEn": "Medial Epicondyle Common Flexor Tendon Bone-Touch",
+        "nameKo": "상완골 내측상과 공통굴근건 기시부 골막 부착점 (Medial Epicondyle)",
+        "nameEn": "Medial Epicondyle Common Flexor Tendon Periosteal Contact",
         "targetAnatomy": "상완골 내측상과 전면 첨부의 공통굴근건(원회내근·요측수근굴근·장장근·척측수근굴근) 골막 기시부.",
         "locationGuide": "팔꿈치 안쪽 가장 튀어나온 뼈 돌기 전면 및 직하방 1cm 골막(HP-ME-01).",
-        "significance": "골프엘보·내측상과염의 핵심 골타치 타깃입니다.",
+        "significance": "골프엘보·내측상과염의 핵심 골막 부착부 타깃입니다.",
         "pinCoordinates": {
           "x": 37.5,
           "y": 45.0,
@@ -1248,7 +1248,7 @@ export const CONDITIONS_DATA = [
         "nameEn": "FCU & Pronator Teres Belly (3 FB Distal to ME)",
         "targetAnatomy": "내측상과 하방 약 3손가락 너비(3 FB) 지점의 척측수근굴근(FCU) 및 원회내근 근복.",
         "locationGuide": "내측상과 골막을 지속적으로 잡아당기는 굴근·회내근 근복의 단축 결절을 직접 이완합니다(HP-ME-02).",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 31.5,
           "y": 49.5,
@@ -1348,8 +1348,8 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-CTS-04",
         "code": "HP-04",
-        "nameKo": "요골 경상돌기 제1신전건 구획 골타치점 (APL·EPB 건초 터널)",
-        "nameEn": "Radial Styloid 1st Extensor Compartment Bone-Touch",
+        "nameKo": "요골 경상돌기 제1신전건 구획 건골막 부착점 (APL·EPB 건초 터널)",
+        "nameEn": "Radial Styloid 1st Extensor Compartment Periosteal Contact",
         "targetAnatomy": "요골 경상돌기(Radial styloid) 외측의 제1배측 신전건 구획(장무지외전근 APL + 단무지신근 EPB 섬유성 골터널).",
         "locationGuide": "손목 엄지 측 붓돌기 직상방 가장 볼록하고 아픈 건초 결절(HP-DQ-01).",
         "significance": "핀켈스타인 검사 양성 통증의 직접 감압점입니다.",
@@ -1457,7 +1457,7 @@ export const CONDITIONS_DATA = [
         "nameEn": "Pronator Teres Median Nerve Piercing Point",
         "targetAnatomy": "주관절 내측상과 하방 3~4cm 원회내근 상완두·척골두 사이 정중신경 관통 터널.",
         "locationGuide": "수근관 수술 후에도 손저림이 남는 가장 흔한 원인인 근위부 원회내근 증후군(이중 포착) 핵심 타깃입니다(HP-CTS-02).",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 26.5,
           "y": 58.5,
@@ -1543,9 +1543,9 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-IN-03",
         "code": "HP-03",
-        "nameKo": "상·중부 후방 늑골각(Rib Angle) 외늑간근·장늑근 골타치점 (①번 타깃)",
-        "nameEn": "Posterior Rib Angle Iliocostalis & External Intercostal Bone-Touch (Target 1)",
-        "targetAnatomy": "흉추 극돌기 외측 4~5cm 후방 늑골각(Rib angle) 골표면 및 늑간신경 후외측 출구(HP-IN-01, E: Ch.4 `fig_4_4_1` ①).",
+        "nameKo": "상·중부 후방 늑골각(Rib Angle) 외늑간근·장늑근 골막 부착점 (①번 타깃)",
+        "nameEn": "Posterior Rib Angle Iliocostalis & External Intercostal Periosteal Contact (Target 1)",
+        "targetAnatomy": "흉추 극돌기 외측 4~5cm 후방 늑골각(Rib angle) 골표면 및 늑간신경 후외측 출구(HP-IN-01).",
         "locationGuide": "반드시 검지·중지로 위아래 늑간을 보호(기흉 ZERO 수지 고정법)한 뒤 갈비뼈 꺾이는 모서리 골막에 통전합니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -1559,9 +1559,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "늑골하연(Subcostal Groove) 늑간신경 주행로 및 내·외늑간근 타깃 (②번 타깃)",
         "nameEn": "Subcostal Groove Intercostal Nerve & Muscle Layer (Target 2)",
-        "targetAnatomy": "각 늑골 하연 골막 경계선 및 내·외늑간근 근막(`fig_4_4_1` ②).",
+        "targetAnatomy": "각 늑골 하연 골막 경계선 및 내·외늑간근 근막(②).",
         "locationGuide": "등 뒤에서 옆구리로 돌아 나오는 갈비뼈 아랫모서리 압통점을 따라 늑간근 연축을 해제합니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 36.5,
           "y": 41.5,
@@ -1614,7 +1614,7 @@ export const CONDITIONS_DATA = [
       "등 통증이 갈비뼈를 타고 앞가슴이나 명치 쪽으로 퍼짐",
       "오래 앉아 있으면 등이 굳어 펴기 힘들고 만성 피로 동반"
     ],
-    "pathologyMechanism": "흉추 신경 후지 내측지(Medial branch)의 포착 및 흉추 후관절의 퇴행성 변화로 인한 척추 분절성 통증입니다.",
+    "pathologyMechanism": "흉추 신경 후지 내측지(Medial branch)의 포착 및 흉추 후관절의 퇴행성 변화로 인한 척추 후관절성 통증입니다.",
     "healingPoints": [
       {
         "id": "HP-DSP-01",
@@ -1753,7 +1753,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-03",
         "nameKo": "중추 제1타깃: 이환 분절(±1분절) 흉추 후관절·추간공 외측 후근신경절(DRG) 반사점 (①번 타깃)",
         "nameEn": "Central DRG & Posterior Dorsal Ramus Segmental Point (Target 1)",
-        "targetAnatomy": "대상포진이 발생한 흉추 분절 및 위·아래 인접 분절의 극돌기 외측 1.5~2.5cm 후관절·추간공 외측(HP-PHN-01, E: Ch.4 `fig_4_7` ①).",
+        "targetAnatomy": "대상포진이 발생한 흉추 분절 및 위·아래 인접 분절의 극돌기 외측 1.5~2.5cm 후관절·추간공 외측(HP-PHN-01).",
         "locationGuide": "바이러스에 손상된 후근신경절(DRG)과 척수 후각의 중추 감작(Wind-up)을 진정시키는 가장 중요한 뿌리 치료점입니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -1767,9 +1767,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "말초 제2타깃: 액와선·외측흉벽 늑간신경 외측피지 및 이질통 피부경계점 (②번 타깃)",
         "nameEn": "Peripheral Lateral Cutaneous Branch & Allodynia Border (Target 2)",
-        "targetAnatomy": "이환된 피부분절(Dermatome)의 옆구리 액와선 외측피지 출구 및 흉터·이질통 구역 상류 신경가지(HP-PHN-02, `fig_4_7` ②).",
+        "targetAnatomy": "이환된 피부분절(Dermatome)의 옆구리 액와선 외측피지 출구 및 흉터·이질통 구역 상류 신경가지(HP-PHN-02, ②).",
         "locationGuide": "피부 표면에 알코올/생리식염수 도포 후 롤러 도자로 부드럽게 통전하여 비정상 탈수초 감각신경 막전위를 -70mV로 재분극시킵니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 40.5,
           "y": 41.0,
@@ -1856,7 +1856,7 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-ACS-03",
         "code": "HP-03",
-        "nameKo": "오훼돌기(Coracoid Process) 소흉근 정지건 골타치 및 소흉근하 신경총점",
+        "nameKo": "오훼돌기(Coracoid Process) 소흉근 정지건 골막 부착부 및 소흉근하 신경총점",
         "nameEn": "Coracoid Process Pectoralis Minor Insertion & Sub-coracoid Plexus",
         "targetAnatomy": "견갑골 오훼돌기 내측연 소흉근(Pectoralis minor) 정지건 골막 및 바로 아래 상완신경총·액와동맥 터널.",
         "locationGuide": "쇄골 외측 하방 오훼돌기 뼈 끝과 그 하내측 1.",
@@ -2065,10 +2065,10 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-ALS-03",
         "code": "HP-03",
-        "nameKo": "장골능 후내순(Iliac Crest) 요방형근·장요인대 기시부 골타치점 (③번 타깃)",
+        "nameKo": "장골능 후내순(Iliac Crest) 요방형근·장요인대 기시부 골막 부착점 (③번 타깃)",
         "nameEn": "Posterior Iliac Crest QL & Iliolumbar Ligament Origin (Target 3)",
-        "targetAnatomy": "골반 뒤쪽 장골능 후내순 약 5cm 구간의 요방형근 기시부 및 장요인대 골막(HP-ALS-02, `fig_7_t07` ③).",
-        "locationGuide": "골반 능선 바로 위에서 아래쪽 뼈 모서리를 향해 비스듬히 골타치.",
+        "targetAnatomy": "골반 뒤쪽 장골능 후내순 약 5cm 구간의 요방형근 기시부 및 장요인대 골막(HP-ALS-02, ③).",
+        "locationGuide": "골반 능선 바로 위에서 아래쪽 뼈 모서리를 향해 비스듬히 골막 부착부.",
         "significance": "골반이 한쪽으로 틀어진 급성 요통의 하부 고정점입니다.",
         "pinCoordinates": {
           "x": 46.5,
@@ -2081,9 +2081,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "요방형근 천·심층 4대 발통점(TrP 1~4: 천장관절·대전자·둔부 방사통점) (④번 타깃)",
         "nameEn": "Superficial & Deep QL Trigger Points (SIJ & Gluteal Referral, Target 4)",
-        "targetAnatomy": "제12늑골 직하방 및 L3-L4 높이 심부 요방형근 근복 내 알갱이 결절(`fig_7_t07` ④).",
+        "targetAnatomy": "제12늑골 직하방 및 L3-L4 높이 심부 요방형근 근복 내 알갱이 결절(④).",
         "locationGuide": "천장관절, 엉덩이 하부, 대전자, 사타구니로 방사통을 보내는 핵심 발통점입니다.",
-        "significance": "척추 분절·후관절점 핵심 치료 포인트.",
+        "significance": "후관절·신경근점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 40.5,
           "y": 50.5,
@@ -2171,7 +2171,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-03",
         "nameKo": "요추 추간판 후외측 섬유륜·척추동신경(Sinuvertebral N.) 분절 반사점 (①번 타깃)",
         "nameEn": "Posterolateral Annulus & Sinuvertebral Nerve Segmental Point (Target 1)",
-        "targetAnatomy": "파열·팽륜된 추간판 후외측 섬유륜과 후종인대 감각을 지배하는 척추동신경 분절 반사구역(E: Ch.7 `fig_7_t03` ①).",
+        "targetAnatomy": "파열·팽륜된 추간판 후외측 섬유륜과 후종인대 감각을 지배하는 척추동신경 분절 반사구역.",
         "locationGuide": "이환 분절(L4-L5 또는 L5-S1) 극간인대(제1선) 및 추간공 외측(제4선) 양방향에서 디스크 내압과 신경원성 염증을 진정시킵니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -2185,9 +2185,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "심층 다열근·회선근(Multifidus & Rotatores) 분절 잠금 이완점 (②번 타깃)",
         "nameEn": "Deep Multifidus & Rotatores Segmental Unlocking Point (Target 2)",
-        "targetAnatomy": "극돌기와 유두돌기를 잇는 최심층 다열근 및 회선근(`fig_7_t03` ②).",
+        "targetAnatomy": "극돌기와 유두돌기를 잇는 최심층 다열근 및 회선근(②).",
         "locationGuide": "디스크 탈출 분절을 위아래로 꽉 조여 추간판 압력을 높이는 심부 다열근 경직을 풀어 디스크 감압 공간을 만듭니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 39.5,
           "y": 52.5,
@@ -2273,10 +2273,10 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-LSS-03",
         "code": "HP-03",
-        "nameKo": "비후된 요추 후관절낭(L3-L4-L5) 상·하 관절연 골타치점 (①번 타깃)",
-        "nameEn": "Hypertrophied Lumbar Facet Joint Capsule Bone-Touch (Target 1)",
-        "targetAnatomy": "퇴행성으로 두꺼워져 척추관과 외측함요(Lateral recess)를 좁히는 요추 후관절낭 및 상관절돌기(E: Ch.7 `fig_7_t04` ①).",
-        "locationGuide": "후관절낭 외측연 골타치로 관절낭 부종과 활막 염증을 가라앉혀 신경 통로를 넓혀줍니다.",
+        "nameKo": "비후된 요추 후관절낭(L3-L4-L5) 상·하 관절연 골막 부착점 (①번 타깃)",
+        "nameEn": "Hypertrophied Lumbar Facet Joint Capsule Periosteal Contact (Target 1)",
+        "targetAnatomy": "퇴행성으로 두꺼워져 척추관과 외측함요(Lateral recess)를 좁히는 요추 후관절낭 및 상관절돌기.",
+        "locationGuide": "후관절낭 외측연 골막 부착부로 관절낭 부종과 활막 염증을 가라앉혀 신경 통로를 넓혀줍니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 51.5,
@@ -2289,9 +2289,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "유두돌기 기시 심부 다열근(Multifidus) 위축·섬유화 복원점 (③번 타깃)",
         "nameEn": "Mamillary Process Deep Multifidus Atrophy Recovery Point (Target 2)",
-        "targetAnatomy": "유두돌기에서 기시하여 극돌기로 붙는 심부 다열근 다발(`fig_7_t04` ③).",
+        "targetAnatomy": "유두돌기에서 기시하여 극돌기로 붙는 심부 다열근 다발(③).",
         "locationGuide": "협착증 환자에서 지방 변성되고 굳어진 다열근에 -70mV 생체전압을 충전하여 허리 지지력을 되살립니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 45.5,
           "y": 54.5,
@@ -2395,7 +2395,7 @@ export const CONDITIONS_DATA = [
         "nameEn": "Infrapiriformis Foramen Sciatic Nerve Entrapment Point",
         "targetAnatomy": "후상장골극(PSIS)-미골 중간점과 대전자 상연을 잇는 이상근(Piriformis) 하연 대좌골공 좌골신경·후대퇴피신경 출구.",
         "locationGuide": "둔부 정중앙 깊숙한 이상근 근복 및 하연(HP-PS-01, E: Ch.",
-        "significance": "8 `fig_9_4_3`). 엉덩이에서 허벅지 뒤·종아리까지 저리고 당기는 좌골신경통의 1차 핵심 타깃입니다.",
+        "significance": "엉덩이에서 허벅지 뒤·종아리까지 저리고 당기는 좌골신경통의 1차 핵심 타깃입니다.",
         "pinCoordinates": {
           "x": 41.5,
           "y": 60.5,
@@ -2486,8 +2486,8 @@ export const CONDITIONS_DATA = [
         "nameKo": "대퇴근막장근(TFL) 근복 및 전상장골극(ASIS) 후하방 기시점",
         "nameEn": "Tensor Fasciae Latae (TFL) Belly & ASIS Origin",
         "targetAnatomy": "전상장골극(ASIS) 및 장골능 전외측에서 기시하는 대퇴근막장근(TFL) 근복과 상둔신경 분지.",
-        "locationGuide": "ASIS와 대전자 사이 전외측 골반 근육(E: Ch.",
-        "significance": "8 `fig_9_6_3`). 옆으로 누워 자거나 걸을 때 골반 바깥쪽이 쑤시는 통증을 해소합니다.",
+        "locationGuide": "ASIS와 대전자 사이 전외측 골반 근육",
+        "significance": "옆으로 누워 자거나 걸을 때 골반 바깥쪽이 쑤시는 통증을 해소합니다.",
         "pinCoordinates": {
           "x": 48.5,
           "y": 53.0,
@@ -2497,10 +2497,10 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-SIJ-04",
         "code": "HP-04",
-        "nameKo": "대퇴골 대전자(Greater Trochanter) 후상면 중·소둔근 및 심부 외회전근 골타치점",
+        "nameKo": "대퇴골 대전자(Greater Trochanter) 후상면 중·소둔근 및 심부 외회전근 골막 부착점",
         "nameEn": "Greater Trochanter Facets Gluteus Medius/Minimus & External Rotators",
         "targetAnatomy": "대전자 외측면(중둔근), 전면(소둔근), 후내측 회전근와(외회전 6근) 골막 부착부 및 대전자 점액낭.",
-        "locationGuide": "대전자 뼈 테두리 골타치(Bone-Touch).",
+        "locationGuide": "대전자 뼈 테두리 골막 접촉.",
         "significance": "가성 좌골신경통과 대전자 통증 증후군(GTPS)을 해결합니다.",
         "pinCoordinates": {
           "x": 42.5,
@@ -2590,8 +2590,8 @@ export const CONDITIONS_DATA = [
         "nameKo": "내전근관 출구(Hunter's Canal) 내측광근 원위부 및 복재신경 포착점",
         "nameEn": "Adductor Canal Exit Vastus Medialis & Saphenous Nerve Point",
         "targetAnatomy": "무릎 내측 상방 4~5cm 내측광근(VMO)과 대내전근건 사이 내전근관 하구 및 복재신경·슬개하분지 관통부.",
-        "locationGuide": "무릎 위 안쪽 허벅지 내측광근 하연 오목한 신경 출구(E: Ch.",
-        "significance": "8 `fig_9_4_2`). 무릎 안쪽 감각신경 포착을 상류에서 차단합니다.",
+        "locationGuide": "무릎 위 안쪽 허벅지 내측광근 하연 오목한 신경 출구",
+        "significance": "무릎 안쪽 감각신경 포착을 상류에서 차단합니다.",
         "pinCoordinates": {
           "x": 50.5,
           "y": 78.0,
@@ -2601,8 +2601,8 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-KOA-04",
         "code": "HP-04",
-        "nameKo": "경골 근위 내측면 거위발건(Pes Anserinus) 정지부 및 점액낭 골타치점",
-        "nameEn": "Pes Anserinus Insertion & Bursa Bone-Touch (Anteromedial Tibia)",
+        "nameKo": "경골 근위 내측면 거위발건(Pes Anserinus) 정지부 및 점액낭 골막 접촉점",
+        "nameEn": "Pes Anserinus Insertion & Bursa Periosteal Contact (Anteromedial Tibia)",
         "targetAnatomy": "무릎 내측 관절선 하방 4~5cm 경골 근위 전내측면의 거위발건(봉공근·박근·반건양근 공동 정지건) 골막 및 거위발 점액낭.",
         "locationGuide": "무릎 안쪽 아래 정강이뼈 평평한 내측면의 골막 압통점(HP-KOA-02).",
         "significance": "계단 오르내릴 때 무릎 안쪽 아래 통증의 제1 타깃입니다.",
@@ -2691,9 +2691,9 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-PT-03",
         "code": "HP-03",
-        "nameKo": "전하장골극(AIIS) 대퇴직근(Rectus Femoris) 기시부 골타치점 (①번 타깃)",
-        "nameEn": "AIIS Rectus Femoris Origin Bone-Touch (Target 1)",
-        "targetAnatomy": "골반 전상장골극(ASIS) 바로 아래 전하장골극(AIIS) 대퇴직근 직두·반사두 골막 기시부(E: Ch.8 `fig_9_5_1` ①).",
+        "nameKo": "전하장골극(AIIS) 대퇴직근(Rectus Femoris) 기시부 골막 부착점 (①번 타깃)",
+        "nameEn": "AIIS Rectus Femoris Origin Periosteal Contact (Target 1)",
+        "targetAnatomy": "골반 전상장골극(ASIS) 바로 아래 전하장골극(AIIS) 대퇴직근 직두·반사두 골막 기시부.",
         "locationGuide": "고관절과 무릎 두 관절을 가로지르는 대퇴직근의 상류 고정점을 풀어 슬개골을 위로 잡아당기는 장력을 근원부터 낮춥니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -2705,11 +2705,11 @@ export const CONDITIONS_DATA = [
       {
         "id": "HP-PT-04",
         "code": "HP-04",
-        "nameKo": "대퇴골 간부 전면 중간광근(Vastus Intermedius) 심부 골막 골타치점 (②번 타깃)",
-        "nameEn": "Mid-Anterior Femur Vastus Intermedius Periosteal Bone-Touch (Target 2)",
-        "targetAnatomy": "허벅지 앞쪽 정중앙 대퇴직근 아래 대퇴골 전면 골막에 넓게 부착하는 중간광근 심부 발통점(`fig_9_5_1` ②).",
+        "nameKo": "대퇴골 간부 전면 중간광근(Vastus Intermedius) 심부 골막 부착점 (②번 타깃)",
+        "nameEn": "Mid-Anterior Femur Vastus Intermedius Periosteal Periosteal Contact (Target 2)",
+        "targetAnatomy": "허벅지 앞쪽 정중앙 대퇴직근 아래 대퇴골 전면 골막에 넓게 부착하는 중간광근 심부 발통점(②).",
         "locationGuide": "계단을 오르거나 의자에서 일어날 때 무릎 한가운데가 뻣뻣하고 안 펴지는 심부 근육-골막 유착을 해제합니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 46.5,
           "y": 77.5,
@@ -2797,7 +2797,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-03",
         "nameKo": "슬와와 상부 좌골신경 분기점 (총비골신경·경골신경 분지부 ①번 타깃)",
         "nameEn": "Upper Popliteal Apex Sciatic Nerve Bifurcation (Target 1)",
-        "targetAnatomy": "오금 주름 상방 5~7cm 대퇴이두근과 반막양근 사이 슬와 상각에서 좌골신경이 경골신경과 총비골신경으로 갈라지는 분기점(E: Ch.8 `fig_9_4_4` ①).",
+        "targetAnatomy": "오금 주름 상방 5~7cm 대퇴이두근과 반막양근 사이 슬와 상각에서 좌골신경이 경골신경과 총비골신경으로 갈라지는 분기점.",
         "locationGuide": "비골신경과 경골신경이 동시에 포착되는 상류 분기부 유착을 해소합니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -2811,9 +2811,9 @@ export const CONDITIONS_DATA = [
         "code": "HP-04",
         "nameKo": "비골두 직하방 비골경부 총비골신경 터널점 (장비골근 건궁 HP-CPN-01 · ④번 외측 타깃)",
         "nameEn": "Fibular Neck Common Peroneal Nerve Tunnel (HP-CPN-01, Target 2)",
-        "targetAnatomy": "무릎 바깥쪽 아래 비골두(Fibular head) 바로 밑 비골경부를 감고 장비골근 기시부 터널로 들어가는 총비골신경 본간(HP-CPN-01, `fig_9_4_4` ④ 외측).",
+        "targetAnatomy": "무릎 바깥쪽 아래 비골두(Fibular head) 바로 밑 비골경부를 감고 장비골근 기시부 터널로 들어가는 총비골신경 본간(HP-CPN-01, ④ 외측).",
         "locationGuide": "손가락으로 튕기면 발등까지 전기가 찌릿하게 통하는(Tinel 양성) 총비골신경 포착·족하수의 제1 핵심 감압점입니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 40.5,
           "y": 85.5,
@@ -2901,7 +2901,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-03",
         "nameKo": "내과 하방 굴근지대 내측종골신경(Medial Calcaneal N.) 및 족저방형근 포착점",
         "nameEn": "Inframalleolar Medial Calcaneal Nerve & Baxter's Nerve Point",
-        "targetAnatomy": "안쪽 복사뼈 하후방 굴근지대 중앙부에서 분지하는 내측종골신경 및 제1외측족저신경(Baxter 신경)·족저방형근(E: Ch.9 `fig_9_m11`, `fig_9_m13`).",
+        "targetAnatomy": "안쪽 복사뼈 하후방 굴근지대 중앙부에서 분지하는 내측종골신경 및 제1외측족저신경(Baxter 신경)·족저방형근.",
         "locationGuide": "내과와 뒤꿈치 사이 안쪽 측면 압통점.",
         "significance": "아침 첫발을 디딜 때 뒤꿈치가 찢어질 듯 아픈 신경포착성 족저근막염의 제1 스위치입니다.",
         "pinCoordinates": {
@@ -3111,7 +3111,7 @@ export const CONDITIONS_DATA = [
         "code": "HP-03",
         "nameKo": "양측 복사뼈 연결선 상방 5FB 장무지신근(EHL) 근복 핵심 압통점",
         "nameEn": "Extensor Hallucis Longus (EHL) Belly (5 FB Above Ankle Line)",
-        "targetAnatomy": "양쪽 복사뼈 연결선에서 위로 약 5손가락 너비(5 FB) 지점, 경골과 비골 사이 전경골근·장지신근 틈새 깊숙이 위치한 장무지신근(EHL) 근복(E: Ch.9 `fig_9_m08`).",
+        "targetAnatomy": "양쪽 복사뼈 연결선에서 위로 약 5손가락 너비(5 FB) 지점, 경골과 비골 사이 전경골근·장지신근 틈새 깊숙이 위치한 장무지신근(EHL) 근복.",
         "locationGuide": "엄지발가락 등쪽과 발등 내측 통증의 근원 발통점입니다.",
         "significance": "주 신경포착점 핵심 치료 포인트.",
         "pinCoordinates": {
@@ -3127,7 +3127,7 @@ export const CONDITIONS_DATA = [
         "nameEn": "Inferior Extensor Retinaculum EHL Tendon Pulley & Deep Peroneal Nerve",
         "targetAnatomy": "발목 앞쪽 해계혈 내측에서 장무지신근건이 하신근지대 Y자 고리를 통과하며 심비골신경과 교차하는 지점.",
         "locationGuide": "엄지발가락을 들거나 걸을 때 발목 앞쪽에서 엄지로 당기는 건초 마찰통을 해소합니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 44,
           "y": 88,
@@ -3336,8 +3336,8 @@ export const CONDITIONS_DATA = [
         "nameKo": "흉요추 최장근(Longissimus)·다열근 척추 자율신경 기둥 타깃",
         "nameEn": "Thoracolumbar Longissimus & Multifidus Spinal Autonomic Axis",
         "targetAnatomy": "등허리 T8~L4 극돌기 외측 최장근 및 심부 다열근(후면 시점 제1 타깃).",
-        "locationGuide": "출산 후 느슨해졌던 척추 분절 인대와 심부 근육의 미세 불안정성 및 등 시림을 회복시킵니다.",
-        "significance": "골타치 골막·힘줄점 핵심 치료 포인트.",
+        "locationGuide": "출산 후 느슨해졌던 척추 후관절 인대와 심부 근육의 미세 불안정성 및 등 시림을 회복시킵니다.",
+        "significance": "힘줄·골막 부착점 핵심 치료 포인트.",
         "pinCoordinates": {
           "x": 46,
           "y": 55.0,

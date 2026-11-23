@@ -1,5 +1,5 @@
 /**
- * NovaCell Pain Clinic APP - Unified Master Application Engine (64 Conditions · 257 Precision Targets)
+ * NovaCell Pain Clinic APP - Unified Master Application Engine (64 Conditions · 258 Precision Targets)
  * Integrated from E:\통증 자료실 (Chapters 1-9 Master Bible & 18 Tongsa Books) +
  * NovaCell Healing & Pain Clinic (32/46) + Solavre.kr 11 Specialty Pain Clinics (51)
  * Features:
@@ -41,17 +41,17 @@
   // UI Multi-language Dictionary
   const i18n = {
     ko: {
-      brandSub: '11개 특화 통증클리닉 · 64대 전신 질환 · 257 정밀 치료 타깃',
+      brandSub: '11개 특화 통증클리닉 · 64대 전신 질환 · 258 정밀 치료 타깃',
       navSoundStudio: '사운드 스튜디오',
       navHealingPoints: '힐링 포인트',
       langBtn: 'ENG',
-      heroBadge: '11개 특화 통증클리닉 · 64대 전신 질환 · 257개 정밀 3D X-Ray 치료 타깃',
+      heroBadge: '11개 특화 통증클리닉 · 64대 전신 질환 · 258개 정밀 3D X-Ray 치료 타깃',
       heroTitle: 'NovaCell 3D 통증 클리닉 통합 마스터',
-      heroSub: '통증의 3대 핵심 병태생리(신경포착·힘줄견인·자율신경 기능실조)와 박창혁 박사의 골타치·신경포착·제1~4선 해부학 치료 포인트를 통합하여, 3D 반투명 X-Ray 투시 해부도와 다중 정밀 타깃(T1~T5+) 프로토콜을 제시합니다.',
+      heroSub: '통증의 3대 핵심 병태생리(신경포착·힘줄견인·자율신경 기능실조)와 박창혁 박사의 신경포착·힘줄견인·제1~4선 해부학 치료 포인트를 통합하여, 3D 반투명 X-Ray 투시 해부도와 다중 정밀 타깃(T1~T5+) 프로토콜을 제시합니다.',
       searchPlaceholder: '질환명, 증상, 신경명, 치료 타깃 검색 (예: 소흉근, 턱관절, 테니스엘보, 후두신경, C5-6...)',
       mechAll: '전체 병태기전 (64)',
       mechNerve: '신경포착 (Nerve)',
-      mechTendon: '골타치·힘줄견인 (Tendon)',
+      mechTendon: '힘줄견인·골막 (Tendon)',
       mechAutonomic: '자율신경·도수 (Autonomic & AKA)',
       sidebarTitle: '인체 구역별 질환 탐색',
       catAll: '전신 질환 전체보기',
@@ -107,7 +107,7 @@
       targetTissues: '핵심 타깃 조직',
       palpationLocation: '촉지 및 시술 지표',
       noCustomTargets: '추가된 환자 맞춤 타깃이 없습니다. 우측 상단 [+ 치료 포인트 추가] 버튼이나 해부도를 클릭해 즉시 추가하세요.',
-      docTitle: 'NovaCell Healing & Pain Clinic | 3D 통증 클리닉 64종 통합 마스터 (257 정밀 타깃)',
+      docTitle: 'NovaCell Healing & Pain Clinic | 3D 통증 클리닉 64종 통합 마스터 (258 정밀 타깃)',
       navTherapy: '질환별 힐링 포인트',
       navPain: '3D 통증 클리닉 (64종)',
       navChakra: '차크라 바이오 포인트',
@@ -123,7 +123,7 @@
       footerText2: '본 애플리케이션의 모든 콘텐츠는 특허 및 독점 저작권 가이드라인을 준수하여 제작되었습니다. © 2026 NovaCell.kr All Rights Reserved.'
     },
     en: {
-      brandSub: '11 Specialty Pain Clinics · 64 Systemic Conditions · 257 Precision Targets',
+      brandSub: '11 Specialty Pain Clinics · 64 Systemic Conditions · 258 Precision Targets',
       navSoundStudio: 'Sound Studio',
       navHealingPoints: 'Healing Points',
       langBtn: '한글',
@@ -133,7 +133,7 @@
       searchPlaceholder: 'Search symptoms, diseases, nerves, or targets (e.g., pectoralis minor, TMJ, tennis elbow, GON...)',
       mechAll: 'All Mechanisms (64)',
       mechNerve: 'Nerve Entrapment',
-      mechTendon: 'Bone-Touch & Tendon',
+      mechTendon: 'Tendon & Periosteal',
       mechAutonomic: 'Autonomic & AKA Manual',
       sidebarTitle: 'Anatomical Region Map',
       catAll: 'All 64 Systemic Disorders',
