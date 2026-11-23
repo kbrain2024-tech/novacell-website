@@ -174,7 +174,7 @@
         "ko": "수일 전부터 발생한 뒤통수에서 정수리 두피를 따라 방사되는 찌릿한 두통 및 머리카락 접촉 시 과민한 통증 사례. C2, C3 척추주위 심부근 및 두반극근 압통 부위에 NovaCell Therapy(노바셀 생체 전압 및 타깃 공명 치료)를 적용하여 신경 유착을 해소한 결과, 시술 30분 만에 두피 통증 80% 이상 소실 및 자극 과민성 정상화.",
         "en": "44yo female with headache radiating upward along posterior head and scalp for 3 days. 80% pain relief within 30 minutes following C2/C3 TS  treatment with NovaCell probe."
       },
-      "diagram": "assets/diagrams/diagram_01.png",
+      "diagram": "images/diagrams/diagram_01.png",
       "targets": [
         {
           "code": "T1",
@@ -298,7 +298,7 @@
         "ko": "귀 뒤쪽과 후두부 외측의 바늘로 찌르는 듯한 박동성 신경통으로 수면 장애를 겪던 사례. 흉쇄유돌근(SCM) 후연 신경 유착 지점 및 C2, C3 분절에 NovaCell Therapy를 적용하여 신경 압박을 이완시켰으며, 시술 당일 통증 소실 및 편안한 숙면 회복.",
         "en": "73yo female unable to sleep for 2 weeks due to stabbing pain behind left ear. Pain resolved and restful sleep restored after left mid-SCM  and C2/C3 TS NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_02.png",
+      "diagram": "images/diagrams/diagram_02.png",
       "targets": [
         {
           "code": "T1",
@@ -421,7 +421,7 @@
         "ko": "관자놀이 부위가 날카롭게 콕콕 쑤시고 전기가 통하듯 뻗치는 편두통 양상의 감각신경통 사례. 관골측두신경 출구부 및 측두근 심부 긴장점에 NovaCell Therapy를 집중 조율한 결과, 시술 직후 통증 지수(VAS)가 8에서 0으로 극적으로 개선되며 완전 회복.",
         "en": "59yo female with sharp, electric shock-like stabbing temple pain for 2 days. Complete resolution (VAS 8??) following NovaCell treatment at zygomaticotemporal nerve exit point in temporalis."
       },
-      "diagram": "assets/diagrams/diagram_03.png",
+      "diagram": "images/diagrams/diagram_03.png",
       "targets": [
         {
           "code": "T1",
@@ -544,7 +544,7 @@
         "ko": "신체 활동 후 전두부 이마 표면에 발생한 찌릿찌릿한 피부 감각 과민과 신경통 사례. 안와상신경 절흔 및 전두근 최대 압통 영역에 NovaCell Therapy를 가동하여 신경근막 긴장을 정상화하였으며, 15분 내 통증 90% 이상 감소 및 편안함 회복.",
         "en": "59yo female with tingling forehead skin pain after hiking. 90% pain reduction within 10 minutes following NovaCell conduction at most tender frontalis point."
       },
-      "diagram": "assets/diagrams/diagram_04.png",
+      "diagram": "images/diagrams/diagram_04.png",
       "targets": [
         {
           "code": "T1",
@@ -669,7 +669,7 @@
         "ko": "안구 깊은 곳의 압박감과 후두부 전갈로 긁는 듯한 발작성 통증을 동반한 군집성 및 만성 긴장성 두통 사례. 두판상근 상부 및 T2, T3 흉추 분절 교감신경 경로에 NovaCell Therapy를 체계적으로 적용하여 자율신경 오작동을 진정시키고 두통 발작 완치.",
         "en": "Patient with cluster headache featuring eye pain and severe scratching-like attacks in posterior head. Completely resolved following right SC and T2/T3 level TS S NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_05.png",
+      "diagram": "images/diagrams/diagram_05.png",
       "targets": [
         {
           "code": "T1",
@@ -812,7 +812,7 @@
         "ko": "연하 시 목 안쪽이 찢어지는 듯한 통증과 외이도 깊은 통증을 동반한 자율신경성 비인두 통증 사례. 흉쇄유돌근 상부 및 두판상근 부착부에 NovaCell Therapy를 적용하여 신경 반사성 과흥분을 차단하고 인후부 통증과 연하 곤란 즉시 소실.",
         "en": "Patient presenting with severe tearing throat pain during swallowing and inner ear pain. Throat pain resolved after treating upper SCM and splenius capitis with NovaCell frequency conduction."
       },
-      "diagram": "assets/diagrams/diagram_06.png",
+      "diagram": "images/diagrams/diagram_06.png",
       "targets": [
         {
           "code": "T1",
@@ -935,7 +935,7 @@
         "ko": "경추 측면에서 쇄골 부위까지 피부가 화끈거리고 가벼운 옷깃 스침에도 과민한 통증을 호소한 경신경총 유착 사례. SCM 중앙부 Erb's point 신경 유착 부위에 NovaCell Therapy를 부드럽게 통전하여 감각신경 과흥분을 해소하고 작열통 완전 완화.",
         "en": "Patient with lateral neck burning and subauricular dysesthesia. Immediate pain relief following NovaCell therapy at mid-SCM cervical plexus branching point."
       },
-      "diagram": "assets/diagrams/diagram_07.png",
+      "diagram": "images/diagrams/diagram_07.png",
       "targets": [
         {
           "code": "T1",
@@ -1060,7 +1060,7 @@
         "ko": "목이 한쪽으로 기울어지고 반대편 회전 운동이 제한된 급성 근긴장성 사경 사례. 흉쇄유돌근과 사각근 근복에 미세전류 기반의 부드러운 NovaCell Therapy를 집중 적용하여 근육 경축을 완화하고 경추 회전 가동 범위를 즉시 정상 회복.",
         "en": "7yo child unable to turn head after waking. Immediate restoration of cervical range of motion following NovaCell application at SCM and middle scalene tender points."
       },
-      "diagram": "assets/diagrams/diagram_08.png",
+      "diagram": "images/diagrams/diagram_08.png",
       "targets": [
         {
           "code": "T1",
@@ -1183,7 +1183,7 @@
         "ko": "뒷목에서 어깻죽지, 견갑골 내측연까지 짓누르고 결리는 만성 허혈성 통증 사례. C5 척추주위 심부근 및 중사각근 레벨의 견갑배신경 주행부에 NovaCell Therapy를 적용하여 유착된 신경을 이완시킴으로써 만성적인 뻐근함과 압박 통증 완전 소실.",
         "en": "Clustered pain in posterior neck, shoulder top, and interscapular region. Dull pain resolved after treating deep paraspinal muscles around C3 and C5 with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_09.png",
+      "diagram": "images/diagrams/diagram_09.png",
       "targets": [
         {
           "code": "T1",
@@ -1326,7 +1326,7 @@
         "ko": "견봉쇄골(AC) 관절 부위의 지속적인 압통과 팔 거상 시 상투적인 어깨 통증 사례. 승모근 중부 건 견인점 및 소원근 보상 유착 부위에 NovaCell Therapy를 복합 적용하여 관절 내 장력을 재정렬하고 능동적 어깨 거상 각도 통증 없이 회복.",
         "en": "60yo male with 4 months of shoulder top to AC joint pain. Pain relieved after MT, SCM, and teres minor targeted NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_10.png",
+      "diagram": "images/diagrams/diagram_10.png",
       "targets": [
         {
           "code": "T1",
@@ -1450,7 +1450,7 @@
         "ko": "전흉부 압박감과 상지 전완부 저림으로 호흡까지 불편하던 늑쇄터널/전사각근 흉곽출구 압박 사례. 제1늑골 부착부 전사각근 및 흉근신경 주행부에 NovaCell Therapy를 적용하여 신경 혈관 다발 압박을 해소하고 가슴 통증과 팔 저림 즉각 호전.",
         "en": "52yo female with left chest pain making breathing uncomfortable. Overcame chest pain by releasing lateral/medial pectoral nerve hyperexcitation via anterior scalene NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_11.png",
+      "diagram": "images/diagrams/diagram_11.png",
       "targets": [
         {
           "code": "T1",
@@ -1574,7 +1574,7 @@
         "ko": "엄지손가락 움직임 및 손목 요골측 굴곡 시 칼로 베는 듯한 건초염 통증 사례. 손목 근위부 4횡지 높이의 장무지외전근(APL)과 단무지신근(EPB) 근복에 NovaCell Therapy를 집중 조율하여 건막 마찰을 해소하고 엄지 쥠 동작 정상화.",
         "en": "48yo masseuse with 6 months of radial wrist/thumb pain. Pain upon thumb/wrist motion resolved after NovaCell therapy on APL/EPB belly 4 FB above wrist."
       },
-      "diagram": "assets/diagrams/diagram_12.png",
+      "diagram": "images/diagrams/diagram_12.png",
       "targets": [
         {
           "code": "T1",
@@ -1697,7 +1697,7 @@
         "ko": "전완부 외측 통증과 상완요골근 부위 압통으로 주관절 신전 및 물건 들기가 제한되던 사례. 팔꿈치 하방 3횡지 상완요골근 근복에 NovaCell Therapy를 통전하여 건-골막 견인 긴장을 해소하고 팔굽혀펴기 및 파워 그립 기능 복원.",
         "en": "28yo police officer with radial wrist pain after arm wrestling. Able to perform push-ups after treating brachioradialis belly 3 FB below elbow with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_13.png",
+      "diagram": "images/diagrams/diagram_13.png",
       "targets": [
         {
           "code": "T1",
@@ -1821,7 +1821,7 @@
         "ko": "야간마다 손가락(1~3지)이 타는 듯 저려 수면 중 손을 털어야 했던 수근관증후군 사례. 요측수근굴근(FCR) 및 원회내근 전완 근복에 NovaCell Therapy를 적용하여 정중신경의 근위부 압박을 이완시킴으로써 야간 저림 완치 및 편안한 숙면 달성.",
         "en": "Female restaurant worker in 50s waking nightly from hand numbness. Night numbness completely resolved after FCR muscle belly NovaCell conduction."
       },
-      "diagram": "assets/diagrams/diagram_14.png",
+      "diagram": "images/diagrams/diagram_14.png",
       "targets": [
         {
           "code": "T1",
@@ -1944,7 +1944,7 @@
         "ko": "손가락을 굽혔다 펼 때 뚝 소리와 함께 튕기며 걸리는 만성 방아쇠수지 사례. 전완 심부 굴근(FDS/FDP) 근복 및 건막 이행부에 NovaCell Therapy를 단계별로 적용하여 굴곡건의 활주 저항을 제거함으로써 걸림 현상 완치 및 부드러운 손동작 회복.",
         "en": "68yo female with 3-year history of middle finger triggering. Catching completely cured after 3 sessions treating mid-forearm FDS/FDP bellies and pronator teres with NovaCell probe."
       },
-      "diagram": "assets/diagrams/diagram_15.png",
+      "diagram": "images/diagrams/diagram_15.png",
       "targets": [
         {
           "code": "T1",
@@ -2067,7 +2067,7 @@
         "ko": "4번째와 5번째 손가락의 찌릿한 저림과 팔꿈치 내측 저림을 호소하던 척골신경 유착 사례. 척측수근굴근(FCU) 근복 및 주관 부위 신경 터널에 NovaCell Therapy를 적용하여 척골신경의 기계적 압박을 해소하고 수지 감각 완전 회복.",
         "en": "Patient with small finger numbness and grip weakness. Numbness resolved following FCU muscle belly and pectoralis minor NovaCell application."
       },
-      "diagram": "assets/diagrams/diagram_16.png",
+      "diagram": "images/diagrams/diagram_16.png",
       "targets": [
         {
           "code": "T1",
@@ -2190,7 +2190,7 @@
         "ko": "라켓/골프 운동 후 발생한 손목 척측 및 배측의 시큰거리는 힘줄 통증 사례. 전완 외측 신전근 및 척측수근굴근 기시부에 NovaCell Therapy를 통전하여 건초의 염증성 긴장을 이완시킴으로써 손목 비틀기 동작 시 통증 소실.",
         "en": "Patient with ulnar wrist pain when wringing objects. Pain improved following ECU/FCU muscle belly NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_17.png",
+      "diagram": "images/diagrams/diagram_17.png",
       "targets": [
         {
           "code": "T1",
@@ -2314,7 +2314,7 @@
         "ko": "팔꿈치 내측상과 부위의 찌르는 통증과 악수 시 힘이 빠지던 골프엘보 사례. 소흉근 보상 유착점 및 척측수근굴근(FCU) 기시부에 복합 NovaCell Therapy를 적용하여 상지 운동 사슬의 장력을 균형화함으로써 팔꿈치 통증 85% 이상 개선.",
         "en": "48yo female with 4 months of right medial epicondyle pain. >70% pain improvement after NovaCell conduction at right pectoralis minor and FCU muscle belly."
       },
-      "diagram": "assets/diagrams/diagram_18.png",
+      "diagram": "images/diagrams/diagram_18.png",
       "targets": [
         {
           "code": "T1",
@@ -2437,7 +2437,7 @@
         "ko": "엄지와 검지 사이 손등 부위 통증으로 일상적인 손 사용(머리 빗기, 열쇠 돌리기)이 어려웠던 사례. 제1배측골간근 근복의 중심 압통점에 NovaCell Therapy를 정밀 통전하여 골막 견인 통증을 즉각 이완하고 정밀 손 기능 회복.",
         "en": "Patient unable to comb hair for 3?? months due to hand pain. Immediate pain relief and ability to comb hair restored after 1st dorsal interosseous NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_19.png",
+      "diagram": "images/diagrams/diagram_19.png",
       "targets": [
         {
           "code": "T1",
@@ -2560,7 +2560,7 @@
         "ko": "무거운 하중을 지탱한 뒤 지속된 전완 외측 깊은 통증 및 손목 신전 쇠약 사례. 요골두 하방 회외근의 프로세 아케이드(Frohse Arcade) 심부 압통점에 NovaCell Therapy를 적용하여 후골간신경(PIN)을 감압하고 손목 신전력 완전 회복.",
         "en": "57yo male with persistent ulnar dorsal wrist pain after pulling heavy machinery. Pain relieved after treating deep supinator tender point with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_20.png",
+      "diagram": "images/diagrams/diagram_20.png",
       "targets": [
         {
           "code": "T1",
@@ -2683,7 +2683,7 @@
         "ko": "체간 굴곡 및 기침 시 복벽 특정 부위가 날카롭게 콕콕 찔리던 복벽피부신경유착 사례. T7~T9 분절 복직근 외측연 신경 관통부에 NovaCell Therapy를 적용하여 유착된 신경가지를 이완함으로써 수분 내 만성 복통 완전 소실.",
         "en": "Sharp abdominal cutaneous pain worsening with movement. Abdominal pain completely vanished within 10 minutes following T7, T8, T9  NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_21.png",
+      "diagram": "images/diagrams/diagram_21.png",
       "targets": [
         {
           "code": "T1",
@@ -2807,7 +2807,7 @@
         "ko": "등허리 늑간을 따라 찌릿한 신경통과 피부 발적이 지속되어 대상포진으로 오인받았던 흉추 다열근 염증 사례. T8, T9 흉추 심부 다열근 압통점에 NovaCell Therapy를 정밀 통전하여 척추신경 후지 유착을 해소하고 등허리 통증 및 신경성 발적 정상화.",
         "en": "Patient with thoracolumbar tingling and rash. Completely resolved after treating T8 and T9 multifidus with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_22.png",
+      "diagram": "images/diagrams/diagram_22.png",
       "targets": [
         {
           "code": "T1",
@@ -2931,7 +2931,7 @@
         "ko": "명치 끝의 지속적인 더부룩함과 콕콕 쑤시는 상복부 불쾌감 및 등마루 결림을 호소하던 체성 자율신경 장애 사례. T4~T7 중부 흉추 분절 교감신경 경로에 NovaCell Therapy를 집중 조율하여 내장 신경 반사를 안정시키고 소화 기능 정상화.",
         "en": "26yo female with epigastric stabbing pain, indigestion, and mid-back pain for 16 hours. Epigastric pain vanished and digestion stimulated within 30 minutes after mid-thoracic NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_23.png",
+      "diagram": "images/diagrams/diagram_23.png",
       "targets": [
         {
           "code": "T1",
@@ -3054,7 +3054,7 @@
         "ko": "달리기나 상체 운동 시 측흉부 외측(늑골 부위)에 칼로 찌르는 듯한 흉통이 발생하던 전거근 신경유착 사례. 중사각근 하단 및 전거근 늑골 부착부에 NovaCell Therapy를 적용하여 장흉신경의 긴장을 완화함으로써 30분 이상 조깅에도 무통 유지.",
         "en": "Patient experiencing lateral chest pain outside nipple within 1 minute on treadmill. No pain even after 20??0 minutes of running following bilateral inferior middle scalene NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_24.png",
+      "diagram": "images/diagrams/diagram_24.png",
       "targets": [
         {
           "code": "T1",
@@ -3177,7 +3177,7 @@
         "ko": "심호흡 및 흉곽 확장 시 앞가슴이 콕콕 찔리고 결리던 소흉근 힘줄견인통 사례. 오구돌기 부착부 및 소흉근 근복에 NovaCell Therapy를 통전하여 흉벽 근막의 단축을 해소하고 가슴 답답함과 호흡 시 흉통 즉각 소실.",
         "en": "37yo male with right anterior chest stabbing pain upon breathing for 1 week. Pain improved after treating pectoralis minor and adjacent structures with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_25.png",
+      "diagram": "images/diagrams/diagram_25.png",
       "targets": [
         {
           "code": "T1",
@@ -3319,7 +3319,7 @@
         "ko": "기상 후 또는 체간 회전 시 등허리와 장골능 상부에 광범위한 결림과 통증을 유발하던 흉요추 이행부(T12-L1) 증후군 사례. T12/L1 분절 심부근 및 상둔신경 출구부에 NovaCell Therapy를 적용하여 골반 뒤쪽 방사통 및 요통 완치.",
         "en": "81yo female with broad thoracolumbar pain after sleeping in bed. Pain resolved after treating T3?밫7 TS and T12/L1 levels with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_26.png",
+      "diagram": "images/diagrams/diagram_26.png",
       "targets": [
         {
           "code": "T1",
@@ -3443,7 +3443,7 @@
         "ko": "장시간 착석 및 보행 시 허리 깊은 곳에서 서혜부와 대퇴부 앞쪽으로 뻗어 내리던 대요근·장골근 긴장증 사례. 제3-4요추 외측 대요근 심부 및 장골와 압통점에 NovaCell Therapy를 적용하여 고관절 굴근의 신경견인을 이완시킴으로써 요통 85% 이상 호전.",
         "en": "38yo female with 2-year history of right lumbar-thigh/groin/knee pain. Pain reduced by 80??0% following deep psoas major NovaCell application."
       },
-      "diagram": "assets/diagrams/diagram_27.png",
+      "diagram": "images/diagrams/diagram_27.png",
       "targets": [
         {
           "code": "T1",
@@ -3567,7 +3567,7 @@
         "ko": "둔부 깊은 곳의 뻐근한 결림과 하지 외측으로 전기가 흐르듯 저리던 이상근 증후군 및 좌골신경통 사례. 대좌골공 이상근 근복 및 좌골신경 주행 경로에 NovaCell Therapy를 집중 조율하여 신경 유착을 해소하고 보행 및 착석 편안함 회복.",
         "en": "41yo female with dull tightness across gluteus and buttock pulling during leg flexion/internal rotation. Gluteal pain resolved following piriformis NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_28.png",
+      "diagram": "images/diagrams/diagram_28.png",
       "targets": [
         {
           "code": "T1",
@@ -3690,7 +3690,7 @@
         "ko": "의자에서 일어날 때 고관절 외측 통증으로 절뚝거리며 보행이 불안정하던 심부 외회전근 골막염 사례. 대전자 후방 외회전근 정지부 및 대퇴근막장근에 NovaCell Therapy를 적용하여 고관절 회전 안정성을 개선하고 즉시 정상 기립 보행 달성.",
         "en": "Patient with hip pain when rising from chair. Normal gait restored immediately following TFL and deep external rotator NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_29.png",
+      "diagram": "images/diagrams/diagram_29.png",
       "targets": [
         {
           "code": "T1",
@@ -3813,7 +3813,7 @@
         "ko": "엉덩방아 후 수개월간 지속된 미골(꼬리뼈) 통증으로 바닥에 앉기 힘들던 대둔근 건 견인통 사례. 미골 외측연 대둔근 기시부 및 천골결절인대에 NovaCell Therapy를 통전하여 골막 견인 장력을 이완함으로써 착석 시 통증 즉시 소실.",
         "en": "27yo female with 2 months of tailbone pain after fall on buttocks. Immediate comfort sitting after treating gluteus maximus tender point beside coccyx with NovaCell probe."
       },
-      "diagram": "assets/diagrams/diagram_30.png",
+      "diagram": "images/diagrams/diagram_30.png",
       "targets": [
         {
           "code": "T1",
@@ -3937,7 +3937,7 @@
         "ko": "계단을 오르내릴 때 무릎 관절 깊숙한 곳에서 통증이 뻗치던 대퇴이두근·반막양근 건 신경통 사례. 비골두 건 부착부 및 반막양근 경골 내측 정지부에 NovaCell Therapy를 적용하여 슬관절 심부 관절통을 신속히 해소하고 계단 보행 정상화.",
         "en": "28yo police officer with 4 weeks of intra-articular knee pain. Firm pressure on biceps femoris elicited deep joint tenderness; stair navigation normalized after NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_31.png",
+      "diagram": "images/diagrams/diagram_31.png",
       "targets": [
         {
           "code": "T1",
@@ -4061,7 +4061,7 @@
         "ko": "달리기 또는 굴곡 동작 시 무릎 외측 대퇴골 외측상과에 마찰 통증이 극심하던 장경골인대증후군(ITBS) 사례. 대퇴근막장근(TFL) 근복 및 외측상과 마찰점에 NovaCell Therapy를 집중 가동하여 건막 장력을 정상화하고 무릎 굴신 동작 통증 완치.",
         "en": "18yo b-boy limping in with lateral knee pain after 3 days of heavy dance practice. Normal gait restored immediately after TFL tender point NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_32.png",
+      "diagram": "images/diagrams/diagram_32.png",
       "targets": [
         {
           "code": "T1",
@@ -4185,7 +4185,7 @@
         "ko": "무릎 내측 하방 통증으로 쪼그려 앉거나 보행 시 절뚝거리던 거위발 점액낭염 및 복재신경 유착 사례. 관절선 상방 내측광근 및 거위발건 정지부에 NovaCell Therapy를 적용하여 복재신경 감압과 건막 염증을 해소하고 15분 만에 정상 보행 회복.",
         "en": "76yo female with medial knee pain aggravated for 3 days. Pain vanished within 10 minutes following vastus medialis NovaCell conduction 5 FB above joint line."
       },
-      "diagram": "assets/diagrams/diagram_33.png",
+      "diagram": "images/diagrams/diagram_33.png",
       "targets": [
         {
           "code": "T1",
@@ -4308,7 +4308,7 @@
         "ko": "보행 시 종아리 당김과 발뒤꿈치 아킬레스건 부착부 통증으로 딛기 어렵던 비복근 건 견인통 사례. 대퇴골 과부 비복근 내측두 기시부 및 가자미근 근건 이행부에 NovaCell Therapy를 통전하여 건막 장력을 이완하고 발뒤꿈치 착지 통증 완치.",
         "en": "Calf-to-posterior knee pain since military training 6 years ago. Resolved following NovaCell TTP treatment at gastrocnemius medial head origin."
       },
-      "diagram": "assets/diagrams/diagram_34.png",
+      "diagram": "images/diagrams/diagram_34.png",
       "targets": [
         {
           "code": "T1",
@@ -4432,7 +4432,7 @@
         "ko": "발목 염좌 이후 수개월간 지속된 발목 관절 속 먹먹한 통증 및 엄지-2지 사이 저림 사례. 전경골 하퇴 장지신근(EDL) 근복 및 족관절 전방 신경 관통부에 NovaCell Therapy를 적용하여 심비골신경 유착을 해소하고 가벼운 러닝 가능 회복.",
         "en": "20yo soldier with persistent deep ankle pain for 7 months post-sprain. Running resumed after treating EDL muscle belly tender point with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_35.png",
+      "diagram": "images/diagrams/diagram_35.png",
       "targets": [
         {
           "code": "T1",
@@ -4555,7 +4555,7 @@
         "ko": "발목 내측 복사뼈 뒤쪽 통증과 아침 첫 보행 시 발바닥 내측 당김을 호소하던 후경골근 증후군 사례. 종아리 심부 후경골근 근복 및 내과 후방 신경 홈에 NovaCell Therapy를 적용하여 족궁(아치)의 건 견인력을 이완시키고 보행 편안함 회복.",
         "en": "Flatfoot progression and post-medial malleolar pain since sprain 5 years ago. Improved after treating mid-calf tibialis posterior belly with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_36.png",
+      "diagram": "images/diagrams/diagram_36.png",
       "targets": [
         {
           "code": "T1",
@@ -4678,7 +4678,7 @@
         "ko": "보행 또는 양반다리 시 발목 외측 복사뼈 뒤쪽과 제5중족골 기저부에 통증이 유발되던 단비골근 건 견인통 사례. 하퇴 외측 비골근 근복 및 제5중족골 부착부에 NovaCell Therapy를 통전하여 외측 건막 긴장을 소거하고 양반다리 시 통증 완쾌.",
         "en": "Pain from behind lateral malleolus to anterior ankle after march. Pain during cross-legged sitting resolved after peroneus brevis belly NovaCell treatment."
       },
-      "diagram": "assets/diagrams/diagram_37.png",
+      "diagram": "images/diagrams/diagram_37.png",
       "targets": [
         {
           "code": "T1",
@@ -4802,7 +4802,7 @@
         "ko": "아침 기상 후 첫발을 디딜 때 발뒤꿈치 바닥에 전기가 찌릿하며 딛기 힘들던 만성 족저근막염 사례. 내측 복사뼈 하방 굴근지대(Flexor Retinaculum) 및 내측종골신경 유착 부위에 NovaCell Therapy를 적용하여 신경 유착을 해소하고 첫발 통증 완전 소실.",
         "en": "32yo female with severe morning heel pain for 5 months. Improved after treating medial calcaneal nerve entrapment under flexor retinaculum with NovaCell probe."
       },
-      "diagram": "assets/diagrams/diagram_38.png",
+      "diagram": "images/diagrams/diagram_38.png",
       "targets": [
         {
           "code": "T1",
@@ -4925,7 +4925,7 @@
         "ko": "3번째와 4번째 발가락 사이 발바닥이 화끈거리고 자갈을 밟는 듯 찌릿하던 지간신경통(몰톤신경종) 사례. 발등 3-4 중족골두 사이 심층인대 부위에 NovaCell Therapy를 정밀 통전하여 신경 유착을 해소하고 보행 시 찌릿한 방사통 완치.",
         "en": "35yo female with electric plantar pain between 3rd/4th metatarsal heads. Radiating pain vanished after treating deep transverse metatarsal ligament via dorsal approach with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_39.png",
+      "diagram": "images/diagrams/diagram_39.png",
       "targets": [
         {
           "code": "T1",
@@ -5047,7 +5047,7 @@
         "ko": "엄지발가락 밑바닥(1st MTP 관절) 통증으로 지면을 차고 나가지 못하던 단무지굴근 건 견인통 사례. MTP 관절 2횡지 근위부 단무지굴근 내측두에 NovaCell Therapy를 적용하여 종자골 주변 골막 견인력을 이완함으로써 즉각적인 통증 소실 및 정상 보행.",
         "en": "42yo male unable to weight-bear on great toe after hiking. Immediate pain improvement after treating FHB medial head 2 FB proximal to MTP with NovaCell probe."
       },
-      "diagram": "assets/diagrams/diagram_40.png",
+      "diagram": "images/diagrams/diagram_40.png",
       "targets": [
         {
           "code": "T1",
@@ -5170,7 +5170,7 @@
         "ko": "보행 중 발가락이 삐끗한 후 엄지발가락 등쪽 관절에 통증이 지속되던 장무지신근 건 견인통 사례. 복사뼈 선 5횡지 상방 장무지신근(EHL) 근복에 NovaCell Therapy를 적용하여 발등 건막의 긴장을 해소하고 신발 착용 및 보행 시 통증 완치.",
         "en": "20yo soldier with dorsal MTP pain after night march. Pain relieved after treating EHL belly 5 FB above malleolar line with NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_41.png",
+      "diagram": "images/diagrams/diagram_41.png",
       "targets": [
         {
           "code": "T1",
@@ -5293,7 +5293,7 @@
         "ko": "수십 년간 지속된 손발 냉증, 만성 무기력, 잦은 소화장애를 동반하던 자율신경계 오작동(Autonomic Nerve) 사례. T9~T11 흉추 분절 심부 다열근 및 교감신경 경로에 NovaCell Therapy를 체계적으로 통전하여 말초 혈관 수축을 정상화하고 수족 온기 및 활력 회복.",
         "en": "20-year history of frequent diarrhea, stomach discomfort, and chronic fatigue. Diarrhea ceased and >90% improvement achieved after bilateral T9/T10 multifidus NovaCell S treatment."
       },
-      "diagram": "assets/diagrams/diagram_42.png",
+      "diagram": "images/diagrams/diagram_42.png",
       "targets": [
         {
           "code": "T1",
@@ -5416,7 +5416,7 @@
         "ko": "출산 후 전신 관절 시림과 꼬리뼈 통증으로 정상 착석과 보행이 어렵던 산후풍 복합 증후군 사례. 골반 뒤쪽 대둔근 기시부 및 전사각근/대요근 긴장점에 NovaCell Therapy를 복합 적용하여 골반 장력을 이완시킴으로써 착석 통증 소실 및 전신 시림 개선.",
         "en": "Postpartum mother unable to sit due to tailbone pain. Able to sit immediately after right gluteus maximus NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_43.png",
+      "diagram": "images/diagrams/diagram_43.png",
       "targets": [
         {
           "code": "T1",
@@ -5540,7 +5540,7 @@
         "ko": "고관절통증으로 체중 부하가 불가능하여 다리를 디디지 못하던 일과성 고관절 활액막염 사례. 내측 장골근 및 대요근 힘줄 부착부에 부드러운 NovaCell Therapy를 집중 조율하여 관절낭 내 압박을 해소하고 당일 즉각적인 독립 보행 회복.",
         "en": "Young boy carried in father's arms unable to walk due to hip pain. Pain completely vanished and normal gait resumed immediately after left iliacus NovaCell application."
       },
-      "diagram": "assets/diagrams/diagram_44.png",
+      "diagram": "images/diagrams/diagram_44.png",
       "targets": [
         {
           "code": "T1",
@@ -5664,7 +5664,7 @@
         "ko": "대상포진 치유 후에도 하지 신경 분절을 따라 콕콕 쑤시고 쏘는 듯한 통증이 지속되던 대상포진 후 신경통(PHN) 사례. L5-S1 분절 심부 다열근 및 척수신경 후지에 NovaCell Therapy를 체계적으로 적용하여 신경근막 흥분을 진정시키고 난치성 신경통 80% 이상 완화.",
         "en": "Severe stabbing pain following lower extremity herpes zoster. Pain improved with L5/S1 level multifidus NovaCell therapy."
       },
-      "diagram": "assets/diagrams/diagram_45.png",
+      "diagram": "images/diagrams/diagram_45.png",
       "targets": [
         {
           "code": "T1",
@@ -5789,7 +5789,7 @@
         "ko": "하지 부종과 열감, 먹먹한 마목감으로 봉와직염으로 오진되어 장기 치료를 받았으나 호전이 없던 자율신경성 혈류 장애 사례. 요추부 L2~L4 다열근 자율신경 오작동 부위에 NovaCell Therapy를 적용하여 신경성 부종과 마목감 완치 및 다리 가벼움 회복.",
         "en": "Patient misdiagnosed with cellulitis and treated with antibiotics for 2 weeks without improvement. Edema markedly reduced 2 days after L5/S1 multifidus NovaCell S treatment."
       },
-      "diagram": "assets/diagrams/diagram_46.png",
+      "diagram": "images/diagrams/diagram_46.png",
       "targets": [
         {
           "code": "T1",
@@ -5917,7 +5917,7 @@
         "ko": "디스크 수술을 권유받았던 52세 만성 요통·다리저림 환자. AKA 천장관절 비폭력 미세 신연 및 전굴-상방 활주 도수치료 2회 시행 직후 관절 놀이가 정상 복원되어 방사통이 95% 소실되고 정상 일상 복귀.",
         "en": "52-year-old chronic LBP patient advised surgery. Non-thrust AKA SI joint distraction and anterior-superior glide achieved 95% pain reduction after 2 sessions."
       },
-      "diagram": "assets/diagrams/aka_extracted_4.jpg",
+      "diagram": "images/diagrams/aka_extracted_4.jpg",
       "targets": [
         {
           "code": "T1",
@@ -6027,7 +6027,7 @@
         "ko": "좌골신경통 진단 후 수개월간 차도가 없던 47세 환자. 천장관절 전굴-상방 활주 도수치료 즉각 적용 후 외측 방사통 및 종아리 저림감이 1회 치료만으로 90% 이상 드라마틱하게 경감됨.",
         "en": "47-year-old unresponsive to sciatica treatments. Anterior-superior glide abolished lateral radiating pain and calf numbness by 90% in single session."
       },
-      "diagram": "assets/diagrams/aka_extracted_5.jpg",
+      "diagram": "images/diagrams/aka_extracted_5.jpg",
       "targets": [
         {
           "code": "T1",
@@ -6137,7 +6137,7 @@
         "ko": "뒤로 허리를 전혀 젖히지 못하던 38세 만성 요통 환자. 극돌기 지렛대를 활용한 AKA L4-L5 비폭력 분절 미세 활주 치료 후 젖힘 각도 45도 정상 회복 및 통증 소실.",
         "en": "38-year-old unable to extend lumbar spine. AKA L4-L5 non-thrust segmental glide restored full 45-degree extension with zero pain."
       },
-      "diagram": "assets/diagrams/aka_extracted_8.jpg",
+      "diagram": "images/diagrams/aka_extracted_8.jpg",
       "targets": [
         {
           "code": "T1",
@@ -6246,7 +6246,7 @@
         "ko": "수년간의 만성 골반통으로 보행 불균형과 골반 비대칭이 심했던 61세 환자. 1차 기능이상 치료 후 AKA 관절낭 신장운동(12분 지속 신장) 4회 적용으로 단축된 관절포 인대가 정상 신장되며 가동범위 100% 회복.",
         "en": "61-year-old with chronic pelvic contracture. After resolving dysfunction, 4 sessions of 12-min low-load stretch restored 100% full ROM."
       },
-      "diagram": "assets/diagrams/aka_extracted_7.jpg",
+      "diagram": "images/diagrams/aka_extracted_7.jpg",
       "targets": [
         {
           "code": "T1",
@@ -6357,7 +6357,7 @@
         "ko": "10년간 호전과 악화를 반복하며 마약성 진통제까지 복용하던 55세 환자. 박창혁 박사 AKA 5단계 표준 프로토콜을 체계적으로 적용하여 3주 만에 통증 0 달성 및 진통제 완전 중단.",
         "en": "55-year-old on opioid analgesics for 10-year refractory pain. 5-step systematic AKA algorithm achieved zero pain in 3 weeks with full drug cessation."
       },
-      "diagram": "assets/diagrams/aka_extracted_12.jpg",
+      "diagram": "images/diagrams/aka_extracted_12.jpg",
       "targets": [
         {
           "code": "T1",
@@ -6464,7 +6464,7 @@
         "ko": "7년간 양측 난치성 턱관절 통증·개구 제한(손가락 2개 미만) 및 만성 편두통·이명을 호소하던 환자(E: Ch.2 증례 2-2-1). 하악절흔 외측익돌근, 교근 심부, 이개측두신경 및 C1-C2 중심축에 노바셀(-70mV) 고전압 미세전류 및 골타치 시술 후 개구 범위 정상화 및 두통·이명 90% 소실.",
         "en": "7-year bilateral refractory TMJ pain with locking and tinnitus (Ch.2 Case 2-2-1); normal mouth opening and 90% symptom resolution achieved via 4-point NovaCell TMJ protocol."
       },
-      "diagram": "assets/diagrams/diagram_52.png",
+      "diagram": "images/diagrams/diagram_52.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "Lateral Pterygoid",
@@ -6588,7 +6588,7 @@
         "ko": "벨마비 후유증으로 인한 안면 강직과 고음성 이명이 동반된 환자(E: Ch.2 AI 임상 모델 증례 3 `fig_2_9_2`). 경돌유돌공 안면신경 주간부, C6 성상신경절(SGB), SCM 쇄골지 및 안면 분지에 노바셀(-70mV) 미세전류 통전 후 안면 대칭성 회복 및 이명 강도 80% 이상 감소.",
         "en": "Bell's palsy sequelae with facial stiffness and tinnitus (Ch.2 Case 3); significant facial symmetry recovery and >80% tinnitus reduction via CN VII + SGB protocol."
       },
-      "diagram": "assets/diagrams/diagram_53.png",
+      "diagram": "images/diagrams/diagram_53.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "Stylomastoid Foramen (CN VII)",
@@ -6712,7 +6712,7 @@
         "ko": "신경성형술 및 수차례 주사 치료 후에도 팔 저림과 후경부 통증이 지속되던 파열성 경추 디스크 환자(E: Ch.3 증례 3-8/3-11). 노바셀 경추 제1·2·3·4선 골타치 및 -70mV 고전압 미세전류 집중 치료 후 신경근 부종이 소퇴되어 비수술로 방사통 완치.",
         "en": "Refractory cervical disc herniation with persistent radicular arm pain after neuroplasty (Ch.3 Case 3-8); full non-surgical resolution via Cervical 4-Line NovaCell protocol."
       },
-      "diagram": "assets/diagrams/diagram_54.png",
+      "diagram": "images/diagrams/diagram_54.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "Line 1: Nuchal Ligament & Spinous Process",
@@ -6836,7 +6836,7 @@
         "ko": "6개월간 옷을 입거나 머리를 감을 수 없던 중증 동결견 환자(E: Ch.5 증례 5-3). 견갑상신경(견갑절흔), 액와신경(사각공간), 전방 결절간구 관절낭 및 견갑하근에 노바셀(-70mV) 통전 및 AKA 관절낭 하방 활주 시술 후 즉각 외전 각도 40도 이상 상승 및 야간통 소실.",
         "en": "Severe 6-month frozen shoulder (Ch.5 Case 5-3); >40-degree immediate abduction gain and nocturnal pain resolution via 4-point shoulder nerve & capsule protocol."
       },
-      "diagram": "assets/diagrams/diagram_55.png",
+      "diagram": "images/diagrams/diagram_55.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Suprascapular Nerve (Suprascapular Notch)",
@@ -6960,7 +6960,7 @@
         "ko": "배드민턴 스매싱 후 발생한 회전근개 부분파열 및 충돌증후군 환자(Healing Points 임상 증례). 대결절 극상근 착점 골타치와 견봉하 점액낭, 견갑하근에 노바셀 치료 2회 후 일상 통증 소실, 4회 시술 후 Painful arc 음성 전환되어 운동 복귀.",
         "en": "Rotator cuff partial tear and impingement from badminton; daily pain resolved in 2 sessions and painful arc cleared in 4 sessions via greater tubercle Bone-Touch protocol."
       },
-      "diagram": "assets/diagrams/diagram_56.png",
+      "diagram": "images/diagrams/diagram_56.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Coracoacromial & Coracoclavicular Ligaments",
@@ -7084,7 +7084,7 @@
         "ko": "1년 이상 스테로이드 주사와 체외충격파 치료 후에도 재발하던 난치성 테니스엘보 환자(E: Ch.6 증례 6-1). 외측상과 ECRB 기시부 골타치(제2선), 완요골관절 RCL(제3선), 회외근 Frohse 아케이드(제4선) 및 요골신경 제어점에 노바셀(-70mV) 통합 시술 후 악력 완전 회복.",
         "en": "1-year recurrent tennis elbow refractory to steroid injections and ESWT (Ch.6 Case 6-1); complete grip strength and pain-free recovery via Lateral Elbow 5-Target protocol."
       },
-      "diagram": "assets/diagrams/diagram_57.png",
+      "diagram": "images/diagrams/diagram_57.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Lateral Supracondylar Ridge (ECRL/BR)",
@@ -7227,7 +7227,7 @@
         "ko": "골프 스윙 후 발생한 우측 흉벽·갈비뼈 통증으로 호흡조차 힘들어하던 환자(E: Ch.4 증례 4-5). 기흉 ZERO 수지 늑골 고정법으로 후방 늑골각(제4선), 늑횡돌관절(제3선) 및 액와선 외측피지점에 노바셀 통전 직후 심호흡 시 통증 90% 즉각 소실.",
         "en": "Acute right lateral rib cage pain after golf swing restricting deep breathing (Ch.4 Case 4-5); 90% immediate relief on deep inspiration via rib-guarded 4-point intercostal protocol."
       },
-      "diagram": "assets/diagrams/diagram_58.png",
+      "diagram": "images/diagrams/diagram_58.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Posterior Rib Angle & Intercostal Muscle",
@@ -7351,7 +7351,7 @@
         "ko": "흉추 T4-T5 대상포진 후 1년간 마약성 진통제와 신경차단술에도 옷을 입지 못할 정도의 이질통을 겪던 70대 환자(E: Ch.4 증례 4-15). 이환 분절 및 상·하 인접 분절(T3~T6) 후관절·DRG 반사점과 액와선 외측피지점에 노바셀(-70mV) 세포전압 재생 치료 시행 후 작열통·이질통 85% 소실.",
         "en": "70yo patient with 1-year refractory T4-T5 PHN allodynia (Ch.4 Case 4-15); 85% reduction in burning pain and allodynia via multi-segmental DRG + peripheral NovaCell -70mV protocol."
       },
-      "diagram": "assets/diagrams/diagram_59.png",
+      "diagram": "images/diagrams/diagram_59.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Thoracic DRG & Posterior Dorsal Ramus (PDNB)",
@@ -7475,7 +7475,7 @@
         "ko": "아침에 세수하다 허리를 삐끗해 부축을 받고 내원한 급성 요추 염좌 및 기능성 측만 환자(E: Ch.7 증례 7-4). 요방형근 제12늑골 착점, 장골능 기시부 및 L1-L3 횡돌기 첨부(제4선) 골타치 및 노바셀 통전 직후 스스로 허리를 펴고 보행 퇴원.",
         "en": "Acute disabling lumbar sprain with functional list after bending over sink (Ch.7 Case 7-4); patient walked out upright unassisted immediately after 5-point QL Bone-Touch protocol."
       },
-      "diagram": "assets/diagrams/diagram_60.png",
+      "diagram": "images/diagrams/diagram_60.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. 12th Rib Inferior Border QL Insertion",
@@ -7618,7 +7618,7 @@
         "ko": "L4-L5, L5-S1 추간판 탈출증으로 수술을 권유받고 다리가 저려 100m도 걷기 힘들던 환자(E: Ch.7 증례 7-8). 요추 제2선(추궁판·다열근), 제3선(후관절), 추간공 외측 DRG 반사점 및 둔부 좌골신경 경로에 노바셀(-70mV) 집중 치료 후 하지 방사통 소실 및 비수술 일상 복귀.",
         "en": "L4-L5/L5-S1 disc herniation recommended for surgery with severe sciatica (Ch.7 Case 7-8); full resolution of radicular pain and non-surgical recovery via Lumbar Line 2-4 + DRG protocol."
       },
-      "diagram": "assets/diagrams/diagram_61.png",
+      "diagram": "images/diagrams/diagram_61.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Posterolateral Annulus Fibrosus & Sinuvertebral N.",
@@ -7762,7 +7762,7 @@
         "ko": "5분만 걸어도 양쪽 종아리가 터질 듯 아파 쉬어야 했던 70대 중증 척추관 협착증 환자(E: Ch.7 증례 7-12). L3~S1 유두-부돌기 인대(MAL) 골타치, 추간공 외측 혈관신경 회복점 및 후천골공(S1-S2) 자율신경점에 노바셀(-70mV) 치료 후 연속 보행 시간이 5분에서 40분 이상으로 획기적 개선.",
         "en": "70yo severe lumbar spinal stenosis unable to walk >5 minutes (Ch.7 Case 7-12); continuous walking distance increased to >40 minutes via L3-S1 MAL Bone-Touch + foraminal vascular protocol."
       },
-      "diagram": "assets/diagrams/diagram_62.png",
+      "diagram": "images/diagrams/diagram_62.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Hypertrophied Facet Joint Capsule",
@@ -7886,7 +7886,7 @@
         "ko": "연골주사와 진통제로도 계단 보행이 불가능했던 퇴행성 슬관절염(K-L grade II~III) 및 슬개건염 환자(E: Ch.8 증례 8-6). 슬개골 하극·상극 골타치(HP-PT-01/02), 내·외측 관절포점(HP-KOA-01), 대퇴골 중간광근 골막 및 AIIS에 노바셀(-70mV) 치료 후 무릎 굴신 가동범위 정상화 및 계단 보행 회복.",
         "en": "Knee osteoarthritis (K-L grade II-III) with patellar tendinopathy unable to climb stairs (Ch.8 Case 8-6); full knee flexion/extension and pain-free stair climbing restored via 4-point Bone-Touch protocol."
       },
-      "diagram": "assets/diagrams/diagram_63.png",
+      "diagram": "images/diagrams/diagram_63.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. AIIS Rectus Femoris Origin Bone-Touch",
@@ -8010,7 +8010,7 @@
         "ko": "다리를 꼬고 앉는 습관과 허리 시술 후 발생한 하퇴 외측 마목감 및 발목 배굴 약화(경도 족하수) 환자(E: Ch.9 증례 9-4). 슬와 상부 분기점, 비골경부 비골터널(HP-CPN-01) 및 전경골근 심비골신경 진입부(HP-CPN-02)에 노바셀(-70mV) 집중 통전 후 발목 배굴 근력(MMT) 정상 회복.",
         "en": "Lateral leg numbness and ankle dorsiflexion weakness (mild foot drop) from fibular neck compression (Ch.9 Case 9-4); full dorsiflexion MMT strength recovered via fibular tunnel + deep peroneal NovaCell protocol."
       },
-      "diagram": "assets/diagrams/diagram_64.png",
+      "diagram": "images/diagrams/diagram_64.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
         "1. Sciatic Nerve Bifurcation (Tibial & Common Peroneal N.)",
