@@ -4246,8 +4246,8 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 60.8,
-        "y": 66.1,
+        "x": 53.7,
+        "y": 66.0,
         "role": {
           "ko": "관절낭·인대점",
           "en": "Capsule & Ligament Target"
