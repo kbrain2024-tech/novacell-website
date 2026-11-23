@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>NovaCell Healing & Pain Clinic | 3D 통증 클리닉 46종 해부 타깃 가이드</title>
-  <meta name="description" content="NovaCell Healing & Pain Clinic - 46대 신경근골격계 질환의 병태생리, 3D 반투명 X-Ray 투시 타깃, 사용자 맞춤 타깃 및 528Hz 세포 전압 타이머 가이드" />
+  <title>NovaCell Healing & Pain Clinic | 3D 통증 클리닉 64종 통합 마스터 (257 정밀 치료 타깃)</title>
+  <meta name="description" content="NovaCell Healing & Pain Clinic - 11개 특화 통증클리닉 64대 신경근골격계 질환의 병태생리, 3D 반투명 X-Ray 투시 타깃(257개 정밀 치료 포인트), 사용자 맞춤 타깃 및 528Hz 세포 전압 타이머 가이드" />
   
   <!-- Font Awesome & Remixicon Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -213,6 +213,9 @@
     }
       /* Prominent Return/Close Button for Modals */
     .modal-close-btn {
+      position: static !important;
+      top: auto !important;
+      right: auto !important;
       display: inline-flex !important;
       align-items: center !important;
       gap: 7px !important;
@@ -988,7 +991,7 @@
 
       <nav class="mobile-menu-links" aria-label="NovaCell 전체 메뉴">
         <a href="index.html"><span>&#x2695;</span><strong>질환별 힐링 포인트 (32종)</strong><small>고전압 미세전류 펜 도자 가이드</small></a>
-        <a href="pain-clinic.html" style="border-color:#1cdde8;background:#142a3d;"><span>&#x26A1;</span><strong>3D 통증 클리닉 (46종)</strong><small>3D X-Ray 투시 해부 타깃</small></a>
+        <a href="pain-clinic.html" style="border-color:#1cdde8;background:#142a3d;"><span>&#x26A1;</span><strong>3D 통증 클리닉 (64종 통합 마스터)</strong><small>11개 특화클리닉 · 257개 3D X-Ray 정밀 타깃</small></a>
         <a href="bio-point.html"><span>&#x25C9;</span><strong>차크라 바이오 포인트</strong><small>Chakra Bio Points</small></a>
         <a href="circuits.html"><span>&#x21BB;</span><strong>신경 생체 회로</strong><small>Neural Circuit Therapy</small></a>
         <a href="https://novacell.kr/" target="_blank" rel="noopener"><span>&#x1F310;</span><strong>공식 홈페이지 바로가기</strong><small>novacell.kr &#x2197;</small></a>
@@ -1003,20 +1006,25 @@
   <section class="pain-hero">
     <div class="hero-badge">
       <i class="fa-solid fa-bolt"></i>
-      <span data-i18n="heroBadge">46대 신경근골격계 질환 반투명 X-Ray 투시 타깃</span>
+      <span data-i18n="heroBadge">11개 특화 통증클리닉 · 64대 전신 질환 · 257개 정밀 3D X-Ray 치료 타깃</span>
     </div>
 
-    <h2 data-i18n="heroTitle">NovaCell 3D 통증 클리닉</h2>
+    <h2 data-i18n="heroTitle">NovaCell 3D 통증 클리닉 통합 마스터</h2>
     <p class="hero-sub" data-i18n="heroSub">
-      통증의 3대 핵심 병태생리(신경포착·힘줄견인·자율신경 기능실조)를 분석하고, 3D 반투명 X-Ray 투시 이미지와 정밀 치료 타깃을 통해 NovaCell Therapy(노바셀 치료) 프로토콜을 제시합니다.
+      통증의 3대 핵심 병태생리(신경포착·힘줄견인·자율신경 기능실조)와 박창혁 박사의 골타치·신경포착·제1~4선 해부학 치료 포인트를 통합하여, 3D 반투명 X-Ray 투시 해부도와 다중 정밀 타깃(T1~T5+) 프로토콜을 제시합니다.
     </p>
 
     <!-- Pathophysiology Mechanism Filter Tabs -->
     <div class="mechanism-tabs" id="mechanism-tabs">
-      <button type="button" class="btn-mech active" data-mech="all" data-i18n="mechAll">전체 병태기전</button>
+      <button type="button" class="btn-mech active" data-mech="all" data-i18n="mechAll">전체 병태기전 (64)</button>
       <button type="button" class="btn-mech" data-mech="nerve" data-i18n="mechNerve">신경포착 (Nerve)</button>
-      <button type="button" class="btn-mech" data-mech="tendon" data-i18n="mechTendon">힘줄견인 (Tendon)</button>
-      <button type="button" class="btn-mech" data-mech="autonomic" data-i18n="mechAutonomic">자율신경 (Autonomic Nerve)</button>
+      <button type="button" class="btn-mech" data-mech="tendon" data-i18n="mechTendon">골타치·힘줄견인 (Tendon)</button>
+      <button type="button" class="btn-mech" data-mech="autonomic" data-i18n="mechAutonomic">자율신경·도수 (Autonomic &amp; AKA)</button>
+    </div>
+
+    <!-- 11 Specialty Pain Clinics Filter Bar -->
+    <div class="clinic-filter-bar" id="clinic-filter-tabs">
+      <!-- Injected dynamically via pain_app.js -->
     </div>
   </section>
 
