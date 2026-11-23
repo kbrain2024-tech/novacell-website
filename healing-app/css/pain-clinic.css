@@ -3084,12 +3084,12 @@ body {
   pointer-events: none;
 }
 
-/* Individual Interactive Target Pin (100% Transparent Inner Circle) */
+/* Individual Interactive Target Pin (Sleek 100% Transparent Inner Circle) */
 .cpm-pin {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3100,31 +3100,31 @@ body {
 }
 
 .cpm-pin:hover {
-  transform: translate(-50%, -50%) scale(1.18);
+  transform: translate(-50%, -50%) scale(1.14);
   z-index: 25;
 }
 
 .cpm-pin.active {
-  transform: translate(-50%, -50%) scale(1.26);
+  transform: translate(-50%, -50%) scale(1.18);
   z-index: 35;
 }
 
 .cpm-pin.dragging {
   cursor: grabbing !important;
-  transform: translate(-50%, -50%) scale(1.32);
+  transform: translate(-50%, -50%) scale(1.24);
   z-index: 50;
 }
 
 .cpm-pin .pin-core {
-  width: 34px;
-  height: 34px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: transparent !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 12px var(--pin-color, #ff334b), 0 0 0 1.5px rgba(0, 0, 0, 0.85);
-  border: 2.5px solid var(--pin-color, #ff334b);
+  box-shadow: 0 0 10px var(--pin-color, #ff334b), 0 0 0 1.2px rgba(0, 0, 0, 0.85);
+  border: 2px solid var(--pin-color, #ff334b);
   position: relative;
   z-index: 2;
   pointer-events: none;
@@ -3132,30 +3132,30 @@ body {
 }
 
 .cpm-pin:hover .pin-core {
-  box-shadow: 0 0 16px var(--pin-color, #ff334b), 0 0 0 2px rgba(255, 255, 255, 0.5);
-  border-width: 3px;
+  box-shadow: 0 0 14px var(--pin-color, #ff334b), 0 0 0 1.5px rgba(255, 255, 255, 0.55);
+  border-width: 2.5px;
 }
 
 .cpm-pin.active .pin-core {
-  border-width: 3px;
-  box-shadow: 0 0 22px var(--pin-color, #ff334b), 0 0 0 2px #ffffff;
+  border-width: 2.5px;
+  box-shadow: 0 0 18px var(--pin-color, #ff334b), 0 0 0 1.8px #ffffff;
 }
 
 .cpm-pin .pin-label-badge {
   position: absolute;
-  top: -15px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(3, 7, 18, 0.95);
   color: #ffffff;
   border: 1.5px solid var(--pin-color, #ff334b);
   border-radius: 9999px;
-  padding: 1px 7px;
-  font-size: 10px;
+  padding: 1px 6px;
+  font-size: 9.5px;
   font-weight: 800;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 8px var(--pin-color, #ff334b);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9), 0 0 6px var(--pin-color, #ff334b);
   z-index: 4;
   pointer-events: none;
   transition: all 0.2s ease;
@@ -3165,7 +3165,7 @@ body {
   background: var(--pin-color, #ff334b);
   color: #030812;
   font-weight: 900;
-  box-shadow: 0 0 14px var(--pin-color, #ff334b);
+  box-shadow: 0 0 12px var(--pin-color, #ff334b);
 }
 
 .cpm-pin .pin-pulse {
@@ -3180,8 +3180,8 @@ body {
 }
 
 @keyframes pinPulseWave {
-  0% { transform: scale(1); opacity: 0.85; }
-  100% { transform: scale(1.75); opacity: 0; }
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.55); opacity: 0; }
 }
 
 /* Floating Draggable Glassmorphism Guidance Banner */

@@ -4194,12 +4194,12 @@ window.PAIN_CONDITIONS = [
       "en": "TTP/bursitis at insertion of sartorius/gracilis/semitendinosus (pes anserinus) and saphenous nerve entrapment by vastus medialis."
     },
     "targetTissues": {
-      "ko": "거위발 정지부(Pes anserinus), 내측광근(Vastus medialis).",
-      "en": "Pes anserinus insertion, Vastus medialis."
+      "ko": "내전근관(Hunter's Canal) 출구 복재신경·내측광근(VMO), 거위발건(봉공근·박근·반건양근) 정지부 및 점액낭, 내측 관절간극·내측측부인대(MCL), 외측 관절간극 관절포.",
+      "en": "Hunter's canal saphenous nerve exit & VMO, pes anserinus tendon insertion & bursa, medial joint line & MCL capsule, lateral joint line capsule."
     },
     "palpation": {
-      "ko": "관절면 하방 내측 경골 부위 거위발 정지부, 관절면 상방 5 FB(10cm) 내측광근 근복.",
-      "en": "Pes anserinus insertion on medial tibia below joint line, and vastus medialis belly 5 FB (10 cm) above joint line."
+      "ko": "① 대퇴 내측 원위 1/3 내전근관 출구 복재신경 포착점 ② 경골 근위 내측면(무릎 관절선 아래 4~5cm) 거위발건·점액낭 ③ 무릎 내측 관절간극·MCL ④ 무릎 외측 관절간극 관절포.",
+      "en": "Hunter's canal exit (distal medial thigh), pes anserinus insertion & bursa (4-5cm below medial joint line), medial joint line & MCL, and lateral joint line capsule."
     },
     "clinicalCase": {
       "ko": "무릎 내측 하방 통증으로 쪼그려 앉거나 보행 시 절뚝거리던 거위발 점액낭염 및 복재신경 유착 사례. 관절선 상방 내측광근 및 거위발건 정지부에 NovaCell Therapy를 적용하여 복재신경 감압과 건막 염증을 해소하고 15분 만에 정상 보행 회복.",
@@ -4210,73 +4210,73 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 60.6,
-        "y": 19.6,
+        "x": 54.8,
+        "y": 38.7,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 내전근관 출구(Hunter's Canal) 내측광근 원위부 및 복재신경 포착점",
-          "en": "T1: Adductor Canal Exit Vastus Medialis & Saphenous Nerve Point"
+          "ko": "T1: 내전근관 출구 · 복재신경 포착점 (Hunter's Canal Exit & VMO)",
+          "en": "T1: Hunter's Canal Exit & Saphenous Nerve (VMO)"
         },
         "desc": {
-          "ko": "[표적 해부] 무릎 내측 상방 4~5cm 내측광근(VMO)과 대내전근건 사이 내전근관 하구 및 복재신경·슬개하분지 관통부.\n[촉지 및 시술] 무릎 위 안쪽 허벅지 내측광근 하연 오목한 신경 출구. 무릎 안쪽 감각신경 포착을 상류에서 차단합니다.",
-          "en": "Saphenous nerve & infrapatellar branch exit from adductor canal at distal vastus medialis."
+          "ko": "[표적 해부] 대퇴 내측 원위 1/3 내측광근(VMO)과 봉공근 사이 내전근관(Hunter's Canal)에서 복재신경(Saphenous Nerve)이 근막을 뚫고 나오는 제1 포착점.\n[촉지 및 시술] 무릎 내측 상방 약 8~10cm 대퇴 내측 오목한 근막 경계. 무릎 안쪽과 정강이 내측으로 뻗치는 찌릿한 신경통 및 야간통을 직접 차단합니다.",
+          "en": "Hunter's canal fascial exit between VMO and sartorius where the saphenous nerve is entrapped; directly relieves medial knee and shin neuralgia."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 64.6,
-        "y": 58.4,
+        "x": 52.5,
+        "y": 63.4,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T2: 경골 근위 내측면 거위발건(Pes Anserinus) 정지부 및 점액낭 골막 접촉점",
-          "en": "T2: Pes Anserinus Insertion & Bursa Periosteal Contact (Anteromedial Tibia)"
+          "ko": "T2: 거위발건 정지부 · 점액낭 (Pes Anserinus Insertion & Bursa)",
+          "en": "T2: Pes Anserinus Insertion & Bursa"
         },
         "desc": {
-          "ko": "[표적 해부] 무릎 내측 관절선 하방 4~5cm 경골 근위 전내측면의 거위발건(봉공근·박근·반건양근 공동 정지건) 골막 및 거위발 점액낭.\n[촉지 및 시술] 무릎 안쪽 아래 정강이뼈 평평한 내측면의 골막 압통점(HP-KOA-02). 계단 오르내릴 때 무릎 안쪽 아래 통증의 제1 타깃입니다.",
-          "en": "Pes anserinus conjoined tendon insertion and bursa 4-5cm distal to medial knee joint line."
+          "ko": "[표적 해부] 경골 근위 내측면의 봉공근·박근·반건양근 3개 힘줄이 합쳐지는 거위발건(Pes Anserinus) 정지부 골막과 하부 점액낭 및 복재신경 슬하가지.\n[촉지 및 시술] 무릎 내측 관절선에서 아래로 4~5cm 내려온 경골 전내측 평탄면. 계단을 오르내리거나 일어날 때 찌르는 듯한 내측 하부 무릎 통증을 해소합니다.",
+          "en": "Conjoint insertion of sartorius, gracilis, and semitendinosus with the pes anserine bursa 4-5cm below the medial joint line; relieves stair-climbing pain."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 57.7,
+        "y": 52.1,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "관절낭·인대점",
+          "en": "Capsule & Ligament Target"
         },
         "name": {
-          "ko": "T3: 슬관절 내측 관절간극(Medial Joint Line) 내측측부인대·관절포점",
-          "en": "T3: Medial Knee Joint Line Capsule & MCL Point"
+          "ko": "T3: 내측 관절간극 · 내측측부인대(MCL) 관절낭점",
+          "en": "T3: Medial Joint Line & MCL Capsule"
         },
         "desc": {
-          "ko": "[표적 해부] 대퇴 내측과와 경골 내측과 사이 내측 관절간극, 내측 반월상연골 관절포 부착부 및 내측측부인대(MCL).\n[촉지 및 시술] 무릎 안쪽 관절 틈새를 따라 만져지는 관절포 압통점(HP-KOA-01). 퇴행성 내측 슬관절통을 즉각 완화합니다.",
-          "en": "Medial tibiofemoral joint line capsule and medial collateral ligament attachment."
+          "ko": "[표적 해부] 대퇴골 내측과와 경골 내측과 사이 내측 관절간극(Medial Joint Line)의 내측측부인대(MCL) 및 내측 관절낭 부착부.\n[촉지 및 시술] 무릎을 살짝 구부린 상태에서 촉지되는 내측 관절 틈새와 MCL 중심부. 무릎 안쪽 시림, 체중 부하 시 꺾이는 느낌과 관절낭 염증을 완화합니다.",
+          "en": "Medial joint line gap and MCL capsular attachment; relieves medial weight-bearing pain and capsular inflammation."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 41.4,
+        "y": 54.1,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "관절낭·인대점",
+          "en": "Capsule & Ligament Target"
         },
         "name": {
-          "ko": "T4: 슬관절 외측 관절간극 관절포 및 대퇴내전근 근위 연계점",
-          "en": "T4: Lateral Joint Line Capsule & Proximal Gracilis/Sartorius Relay"
+          "ko": "T4: 외측 관절간극 관절포 (Lateral Joint Line Capsule)",
+          "en": "T4: Lateral Joint Line Capsule"
         },
         "desc": {
-          "ko": "[표적 해부] 외측 관절간극 관절포점(v29 임상 추가 타깃) 및 대퇴 내측 박근·봉공근 근복.\n[촉지 및 시술] 내·외측 관절낭 밸런스를 맞추고 거위발건을 당기는 내측 대퇴 근육 장력을 해소합니다.",
-          "en": "Lateral knee joint line capsule and proximal gracilis/sartorius tension relief point."
+          "ko": "[표적 해부] 대퇴골 외측과와 경골 외측과 사이 외측 관절간극(Lateral Joint Line)의 외측 관절포 및 외측측부인대(LCL) 전방 경계.\n[촉지 및 시술] 무릎 바깥쪽 슬개골 외하방 관절 틈새. 내측 무릎 통증으로 인한 보상성 외측 하중 불균형과 슬관절 내·외측 장력 밸런스를 함께 교정합니다.",
+          "en": "Lateral joint line capsule and anterior LCL border; balances compensatory lateral knee tension alongside medial pes anserine decompression."
         }
       }
     ],
