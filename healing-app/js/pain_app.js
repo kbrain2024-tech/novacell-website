@@ -907,6 +907,10 @@
                 <span>➕</span>
                 <span>${t('btnQuickAddPin')}</span>
               </button>
+              <button type="button" class="btn-canvas-tool" id="btn-canvas-zoom" title="해부도 확대/축소 (100% → 125% → 150%)">
+                <span>🔍</span>
+                <span id="canvas-zoom-label">확대 100%</span>
+              </button>
               <button type="button" class="btn-canvas-tool" id="btn-reset-pin-coords" title="모든 치료 포인트를 표준 해부학 기본위치로 복원합니다">
                 <span>🔄</span>
                 <span>${t('btnResetPins')}</span>
@@ -916,9 +920,11 @@
 
           <!-- Interactive 3D Anatomy Canvas Wrapper -->
           <div class="cpm-canvas-wrapper" id="diagram-stage">
-            <img src="${cond.diagram}" alt="${title}" class="cpm-diagram-img" id="modal-diagram-img" />
-            <!-- Overlaid Dynamic Pins Layer (T1~T5+ & Custom Pins) -->
-            <div class="cpm-pins-layer" id="diagram-pins-layer"></div>
+            <div class="cpm-zoom-stage" id="diagram-zoom-stage" data-zoom="100">
+              <img src="${cond.diagram}" alt="${title}" class="cpm-diagram-img" id="modal-diagram-img" />
+              <!-- Overlaid Dynamic Pins Layer (T1~T5+ & Custom Pins) -->
+              <div class="cpm-pins-layer" id="diagram-pins-layer"></div>
+            </div>
 
             <!-- Floating Draggable Glassmorphism Guidance Banner -->
             <div class="cpm-drag-banner" id="pin-drag-hint-banner" style="display: ${state.pinLocked ? 'none' : 'flex'};">
@@ -1245,11 +1251,34 @@
   function setupInteractiveCanvasEvents(condId) {
     const lockBtn = document.getElementById('btn-toggle-pin-lock');
     const quickAddBtn = document.getElementById('btn-quick-add-pin');
+    const zoomBtn = document.getElementById('btn-canvas-zoom');
+    const zoomLabel = document.getElementById('canvas-zoom-label');
     const resetBtn = document.getElementById('btn-reset-pin-coords');
     const closeBannerBtn = document.getElementById('btn-close-drag-banner');
     const hintBanner = document.getElementById('pin-drag-hint-banner');
     const stage = document.getElementById('diagram-stage');
+    const zoomStage = document.getElementById('diagram-zoom-stage') || stage;
     const pinsLayer = document.getElementById('diagram-pins-layer');
+
+    const zoomSteps = [100, 125, 150];
+    let zoomIdx = 0;
+    zoomBtn?.addEventListener('click', () => {
+      zoomIdx = (zoomIdx + 1) % zoomSteps.length;
+      const pct = zoomSteps[zoomIdx];
+      if (zoomStage) {
+        zoomStage.style.width = `${pct}%`;
+        zoomStage.setAttribute('data-zoom', String(pct));
+      }
+      if (zoomLabel) zoomLabel.textContent = `확대 ${pct}%`;
+      if (zoomBtn) zoomBtn.classList.toggle('highlight-tool', pct > 100);
+      if (stage && pct > 100) {
+        setTimeout(() => {
+          stage.scrollLeft = (stage.scrollWidth - stage.clientWidth) / 2;
+          stage.scrollTop = (stage.scrollHeight - stage.clientHeight) / 2;
+        }, 50);
+      }
+      showToast(pct === 100 ? '🔍 해부도가 기본 크기(100%)로 복원되었습니다.' : `🔍 해부도가 ${pct}%로 확대되었습니다.`);
+    });
 
     lockBtn?.addEventListener('click', () => {
       state.pinLocked = !state.pinLocked;
@@ -1404,7 +1433,7 @@
         hasMoved = true;
       }
 
-      const rect = stage.getBoundingClientRect();
+      const rect = zoomStage.getBoundingClientRect();
       const pctX = Math.max(3, Math.min(97, ((clientX - rect.left) / rect.width) * 100));
       const pctY = Math.max(3, Math.min(97, ((clientY - rect.top) / rect.height) * 100));
 
@@ -1442,7 +1471,7 @@
       if (state.pinLocked) return;
       if (e.target.closest('.cpm-pin') || e.target.closest('.cpm-drag-banner')) return;
 
-      const rect = stage.getBoundingClientRect();
+      const rect = zoomStage.getBoundingClientRect();
       const pctX = parseFloat(Math.max(3, Math.min(97, ((e.clientX - rect.left) / rect.width) * 100)).toFixed(1));
       const pctY = parseFloat(Math.max(3, Math.min(97, ((e.clientY - rect.top) / rect.height) * 100)).toFixed(1));
 

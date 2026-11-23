@@ -4210,8 +4210,8 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 54.8,
-        "y": 38.7,
+        "x": 51.9,
+        "y": 30.3,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
@@ -4228,8 +4228,8 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 52.5,
-        "y": 63.4,
+        "x": 49.3,
+        "y": 69.7,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
@@ -4246,8 +4246,8 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 57.7,
-        "y": 52.1,
+        "x": 55.2,
+        "y": 51.7,
         "role": {
           "ko": "관절낭·인대점",
           "en": "Capsule & Ligament Target"
@@ -4264,8 +4264,8 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 41.4,
-        "y": 54.1,
+        "x": 37.3,
+        "y": 54.9,
         "role": {
           "ko": "관절낭·인대점",
           "en": "Capsule & Ligament Target"
