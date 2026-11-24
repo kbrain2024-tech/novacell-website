@@ -3670,7 +3670,7 @@
       ],
       "title": {
         "ko": "고관절 심부 외회전근 골막염 / 대퇴근막장근 증후군",
-        "en": "Hip Deep External Rotator Periostitis / Tensor Fasciae Latae Syndrome"
+        "en": "Hip Deep External Rotator Periostitis / TFL Syndrome (GTPS)"
       },
       "symptoms": {
         "ko": "고관절 근처 국소 통증, 의자에서 일어날 때 다리 전체 못 움직임, 보행 시 대퇴 외측 통증 및 절뚝거림.",
@@ -3681,12 +3681,12 @@
         "en": "Isotonic contraction of TFL and deep external rotators induces periostitis (TTP) at greater trochanter insertion."
       },
       "targetTissues": {
-        "ko": "대퇴근막장근(TFL), 상/하쌍위근, 대퇴방형근.",
-        "en": "Hip joint deep external rotators near trochanteric fossa, Tensor fasciae latae (TFL)."
+        "ko": "대퇴근막장근(TFL · 기시: 전상장골극 ASIS·장골능 전외측 / 정지: 장경인대 → 경골 Gerdy 결절), 중둔근·소둔근(기시: 장골익 외측면 / 정지: 대퇴골 대전자), 심부 외회전근(상·하쌍자근·내폐쇄근·대퇴방형근), 대전자 점액낭 및 L4~S1 상·하둔신경 근위 분절.",
+        "en": "Tensor Fasciae Latae (TFL) & IT Band, Gluteus Medius & Minimus, Deep External Rotators (Gemelli, Obturator Internus, Quadratus Femoris), greater trochanteric bursa, and L4-S1 superior/inferior gluteal nerve roots."
       },
       "palpation": {
-        "ko": "대전자(Greater trochanter) 후방 및 상방 심부 압통점.",
-        "en": "TFL belly mid-way between ASIS and greater trochanter, and posterior greater trochanter tender points."
+        "ko": "① 대퇴근막장근(TFL) 근복 & ASIS 후하방 기시점 ② 대퇴골 대전자 후상면 중·소둔근 & 외회전근 부착점(GTPS) ③ 중둔근·소둔근 장골익 심부점 ④ 요추 L4~S1 후관절 & 상·하둔신경 근위 분절점.",
+        "en": "1) TFL belly & ASIS posteroinferior origin 2) Posterior-superior greater trochanter facet (GTPS & bursa) 3) Gluteus medius/minimus deep iliac wing trigger point 4) L4-S1 facet joints & gluteal nerve origin."
       },
       "clinicalCase": {
         "ko": "의자에서 일어날 때 고관절 외측 통증으로 절뚝거리며 보행이 불안정하던 심부 외회전근 골막염 사례. 대전자 후방 외회전근 정지부 및 대퇴근막장근에 NovaCell Therapy를 적용하여 고관절 회전 안정성을 개선하고 즉시 정상 기립 보행 달성.",
@@ -3697,84 +3697,85 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 77.0,
-          "y": 49.6,
+          "x": 67.1,
+          "y": 48.1,
           "role": {
             "ko": "제1 핵심 치료점",
             "en": "Primary Clinical Target"
           },
           "name": {
-            "ko": "T1: 대퇴근막장근(TFL) 근복 및 전상장골극(ASIS) 후하방 기시점",
-            "en": "T1: Tensor Fasciae Latae (TFL) Belly & ASIS Origin"
+            "ko": "T1: 대퇴근막장근(TFL) 근복 & ASIS 후하방 기시점",
+            "en": "T1: TFL Belly & ASIS Posteroinferior Origin (Superior Gluteal N.)"
           },
           "desc": {
-            "ko": "[표적 해부] 전상장골극(ASIS) 및 장골능 전외측에서 기시하는 대퇴근막장근(TFL) 근복과 상둔신경 분지.\n[촉지 및 시술] ASIS와 대전자 사이 전외측 골반 근육. 옆으로 누워 자거나 걸을 때 골반 바깥쪽이 쑤시는 통증을 해소합니다.",
-            "en": "Tensor fasciae latae belly anterolateral to greater trochanter below ASIS."
+            "ko": "[표적 해부] 전상장골극(ASIS) 및 장골능 전외측에서 기시해 장경인대(IT Band)를 거쳐 경골 Gerdy 결절로 이어지는 대퇴근막장근(TFL) 근복과 상둔신경 분지.\n[촉지 및 시술] ASIS와 대전자 사이 전외측 골반 근육. 옆으로 누워 자거나 걸을 때 골반 바깥쪽이 쑤시고 장경인대가 당기는 통증을 해소합니다.",
+            "en": "Tensor fasciae latae belly anterolateral to greater trochanter below ASIS and superior gluteal nerve branch."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 76.6,
-          "y": 62.1,
+          "x": 60.8,
+          "y": 57.1,
           "role": {
             "ko": "힘줄·골막 부착점",
             "en": "Tendon & Periosteal Target"
           },
           "name": {
-            "ko": "T2: 대퇴골 대전자(Greater Trochanter) 후상면 중·소둔근 및 심부 외회전근 골막 부착점",
-            "en": "T2: Greater Trochanter Facets Gluteus Medius/Minimus & External Rotators"
+            "ko": "T2: 대퇴골 대전자 후상면 · 중·소둔근 & 외회전근 부착점",
+            "en": "T2: Greater Trochanter (GTPS) · Periosteal Insertion & Bursa"
           },
           "desc": {
-            "ko": "[표적 해부] 대전자 외측면(중둔근), 전면(소둔근), 후내측 회전근와(외회전 6근) 골막 부착부 및 대전자 점액낭.\n[촉지 및 시술] 대전자 뼈 테두리 골막 접촉. 가성 좌골신경통과 대전자 통증 증후군(GTPS)을 해결합니다.",
-            "en": "Periosteal insertions of gluteus medius, minimus, and deep external rotators around greater trochanter."
+            "ko": "[표적 해부] 대퇴골 대전자 외측·후상면(중·소둔근) 및 대전자 회전근와(상·하쌍자근·내폐쇄근·대퇴방형근) 골막 부착부 및 대전자 점액낭.\n[촉지 및 시술] 대전자 뼈 테두리 후상방 골막 접촉점. 대전자 통증 증후군(GTPS), 고관절 외측 골막염 및 가성 좌골신경통을 해결합니다.",
+            "en": "Periosteal insertions of gluteus medius, minimus, and deep external rotators around the posterior-superior greater trochanter and bursa (GTPS)."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 38.0,
-          "y": 62.0,
+          "x": 57.0,
+          "y": 35.8,
           "role": {
             "ko": "심부 근복·근막점",
             "en": "Deep Myofascial Trigger Point"
           },
           "name": {
-            "ko": "T3: 중둔근·소둔근(Gluteus Medius & Minimus) 장골익 심부 유발점",
-            "en": "T3: Gluteus Medius & Minimus Deep Trigger Points"
+            "ko": "T3: 중둔근·소둔근(Gluteus Medius & Minimus) 장골익 심부점",
+            "en": "T3: Gluteus Medius & Minimus · Deep Iliac Wing Trigger Point"
           },
           "desc": {
-            "ko": "[표적 해부] 장골능 하방 3~5cm 장골익 외측면의 중둔근 및 심층 소둔근 근복.\n[촉지 및 시술] 허벅지 외측과 종아리 외측까지 디스크처럼 방사통을 보내는 소둔근 심부 TrP를 비활성화합니다.",
-            "en": "Deep trigger points of gluteus medius and minimus on external iliac wing."
+            "ko": "[표적 해부] 장골능 하방 3~5cm 장골익 외측면에서 기시하여 대퇴골 대전자로 정지하는 중둔근 및 심층 소둔근 근복.\n[촉지 및 시술] 허벅지 외측과 종아리 바깥쪽까지 허리디스크처럼 방사통을 유발하는 소둔근·중둔근 심부 유발점(TrP)을 비활성화합니다.",
+            "en": "Deep trigger points of gluteus medius and minimus on external iliac wing referring pseudo-sciatic pain down the lateral thigh."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 62.0,
-          "y": 38.0,
+          "x": 40.6,
+          "y": 29.7,
           "role": {
             "ko": "후관절·신경근점",
             "en": "Facet & Nerve Root Target"
           },
           "name": {
-            "ko": "T4: 요추 L4-S1 후관절 및 상·하둔신경 근위 분절점",
-            "en": "T4: L4-S1 Facet & Superior/Inferior Gluteal Nerve Root"
+            "ko": "T4: 요추 L4~S1 후관절 & 상·하둔신경 근위 분절점",
+            "en": "T4: L4-S1 Facet Joints · Superior & Inferior Gluteal Nerve Origin"
           },
           "desc": {
-            "ko": "[표적 해부] 둔근과 외회전근을 지배하는 L4-L5-S1 척수 분절 후관절.\n[촉지 및 시술] 고관절 근육 만성 과긴장의 중추 신경근 원인을 함께 안정화합니다.",
-            "en": "L4-S1 paraspinal facet root innervating gluteal and external rotator muscles."
+            "ko": "[표적 해부] 대퇴근막장근·중소둔근·심부 외회전근을 지배하는 상·하둔신경의 기원 분절인 요추 L4~S1 후관절.\n[촉지 및 시술] 고관절 외측 근육의 만성 과긴장과 반복 재발을 일으키는 근위 척수 신경근 흥분을 함께 안정화합니다.",
+            "en": "L4-S1 paraspinal facet joints innervating superior and inferior gluteal nerves to stabilize proximal neural tension."
           }
         }
       ],
       "anatomicalLabels": [
-        "Gemelli & Obturator Internus",
-        "Tensor Fasciae Latae (TFL)",
-        "Greater Trochanter",
-        "IT Band"
+        "Tensor Fasciae Latae (TFL) & IT Band",
+        "Greater Trochanter (GTPS & Bursa)",
+        "Gluteus Medius & Minimus (Iliac Wing)",
+        "Deep External Rotators (Gemelli, Obturator Internus, Quadratus Femoris)",
+        "L4-S1 Facet Joints & Superior/Inferior Gluteal Nerves"
       ],
       "rifeFreq": 880,
-      "searchKeywords": "고관절 심부 외회전근 골막염 / 대퇴근막장근 증후군 Hip Deep External Rotator Periostitis / Tensor Fasciae Latae Syndrome 고관절 근처 국소 통증, 의자에서 일어날 때 다리 전체 못 움직임, 보행 시 대퇴 외측 통증 및 절뚝거림. Localized pain near hip joint, inability to move leg when rising from chair, thigh lateral pain and limping during gait. 요추, 골반, 둔부 및 고관절 질환 Lumbar Spine, Pelvis & Hip Disorders"
+      "searchKeywords": "고관절 심부 외회전근 골막염 대퇴근막장근 증후군 TFL GTPS 대전자 통증 증후군 Hip Deep External Rotator Periostitis Tensor Fasciae Latae Syndrome 중둔근 소둔근 장경인대 IT Band 상하쌍자근 내폐쇄근 대퇴방형근 대전자 점액낭염 요추 골반 둔부 고관절 질환"
     },
     {
       "id": 30,
