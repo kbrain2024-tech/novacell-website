@@ -3423,7 +3423,7 @@ window.PAIN_CONDITIONS = [
     ],
     "title": {
       "ko": "대요근 / 장골근 증후군",
-      "en": "Psoas Major / Iliacus Syndrome"
+      "en": "Psoas Major / Iliacus Syndrome (Iliopsoas)"
     },
     "symptoms": {
       "ko": "허리를 펴기 힘들고 걷다 보면 허리가 굽어짐, 방바닥에 누우면 허리가 들뜸, 계단 올라갈 때 무릎관절 속 통증, 허벅지 전외측 이상감각.",
@@ -3434,101 +3434,101 @@ window.PAIN_CONDITIONS = [
       "en": "Hypertonicity of psoas major/iliacus entraps femoral nerve and lateral femoral cutaneous nerve (LFCN) within muscle/fascia, causing hip/knee neuralgia and thigh numbness."
     },
     "targetTissues": {
-      "ko": "대요근(Psoas major), 장골근(Iliacus).",
-      "en": "Psoas major, Iliacus."
+      "ko": "대요근(Psoas Major · 기시: T12~L5 추체·L1~L5 횡돌기 / 정지: 대퇴골 소전자), 장골근(Iliacus · 기시: 장골와 내면 상부 2/3·장골능 내순 / 정지: 대퇴골 소전자), 요추신경총·대퇴신경, 서혜인대 하방 장요근건 및 고관절 전방 관절낭.",
+      "en": "Psoas Major (Origin: T12-L5 vertebral bodies & L1-L5 transverse processes / Insertion: lesser trochanter), Iliacus (Origin: upper 2/3 iliac fossa & inner iliac crest / Insertion: lesser trochanter), lumbar plexus, femoral nerve, and iliopsoas tendon/anterior hip capsule."
     },
     "palpation": {
-      "ko": "L3/L4 극돌기 수준 중심선 외측 3.5~5.5cm 지점 깊이 (7~9cm), ASIS 내측 장골오목 장골근 압통점.",
-      "en": "Deep point 3.5??.5 cm lateral to midline at L3/L4 spinous process level (7?? cm depth), and iliacus tender point inside iliac fossa medial to ASIS."
+      "ko": "① 요추 L1~L4 횡돌기 외측 대요근 심부 기시부(극돌기 외측 3.5~5.5cm) ② 장골와(Iliac Fossa) 내측면 장골근 & ASIS 내측점 ③ 서혜인대 하방 대퇴삼각 장요근건 & 전방 관절낭 ④ 대퇴골 소전자(Lesser Trochanter) 장요근 정지부.",
+      "en": "1) L1-L4 transverse process lateral psoas major deep origin (3.5-5.5cm lateral to midline) 2) Iliac fossa medial wall & ASIS medial iliacus belly 3) Sub-inguinal femoral triangle iliopsoas tendon & anterior hip capsule 4) Lesser trochanter iliopsoas tendon insertion."
     },
     "clinicalCase": {
-      "ko": "장시간 착석 및 보행 시 허리 깊은 곳에서 서혜부와 대퇴부 앞쪽으로 뻗어 내리던 대요근·장골근 긴장증 사례. 제3-4요추 외측 대요근 심부 및 장골와 압통점에 NovaCell Therapy를 적용하여 고관절 굴근의 신경견인을 이완시킴으로써 요통 85% 이상 호전.",
-      "en": "38yo female with 2-year history of right lumbar-thigh/groin/knee pain. Pain reduced by 80??0% following deep psoas major NovaCell application."
+      "ko": "장시간 착석 및 보행 시 허리 깊은 곳에서 서혜부와 대퇴부 앞쪽으로 뻗어 내리던 대요근·장골근 긴장증 사례. L1~L4 외측 대요근 심부, 장골와 내측 장골근, 서혜인대 하방 장요근건에 노바셀(-50mV)을 연계 적용하여 고관절 굴근의 신경견인을 이완시킴으로써 요통 85% 이상 호전.",
+      "en": "38yo female with 2-year history of right lumbar-thigh/groin/knee pain. Pain reduced by 80-90% following combined NovaCell (-50mV) application to deep psoas major, iliacus fossa, and iliopsoas tendon."
     },
     "diagram": "images/diagrams/diagram_27.png",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 40.3,
-        "y": 28.5,
+        "x": 45.0,
+        "y": 23.6,
         "role": {
           "ko": "핵심 후관절·신경근점",
           "en": "Primary Facet & Root Target"
         },
         "name": {
-          "ko": "T1: 요추 L1-L4 횡돌기 외측 장요근(Psoas Major) 심부 구획점 (제4선)",
-          "en": "T1: L1-L4 Transverse Process Tip Psoas Major Deep Point (Line 4)"
+          "ko": "T1: 요추 L1~L4 횡돌기 외측 · 대요근 심부 기시부",
+          "en": "T1: L1-L4 Transverse Processes · Psoas Major & Lumbar Plexus"
         },
         "desc": {
-          "ko": "[표적 해부] L1~L4 추체·횡돌기에서 기시하는 대요근(Psoas major) 후방 기시부 및 요추신경총.\n[촉지 및 시술] 요추 극돌기 외측 4~5cm L2-L4 횡돌기 첨부 방향 접근. 의자에서 일어설 때 허리가 바로 안 펴지는 대요근 단축을 근원부터 이완합니다.",
-          "en": "Deep paraspinal approach to L1-L4 transverse process origin of psoas major."
+          "ko": "[표적 해부] T12~L5 추체와 L1~L4 횡돌기에서 기시하는 대요근(Psoas Major) 심부 기시부 및 근육 내부를 관통하는 요추신경총(대퇴신경·외측대퇴피신경).\n[촉지 및 시술] 요추 극돌기 외측 3.5~5.5cm L2~L4 횡돌기 첨부 방향 접근. 의자에서 일어설 때 허리가 바로 펴지지 않고 굽어지는 대요근 단축과 요추신경총 압박을 근원부터 이완합니다.",
+          "en": "Deep paraspinal approach to L1-L4 transverse process origin of psoas major and lumbar plexus."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 68.8,
-        "y": 47.3,
+        "x": 64.0,
+        "y": 44.8,
         "role": {
           "ko": "심부 근복·근막점",
           "en": "Deep Myofascial Trigger Point"
         },
         "name": {
-          "ko": "T2: 장골와(Iliac Fossa) 내측면 장골근(Iliacus) 및 전상장골극(ASIS) 내측점",
-          "en": "T2: Iliac Fossa Medial Wall Iliacus Muscle Belly Point"
+          "ko": "T2: 장골와(Iliac Fossa) 내측면 · 장골근 & ASIS 내측점",
+          "en": "T2: Iliac Fossa (Medial to ASIS) · Iliacus Deep Belly"
         },
         "desc": {
-          "ko": "[표적 해부] 골반 앞쪽 전상장골극(ASIS) 내측 2~3cm 장골와 내면을 채우는 장골근(Iliacus) 근복.\n[촉지 및 시술] ASIS 안쪽 골반 뼈 내벽을 따라 부드럽게 심부 촉지. 고관절 굴곡통과 허리 심부 통증을 즉시 풀어줍니다.",
+          "ko": "[표적 해부] 장골와 내면 상부 2/3 및 장골능 내순에서 기시하여 골반 앞쪽 전상장골극(ASIS) 내측을 채우는 장골근(Iliacus) 심부 근복.\n[촉지 및 시술] ASIS 내측 2~3cm 골반 뼈 내벽을 따라 부드럽게 심부 촉지. 고관절 굴곡 제한, 천장관절 전방 당김 및 허리 심부 통증을 즉시 풀어줍니다.",
           "en": "Iliacus muscle belly along inner wall of iliac fossa 2-3cm medial to ASIS."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 64.5,
+        "y": 62.3,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "힘줄·관절낭점",
+          "en": "Tendon & Joint Capsule Target"
         },
         "name": {
-          "ko": "T3: 서혜인대 하방 대퇴삼각 장요근건-고관절 전방 관절낭점",
-          "en": "T3: Sub-inguinal Femoral Triangle Iliopsoas Tendon & Hip Capsule"
+          "ko": "T3: 서혜인대 하방 대퇴삼각 · 장요근건 & 전방 관절낭",
+          "en": "T3: Inferior Inguinal Ligament · Iliopsoas Tendon & Anterior Hip Capsule"
         },
         "desc": {
-          "ko": "[표적 해부] 서혜인대 직하방 대퇴동맥 외측의 장요근 건-근 이행부 및 장요점액낭.\n[촉지 및 시술] 사타구니(서혜부)가 당기고 다리를 들어 올릴 때 찝히는 통증을 해소합니다.",
-          "en": "Iliopsoas myotendinous junction lateral to femoral pulse just below inguinal ligament."
+          "ko": "[표적 해부] 서혜인대 직하방 대퇴삼각에서 대요근과 장골근이 합류하는 장요근건(Iliopsoas Tendon), 장요점액낭 및 고관절 전방 관절낭·대퇴신경 주행부.\n[촉지 및 시술] 대퇴동맥 박동 외측 심부를 부드럽게 촉지. 사타구니(서혜부)가 당기고 계단을 오르거나 다리를 들어 올릴 때 고관절 앞쪽이 찝히는 통증을 해소합니다.",
+          "en": "Iliopsoas myotendinous junction, bursa, and anterior hip capsule lateral to femoral pulse just below the inguinal ligament."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 34.3,
+        "y": 67.9,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T4: 대퇴골 소전자(Lesser Trochanter) 장요근 정지부 연계 타깃",
-          "en": "T4: Lesser Trochanter Iliopsoas Insertion Relay Point"
+          "ko": "T4: 대퇴골 소전자(Lesser Trochanter) · 장요근 정지부",
+          "en": "T4: Lesser Trochanter · Iliopsoas Tendon Insertion"
         },
         "desc": {
-          "ko": "[표적 해부] 대퇴 상부 내측 심부 소전자 장요근 정지건 및 치골근 경계.\n[촉지 및 시술] 대요근과 장골근이 최종 합류하여 당기는 힘줄 착점의 골막 긴장을 완화합니다.",
-          "en": "Distal insertion of iliopsoas tendon toward lesser trochanter of femur."
+          "ko": "[표적 해부] 대요근과 장골근이 하나의 강력한 힘줄로 합쳐져 최종 정지하는 대퇴골 소전자(Lesser Trochanter) 골막 부착부 및 치골근 경계.\n[촉지 및 시술] 대퇴 상부 내측 심부 소전자 방향 접근. 장요근 전체의 최종 견인력이 집중되는 정지부 골막 긴장을 완화하여 고관절 굴곡·신전 균형을 회복합니다.",
+          "en": "Distal periosteal insertion of the conjoined iliopsoas tendon at the lesser trochanter of the femur."
         }
       }
     ],
     "anatomicalLabels": [
-      "Psoas Major",
-      "Iliacus",
-      "Femoral Nerve",
-      "Lumbar Plexus",
-      "Inguinal Ligament"
+      "Psoas Major (T12-L5 to Lesser Trochanter)",
+      "Iliacus (Iliac Fossa to Lesser Trochanter)",
+      "Lumbar Plexus & Femoral Nerve",
+      "Sub-Inguinal Iliopsoas Tendon & Hip Capsule",
+      "Lesser Trochanter Insertion"
     ],
     "rifeFreq": 880,
-    "searchKeywords": "대요근 / 장골근 증후군 Psoas Major / Iliacus Syndrome 허리를 펴기 힘들고 걷다 보면 허리가 굽어짐, 방바닥에 누우면 허리가 들뜸, 계단 올라갈 때 무릎관절 속 통증, 허벅지 전외측 이상감각. Inability to straighten waist, posture slumps when walking, waist lifts off floor when lying flat, deep knee joint pain when climbing stairs, anterolateral thigh dysesthesia. 요추, 골반, 둔부 및 고관절 질환 Lumbar Spine, Pelvis & Hip Disorders"
+    "searchKeywords": "대요근 장골근 장요근 증후군 Psoas Major Iliacus Syndrome Iliopsoas 서혜부 통증 고관절 전방 통증 대퇴신경 외측대퇴피신경 소전자 장골와 ASIS 허리를 펴기 힘들고 걷다 보면 허리가 굽어짐 요추 골반 둔부 고관절 질환"
   },
   {
     "id": 28,
