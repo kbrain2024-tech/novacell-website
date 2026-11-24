@@ -3801,16 +3801,16 @@
         "en": "Tailbone and lower buttock pain after fall on buttocks, difficulty sitting on floor or chair."
       },
       "pathophysiology": {
-        "ko": "엉덩방아 등 외상으로 대둔근 부착부에 힘줄견인점이 형 성되어 꼬리뼈 골막을 잡아당겨 염증성 통증 유발.",
-        "en": "Fall trauma forms TTPs at gluteus maximus attachment, pulling on coccygeal periosteum to induce inflammatory pain."
+        "ko": "엉덩방아 등 외상이나 장시간 착석으로 대둔근 하부 기시부와 천결절인대에 힘줄견인점이 형성되어 꼬리뼈(미골)·천미관절 골막을 잡아당기고 미골신경총(Ganglion Impar) 및 후천골공(S2~S4) 골반 자율신경을 자극해 염증성 통증 유발.",
+        "en": "Fall trauma or prolonged sitting forms TTPs at the lower gluteus maximus origin and sacrotuberous ligament, pulling on the coccygeal periosteum and irritating the ganglion impar and S2-S4 pelvic autonomic nerves."
       },
       "targetTissues": {
-        "ko": "대둔근(Gluteus maximus) 하부 부착부.",
-        "en": "Inferior attachment of gluteus maximus."
+        "ko": "대둔근(Gluteus Maximus · 기시: 장골 후면·천골 하외측연·미골·천결절인대 / 정지: 장경인대 IT Band·대퇴골 둔근조면), 천결절인대(Sacrotuberous Ligament · 기시: PSIS·천골 하외측연·미골 / 정지: 좌골결절 내측연), 천미관절 & 미골신경총(Ganglion Impar), 후천골공(S2~S4) 골반 자율신경.",
+        "en": "Gluteus Maximus lower origin (coccyx, lower lateral sacrum, sacrotuberous ligament), Sacrotuberous Ligament (to medial ischial tuberosity), Sacrococcygeal Joint & Ganglion Impar, and S2-S4 Posterior Sacral Foramina."
       },
       "palpation": {
-        "ko": "꼬리뼈 바로 옆 대둔근 근복 및 압통점.",
-        "en": "Gluteus maximus belly and tender point immediately lateral to coccyx."
+        "ko": "① 미골(Coccyx)·천골 하외측연 대둔근 하부 기시부 ② 천미관절(Sacrococcygeal Joint) & 미골신경총(Ganglion Impar) 투사점 ③ 좌골결절(Ischial Tuberosity) 천결절인대 착점 ④ 후천골공(S2~S4) 골반 자율신경점.",
+        "en": "1) Lateral coccyx & lower sacrum gluteus maximus origin 2) Dorsal sacrococcygeal joint & ganglion impar projection 3) Ischial tuberosity sacrotuberous ligament insertion 4) S2-S4 posterior sacral foramina."
       },
       "clinicalCase": {
         "ko": "엉덩방아 후 수개월간 지속된 미골(꼬리뼈) 통증으로 바닥에 앉기 힘들던 대둔근 건 견인통 사례. 미골 외측연 대둔근 기시부 및 천골결절인대에 NovaCell Therapy를 통전하여 골막 견인 장력을 이완함으로써 착석 시 통증 즉시 소실.",
@@ -3821,84 +3821,84 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 60.7,
-          "y": 56.2,
+          "x": 56.1,
+          "y": 48.3,
           "role": {
-            "ko": "핵심 후관절·신경근점",
-            "en": "Primary Facet & Root Target"
+            "ko": "힘줄·골막 부착점",
+            "en": "Primary Tendon & Periosteal Target"
           },
           "name": {
-            "ko": "T1: 미골(Coccyx)·천골 하외측연 대둔근 하부 섬유 기시부 골막 부착점",
-            "en": "T1: Coccyx & Lower Sacral Border Gluteus Maximus Origin Periosteal Contact"
+            "ko": "T1: 미골(Coccyx) · 천골 하외측연 · 대둔근 하부 기시부",
+            "en": "T1: Lateral Coccyx & Lower Sacrum · Gluteus Maximus Lower Origin"
           },
           "desc": {
-            "ko": "[표적 해부] 미골(꼬리뼈) 양측 외측연, 천골 하부 및 천결절인대에 부착하는 대둔근 하내측 섬유 골막.\n[촉지 및 시술] 꼬리뼈 바로 옆 대둔근 부착 경계선 골막 압통점. 앉았다 일어날 때 찌릿한 꼬리뼈 통증(미골통)을 즉각 소실시킵니다.",
-            "en": "Periosteal origin of lower gluteus maximus along lateral border of coccyx and sacrotuberous ligament."
+            "ko": "[표적 해부] 미골(꼬리뼈) 양측 외측연, 천골 하외측연 및 천결절인대에 부착하는 대둔근 하내측 섬유 기시부 골막.\n[촉지 및 시술] 꼬리뼈 바로 옆 대둔근 부착 경계선 골막 압통점. 앉았다 일어날 때 찌릿한 꼬리뼈 통증(미골통)의 견인 장력을 즉각 이완합니다.",
+            "en": "Periosteal origin of lower gluteus maximus along lateral border of coccyx, lower sacrum, and sacrotuberous ligament."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 67.0,
-          "y": 63.0,
+          "x": 50.0,
+          "y": 50.9,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "관절·신경총 반사점",
+            "en": "Joint & Ganglion Impar Target"
           },
           "name": {
-            "ko": "T2: 천미관절(Sacrococcygeal Joint) 배면 및 미골신경총(Ganglion Impar) 반사점",
-            "en": "T2: Sacrococcygeal Joint & Ganglion Impar Autonomic Point"
+            "ko": "T2: 천미관절(Sacrococcygeal Joint) & 미골신경총(Ganglion Impar)",
+            "en": "T2: Dorsal Sacrococcygeal Joint · Ganglion Impar Projection"
           },
           "desc": {
-            "ko": "[표적 해부] 천골 열공 직하방 천미관절 배측 천미인대 및 불쌍신경절(Ganglion impar) 투사점.\n[촉지 및 시술] 꼬리뼈 관절 바로 위 중심선 골막. 난치성 미골 신경통을 진정시킵니다.",
-            "en": "Dorsal sacrococcygeal ligament just below sacral hiatus regulating ganglion impar."
+            "ko": "[표적 해부] 천골 열공 직하방 천미관절(Sacrococcygeal Joint) 배측 천미인대 및 불쌍신경절(Ganglion Impar) 투사점.\n[촉지 및 시술] 꼬리뼈 관절 바로 위 정중선 골막. 만성·난치성 미골 신경통과 회음부 묵직한 통증을 진정시킵니다.",
+            "en": "Dorsal sacrococcygeal joint and ligament just below sacral hiatus regulating the ganglion impar."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 38.0,
-          "y": 62.0,
+          "x": 35.5,
+          "y": 66.8,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "인대·골막 부착점",
+            "en": "Ligament & Periosteal Target"
           },
           "name": {
-            "ko": "T3: 좌골결절(Ischial Tuberosity) 천결절인대 착점 및 대둔근 하부 근복점",
-            "en": "T3: Ischial Tuberosity Sacrotuberous Ligament & Lower Gluteus Maximus"
+            "ko": "T3: 좌골결절(Ischial Tuberosity) · 천결절인대 착점",
+            "en": "T3: Ischial Tuberosity · Sacrotuberous Ligament & Lower Gluteus Max."
           },
           "desc": {
-            "ko": "[표적 해부] 천결절인대가 좌골결절 내측에 붙는 골막점(HP-SIJ-02) 및 대둔근 하부 TrP 2·3.\n[촉지 및 시술] 꼬리뼈를 한쪽으로 잡아당기는 인대-근육 비대칭 장력을 균형 있게 풀어줍니다.",
-            "en": "Sacrotuberous ligament insertion at ischial tuberosity and lower gluteus maximus TrP3."
+            "ko": "[표적 해부] PSIS·천골 하외측연·미골에서 내려와 좌골결절 내측연에 정지하는 천결절인대(Sacrotuberous Ligament) 착점(HP-SIJ-02) 및 대둔근 하부 섬유.\n[촉지 및 시술] 꼬리뼈를 한쪽으로 비대칭 견인하는 인대-근육 장력을 균형 있게 풀어줍니다.",
+            "en": "Sacrotuberous ligament insertion at medial ischial tuberosity and lower gluteus maximus fibers."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 62.0,
-          "y": 38.0,
+          "x": 44.0,
+          "y": 38.3,
           "role": {
             "ko": "자율신경 조절점",
             "en": "Autonomic Control Target"
           },
           "name": {
-            "ko": "T4: 후천골공(S2-S4 Posterior Sacral Foramina) 골반 자율신경점",
-            "en": "T4: S2-S4 Posterior Sacral Foramina Pelvic Autonomic Point"
+            "ko": "T4: 후천골공(S2~S4) 골반 자율신경점",
+            "en": "T4: S2-S4 Posterior Sacral Foramina · Pelvic Autonomic Nerves"
           },
           "desc": {
-            "ko": "[표적 해부] 천골 후면 정중선 외측 2cm 제2·3·4 후천골공(차료·중료·하료혈).\n[촉지 및 시술] 골반저근(항문거근·미골근)의 과긴장을 이완하여 꼬리뼈 내측 견인을 해소합니다.",
-            "en": "S2-S4 posterior sacral foramina relaxing pelvic floor traction on coccyx."
+            "ko": "[표적 해부] 천골 후면 정중선 외측 2cm 제2·3·4 후천골공(S2~S4, 차료·중료·하료혈) 및 골반 부교감 자율신경 출구.\n[촉지 및 시술] 골반저근(항문거근·미골근)의 과긴장과 자율신경 과흥분을 진정시켜 꼬리뼈 내측 견인을 해소합니다.",
+            "en": "S2-S4 posterior sacral foramina modulating pelvic autonomic nerves and relaxing pelvic floor traction on the coccyx."
           }
         }
       ],
       "anatomicalLabels": [
-        "Gluteus Maximus",
-        "Sacrotuberous Ligament",
-        "Coccyx",
-        "Pudendal Nerve Branch"
+        "Gluteus Maximus (Coccyx & Lower Sacrum Origin)",
+        "Sacrococcygeal Joint & Ganglion Impar",
+        "Sacrotuberous Ligament & Ischial Tuberosity",
+        "S2-S4 Posterior Sacral Foramina (Pelvic Autonomic Nerves)"
       ],
       "rifeFreq": 528,
-      "searchKeywords": "대둔근 힘줄견인통 / 꼬리뼈 통증 Gluteus Maximus TTP / Coccygodynia 엉덩방아 후 꼬리뼈 및 엉덩이 아랫부분 통증, 바닥이나 의자에 앉기 힘듦. Tailbone and lower buttock pain after fall on buttocks, difficulty sitting on floor or chair. 요추, 골반, 둔부 및 고관절 질환 Lumbar Spine, Pelvis & Hip Disorders"
+      "searchKeywords": "대둔근 힘줄견인통 꼬리뼈 통증 미골통 Gluteus Maximus TTP Coccygodynia 천미관절 미골신경총 Ganglion Impar 천결절인대 좌골결절 후천골공 S2 S3 S4 엉덩방아 후 꼬리뼈 통증 바닥이나 의자에 앉기 힘듦 요추 골반 둔부 고관절 질환"
     },
     {
       "id": 31,
