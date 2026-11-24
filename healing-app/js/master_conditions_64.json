@@ -4439,12 +4439,12 @@
         "en": "Hypertonicity of extensor digitorum longus (EDL) entraps deep peroneal nerve in anterior compartment, causing ankle joint pain and dysesthesia."
       },
       "targetTissues": {
-        "ko": "장지신근(Extensor digitorum longus, EDL).",
-        "en": "Extensor digitorum longus (EDL)."
+        "ko": "장지신근(EDL · 경골 외측과·비골 전면 기시 / 제2~5발가락 배측 정지), 전경골근(TA · 경골 외측과·외측면 기시 / 내측 설상골·제1중족골 기저부 정지), 발목 전면 신근지대 터널, 외과 전하방 단지신근(EDB) 기시부, 제1·2중족골간 심비골신경 내측종말지.",
+        "en": "Extensor Digitorum Longus (EDL), Tibialis Anterior (TA), anterior ankle extensor retinaculum tunnel, sinus tarsi / EDB origin & lateral terminal branch, and 1st-2nd intermetatarsal medial terminal branch."
       },
       "palpation": {
-        "ko": "경골조면 하단 3 FB 아래 장지신근 근복 지그시 깊은 압통점.",
-        "en": "Deep tender point in EDL belly 3 FB below tibial tuberosity."
+        "ko": "① 경골조면 하방 3FB 전경골근·장지신근 사이 심비골신경 분기점 ② 발목 전면 신근지대(전방 족근관) ③ 외과 전하방 족근동(Sinus Tarsi)·단지신근(EDB) 기시부 ④ 제1·2중족골간 발등 배측 내측종말지.",
+        "en": "3FB below tibial tuberosity between TA and EDL, anterior ankle extensor retinaculum, sinus tarsi / EDB origin, and 1st-2nd intermetatarsal web space."
       },
       "clinicalCase": {
         "ko": "발목 염좌 이후 수개월간 지속된 발목 관절 속 먹먹한 통증 및 엄지-2지 사이 저림 사례. 전경골 하퇴 장지신근(EDL) 근복 및 족관절 전방 신경 관통부에 NovaCell Therapy를 적용하여 심비골신경 유착을 해소하고 가벼운 러닝 가능 회복.",
@@ -4455,73 +4455,73 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 48.5,
-          "y": 50.1,
+          "x": 48.4,
+          "y": 34.8,
           "role": {
             "ko": "주 신경포착점",
             "en": "Primary Nerve Entrapment"
           },
           "name": {
-            "ko": "T1: 경골조면 하방 3FB 장지신근(EDL)·전경골근 근복 및 심비골신경 분기점",
-            "en": "T1: Proximal EDL & Tibialis Anterior Deep Peroneal Nerve Point"
+            "ko": "T1: 경골조면 하방 3FB · 심비골신경 분기점 (3FB Below Tibial Tuberosity)",
+            "en": "T1: 3FB Below Tibial Tuberosity · Deep Peroneal Nerve"
           },
           "desc": {
-            "ko": "[표적 해부] 경골조면 하단에서 약 3손가락 너비 아래, 경골 외측과 비골두 전방 사이의 장지신근(EDL)·전경골근(TA) 상부 근복 및 심비골신경 진입부.\n[촉지 및 시술] 족삼리혈 부근 전외측 정강이 근육(HP-CPN-02). 발등과 발가락을 들어 올리는 신경·근육의 상류 포착점입니다.",
-            "en": "3 finger-breadths distal to tibial tuberosity between tibialis anterior and EDL over deep peroneal nerve."
+            "ko": "[표적 해부] 경골조면 하방 3FB(약 5~6cm) 전경골근(TA)과 장지신근(EDL) 사이 근막 고랑으로 심비골신경이 진입·분기하는 근위 포착점.\n[촉지 및 시술] 정강이 앞바깥쪽 전경골근 외연과 장지신근 사이의 깊은 압통 고랑. 정강이 전면 뻐근함과 발등·발가락 배측으로 뻗치는 당김을 원천 해소합니다.",
+            "en": "Proximal entrapment site 3FB below the tibial tuberosity between TA and EDL where the deep peroneal nerve enters the anterior compartment."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 56.0,
-          "y": 54.0,
+          "x": 49.4,
+          "y": 63.3,
           "role": {
-            "ko": "신경 주행·분지점",
-            "en": "Nerve Pathway Target"
+            "ko": "신경 터널·지대점",
+            "en": "Retinaculum Tunnel Target"
           },
           "name": {
-            "ko": "T2: 발목 전면 신근지대(Extensor Retinaculum) 해계혈 심비골신경 터널점",
-            "en": "T2: Anterior Ankle Extensor Retinaculum (ST41) Deep Peroneal Tunnel"
+            "ko": "T2: 발목 전면 신근지대 · 심비골신경 터널 (Anterior Ankle Extensor Retinaculum)",
+            "en": "T2: Anterior Ankle Extensor Retinaculum · Nerve Tunnel"
           },
           "desc": {
-            "ko": "[표적 해부] 발목 앞쪽 주름 정중앙(장무지신근건 EHL과 장지신근건 EDL 사이) 상·하 신근지대 아래 심비골신경 관통 터널.\n[촉지 및 시술] 발목 전면 중앙 오목한 해계혈. 전방 발목터널 증후군을 즉각 감압합니다.",
-            "en": "Anterior tarsal tunnel under extensor retinaculum between EHL and EDL tendons at ankle crease."
+            "ko": "[표적 해부] 발목 전면 하신근지대(Inferior Extensor Retinaculum) 아래 장지신근·장무지신근 힘줄과 함께 통과하는 전방 족근관(심비골신경 터널).\n[촉지 및 시술] 발목 앞주름 정중앙 신근건 사이 오목한 터널 부위. 꽉 끼는 신발·구두 착용이나 족배굴곡 시 발등 앞쪽이 찌릿하고 조이는 증상을 즉각 감압합니다.",
+            "en": "Anterior tarsal tunnel beneath the inferior extensor retinaculum; directly decompresses deep peroneal nerve entrapment at the ankle crease."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 38.0,
-          "y": 62.0,
+          "x": 45.6,
+          "y": 67.5,
           "role": {
             "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "en": "Tendon & Origin Target"
           },
           "name": {
-            "ko": "T3: 외과 전하방 구허혈 단지신근(EDB)·단무지신근 공통건 기시부 골막 부착점",
-            "en": "T3: Anteroinferior Lateral Malleolus EDB Origin (Sinus Tarsi)"
+            "ko": "T3: 외과 전하방 · 단지신근(EDB) 기시부 (Sinus Tarsi · Lateral Terminal Branch)",
+            "en": "T3: Sinus Tarsi · EDB Origin & Lateral Terminal Branch"
           },
           "desc": {
-            "ko": "[표적 해부] 바깥쪽 복사뼈 전하방 족근동 입구 단지신근(EDB) 기시부 골막 및 심비골신경 외측종말지.\n[촉지 및 시술] 발등 중심부와 발목 전외측 통증의 핵심 골막·건 타깃입니다.",
-            "en": "Extensor digitorum brevis (EDB) origin anteroinferior to lateral malleolus over sinus tarsi."
+            "ko": "[표적 해부] 발목 바깥쪽 복숭아뼈(외과) 전하방 족근동(Sinus Tarsi)의 단지신근(EDB) 기시부 및 심비골신경 외측종말지 (정지: 제1~4발가락 배측 신근건막).\n[촉지 및 시술] 외과 앞아래 오목한 족근동 함요처. 발등 바깥쪽 둔통과 보행 시 발목 전외측 시큰거림을 해소합니다.",
+            "en": "EDB origin at the sinus tarsi anteroinferior to the lateral malleolus with the lateral terminal branch of the deep peroneal nerve."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 62.0,
-          "y": 38.0,
+          "x": 53.8,
+          "y": 81.5,
           "role": {
             "ko": "신경 주행·분지점",
-            "en": "Nerve Pathway Target"
+            "en": "Distal Terminal Branch Target"
           },
           "name": {
-            "ko": "T4: 제1·2중족골간 배측 심비골신경 내측종말지(태충~행간 구간) 타깃",
-            "en": "T4: 1st-2nd Dorsal Intermetatarsal Space Deep Peroneal Terminal Point"
+            "ko": "T4: 제1·2중족골간 배측 · 내측종말지 (1st~2nd Intermetatarsal Space)",
+            "en": "T4: 1st~2nd Intermetatarsal Space · Medial Terminal Branch"
           },
           "desc": {
-            "ko": "[표적 해부] 발등 엄지와 둘째 발가락 뼈 사이 심비골신경 감각 종말지.\n[촉지 및 시술] 발등 앞쪽과 엄지·검지발가락 사이 저림 및 통증을 마무리합니다.",
-            "en": "Dorsal 1st intermetatarsal space where medial terminal branch of deep peroneal nerve emerges."
+            "ko": "[표적 해부] 엄지발가락과 둘째발가락 사이 제1·2중족골간 배측 공간을 지배하는 심비골신경 내측종말지(Medial Terminal Branch) 및 족배동맥 인접부.\n[촉지 및 시술] 제1·2중족골 뼈 사이 발등 고랑(태충혈 인접). 엄지·둘째발가락 사이 저림, 감각 이상 및 발등 말단 찌릿함을 마무리 해소합니다.",
+            "en": "Medial terminal sensory branch of the deep peroneal nerve in the 1st-2nd intermetatarsal web space; relieves numbness and tingling between the 1st and 2nd toes."
           }
         }
       ],
