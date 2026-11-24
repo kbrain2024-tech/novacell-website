@@ -3540,7 +3540,7 @@ window.PAIN_CONDITIONS = [
     },
     "mechanism": {
       "ko": "신경유착",
-      "en": "[신경유착] Nerve Entrapment"
+      "en": "Nerve Entrapment"
     },
     "mechTags": [
       "nerve"
@@ -3558,12 +3558,12 @@ window.PAIN_CONDITIONS = [
       "en": "Hypertonicity/shortening of piriformis entraps underlying sciatic nerve, inferior gluteal nerve, and posterior femoral cutaneous nerve, causing gluteal ischemia and lower limb radiculopathy."
     },
     "targetTissues": {
-      "ko": "이상근(Piriformis), L5/S1 다열근.",
-      "en": "Piriformis, L5/S1 multifidus."
+      "ko": "이상근(Piriformis · 기시: 천골 전면 외측연 S2~S4·대좌골절흔 / 정지: 대퇴골 대전자 상내측면), 좌골신경(Sciatic Nerve · L4~S3), 천장관절 하부, 좌골결절 외측 햄스트링 기시부.",
+      "en": "Piriformis (Origin: anterior lateral sacrum S2-S4 & greater sciatic notch / Insertion: superior-medial greater trochanter), Sciatic Nerve (L4-S3), lower sacroiliac joint, and hamstring origin lateral to ischial tuberosity."
     },
     "palpation": {
-      "ko": "PSIS와 대전자를 잇는 선 중간 하방 이상근 근복 깊은 압통점.",
-      "en": "Deep tender point in piriformis belly, mid-way and slightly inferior along line connecting PSIS to greater trochanter."
+      "ko": "① 이상근하공(대좌골공) 좌골신경 포착점(PSIS-대전자 중간 하방 심부) ② 대퇴골 대전자 상내측면 이상근 정지건 ③ 천골 외측연(S2~S4) 이상근 기시부 & 천장관절 하부 ④ 좌골결절 외측 햄스트링 기시부 & 좌골신경 주행점.",
+      "en": "1) Infrapiriformis foramen sciatic nerve entrapment point 2) Superior-medial greater trochanter piriformis insertion 3) Lateral sacrum (S2-S4) origin & lower SI joint 4) Lateral ischial tuberosity hamstring origin & sciatic nerve groove."
     },
     "clinicalCase": {
       "ko": "둔부 깊은 곳의 뻐근한 결림과 하지 외측으로 전기가 흐르듯 저리던 이상근 증후군 및 좌골신경통 사례. 대좌골공 이상근 근복 및 좌골신경 주행 경로에 NovaCell Therapy를 집중 조율하여 신경 유착을 해소하고 보행 및 착석 편안함 회복.",
@@ -3574,81 +3574,82 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 42.6,
-        "y": 14.1,
+        "x": 60.3,
+        "y": 48.6,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 이상근하공(Greater Sciatic Foramen) 좌골신경 포착점 (이상근 중앙)",
-          "en": "T1: Infrapiriformis Foramen Sciatic Nerve Entrapment Point"
+          "ko": "T1: 이상근하공(대좌골공) · 좌골신경 포착점",
+          "en": "T1: Infrapiriformis Foramen · Sciatic Nerve Entrapment"
         },
         "desc": {
-          "ko": "[표적 해부] 후상장골극(PSIS)-미골 중간점과 대전자 상연을 잇는 이상근(Piriformis) 하연 대좌골공 좌골신경·후대퇴피신경 출구.\n[촉지 및 시술] 둔부 정중앙 깊숙한 이상근 근복 및 하연(HP-PS-01). 엉덩이에서 허벅지 뒤·종아리까지 저리고 당기는 좌골신경통의 1차 핵심 타깃입니다.",
-          "en": "Sciatic nerve emergence beneath piriformis belly at greater sciatic foramen."
+          "ko": "[표적 해부] 후상장골극(PSIS)-미골 중간점과 대전자 상연을 잇는 이상근(Piriformis) 하연 대좌골공 좌골신경(L4~S3)·후대퇴피신경 출구.\n[촉지 및 시술] 둔부 정중앙 깊숙한 이상근 근복 및 하연(HP-PS-01). 엉덩이에서 허벅지 뒤·종아리까지 저리고 당기는 좌골신경통의 1차 핵심 타깃입니다.",
+          "en": "Sciatic nerve (L4-S3) emergence beneath piriformis belly at infrapiriformis foramen."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 57.5,
-        "y": 51.3,
+        "x": 26.4,
+        "y": 56.4,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T2: 대퇴골 대전자(Greater Trochanter) 상내측면 이상근 정지건 골막 부착부점",
-          "en": "T2: Greater Trochanter Superior Tip Piriformis Insertion Periosteal Contact"
+          "ko": "T2: 대퇴골 대전자 상내측면 · 이상근 정지건",
+          "en": "T2: Greater Trochanter (Superior-Medial) · Piriformis Insertion"
         },
         "desc": {
-          "ko": "[표적 해부] 대퇴골 대전자 상연 내측면의 이상근 및 외회전근군 공동 건골막 착점.\n[촉지 및 시술] 허벅지 바깥쪽 큰 뼈(대전자) 꼭대기 후상방 골막 접촉점(HP-PS-02). 이상근의 등장성 견인 장력을 즉시 떨어뜨립니다.",
+          "ko": "[표적 해부] 대퇴골 대전자 상내측면의 이상근 및 심부 외회전근군 공동 건·골막 부착부.\n[촉지 및 시술] 허벅지 바깥쪽 대전자 꼭대기 후상방 골막 접촉점(HP-PS-02). 이상근의 과도한 견인 장력을 즉시 완화하여 좌골신경 압박을 줄여줍니다.",
           "en": "Periosteal insertion of piriformis tendon at superior-medial border of greater trochanter."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 41.9,
+        "y": 36.2,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "천장관절·기시부점",
+          "en": "SI Joint & Origin Target"
         },
         "name": {
-          "ko": "T3: 천골 외측연(S2-S4) 이상근 기시부 및 천장관절 하부점",
-          "en": "T3: Lateral Sacral Border (S2-S4) Piriformis Origin Point"
+          "ko": "T3: 천골 외측연(S2~S4) 이상근 기시부 & 천장관절 하부",
+          "en": "T3: Lateral Sacrum (S2-S4) · Piriformis Origin & Lower SI Joint"
         },
         "desc": {
-          "ko": "[표적 해부] 천골(S2~S4) 외측연 및 대좌골절흔 이상근 기시부.\n[촉지 및 시술] 천골 양옆 함몰선 골막 타깃. 천골 자율신경(S2-S4)과 이상근 기시부 경직을 동시에 이완합니다.",
-          "en": "Piriformis origin along lateral border of sacrum (S2-S4)."
+          "ko": "[표적 해부] 천골 전면 외측연(S2~S4), 대좌골절흔 이상근 기시부 및 천장관절 하부 인대.\n[촉지 및 시술] 천골 양옆 함몰선 골막 타깃. 천골신경총(S2~S4) 자극과 이상근 기시부 경직을 동시에 이완합니다.",
+          "en": "Piriformis origin along lateral border of sacrum (S2-S4) and lower sacroiliac joint."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 61.9,
+        "y": 63.3,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "원위 신경주행·부착점",
+          "en": "Distal Nerve & Hamstring Origin"
         },
         "name": {
-          "ko": "T4: 좌골결절(Ischial Tuberosity) 외측 햄스트링 기시부-좌골신경 주행점",
-          "en": "T4: Ischial Tuberosity Lateral Border Sciatic-Hamstring Groove"
+          "ko": "T4: 좌골결절 외측 · 햄스트링 기시부 & 좌골신경 주행점",
+          "en": "T4: Lateral to Ischial Tuberosity · Hamstring Origin & Sciatic Nerve"
         },
         "desc": {
-          "ko": "[표적 해부] 좌골결절과 대전자 사이 고랑(좌골신경 하행로 및 햄스트링 기시건막).\n[촉지 및 시술] 오래 앉아 있을 때 엉덩이 밑이 배기고 허벅지 뒤로 뻗치는 원위부 신경 유착을 해소합니다(HP-PS-03).",
-          "en": "Sciatic nerve groove midway between ischial tuberosity and greater trochanter."
+          "ko": "[표적 해부] 좌골결절과 대전자 사이 고랑(좌골신경 하행로 및 햄스트링 근위 기시건막).\n[촉지 및 시술] 오래 앉아 있을 때 엉덩이 밑이 배기고 허벅지 뒤쪽으로 뻗치는 원위부 좌골신경 유착을 해소합니다(HP-PS-03).",
+          "en": "Sciatic nerve groove and proximal hamstring origin lateral to the ischial tuberosity."
         }
       }
     ],
     "anatomicalLabels": [
-      "Piriformis Muscle",
-      "Sciatic Nerve",
-      "Greater Sciatic Foramen",
-      "Sacroiliac Joint"
+      "Piriformis Muscle (S2-S4 to Greater Trochanter)",
+      "Sciatic Nerve (L4-S3)",
+      "Infrapiriformis Foramen (Greater Sciatic Foramen)",
+      "Lateral Sacrum & Lower SI Joint",
+      "Lateral Ischial Tuberosity & Hamstring Origin"
     ],
     "rifeFreq": 727,
     "searchKeywords": "이상근 증후군 / 좌골신경통 Piriformis Syndrome / Sciatica 둔부 깊은 곳의 뻐근한 통증, 허벅지 후외측으로 뻗치는 좌골신경통, 꼬리뼈 통증. Deep dull ache in gluteal region, sciatica radiating down posterolateral thigh, coccyx pain. 요추, 골반, 둔부 및 고관절 질환 Lumbar Spine, Pelvis & Hip Disorders"
