@@ -4464,8 +4464,8 @@ window.PAIN_CONDITIONS = [
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 경골조면 하방 3FB · 심비골신경 분기점 (3FB Below Tibial Tuberosity)",
-          "en": "T1: 3FB Below Tibial Tuberosity · Deep Peroneal Nerve"
+          "ko": "T1: 경골조면 하방 장지신근(EDL)·전경골근 근복 및 심비골신경 분기점",
+          "en": "T1: Below Tibial Tuberosity · EDL, TA Belly & Deep Peroneal Nerve"
         },
         "desc": {
           "ko": "[표적 해부] 경골조면 하방 3FB(약 5~6cm) 전경골근(TA)과 장지신근(EDL) 사이 근막 고랑으로 심비골신경이 진입·분기하는 근위 포착점.\n[촉지 및 시술] 정강이 앞바깥쪽 전경골근 외연과 장지신근 사이의 깊은 압통 고랑. 정강이 전면 뻐근함과 발등·발가락 배측으로 뻗치는 당김을 원천 해소합니다.",
