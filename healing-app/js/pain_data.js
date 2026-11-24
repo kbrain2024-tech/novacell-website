@@ -3298,111 +3298,112 @@ window.PAIN_CONDITIONS = [
     ],
     "title": {
       "ko": "흉요추 이행부 증후군 (T-L Junction Syndrome)",
-      "en": "Thoracolumbar Junction Syndrome (T-L Junction Syndrome)"
+      "en": "Thoracolumbar Junction Syndrome (Maigne's Syndrome)"
     },
     "symptoms": {
-      "ko": "허리-엉덩이 경계 부위 시림, 장골능 후방 1/3 통증, 허리 구부리거나 앉아있을 때 허리 통증.",
-      "en": "Coldness at lumbar-gluteal junction, posterior 1/3 iliac crest pain, low back pain when bending or prolonged sitting."
+      "ko": "허리-엉덩이 경계 부위 시림, 장골능 후방 1/3 통증, 대전자 외측(고관절 옆)·서혜부·하복부 방사통, 허리를 비틀거나 오래 앉아있을 때 악화되는 요통.",
+      "en": "Coldness at lumbar-gluteal junction, posterior 1/3 iliac crest pain, referred pain to lateral greater trochanter and groin, low back pain aggravated by trunk rotation or sitting."
     },
     "pathophysiology": {
-      "ko": "T12/L1 레벨 등척성 수축으로 T12 dorsal ramus 및 상둔 신경(SCNE)이 유착되거나 최장근/광배근 힘줄견인 형성.",
-      "en": "Isometric contraction at T12/L1 level entraps T12 dorsal ramus and superior cluneal nerve (SCNE) or forms longissimus/latissimus dorsi TTP."
+      "ko": "흉추 회전축과 요추 굴신축이 교차하는 흉요추 이행부(T11-T12-L1) 후관절 기능장애 및 다열근·최장근·하후거근 긴장으로 T12~L3 신경 분지(상둔피신경, 늑하신경, 장골하복·장골서혜신경)가 자극·유착되어 둔부·대전자·서혜부로 연관통을 일으키는 Maigne 증후군(메뉴 증후군).",
+      "en": "Maigne's Syndrome: facet dysfunction at the thoracolumbar junction (T11-L1) and deep multifidus/longissimus/SPI tension irritate T12-L3 rami (superior cluneal, subcostal, iliohypogastric/ilioinguinal nerves), causing referred pain to the iliac crest, greater trochanter, and groin."
     },
     "targetTissues": {
-      "ko": "T12/L1~L3 레벨 최장근(Longissimus), 다열근, 상둔신경.",
-      "en": "Longissimus, Multifidus at T12/L1?밚3 levels, Superior cluneal nerve."
+      "ko": "흉요추 이행부(T11-T12-L1) 후관절, 다열근(Multifidus)·최장근(Longissimus), 하후거근(Serratus Posterior Inferior·제11·12늑골), T12~L3 신경 기원(상둔피신경·늑하·장골하복신경) 및 대전자 외측·서혜부 Maigne 투사점.",
+      "en": "T11-L1 facet joints, Multifidus & Longissimus, Serratus Posterior Inferior (11th-12th ribs), T12-L3 rami (Superior Cluneal, Subcostal, Iliohypogastric nerves), and Maigne lateral/anterior cutaneous referral zones."
     },
     "palpation": {
-      "ko": "T12~L2 극돌기 외측 최장근 근복 및 장골능 후방 압통점.",
-      "en": "Longissimus belly lateral to T12?밚2 spinous processes and posterior iliac crest tender points."
+      "ko": "① 흉요추 이행부(T11-L1) 후관절 & 다열근 심부점 ② 장골능 후외측 상둔피신경 골섬유성 터널 ③ 하후거근 & 제11·12늑골 ④ 대전자 외측·서혜부 Maigne 외측·전피지 투사점(피부 집어올리기 Pinch-Roll 압통점).",
+      "en": "1) T11-L1 facet & deep multifidus 2) Iliac crest superior cluneal osteofibrous tunnel 3) Serratus posterior inferior & 11th-12th ribs 4) Greater trochanter & groin Maigne cutaneous referral zone (Pinch-Roll tender point)."
     },
     "clinicalCase": {
-      "ko": "기상 후 또는 체간 회전 시 등허리와 장골능 상부에 광범위한 결림과 통증을 유발하던 흉요추 이행부(T12-L1) 증후군 사례. T12/L1 분절 심부근 및 상둔신경 출구부에 NovaCell Therapy를 적용하여 골반 뒤쪽 방사통 및 요통 완치.",
-      "en": "81yo female with broad thoracolumbar pain after sleeping in bed. Pain resolved after treating T3?밫7 TS and T12/L1 levels with NovaCell therapy."
+      "ko": "기상 후 또는 체간 회전 시 등허리·장골능 상부와 고관절 외측(대전자)·서혜부까지 광범위한 결림과 연관통을 호소하던 흉요추 이행부(Maigne) 증후군 사례. T11~L1 후관절 심부근, 상둔피신경 터널, 대전자 외측 투사점에 노바셀(-50mV)을 연계 적용하여 난치성 골반·서혜부 연관통 및 요통 호전.",
+      "en": "Case of Maigne's thoracolumbar junction syndrome presenting with iliac crest, lateral trochanteric, and groin referred pain aggravated by rotation. Resolved after combined NovaCell (-50mV) treatment targeting T11-L1 facets, superior cluneal tunnel, and trochanteric referral points."
     },
     "diagram": "images/diagrams/diagram_26.png",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 46.9,
-        "y": 38.2,
+        "x": 47.7,
+        "y": 36.6,
         "role": {
           "ko": "핵심 후관절·신경근점",
           "en": "Primary Facet & Root Target"
         },
         "name": {
-          "ko": "T1: 흉요추 이행부(T11-T12-L1) 후관절 및 다열근 심부점 (제2선)",
-          "en": "T1: Thoracolumbar Junction (T11-L1) Facet & Multifidus (Line 2)"
+          "ko": "T1: 흉요추 이행부(T11-T12-L1) 후관절 & 다열근 심부점",
+          "en": "T1: T11-L1 Facet Joint & Deep Multifidus (Maigne's Origin)"
         },
         "desc": {
-          "ko": "[표적 해부] 흉추 회전축과 요추 굴신축이 교차하는 T11-T12-L1 후관절(Facet) 및 심부 다열근.\n[촉지 및 시술] T12·L1 극돌기 외측 1.5~2cm 골막 부착부(Maigne 증후군 핵심 기원점). 허리 하부나 엉덩이·사타구니로 내려가는 연관통의 실제 발원지를 차단합니다.",
-          "en": "T11-T12-L1 facet joint and deep multifidus (origin of Maigne's thoracolumbar junction syndrome)."
+          "ko": "[표적 해부] 흉추 회전축과 요추 굴신축이 교차하는 T11-T12-L1 후관절(Facet Joint) 및 심부 다열근·최장근.\n[촉지 및 시술] T12·L1 극돌기 외측 1.5~2cm 골막 부착부(Maigne 증후군 핵심 발원지). 엉덩이 상부, 대전자 외측, 서혜부로 뻗어 내려가는 원격 연관통의 실제 근위 원인을 감압·차단합니다.",
+          "en": "T11-L1 facet joint and deep multifidus/longissimus (1.5-2cm lateral to spinous processes) — primary proximal origin of Maigne's thoracolumbar junction syndrome."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 13.4,
-        "y": 75.8,
+        "x": 66.4,
+        "y": 52.9,
         "role": {
           "ko": "신경 주행·분지점",
           "en": "Nerve Pathway Target"
         },
         "name": {
-          "ko": "T2: 장골능 후외측 상둔피신경(Superior Cluneal Nerve) 골섬유성 터널점",
-          "en": "T2: Iliac Crest Superior Cluneal Nerve Osteofibrous Tunnel"
+          "ko": "T2: 장골능 후외측 상둔피신경 · 골섬유성 터널",
+          "en": "T2: Superior Cluneal Nerve · Iliac Crest Osteofibrous Tunnel"
         },
         "desc": {
-          "ko": "[표적 해부] T12~L3 후지 외측지에서 기원한 상둔피신경이 정중선 외측 7~8cm 장골능 상연 흉요근막 터널을 넘어가는 포착점.\n[촉지 및 시술] 골반 능선(장골능) 위 신경 결절(HP-LDR-02). 엉덩이 상부 통증의 핵심 말초 타깃입니다.",
-          "en": "Superior cluneal nerve passage over posterior iliac crest 7-8cm lateral to midline."
+          "ko": "[표적 해부] T12~L3 척추신경 후지 외측지에서 기원한 상둔피신경(Superior Cluneal Nerve)이 정중선 외측 7~8cm 장골능 상연 흉요근막 골섬유성 터널을 통과하는 포착점.\n[촉지 및 시술] 골반 능선(장골능) 후외측을 따라 촉지되는 신경 결절(HP-LDR-02). 하부 요통 및 엉덩이 상부 시림·방사통을 해소하는 핵심 말초 타깃입니다.",
+          "en": "Superior cluneal nerve passage through the osteofibrous tunnel over the posterior iliac crest 7-8cm lateral to midline."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 37.0,
+        "y": 29.1,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T3: 하후거근(Serratus Posterior Inferior) 및 제11·12늑골 골막점",
-          "en": "T3: Serratus Posterior Inferior & 11th-12th Rib Periosteal Contact"
+          "ko": "T3: 하후거근(Serratus Posterior Inferior) & 제11·12늑골",
+          "en": "T3: Serratus Posterior Inferior & 11th-12th Ribs"
         },
         "desc": {
-          "ko": "[표적 해부] T11~L2 극돌기에서 제9~12늑골 하연으로 붙는 하후거근 및 제12늑골 첨부.\n[촉지 및 시술] 등허리 경계부가 뻐근하고 몸을 비틀 때 남는 잔여 요통을 제거합니다.",
-          "en": "Serratus posterior inferior and 12th rib tip periosteal attachment."
+          "ko": "[표적 해부] T11~L2 극돌기에서 기시하여 제9~12늑골 하연에 정지하는 하후거근(Serratus Posterior Inferior) 근복 및 제11·12늑골 골막 부착부.\n[촉지 및 시술] 등·허리 경계부의 묵직한 결림과 체간 회전·심호흡 시 유발되는 측배부 견인통을 이완시킵니다.",
+          "en": "Serratus posterior inferior belly and 11th-12th rib periosteal insertions; relieves lower thoracic-lumbar stiffness and rotational traction pain."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 70.2,
+        "y": 77.7,
         "role": {
           "ko": "보조 연계 치료점",
           "en": "Secondary Synergistic Target"
         },
         "name": {
-          "ko": "T4: 서혜부·대전자 외측 Maigne 전피지·외측피지 투사점",
-          "en": "T4: Inguinal & Greater Trochanteric Maigne Referral Switch"
+          "ko": "T4: 대전자 외측 · 서혜부 Maigne 외측·전피지 투사점",
+          "en": "T4: Greater Trochanter & Groin · Maigne's Cutaneous Referral Zone"
         },
         "desc": {
-          "ko": "[표적 해부] T12 늑하신경 및 L1 장골하복·장골서혜신경 외측피지.\n[촉지 및 시술] 고관절 질환이나 하복부 통증으로 오인되는 Maigne 증후군의 전·외측 투사점을 진정시킵니다.",
-          "en": "Lateral cutaneous branch of T12/L1 above greater trochanter and inguinal region."
+          "ko": "[표적 해부] T12 늑하신경(Subcostal Nerve) 및 L1 장골하복·장골서혜신경의 외측피지(대전자 외측)와 전피지(서혜부·하복부) 투사 영역.\n[Maigne 증후군이란?] 프랑스의 로베르 메뉴(Robert Maigne) 박사가 정립한 증후군으로, 실제 병변은 등·허리 경계(흉요추 이행부 T11~L1 후관절 및 척추신경 자극)에 있지만 통증은 해당 신경이 분포하는 엉덩이 상부(후지·상둔피신경), 고관절 옆 대전자 외측(외측피지), 사타구니·서혜부(전피지)에 멀리 투사되는 것이 특징입니다. 이 때문에 고관절 점액낭염·허리디스크(L4-5)·서혜부 질환으로 오진되어 국소 통증 부위만 치료하다 재발하는 경우가 많습니다.\n[촉지 및 시술] 대전자 외측 및 서혜부 피부를 부드럽게 집어 올릴 때(Pinch-Roll Test) 뚜렷한 피부 과민·통증(Cellulalgia)이 나타나는 지점을 진정시키고, 반드시 근위 발원지인 T1(T11~L1 후관절)과 연계 치료하여 Maigne 증후군의 원인과 말초 투사통을 동시에 해결합니다.",
+          "en": "Lateral cutaneous branch of T12 subcostal and L1 iliohypogastric/ilioinguinal nerves over the greater trochanter and groin. Maigne's Syndrome (described by Dr. Robert Maigne) originates at the T11-L1 thoracolumbar junction but projects referred pain distally to the upper buttock, lateral trochanter, and groin—often misdiagnosed as hip bursitis or lower lumbar disc disease. Confirm cutaneous hyperalgesia via Pinch-Roll test and treat synergistically with proximal T1."
         }
       }
     ],
     "anatomicalLabels": [
-      "T12-L1 Junction",
-      "Superior Cluneal Nerves",
-      "Thoracolumbar Fascia",
-      "Iliac Crest"
+      "T11-T12-L1 Facet & Deep Multifidus",
+      "T12-L3 Thoracolumbar Rami",
+      "Superior Cluneal Nerve Tunnel",
+      "Serratus Posterior Inferior",
+      "Greater Trochanter & Groin (Maigne's Zone)"
     ],
     "rifeFreq": 787,
-    "searchKeywords": "흉요추 이행부 증후군 (T-L Junction Syndrome) Thoracolumbar Junction Syndrome (T-L Junction Syndrome) 허리-엉덩이 경계 부위 시림, 장골능 후방 1/3 통증, 허리 구부리거나 앉아있을 때 허리 통증. Coldness at lumbar-gluteal junction, posterior 1/3 iliac crest pain, low back pain when bending or prolonged sitting. 요추, 골반, 둔부 및 고관절 질환 Lumbar Spine, Pelvis & Hip Disorders"
+    "searchKeywords": "흉요추 이행부 증후군 T-L Junction Syndrome Maigne 증후군 메뉴 증후군 마뉴 증후군 Thoracolumbar Junction Syndrome Maigne's Syndrome 상둔피신경 대전자 외측 통증 서혜부 연관통 하후거근 다열근 최장근 요추 골반 둔부 고관절 질환"
   },
   {
     "id": 27,
