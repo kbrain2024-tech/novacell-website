@@ -7882,7 +7882,7 @@
       ],
       "title": {
         "ko": "퇴행성 슬관절염 & 슬개골 건병증 (점퍼스 니 · 대퇴-슬관절 4대 핵심 골막·건 부착점)",
-        "en": "Knee Osteoarthritis & Patellar Tendinopathy (4-Point Periosteal Contact Protocol)"
+        "en": "Knee Osteoarthritis & Patellar Tendinopathy (4-Point Periosteal Protocol)"
       },
       "symptoms": {
         "ko": "의자에서 일어날 때나 계단을 오르내릴 때 무릎 앞쪽(슬개골 위·아래)과 관절 안팎이 시큰거리고 삐걱거리며, 무릎을 완전히 구부리거나 펴기 힘듦.",
@@ -7893,12 +7893,12 @@
         "en": "Quadriceps contracture concentrates tensile stress on the superior/inferior patellar poles and patellar tendon, accompanied by tibiofemoral joint capsule inflammation and subchondral voltage drop."
       },
       "targetTissues": {
-        "ko": "슬개골 상극(대퇴사두근건)·슬개골 하극(슬개건)·경골조면, 내·외측 슬관절 간극 관절포, 대퇴골 전면 중간광근 골막, 전하장골극(AIIS) 및 대전자.",
-        "en": "Superior/inferior patellar poles, tibial tuberosity, medial/lateral knee joint line capsule, femur shaft (vastus intermedius), AIIS, and greater trochanter."
+        "ko": "전하장골극(AIIS · 대퇴직근 기시부), 대퇴골 간부 전면(중간광근 심부 기시부), 슬개골 상·하극(건 부착부) 및 내·외측 관절간극·경골조면(슬개건 최종 정지부), 대퇴골 대전자(외측광근 기시부).",
+        "en": "AIIS (Rectus Femoris origin), anterior femoral shaft (Vastus Intermedius origin), patellar poles & medial/lateral joint line capsule + tibial tuberosity, and greater trochanter (Vastus Lateralis origin)."
       },
       "palpation": {
-        "ko": "대퇴·슬관절 4대 핵심 Periosteal Contact 표적: ① 전하장골극(AIIS 대퇴직근 기시) ② 대퇴골 전면 중앙(중간광근 골막 부착부) ③ 슬개골 상·하극 및 내외측 관절간극 ④ 대전자 외측광근 기시점.",
-        "en": "Ch.8 Thigh-Knee 4 Periosteal Contact Targets : 1) AIIS rectus femoris origin 2) Mid-femur vastus intermedius 3) Patellar poles & joint line 4) Greater trochanter."
+        "ko": "① 전하장골극(AIIS) 대퇴직근 기시부 ② 대퇴골 간부 전면 중앙 중간광근 심부 기시부 ③ 슬개골 상·하극 건 부착부, 내·외측 관절간극 및 경골조면(슬개건 최종 정지부) ④ 대퇴골 대전자 외측광근 기시부.",
+        "en": "AIIS rectus femoris origin, anterior femoral shaft vastus intermedius origin, patellar poles / joint lines / tibial tuberosity, and greater trochanter vastus lateralis origin."
       },
       "clinicalCase": {
         "ko": "연골주사와 진통제로도 계단 보행이 불가능했던 퇴행성 슬관절염(K-L grade II~III) 및 슬개건염 환자. 슬개골 하극·상극 골막 부착부(HP-PT-01/02), 내·외측 관절포점(HP-KOA-01), 대퇴골 중간광근 골막 및 AIIS에 노바셀(-70mV) 치료 후 무릎 굴신 가동범위 정상화 및 계단 보행 회복.",
@@ -7917,73 +7917,73 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 47.5,
-          "y": 16.5,
+          "x": 38.2,
+          "y": 29.4,
           "role": {
-            "ko": "제1 핵심 치료점",
-            "en": "Primary Clinical Target"
+            "ko": "기시부·골막 부착점",
+            "en": "Proximal Origin & Periosteal Target"
           },
           "name": {
-            "ko": "T1: 전하장골극(AIIS) 대퇴직근(Rectus Femoris) 기시부 골막 부착점 (①번 타깃)",
-            "en": "T1: AIIS Rectus Femoris Origin Periosteal Contact (Target 1)"
+            "ko": "T1: 전하장골극(AIIS) · 대퇴직근 기시부 (AIIS · Rectus Femoris Origin)",
+            "en": "T1: AIIS · Rectus Femoris Origin"
           },
           "desc": {
-            "ko": "[표적 해부] 골반 전상장골극(ASIS) 바로 아래 전하장골극(AIIS) 대퇴직근 직두·반사두 골막 기시부.\n[촉지 및 시술] 고관절과 무릎 두 관절을 가로지르는 대퇴직근의 상류 고정점을 풀어 슬개골을 위로 잡아당기는 장력을 근원부터 낮춥니다.",
-            "en": "Anterior inferior iliac spine (AIIS) periosteal origin of rectus femoris."
+            "ko": "[표적 해부] 골반 전면 전하장골극(AIIS)의 대퇴직근(Rectus Femoris) 기시부 건골막 (정지: 슬개골 상극 → 경골조면).\n[촉지 및 시술] 상전장골극(ASIS)에서 하내측 약 3~4cm 심부의 단단한 뼈 돌출부. 대퇴사두근 중 유일한 2관절 근육인 대퇴직근의 근위부 장력을 풀어 슬개골 압박력과 무릎 앞쪽 통증을 근본적으로 줄입니다.",
+            "en": "Rectus femoris origin at the AIIS (inserting via superior patellar pole to tibial tuberosity); relieves proximal biarticular tension compressing the patellofemoral joint."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 52.5,
-          "y": 39.5,
+          "x": 63.9,
+          "y": 54.6,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "심부 기시부·골막점",
+            "en": "Deep Shaft & Periosteal Target"
           },
           "name": {
-            "ko": "T2: 대퇴골 간부 전면 중간광근(Vastus Intermedius) 심부 골막 부착점 (②번 타깃)",
-            "en": "T2: Mid-Anterior Femur Vastus Intermedius Periosteal Periosteal Contact (Target 2)"
+            "ko": "T2: 대퇴골 간부 전면 · 중간광근 심부 기시부 (Anterior Femoral Shaft · Vastus Intermedius)",
+            "en": "T2: Anterior Femoral Shaft · Vastus Intermedius"
           },
           "desc": {
-            "ko": "[표적 해부] 허벅지 앞쪽 정중앙 대퇴직근 아래 대퇴골 전면 골막에 넓게 부착하는 중간광근 심부 발통점( ②).\n[촉지 및 시술] 계단을 오르거나 의자에서 일어날 때 무릎 한가운데가 뻣뻣하고 안 펴지는 심부 근육-골막 유착을 해제합니다.",
-            "en": "Deep vastus intermedius periosteal attachment on mid-anterior femoral shaft."
+            "ko": "[표적 해부] 대퇴직근 바로 아래 심층 대퇴골 간부 전면의 중간광근(Vastus Intermedius) 기시부 골막 (정지: 슬개골 상극 → 경골조면).\n[촉지 및 시술] 대퇴 전면 중앙에서 수직 심부로 대퇴골 뼈 전면까지 부드럽게 접근. 슬관절 굴곡 시 무릎 깊숙한 뻣뻣함과 슬개상낭 유착을 해소하는 핵심 심부 포인트입니다.",
+            "en": "Deep vastus intermedius origin along the anterior femoral shaft; releases deep anterior thigh stiffness and suprapatellar pouch tension."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 54.5,
-          "y": 56.5,
+          "x": 61.8,
+          "y": 76.6,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "힘줄·관절낭 부착점",
+            "en": "Tendon & Joint Capsule Target"
           },
           "name": {
-            "ko": "T3: 슬개골 하극·상극(슬개건·사두근건) 및 내·외측 슬관절 간극 관절포 골막 부착점 (③번 타깃)",
-            "en": "T3: Patellar Inferior/Superior Poles & Medial/Lateral Knee Joint Capsule (Target 3)"
+            "ko": "T3: 슬개골 상·하극(건 부착부) & 내·외측 관절간극 · 경골조면 (Patellar Poles & Joint Line)",
+            "en": "T3: Patellar Poles (Tendons), Joint Line Capsule & Tibial Tuberosity"
           },
           "desc": {
-            "ko": "[표적 해부] 슬개골 하극 슬개건 기시부(HP-PT-01), 슬개골 상극 대퇴사두근건 착점(HP-PT-02) 및 내·외측 슬관절 간극 관절포(HP-KOA-01, ③).\n[촉지 및 시술] 점퍼스 니(슬개건병증)와 퇴행성 슬관절염 통증이 집중되는 무릎 전면·내외측 핵심 골막·건 포인트입니다.",
-            "en": "Inferior and superior poles of patella, tibial tuberosity, and medial/lateral tibiofemoral joint capsule."
+            "ko": "[표적 해부] 슬개골 상극(대퇴사두근건 부착부)·슬개골 하극(슬개건 기시부), 내·외측 슬관절 간극 관절포 및 경골조면(Tibial Tuberosity · 사두근/슬개건 최종 정지부).\n[촉지 및 시술] 슬개골 위·아래 뼈 경계와 좌우 관절 틈새, 아래쪽 경골조면을 십자(+) 라인으로 순차 자극하여 계단 오르내림 통증, 점퍼스 니 및 퇴행성 관절강 내 염증을 직접 완화합니다.",
+            "en": "Superior/inferior patellar poles, medial & lateral joint line capsules, and tibial tuberosity final insertion; directly resolves patellar tendinopathy and osteoarthritic joint pain."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 43.5,
-          "y": 25.0,
+          "x": 33.4,
+          "y": 38.4,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "기시부·골막 부착점",
+            "en": "Lateral Origin & Periosteal Target"
           },
           "name": {
-            "ko": "T4: 대퇴골 대전자(Greater Trochanter) 외측광근 기시부 골막 부착점 (④번 타깃)",
-            "en": "T4: Greater Trochanter Vastus Lateralis Origin Periosteal Contact (Target 4)"
+            "ko": "T4: 대퇴골 대전자 · 외측광근 기시부 (Greater Trochanter · Vastus Lateralis Origin)",
+            "en": "T4: Greater Trochanter · Vastus Lateralis Origin"
           },
           "desc": {
-            "ko": "[표적 해부] 대전자 하외측 능선 외측광근(Vastus lateralis) 기시부 골막( ④).\n[촉지 및 시술] 슬개골을 바깥쪽으로 탈구시키듯 당기는 외측광근 상류 장력을 이완하여 슬개대퇴관절 정렬(Q-angle)을 복원합니다.",
-            "en": "Lateral border of greater trochanter where vastus lateralis originates, balancing patellar tracking."
+            "ko": "[표적 해부] 고관절 외측 대퇴골 대전자(Greater Trochanter) 하외측 테두리의 외측광근(Vastus Lateralis) 기시부 골막 (정지: 슬개골 외측연 → 경골조면).\n[촉지 및 시술] 고관절 바깥쪽 불룩한 대전자 하연 경계. 외측광근의 과도한 외측 견인을 풀어 슬개골 외측 편위와 퇴행성 슬관절염의 외측 마찰통을 교정합니다.",
+            "en": "Vastus lateralis origin at the greater trochanter (inserting on lateral patella to tibial tuberosity); corrects lateral patellar tracking and lateral knee overload."
           }
         }
       ]
