@@ -5043,7 +5043,7 @@
       ],
       "title": {
         "ko": "단무지굴근 힘줄견인통 / 엄지발가락 중족지절관절(MTP) 통증",
-        "en": "Flexor Hallucis Brevis TTP / 1st MTP Joint Pain"
+        "en": "Flexor Hallucis Brevis TTP / 1st MTP Joint Pain (4-Point Protocol)"
       },
       "symptoms": {
         "ko": "엄지발가락 1st MTP 관절 바닥쪽/내측 통증, 걸을 때 엄 지발가락을 발등 쪽으로 꺾으면 극심한 통증.",
@@ -5054,12 +5054,12 @@
         "en": "Isotonic contraction of medial head of flexor hallucis brevis (FHB) induces periosteal irritation (TTP) at 1st MTP proximal phalanx base."
       },
       "targetTissues": {
-        "ko": "단무지굴근 내측두(FHB medial head).",
-        "en": "Flexor hallucis brevis medial head (FHB)."
+        "ko": "단무지굴근(FHB · 기시: 입방골·외측 설상골 족저면 / 정지: 내·외측 종자골 → 엄지 근위지골 기저부), 제1중족골두 내측 관절낭(무지외반증) 및 내측 지신경, 모지내전근(Adductor Hallucis · 기시: 제2~4중족골 기저부 사두·제3~5 MTP 인대 횡두 / 정지: 외측 종자골·엄지 근위지골 외측 기저부).",
+        "en": "Flexor Hallucis Brevis (FHB), medial & lateral sesamoid bones, medial 1st MTP capsule (bunion) & medial plantar digital nerve, and adductor hallucis oblique/transverse heads."
       },
       "palpation": {
-        "ko": "1st MTP 관절로부터 근위부 2 FB 지점 FHB 내측두 근복 지그시 깊은 압통점.",
-        "en": "Firm deep tender point in FHB medial head belly 2 FB proximal to 1st MTP joint."
+        "ko": "① 제1중족지절관절(1st MTP) 근위 2FB 단무지굴근 내측두 근복 ② 제1중족골두 바닥 내·외측 종자골 정지부 ③ 무지외반증 제1중족골두 내측 관절낭 & 모지외전근건 ④ 제1·2중족골 사이 모지내전근 사두 이완점.",
+        "en": "2FB proximal to 1st MTP (FHB medial head belly), medial & lateral sesamoid bones beneath 1st metatarsal head, medial 1st MTP bunion capsule, and 1st-2nd intermetatarsal adductor hallucis oblique head."
       },
       "clinicalCase": {
         "ko": "엄지발가락 밑바닥(1st MTP 관절) 통증으로 지면을 차고 나가지 못하던 단무지굴근 건 견인통 사례. MTP 관절 2횡지 근위부 단무지굴근 내측두에 NovaCell Therapy를 적용하여 종자골 주변 골막 견인력을 이완함으로써 즉각적인 통증 소실 및 정상 보행.",
@@ -5070,73 +5070,73 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 36.6,
-          "y": 50.9,
+          "x": 45.2,
+          "y": 55.4,
           "role": {
-            "ko": "제1 핵심 치료점",
-            "en": "Primary Clinical Target"
+            "ko": "심부 근복·근막점",
+            "en": "FHB Deep Belly Target"
           },
           "name": {
-            "ko": "T1: 제1중족지절관절(1st MTP) 근위 2FB 단무지굴근 내측두(FHB) 심부 근복점",
-            "en": "T1: Flexor Hallucis Brevis (FHB) Medial Head Belly (2 FB Proximal to 1st MTP)"
+            "ko": "T1: 제1중족지절관절(1st MTP) 근위 2FB · 단무지굴근 내측두 근복",
+            "en": "T1: 2FB Proximal to 1st MTP · FHB Medial Head Deep Belly"
           },
           "desc": {
-            "ko": "[표적 해부] 엄지발가락 뿌리 관절(1st MTP)에서 뒤꿈치 쪽으로 약 2손가락 너비(2 FB) 지점의 단무지굴근 내측두·외측두 심부 근복.\n[촉지 및 시술] 발바닥 앞쪽 내측 아치 앞단 심부 압통점. 걸을 때 엄지발가락 뿌리 바닥이 쑤시는 통증을 해결합니다.",
-            "en": "Medial and lateral heads of flexor hallucis brevis 2 finger-breadths proximal to 1st MTP joint."
+            "ko": "[표적 해부] 제1중족지절관절(1st MTP)에서 뒤쪽(근위부) 2FB 위치의 단무지굴근(Flexor Hallucis Brevis, FHB) 내측두 심부 근복 및 족저 신경혈관 인접부.\n[촉지 및 시술] 엄지발가락 볼 아래 발바닥 안쪽 아치 앞부분 깊은 근복 압통점. 보행 시 엄지발가락으로 땅을 밀어낼 때(Push-off) 발생하는 날카로운 통증의 핵심 근복을 이완합니다.",
+            "en": "Deep medial head belly of flexor hallucis brevis 2FB proximal to the 1st MTP joint; relieves push-off pain under the big toe."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 56.0,
-          "y": 54.0,
+          "x": 43.4,
+          "y": 39.4,
           "role": {
             "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "en": "Sesamoid & Tendon Insertion"
           },
           "name": {
-            "ko": "T2: 제1중족골두 바닥 내·외측 종자골(Sesamoid Bones) 단무지굴근 정지부 골막 부착점",
-            "en": "T2: 1st Metatarsal Head Medial/Lateral Sesamoid Periosteal Contact"
+            "ko": "T2: 제1중족골두 바닥 내·외측 종자골 · 단무지굴근 정지부",
+            "en": "T2: Medial & Lateral Sesamoid Bones · FHB Tendon Insertion"
           },
           "desc": {
-            "ko": "[표적 해부] 제1중족골두 바닥면의 내측·외측 종자골(Sesamoids)에 부착하는 단무지굴근 정지건 및 족저판.\n[촉지 및 시술] 엄지발가락을 발등 쪽으로 젖힌 뒤 뼈머리 바닥 두 개의 종자골 골막에 정밀 통전. 종자골염과 가성 통풍성 엄지 통증을 즉각 소실시킵니다.",
-            "en": "Medial and lateral sesamoid bones beneath 1st metatarsal head."
+            "ko": "[표적 해부] 제1중족골두(엄지발가락 볼) 바닥면에 자리한 내·외측 종자골(Sesamoid Bones)과 단무지굴근(FHB) 정지건 부착부.\n[촉지 및 시술] 엄지발가락 밑 두 개의 작은 구슬처럼 만져지는 종자골 주변 경계. 종자골염(Sesamoiditis)과 하이힐·구두 착용 후 찌르는 듯한 엄지 볼 바닥 통증을 직접 해소합니다.",
+            "en": "Medial and lateral sesamoid bones embedded in the FHB tendon under the 1st metatarsal head; resolves sesamoiditis and plantar forefoot pain."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 38.0,
-          "y": 62.0,
+          "x": 38.8,
+          "y": 35.2,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "관절낭·신경포착점",
+            "en": "Bunion Capsule & Digital Nerve"
           },
           "name": {
-            "ko": "T3: 무지외반증(Bunion) 제1중족골두 내측 관절낭 및 모지외전근건 타깃",
-            "en": "T3: 1st MTP Medial Capsule (Bunion) & Abductor Hallucis Tendon"
+            "ko": "T3: 무지외반증(Bunion) 제1중족골두 내측 관절낭 & 모지외전근건",
+            "en": "T3: Medial 1st MTP Capsule (Bunion) & Medial Digital Nerve"
           },
           "desc": {
-            "ko": "[표적 해부] 엄지발가락 뿌리 안쪽 돌출부 관절낭 및 내측족저신경 고유지.\n[촉지 및 시술] 신발에 닿아 붉게 붓고 시큰거리는 무지외반증 관절낭 염증과 신경통을 완화합니다.",
-            "en": "Medial capsule of 1st MTP joint and proper digital branch of medial plantar nerve."
+            "ko": "[표적 해부] 무지외반증(Hallux Valgus)으로 돌출·마찰되는 제1중족골두 내측 관절낭, 모지외전근건 및 내측 족저 지신경(Medial Digital Nerve) 주행선.\n[촉지 및 시술] 엄지발가락 옆 가장 튀어나온 뼈(건막류) 내측 연부조직. 신발 접촉 시 화끈거리고 욱신거리는 내측 염증과 신경 자극을 진정시킵니다.",
+            "en": "Medial 1st MTP capsule (bunion) and medial plantar digital nerve; calms shoe-friction burning and medial bunion inflammation."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 62.0,
-          "y": 38.0,
+          "x": 49.2,
+          "y": 36.8,
           "role": {
-            "ko": "심부 근복·근막점",
-            "en": "Deep Myofascial Trigger Point"
+            "ko": "외측 견인·이완점",
+            "en": "Adductor Hallucis Release Target"
           },
           "name": {
-            "ko": "T4: 제1·2중족골 사이 모지내전근 사두(Adductor Hallucis Oblique Head) 이완점",
-            "en": "T4: 1st Intermetatarsal Adductor Hallucis Oblique Head Point"
+            "ko": "T4: 제1·2중족골 사이 · 모지내전근 사두 이완점",
+            "en": "T4: 1st-2nd Intermetatarsal Space · Adductor Hallucis Oblique Head"
           },
           "desc": {
-            "ko": "[표적 해부] 엄지발가락을 바깥쪽으로 잡아당겨 무지외반 변형을 악화시키는 모지내전근 사두·횡두.\n[촉지 및 시술] 제1·2중족골 사이 심부 근육을 이완하여 엄지 정렬 장력을 바로잡습니다.",
-            "en": "Adductor hallucis oblique head in 1st intermetatarsal space pulling hallux laterally."
+            "ko": "[표적 해부] 제1·2중족골 사이 공간에서 외측 종자골과 엄지 근위지골 외측 기저부로 붙어 엄지를 바깥쪽으로 당기는 모지내전근(Adductor Hallucis) 사두·횡두 이완점.\n[촉지 및 시술] 엄지와 둘째발가락 뿌리 사이 제1·2중족골간 심부 틈새. 엄지발가락을 안쪽으로 휘게 만드는 외측 견인력을 해제하여 1st MTP 관절 정렬을 회복합니다.",
+            "en": "Adductor hallucis oblique/transverse head in the 1st-2nd intermetatarsal space; releases lateral deforming pull on the hallux and restores 1st MTP alignment."
           }
         }
       ],
