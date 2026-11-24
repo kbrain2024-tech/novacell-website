@@ -7487,116 +7487,97 @@ window.PAIN_CONDITIONS = [
       "en": "Acute protective spasm of the 3-fiber quadratus lumborum (iliocostal, iliolumbar, lumbocostal) and iliocostalis lumborum creates intense periosteal traction on the 12th rib, L1-L4 transverse processes, and iliac crest."
     },
     "targetTissues": {
-      "ko": "요방형근 외측연 근막열(Myofascial cleft), 제12늑골 하연 착점, 장골능 후내순 기시부, 천층·심층 QL 발통점 및 L1-L4 횡돌기 첨부(제4선).",
-      "en": "QL lateral myofascial cleft, 12th rib lower border, posterior iliac crest, superficial/deep QL trigger points, and L1-L4 transverse process tips."
+      "ko": "요방형근(Quadratus Lumborum · 기시: 장골능 후내순·장요인대 / 정지: 제12늑골 하연 내측·L1~L4 횡돌기), 외측연 근막열(Myofascial Cleft), 천·심층 4대 발통점(TrP 1~4) 및 장요인대(L5·L4 횡돌기 → 장골능 후내순).",
+      "en": "Quadratus Lumborum (Origin: posterior iliac crest & iliolumbar ligament / Insertion: medial 12th rib & L1-L4 transverse processes), QL lateral myofascial cleft, superficial/deep QL trigger points (TrP 1-4), and iliolumbar ligament."
     },
     "palpation": {
-      "ko": "측와위에서 팔을 올려 늑골과 골반 사이를 넓힌 뒤 척추기립근 외측연 근막열(Cleft)을 통해 ① 제12늑골 하연 ② QL 외측연 ③ 장골능 기시부 ④ 심부 TrP ⑤ L1-L4 횡돌기 첨부 촉지.",
-      "en": "Lateral decubitus palpation through the paraspinal myofascial cleft targeting 12th rib, lateral QL border, iliac crest, deep TrPs, and L1-L4 TP tips."
+      "ko": "측와위에서 팔을 올려 늑골과 골반 사이를 넓힌 뒤 척추기립근 외측연 근막열(Cleft)을 통해 ① 제12늑골 하연 요방형근 상부 정지부 ② QL 외측연 근막열 ③ 장골능 후내순·장요인대 기시부 ④ 천·심층 4대 발통점(TrP 1~4) 및 L1~L4 횡돌기 첨부 촉지.",
+      "en": "Lateral decubitus palpation through the paraspinal myofascial cleft targeting 1) 12th rib lower border 2) lateral QL myofascial cleft 3) posterior iliac crest & iliolumbar ligament 4) superficial/deep QL TrP 1-4 & L1-L4 transverse process tips."
     },
     "clinicalCase": {
-      "ko": "아침에 세수하다 허리를 삐끗해 부축을 받고 내원한 급성 요추 염좌 및 기능성 측만 환자. 요방형근 제12늑골 착점, 장골능 기시부 및 L1-L3 횡돌기 첨부(제4선) 골막 부착부 및 노바셀 통전 직후 스스로 허리를 펴고 보행 퇴원.",
-      "en": "Acute disabling lumbar sprain with functional list after bending over sink (Ch.7 Case 7-4); patient walked out upright unassisted immediately after 5-point QL Periosteal Contact protocol."
+      "ko": "아침에 세수하다 허리를 삐끗해 부축을 받고 내원한 급성 요추 염좌 및 기능성 측만 환자. 요방형근 제12늑골 착점, 외측연 근막열, 장골능 기시부 및 L1~L4 횡돌기 첨부(TrP 1~4) 4대 포인트에 노바셀(-50mV) 통전 직후 스스로 허리를 펴고 보행 퇴원.",
+      "en": "Acute disabling lumbar sprain with functional list after bending over a sink; patient walked out upright unassisted immediately after the 4-point QL periosteal and trigger-point NovaCell protocol."
     },
     "diagram": "images/diagrams/diagram_60.png",
     "rifeFreq": 528,
     "anatomicalLabels": [
-      "1. 12th Rib Inferior Border QL Insertion",
-      "2. QL Lateral Border Myofascial Cleft",
-      "3. Posterior Iliac Crest QL Origin",
-      "4. Superficial & Deep QL Trigger Points",
-      "5. L1-L4 Transverse Process Tips (Line 4)"
+      "12th Rib Inferior Border · QL Superior Attachment",
+      "QL Lateral Border · Myofascial Cleft (Iliocostal Fibers)",
+      "Posterior Iliac Crest & Iliolumbar Ligament Origin",
+      "Superficial & Deep QL Trigger Points (TrP 1-4) & L1-L4 Transverse Processes"
     ],
-    "searchKeywords": "급성요추염좌 허리삐끗 요방형근 QL 요통 옆구리허리통증 제12늑골 장골능",
+    "searchKeywords": "급성 요추 염좌 급성요추염좌 허리삐끗 요방형근 QL 연축 요통 옆구리 허리통증 제12늑골 장골능 장요인대 횡돌기 TrP Acute Lumbar Sprain Quadratus Lumborum Spasm",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 54.5,
-        "y": 55.5,
+        "x": 37.6,
+        "y": 26.2,
         "role": {
           "ko": "제1 핵심 치료점",
           "en": "Primary Clinical Target"
         },
         "name": {
-          "ko": "T1: 제12늑골 하연 요방형근(QL) 상부 정지부 골막 부착점 (①번 타깃)",
-          "en": "T1: 12th Rib Inferior Border QL Insertion Periosteal Contact (Target 1)"
+          "ko": "T1: 제12늑골 하연 · 요방형근 상부 정지부",
+          "en": "T1: Inferior Border of 12th Rib · QL Superior Attachment"
         },
         "desc": {
-          "ko": "[표적 해부] 제12늑골(마지막 갈비뼈) 내측 절반 하연에 정지하는 요방형근 장늑·요늑섬유 골막 부착부(HP-ALS-01).\n[촉지 및 시술] 옆구리 뒤쪽 마지막 갈비뼈 아랫모서리 골막 부착부. 기침하거나 숨쉴 때 허리가 울리는 급성 통증을 즉시 잡아줍니다.",
+          "ko": "[표적 해부] 제12늑골(마지막 갈비뼈) 내측 절반 하연에 정지하는 요방형근 장늑·요늑섬유 골막 부착부(HP-ALS-01).\n[촉지 및 시술] 옆구리 뒤쪽 마지막 갈비뼈 아랫모서리 골막 접촉점. 기침하거나 숨쉴 때 허리가 울리는 급성 통증을 즉시 잡아줍니다.",
           "en": "Inferior border of 12th rib where iliocostal and lumbocostal fibers of QL insert."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 45.0,
-        "y": 53.5,
+        "x": 29.1,
+        "y": 40.7,
         "role": {
           "ko": "심부 근복·근막점",
           "en": "Deep Myofascial Trigger Point"
         },
         "name": {
-          "ko": "T2: 요방형근 외측연 근막열(Myofascial Cleft) 천층 장늑섬유 타깃 (②번 타깃)",
-          "en": "T2: QL Lateral Border Myofascial Cleft Iliocostal Fibers (Target 2)"
+          "ko": "T2: 요방형근 외측연 근막열(Myofascial Cleft)",
+          "en": "T2: Lateral Border of QL · Superficial Iliocostal Fibers"
         },
         "desc": {
-          "ko": "[표적 해부] 척추기립근(장늑근) 외측연과 옆구리 복사근 사이의 고랑(근막열)을 통해 만져지는 요방형근 외측연( ②).\n[촉지 및 시술] 허리를 옆으로 기울이거나 돌아누울 때 잡히는 외측 기둥 연축을 풀어줍니다.",
+          "ko": "[표적 해부] 척추기립근(장늑근) 외측연과 옆구리 복사근 사이의 고랑(근막열)을 통해 만져지는 요방형근 외측연 천층 장늑섬유.\n[촉지 및 시술] 허리를 옆으로 기울이거나 침대에서 돌아누울 때 잡히는 외측 기둥 연축을 신속히 풀어줍니다.",
           "en": "Lateral border of quadratus lumborum palpable through the lateral paraspinal myofascial cleft."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 42.5,
-        "y": 62.5,
+        "x": 34.7,
+        "y": 57.3,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T3: 장골능 후내순(Iliac Crest) 요방형근·장요인대 기시부 골막 부착점 (③번 타깃)",
-          "en": "T3: Posterior Iliac Crest QL & Iliolumbar Ligament Origin (Target 3)"
+          "ko": "T3: 장골능 후내순 · 요방형근·장요인대 기시부",
+          "en": "T3: Posterior Iliac Crest & Iliolumbar Ligament Origin"
         },
         "desc": {
-          "ko": "[표적 해부] 골반 뒤쪽 장골능 후내순 약 5cm 구간의 요방형근 기시부 및 장요인대 골막(HP-ALS-02, ③).\n[촉지 및 시술] 골반 능선 바로 위에서 아래쪽 뼈 모서리를 향해 비스듬히 골막 접촉. 골반이 한쪽으로 틀어진 급성 요통의 하부 고정점입니다.",
+          "ko": "[표적 해부] 골반 뒤쪽 장골능 후내순 약 5cm 구간의 요방형근 기시부 및 장요인대(L5·L4 횡돌기 → 장골능 후내순) 골막(HP-ALS-02).\n[촉지 및 시술] 골반 능선 바로 위에서 아래쪽 뼈 모서리를 향해 비스듬히 골막 접촉. 골반이 한쪽으로 틀어진 급성 요통의 하부 고정점입니다.",
           "en": "Posterior-medial lip of iliac crest where QL and iliolumbar ligament originate."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 54.5,
-        "y": 46.5,
+        "x": 64.0,
+        "y": 44.1,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "발통점·횡돌기점",
+          "en": "Trigger Points & Transverse Processes"
         },
         "name": {
-          "ko": "T4: 요방형근 천·심층 4대 발통점(TrP 1~4: 천장관절·대전자·둔부 방사통점) (④번 타깃)",
-          "en": "T4: Superficial & Deep QL Trigger Points (SIJ & Gluteal Referral, Target 4)"
+          "ko": "T4: 요방형근 천·심층 4대 발통점(TrP 1~4) & L1~L4 횡돌기",
+          "en": "T4: Superficial & Deep QL Trigger Points (TrP 1-4) & L1-L4 Transverse Processes"
         },
         "desc": {
-          "ko": "[표적 해부] 제12늑골 직하방 및 L3-L4 높이 심부 요방형근 근복 내 알갱이 결절( ④).\n[촉지 및 시술] 천장관절, 엉덩이 하부, 대전자, 사타구니로 방사통을 보내는 핵심 발통점입니다.",
-          "en": "Superficial and deep QL trigger points referring pain to SIJ, lower buttock, and greater trochanter."
-        }
-      },
-      {
-        "code": "T5",
-        "color": "#a855f7",
-        "x": 52.5,
-        "y": 41.5,
-        "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
-        },
-        "name": {
-          "ko": "T5: 요추 제4선: L1-L4 횡돌기 첨부(Transverse Process Tips) 장요·요늑섬유 골막 부착점 (⑤번 타깃)",
-          "en": "T5: Lumbar Line 4: L1-L4 Transverse Process Tips Periosteal Contact (Target 5)"
-        },
-        "desc": {
-          "ko": "[표적 해부] 극돌기 외측 4~5cm L1~L4 횡돌기 끝(Tip)에 붙는 요방형근 심층 섬유 및 횡돌기간근( ⑤).\n[촉지 및 시술] 허리를 꼿꼿이 세우지 못하게 만드는 심부 분절 경직을 완전히 해제합니다.",
-          "en": "Tips of L1-L4 transverse processes where deep iliolumbar and lumbocostal QL fibers attach."
+          "ko": "[표적 해부] 제12늑골 직하방부터 L1~L4 횡돌기 첨부(극돌기 외측 4~5cm, 제4선)에 부착하는 요방형근 심층 장요·요늑섬유 및 천·심층 4대 발통점(TrP 1~4).\n[촉지 및 시술] 천장관절·엉덩이 하부·대전자·사타구니로 방사통을 보내는 4대 알갱이 결절과 L1~L4 횡돌기 끝 심부 분절 경직을 동시에 해제하여 허리를 꼿꼿이 펼 수 있게 회복시킵니다.",
+          "en": "Superficial and deep QL trigger points (TrP 1-4) referring pain to SIJ, buttock, and greater trochanter, combined with L1-L4 transverse process tip periosteal insertions."
         }
       }
     ]
