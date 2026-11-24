@@ -4553,7 +4553,7 @@ window.PAIN_CONDITIONS = [
     ],
     "title": {
       "ko": "후경골근 증후군 (Tibialis Posterior TTP)",
-      "en": "Tibialis Posterior Syndrome (Tibialis Posterior TTP)"
+      "en": "Tibialis Posterior Syndrome (4-Point Periosteal & Tarsal Tunnel Protocol)"
     },
     "symptoms": {
       "ko": "발목 내측 및 내측 복사뼈 뒤쪽 통증, 평발 변화, 아침에 내측 족저궁 시림.",
@@ -4564,12 +4564,12 @@ window.PAIN_CONDITIONS = [
       "en": "Micro-damage and isotonic contraction of tibialis posterior induces periostitis (TTP) at navicular insertion."
     },
     "targetTissues": {
-      "ko": "후경골근(Tibialis Posterior) 근복.",
-      "en": "Tibialis posterior muscle belly."
+      "ko": "후경골근(Tibialis Posterior · 기시: 경골 후면·비골 내측면·골간막 / 정지: 주상골 조면·설상골·제2~4중족골), 내과 후하방 족근관(굴근지대)·경골신경, 주상골 조면 정지부 & 내측족저신경.",
+      "en": "Tibialis Posterior (origin: posterior tibia, medial fibula, interosseous membrane; insertion: navicular tuberosity, cuneiforms, 2nd-4th metatarsals), tarsal tunnel / flexor retinaculum & tibial nerve, navicular tuberosity & medial plantar nerve."
     },
     "palpation": {
-      "ko": "아랫다리 중간 높이 경골 내측연 뒤쪽으로 경골 후면에 붙 여 후경골근 근복 촉진.",
-      "en": "Tibialis posterior belly along posterior medial border of tibia at mid-calf level."
+      "ko": "① 하퇴 중간 경골 내측연 후방 후경골근 심부 근복 ② 내과 후하방 족근관·굴근지대 ③ 주상골 조면 정지부 & 내측족저신경 ④ 비골 내측면 상부 후경골근 근위 기시부.",
+      "en": "Mid-distal posteromedial tibia deep tibialis posterior belly, posteroinferior medial malleolus tarsal tunnel, navicular tuberosity insertion, and proximal medial fibula origin."
     },
     "clinicalCase": {
       "ko": "발목 내측 복사뼈 뒤쪽 통증과 아침 첫 보행 시 발바닥 내측 당김을 호소하던 후경골근 증후군 사례. 종아리 심부 후경골근 근복 및 내과 후방 신경 홈에 NovaCell Therapy를 적용하여 족궁(아치)의 건 견인력을 이완시키고 보행 편안함 회복.",
@@ -4580,73 +4580,73 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 55.5,
-        "y": 49.6,
+        "x": 54.6,
+        "y": 45.7,
         "role": {
-          "ko": "제1 핵심 치료점",
-          "en": "Primary Clinical Target"
+          "ko": "심부 근복·근막점",
+          "en": "Deep Muscle Belly Target"
         },
         "name": {
-          "ko": "T1: 하퇴 중간 경골 내측연 후방 후경골근(Tibialis Posterior) 심부 근복점",
-          "en": "T1: Mid-Medial Tibial Border Deep Tibialis Posterior Belly"
+          "ko": "T1: 하퇴 중간 경골 내측연 후방 · 후경골근 심부 근복",
+          "en": "T1: Mid-Distal Posteromedial Tibia · Deep Tibialis Posterior Belly"
         },
         "desc": {
-          "ko": "[표적 해부] 종아리 안쪽 중간~하부 1/3 높이, 경골 내측연 바로 뒤쪽 골간막에 밀착된 후경골근 심부 근복.\n[촉지 및 시술] 정강이뼈 안쪽 모서리 바로 뒤로 손가락을 밀어 넣어 경골 후면을 누를 때 나타나는 압통점. 아킬레스건·발바닥 통증 및 편평족의 근원 엔진입니다.",
-          "en": "Deep tibialis posterior belly along posterior surface of medial tibial border at mid-leg."
+          "ko": "[표적 해부] 하퇴 중간~원위부 경골 내측연 바로 뒤쪽 심부에 위치한 후경골근(Tibialis Posterior) 근복 및 경골 후면 골막 부착선.\n[촉지 및 시술] 정강이 안쪽 뼈(경골 내측연) 바로 뒤쪽 틈새로 심부 접근. 장시간 보행·달리기 시 정강이 안쪽 뻐근함(신스플린트)과 발바닥 아치 피로통을 해소합니다.",
+          "en": "Deep tibialis posterior belly right behind the mid-distal posteromedial tibial border; relieves medial tibial stress pain and deep calf tightness."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 67.0,
-        "y": 63.0,
+        "x": 54.3,
+        "y": 75.3,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "주 신경포착점",
+          "en": "Tarsal Tunnel Entrapment"
         },
         "name": {
-          "ko": "T2: 내과 후하방 족근관(Tarsal Tunnel) 굴근지대 후경골신경·후경골근건 타깃",
-          "en": "T2: Posteroinferior Medial Malleolus Tarsal Tunnel (Posterior Tibial Nerve)"
+          "ko": "T2: 내과 후하방 족근관(Tarsal Tunnel) · 굴근지대 & 경골신경",
+          "en": "T2: Posteroinferior Medial Malleolus · Flexor Retinaculum & Tibial Nerve"
         },
         "desc": {
-          "ko": "[표적 해부] 안쪽 복사뼈(내과)와 뒤꿈치(종골) 사이 굴근지대 아래 족근관.\n[촉지 및 시술] 내과 뒤쪽 태계~수천혈 구간(HP-TTS-01). 발바닥 전체가 화끈거리거나 저린 발목터널 증후군과 후경골근 건초염을 동시 감압합니다.",
-          "en": "Tarsal tunnel beneath flexor retinaculum posteroinferior to medial malleolus."
+          "ko": "[표적 해부] 발목 안쪽 복숭아뼈(내과) 후하방 굴근지대(Flexor Retinaculum) 아래로 후경골근건과 후경골신경(Tibial Nerve)이 통과하는 족근관 터널.\n[촉지 및 시술] 내과 뒤아래 오목한 족근관 입구. 발목 내측 저림, 발바닥 화끈거림 및 후경골건 활막염을 동시에 감압합니다.",
+          "en": "Tarsal tunnel beneath the flexor retinaculum posteroinferior to the medial malleolus; decompresses both the posterior tibial tendon and tibial nerve."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 48.9,
+        "y": 80.6,
         "role": {
           "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "en": "Tendon Insertion & Nerve Target"
         },
         "name": {
-          "ko": "T3: 주상골 조면(Navicular Tuberosity) 후경골근 정지부 골막 부착부 및 내측족저신경점",
-          "en": "T3: Navicular Tuberosity Tibialis Posterior Insertion & Medial Plantar Tunnel"
+          "ko": "T3: 주상골 조면(Navicular Tuberosity) · 정지부 & 내측족저신경",
+          "en": "T3: Navicular Tuberosity · Insertion & Medial Plantar Nerve"
         },
         "desc": {
-          "ko": "[표적 해부] 발 안쪽 아치 정점의 주상골 조면 후경골근 주 정지건 골막 및 모지외전근 하방 내측·외측 족저신경 분기점(HP-TTS-02).\n[촉지 및 시술] 발 안쪽 볼록한 주상골 뼈 밑면 골막 접촉. 무너진 내측 아치를 지지하고 족저 신경통을 차단합니다.",
-          "en": "Navicular tuberosity periosteal insertion of tibialis posterior and abductor hallucis plantar nerve tunnel."
+          "ko": "[표적 해부] 발 안쪽 아치 정점의 주상골 조면(Navicular Tuberosity) 후경골근 주 정지부 건골막 및 인접 내측족저신경(Medial Plantar Nerve) 주행로.\n[촉지 및 시술] 내과 전하방 약 2.5~3cm 만져지는 볼록한 주상골 뼈 밑면 경계. 무너진 내측 아치(평발성 통증)와 디딜 때 발 안쪽 찌릿함을 직접 해결합니다.",
+          "en": "Primary tibialis posterior insertion at the navicular tuberosity adjacent to the medial plantar nerve; restores medial arch support and resolves medial midfoot pain."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 58.6,
+        "y": 28.4,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "기시부·근위 제어점",
+          "en": "Proximal Origin & Tibial Nerve Target"
         },
         "name": {
-          "ko": "T4: 비골 내측면 상부 후경골근 근위 기시부(삼음교 상방) 연계점",
-          "en": "T4: Proximal Posterior Tibialis & Interosseous Membrane Point"
+          "ko": "T4: 비골 내측면 상부 후경골근 근위 기시부 & 골간막",
+          "en": "T4: Proximal Medial Fibula & Interosseous Membrane · Origin & Tibial Nerve"
         },
         "desc": {
-          "ko": "[표적 해부] 하퇴 상부 1/3 골간막 후경골근 기시부 및 경골신경 본간.\n[촉지 및 시술] 후경골근 전체 근막 장력을 상·하부에서 완전히 이완합니다.",
-          "en": "Proximal origin of tibialis posterior on interosseous membrane."
+          "ko": "[표적 해부] 비골 근위부 내측면과 경·비골 사이 골간막(Interosseous Membrane)의 후경골근 최상부 기시부 및 근위 경골신경 분지.\n[촉지 및 시술] 종아리 상부 외후방 비골두 아래 심부 기시부. 후경골근 전체의 근위부 장력과 종아리 깊숙한 당김을 원천적으로 이완합니다.",
+          "en": "Proximal tibialis posterior origin along the upper medial fibula and interosseous membrane adjacent to the tibial nerve; releases full-length tendon tension."
         }
       }
     ],
