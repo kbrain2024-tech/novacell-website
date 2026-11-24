@@ -4798,7 +4798,7 @@
       ],
       "title": {
         "ko": "족저근막염 / 내측종골신경 유착",
-        "en": "Plantar Fasciitis / Medial Calcaneal Nerve Entrapment"
+        "en": "Plantar Fasciitis / Medial Calcaneal Nerve Entrapment (4-Point Protocol)"
       },
       "symptoms": {
         "ko": "아침에 자고 일어나 첫발 내딛을 때 발뒤꿈치 바닥에 전기 가 오듯 극심한 통증.",
@@ -4809,12 +4809,12 @@
         "en": "Entrapment of medial calcaneal nerve under flexor retinaculum, or soleus c combined with flexor digitorum brevis / abductor hallucis TTP inducing calcaneal plantar periostitis."
       },
       "targetTissues": {
-        "ko": "굴근지대(Flexor retinaculum), 단지굴근(FDB), 무지외 전근(AbH), 가자미근.",
-        "en": "Flexor retinaculum, Flexor digitorum brevis (FDB), Abductor hallucis (AbH), Soleus."
+        "ko": "내과 하방 굴근지대·내측종골신경 및 박스터신경(Baxter's Nerve), 종골 내측결절 족저근막·무지외전근(AbH)·단족지굴근(FDB) 기시부, 족저근막 내측 세로 아치, 가자미근(Soleus) 및 아킬레스건 종골 부착부.",
+        "en": "Flexor retinaculum & medial calcaneal / Baxter's nerve, medial calcaneal tubercle (plantar fascia, AbH & FDB origin), medial longitudinal arch & FDB belly, Achilles tendon calcaneal insertion & soleus chain."
       },
       "palpation": {
-        "ko": "내측 복사뼈 하방 굴근지대 부위 및 종골 내측 돌기 부근 압통점.",
-        "en": "Flexor retinaculum below medial malleolus and tender points near medial calcaneal tuberosity."
+        "ko": "① 내과 하방 굴근지대·내측종골신경 포착점 ② 종골 내측결절 족저근막 기시부 ③ 족저근막 내측 세로 아치 & 단족지굴근 중앙점 ④ 아킬레스건 종골 부착부 & 가자미근 근위 사슬.",
+        "en": "Flexor retinaculum medial calcaneal nerve exit, medial calcaneal tubercle plantar fascia origin, medial longitudinal arch & FDB belly, and Achilles calcaneal insertion."
       },
       "clinicalCase": {
         "ko": "아침 기상 후 첫발을 디딜 때 발뒤꿈치 바닥에 전기가 찌릿하며 딛기 힘들던 만성 족저근막염 사례. 내측 복사뼈 하방 굴근지대(Flexor Retinaculum) 및 내측종골신경 유착 부위에 NovaCell Therapy를 적용하여 신경 유착을 해소하고 첫발 통증 완전 소실.",
@@ -4825,73 +4825,73 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 69.1,
-          "y": 55.2,
+          "x": 44.4,
+          "y": 57.9,
           "role": {
             "ko": "주 신경포착점",
             "en": "Primary Nerve Entrapment"
           },
           "name": {
-            "ko": "T1: 내과 하방 굴근지대 내측종골신경(Medial Calcaneal N.) 및 족저방형근 포착점",
-            "en": "T1: Inframalleolar Medial Calcaneal Nerve & Baxter's Nerve Point"
+            "ko": "T1: 내과 하방 굴근지대 · 내측종골신경 포착점 (Baxter's Nerve)",
+            "en": "T1: Flexor Retinaculum · Medial Calcaneal & Baxter's Nerve"
           },
           "desc": {
-            "ko": "[표적 해부] 안쪽 복사뼈 하후방 굴근지대 중앙부에서 분지하는 내측종골신경 및 제1외측족저신경(Baxter 신경)·족저방형근.\n[촉지 및 시술] 내과와 뒤꿈치 사이 안쪽 측면 압통점. 아침 첫발을 디딜 때 뒤꿈치가 찢어질 듯 아픈 신경포착성 족저근막염의 제1 스위치입니다.",
-            "en": "Medial calcaneal nerve and Baxter's nerve passage beneath flexor retinaculum and abductor hallucis."
+            "ko": "[표적 해부] 발목 내과(안쪽 복숭아뼈) 후하방 굴근지대(Flexor Retinaculum)와 무지외전근(AbH) 근막 아래를 통과하는 내측종골신경(Medial Calcaneal Nerve) 및 박스터신경(Baxter's Nerve) 포착점.\n[촉지 및 시술] 내과 뒤아래 오목한 족근관 하연 압통점. 만성 발뒤꿈치 찌릿함과 야간 작열통을 유발하는 신경 유착을 원천 감압합니다.",
+            "en": "Flexor retinaculum and deep abductor hallucis fascia where the medial calcaneal and Baxter's nerves are entrapped."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 77.2,
-          "y": 71.8,
+          "x": 34.3,
+          "y": 74.4,
           "role": {
             "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "en": "Fascial Origin & Periosteal Target"
           },
           "name": {
-            "ko": "T2: 종골 내측결절(Medial Calcaneal Tubercle) 족저근막 기시부 골막 부착점",
-            "en": "T2: Medial Calcaneal Tubercle Plantar Fascia Origin Periosteal Contact"
+            "ko": "T2: 종골 내측결절 · 족저근막 기시부 (AbH & FDB Origin)",
+            "en": "T2: Medial Calcaneal Tubercle · Plantar Fascia, AbH & FDB Origin"
           },
           "desc": {
-            "ko": "[표적 해부] 발뒤꿈치 바닥 앞쪽 종골 내측돌기의 족저근막·모지외전근(AbH)·단족지굴근(FDB) 공동 골막 기시부.\n[촉지 및 시술] 뒤꿈치 바닥 중앙에서 약간 안쪽 뼈 경계부 골막 접촉(HP-PF-01). 종골 골극 주위 미세파열과 골막 염증을 직접 치유합니다.",
-            "en": "Periosteal origin of plantar aponeurosis, AbH, and FDB at medial tubercle of calcaneus."
+            "ko": "[표적 해부] 발뒤꿈치 뼈(종골) 바닥 앞안쪽 종골 내측결절(Medial Calcaneal Tubercle)의 족저근막(Plantar Fascia)·무지외전근(AbH)·단족지굴근(FDB) 공동 기시부 골막.\n[촉지 및 시술] 뒤꿈치 중앙에서 약간 안쪽 뼈 경계부 압통점. 아침 기상 후 첫 발을 디딜 때 찢어지는 듯한 뒤꿈치 통증의 제1 핵심 타깃입니다.",
+            "en": "Primary origin of the plantar fascia, abductor hallucis, and flexor digitorum brevis at the medial calcaneal tubercle; key target for first-step morning heel pain."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 38.0,
-          "y": 62.0,
+          "x": 57.5,
+          "y": 76.7,
           "role": {
             "ko": "심부 근복·근막점",
-            "en": "Deep Myofascial Trigger Point"
+            "en": "Arch Fascia & FDB Belly Target"
           },
           "name": {
-            "ko": "T3: 족저근막 내측 세로 아치(Medial Longitudinal Arch) 및 단족지굴근 중앙점",
-            "en": "T3: Plantar Fascia Medial Arch & Flexor Digitorum Brevis Belly"
+            "ko": "T3: 족저근막 내측 세로 아치 & 단족지굴근 중앙점",
+            "en": "T3: Medial Longitudinal Arch · Plantar Fascia & FDB Central Belly"
           },
           "desc": {
-            "ko": "[표적 해부] 발바닥 중앙 내측 족궁을 가로지르는 족저근막 중심띠 및 단족지굴근·족저방형근 근복(HP-PF-02).\n[촉지 및 시술] 발가락을 뒤로 젖힐 때 발바닥에 팽팽하게 만져지는 근막 줄기 압통점.",
-            "en": "Central cord of plantar fascia and flexor digitorum brevis belly along medial longitudinal arch."
+            "ko": "[표적 해부] 발바닥 내측 세로 아치(Medial Longitudinal Arch)를 지지하는 족저근막 내측 다발과 바로 위 심층 단족지굴근(FDB) 중앙 근복.\n[촉지 및 시술] 엄지발가락을 위로 젖혔을 때 발바닥 안쪽에 팽팽하게 도드라지는 띠(족저근막) 중앙부. 발바닥 전체의 당김과 아치 피로통을 부드럽게 이완합니다.",
+            "en": "Central medial band of the plantar fascia and underlying FDB belly along the medial longitudinal arch; releases plantar tension and arch fatigue."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 62.0,
-          "y": 38.0,
+          "x": 29.9,
+          "y": 69.3,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "기시부·근위 사슬점",
+            "en": "Achilles & Soleus Proximal Chain"
           },
           "name": {
-            "ko": "T4: 아킬레스건 종골 부착부 및 가자미근 근위 사슬 타깃",
-            "en": "T4: Achilles-Calcaneal Junction & Soleus Myofascial Chain Point"
+            "ko": "T4: 아킬레스건 종골 부착부 & 가자미근 근위 사슬",
+            "en": "T4: Achilles Tendon Calcaneal Insertion & Soleus Chain"
           },
           "desc": {
-            "ko": "[표적 해부] 아킬레스건과 족저근막이 종골 골막을 사이에 두고 연결되는 후하방 전환점(HP-PF-03).\n[촉지 및 시술] 종아리(가자미근)-아킬레스건-족저근막으로 이어지는 후방 장력 사슬을 이완합니다.",
-            "en": "Achilles-to-plantar-fascia calcaneal periosteal continuity point."
+            "ko": "[표적 해부] 종골 융기 후면의 아킬레스건 정지부 골막과 근위부 가자미근(Soleus · 기시: 경골 가자미근선·비골두 후면)에서 종골 골막을 통해 족저근막으로 이어지는 근막 사슬.\n[촉지 및 시술] 발뒤꿈치 뒤쪽 아킬레스건 부착 경계부와 종아리 하부. 아킬레스건-종골-족저근막 후방 사슬의 과긴장을 풀어 족저근막염 재발을 근본 차단합니다.",
+            "en": "Achilles tendon insertion on the posterior calcaneus linked mechanically to the plantar fascia via the soleus chain; prevents recurrent heel traction."
           }
         }
       ],
