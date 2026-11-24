@@ -4562,8 +4562,8 @@
         "en": "Micro-damage and isotonic contraction of tibialis posterior induces periostitis (TTP) at navicular insertion."
       },
       "targetTissues": {
-        "ko": "후경골근(Tibialis Posterior · 기시: 경골 후면·비골 내측면·골간막 / 정지: 주상골 조면·설상골·제2~4중족골), 내과 후하방 족근관(굴근지대)·경골신경, 주상골 조면 정지부 & 내측족저신경.",
-        "en": "Tibialis Posterior (origin: posterior tibia, medial fibula, interosseous membrane; insertion: navicular tuberosity, cuneiforms, 2nd-4th metatarsals), tarsal tunnel / flexor retinaculum & tibial nerve, navicular tuberosity & medial plantar nerve."
+        "ko": "후경골근(Tibialis Posterior · 기시 ① 경골 후면 · 기시 ② 비골 상부 내측면·골간막 / 주 정지: 주상골 조면, 보조 정지: 입방골·설상골 기저부·제2~4중족골 기저부), 내과 후하방 족근관(굴근지대)·경골신경 및 내측족저신경.",
+        "en": "Tibialis Posterior (Origin 1: posterior tibia, Origin 2: proximal medial fibula & interosseous membrane; Main Insertion: navicular tuberosity, secondary slips: cuboid, cuneiforms, bases of 2nd-4th metatarsals), tarsal tunnel / flexor retinaculum & tibial/medial plantar nerve."
       },
       "palpation": {
         "ko": "① 하퇴 중간 경골 내측연 후방 후경골근 심부 근복 ② 내과 후하방 족근관·굴근지대 ③ 주상골 조면 정지부 & 내측족저신경 ④ 비골 내측면 상부 후경골근 근위 기시부.",
@@ -4578,8 +4578,8 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 54.6,
-          "y": 45.7,
+          "x": 48.9,
+          "y": 46.7,
           "role": {
             "ko": "심부 근복·근막점",
             "en": "Deep Muscle Belly Target"
@@ -4596,8 +4596,8 @@
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 54.3,
-          "y": 75.3,
+          "x": 48.5,
+          "y": 66.5,
           "role": {
             "ko": "주 신경포착점",
             "en": "Tarsal Tunnel Entrapment"
@@ -4614,8 +4614,8 @@
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 48.9,
-          "y": 80.6,
+          "x": 47.4,
+          "y": 72.1,
           "role": {
             "ko": "힘줄·골막 부착점",
             "en": "Tendon Insertion & Nerve Target"
@@ -4625,15 +4625,15 @@
             "en": "T3: Navicular Tuberosity · Insertion & Medial Plantar Nerve"
           },
           "desc": {
-            "ko": "[표적 해부] 발 안쪽 아치 정점의 주상골 조면(Navicular Tuberosity) 후경골근 주 정지부 건골막 및 인접 내측족저신경(Medial Plantar Nerve) 주행로.\n[촉지 및 시술] 내과 전하방 약 2.5~3cm 만져지는 볼록한 주상골 뼈 밑면 경계. 무너진 내측 아치(평발성 통증)와 디딜 때 발 안쪽 찌릿함을 직접 해결합니다.",
+            "ko": "[표적 해부] 발 안쪽 아치 정점의 주상골 조면(Navicular Tuberosity) 후경골근 주 정지부(및 입방골·설상골·제2~4중족골 기저부 확장건)와 인접 내측족저신경(Medial Plantar Nerve) 주행로.\n[촉지 및 시술] 내과 전하방 약 2.5~3cm 만져지는 볼록한 주상골 뼈 밑면 경계. 무너진 내측 아치(평발성 통증)와 디딜 때 발 안쪽 찌릿함을 직접 해결합니다.",
             "en": "Primary tibialis posterior insertion at the navicular tuberosity adjacent to the medial plantar nerve; restores medial arch support and resolves medial midfoot pain."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 58.6,
-          "y": 28.4,
+          "x": 53.6,
+          "y": 30.1,
           "role": {
             "ko": "기시부·근위 제어점",
             "en": "Proximal Origin & Tibial Nerve Target"
