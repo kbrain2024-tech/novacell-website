@@ -4923,7 +4923,7 @@ window.PAIN_CONDITIONS = [
     ],
     "title": {
       "ko": "지간신경통 (Morton's Neuroma)",
-      "en": "Morton's Neuroma"
+      "en": "Morton's Neuroma (Forefoot Transverse Arch & Interdigital Nerve Protocol)"
     },
     "symptoms": {
       "ko": "3/4번 중족골두 사이 발바닥/발등으로 뻗치는 찌릿한 방사통, 걸을 때 발바닥 통증.",
@@ -4934,12 +4934,12 @@ window.PAIN_CONDITIONS = [
       "en": "Interdigital branches of medial/lateral plantar nerves entrapped/irritated beneath deep transverse metatarsal ligament."
     },
     "targetTissues": {
-      "ko": "심층횡중족인대(Deep transverse metatarsal ligament).",
-      "en": "Deep transverse metatarsal ligament."
+      "ko": "제3·4중족골두 사이 지간신경(모튼 신경종) 및 심층횡중족인대(Deep Transverse Metatarsal Ligament), 제2·3중족골두 사이 충양근·골간근, 모지내전근(Adductor Hallucis · 기시: 제3~5 MTP 인대 횡두·제2~4중족골 기저부 사두 / 정지: 엄지 근위지골 외측 기저부), 내과 후하방 족근관(내·외측 족저신경 분기점).",
+      "en": "3rd-4th intermetatarsal space common digital nerve & deep transverse metatarsal ligament, 2nd-3rd intermetatarsal interossei & lumbricals, adductor hallucis (transverse & oblique heads), and tarsal tunnel medial/lateral plantar nerve bifurcation."
     },
     "palpation": {
-      "ko": "3/4번 중족골두 사이 발등 쪽에서 자입하여 인대를 뚫는 깊이(피부 2cm 깊이) 압통점.",
-      "en": "Tender point inserted dorsally between 3rd/4th metatarsal heads penetrating to ligament depth (2 cm depth)."
+      "ko": "① 제3·4중족골두 사이 지간신경(모튼 신경종) ② 제2·3중족골두 사이 충양근 & 골간근 ③ 전족부 횡아치 · 모지내전근 횡두 & 사두 ④ 내과 후하방 족근관 · 내·외측 족저신경 분기점.",
+      "en": "3rd-4th intermetatarsal space (Morton's neuroma), 2nd-3rd intermetatarsal space (interossei & lumbricals), forefoot transverse arch (adductor hallucis), and tarsal tunnel plantar nerve bifurcation."
     },
     "clinicalCase": {
       "ko": "3번째와 4번째 발가락 사이 발바닥이 화끈거리고 자갈을 밟는 듯 찌릿하던 지간신경통(몰톤신경종) 사례. 발등 3-4 중족골두 사이 심층인대 부위에 NovaCell Therapy를 정밀 통전하여 신경 유착을 해소하고 보행 시 찌릿한 방사통 완치.",
@@ -4950,73 +4950,73 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 61.1,
-        "y": 51.4,
+        "x": 56.6,
+        "y": 37.9,
         "role": {
           "ko": "주 신경포착점",
-          "en": "Primary Nerve Entrapment"
+          "en": "Primary Interdigital Entrapment"
         },
         "name": {
-          "ko": "T1: 제3·4중족골두 사이(3rd-4th Intermetatarsal Space) 지간신경·심횡중족인대점",
-          "en": "T1: 3rd-4th Intermetatarsal Space Morton's Neuroma & Deep Transverse Ligament"
+          "ko": "T1: 제3·4중족골두 사이 · 지간신경(모튼 신경종)",
+          "en": "T1: 3rd-4th Intermetatarsal Space · Morton's Neuroma"
         },
         "desc": {
-          "ko": "[표적 해부] 제3중족골두와 제4중족골두 사이 심층횡중족인대 하방의 총족저지신경(지간신경) 포착점.\n[촉지 및 시술] 발등 쪽에서 3·4번째 발가락 뿌리 뼈 사이를 약 2cm 깊이로 누르면서 발볼 양옆을 모아 쥐었을 때(Mulder's click) 찌릿한 핵심 타깃입니다.",
-          "en": "3rd-4th intermetatarsal web space at level of metatarsal heads and deep transverse metatarsal ligament."
+          "ko": "[표적 해부] 제3·4중족골두 사이 심층횡중족인대(Deep Transverse Metatarsal Ligament) 아래에서 내·외측 족저신경 분지가 합류·압박되는 모튼 신경종 최다 호발 포착점.\n[촉지 및 시술] 3·4번째 발가락 뿌리(발볼) 사이 뼈 틈새 압통점. 걸을 때 발바닥 앞쪽에 자갈을 밟는 듯한 이물감과 3·4지 찌릿한 방사통을 직접 감압합니다.",
+          "en": "Primary Morton's neuroma entrapment beneath the deep transverse metatarsal ligament between the 3rd and 4th metatarsal heads."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 67.0,
-        "y": 63.0,
+        "x": 50.6,
+        "y": 35.8,
         "role": {
-          "ko": "심부 근복·근막점",
-          "en": "Deep Myofascial Trigger Point"
+          "ko": "심부 근복·지간점",
+          "en": "2nd-3rd Intermetatarsal Target"
         },
         "name": {
-          "ko": "T2: 제2·3중족골두 사이 및 충양근·골간근(Interossei & Lumbricals) 압통점",
-          "en": "T2: 2nd-3rd Intermetatarsal Space & Dorsal/Plantar Interossei Point"
+          "ko": "T2: 제2·3중족골두 사이 · 충양근 & 골간근",
+          "en": "T2: 2nd-3rd Intermetatarsal Space · Interossei & Lumbricals"
         },
         "desc": {
-          "ko": "[표적 해부] 제2·3중족골간 공간의 배측·족저골간근 및 충양근 근복.\n[촉지 및 시술] 중족골 사이를 조여 지간신경을 압박하는 내재근 경직을 풀어 앞발바닥 이물감과 타는 통증을 제거합니다.",
-          "en": "2nd-3rd intermetatarsal space interossei and lumbrical bellies."
+          "ko": "[표적 해부] 제2·3중족골두 사이 지간신경 주행로와 심부 충양근(Lumbricals)·족저골간근(Plantar Interossei)의 과긴장·유착 부위.\n[촉지 및 시술] 2·3번째 중족골두 사이 발볼 오목한 틈새. 인접 지간 공간의 압력을 분산하고 제2·3지 저림 및 중족골통(Metatarsalgia)을 함께 해결합니다.",
+          "en": "Interossei, lumbricals, and interdigital nerve in the 2nd-3rd intermetatarsal space; relieves adjacent forefoot compression and metatarsalgia."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 55.9,
+        "y": 47.4,
         "role": {
-          "ko": "심부 근복·근막점",
-          "en": "Deep Myofascial Trigger Point"
+          "ko": "횡아치·심부 근막점",
+          "en": "Forefoot Transverse Arch Target"
         },
         "name": {
-          "ko": "T3: 전족부 횡아치 단모지내전근 횡두(Adductor Hallucis Transverse Head) 타깃",
-          "en": "T3: Forefoot Transverse Arch Adductor Hallucis Transverse Head"
+          "ko": "T3: 전족부 횡아치 · 모지내전근 횡두 & 사두",
+          "en": "T3: Forefoot Transverse Arch · Adductor Hallucis Transverse & Oblique Heads"
         },
         "desc": {
-          "ko": "[표적 해부] 제2~5중족지절관절(MTP) 바닥을 가로질러 엄지로 붙는 모지내전근 횡두 및 사두.\n[촉지 및 시술] 무너진 전족부 횡아치를 복원하고 중족골두 바닥 체중부하 통증을 해소합니다.",
-          "en": "Transverse and oblique heads of adductor hallucis supporting forefoot transverse arch."
+          "ko": "[표적 해부] 무너진 전족부 횡아치(Transverse Arch)를 가로지르는 모지내전근(Adductor Hallucis) 횡두(제3~5 MTP 인대 기시) 및 사두(제2~4중족골 기저부 기시 → 엄지 근위지골 외측 정지).\n[촉지 및 시술] 중족골두 바로 아래쪽 발바닥 중앙 심부 가로 근막선. 좁아진 중족골 간격을 넓히고 횡아치 탄성을 복원하여 지간신경 재압박을 방지합니다.",
+          "en": "Transverse and oblique heads of adductor hallucis supporting the forefoot transverse arch; restores intermetatarsal spacing to prevent recurrent nerve compression."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 44.3,
+        "y": 73.0,
         "role": {
-          "ko": "신경 주행·분지점",
-          "en": "Nerve Pathway Target"
+          "ko": "근위 신경분기점",
+          "en": "Tarsal Tunnel Bifurcation Target"
         },
         "name": {
-          "ko": "T4: 내과 후하방 족근관(Tarsal Tunnel) 내·외측 족저신경 근위 분기점",
-          "en": "T4: Proximal Tarsal Tunnel Medial/Lateral Plantar Nerve Origin"
+          "ko": "T4: 내과 후하방 족근관(Tarsal Tunnel) · 내·외측 족저신경 분기점",
+          "en": "T4: Tarsal Tunnel · Medial & Lateral Plantar Nerve Bifurcation"
         },
         "desc": {
-          "ko": "[표적 해부] 지간신경의 본간인 내·외측 족저신경이 갈라지는 족근관 출구.\n[촉지 및 시술] 발가락 끝까지 이어지는 저림의 상류 신경 감압점입니다.",
-          "en": "Tarsal tunnel bifurcation of medial and lateral plantar nerves."
+          "ko": "[표적 해부] 발목 내과 후하방 족근관(Tarsal Tunnel) 내에서 후경골신경이 내측·외측 족저신경으로 갈라지는 근위부 분기점(Double Crush 근위 병소).\n[촉지 및 시술] 발목 안쪽 복사뼈 뒤아래 굴근지대 하부. 전족부 지간신경으로 내려가는 상류 신경 긴장을 풀어 만성·난치성 지간신경통의 근본 회복을 완성합니다.",
+          "en": "Proximal bifurcation of medial and lateral plantar nerves inside the tarsal tunnel; relieves double-crush proximal neural tension feeding Morton's neuroma."
         }
       }
     ],
