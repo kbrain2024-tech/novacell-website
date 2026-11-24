@@ -8006,7 +8006,7 @@
       ],
       "title": {
         "ko": "총비골신경 포착증 (비골두 터널 증후군 · 하퇴 외측통 및 족하수)",
-        "en": "Common Peroneal Nerve Entrapment (Fibular Tunnel, Lateral Leg Pain & Foot Drop)"
+        "en": "Common Peroneal Nerve Entrapment (Fibular Tunnel & Popliteal 4-Point Protocol)"
       },
       "symptoms": {
         "ko": "무릎 바깥쪽 아래(비골두)에서 정강이 외측·발등으로 찌릿한 저림이 내려가고, 발목과 엄지발가락을 위로 들어 올리는 힘이 약해져 발끝이 걸림(족하수 Foot drop).",
@@ -8017,12 +8017,12 @@
         "en": "After bifurcating from the sciatic nerve in the upper popliteal fossa, the common peroneal nerve is compressed as it winds around the fibular neck into the fibrous arch of peroneus longus."
       },
       "targetTissues": {
-        "ko": "슬와 상부 좌골신경 분기점(경골신경·총비골신경), 대퇴이두근 내측연, 비골두·비골경부 비골터널(장비골근 건궁), 심비골·천비골신경 분기부.",
-        "en": "Popliteal sciatic bifurcation, medial border of biceps femoris tendon, fibular neck tunnel (peroneus longus arch), and deep/superficial peroneal branches."
+        "ko": "슬와 상부 좌골신경 분기점(총비골·경골신경), 대퇴이두근(기시: 좌골결절 장두·대퇴골 조선 단두 / 정지: 비골두), 비골두 직하방 비골경부 총비골신경 터널(장비골근 건궁), 슬와근(기시: 대퇴골 외측과 / 정지: 경골 후면 상부) 및 가자미근 건궁, 비골두 전하방 3cm 심비골신경 분기점(TA·EDL).",
+        "en": "Superior popliteal sciatic nerve bifurcation, biceps femoris (fibular head insertion), fibular neck common peroneal nerve tunnel (peroneus longus arch), popliteus & tendinous arch of soleus, and deep peroneal nerve entry (TA/EDL)."
       },
       "palpation": {
-        "ko": "슬와·비골신경 4대 표적: ① 슬와 상부 좌골신경 분기점 ② 오금 중앙 슬와혈관·경골신경 안전 경계 ③ 슬와근·가자미근 건궁 ④ 비골경부 총비골신경 터널(HP-CPN-01).",
-        "en": "Ch.8 Popliteal-Peroneal 4 Targets : 1) Sciatic bifurcation 2) Popliteal neurovascular bundle 3) Popliteus/Soleus arch 4) Fibular neck peroneal tunnel."
+        "ko": "① 슬와 상부 좌골신경 분기점(총비골·경골신경) ② 비골두 직하방 비골경부 총비골신경 터널 ③ 슬와 심부 슬와근(Popliteus) & 가자미근 건궁 ④ 비골두 전하방 3cm 심비골신경 분기점(TA·EDL).",
+        "en": "Superior popliteal sciatic bifurcation, fibular neck peroneal tunnel, deep popliteal fossa popliteus & soleus arch, and 3cm anteroinferior to fibular head deep peroneal entry."
       },
       "clinicalCase": {
         "ko": "다리를 꼬고 앉는 습관과 허리 시술 후 발생한 하퇴 외측 마목감 및 발목 배굴 약화(경도 족하수) 환자. 슬와 상부 분기점, 비골경부 비골터널(HP-CPN-01) 및 전경골근 심비골신경 진입부(HP-CPN-02)에 노바셀(-70mV) 집중 통전 후 발목 배굴 근력(MMT) 정상 회복.",
@@ -8041,73 +8041,73 @@
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 51.5,
-          "y": 42.0,
+          "x": 47.7,
+          "y": 33.6,
           "role": {
-            "ko": "주 신경포착점",
-            "en": "Primary Nerve Entrapment"
+            "ko": "근위 신경분기점",
+            "en": "Sciatic Bifurcation Target"
           },
           "name": {
-            "ko": "T1: 슬와와 상부 좌골신경 분기점 (총비골신경·경골신경 분지부 ①번 타깃)",
-            "en": "T1: Upper Popliteal Apex Sciatic Nerve Bifurcation (Target 1)"
+            "ko": "T1: 슬와 상부 좌골신경 분기점 (총비골·경골신경)",
+            "en": "T1: Superior Popliteal Apex · Sciatic Nerve Bifurcation"
           },
           "desc": {
-            "ko": "[표적 해부] 오금 주름 상방 5~7cm 대퇴이두근과 반막양근 사이 슬와 상각에서 좌골신경이 경골신경과 총비골신경으로 갈라지는 분기점.\n[촉지 및 시술] 비골신경과 경골신경이 동시에 포착되는 상류 분기부 유착을 해소합니다.",
-            "en": "Apex of popliteal fossa 5-7cm above knee crease where sciatic nerve divides into tibial and common peroneal nerves."
+            "ko": "[표적 해부] 무릎 뒤 오금(슬와) 상단 정점에서 좌골신경이 외측 총비골신경(Common Peroneal Nerve)과 중앙 경골신경(Tibial Nerve)으로 갈라지며 대퇴이두근 내연을 따라 내려가는 근위 분기점.\n[촉지 및 시술] 오금 주름 상방 약 5~7cm 대퇴이두근 내측 경계 심부. 좌골신경 상류 긴장과 오금 외측에서 하퇴로 뻗치는 방사통을 원천 감압합니다.",
+            "en": "Superior popliteal apex where the sciatic nerve bifurcates into common peroneal and tibial nerves along the medial border of biceps femoris."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 49.5,
-          "y": 48.0,
+          "x": 60.6,
+          "y": 56.2,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "주 신경포착점",
+            "en": "Primary Fibular Tunnel Target"
           },
           "name": {
-            "ko": "T2: 비골두 직하방 비골경부 총비골신경 터널점 (장비골근 건궁 HP-CPN-01 · ④번 외측 타깃)",
-            "en": "T2: Fibular Neck Common Peroneal Nerve Tunnel (HP-CPN-01, Target 2)"
+            "ko": "T2: 비골두 직하방 비골경부 · 총비골신경 터널 (장비골근 건궁)",
+            "en": "T2: Fibular Neck · Common Peroneal Nerve Fibular Tunnel (Peroneus Longus Arch)"
           },
           "desc": {
-            "ko": "[표적 해부] 무릎 바깥쪽 아래 비골두(Fibular head) 바로 밑 비골경부를 감고 장비골근 기시부 터널로 들어가는 총비골신경 본간(HP-CPN-01, ④ 외측).\n[촉지 및 시술] 손가락으로 튕기면 발등까지 전기가 찌릿하게 통하는(Tinel 양성) 총비골신경 포착·족하수의 제1 핵심 감압점입니다.",
-            "en": "Fibular neck immediately inferior-posterior to fibular head where common peroneal nerve enters peroneus longus arch."
+            "ko": "[표적 해부] 비골두 직하방 비골경부(Fibular Neck) 외측을 감고 돌며 장비골근 건궁(Peroneus Longus Arch) 아래로 진입하는 총비골신경 최다 포착 터널.\n[촉지 및 시술] 무릎 바깥쪽 아래 둥근 비골두 바로 아래 1~2cm 목 부분(Tinel 징후 양성 지점). 다리 꼬기·쪼그려 앉기 후 발생하는 정강이 외측·발등 저림과 족하수(Foot Drop)의 제1 핵심 감압점입니다.",
+            "en": "Primary entrapment site where the common peroneal nerve winds around the fibular neck beneath the fibrous arch of peroneus longus; key target for foot drop and lateral leg numbness."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 53.5,
-          "y": 55.0,
+          "x": 48.2,
+          "y": 60.6,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "심부 근복·건궁점",
+            "en": "Popliteus & Soleus Arch Target"
           },
           "name": {
-            "ko": "T3: 슬와 심부 슬와근(Popliteus) 및 경골신경 가자미근 건궁 진입점 (③번 타깃)",
-            "en": "T3: Deep Popliteus & Tibial Nerve Soleus Arch Entry (Target 3)"
+            "ko": "T3: 슬와 심부 슬와근(Popliteus) & 가자미근 건궁",
+            "en": "T3: Deep Popliteal Fossa · Popliteus & Tendinous Arch of Soleus"
           },
           "desc": {
-            "ko": "[표적 해부] 오금 하방 슬와근 근복 및 경골신경이 가자미근 섬유성 건궁(Tendinous arch of soleus)으로 들어가는 지점( ③).\n[촉지 및 시술] 오금 깊숙한 통증과 종아리·발바닥으로 동반되는 경골신경 포착을 함께 풀어줍니다.",
-            "en": "Popliteus muscle belly and tendinous arch of soleus where tibial nerve enters deep posterior compartment."
+            "ko": "[표적 해부] 오금 심부 경골 후면 상부에 사선으로 부착하는 슬와근(Popliteus · 기시: 대퇴골 외측과 / 정지: 경골 후면 상부)과 경골신경이 통과하는 가자미근 건궁(Tendinous Arch of Soleus).\n[촉지 및 시술] 오금 중앙 하부 심부. 무릎 뒤 묵직함, 슬관절 잠김 현상 및 경골신경 동반 압박을 함께 해소합니다.",
+            "en": "Deep popliteus muscle and tendinous arch of soleus in the popliteal floor; relieves deep posterior knee tightness and coexisting tibial nerve compression."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 44.5,
-          "y": 57.0,
+          "x": 58.0,
+          "y": 61.2,
           "role": {
-            "ko": "힘줄·골막 부착점",
-            "en": "Tendon & Periosteal Target"
+            "ko": "원위 신경분기점",
+            "en": "Deep Peroneal Entry Target"
           },
           "name": {
-            "ko": "T4: 전경골근·장지신근 상부 심비골신경 분기점 및 비복근 내·외측두점 (HP-CPN-02 · ②/④번 타깃)",
-            "en": "T4: Deep Peroneal Anterior Compartment Entry & Gastrocnemius Heads (Target 4)"
+            "ko": "T4: 비골두 전하방 3cm · 심비골신경 분기점 (TA·EDL)",
+            "en": "T4: 3cm Anteroinferior to Fibular Head · Deep Peroneal Nerve Entry"
           },
           "desc": {
-            "ko": "[표적 해부] 비골두 전하방 3cm 전경골근·장지신근 사이 심비골신경 진입부(HP-CPN-02) 및 후방 비복근 내·외측두 기시부( ②/④).\n[촉지 및 시술] 발목과 엄지발가락을 위로 들어 올리는 전경골근·장무지신근의 운동신경 전도를 즉시 활성화합니다.",
-            "en": "Deep peroneal nerve motor entry into tibialis anterior/EDL 3cm anteroinferior to fibular head."
+            "ko": "[표적 해부] 비골두 전하방 약 3cm 부위에서 총비골신경이 천비골신경과 심비골신경으로 갈라져 전경골근(TA)·장지신근(EDL) 전방 구획으로 진입하는 원위 분기점.\n[촉지 및 시술] 비골두 앞아래 3cm 전외측 근막 경계. 발목을 위로 들어 올리는 족배굴곡 근력 회복과 발등·엄지-둘째발가락 사이 감각 정상화를 촉진합니다.",
+            "en": "3cm anteroinferior to the fibular head where the deep peroneal nerve enters the anterior compartment (TA/EDL); restores dorsiflexion strength and dorsal foot sensation."
           }
         }
       ]
