@@ -5543,20 +5543,20 @@ window.PAIN_CONDITIONS = [
       "en": "Pediatric Transient Synovitis of the Hip"
     },
     "symptoms": {
-      "ko": "10세 이하 소아의 갑작스러운 고관절/서혜부 통증, 다리 를 절거나 보행 거부.",
+      "ko": "10세 이하 소아의 갑작스러운 고관절/서혜부 통증, 다리를 절거나 보행 거부.",
       "en": "Sudden hip/groin pain in children under 10, limping or refusal to walk."
     },
     "pathophysiology": {
-      "ko": "소아 장요근(Iliopsoas)의 병적 과긴장 및 단축으로 대퇴 신경 가지 압박 및 고관절 자극 유발.",
-      "en": "Pathologic hypertonicity/shortening of pediatric iliopsoas compresses femoral nerve branches and irritates hip joint."
+      "ko": "소아 장요근(Iliopsoas · 장골근·대요근)의 병적 과긴장 및 단축으로 대퇴신경·폐쇄신경 가지 압박 및 고관절 전방 관절낭 활액막 삼출·자극 유발.",
+      "en": "Pathologic hypertonicity and shortening of pediatric iliopsoas compresses femoral/obturator nerve branches and induces anterior hip joint capsule effusion and synovitis."
     },
     "targetTissues": {
-      "ko": "장골근(Iliacus) 및 대요근.",
-      "en": "Iliacus and Psoas major."
+      "ko": "장골근(Iliacus · 기시: 장골와 내면 상부 2/3 / 정지: 대퇴골 소전자), 대요근(Psoas Major · 기시: T12~L5 추체·L1~L5 횡돌기 / 정지: 대퇴골 소전자), 고관절 전방 관절낭·장요근건, 전하장골극(AIIS) 대퇴직근 기시부·TFL 및 L2~L4 근위 신경근.",
+      "en": "Iliacus, Psoas Major, sub-inguinal iliopsoas tendon & anterior hip joint capsule (effusion zone), AIIS rectus femoris origin & TFL, and L2-L4 femoral/obturator nerve roots."
     },
     "palpation": {
-      "ko": "안고 들어온 환아의 좌측 장골근 부위 압통점.",
-      "en": "Tender point in left iliacus muscle of child carried in father's arms."
+      "ko": "① 장골와(Iliac Fossa) 내부 장골근 심부 근복(ASIS 내측) ② 서혜인대 하방 장요근건 & 고관절 전방 관절낭 ③ 전하장골극(AIIS) 대퇴직근 기시부 & TFL ④ 요추 L2~L4 다열근 & 대요근 근위 신경근.",
+      "en": "1) Iliac fossa medial to ASIS iliacus deep belly 2) Sub-inguinal iliopsoas tendon & anterior hip capsule 3) AIIS rectus femoris origin & TFL 4) L2-L4 multifidus & proximal psoas root."
     },
     "clinicalCase": {
       "ko": "고관절통증으로 체중 부하가 불가능하여 다리를 디디지 못하던 일과성 고관절 활액막염 사례. 내측 장골근 및 대요근 힘줄 부착부에 부드러운 NovaCell Therapy를 집중 조율하여 관절낭 내 압박을 해소하고 당일 즉각적인 독립 보행 회복.",
@@ -5567,84 +5567,85 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 36.2,
-        "y": 29.2,
+        "x": 66.4,
+        "y": 40.1,
         "role": {
           "ko": "제1 핵심 치료점",
           "en": "Primary Clinical Target"
         },
         "name": {
-          "ko": "T1: 장골와(Iliac Fossa) 내부 장골근(Iliacus) 심부 근복 핵심 압통점",
-          "en": "T1: Iliac Fossa Internal Iliacus Muscle Belly Core Point"
+          "ko": "T1: 장골와(Iliac Fossa) 내부 · 장골근 심부 근복",
+          "en": "T1: Iliac Fossa (Medial to ASIS) · Iliacus & Femoral N."
         },
         "desc": {
-          "ko": "[표적 해부] 골반 전상장골극(ASIS) 내측 장골와 내부의 장골근(Iliacus) 근복 및 대퇴신경 주행로.\n[촉지 및 시술] 갑자기 다리를 절거나 사타구니·고관절 통증을 호소할 때 ASIS 안쪽 골반 내벽 장골근 압통점에 비침습 통전하면 고관절 굴곡 경직과 파행이 신속히 소실됩니다.",
-          "en": "Iliacus muscle belly inside iliac fossa medial to ASIS."
+          "ko": "[표적 해부] 골반 전상장골극(ASIS) 내측 장골와 내부의 장골근(Iliacus) 심부 근복 및 대퇴신경 주행로.\n[촉지 및 시술] 소아가 갑자기 다리를 절거나 사타구니·고관절 통증을 호소할 때 ASIS 안쪽 골반 내벽 장골근 압통점에 부드러운 비침습 통전을 적용하면 고관절 굴곡 경직과 파행이 신속히 소실됩니다.",
+          "en": "Iliacus muscle belly inside iliac fossa medial to ASIS along the femoral nerve pathway."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 72.2,
-        "y": 39.5,
+        "x": 66.9,
+        "y": 58.2,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "관절낭·삼출 조절점",
+          "en": "Hip Capsule & Tendon Target"
         },
         "name": {
-          "ko": "T2: 서혜인대 하방 장요근건(Iliopsoas Tendon) 및 고관절 전방 관절낭점",
-          "en": "T2: Sub-inguinal Iliopsoas Tendon & Anterior Hip Capsule Point"
+          "ko": "T2: 서혜인대 하방 장요근건 & 고관절 전방 관절낭",
+          "en": "T2: Inferior Inguinal Ligament · Hip Capsule Effusion & Tendon"
         },
         "desc": {
-          "ko": "[표적 해부] 서혜인대 직하방 고관절 전방 관절낭(일과성 활액막염 삼출 구역) 및 장요근 점액낭.\n[촉지 및 시술] 고관절 관절낭 내 압력과 삼출성 부종을 비침습 미세전류로 빠르게 흡수·진정시킵니다.",
-          "en": "Anterior hip joint capsule and iliopsoas bursa just below inguinal ligament."
+          "ko": "[표적 해부] 서혜인대 직하방 고관절 전방 관절낭(일과성 활액막염 삼출 구역) 및 장요근건·장요점액낭.\n[촉지 및 시술] 고관절 관절낭 내 압력과 삼출성 부종을 비침습 미세전류로 빠르게 흡수·진정시킵니다.",
+          "en": "Anterior hip joint capsule (effusion zone) and iliopsoas tendon/bursa just below the inguinal ligament."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 28.6,
+        "y": 49.1,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T3: 대퇴직근 기시부 전하장골극(AIIS) 및 대퇴근막장근(TFL) 골막 부착점",
-          "en": "T3: AIIS Rectus Femoris Origin & TFL Anterior Hip Point"
+          "ko": "T3: 전하장골극(AIIS) 대퇴직근 기시부 & TFL",
+          "en": "T3: AIIS (Rectus Femoris Origin) & ASIS (TFL)"
         },
         "desc": {
-          "ko": "[표적 해부] ASIS 직하방 전하장골극(AIIS) 대퇴직근 기시부 및 대퇴근막장근.\n[촉지 및 시술] 소아 성장통 및 고관절 전방 굴곡근 견인통을 함께 이완합니다.",
-          "en": "Anterior inferior iliac spine (AIIS) origin of rectus femoris and TFL."
+          "ko": "[표적 해부] ASIS 직하방 전하장골극(AIIS) 대퇴직근 기시부 및 대퇴근막장근(TFL) 기시 골막.\n[촉지 및 시술] 소아 성장통 및 고관절 전방 굴곡근 견인통을 함께 이완하여 보행 시 대퇴 전방 당김을 풀어줍니다.",
+          "en": "Anterior inferior iliac spine (AIIS) origin of rectus femoris and ASIS origin of TFL."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 45.6,
+        "y": 31.9,
         "role": {
           "ko": "후관절·신경근점",
           "en": "Facet & Nerve Root Target"
         },
         "name": {
-          "ko": "T4: 요추 L2-L4 다열근 및 대요근(Psoas Major) 근위 신경근 타깃",
-          "en": "T4: L2-L4 Multifidus & Proximal Psoas Major Root Point"
+          "ko": "T4: 요추 L2~L4 다열근 & 대요근 근위 신경근",
+          "en": "T4: L2-L4 Segments · Femoral & Obturator Nerve Roots"
         },
         "desc": {
-          "ko": "[표적 해부] 고관절 관절낭 감각을 지배하는 L2-L4 대퇴신경·폐쇄신경 기시 분절.\n[촉지 및 시술] 허리에서 고관절·무릎으로 이어지는 신경반사 긴장을 안정화합니다.",
-          "en": "L2-L4 paraspinal segments supplying femoral and obturator nerve articular branches."
+          "ko": "[표적 해부] 고관절 관절낭 감각을 지배하는 요추 L2~L4 분절 대퇴신경·폐쇄신경 근위 신경근 및 다열근·대요근 기시부.\n[촉지 및 시술] 허리에서 고관절·무릎으로 이어지는 반사성 근긴장과 연관통을 안정화합니다.",
+          "en": "L2-L4 paraspinal segments supplying femoral and obturator nerve articular branches to the hip joint."
         }
       }
     ],
     "anatomicalLabels": [
-      "Iliacus",
-      "Psoas Major",
-      "Femoral Nerve",
-      "Hip Joint Capsule"
+      "Iliacus (Iliac Fossa & Femoral Nerve)",
+      "Psoas Major (T12-L5 to Lesser Trochanter)",
+      "Sub-Inguinal Iliopsoas Tendon & Hip Capsule Effusion",
+      "AIIS Rectus Femoris Origin & ASIS (TFL)",
+      "L2-L4 Femoral & Obturator Nerve Roots"
     ],
     "rifeFreq": 528,
-    "searchKeywords": "소아 일과성 고관절 활액막염 Pediatric Transient Synovitis of the Hip 10세 이하 소아의 갑작스러운 고관절/서혜부 통증, 다리 를 절거나 보행 거부. Sudden hip/groin pain in children under 10, limping or refusal to walk. 자율신경계(Autonomic Nerve) 및 전신/특수 질환 Autonomic & Systemic Disorders"
+    "searchKeywords": "소아 일과성 고관절 활액막염 Pediatric Transient Synovitis of the Hip 소아 고관절 통증 다리를 절음 보행 거부 장골근 대요근 장요근 고관절 삼출 관절낭 AIIS 대퇴직근 TFL L2 L3 L4 대퇴신경 폐쇄신경 자율신경계 전신 특수 질환"
   },
   {
     "id": 45,
