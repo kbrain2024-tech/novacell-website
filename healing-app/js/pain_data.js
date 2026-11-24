@@ -5168,7 +5168,7 @@ window.PAIN_CONDITIONS = [
     ],
     "title": {
       "ko": "장무지신근 힘줄견인통 / 엄지발가락 등쪽 통증",
-      "en": "Extensor Hallucis Longus TTP / Dorsal Great Toe Pain"
+      "en": "Extensor Hallucis Longus TTP / Dorsal Great Toe Pain (4-Point Protocol)"
     },
     "symptoms": {
       "ko": "엄지발가락 1st MTP 관절 등쪽 및 IP 관절 등쪽 통증, 신 발 신을 때 엄지발가락이 구부러지면 극심한 통증.",
@@ -5179,12 +5179,12 @@ window.PAIN_CONDITIONS = [
       "en": "Hypertonicity/shortening of extensor hallucis longus (EHL) induces dorsal periosteal irritation at great toe base."
     },
     "targetTissues": {
-      "ko": "장무지신근(Extensor hallucis longus, EHL).",
-      "en": "Extensor hallucis longus (EHL)."
+      "ko": "장무지신근(EHL · 기시: 비골 전면 중앙부·골간막 / 정지: 엄지 원위지골 배측 기저부), 발목 전면 하신근지대 EHL 활차 & 심비골신경 교차점, 제1중족지절관절(1st MTP) 배측 관절낭, 단무지신근(EHB · 기시: 종골 상외측면 외과 전하방 / 정지: 엄지 근위지골 배측 기저부).",
+      "en": "Extensor Hallucis Longus (EHL), inferior extensor retinaculum EHL pulley & deep peroneal nerve crossing, dorsal 1st MTP capsule, and Extensor Hallucis Brevis (EHB) calcaneal origin."
     },
     "palpation": {
-      "ko": "양쪽 복사뼈 연결선 상방 5 FB 지점 EHL 근복 압통점.",
-      "en": "EHL belly tender point 5 FB proximal to bimalleolar line."
+      "ko": "① 양측 복사뼈 상방 5FB 장무지신근(EHL) 근복 ② 발목 전면 하신근지대 EHL 활차 & 심비골신경 교차점 ③ 제1중족지절관절(1st MTP) 배측 관절낭 & EHB·EHL 정지부 ④ 외과 전하방 단무지신근(EHB) 종골 기시부.",
+      "en": "5FB above intermalleolar line (EHL deep belly), inferior extensor retinaculum EHL pulley, dorsal 1st MTP capsule & EHB/EHL insertions, and anteroinferior lateral malleolus EHB origin."
     },
     "clinicalCase": {
       "ko": "보행 중 발가락이 삐끗한 후 엄지발가락 등쪽 관절에 통증이 지속되던 장무지신근 건 견인통 사례. 복사뼈 선 5횡지 상방 장무지신근(EHL) 근복에 NovaCell Therapy를 적용하여 발등 건막의 긴장을 해소하고 신발 착용 및 보행 시 통증 완치.",
@@ -5195,73 +5195,73 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 48.7,
-        "y": 33.1,
+        "x": 47.6,
+        "y": 47.2,
         "role": {
-          "ko": "제1 핵심 치료점",
-          "en": "Primary Clinical Target"
+          "ko": "심부 근복·근막점",
+          "en": "EHL Deep Belly Target"
         },
         "name": {
-          "ko": "T1: 양측 복사뼈 연결선 상방 5FB 장무지신근(EHL) 근복 핵심 압통점",
-          "en": "T1: Extensor Hallucis Longus (EHL) Belly (5 FB Above Ankle Line)"
+          "ko": "T1: 양측 복사뼈 상방 5FB · 장무지신근(EHL) 근복",
+          "en": "T1: 5FB Above Intermalleolar Line · EHL Deep Belly"
         },
         "desc": {
-          "ko": "[표적 해부] 양쪽 복사뼈 연결선에서 위로 약 5손가락 너비(5 FB) 지점, 경골과 비골 사이 전경골근·장지신근 틈새 깊숙이 위치한 장무지신근(EHL) 근복.\n[촉지 및 시술] 엄지발가락 등쪽과 발등 내측 통증의 근원 발통점입니다.",
-          "en": "Extensor hallucis longus belly 5 finger-breadths superior to bimalleolar line between TA and EDL."
+          "ko": "[표적 해부] 발목 양측 복사뼈 연결선 상방 5FB(약 8~10cm) 위치의 전경골근과 장지신근 사이 심층에 자리한 장무지신근(Extensor Hallucis Longus, EHL) 근복.\n[촉지 및 시술] 엄지발가락을 위로 들어 올릴 때 정강이 하부 1/3 심부에서 수축이 느껴지는 압통점. 엄지발가락 등쪽으로 뻗치는 당김과 신전 시 뻐근함을 원천 해소합니다.",
+          "en": "Deep EHL muscle belly 5FB above the intermalleolar line between TA and EDL; relieves proximal tension pulling on the dorsal great toe."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 56.0,
-        "y": 54.0,
+        "x": 50.8,
+        "y": 63.1,
         "role": {
-          "ko": "신경 주행·분지점",
-          "en": "Nerve Pathway Target"
+          "ko": "주 신경·활차점",
+          "en": "Retinaculum Pulley & Nerve Crossing"
         },
         "name": {
-          "ko": "T2: 발목 전면 하신근지대 장무지신근건 활차 및 심비골신경 교차점",
-          "en": "T2: Inferior Extensor Retinaculum EHL Tendon Pulley & Deep Peroneal Nerve"
+          "ko": "T2: 발목 전면 하신근지대 · EHL 활차 & 심비골신경 교차점",
+          "en": "T2: Inferior Extensor Retinaculum · EHL Pulley & Nerve Crossing"
         },
         "desc": {
-          "ko": "[표적 해부] 발목 앞쪽 해계혈 내측에서 장무지신근건이 하신근지대 Y자 고리를 통과하며 심비골신경과 교차하는 지점.\n[촉지 및 시술] 엄지발가락을 들거나 걸을 때 발목 앞쪽에서 엄지로 당기는 건초 마찰통을 해소합니다.",
-          "en": "EHL tendon sheath pulley under inferior extensor retinaculum at anterior ankle."
+          "ko": "[표적 해부] 발목 전면 하신근지대(Inferior Extensor Retinaculum) 아래 장무지신근건이 꺾여 지나가는 활차(Pulley) 부위 및 심비골신경·족배동맥 교차점.\n[촉지 및 시술] 발목 앞주름 중앙에서 엄지발가락 쪽으로 도드라지는 EHL 힘줄 바로 위 터널 부위. 신발 끈 압박이나 보행 시 발등 앞쪽 찌릿함과 건초 마찰통을 감압합니다.",
+          "en": "EHL tendon pulley beneath the inferior extensor retinaculum where it crosses the deep peroneal nerve; relieves lace-pressure pain and tenosynovitis."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 56.1,
+        "y": 80.5,
         "role": {
           "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "en": "Dorsal 1st MTP & Insertions"
         },
         "name": {
-          "ko": "T3: 제1중족지절관절(1st MTP) 배측 관절낭 및 단무지신근(EHB) 정지부 골막 부착점",
-          "en": "T3: Dorsal 1st MTP Joint Capsule & Extensor Hallucis Brevis Insertion"
+          "ko": "T3: 제1중족지절관절(1st MTP) 배측 관절낭 & EHB·EHL 정지부",
+          "en": "T3: Dorsal 1st MTP Capsule · EHB & EHL Insertions"
         },
         "desc": {
-          "ko": "[표적 해부] 엄지발가락 뿌리 관절(1st MTP) 등쪽 관절낭, 단무지신근 정지건 및 엄지 끝마디 장무지신근 골막 착점.\n[촉지 및 시술] 무지강직증(Hallux rigidus) 및 엄지발가락 등쪽 관절 골막 통증을 직접 제거합니다.",
-          "en": "Dorsal capsule of 1st MTP joint and EHL/EHB periosteal insertions on hallux."
+          "ko": "[표적 해부] 엄지발가락 제1중족지절관절(1st MTP) 등쪽 관절낭 및 단무지신근(EHB · 근위지골 배측 기저부 정지)·장무지신근(EHL · 원위지골 배측 기저부 정지) 정지건.\n[촉지 및 시술] 엄지발가락 등쪽 관절 주름 위 뼈 경계와 말단 힘줄 부착부. 엄지발가락 등쪽 시큰거림, 관절 뻣뻣함 및 힘줄견인통을 직접 완화합니다.",
+          "en": "Dorsal 1st MTP capsule and distal insertions of EHB (proximal phalanx) and EHL (distal phalanx); directly resolves dorsal great toe traction pain."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 45.6,
+        "y": 66.1,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "기시부·보조 신근점",
+          "en": "EHB Calcaneal Origin Target"
         },
         "name": {
-          "ko": "T4: 외과 전하방 단무지신근(EHB) 종골 기시부(구허혈) 연계점",
-          "en": "T4: Anteroinferior Lateral Malleolus EHB Origin (ST40/GB40)"
+          "ko": "T4: 외과 전하방 · 단무지신근(EHB) 종골 기시부",
+          "en": "T4: Anteroinferior Lateral Malleolus · EHB Calcaneal Origin"
         },
         "desc": {
-          "ko": "[표적 해부] 종골 상외측면(족근동 앞) 단무지신근·단지신근 공통 기시부.\n[촉지 및 시술] 엄지발가락 등쪽을 비스듬히 당기는 단무지신근의 기시부 장력을 함께 풀어줍니다.",
-          "en": "Common origin of extensor hallucis brevis on superolateral calcaneus."
+          "ko": "[표적 해부] 바깥쪽 복숭아뼈(외과) 전하방 종골 상외측면(족근동 인접)의 단무지신근(Extensor Hallucis Brevis, EHB) 기시부 건골막 및 심비골신경 외측지.\n[촉지 및 시술] 외과 앞아래 오목한 족근동 앞쪽의 말랑한 EHB 근복·기시부. 엄지 신전을 보조하는 단무지신근의 과긴장을 함께 풀어 발등 전체의 균형을 회복합니다.",
+          "en": "Calcaneal origin of extensor hallucis brevis anteroinferior to the lateral malleolus; releases synergistic dorsal forefoot tightness."
         }
       }
     ],
