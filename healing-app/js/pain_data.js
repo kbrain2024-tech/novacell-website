@@ -6724,97 +6724,97 @@ window.PAIN_CONDITIONS = [
       "en": "Cervical disc protrusion irritates the sinuvertebral nerve and nerve root, triggering protective spasm across Cervical Lines 1 to 4 (nuchal ligament, multifidus, facet capsule, and scalenes)."
     },
     "targetTissues": {
-      "ko": "경추 제1선(극돌기·항인대), 제2선(C3-C7 후관절·다열근·반극근), 제3선(최장근·판상근), 제4선(횡돌기 후결절·사각근·견갑거근).",
-      "en": "Cervical Line 1 (spinous process/nuchal ligament), Line 2 (facet/multifidus), Line 3 (longissimus), Line 4 (transverse process/scalenes)."
+      "ko": "경추 제1선(외후두융기·C2~C7 극돌기·항인대), 제2선(정중선 외측 1.5cm 추궁판·후관절낭·심부 다열근), 제3선(정중선 외측 2.5~3cm 관절주 외측연·두판상근·경최장근), 제4선(C4~C7 횡돌기 후결절·추간공 신경근 출구·사각근·견갑거근, 추골동맥 회피).",
+      "en": "Cervical Line 1 (midline spinous processes & nuchal ligament), Line 2 (1.5cm lateral lamina, facet & deep multifidus), Line 3 (2.5-3cm lateral articular pillar, splenius & longissimus), Line 4 (C4-C7 transverse process posterior tubercle & nerve root exit, avoiding vertebral artery)."
     },
     "palpation": {
-      "ko": "노바셀 경추·상흉추 4대 정밀 치료선(제1선 정중 극돌기 ~ 제4선 횡돌기 외측연) 순차 골막 접촉.",
-      "en": "Sequential palpation and Periosteal Contact along NovaCell Cervical Treatment Lines 1, 2, 3, and 4 (Ch.3 Master Bible)."
+      "ko": "경추 4대 정밀 치료선 순차 골막 접촉: ① 제1선 정중 극돌기·항인대 ② 제2선 C3~C7 추궁판·후관절·다열근 ③ 제3선 후관절 외측연·두판상근·경최장근 ④ 제4선 C4~C7 횡돌기 후결절·추간공 출구.",
+      "en": "Sequential palpation and periosteal contact along Cervical Treatment Lines 1 (midline spinous/nuchal), 2 (lamina/facet/multifidus), 3 (lateral articular pillar), and 4 (transverse process posterior tubercle & foramen)."
     },
     "clinicalCase": {
-      "ko": "신경성형술 및 수차례 주사 치료 후에도 팔 저림과 후경부 통증이 지속되던 파열성 경추 디스크 환자. 노바셀 경추 제1·2·3·4선 골막 부착부 및 -70mV 고전압 미세전류 집중 치료 후 신경근 부종이 소퇴되어 비수술로 방사통 완치.",
-      "en": "Refractory cervical disc herniation with persistent radicular arm pain after neuroplasty (Ch.3 Case 3-8); full non-surgical resolution via Cervical 4-Line NovaCell protocol."
+      "ko": "신경성형술 및 수차례 주사 치료 후에도 팔 저림과 후경부 통증이 지속되던 파열성 경추 디스크 환자. 경추 제1·2·3·4선 골막 부착부 및 -70mV 고전압 미세전류 집중 치료 후 신경근 부종이 소퇴되어 비수술로 방사통 완치.",
+      "en": "Refractory cervical disc herniation with persistent radicular arm pain after neuroplasty; full non-surgical resolution achieved via the 4-line cervical periosteal and -70mV NovaCell protocol."
     },
     "diagram": "images/diagrams/diagram_54.png",
     "rifeFreq": 528,
     "anatomicalLabels": [
-      "Line 1: Nuchal Ligament & Spinous Process",
-      "Line 2: C3-C7 Multifidus & Facet Joint",
-      "Line 3: Semispinalis & Longissimus",
-      "Line 4: Transverse Process & Scalenes"
+      "Line 1: Midline Spinous Process & Nuchal Ligament",
+      "Line 2: C3-C7 Lamina, Facet Capsule & Deep Multifidus",
+      "Line 3: Lateral Articular Pillar, Splenius & Longissimus",
+      "Line 4: C4-C7 Transverse Process Posterior Tubercle & Nerve Root Exit"
     ],
-    "searchKeywords": "목디스크 경추추간판탈출증 HNP 일자목 거북목 경추후관절 팔저림 손저림 척추동신경",
+    "searchKeywords": "목디스크 경추 추간판 탈출증 HNP 일자목 거북목 경추 후관절 증후군 제1선 제2선 제3선 제4선 팔저림 손저림 척추동신경 항인대 추궁판 다열근 관절주 횡돌기 후결절 추골동맥 추간공 신경근 Cervical Disc Herniation Facet Syndrome",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 51.8,
-        "y": 43.5,
+        "x": 50.3,
+        "y": 27.0,
         "role": {
-          "ko": "핵심 후관절·신경근점",
-          "en": "Primary Facet & Root Target"
+          "ko": "제1선 극돌기·항인대점",
+          "en": "Cervical Line 1 Midline Target"
         },
         "name": {
-          "ko": "T1: 경추 제1선: 정중 극돌기·항인대(Nuchal Ligament) 골막 부착점 (①번 타깃)",
-          "en": "T1: Cervical Line 1: Midline Spinous Process & Nuchal Ligament (Target 1)"
+          "ko": "T1: 경추 제1선: 정중 극돌기·항인대 골막 부착점",
+          "en": "T1: Cervical Line 1 · Midline Spinous Process & Nuchal Ligament"
         },
         "desc": {
-          "ko": "[표적 해부] 후두골 외후두융기~C2~C7 극돌기 첨부를 잇는 항인대(Nuchal ligament) 및 극간인대.\n[촉지 및 시술] 뒷목 정중앙 극돌기 골막 타깃. 일자목·거북목으로 늘어난 후방 인대 장력과 중심성 디스크(척추동신경) 연관통을 잡아줍니다.",
-          "en": "Midline cervical spinous processes (C2-C7) and nuchal ligament attachments."
+          "ko": "[표적 해부] 외후두융기(EOP)~C2~C7 극돌기 첨부를 잇는 항인대(Nuchal Ligament) 및 극간인대 골막 부착부.\n[촉지 및 시술] 뒷목 정중앙 극돌기 골막 타깃. 일자목·거북목으로 과신전·긴장된 후방 인대 장력과 중심성 디스크(척추동신경) 연관통을 진정시킵니다.",
+          "en": "Midline cervical spinous processes (C2-C7) and nuchal ligament periosteal attachments."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 46.0,
-        "y": 45.0,
+        "x": 46.3,
+        "y": 47.5,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "제2선 추궁판·다열근점",
+          "en": "Cervical Line 2 Lamina & Facet"
         },
         "name": {
-          "ko": "T2: 경추 제2선: C3-C7 추궁판·후관절 내측지 및 심부 다열근점 (②번 타깃)",
-          "en": "T2: Cervical Line 2: C3-C7 Lamina, Facet & Deep Multifidus (Target 2)"
+          "ko": "T2: 경추 제2선: C3~C7 추궁판·후관절 내측지 및 심부 다열근점",
+          "en": "T2: Cervical Line 2 · C3-C7 Lamina, Facet & Deep Multifidus"
         },
         "desc": {
-          "ko": "[표적 해부] 정중선 외측 1.5cm 추궁판(Lamina)·후관절낭 중간부 및 다열근·반극근(C3-C5 핵심 구역, ②).\n[촉지 및 시술] 경추 후관절 잠김과 디스크 신경근염의 후지 감작을 동시에 해소하는 최우선 골막·건 치료 라인입니다.",
-          "en": "1.5cm lateral to midline over C3-C7 facet joints and deep multifidus/semispinalis."
+          "ko": "[표적 해부] 정중선 외측 1.5cm 추궁판(Lamina)·후관절낭 중간부 및 심부 다열근·반극근(C5-C6 HNP 핵심 분절).\n[촉지 및 시술] 경추 후관절 잠김과 추간판 신경근염의 후지 내측지 감작을 동시에 해소하는 최우선 골막·건 치료 라인입니다.",
+          "en": "1.5cm lateral to midline over C3-C7 lamina, facet joint capsule, and deep multifidus."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 56.0,
-        "y": 45.5,
+        "x": 57.3,
+        "y": 26.3,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "제3선 관절주·판상근점",
+          "en": "Cervical Line 3 Lateral Pillar"
         },
         "name": {
-          "ko": "T3: 경추 제3선: 후관절 외측연·두판상근·경최장근 타깃 (③번 타깃)",
-          "en": "T3: Cervical Line 3: Lateral Facet Pillar & Splenius/Longissimus (Target 3)"
+          "ko": "T3: 경추 제3선: 후관절 외측연·두판상근·경최장근 타깃",
+          "en": "T3: Cervical Line 3 · Lateral Articular Pillar & Splenius/Longissimus"
         },
         "desc": {
-          "ko": "[표적 해부] 정중선 외측 2.5~3cm 관절주(Articular pillar) 외측연 및 판상근·최장근( ③).\n[촉지 및 시술] 목을 옆으로 기울이거나 돌릴 때 날개뼈 상부로 뻗치는 근육-관절 사슬 통증을 차단합니다.",
-          "en": "2.5-3cm lateral to midline along lateral border of cervical articular pillars."
+          "ko": "[표적 해부] 정중선 외측 2.5~3cm 관절주(Articular Pillar) 외측연 및 두판상근·경최장근 심부.\n[촉지 및 시술] 목을 옆으로 기울이거나 돌릴 때 날개뼈 상부로 뻗치는 근육-관절 사슬 통증을 차단합니다.",
+          "en": "2.5-3cm lateral to midline along the lateral border of cervical articular pillars, splenius, and longissimus."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 43.8,
-        "y": 42.5,
+        "x": 60.3,
+        "y": 48.6,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "제4선 횡돌기·추간공점",
+          "en": "Cervical Line 4 Foraminal Exit"
         },
         "name": {
-          "ko": "T4: 경추 제4선: C4-C7 횡돌기 후결절·추간공 출구 및 사각근·견갑거근점 (④번 타깃)",
-          "en": "T4: Cervical Line 4: Transverse Process Posterior Tubercle & Nerve Root Exit (Target 4)"
+          "ko": "T4: 경추 제4선: C4~C7 횡돌기 후결절·추간공 출구점",
+          "en": "T4: Cervical Line 4 · C4-C7 Transverse Process Posterior Tubercle & Nerve Root"
         },
         "desc": {
-          "ko": "[표적 해부] 측경부 횡돌기 후결절(추간공 신경근 출구 바로 뒤) 및 중사각근·견갑거근 기시부( ④).\n[촉지 및 시술] 추골동맥을 피해 후결절 골막을 정확히 접촉하여 팔·손가락으로 내려가는 디스크 방사통을 직접 감압합니다.",
-          "en": "Posterior tubercle of C4-C7 transverse processes at intervertebral foramen exit."
+          "ko": "[표적 해부] 측경부 C4~C7 횡돌기 후결절 골막(추간공 신경근 출구 바로 뒤, 추골동맥 회피 구역) 및 사각근·견갑거근 기시부.\n[촉지 및 시술] 추골동맥을 안전하게 피해 후결절 골막을 정확히 접촉하여 어깨·팔·손가락 끝으로 내려가는 목디스크 방사통을 직접 감압합니다.",
+          "en": "Posterior tubercle of C4-C7 transverse processes at the intervertebral foramen exit (safely posterior to the vertebral artery), plus scalene and levator scapulae origins."
         }
       }
     ]
