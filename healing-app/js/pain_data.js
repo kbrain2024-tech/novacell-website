@@ -639,7 +639,7 @@ window.PAIN_CONDITIONS = [
     },
     "mechanism": {
       "ko": "자율신경 오작동 / 힘줄견인",
-      "en": "[S / TTP] Autonomic Response & Tendon Traction"
+      "en": "Autonomic Dysregulation & Tendon Traction"
     },
     "mechTags": [
       "nerve",
@@ -655,64 +655,64 @@ window.PAIN_CONDITIONS = [
       "en": "Heavy, tightening pain as if wearing a tight helmet or swim cap, often accompanied by retro-orbital eye pain."
     },
     "pathophysiology": {
-      "ko": "교체신경계적 Autonomic Nerve에 의해 두개외 근육(epicranius)의 허혈이 가중되고, 두판상근(SC) 및 후두근/측두근의 TTP 가 복합 작용함.",
-      "en": "Ischemia of epicranial muscles aggravated by sympathetic S, combined with TTPs in splenius capitis (SC), occipitalis, and temporalis."
+      "ko": "교감신경계 자율신경 오작동에 의해 두개외 근육(후두근·측두근·모상건막)의 허혈과 과긴장이 가중되고, 두판상근(SC)·상두사근·상부흉추(T1~T4) 다열근의 힘줄견인 및 대후두신경(GON) 자극이 복합 작용함.",
+      "en": "Sympathetic autonomic dysregulation aggravates ischemia of epicranial muscles (occipitalis, temporalis, galea aponeurotica), compounded by TTPs in splenius capitis, suboccipitals, and T1-T4 upper thoracic multifidus."
     },
     "targetTissues": {
-      "ko": "두판상근(Splenius capitis, SC), 후두근(Occipitalis), 측두근, T1~T4 상부흉추 다열근.",
-      "en": "Splenius capitis (SC), Occipitalis, Temporalis, T1?밫4 upper thoracic multifidus."
+      "ko": "후두근(Occipitalis · 기시: 상항선 외측 2/3 / 정지: 모상건막 후면), 대후두신경(GON), 두판상근(Splenius Capitis · 기시: 항인대·C7~T4 극돌기 / 정지: 유양돌기·상항선), 상두사근·C2~C3 다열근, 측두근 상부 건막 및 T1~T4 상부흉추 다열근·최장근.",
+      "en": "Occipitalis & galea aponeurotica, Greater Occipital Nerve (GON), Splenius Capitis (C7-T4 to mastoid), C2-C3 suboccipitals & multifidus, upper temporalis fascia, and T1-T4 upper thoracic multifidus & sympathetic reflex."
     },
     "palpation": {
-      "ko": "SC 근복, 후두골 부착부 occipitalis TTP, 상부흉추 TS/다 열근.",
-      "en": "SC muscle belly, occipitalis TTP at occipital attachment, upper thoracic TS/multifidus."
+      "ko": "① 후두근·상항선 대후두신경(GON) 부착점 ② 경추 C2~C3 두판상근 내측 & 상두사근·다열근 ③ 두판상근(SC) 중간 근복 압통점 ④ 측두근 상부 건막 & 모상건막 측방점 ⑤ 상부흉추 T1~T4 다열근·최장근 교감신경 반사점.",
+      "en": "1) Superior nuchal line occipitalis & GON 2) C2-C3 suboccipital, obliquus capitis sup. & multifidus 3) Splenius capitis mid-belly TrP 4) Upper temporalis & lateral galea 5) Upper thoracic T1-T4 multifidus & sympathetic reflex."
     },
     "clinicalCase": {
-      "ko": "안구 깊은 곳의 압박감과 후두부 전갈로 긁는 듯한 발작성 통증을 동반한 군집성 및 만성 긴장성 두통 사례. 두판상근 상부 및 T2, T3 흉추 분절 교감신경 경로에 NovaCell Therapy를 체계적으로 적용하여 자율신경 오작동을 진정시키고 두통 발작 완치.",
-      "en": "Patient with cluster headache featuring eye pain and severe scratching-like attacks in posterior head. Completely resolved following right SC and T2/T3 level TS S NovaCell therapy."
+      "ko": "안구 깊은 곳의 압박감과 후두부를 찌르고 긁는 듯한 발작성 통증을 동반한 군집성 및 만성 긴장성 두통 사례. 후두근·두판상근 및 T1~T4 상부흉추 교감신경 반사 경로에 NovaCell Therapy를 체계적으로 적용하여 자율신경 오작동을 진정시키고 두통 발작 완치.",
+      "en": "Patient with cluster headache featuring retro-orbital eye pain and severe paroxysmal occipital attacks. Completely resolved following splenius capitis and T1-T4 upper thoracic sympathetic NovaCell therapy."
     },
     "diagram": "images/diagrams/diagram_05.png",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 36.2,
-        "y": 25.6,
+        "x": 41.1,
+        "y": 23.0,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 후두근·상항선 대후두신경 부착점 (후두부 헬멧 조임점)",
-          "en": "T1: Occipitalis & Superior Nuchal Line GON Point"
+          "ko": "T1: 후두근 · 상항선 대후두신경(GON) 부착점",
+          "en": "T1: Superior Nuchal Line · Occipitalis & GON"
         },
         "desc": {
-          "ko": "[표적 해부] 후두골 상항선 후두근(Occipitalis)·두반극근 건막 부착부 및 대후두신경.\n[촉지 및 시술] 뒷머리 상항선 중앙~외측 2.5cm 골막 부착부. 머리를 조이는 긴장성 두통의 후방 잠금점입니다.",
-          "en": "Occipitalis & semispinalis attachment on superior nuchal line."
+          "ko": "[표적 해부] 후두골 상항선 외측 2/3에서 기시해 모상건막 후면으로 이어지는 후두근(Occipitalis) 부착부 및 대후두신경(GON).\n[촉지 및 시술] 뒷머리 상항선 중앙~외측 2.5cm 골막 부착부. 머리에 헬멧을 쓴 듯 조이는 긴장성 두통의 후방 잠금점입니다.",
+          "en": "Occipitalis attachment and greater occipital nerve (GON) exit on the superior nuchal line."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 48.2,
-        "y": 49.9,
+        "x": 45.9,
+        "y": 35.9,
         "role": {
           "ko": "후관절·신경근점",
           "en": "Facet & Nerve Root Target"
         },
         "name": {
-          "ko": "T2: 경추 C2-C3 두판상근(SC) 내측 및 상두사근·다열근점",
-          "en": "T2: C2-C3 Splenius Capitis & Obliquus Capitis Superior"
+          "ko": "T2: 경추 C2~C3 두판상근 내측 & 상두사근 · 다열근",
+          "en": "T2: C2-C3 Suboccipital · Obliquus Capitis Sup. & Multifidus"
         },
         "desc": {
-          "ko": "[표적 해부] C2-C3 극돌기 외측 두판상근·상두사근 및 심층 다열근(제2선).\n[촉지 및 시술] 유양돌기 내측 후두골 하연(풍지혈 상방). 후두하근막 긴장과 혈류 정체를 동시에 해소합니다.",
-          "en": "C2-C3 deep multifidus, obliquus capitis superior & splenius capitis."
+          "ko": "[표적 해부] 경추 C2~C3 극돌기 외측 두판상근 내측, 상두사근(Obliquus Capitis Superior) 및 심층 다열근(제2선).\n[촉지 및 시술] 유양돌기 내측 후두골 하연(풍지혈 상방). 후두하근막 긴장과 뇌혈류 정체를 동시에 해소합니다.",
+          "en": "C2-C3 deep multifidus, obliquus capitis superior, and medial splenius capitis."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 39.6,
-        "y": 49.9,
+        "x": 55.0,
+        "y": 41.7,
         "role": {
           "ko": "심부 근복·근막점",
           "en": "Deep Myofascial Trigger Point"
@@ -722,55 +722,56 @@ window.PAIN_CONDITIONS = [
           "en": "T3: Splenius Capitis Mid-Belly Trigger Point"
         },
         "desc": {
-          "ko": "[표적 해부] 두판상근 중간 근복(승모근과 흉쇄유돌근 사이 삼각 공간).\n[촉지 및 시술] 유양돌기에서 하내측으로 내려오는 두판상근 근복. 정수리(두정부)와 안구 뒤로 쏘는 연관통을 해소합니다.",
-          "en": "Splenius capitis mid-belly referring pain to vertex and ipsilateral orbit."
+          "ko": "[표적 해부] 항인대 및 C7~T4 극돌기에서 기시해 유양돌기·상항선으로 정지하는 두판상근(Splenius Capitis) 중간 근복.\n[촉지 및 시술] 승모근과 흉쇄유돌근 사이 삼각 공간의 두판상근 근복 압통점. 정수리(두정부)와 안구 뒤로 쏘는 연관통을 해소합니다.",
+          "en": "Splenius capitis mid-belly trigger point referring pain to the vertex and ipsilateral orbit."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 71.2,
-        "y": 17.7,
+        "x": 19.6,
+        "y": 65.0,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "근막·건막 이행점",
+          "en": "Fascia & Aponeurosis Target"
         },
         "name": {
-          "ko": "T4: 측두근(Temporalis) 상부 건막 및 모상건막 측방점",
-          "en": "T4: Temporalis Superior Aponeurosis Point"
+          "ko": "T4: 측두근 상부 건막 & 모상건막 측방점",
+          "en": "T4: Upper Temporalis & Lateral Galea Aponeurotica"
         },
         "desc": {
-          "ko": "[표적 해부] 측두근 상부 부채꼴 섬유 및 두개 외측 모상건막.\n[촉지 및 시술] 귀 위쪽 측두부 압통점. 양측 관자놀이를 조이는 압박성 두통을 이완합니다.",
-          "en": "Superior temporalis fascia relieving band-like temporal headache."
+          "ko": "[표적 해부] 측두근(Temporalis) 상부 부채꼴 섬유 건막 및 두개 외측 모상건막(Galea Aponeurotica).\n[촉지 및 시술] 귀 위쪽 측두부 상연 압통점. 양측 관자놀이를 조이는 압박성 두통을 이완합니다.",
+          "en": "Upper temporalis fascia and lateral galea aponeurotica relieving band-like temporal tension headache."
         }
       },
       {
         "code": "T5",
         "color": "#a855f7",
-        "x": 36.3,
-        "y": 80.0,
+        "x": 52.3,
+        "y": 69.4,
         "role": {
           "ko": "자율신경 조절점",
           "en": "Autonomic Control Target"
         },
         "name": {
-          "ko": "T5: 상부흉추 T1-T4 다열근·최장근 교감신경 반사점",
-          "en": "T5: Upper Thoracic T1-T4 Multifidus & Autonomic Point"
+          "ko": "T5: 상부흉추 T1~T4 다열근 · 최장근 교감신경 반사점",
+          "en": "T5: Upper Thoracic T1-T4 · Multifidus & Sympathetic Reflex"
         },
         "desc": {
-          "ko": "[표적 해부] T1~T4 극돌기 외측 1.5~2cm 다열근·흉최장근 및 두경부 행 교감신경 절전섬유.\n[촉지 및 시술] 상부 흉추 제2·3선 심부 압통점. 군발 두통과 만성 긴장성 두통의 자율신경 발작을 근본 제어합니다.",
-          "en": "T1-T4 paraspinal multifidus & sympathetic preganglionic origin."
+          "ko": "[표적 해부] 상부흉추 T1~T4 극돌기 외측 1.5~2cm 다열근·흉최장근 및 두경부로 상행하는 교감신경 절전섬유 기시 분절.\n[촉지 및 시술] 상부흉추 제2·3선 심부 압통점. 군집성(군발) 두통과 만성 긴장성 두통의 자율신경 발작을 근본적으로 안정화합니다.",
+          "en": "Upper thoracic T1-T4 paraspinal multifidus & preganglionic sympathetic reflex segments controlling cluster and tension headache attacks."
         }
       }
     ],
     "anatomicalLabels": [
-      "Splenius Capitis",
-      "T2-T3 Transversospinales",
-      "Sympathetic Trunk",
-      "Greater Occipital Nerve"
+      "Superior Nuchal Line · Occipitalis & GON",
+      "C2-C3 Suboccipital · Obliquus Capitis Sup. & Multifidus",
+      "Splenius Capitis Mid-Belly Trigger Point",
+      "Upper Temporalis & Lateral Galea Aponeurotica",
+      "Upper Thoracic T1-T4 · Multifidus & Sympathetic Reflex"
     ],
     "rifeFreq": 432,
-    "searchKeywords": "긴장성 두통 / 군집성 두통 Tension Headache / Cluster Headache 머리에 꽉 죄는 헬멧이나 수영모를 쓴 듯 묵직하고 조이는 통증, 안구 통증 동반. Heavy, tightening pain as if wearing a tight helmet or swim cap, often accompanied by retro-orbital eye pain. 두경부 및 안면 질환 Head, Neck & Facial Disorders"
+    "searchKeywords": "긴장성 두통 군집성 두통 군발 두통 헬멧 두통 안구 통증 Tension Headache Cluster Headache 후두근 상항선 대후두신경 GON 두판상근 상두사근 측두근 모상건막 상부흉추 T1 T4 교감신경 두경부 및 안면 질환 Head Neck Facial Disorders"
   },
   {
     "id": 6,
