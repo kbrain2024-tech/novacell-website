@@ -6590,7 +6590,7 @@ window.PAIN_CONDITIONS = [
     ],
     "title": {
       "ko": "말초성 안면신경마비 후유증 (벨마비) 및 난치성 이명·난청",
-      "en": "Facial Nerve Palsy Sequelae (Bell's Palsy) & Refractory Tinnitus"
+      "en": "Facial Nerve Palsy (Bell's Palsy) & Refractory Tinnitus"
     },
     "symptoms": {
       "ko": "안면 비대칭, 눈 감김 불완전, 입꼬리 처짐 및 연합운동(Synkinesis) 또는 귀 안에서 삐~ 소리가 나는 고음성 이명·먹먹함(이충만감).",
@@ -6601,97 +6601,97 @@ window.PAIN_CONDITIONS = [
       "en": "Edema/ischemia of facial nerve (CN VII) trunk at stylomastoid foramen and cochlear microvascular deficit from cervical sympathetic hyperactivity."
     },
     "targetTissues": {
-      "ko": "경돌유돌공 안면신경 주간부, 성상신경절(C6 SGB), 흉쇄유돌근(SCM) 쇄골지, 상후거근(SPS) 및 안면 표정근 운동점.",
-      "en": "Stylomastoid foramen CN VII trunk, C6 Stellate Ganglion, SCM clavicular head, SPS, and facial motor points."
+      "ko": "경돌유돌공 안면신경(CN VII) 주간부 & 내이(달팽이관), 경추 C5~C6 성상신경절(SGB)·교감신경절, 흉쇄유돌근(SCM · 기시: 흉골병·쇄골 내측 1/3 / 정지: 유양돌기·상항선), 안면 표정근(안륜근·협근) 및 상부승모근·상후거근(SPS).",
+      "en": "Stylomastoid foramen CN VII trunk & inner ear, C5-C6 Stellate Ganglion (SGB) & sympathetic chain, SCM clavicular head & supraclavicular gateway, facial motor points (orbicularis oculi & buccinator), and upper trapezius / SPS."
     },
     "palpation": {
-      "ko": "① 유양돌기 전하방 경돌유돌공 ② C6 성상신경절 및 중부 경추 ③ SCM 쇄골지 하단 ④ 상후거근·승모근 상부 및 협근·안륜근 운동점.",
-      "en": "1) Stylomastoid foramen 2) C6 Stellate Ganglion 3) Lower SCM clavicular head 4) SPS/Upper Trapezius & facial motor branches."
+      "ko": "① 경돌유돌공 안면신경(CN VII) 주간부 & 내이 ② 경추 C5~C6 성상신경절(SGB) & 교감신경점 ③ 흉쇄유돌근(SCM) 쇄골두 하단 & 쇄골상 관문 ④ 안면 표정근(안륜근·협근) 말초 운동점 & 상부승모근·상후거근 연계.",
+      "en": "1) Stylomastoid foramen CN VII & inner ear 2) C5-C6 stellate ganglion (SGB) 3) SCM clavicular head & supraclavicular gateway 4) Facial motor points (orbicularis oculi & buccinator) & upper trapezius / SPS."
     },
     "clinicalCase": {
-      "ko": "벨마비 후유증으로 인한 안면 강직과 고음성 이명이 동반된 환자. 경돌유돌공 안면신경 주간부, C6 성상신경절(SGB), SCM 쇄골지 및 안면 분지에 노바셀(-70mV) 미세전류 통전 후 안면 대칭성 회복 및 이명 강도 80% 이상 감소.",
-      "en": "Bell's palsy sequelae with facial stiffness and tinnitus (Ch.2 Case 3); significant facial symmetry recovery and >80% tinnitus reduction via CN VII + SGB protocol."
+      "ko": "벨마비 후유증으로 인한 안면 강직과 고음성 이명이 동반된 환자. 경돌유돌공 안면신경 주간부, C5~C6 성상신경절(SGB), SCM 쇄골두 하단 및 안면 표정근 운동점에 노바셀(-70mV) 미세전류 통전 후 안면 대칭성 회복 및 이명 강도 80% 이상 감소.",
+      "en": "Bell's palsy sequelae with facial stiffness and high-pitched tinnitus; significant facial symmetry recovery and >80% tinnitus reduction achieved via the 4-point CN VII, SGB, SCM, and facial motor point NovaCell protocol."
     },
     "diagram": "images/diagrams/diagram_53.png",
     "rifeFreq": 528,
     "anatomicalLabels": [
-      "Stylomastoid Foramen (CN VII)",
-      "Cochlea & Vestibulocochlear N. (CN VIII)",
-      "Stellate Ganglion (C6 SGB)",
-      "SCM & Upper Trapezius/SPS"
+      "Stylomastoid Foramen · Facial Nerve (CN VII) & Inner Ear",
+      "C5-C6 Stellate Ganglion (SGB) & Sympathetic Chain",
+      "SCM Clavicular Head & Supraclavicular Gateway",
+      "Facial Motor Points (Orbicularis Oculi & Buccinator) & Upper Trapezius/SPS"
     ],
-    "searchKeywords": "안면마비 구안와사 벨마비 이명 난청 어지럼증 경돌유돌공 성상신경절 SGB",
+    "searchKeywords": "안면신경마비 말초성 안면마비 구안와사 벨마비 이명 난청 어지럼증 연합운동 경돌유돌공 성상신경절 SGB 흉쇄유돌근 SCM 안륜근 협근 상부승모근 상후거근 Facial Nerve Palsy Bell's Palsy Tinnitus Stylomastoid Foramen Stellate Ganglion",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 51.5,
-        "y": 43.0,
+        "x": 55.7,
+        "y": 39.9,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 경돌유돌공 안면신경(CN VII) 주간부 및 내이 신경혈관점 (①번 타깃)",
-          "en": "T1: Stylomastoid Foramen Facial Nerve Trunk & Inner Ear Gate (Target 1)"
+          "ko": "T1: 경돌유돌공 안면신경(CN VII) 주간부 & 내이",
+          "en": "T1: Stylomastoid Foramen · Facial Nerve & Inner Ear"
         },
         "desc": {
-          "ko": "[표적 해부] 귓불 뒤 유양돌기 전하방과 하악지 사이의 경돌유돌공 안면신경(CN VII) 출구 및 내이 미소순환 분지(HP-FP-01).\n[촉지 및 시술] 귓불 바로 뒤 오목한 골막 함요처. 안면신경 부종 감압과 달팽이관(이명) 혈류 개선의 제1 관문입니다.",
-          "en": "Stylomastoid foramen exit of facial nerve (CN VII) anterior-inferior to mastoid process."
+          "ko": "[표적 해부] 귓불 뒤 유양돌기 전하방과 하악지 사이의 경돌유돌공 안면신경(CN VII) 출구 및 내이(달팽이관·전정기관) 미소순환 분지(HP-FP-01).\n[촉지 및 시술] 귓불 바로 뒤 오목한 골막 함요처. 안면신경 부종 감압과 달팽이관(이명·난청) 혈류 개선의 제1 핵심 관문입니다.",
+          "en": "Stylomastoid foramen exit of facial nerve (CN VII) anteroinferior to the mastoid process and inner ear microvascular gateway."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 53.5,
-        "y": 58.5,
+        "x": 54.9,
+        "y": 61.2,
         "role": {
           "ko": "자율신경 조절점",
           "en": "Autonomic Control Target"
         },
         "name": {
-          "ko": "T2: 경추 C5-C6 성상신경절(SGB) 후외측 및 경추 교감신경점 (②번 타깃)",
-          "en": "T2: C5-C6 Stellate Ganglion & Cervical Sympathetic Chain (Target 2)"
+          "ko": "T2: 경추 C5~C6 성상신경절(SGB) & 교감신경점",
+          "en": "T2: C5-C6 Stellate Ganglion (SGB) & Sympathetic Chain"
         },
         "desc": {
-          "ko": "[표적 해부] 중하부 경추(C5-C6) 횡돌기 및 성상신경절(Stellate ganglion) 자율신경 반사구역( ②).\n[촉지 및 시술] 안면신경과 내이(달팽이관)로 가는 혈류량을 급격히 증가시켜 신경 재생 속도를 배가시킵니다.",
-          "en": "C5-C6 cervical sympathetic chain and stellate ganglion zone boosting facial/cochlear blood flow."
+          "ko": "[표적 해부] 중하부 경추(C5~C6) 횡돌기 및 성상신경절(Stellate Ganglion) 교감신경 반사구역.\n[촉지 및 시술] 안면신경과 내이(달팽이관)로 가는 미소혈류량을 급격히 증가시켜 마비 신경 재생 속도를 높이고 이명을 진정시킵니다.",
+          "en": "C5-C6 cervical sympathetic chain and stellate ganglion zone boosting facial nerve and cochlear microcirculation."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 56.5,
-        "y": 68.0,
+        "x": 47.2,
+        "y": 70.9,
         "role": {
-          "ko": "신경 주행·분지점",
-          "en": "Nerve Pathway Target"
+          "ko": "신경혈관 관문점",
+          "en": "Neurovascular Gateway Target"
         },
         "name": {
-          "ko": "T3: 흉쇄유돌근(SCM) 쇄골두 하단 및 쇄골상 신경혈관 관문점 (③번 타깃)",
-          "en": "T3: Lower SCM Clavicular Head & Supraclavicular Vascular Gate (Target 3)"
+          "ko": "T3: 흉쇄유돌근(SCM) 쇄골두 하단 & 쇄골상 관문",
+          "en": "T3: SCM Clavicular Head & Supraclavicular Gateway"
         },
         "desc": {
-          "ko": "[표적 해부] 쇄골 내측 상연 SCM 쇄골지 부착부 및 경동맥초·추골동맥 기시부 인접 구역( ③).\n[촉지 및 시술] 두경부에서 내려오는 정맥·림프 울혈을 해소하여 안면부 및 내이 부종을 빼줍니다.",
-          "en": "Inferior clavicular head of SCM opening cephalic venous and lymphatic drainage."
+          "ko": "[표적 해부] 쇄골 내측 1/3 상연 흉쇄유돌근(SCM) 쇄골두 부착부 및 경동맥초·추골동맥 기시부 인접 쇄골상 관문.\n[촉지 및 시술] 두경부에서 내려오는 정맥·림프 울혈을 해소하여 안면부 및 내이 부종을 빠르게 배출시킵니다.",
+          "en": "Inferior clavicular head of SCM opening cephalic venous and lymphatic drainage at the supraclavicular gateway."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 45.0,
-        "y": 56.0,
+        "x": 37.6,
+        "y": 46.7,
         "role": {
-          "ko": "심부 근복·근막점",
-          "en": "Deep Myofascial Trigger Point"
+          "ko": "안면 표정근·운동점",
+          "en": "Facial Motor Point Target"
         },
         "name": {
-          "ko": "T4: 상후거근·상부승모근 및 안면 표정근(협근·안륜근) 말초 운동점 (④번 타깃)",
-          "en": "T4: Upper Trapezius/SPS & Buccinator/Orbicularis Oculi Motor Points (Target 4)"
+          "ko": "T4: 안면 표정근(안륜근·협근) 말초 운동점 (상부승모근·SPS 연계)",
+          "en": "T4: Facial Motor Points (Orbicularis Oculi & Buccinator)"
         },
         "desc": {
-          "ko": "[표적 해부] 견갑 상부 상후거근( ④) 및 입꼬리 외측 협근지점(HP-FP-02)·눈가 안륜근 운동점(HP-FP-03).\n[촉지 및 시술] 마비된 안면 표정근의 수축력을 되살리고 연합운동(구축)을 부드럽게 이완합니다.",
-          "en": "Upper trapezius/SPS point plus buccinator and orbicularis oculi motor terminals."
+          "ko": "[표적 해부] 눈가 안륜근 운동점(HP-FP-03), 입꼬리 외측 협근 운동점(HP-FP-02) 및 연계 견갑 상부 상부승모근·상후거근(SPS).\n[촉지 및 시술] 마비된 안면 표정근의 수축력을 되살리고 연합운동(Synkinesis)·안면 구축을 부드럽게 이완합니다.",
+          "en": "Orbicularis oculi and buccinator facial motor points linked with upper trapezius/SPS relaxation to restore symmetry and ease synkinesis."
         }
       }
     ]
