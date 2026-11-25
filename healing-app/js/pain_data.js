@@ -270,13 +270,13 @@ window.PAIN_CONDITIONS = [
     },
     "mechanism": {
       "ko": "신경유착",
-      "en": "[신경유착] Nerve Entrapment"
+      "en": "Nerve Entrapment"
     },
     "mechTags": [
       "nerve"
     ],
     "title": {
-      "ko": "소두후신경 유착증",
+      "ko": "소후두신경 유착증",
       "en": "Lesser Occipital Nerve (LON) Entrapment"
     },
     "symptoms": {
@@ -288,12 +288,12 @@ window.PAIN_CONDITIONS = [
       "en": "Lesser occipital nerve (LON), a branch of superficial cervical plexus, is entrapped by trigger points in mid-SCM or C2/C3 intervertebral foramina / deep paraspinal muscles."
     },
     "targetTissues": {
-      "ko": "흉쇄유돌근(SCM) 중간 부위, C2/C3 추간공 및 척추주위 심부근육.",
-      "en": "Middle portion of sternocleidomastoid (SCM), C2/C3 intervertebral foramina, and deep paraspinal muscles."
+      "ko": "흉쇄유돌근(SCM · 기시: 흉골병·쇄골 내측 / 정지: 유양돌기·상항선), 두판상근(SC · 기시: 항인대·C7~T4 / 정지: 유양돌기·상항선), 표재경신경총(Erb's Point), 소후두신경(LON · C2~C3), 대후두신경(GON · C2) 및 C1~C2 후두하삼각.",
+      "en": "Sternocleidomastoid (SCM), Splenius Capitis (SC), Superficial Cervical Plexus (Erb's Point), Lesser Occipital Nerve (LON, C2-C3), Greater Occipital Nerve (GON, C2), and C1-C2 Suboccipital Triangle."
     },
     "palpation": {
-      "ko": "흉쇄유돌근(SCM) 후연 중간 지점(경신경총 4개 감각가지 분지점)을 집어 올렸을 때(pinch & roll) 뚜렷한 압통점.",
-      "en": "Distinct tenderness elicited by pinching and rolling (Pinch & Roll) posterior border of mid-SCM (branching point of 4 sensory branches of superficial cervical plexus)."
+      "ko": "① 흉쇄유돌근(SCM) 후연 중간 표재경신경총점(Erb's Point · Pinch & Roll 압통점) ② 유양돌기 후하방 소후두신경 & 두판상근 부착점 ③ 상부 경추 C1~C2 후두하삼각 & C2~C3 추간공 심부점 ④ 대후두신경(GON) 상항선 출구점(EOP 외측 2.5cm).",
+      "en": "1) Posterior SCM midpoint Erb's point (Pinch & Roll) 2) Posteroinferior mastoid LON & splenius capitis 3) C1-C2 suboccipital triangle & C2-C3 foramen 4) Superior nuchal line GON exit (2.5cm lateral to EOP)."
     },
     "clinicalCase": {
       "ko": "귀 뒤쪽과 후두부 외측의 바늘로 찌르는 듯한 박동성 신경통으로 수면 장애를 겪던 사례. 흉쇄유돌근(SCM) 후연 신경 유착 지점 및 C2, C3 분절에 NovaCell Therapy를 적용하여 신경 압박을 이완시켰으며, 시술 당일 통증 소실 및 편안한 숙면 회복.",
@@ -304,84 +304,84 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 37.1,
-        "y": 56.8,
+        "x": 49.8,
+        "y": 50.2,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 흉쇄유돌근(SCM) 후연 중간 표재경신경총점 (Erb's Point)",
-          "en": "T1: SCM Posterior Border Erb's Point (LON Exit)"
+          "ko": "T1: 흉쇄유돌근(SCM) 후연 중간 · 표재경신경총점 (Erb's Point)",
+          "en": "T1: Posterior SCM Midpoint · Erb's Point (4 Cutaneous Branches)"
         },
         "desc": {
-          "ko": "[표적 해부] 표재경신경총 4대 피지 분기점(Erb's point) 및 소후두신경(LON, C2-C3).\n[촉지 및 시술] 흉쇄유돌근 후연 중간 지점을 집어 올릴 때(Pinch & Roll) 가장 예리한 압통점. 귀 뒤·측두부 바늘로 찌르는 통증의 1차 포착점입니다.",
-          "en": "Mid-posterior border of SCM (Erb's point) where Lesser Occipital Nerve emerges."
+          "ko": "[표적 해부] 표재경신경총 4대 피지 분기점(Erb's Point) 및 소후두신경(LON, C2~C3) 출구.\n[촉지 및 시술] 흉쇄유돌근 후연 중간 지점을 집어 올릴 때(Pinch & Roll) 가장 예리한 압통점. 귀 뒤·측두부 바늘로 찌르는 듯한 신경통의 1차 포착점입니다.",
+          "en": "Mid-posterior border of SCM (Erb's point) where the 4 cutaneous branches and Lesser Occipital Nerve emerge."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 56.0,
-        "y": 54.0,
+        "x": 51.8,
+        "y": 37.8,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T2: 유양돌기 후하방 소후두신경-두판상근 부착점 (골막 부착부)",
-          "en": "T2: Retro-Mastoid LON & Splenius Capitis Insertion"
+          "ko": "T2: 유양돌기 후하방 · 소후두신경 & 두판상근 부착점",
+          "en": "T2: Posteroinferior Mastoid · LON & Splenius Capitis"
         },
         "desc": {
-          "ko": "[표적 해부] 유양돌기 후하방 두판상근·흉쇄유돌근 상부 골막 부착부 및 소후두신경 상행로.\n[촉지 및 시술] 귀 뒤 유양돌기 바로 뒤쪽 오목한 골막 경계부(완골~풍지 구간). 귀 뒤쪽과 측두부 두피 통증을 즉각 소실시킵니다.",
-          "en": "Retro-mastoid groove at splenius capitis & SCM superior insertion."
+          "ko": "[표적 해부] 유양돌기 후하방 두판상근(SC)·흉쇄유돌근(SCM) 상부 골막 부착부 및 소후두신경(LON) 상행로.\n[촉지 및 시술] 귀 뒤 유양돌기 바로 뒤쪽 오목한 골막 경계부(완골~풍지 구간). 귀 뒤쪽과 측두부 두피 통증을 즉각 소실시킵니다.",
+          "en": "Posteroinferior mastoid groove at the splenius capitis & SCM insertion along the ascending LON pathway."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 49.0,
-        "y": 71.0,
+        "x": 60.7,
+        "y": 43.9,
         "role": {
           "ko": "후관절·신경근점",
           "en": "Facet & Nerve Root Target"
         },
         "name": {
-          "ko": "T3: 상부 경추 C1-C2 후두하삼각 및 C2-C3 추간공 심부점",
-          "en": "T3: Suboccipital Triangle (C1-C2) & C2-C3 Foramen"
+          "ko": "T3: 상부 경추 C1~C2 후두하삼각 & C2~C3 추간공 심부점",
+          "en": "T3: C1-C2 Suboccipital Triangle & C2-C3 Foramen"
         },
         "desc": {
-          "ko": "[표적 해부] 상·하두사근, 대후두직근 사이 후두하삼각 및 추골동맥 주위 교감신경총.\n[촉지 및 시술] 상항선 아래 C2 극돌기 외측 2cm 오목한 함요처. 뇌혈류 순환 촉진 및 후두신경 근위부 포착 해소 핵심 스위치입니다.",
-          "en": "Suboccipital triangle core & C2-C3 intervertebral foramen."
+          "ko": "[표적 해부] 상·하두사근, 대후두직근 사이 C1~C2 후두하삼각(추골동맥 주위 교감신경총) 및 C2~C3 추간공 심부.\n[촉지 및 시술] 상항선 아래 C2 극돌기 외측 2cm 오목한 함요처. 뇌혈류 순환 촉진 및 소후두·대후두신경 근위부 포착 해소 핵심 스위치입니다.",
+          "en": "Suboccipital triangle core (C1-C2) and C2-C3 intervertebral foramen relieving proximal occipital nerve tension."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 69.0,
+        "y": 23.7,
         "role": {
           "ko": "신경 주행·분지점",
           "en": "Nerve Pathway Target"
         },
         "name": {
-          "ko": "T4: 대후두신경 상항선 출구점 (외후두융기 외측 2.5cm)",
-          "en": "T4: Greater Occipital Nerve Superior Nuchal Line Exit"
+          "ko": "T4: 대후두신경(GON) 상항선 출구점 (EOP 외측 2.5cm)",
+          "en": "T4: Superior Nuchal Line · Greater Occipital Nerve Exit"
         },
         "desc": {
-          "ko": "[표적 해부] 대후두신경(C2 후지) 승모근 및 두반극근 부착건막 관통부.\n[촉지 및 시술] 외후두융기(EOP)에서 외측 2~2.5cm 상항선 바로 아래 압통점. 후두부~두정부 방사통을 동시 차단합니다.",
-          "en": "GON exit 2.5cm lateral to EOP just below superior nuchal line."
+          "ko": "[표적 해부] 대후두신경(GON, C2 후지)이 승모근 및 두반극근 부착건막을 관통해 나오는 상항선 출구.\n[촉지 및 시술] 외후두융기(EOP) 외측 2~2.5cm 상항선 바로 아래 압통점. 후두부에서 정수리로 뻗치는 연계 방사통을 동시 차단합니다.",
+          "en": "Greater occipital nerve exit 2.5cm lateral to the external occipital protuberance (EOP) along the superior nuchal line."
         }
       }
     ],
     "anatomicalLabels": [
-      "Lesser Occipital Nerve",
-      "Sternocleidomastoid (SCM)",
-      "Splenius Capitis",
-      "C2-C3 Cervical Root"
+      "Posterior SCM Midpoint · Erb's Point (4 Cutaneous Branches)",
+      "Posteroinferior Mastoid · LON & Splenius Capitis",
+      "C1-C2 Suboccipital Triangle & C2-C3 Foramen",
+      "Superior Nuchal Line · Greater Occipital Nerve (GON) Exit"
     ],
     "rifeFreq": 787,
-    "searchKeywords": "소두후신경 유착증 Lesser Occipital Nerve (LON) Entrapment 귀 뒤쪽, 목 전외측, 두피 옆면이 바늘로 콕콕 쑤시듯 아프고 피부 타진 시 극심한 자각통 발생. Stabbing, needle-like pain behind the ear, anterolateral neck, and lateral scalp, with severe tactile dysesthesia upon tapping. 두경부 및 안면 질환 Head, Neck & Facial Disorders"
+    "searchKeywords": "소후두신경 유착증 소후두신경통 귀 뒤쪽 통증 바늘로 찌르는 통증 표재경신경총 Erb's Point Lesser Occipital Nerve Entrapment LON 흉쇄유돌근 SCM 두판상근 유양돌기 후두하삼각 대후두신경 GON 두경부 및 안면 질환 Head Neck Facial Disorders"
   },
   {
     "id": 3,

@@ -138,7 +138,7 @@ window.PAIN_CONDITIONS = [
                          "nerve"
                      ],
         "title":  {
-                      "ko":  "소두후신경 유착증",
+                      "ko":  "소후두신경 유착증",
                       "en":  "Lesser Occipital Nerve (LON) Entrapment"
                   },
         "symptoms":  {
@@ -191,7 +191,7 @@ window.PAIN_CONDITIONS = [
                                  "C2-C3 Cervical Root"
                              ],
         "rifeFreq":  787,
-        "searchKeywords":  "소두후신경 유착증 Lesser Occipital Nerve (LON) Entrapment 귀 뒤쪽, 목 전외측, 두피 옆면이 바늘로 콕콕 쑤시듯 아프고 피부 타진 시 극심한 자각통 발생. Stabbing, needle-like pain behind the ear, anterolateral neck, and lateral scalp, with severe tactile dysesthesia upon tapping. 두경부 및 안면 질환 Head, Neck \u0026 Facial Disorders"
+        "searchKeywords":  "소후두신경 유착증 Lesser Occipital Nerve (LON) Entrapment 귀 뒤쪽, 목 전외측, 두피 옆면이 바늘로 콕콕 쑤시듯 아프고 피부 타진 시 극심한 자각통 발생. Stabbing, needle-like pain behind the ear, anterolateral neck, and lateral scalp, with severe tactile dysesthesia upon tapping. 두경부 및 안면 질환 Head, Neck \u0026 Facial Disorders"
     },
     {
         "id":  3,
