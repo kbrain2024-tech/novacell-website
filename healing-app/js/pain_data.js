@@ -516,7 +516,7 @@ window.PAIN_CONDITIONS = [
     },
     "mechanism": {
       "ko": "신경유착",
-      "en": "[신경유착] Nerve Entrapment"
+      "en": "Nerve Entrapment"
     },
     "mechTags": [
       "nerve"
@@ -530,16 +530,16 @@ window.PAIN_CONDITIONS = [
       "en": "Tingling pain on superficial scalp/skin of right or left forehead; tapping lightly spreads tingling sensation across forehead."
     },
     "pathophysiology": {
-      "ko": "삼차신경 V1 가지인 supraorbital n.가 전두근(frontalis) 및 눈눈썹근 근막을 뚫고 나올 때 전두근 과긴장으로 유착됨.",
-      "en": "Entrapment of supraorbital nerve (trigeminal V1 branch) due to hypertonicity of frontalis and corrugator supercilii fascia as it exits supraorbital canal/fascia."
+      "ko": "삼차신경 제1지(V1) 분지인 상안와신경(Supraorbital n.)과 활차상신경(Supratrochlear n.)이 안와상공·절흔과 추미근·전두근 근막을 뚫고 나올 때 근육 과긴장으로 유착되고, 후두하삼각(C1~C2) 대후두신경과 수렴하여 전두부 감각신경통 유발.",
+      "en": "Entrapment of the supraorbital and supratrochlear nerves (trigeminal V1 branches) as they pierce the supraorbital notch, corrugator supercilii, and frontalis fascia, amplified by C1-C2 GON-V1 convergence."
     },
     "targetTissues": {
-      "ko": "전두근(Frontalis), 안륜근/추미근 영역.",
-      "en": "Frontalis muscle, Orbicularis oculi / Corrugator supercilii region."
+      "ko": "전두근(Frontalis · 기시: 모상건막 전연 / 정지: 눈썹 피부·안륜근·추미근), 추미근(Corrugator Supercilii · 기시: 전두골 미간 안와상연 내측단 / 정지: 눈썹 중앙부 피부), 상안와신경(V1)·활차상신경 및 후두하삼각(C1~C2) 대후두신경(GON).",
+      "en": "Frontalis muscle & galea aponeurotica, Corrugator supercilii, V1 supraorbital & supratrochlear nerves, and suboccipital C1-C2 greater occipital nerve (GON)."
     },
     "palpation": {
-      "ko": "앞이마 외측 및 안화상공(supraorbital foramen) 상방 전두근 근복의 가 장 심한 압통점.",
-      "en": "Maximum tenderness in lateral frontalis muscle belly above supraorbital foramen."
+      "ko": "① 안와상공·절흔 상안와신경(V1) 출구점 ② 추미근(Corrugator) & 활차상신경 포착점 ③ 전두근(Frontalis) 중앙 근복 & 모상건막 이행부(눈썹 위 2~3cm) ④ 후두하삼각 C1~C2 대후두신경 원격 반사점.",
+      "en": "1) Supraorbital notch V1 exit 2) Corrugator supercilii & supratrochlear nerve 3) Frontalis central belly & galea junction (2-3cm above eyebrow) 4) Suboccipital triangle C1-C2 GON-V1 reflex point."
     },
     "clinicalCase": {
       "ko": "신체 활동 후 전두부 이마 표면에 발생한 찌릿찌릿한 피부 감각 과민과 신경통 사례. 안와상신경 절흔 및 전두근 최대 압통 영역에 NovaCell Therapy를 가동하여 신경근막 긴장을 정상화하였으며, 15분 내 통증 90% 이상 감소 및 편안함 회복.",
@@ -550,84 +550,84 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 74.2,
-        "y": 24.9,
+        "x": 58.9,
+        "y": 39.2,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 안와상공·안와상절흔 신경출구점 (V1 상안와신경 출구 골막부)",
-          "en": "T1: Supraorbital Foramen/Notch V1 Periosteal Contact"
+          "ko": "T1: 안와상공·절흔 · 상안와신경(V1) 출구점",
+          "en": "T1: Supraorbital Notch · V1 Supraorbital Nerve Exit"
         },
         "desc": {
-          "ko": "[표적 해부] 삼차신경 제1지(V1) 분지인 상안와신경(Supraorbital n.) 골공 출구 및 추미근 기시부.\n[촉지 및 시술] 눈썹 내측 1/3 지점 안와상연의 작은 홈(Notch). 앞이마 전체로 번지는 찌릿한 신경통의 핵심 출구 감압점입니다.",
-          "en": "Supraorbital notch at medial 1/3 of eyebrow; primary V1 nerve exit."
+          "ko": "[표적 해부] 삼차신경 제1지(V1) 분지인 상안와신경(Supraorbital n.) 골공 출구 및 안와상연 골막부.\n[촉지 및 시술] 눈썹 내측 1/3 지점 안와상연의 작은 홈(Notch). 앞이마 전체로 번지는 찌릿한 신경통의 핵심 출구 감압점입니다.",
+          "en": "Supraorbital notch at medial 1/3 of eyebrow; primary V1 supraorbital nerve exit."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 54.3,
-        "y": 41.4,
+        "x": 52.6,
+        "y": 42.3,
         "role": {
           "ko": "신경 주행·분지점",
           "en": "Nerve Pathway Target"
         },
         "name": {
-          "ko": "T2: 추미근(Corrugator) 및 활차상신경 포착점 (미간 외측)",
+          "ko": "T2: 추미근(Corrugator) & 활차상신경 포착점",
           "en": "T2: Corrugator Supercilii & Supratrochlear Nerve"
         },
         "desc": {
-          "ko": "[표적 해부] 눈썹 내측단 추미근·비근근 및 활차상신경(Supratrochlear n.) 관통부.\n[촉지 및 시술] 미간에서 눈썹 내측 끝 바로 위 압통점. 안구 내측 및 전두부 통증을 해소합니다.",
-          "en": "Supratrochlear nerve entrapment through corrugator supercilii at medial brow."
+          "ko": "[표적 해부] 전두골 미간 안와상연 내측단에서 눈썹 중앙부 피부로 붙는 추미근(Corrugator Supercilii) 및 활차상신경(Supratrochlear n.) 관통부.\n[촉지 및 시술] 미간에서 눈썹 내측 끝 바로 위 압통점. 눈썹 사이 찌푸림 긴장과 안구 내측·전두부 통증을 해소합니다.",
+          "en": "Supratrochlear nerve entrapment through the corrugator supercilii at the medial brow."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 77.5,
-        "y": 44.1,
+        "x": 40.4,
+        "y": 22.1,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "근복·건막 이행점",
+          "en": "Muscle Belly & Galea Target"
         },
         "name": {
-          "ko": "T3: 전두근(Frontalis) 중앙 근복 및 모상건막 이행부",
-          "en": "T3: Frontalis Belly & Galea Aponeurotica Junction"
+          "ko": "T3: 전두근(Frontalis) 중앙 근복 & 모상건막 이행부",
+          "en": "T3: Frontalis Central Belly & Galea Aponeurotica"
         },
         "desc": {
-          "ko": "[표적 해부] 이마 전면 전두근 근복(양동공 수직선상 이마 중앙) 및 상안와신경 피지.\n[촉지 및 시술] 눈썹 위 2~3cm 전두골 전면 골막 및 근복. 이마 표면 감각신경 과민을 진정시킵니다.",
-          "en": "Frontalis muscle belly 2-3cm above eyebrow along pupil line."
+          "ko": "[표적 해부] 모상건막 전연(Galea Aponeurotica)에서 기시해 눈썹 피부로 정지하는 전두근(Frontalis) 중앙 근복 및 상안와신경 피지.\n[촉지 및 시술] 눈썹 위 2~3cm 전두골 전면 골막 및 근복 이행부. 앞이마 표면 감각신경 과민과 찌릿함을 진정시킵니다.",
+          "en": "Frontalis central belly and galea aponeurotica junction 2-3cm above the eyebrow."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 87.6,
+        "y": 72.5,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "원격 반사·신경근점",
+          "en": "Remote GON-V1 Reflex Target"
         },
         "name": {
-          "ko": "T4: 후두하삼각 C1-C2 대후두신경 원격 반사점",
-          "en": "T4: Suboccipital C1-C2 GON-V1 Reflex Switch"
+          "ko": "T4: 후두하삼각 C1~C2 대후두신경 원격 반사점",
+          "en": "T4: Suboccipital Triangle (C1-C2) · GON-V1 Reflex"
         },
         "desc": {
-          "ko": "[표적 해부] 후두하삼각(C1-C2) 대후두신경 근위부 (삼차신경 척수핵 V1 수렴 분절).\n[촉지 및 시술] 뒷머리 상항선 직하방 후두하 함요처. 후두신경에서 앞이마(V1)로 투사되는 신경 반사 고리를 차단합니다.",
-          "en": "Suboccipital C1-C2 point modulating trigeminal V1 convergence."
+          "ko": "[표적 해부] 후두하삼각(C1~C2) 대후두신경(GON) 근위부 — 삼차신경 척수핵 V1과 중추 수렴하는 핵심 분절.\n[촉지 및 시술] 뒷머리 상항선 직하방 후두하 함요처. 후두신경에서 앞이마(V1)로 투사되는 신경 반사 고리를 원격 차단합니다.",
+          "en": "Suboccipital triangle C1-C2 GON exit modulating trigeminal V1 central convergence."
         }
       }
     ],
     "anatomicalLabels": [
-      "Supraorbital Nerve",
-      "Supratrochlear Nerve",
-      "Frontalis Muscle",
-      "Galea Aponeurotica"
+      "Supraorbital Notch · V1 Supraorbital Nerve Exit",
+      "Corrugator Supercilii & Supratrochlear Nerve",
+      "Frontalis Central Belly & Galea Aponeurotica",
+      "Suboccipital Triangle (C1-C2) · GON-V1 Reflex"
     ],
     "rifeFreq": 727,
-    "searchKeywords": "전두근 신경유착 / 전두부 신경통 Frontalis / Frontal Neuralgia 우측 또는 좌측 앞이마 겉살이 찌릿찌릿하게 아프고, 가볍게 톡톡 두드리면 이마 표면으로 찌릿함이 확산됨. Tingling pain on superficial scalp/skin of right or left forehead; tapping lightly spreads tingling sensation across forehead. 두경부 및 안면 질환 Head, Neck & Facial Disorders"
+    "searchKeywords": "전두근 신경유착 전두부 신경통 앞이마 통증 이마 찌릿함 상안와신경 활차상신경 V1 안와상공 추미근 모상건막 후두하삼각 대후두신경 GON Frontalis Frontal Neuralgia Supraorbital Supratrochlear"
   },
   {
     "id": 5,
