@@ -145,7 +145,7 @@ window.PAIN_CONDITIONS = [
     },
     "mechanism": {
       "ko": "신경유착 / 자율신경 오작동",
-      "en": "[신경유착 / 자율신경 오작동] Nerve Entrapment & Autonomic Response"
+      "en": "Nerve Entrapment & Autonomic Dysregulation"
     },
     "mechTags": [
       "nerve",
@@ -160,16 +160,16 @@ window.PAIN_CONDITIONS = [
       "en": "Shooting, stinging, or tingling sensation across the frontal, parietal, and temporal scalp. Hypersensitivity to light touch (even touching hair)."
     },
     "pathophysiology": {
-      "ko": "삼차신경 말초 가지(V1, V2, V3)가 두반극근(SsC)이나 두판상근(SC)의 과 긴장에 의해 C2, C3 레벨에서 신경이 유착되거나 신경 오작동에 의해 과흥 분됨.",
-      "en": "Peripheral branches of trigeminal nerve (V1, V2, V3) are entrapped at C2-C3 level due to hypertonicity of semispinalis capitis (SsC) or splenius capitis (SC), or hyper-excited via S."
+      "ko": "삼차신경 말초 가지(V1·V2·V3) 및 대후두신경(GON)이 두반극근(SsC)·두판상근(SC)의 과긴장에 의해 C2~C3 및 하항선 레벨에서 유착되거나 삼차-경수 복합체(TCC) 및 자율신경 오작동에 의해 과흥분됨.",
+      "en": "Peripheral branches of the trigeminal nerve (V1, V2, V3) and greater occipital nerve (GON) become entrapped at C2-C3 and the inferior nuchal line by hypertonic semispinalis capitis (SsC) and splenius capitis (SC), sensitizing the trigeminocervical complex (TCC)."
     },
     "targetTissues": {
-      "ko": "두반극근(Semispinalis capitis, SsC), 두판상근(Splenius capitis, SC), C2/C3 척추주위 심부근육군.",
-      "en": "Semispinalis capitis (SsC), Splenius capitis (SC), C2/C3 deep paraspinal muscle group."
+      "ko": "두반극근(Semispinalis Capitis, SsC · 기시: C4~C7 관절돌기·T1~T7 횡돌기 / 정지: 후두골 상·하항선 사이), 두판상근(Splenius Capitis, SC · 기시: 항인대 하부·C7~T4 극돌기 / 정지: 유양돌기·상항선 외측 1/3), 경추 C2~C3 횡돌극근(TS), 대후두신경(GON), 삼차신경 골공(V1·V2·V3) 및 경돌유돌공.",
+      "en": "Semispinalis Capitis (SsC, T7-occiput), Splenius Capitis (SC, T4-mastoid), C2-C3 transversospinales (TS), Greater Occipital Nerve (GON), Trigeminal Foramina (V1-V3), and Stylomastoid Foramen."
     },
     "palpation": {
-      "ko": "C2, C3 레벨 TS 및 inferior nuchal line 근처 두반극근 근복의 뚜렷한 압통점.",
-      "en": "Distinct tenderness at C2/C3 level TS and SsC muscle belly near inferior nuchal line."
+      "ko": "① 하항선 두반극근·대후두신경(GON) 출구점 ② 경추 C2~C3 횡돌극근(TS) & 제2선 후관절 ③ 안와상공·안와하공·이공(V1·V2·V3) ④ 경돌유돌공·유양돌기 전하방 반사점.",
+      "en": "1) Inferior nuchal line SsC & GON exit 2) C2-C3 facet joint & transversospinalis (TON) 3) Supraorbital, infraorbital & mental foramina (V1-V3) 4) Stylomastoid foramen anteroinferior to mastoid."
     },
     "clinicalCase": {
       "ko": "수일 전부터 발생한 뒤통수에서 정수리 두피를 따라 방사되는 찌릿한 두통 및 머리카락 접촉 시 과민한 통증 사례. C2, C3 척추주위 심부근 및 두반극근 압통 부위에 NovaCell Therapy(노바셀 생체 전압 및 타깃 공명 치료)를 적용하여 신경 유착을 해소한 결과, 시술 30분 만에 두피 통증 80% 이상 소실 및 자극 과민성 정상화.",
@@ -180,85 +180,85 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 69.3,
-        "y": 40.9,
+        "x": 45.1,
+        "y": 27.0,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 하항선 두반극근·대후두신경 출구점 (GON & 삼차신경 교차점)",
-          "en": "T1: Inferior Nuchal Line SsC & GON Exit"
+          "ko": "T1: 하항선 두반극근 · 대후두신경(GON) 출구점",
+          "en": "T1: Inferior Nuchal Line · Semispinalis Capitis & GON Exit"
         },
         "desc": {
-          "ko": "[표적 해부] 하항선(Inferior Nuchal Line) 두반극근(SsC)·두판상근(SC) 상부 부착건막 및 대후두신경(GON).\n[촉지 및 시술] 외후두융기(EOP) 외측 2~2.5cm 상항선·하항선 함요처. 삼차-경수 복합체(TCC) 감작을 해제하여 두피 전체 찌릿함과 모발 접촉 과민통을 즉각 차단합니다.",
-          "en": "Semispinalis capitis & splenius capitis insertion near inferior nuchal line; relieves trigeminocervical complex sensitization."
+          "ko": "[표적 해부] 후두골 상·하항선 사이에 정지하는 두반극근(SsC) 상부 부착건막 및 근육을 관통해 나오는 대후두신경(GON) 출구.\n[촉지 및 시술] 외후두융기(EOP) 외측 2~2.5cm 하항선 함요처. 삼차-경수 복합체(TCC) 감작을 해제하여 두피 전체의 찌릿함과 모발 접촉 과민통을 즉각 차단합니다.",
+          "en": "Semispinalis capitis insertion near the inferior nuchal line where the greater occipital nerve (GON) emerges; relieves trigeminocervical complex sensitization."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 50.1,
-        "y": 76.0,
+        "x": 46.8,
+        "y": 36.0,
         "role": {
           "ko": "후관절·신경근점",
           "en": "Facet & Nerve Root Target"
         },
         "name": {
-          "ko": "T2: 경추 C2-C3 횡돌극근(TS) 및 제2선 후관절 심부점",
-          "en": "T2: C2-C3 Transversospinales & Facet Line 2"
+          "ko": "T2: 경추 C2~C3 횡돌극근(TS) & 제2선 후관절",
+          "en": "T2: C2-C3 Facet Joint · Transversospinalis & TON"
         },
         "desc": {
-          "ko": "[표적 해부] C2-C3 다열근·회선근(TS) 및 제3후두신경(TON) 분절.\n[촉지 및 시술] C2·C3 극돌기 외측 1.5~2cm 경추 제2선 후관절 주두 골막 접촉. 후두부에서 정수리로 뻗치는 방사통의 뿌리 분절을 안정화합니다.",
-          "en": "C2-C3 deep paraspinal transversospinales & TON facet point (Cervical Line 2 Periosteal Contact)."
+          "ko": "[표적 해부] 경추 C2~C3 심부 횡돌극근(TS · 다열근·회선근) 및 제3후두신경(TON) 분절 후관절.\n[촉지 및 시술] C2·C3 극돌기 외측 1.5~2cm 경추 제2선 후관절 골막 접촉. 뒤통수에서 정수리·이마로 뻗치는 두피 방사통의 근위 분절을 안정화합니다.",
+          "en": "C2-C3 deep paraspinal transversospinalis & third occipital nerve (TON) facet point (Cervical Line 2)."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 19.8,
+        "y": 72.3,
         "role": {
           "ko": "신경 주행·분지점",
           "en": "Nerve Pathway Target"
         },
         "name": {
-          "ko": "T3: 안와상공·안와하공·이공 삼차신경 3분지 골공점 (V1·V2·V3)",
-          "en": "T3: Supraorbital, Infraorbital & Mental Foramina (V1-V3)"
+          "ko": "T3: 안와상공·안와하공·이공 (V1·V2·V3) 삼차신경 골공점",
+          "en": "T3: Trigeminal Foramina (V1 Supraorbital · V2 Infraorbital · V3 Mental)"
         },
         "desc": {
-          "ko": "[표적 해부] 삼차신경 제1지(안와상절흔 V1), 제2지(안와하공 V2), 제3지(이공 V3) 골공 출구.\n[촉지 및 시술] 눈썹 내측 1/3 안와상연(V1), 동공 수직선상 광대뼈 하연 1cm(V2), 하악 제2소구치 하방(V3) 골막 타깃. 안면·두피 말초 분지 과흥분을 진정시킵니다.",
-          "en": "Terminal foramina of Trigeminal nerve branches V1, V2, and V3."
+          "ko": "[표적 해부] 삼차신경 제1지(V1 안와상공), 제2지(V2 안와하공), 제3지(V3 이공) 안면 말초 골공 출구.\n[촉지 및 시술] 눈썹 내측 1/3 안와상연(V1), 동공 수직선상 광대뼈 하연 1cm(V2), 하악 제2소구치 하방(V3) 골막 타깃. 안면·전두부 두피 말초 분지의 과흥분을 진정시킵니다.",
+          "en": "Terminal facial foramina of trigeminal nerve branches V1 (supraorbital), V2 (infraorbital), and V3 (mental)."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 62.0,
-        "y": 38.0,
+        "x": 58.2,
+        "y": 27.7,
         "role": {
-          "ko": "신경 주행·분지점",
-          "en": "Nerve Pathway Target"
+          "ko": "신경 주행·반사점",
+          "en": "Cranial Nerve Reflex Target"
         },
         "name": {
-          "ko": "T4: 경돌유돌공 안면-삼차 신경반사점 (귀불 뒤 오목부)",
-          "en": "T4: Stylomastoid Foramen Cranial Nerve Switch"
+          "ko": "T4: 경돌유돌공 · 유양돌기 전하방 반사점",
+          "en": "T4: Stylomastoid Foramen (Anteroinferior to Mastoid)"
         },
         "desc": {
-          "ko": "[표적 해부] 유양돌기 전하방 경돌유돌공 및 두개저 자율신경 연접부.\n[촉지 및 시술] 귓불 뒤 유양돌기(Mastoid)와 하악지 사이 깊은 함요처. 뇌신경 흥분 역치를 낮추고 측두-두피 방사통을 제어합니다.",
-          "en": "Deep hollow between mastoid process and mandibular ramus; cranial nerve reflex switch."
+          "ko": "[표적 해부] 두판상근(SC)이 정지하는 유양돌기(Mastoid Process) 전하방 경돌유돌공 및 두개저 자율신경 연접부.\n[촉지 및 시술] 귓불 뒤 유양돌기와 하악지 사이 깊은 함요처. 뇌신경 흥분 역치를 낮추고 측두부·두피 방사통을 제어합니다.",
+          "en": "Stylomastoid foramen hollow anteroinferior to the mastoid process; cranial nerve and autonomic reflex switch."
         }
       }
     ],
     "anatomicalLabels": [
-      "Semispinalis Capitis",
-      "Splenius Capitis",
-      "C2-C3 Transversospinales",
-      "Inferior Nuchal Line",
-      "Trigeminal & Greater Occipital Nerves"
+      "Semispinalis Capitis (SsC · C4-T7 to Nuchal Line)",
+      "Splenius Capitis (SC · C7-T4 to Mastoid)",
+      "Greater Occipital Nerve (GON) & C2-C3 Facet (TON)",
+      "Trigeminal Foramina (V1 Supraorbital · V2 Infraorbital · V3 Mental)",
+      "Stylomastoid Foramen (Anteroinferior to Mastoid)"
     ],
     "rifeFreq": 727,
-    "searchKeywords": "두피형 삼차신경통 / 두피 감각신경통 Scalp Trigeminal Neuralgia / Scalp Sensory Neuralgia 전두부, 두정부, 측두부 두피 전체가 톡톡 쏘거나 찌릿찌릿함. 머리카락을 살짝만 건드려도 과민한 자극감 유발. Shooting, stinging, or tingling sensation across the frontal, parietal, and temporal scalp. Hypersensitivity to light touch (even touching hair). 두경부 및 안면 질환 Head, Neck & Facial Disorders"
+    "searchKeywords": "두피형 삼차신경통 두피 감각신경통 삼차신경통 두반극근 SsC 두판상근 SC 대후두신경 GON 안와상공 안와하공 이공 경돌유돌공 유양돌기 C2 C3 후관절 Scalp Trigeminal Neuralgia Semispinalis Capitis Splenius Capitis"
   },
   {
     "id": 2,
