@@ -6466,7 +6466,7 @@ window.PAIN_CONDITIONS = [
     ],
     "title": {
       "ko": "턱관절 장애 증후군 (TMJ 관절원판·외측익돌근·이개측두신경통)",
-      "en": "TMJ Disorder Syndrome (Disc, Lateral Pterygoid & Auriculotemporal N.)"
+      "en": "TMJ Disorder Syndrome (Disc, Lateral Pterygoid, Masseter & Auriculotemporal N.)"
     },
     "symptoms": {
       "ko": "입을 벌리거나 씹을 때 귀 앞 턱관절에서 '딱(Clicking)' 소리가 나거나 걸려서 크게 벌어지지 않음(개구 제한). 관자놀이 두통, 귀 통증·이명, 뒷목 결림이 연쇄 동반됨.",
@@ -6477,97 +6477,97 @@ window.PAIN_CONDITIONS = [
       "en": "Hypertonicity of lateral pterygoid displaces the TMJ articular disc anteromedially, compressing retrodiscal tissue and auriculotemporal nerve (V3) along with C1-C2 axis imbalance."
     },
     "targetTissues": {
-      "ko": "외측익돌근(상·하두), 교근(천층·심층), 측두근 건막, 이개측두신경 및 C1-C2 후두하 신경총.",
-      "en": "Lateral pterygoid, masseter, temporalis tendon, auriculotemporal nerve, and C1-C2 suboccipital plexus."
+      "ko": "외측익돌근 상·하두(기시: 접형골 대익·외측익돌판 / 정지: 하악과두 경부·TMJ 관절원판), 교근(기시: 관골궁 하연 / 정지: 하악각·하악지), 측두근(기시: 측두와 / 정지: 오훼돌기), 이개측두신경, 경돌하악인대 및 C1~C2 횡돌기 축점.",
+      "en": "Lateral Pterygoid & TMJ Articular Disc, Masseter (zygomatic arch to mandibular angle), Temporalis (temporal fossa to coronoid process), Auriculotemporal Nerve, Stylomandibular Ligament, and C1-C2 Axis."
     },
     "palpation": {
-      "ko": "① 하악절흔(관골궁 하방) 외측익돌근 심부점 ② 하악각 교근 심부 결절점 ③ 오훼돌기 측두근 착점 ④ 귀 뒤 유양돌기-C1 횡돌기 자율신경점.",
-      "en": "1) Mandibular notch lateral pterygoid 2) Masseter angle 3) Coronoid temporalis insertion 4) Retro-mastoid C1-C2 relay."
+      "ko": "① 하악절흔 외측익돌근(상·하두)·교근신경 심부점 ② 하악각·하악지 교근 심부 결절 ③ 오훼돌기(Coronoid Process) 측두근 정지건 ④ 이개측두신경·경돌하악인대 및 C1~C2 횡돌기 축점.",
+      "en": "1) Mandibular notch lateral pterygoid & masseteric nerve 2) Mandibular angle masseter insertion 3) Coronoid process temporalis insertion 4) Auriculotemporal nerve, stylomandibular ligament & C1-C2 axis."
     },
     "clinicalCase": {
-      "ko": "7년간 양측 난치성 턱관절 통증·개구 제한(손가락 2개 미만) 및 만성 편두통·이명을 호소하던 환자. 하악절흔 외측익돌근, 교근 심부, 이개측두신경 및 C1-C2 중심축에 노바셀(-70mV) 고전압 미세전류 및 정밀 골막 통전 시술 후 개구 범위 정상화 및 두통·이명 90% 소실.",
-      "en": "7-year bilateral refractory TMJ pain with locking and tinnitus (Ch.2 Case 2-2-1); normal mouth opening and 90% symptom resolution achieved via 4-point NovaCell TMJ protocol."
+      "ko": "7년간 양측 난치성 턱관절 통증·개구 제한(손가락 2개 미만) 및 만성 편두통·이명을 호소하던 환자. 하악절흔 외측익돌근, 교근 심부, 오훼돌기 측두근 정지건 및 이개측두신경·C1~C2 중심축에 노바셀(-70mV) 정밀 통전 시술 후 개구 범위 정상화 및 두통·이명 90% 소실.",
+      "en": "7-year bilateral refractory TMJ pain with locking and tinnitus; normal mouth opening and 90% symptom resolution achieved via the 4-point NovaCell TMJ protocol."
     },
     "diagram": "images/diagrams/diagram_52.png",
     "rifeFreq": 528,
     "anatomicalLabels": [
-      "Lateral Pterygoid",
-      "Masseter Deep Belly",
-      "Temporalis & Coronoid Process",
-      "Auriculotemporal Nerve & C1-C2"
+      "Mandibular Notch · Lateral Pterygoid & Masseteric N.",
+      "Mandibular Angle · Masseter Insertion",
+      "Coronoid Process · Temporalis Insertion",
+      "TMJ Articular Disc, Auriculotemporal N., Stylomandibular Lig. & C1-C2 Axis"
     ],
-    "searchKeywords": "턱관절 TMJ 악관절 개구장애 턱소리 이갈이 외측익돌근 교근 이개측두신경",
+    "searchKeywords": "턱관절 장애 증후군 TMJ 악관절 개구장애 턱소리 이갈이 악물기 관절원판 외측익돌근 교근 측두근 오훼돌기 이개측두신경 경돌하악인대 C1 C2 TMJ Disorder Syndrome Lateral Pterygoid Masseter Temporalis Auriculotemporal Nerve",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 48.5,
-        "y": 44.0,
+        "x": 47.9,
+        "y": 46.2,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 하악절흔 외측익돌근·교근신경 심부 포착점 (①번 타깃)",
-          "en": "T1: Mandibular Notch Lateral Pterygoid & Masseteric Nerve (Target 1)"
+          "ko": "T1: 하악절흔 외측익돌근(상·하두) · 교근신경 심부점",
+          "en": "T1: Mandibular Notch · Lateral Pterygoid & Masseteric N."
         },
         "desc": {
-          "ko": "[표적 해부] 관골궁 하방 하악절흔(Mandibular notch) 심부의 외측익돌근 상·하두 및 교근신경(HP-TM-01).\n[촉지 및 시술] 귀 앞 2.5cm 관골궁 바로 아래 입을 살짝 벌릴 때 열리는 반달형 함요처. 관절원판(디스크)을 앞으로 잡아당기는 주범을 직접 이완합니다.",
-          "en": "Lateral pterygoid and masseteric nerve deep to mandibular notch below zygomatic arch."
+          "ko": "[표적 해부] 관골궁 하방 하악절흔(Mandibular Notch) 심부의 외측익돌근 상·하두(하악과두 경부·TMJ 관절원판 정지) 및 교근신경(HP-TM-01).\n[촉지 및 시술] 귀 앞 2.5cm 관골궁 바로 아래 입을 살짝 벌릴 때 열리는 반달형 함요처. 턱관절 원판(디스크)을 전내측으로 잡아당기는 주범을 직접 이완합니다.",
+          "en": "Lateral pterygoid (superior & inferior heads) and masseteric nerve deep to the mandibular notch below the zygomatic arch."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 43.5,
-        "y": 58.0,
+        "x": 52.3,
+        "y": 68.9,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T2: 하악각·하악지 교근(Masseter) 심부 결절 골막 부착점 (②번 타깃)",
-          "en": "T2: Mandibular Angle Masseter Insertion Periosteal Contact (Target 2)"
+          "ko": "T2: 하악각·하악지 교근(Masseter) 심부 결절",
+          "en": "T2: Mandibular Angle · Masseter Insertion"
         },
         "desc": {
-          "ko": "[표적 해부] 하악각(Mandibular angle) 및 하악지 외측면의 교근 천·심층 골막 부착부(HP-TM-02, ②).\n[촉지 및 시술] 어금니를 깨물 때 불거지는 턱 끝 모서리 근육과 골막. 이갈이·악물기로 인한 턱관절 수직 압박력을 해소합니다.",
-          "en": "Masseter muscle belly and periosteal insertion at mandibular angle."
+          "ko": "[표적 해부] 관골궁 하연에서 기시해 하악각(Mandibular Angle) 및 하악지 외측면에 정지하는 교근 천·심층 골막 부착부(HP-TM-02).\n[촉지 및 시술] 어금니를 깨물 때 불거지는 턱 모서리 근육과 골막. 이갈이·악물기로 인한 턱관절 수직 압박력을 해소합니다.",
+          "en": "Masseter deep trigger points and periosteal insertion at the mandibular angle."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 43.0,
-        "y": 35.5,
+        "x": 45.8,
+        "y": 39.5,
         "role": {
           "ko": "힘줄·골막 부착점",
           "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T3: 오훼돌기(Coronoid Process) 측두근 정지건 및 전방 관절낭점 (③번 타깃)",
-          "en": "T3: Coronoid Process Temporalis Tendon Insertion (Target 3)"
+          "ko": "T3: 오훼돌기(Coronoid Process) · 측두근 정지건",
+          "en": "T3: Coronoid Process · Temporalis Insertion"
         },
         "desc": {
-          "ko": "[표적 해부] 측두근 전체 섬유가 농축되어 정지하는 하악골 오훼돌기(Coronoid process) 첨부 골막( ③).\n[촉지 및 시술] 관골궁 상·하연 측두근 건막. 측두부 편두통과 하악 후방 견인통을 동시에 차단합니다.",
-          "en": "Temporalis tendon insertion on coronoid process of mandible."
+          "ko": "[표적 해부] 측두와에서 기시한 측두근(Temporalis) 전체 섬유가 농축되어 정지하는 하악골 오훼돌기(Coronoid Process) 첨부 골막.\n[촉지 및 시술] 관골궁 하연 앞쪽 오훼돌기 정지건. 측두부 편두통과 하악 후방 견인통을 동시에 차단합니다.",
+          "en": "Temporalis tendon insertion on the coronoid process of the mandible."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 59.0,
-        "y": 41.5,
+        "x": 59.3,
+        "y": 58.7,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "신경·인대·경추축점",
+          "en": "Nerve, Ligament & C1-C2 Axis"
         },
         "name": {
-          "ko": "T4: 이주 전후방 이개측두신경·경돌하악인대 및 C1-C2 중심축점 (④번 타깃)",
-          "en": "T4: Auriculotemporal Nerve & C1-C2 Suboccipital Axis (Target 4)"
+          "ko": "T4: 이개측두신경 · 경돌하악인대 & C1~C2 횡돌기 축점",
+          "en": "T4: Auriculotemporal N., Stylomandibular Lig. & C1-C2 Axis"
         },
         "desc": {
-          "ko": "[표적 해부] 귀 앞 관절낭 후방 이개측두신경(HP-TM-03) 및 귀 뒤 유양돌기-C1 횡돌기 삼차-경추 신경망( ④).\n[촉지 및 시술] 턱관절 후방 염증통과 동반 이명·뒷목 경직(볼링볼 증후군)을 근본 리셋합니다.",
-          "en": "Auriculotemporal nerve and C1-C2 trigeminocervical axis behind TMJ."
+          "ko": "[표적 해부] ① 귀 앞 관절낭 후방 이개측두신경(HP-TM-03) ② 경돌하악인대(Stylomandibular Ligament) ③ 상부경추 C1~C2 횡돌기 중심축(삼차-경추 신경망).\n[촉지 및 시술] 턱관절 후방 원판후조직 염증통과 동반 이명·뒷목 경직(볼링볼 증후군)을 근본 리셋합니다.",
+          "en": "1) Auriculotemporal nerve 2) Stylomandibular ligament 3) C1-C2 transverse process axis resetting TMJ retrodiscal pain, tinnitus, and upper cervical stiffness."
         }
       }
     ]
