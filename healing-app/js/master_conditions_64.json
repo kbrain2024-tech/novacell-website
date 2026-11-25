@@ -7742,7 +7742,7 @@
         "tendon"
       ],
       "title": {
-        "ko": "요추 척추관 협착증 / 신경인성 간헐적 파행 및 유두-부돌기인대 감압",
+        "ko": "요추 척추관 협착증 & 유두-부돌기인대(MAL) 감압",
         "en": "Lumbar Spinal Stenosis & Neurogenic Claudication (MAL & Facet Protocol)"
       },
       "symptoms": {
@@ -7754,97 +7754,97 @@
         "en": "Facet hypertrophy, ligamentum flavum thickening, and foraminal narrowing cause radicular venous congestion/ischemia, while the medial branch is entrapped beneath the mamillo-accessory ligament (MAL)."
       },
       "targetTissues": {
-        "ko": "비후된 요추 후관절낭(L3-S1), 다열근 기시부, 유두-부돌기 인대(MAL) 골섬유 터널, 추간공 외측 혈관신경 다발 및 후천골공(S1-S2).",
-        "en": "Hypertrophied L3-S1 facet capsules, multifidus origin, mamillo-accessory ligament (MAL) tunnel, foraminal neurovascular bundle, and S1-S2 sacral foramina."
+        "ko": "비후된 요추 후관절낭(L3~L5), 유두돌기 기시 심부 다열근(Multifidus), 유두-부돌기 인대(MAL) 골섬유 터널 및 후지 내측지, 추간공 외측 혈관신경 다발 및 S1·S2 후천골공.",
+        "en": "Hypertrophied L3-L5 lumbar facet capsules, deep multifidus (mammillary origin), mamillo-accessory ligament (MAL) tunnel & medial branch, extraforaminal neurovascular bundle, and S1-S2 posterior sacral foramina."
       },
       "palpation": {
-        "ko": "후관절·유두부돌기인대 해부도: ① 상관절돌기·후관절낭 상부 ② 심부 다열근 다발 ③ 유두-부돌기 인대(MAL) 터널 ④ 추간공 출구 및 하부 내측지.",
-        "en": "Ch.7 Facet & MAL Anatomy : 1) Superior facet capsule 2) Multifidus slips 3) Mamillo-accessory ligament tunnel 4) Foraminal exit & medial branch."
+        "ko": "① 비후된 요추 후관절낭(L3~L5) 상·하 관절연 ② 유두돌기 기시 심부 다열근(Multifidus) ③ 유두-부돌기 인대(MAL) 골섬유 터널(후지 내측지) ④ 추간공 외측 혈관신경 다발 & S1·S2 후천골공.",
+        "en": "1) Hypertrophied L3-L5 facet joint capsule 2) Mammillary-origin deep multifidus 3) Mamillo-accessory ligament (MAL) tunnel (medial branch) 4) Extraforaminal neurovascular bundle & S1-S2 posterior sacral foramina."
       },
       "clinicalCase": {
-        "ko": "5분만 걸어도 양쪽 종아리가 터질 듯 아파 쉬어야 했던 70대 중증 척추관 협착증 환자. L3~S1 유두-부돌기 인대(MAL) 골막 부착부, 추간공 외측 혈관신경 회복점 및 후천골공(S1-S2) 자율신경점에 노바셀(-70mV) 치료 후 연속 보행 시간이 5분에서 40분 이상으로 획기적 개선.",
-        "en": "70yo severe lumbar spinal stenosis unable to walk >5 minutes (Ch.7 Case 7-12); continuous walking distance increased to >40 minutes via L3-S1 MAL Periosteal Contact + foraminal vascular protocol."
+        "ko": "5분만 걸어도 양쪽 종아리가 터질 듯 아파 쉬어야 했던 70대 중증 척추관 협착증 환자. L3~S1 비후 후관절낭, 유두-부돌기 인대(MAL) 골섬유 터널, 추간공 외측 혈관신경 회복점 및 후천골공(S1·S2) 자율신경점에 노바셀(-70mV) 치료 후 연속 보행 시간이 5분에서 40분 이상으로 획기적 개선.",
+        "en": "70yo severe lumbar spinal stenosis unable to walk >5 minutes; continuous walking distance increased to >40 minutes via the L3-S1 hypertrophied facet, MAL tunnel, extraforaminal vascular, and S1-S2 sacral NovaCell protocol."
       },
       "diagram": "images/diagrams/diagram_62.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
-        "1. Hypertrophied Facet Joint Capsule",
-        "2/3. Deep Multifidus Fascicles",
-        "4. Mamillo-Accessory Ligament (MAL) Tunnel",
-        "5. Medial Branch of Dorsal Ramus & Foramen"
+        "Hypertrophied Lumbar Facet Joint Capsule (L3-L5)",
+        "Deep Multifidus (Mammillary Process Origin)",
+        "Mamillo-Accessory Ligament (MAL) Tunnel & Medial Branch",
+        "Extraforaminal Neurovascular Bundle & S1-S2 Posterior Sacral Foramina"
       ],
-      "searchKeywords": "척추관협착증 협착증 신경인성파행 간헐적파행 다리저림 유두부돌기인대 요추후관절",
+      "searchKeywords": "척추관 협착증 척추관협착증 협착증 신경인성 파행 간헐적 파행 다리저림 유두부돌기인대 MAL 요추 후관절 후지 내측지 추간공 혈관신경 S1 S2 후천골공 Lumbar Spinal Stenosis Neurogenic Claudication Mamillo-Accessory Ligament",
       "targets": [
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 57.5,
-          "y": 23.5,
+          "x": 44.6,
+          "y": 34.7,
           "role": {
             "ko": "핵심 후관절·신경근점",
             "en": "Primary Facet & Root Target"
           },
           "name": {
-            "ko": "T1: 비후된 요추 후관절낭(L3-L4-L5) 상·하 관절연 골막 부착점 (①번 타깃)",
-            "en": "T1: Hypertrophied Lumbar Facet Joint Capsule Periosteal Contact (Target 1)"
+            "ko": "T1: 비후된 요추 후관절낭(L3~L5) 상·하 관절연",
+            "en": "T1: Hypertrophied Lumbar Facet Joint Capsule (L3-L5)"
           },
           "desc": {
-            "ko": "[표적 해부] 퇴행성으로 두꺼워져 척추관과 외측함요(Lateral recess)를 좁히는 요추 후관절낭 및 상관절돌기.\n[촉지 및 시술] 후관절낭 외측연 골막 정밀 자극으로 관절낭 부종과 활막 염증을 가라앉혀 신경 통로를 넓혀줍니다.",
-            "en": "Hypertrophied lumbar facet joint capsule and superior articular process."
+            "ko": "[표적 해부] 퇴행성으로 두꺼워져 척추관과 외측함요(Lateral recess)를 좁히는 요추 L3~L5 비후 후관절낭 및 상관절돌기.\n[촉지 및 시술] 후관절낭 상·하 관절연 외측 골막 정밀 자극으로 관절낭 부종과 활막 염증을 가라앉혀 신경 통로를 넓혀줍니다.",
+            "en": "Hypertrophied lumbar facet joint capsule (L3-L5) and superior articular process narrowing the lateral recess."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 52.5,
-          "y": 42.5,
+          "x": 41.6,
+          "y": 44.6,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "심부 근복·근막점",
+            "en": "Deep Multifidus Recovery Target"
           },
           "name": {
-            "ko": "T2: 유두돌기 기시 심부 다열근(Multifidus) 위축·섬유화 복원점 (③번 타깃)",
-            "en": "T2: Mamillary Process Deep Multifidus Atrophy Recovery Point (Target 2)"
+            "ko": "T2: 유두돌기 기시 심부 다열근(Multifidus)",
+            "en": "T2: Deep Multifidus (Mammillary Process Origin)"
           },
           "desc": {
-            "ko": "[표적 해부] 유두돌기에서 기시하여 극돌기로 붙는 심부 다열근 다발( ③).\n[촉지 및 시술] 협착증 환자에서 지방 변성되고 굳어진 다열근에 -70mV 생체전압을 충전하여 허리 지지력을 되살립니다.",
-            "en": "Deep multifidus fascicles originating from the mamillary process."
+            "ko": "[표적 해부] 유두돌기(Mammillary Process)에서 기시하여 상방 극돌기로 정지하는 심부 다열근 다발.\n[촉지 및 시술] 척추관 협착증 환자에서 위축·지방 변성되고 굳어진 다열근에 -70mV 생체전압을 충전하여 요추 분절 지지력을 되살립니다.",
+            "en": "Deep multifidus fascicles originating from the mammillary process and inserting onto superior spinous processes."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 51.0,
-          "y": 50.0,
+          "x": 56.6,
+          "y": 48.3,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "MAL 인대 터널점",
+            "en": "MAL Tunnel Entrapment Target"
           },
           "name": {
-            "ko": "T3: 유두-부돌기 인대(Mamillo-Accessory Ligament: MAL) 골섬유 터널 감압점 (④번 타깃)",
-            "en": "T3: Mamillo-Accessory Ligament (MAL) Osteofibrous Tunnel Periosteal Contact (Target 3)"
+            "ko": "T3: 유두-부돌기 인대(MAL) 골섬유 터널",
+            "en": "T3: Mamillo-Accessory Ligament Tunnel (Medial Branch Entrapment)"
           },
           "desc": {
-            "ko": "[표적 해부] 상관절돌기의 유두돌기(Mamillary process)와 횡돌기 기저부의 부돌기(Accessory process)를 잇는 유두-부돌기 인대 터널( ④).\n[촉지 및 시술] 노령 협착증 환자에서 석회화·비후되어 척수신경 후지 내측지를 목 조르듯 압박하는 핵심 병소를 정밀 골막 자극으로 개방합니다.",
-            "en": "Mamillo-accessory ligament (MAL) bridging mamillary and accessory processes over the medial branch."
+            "ko": "[표적 해부] 상관절돌기의 유두돌기(Mammillary process)와 횡돌기 기저부의 부돌기(Accessory process)를 잇는 유두-부돌기 인대(MAL) 골섬유 터널 및 척수신경 후지 내측지.\n[촉지 및 시술] 노령 협착증 환자에서 석회화·비후되어 후지 내측지를 목 조르듯 압박하는 핵심 병소를 정밀 골막 자극으로 개방·감압합니다.",
+            "en": "Mamillo-accessory ligament (MAL) osteofibrous tunnel bridging mammillary and accessory processes over the dorsal ramus medial branch."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 50.5,
-          "y": 58.5,
+          "x": 60.3,
+          "y": 53.5,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "혈관신경·천골공점",
+            "en": "Neurovascular & Sacral Foramina Target"
           },
           "name": {
-            "ko": "T4: 추간공 외측 신경근 혈류 회복점 및 후지 내측지·S1-S2 후천골공점 (⑤번 타깃)",
-            "en": "T4: Foraminal Neurovascular Recovery & Medial Branch / S1-S2 Sacral Point (Target 4)"
+            "ko": "T4: 추간공 외측 혈관신경 다발 & S1·S2 후천골공",
+            "en": "T4: Extraforaminal Neurovascular Bundle & S1-S2 Posterior Sacral Foramina"
           },
           "desc": {
-            "ko": "[표적 해부] 추간공 외측 혈관신경 다발(HP-LSS-01), 하행 내측지( ⑤) 및 S1-S2 후천골공 자율신경점(HP-LSS-02).\n[촉지 및 시술] 마미신경과 좌골신경근의 정맥 울혈을 해소하여 보행 시 다리가 터질 듯한 간헐적 파행을 획기적으로 연장시킵니다.",
-            "en": "Foraminal vasa nervorum vascular point, descending medial branch, and S1-S2 sacral autonomic point."
+            "ko": "[표적 해부] (a) 추간공 외측 혈관신경 다발(HP-LSS-01) 및 (b) S1·S2 후천골공 자율신경점(HP-LSS-02).\n[촉지 및 시술] 마미신경과 좌골신경근의 정맥 울혈·허혈을 해소하고 천골 자율신경 혈류를 개선하여 보행 시 다리가 터질 듯한 신경인성 간헐적 파행을 획기적으로 연장시킵니다.",
+            "en": "(a) Extraforaminal neurovascular bundle (vasa nervorum) and (b) S1-S2 posterior sacral foramina autonomic points relieving venous congestion and neurogenic claudication."
           }
         }
       ]
