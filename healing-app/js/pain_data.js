@@ -392,8 +392,8 @@ window.PAIN_CONDITIONS = [
       "en": "Head, Neck & Facial Disorders"
     },
     "mechanism": {
-      "ko": "신경유착",
-      "en": "[TTP / ] Tendon Traction & Nerve Entrapment"
+      "ko": "신경유착 / 힘줄견인",
+      "en": "Tendon Traction & Nerve Entrapment"
     },
     "mechTags": [
       "nerve"
@@ -407,104 +407,104 @@ window.PAIN_CONDITIONS = [
       "en": "Periodic stabbing or tingling pain in temple, or heavy band-like compressive sensation around the head."
     },
     "pathophysiology": {
-      "ko": "Zygomaticotemporal n.가 측두근 근막을 뚫고 나오는 지점에서 유착되 거나, 외익상근에 의해 심측두신경(deep temporal n.)이 유착되어 측두 근 허혈/골막 자극(신경유착/견인통) 발생.",
-      "en": "Entrapment of zygomaticotemporal nerve as it pierces temporalis fascia, or entrapment of deep temporal nerve by lateral pterygoid, causing temporalis ischemia/periosteal traction (TTP/)."
+      "ko": "이개측두신경(Auriculotemporal n.) 및 관골측두신경(Zygomaticotemporal n.)이 측두근 근막과 턱관절 후방을 통과할 때 유착되거나, 외측익돌근에 의해 심측두신경(Deep temporal n.)이 압박되어 측두근 허혈·골막 자극 및 측두부 신경통 유발.",
+      "en": "Entrapment of the auriculotemporal and zygomaticotemporal nerves piercing temporalis fascia, or compression of the deep temporal nerve by the lateral pterygoid, inducing temporalis ischemia, periosteal traction, and temporal neuralgia."
     },
     "targetTissues": {
-      "ko": "측두근(Temporalis) 기시부 골막, 외익상근(Lateral pterygoid, superior head).",
-      "en": "Temporalis muscle origin periosteum, Lateral pterygoid muscle (superior head)."
+      "ko": "측두근(Temporalis · 기시: 측두와·하측두선 / 정지: 하악골 근돌기), 외측익돌근 상·하두(Lateral Pterygoid · 기시: 접형골 대익·외측익돌판 / 정지: 하악과두 경부·턱관절 원판·관절낭), 이개측두신경, 측두하악관절낭(TMJ) 및 C1~C2 횡돌기·두판상근 상부.",
+      "en": "Temporalis (temporal fossa to coronoid process), Lateral Pterygoid (superior & inferior heads to condylar neck & TMJ disc/capsule), Auriculotemporal Nerve, preauricular TMJ capsule, and C1-C2 transverse process / upper splenius capitis."
     },
     "palpation": {
-      "ko": "관자놀이 부근 측두근 근복 압통점 및 외익상근 부위.",
-      "en": "Temporalis muscle belly tender point near temple and lateral pterygoid region."
+      "ko": "① 측두근(Temporalis) 전·중부 근복 & 이개측두신경 포착점 ② 하악절흔 외측익돌근 상·하두 심부(측두하와) ③ 귀 앞 이개측두신경·측두하악관절낭(TMJ) ④ 상부 경추 C1~C2 횡돌기 & 두판상근 상부(GOTS).",
+      "en": "1) Anterior-middle temporalis belly & auriculotemporal nerve 2) Mandibular notch lateral pterygoid deep heads 3) Preauricular TMJ capsule & auriculotemporal nerve 4) C1-C2 transverse process & upper splenius capitis (GOTS)."
     },
     "clinicalCase": {
-      "ko": "관자놀이 부위가 날카롭게 콕콕 쑤시고 전기가 통하듯 뻗치는 편두통 양상의 감각신경통 사례. 관골측두신경 출구부 및 측두근 심부 긴장점에 NovaCell Therapy를 집중 조율한 결과, 시술 직후 통증 지수(VAS)가 8에서 0으로 극적으로 개선되며 완전 회복.",
-      "en": "59yo female with sharp, electric shock-like stabbing temple pain for 2 days. Complete resolution (VAS 8??) following NovaCell treatment at zygomaticotemporal nerve exit point in temporalis."
+      "ko": "관자놀이 부위가 날카롭게 콕콕 쑤시고 전기가 통하듯 뻗치는 편두통 양상의 감각신경통 사례. 측두근 이개·관골측두신경 출구부, 외측익돌근 및 귀 앞 관절낭에 NovaCell Therapy를 집중 조율한 결과, 시술 직후 통증 지수(VAS)가 8에서 0으로 극적으로 개선되며 완전 회복.",
+      "en": "59yo female with sharp, electric shock-like stabbing temple pain for 2 days. Complete resolution (VAS 8 to 0) following NovaCell treatment at the temporalis nerve exit, lateral pterygoid, and preauricular TMJ capsule."
     },
     "diagram": "images/diagrams/diagram_03.png",
     "targets": [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 58.4,
-        "y": 32.7,
+        "x": 43.0,
+        "y": 31.5,
         "role": {
           "ko": "주 신경포착점",
           "en": "Primary Nerve Entrapment"
         },
         "name": {
-          "ko": "T1: 측두근(Temporalis) 전·중부 근복 및 이개측두신경 포착점",
-          "en": "T1: Temporalis Muscle Belly & Auriculotemporal Nerve"
+          "ko": "T1: 측두근(Temporalis) 전·중부 근복 & 이개측두신경 포착점",
+          "en": "T1: Anterior-Middle Temporalis · Auriculotemporal Nerve"
         },
         "desc": {
-          "ko": "[표적 해부] 측두근 전·중간 섬유 근복 및 이개측두신경·협골측두신경 관통부.\n[촉지 및 시술] 관자놀이(Temple) 중앙 및 안와 외측연 뒤쪽 2cm 측두근 건막 압통점. 편두통·관자놀이 박동통을 즉각 해소합니다.",
-          "en": "Temporalis anterior/middle belly & auriculotemporal nerve entrapment point."
+          "ko": "[표적 해부] 측두와·하측두선에서 기시해 하악골 근돌기로 정지하는 측두근 전·중부 근복 및 이개측두신경·관골측두신경 관통부.\n[촉지 및 시술] 관자놀이(Temple) 중앙 및 안와 외측연 뒤쪽 2cm 측두근 건막 압통점. 편두통과 관자놀이 박동성 통증을 즉각 해소합니다.",
+          "en": "Temporalis anterior/middle belly & auriculotemporal/zygomaticotemporal nerve entrapment point."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 62.2,
-        "y": 61.9,
+        "x": 46.4,
+        "y": 56.2,
         "role": {
           "ko": "심부 근복·근막점",
           "en": "Deep Myofascial Trigger Point"
         },
         "name": {
           "ko": "T2: 하악절흔 외측익돌근 상·하두 심부 타깃 (측두하와)",
-          "en": "T2: Mandibular Notch Lateral Pterygoid Core"
+          "en": "T2: Mandibular Notch · Lateral Pterygoid (Superior & Inferior Heads)"
         },
         "desc": {
-          "ko": "[표적 해부] 관골궁 하방 하악절흔(Mandibular notch) 심부의 외측익돌근 상·하두 및 삼차신경 하악지(V3).\n[촉지 및 시술] 귀 앞 관골궁 바로 아래 입을 살짝 벌릴 때 열리는 반달형 함요처. 측두부 연관통과 턱관절-편두통 연쇄 회로를 끊어줍니다.",
-          "en": "Lateral pterygoid muscle deep to mandibular notch below zygomatic arch."
+          "ko": "[표적 해부] 관골궁 하방 하악절흔(Mandibular Notch) 심부의 외측익돌근 상·하두(하악과두 경부·턱관절 원판·관절낭 정지) 및 삼차신경 하악지(V3).\n[촉지 및 시술] 귀 앞 관골궁 바로 아래 입을 살짝 벌릴 때 열리는 반달형 함요처. 측두부 연관통과 턱관절-편두통 연쇄 회로를 차단합니다.",
+          "en": "Lateral pterygoid superior & inferior heads deep to mandibular notch below the zygomatic arch."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.0,
-        "y": 62.0,
+        "x": 51.3,
+        "y": 51.2,
         "role": {
-          "ko": "힘줄·골막 부착점",
-          "en": "Tendon & Periosteal Target"
+          "ko": "관절낭·신경통과점",
+          "en": "TMJ Capsule & Nerve Target"
         },
         "name": {
-          "ko": "T3: 귀 앞 이개측두신경-측두하악관절낭 통과점",
-          "en": "T3: Pre-auricular Auriculotemporal Nerve & TMJ Capsule"
+          "ko": "T3: 귀 앞 이개측두신경 · 측두하악관절낭(TMJ)",
+          "en": "T3: Preauricular TMJ Capsule · Auriculotemporal Nerve"
         },
         "desc": {
-          "ko": "[표적 해부] 이주(Tragus) 전방 1cm 이개측두신경 상행로 및 턱관절 후방 원판인대.\n[촉지 및 시술] 귀 구슬(이주) 바로 앞 관절낭 함요처. 귀에서 관자놀이로 뻗치는 신경통을 제어합니다.",
-          "en": "1cm anterior to tragus over auriculotemporal nerve and posterior TMJ capsule."
+          "ko": "[표적 해부] 이주(Tragus) 전방 1cm 이개측두신경 상행로 및 측두하악관절(TMJ) 후방 원판·관절낭.\n[촉지 및 시술] 귀 구슬(이주) 바로 앞 관절낭 함요처. 귀 앞에서 관자놀이·측두부로 뻗치는 찌릿한 감각신경통을 제어합니다.",
+          "en": "1cm anterior to tragus over the auriculotemporal nerve and posterior TMJ capsule."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 73.0,
-        "y": 47.0,
+        "x": 58.9,
+        "y": 63.9,
         "role": {
           "ko": "후관절·신경근점",
           "en": "Facet & Nerve Root Target"
         },
         "name": {
-          "ko": "T4: 상부 경추 C1-C2 횡돌기 및 두판상근 상부점 (GOTS 스위치)",
-          "en": "T4: C1-C2 Transverse Process & GOTS Relay Switch"
+          "ko": "T4: 상부 경추 C1~C2 횡돌기 & 두판상근 상부 (GOTS)",
+          "en": "T4: C1-C2 Transverse Process & Upper Splenius Capitis (GOTS)"
         },
         "desc": {
-          "ko": "[표적 해부] 대후두신경-삼차신경 증후군(GOTS) 연결축인 C1-C2 후두하부 및 두판상근 상단.\n[촉지 및 시술] 유양돌기 후내측 풍지혈 선상. 난치성 편두통 및 안구 뒤 통증의 중추 감작을 리셋합니다.",
-          "en": "C1-C2 GOTS relay point medial to mastoid process."
+          "ko": "[표적 해부] 대후두신경-삼차신경 증후군(GOTS) 연결축인 상부 경추 C1~C2 횡돌기 및 두판상근 상부.\n[촉지 및 시술] 유양돌기 후하방 풍지혈 선상. 난치성 편두통 및 관자놀이·안구 뒤 연관통의 중추 감작을 안정화합니다.",
+          "en": "C1-C2 transverse process and upper splenius capitis GOTS relay point resetting central sensitization."
         }
       }
     ],
     "anatomicalLabels": [
-      "Zygomaticotemporal Nerve",
-      "Temporalis Muscle",
-      "Deep Temporal Nerves",
-      "Zygomatic Arch"
+      "Anterior-Middle Temporalis & Auriculotemporal Nerve",
+      "Mandibular Notch · Lateral Pterygoid (Superior & Inferior Heads)",
+      "Preauricular TMJ Capsule & Auriculotemporal Nerve",
+      "C1-C2 Transverse Process & Upper Splenius Capitis (GOTS)"
     ],
     "rifeFreq": 528,
-    "searchKeywords": "측두근 신경유착 / 측두부 감각 신경통 Temporalis TTP / Temporal Sensory Neuralgia 관자놀이(temple) 부위가 주기적으로 콕콕 쑤시고 찌릿하거나, 머리를 띠로 두른 듯한 강한 압박감. Periodic stabbing or tingling pain in temple, or heavy band-like compressive sensation around the head. 두경부 및 안면 질환 Head, Neck & Facial Disorders"
+    "searchKeywords": "측두근 신경유착 측두부 감각 신경통 관자놀이 통증 편두통 Temporalis TTP Temporal Sensory Neuralgia 이개측두신경 관골측두신경 외측익돌근 하악절흔 턱관절 TMJ GOTS C1 C2 두판상근 두경부 및 안면 질환 Head Neck Facial Disorders"
   },
   {
     "id": 4,
