@@ -1030,8 +1030,8 @@ window.PAIN_CONDITIONS = [
       "en": "Head, Neck & Facial Disorders"
     },
     "mechanism": {
-      "ko": "힘줄견인/ 신경유착",
-      "en": "[TTP / ] Tendon Traction & Nerve Entrapment"
+      "ko": "힘줄견인 / 신경유착",
+      "en": "Tendon Traction & Nerve Entrapment"
     },
     "mechTags": [
       "nerve",
@@ -1050,12 +1050,12 @@ window.PAIN_CONDITIONS = [
       "en": "Acute isotonic contraction of pediatric SCM and scalene muscles causing periosteal traction at attachments and nerve branch irritation."
     },
     "targetTissues": {
-      "ko": "흉쇄유돌근(SCM), 사각근(Scalene), C2-C5 다열근.",
-      "en": "Sternocleidomastoid (SCM) and Middle scalene."
+      "ko": "전면: 흉쇄유돌근(SCM · 부신경 CN XI 운동점·흉골두·쇄골두) 및 전·중사각근(C3~C6 횡돌기 → 제1늑골) / 후면: 경추 C2~C5 후관절 다열근(제2선)·판상근 및 견갑거근(C1~C4 횡돌기 → 견갑골 상각).",
+      "en": "Anterior: Sternocleidomastoid (SCM, CN XI motor point & sternal/clavicular heads) and Anterior/Middle Scalenes (C3-C6 to 1st rib); Posterior: C2-C5 facet multifidus/splenius and Levator Scapulae (C1-C4 to superior angle)."
     },
     "palpation": {
-      "ko": "SCM 근복 단단한 결절 부위 및 C2-C5 극돌기 외측 압통점.",
-      "en": "Tender points in SCM muscle belly and middle scalene."
+      "ko": "① 전면 흉쇄유돌근(SCM) 근복·흉골두·쇄골두 기시점 ② 후면 경추 C2~C5 후관절 다열근(제2선)·판상근 ③ 전면 전·중사각근 C3~C6 횡돌기 및 제1늑골 착점 ④ 후면 견갑거근 C1~C4 기시 및 견갑골 상각 골막 착점.",
+      "en": "1) Anterior SCM belly & sternal/clavicular heads 2) Posterior C2-C5 facet multifidus (Line 2) & splenius 3) Anterior/Middle scalenes & 1st rib 4) Posterior levator scapulae C1-C4 origin & superior angle of scapula."
     },
     "clinicalCase": {
       "ko": "목이 한쪽으로 기울어지고 반대편 회전 운동이 제한된 급성 근긴장성 사경 사례. 흉쇄유돌근과 사각근 근복에 미세전류 기반의 부드러운 NovaCell Therapy를 집중 적용하여 근육 경축을 완화하고 경추 회전 가동 범위를 즉시 정상 회복.",
@@ -1066,84 +1066,84 @@ window.PAIN_CONDITIONS = [
       {
         "code": "T1",
         "color": "#ff334b",
-        "x": 40.4,
-        "y": 38.0,
+        "x": 18.9,
+        "y": 39.7,
         "role": {
           "ko": "제1 핵심 치료점",
           "en": "Primary Clinical Target"
         },
         "name": {
-          "ko": "T1: 흉쇄유돌근(SCM) 상·중·하 근복 및 흉골·쇄골두 기시점",
-          "en": "T1: SCM Belly & Sternal/Clavicular Heads"
+          "ko": "T1: 흉쇄유돌근(SCM) 근복 및 흉골·쇄골두 기시점",
+          "en": "T1: SCM Belly, CN XI Motor Point & Sternal/Clavicular Heads"
         },
         "desc": {
-          "ko": "[표적 해부] 흉쇄유돌근 흉골두·쇄골두 및 중심 근복(부신경 CN XI 운동점).\n[촉지 및 시술] 유양돌기부터 쇄골·흉골 부착부까지 SCM 주행선 결절. 고개 회전 제한과 사경(Torticollis)·급성 낙침을 풀어줍니다.",
-          "en": "SCM muscle belly and sternal/clavicular origins innervated by accessory nerve (CN XI)."
+          "ko": "[표적 해부] 부신경(CN XI)이 지배하는 흉쇄유돌근(SCM) 중심 근복 및 흉골두·쇄골두 기시부.\n[촉지 및 시술] 유양돌기부터 쇄골·흉골 부착부까지 SCM 주행선 결절. 고개가 한쪽으로 기울고 반대쪽 회전이 막히는 사경(Torticollis) 및 급성 낙침의 1차 핵심 타깃입니다.",
+          "en": "SCM muscle belly and sternal/clavicular origins innervated by the spinal accessory nerve (CN XI)."
         }
       },
       {
         "code": "T2",
         "color": "#00f5d4",
-        "x": 64.9,
-        "y": 47.8,
+        "x": 72.3,
+        "y": 37.3,
         "role": {
           "ko": "후관절·신경근점",
           "en": "Facet & Nerve Root Target"
         },
         "name": {
-          "ko": "T2: 경추 C2-C5 후관절 다열근(제2선) 및 판상근 회전 제한점",
-          "en": "T2: C2-C5 Multifidus (Line 2) & Splenius Cervicis"
+          "ko": "T2: 경추 C2~C5 후관절 다열근(제2선) · 판상근",
+          "en": "T2: C2-C5 Facet Joint · Multifidus (Line 2) & Splenius"
         },
         "desc": {
-          "ko": "[표적 해부] C2~C5 후관절(Facet) 및 경판상근·반극근 심부층.\n[촉지 및 시술] 경추 극돌기 외측 1.5~2cm 제2선 연속 타깃. 후관절 잠김(Facet locking)을 즉각 해제합니다.",
-          "en": "C2-C5 facet joint line and deep multifidus/splenius cervicis."
+          "ko": "[표적 해부] 후면 경추 C2~C5 후관절(Facet) 및 극돌기 외측 1.5~2cm 심부 다열근(제2선)·판상근.\n[촉지 및 시술] 경추 극돌기 외측 1.5~2cm 제2선 연속 타깃. 고개를 돌리지 못하게 막는 후관절 잠김(Facet locking)을 즉각 해제합니다.",
+          "en": "C2-C5 facet joint line (1.5-2cm lateral to spinous processes) and deep multifidus/splenius."
         }
       },
       {
         "code": "T3",
         "color": "#ff9f43",
-        "x": 38.4,
-        "y": 48.6,
+        "x": 31.9,
+        "y": 47.5,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "측경부·사각근점",
+          "en": "Scalene & 1st Rib Target"
         },
         "name": {
-          "ko": "T3: 전·중사각근(Scalenes) C3-C6 횡돌기 부착점",
-          "en": "T3: Anterior & Middle Scalene Transverse Process Origins"
+          "ko": "T3: 전·중사각근(Scalenes) C3~C6 횡돌기 부착점",
+          "en": "T3: Anterior & Middle Scalenes (C3-C6 TP & 1st Rib)"
         },
         "desc": {
-          "ko": "[표적 해부] SCM 뒤쪽 사각근 삼각의 전·중사각근 근복 및 제1늑골 착점.\n[촉지 및 시술] 측경부 SCM 후연 심부. 측굴 제한과 신경근 견인을 이완합니다.",
-          "en": "Anterior and middle scalene bellies in lateral cervical triangle."
+          "ko": "[표적 해부] C3~C6 횡돌기에서 기시해 제1늑골에 정지하는 전·중사각근 근복 및 부착부.\n[촉지 및 시술] 측경부 SCM 후연 심부 사각근 삼각. 목의 측굴 제한과 완신경총·경신경근 견인을 부드럽게 이완합니다.",
+          "en": "Anterior and middle scalene bellies from C3-C6 transverse processes inserting onto the 1st rib."
         }
       },
       {
         "code": "T4",
         "color": "#38bdf8",
-        "x": 36.2,
-        "y": 56.2,
+        "x": 89.6,
+        "y": 55.4,
         "role": {
-          "ko": "후관절·신경근점",
-          "en": "Facet & Nerve Root Target"
+          "ko": "힘줄·골막 부착점",
+          "en": "Tendon & Periosteal Target"
         },
         "name": {
-          "ko": "T4: 견갑거근(Levator Scapulae) C1-C4 횡돌기 기시부 및 견갑상각점",
-          "en": "T4: Levator Scapulae C1-C4 Origin & Superior Angle"
+          "ko": "T4: 견갑거근(Levator Scapulae) C1~C4 기시 및 견갑상각점",
+          "en": "T4: Levator Scapulae · C1-C4 Origin & Superior Angle"
         },
         "desc": {
-          "ko": "[표적 해부] C1~C4 횡돌기 후결절 기시부 및 견갑골 상각 골막 착점.\n[촉지 및 시술] 목이 돌아가지 않을 때 필수 동반 이완해야 하는 핵심 골막·건 포인트입니다.",
-          "en": "Levator scapulae origin at C1-C4 TP and insertion at superior angle of scapula."
+          "ko": "[표적 해부] C1~C4 횡돌기 후결절 기시부에서 견갑골 상각(Superior Angle)으로 정지하는 견갑거근 골막 착점.\n[촉지 및 시술] 목이 한쪽으로 굳어 돌아가지 않을 때 필수 동반 이완해야 하는 핵심 견갑상각 골막·건 포인트입니다.",
+          "en": "Levator scapulae origin at C1-C4 posterior tubercles and periosteal insertion at the superior angle of the scapula."
         }
       }
     ],
     "anatomicalLabels": [
-      "Sternocleidomastoid (SCM)",
-      "Anterior/Middle Scalene",
-      "Accessory Nerve",
-      "Clavicular Head"
+      "SCM Belly, CN XI Motor Point & Sternal/Clavicular Heads",
+      "C2-C5 Facet Joint · Deep Multifidus (Line 2) & Splenius",
+      "Anterior & Middle Scalenes (C3-C6 TP & 1st Rib)",
+      "Levator Scapulae (C1-C4 TP Origin & Superior Angle of Scapula)"
     ],
     "rifeFreq": 528,
-    "searchKeywords": "소아 근긴장성 사경 (Childhood Torticollis) Pediatric Muscular Torticollis / Cervical Sprain 목이 한쪽으로 기울어지고 반대쪽으로 회전하기 힘듦, 목 근육 뻐근함 및 동작 제한. Sudden posterior neck pain, inability to rotate head, and lateral head tilt. 두경부 및 안면 질환 Head, Neck & Facial Disorders"
+    "searchKeywords": "소아 근긴장성 사경 사경 급성 낙침 목 기울어짐 회전 제한 Childhood Torticollis Pediatric Muscular Torticollis 흉쇄유돌근 SCM 부신경 흉골두 쇄골두 전사각근 중사각근 제1늑골 다열근 판상근 견갑거근 견갑골 상각 경추 목 클리닉 두경부 및 안면 질환"
   },
   {
     "id": 9,
