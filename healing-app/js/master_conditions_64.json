@@ -7598,128 +7598,128 @@
         "tendon"
       ],
       "title": {
-        "ko": "요추 추간판 탈출증(허리디스크) 방사통 및 후근신경절(DRG)·제1~4선 타깃",
-        "en": "Lumbar Disc Herniation Radiculopathy & DRG / 4-Line Periosteal Contact"
+        "ko": "요추 추간판 탈출증(허리디스크) & 후근신경절(DRG)",
+        "en": "Lumbar Disc Herniation Radiculopathy & DRG"
       },
       "symptoms": {
         "ko": "허리를 앞으로 숙일 때 허리 통증이 심해지고, 엉덩이에서 허벅지 뒤·종아리·발등이나 발바닥까지 전기가 흐르듯 저리고 당기는 하지 방사통(SLR 검사 양성).",
         "en": "Low back pain worsening with lumbar flexion, accompanied by electric shooting pain and numbness radiating down the buttock, thigh, calf, and foot (positive SLR test)."
       },
       "pathophysiology": {
-        "ko": "요추 추간판( 주로 L4-L5, L5-S1) 후외측 섬유륜 파열·탈출로 척추동신경과 추간공 내 신경근·후근신경절(DRG)에 화학적 염증과 기계적 압박이 가해지고, 추궁판(제2선)·후관절(제3선)·횡돌기(제4선) 심부 다열근이 연쇄 구축됨.",
-        "en": "Posterolateral lumbar disc herniation causes chemical inflammation and mechanical compression of the exiting/traversing nerve root and DRG, accompanied by deep multifidus spasm."
+        "ko": "요추 추간판(주로 L4-L5, L5-S1) 후외측 섬유륜 파열·탈출로 척추동신경과 추간공 내 신경근·후근신경절(DRG)에 화학적 염증과 기계적 압박이 가해지고, 추궁판(제2선)·후관절낭(제3선) 및 심부 다열근·회선근이 연쇄 구축됨.",
+        "en": "Posterolateral lumbar disc herniation (typically L4-L5 or L5-S1) causes chemical inflammation and mechanical compression of the sinuvertebral nerve, exiting nerve root, and dorsal root ganglion (DRG), accompanied by deep multifidus and facet capsule spasm."
       },
       "targetTissues": {
-        "ko": "후외측 섬유륜·척추동신경, 다열근·회선근, 추궁판(제2선), 후관절·유두돌기(제3선), 추간공 외측 후근신경절(DRG)·척수신경 후지 내측지.",
-        "en": "Posterolateral annulus/sinuvertebral nerve, multifidus, lamina (Line 2), facet joint (Line 3), and intervertebral foramen DRG/medial branch."
+        "ko": "추간판 후외측 섬유륜·척추동신경, 심층 다열근·회선근(기시: 유두돌기·횡돌기 / 정지: 상방 극돌기), 요추 제2선 추궁판(Lamina)·상관절돌기 기저부, 요추 제3선 후관절낭, 추간공 외측 후근신경절(DRG)·후지 내측지.",
+        "en": "Posterolateral disc annulus & sinuvertebral nerve, deep multifidus & rotatores, Lumbar Line 2 lamina & SAP base, Lumbar Line 3 facet joint capsule, and extraforaminal DRG & dorsal ramus medial branch."
       },
       "palpation": {
-        "ko": "요추 블루 엑스레이 해부학적 5대 표적: ① 후외측 디스크 반사점 ② 심부 다열근 ③ 추궁판·상관절돌기 골막 부착부 ④ 후관절낭 ⑤ 추간공 외측 DRG·내측지.",
-        "en": "Ch.7 Lumbar Blue X-Ray 5 Anatomical Targets : 1) Disc reflex zone 2) Deep multifidus 3) Lamina Periosteal Contact 4) Facet joint 5) Foraminal DRG & medial branch."
+        "ko": "요추 5대 해부학적 표적: ① 추간판 후외측 섬유륜·척추동신경 반사점 ② 심층 다열근·회선근 ③ 요추 제2선 추궁판·상관절돌기 기저부 ④ 요추 제3선 후관절낭 ⑤ 추간공 외측 후근신경절(DRG)·후지 내측지.",
+        "en": "Lumbar 5-Point Protocol: 1) Posterolateral disc & sinuvertebral nerve 2) Deep multifidus & rotatores 3) Line 2 lamina & SAP base 4) Line 3 facet joint capsule 5) Extraforaminal DRG & dorsal ramus medial branch."
       },
       "clinicalCase": {
-        "ko": "L4-L5, L5-S1 추간판 탈출증으로 수술을 권유받고 다리가 저려 100m도 걷기 힘들던 환자. 요추 제2선(추궁판·다열근), 제3선(후관절), 추간공 외측 DRG 반사점 및 둔부 좌골신경 경로에 노바셀(-70mV) 집중 치료 후 하지 방사통 소실 및 비수술 일상 복귀.",
-        "en": "L4-L5/L5-S1 disc herniation recommended for surgery with severe sciatica (Ch.7 Case 7-8); full resolution of radicular pain and non-surgical recovery via Lumbar Line 2-4 + DRG protocol."
+        "ko": "L4-L5, L5-S1 추간판 탈출증으로 수술을 권유받고 다리가 저려 100m도 걷기 힘들던 환자. 요추 제2선(추궁판·다열근), 제3선(후관절낭), 추간공 외측 DRG 반사점 및 둔부 좌골신경 경로에 노바셀(-70mV) 집중 치료 후 하지 방사통 소실 및 비수술 일상 복귀.",
+        "en": "L4-L5/L5-S1 disc herniation recommended for surgery with severe sciatica; full resolution of radicular pain and non-surgical recovery via the 5-point lumbar lamina, facet capsule, and DRG NovaCell protocol."
       },
       "diagram": "images/diagrams/diagram_61.png",
       "rifeFreq": 528,
       "anatomicalLabels": [
-        "1. Posterolateral Annulus Fibrosus & Sinuvertebral N.",
-        "2. Deep Multifidus & Rotatores",
-        "3. Lamina & Superior Articular Process (Line 2)",
-        "4. Lumbar Facet Joint Capsule (Line 3)",
-        "5. Dorsal Root Ganglion (DRG) & Medial Branch"
+        "Posterolateral Disc Herniation & Sinuvertebral N.",
+        "Deep Multifidus & Rotatores",
+        "Lumbar Line 2 · Lamina & SAP Base",
+        "Lumbar Line 3 · Facet Joint Capsule",
+        "Extraforaminal DRG & Dorsal Ramus Medial Branch"
       ],
-      "searchKeywords": "허리디스크 요추추간판탈출증 좌골신경통 다리저림 방사통 신경근염 후근신경절 DRG",
+      "searchKeywords": "허리디스크 요추 추간판 탈출증 좌골신경통 다리저림 방사통 신경근염 후근신경절 DRG 추궁판 후관절낭 다열근 회선근 척추동신경 Lumbar Disc Herniation Radiculopathy",
       "targets": [
         {
           "code": "T1",
           "color": "#ff334b",
-          "x": 41.0,
-          "y": 46.5,
+          "x": 47.2,
+          "y": 50.0,
           "role": {
             "ko": "주 신경포착점",
             "en": "Primary Nerve Entrapment"
           },
           "name": {
-            "ko": "T1: 요추 추간판 후외측 섬유륜·척추동신경(Sinuvertebral N.) 분절 반사점 (①번 타깃)",
-            "en": "T1: Posterolateral Annulus & Sinuvertebral Nerve Segmental Point (Target 1)"
+            "ko": "T1: 추간판 후외측 섬유륜 · 척추동신경",
+            "en": "T1: Posterolateral Disc Herniation & Sinuvertebral N."
           },
           "desc": {
-            "ko": "[표적 해부] 파열·팽륜된 추간판 후외측 섬유륜과 후종인대 감각을 지배하는 척추동신경 분절 반사구역.\n[촉지 및 시술] 이환 분절(L4-L5 또는 L5-S1) 극간인대(제1선) 및 추간공 외측(제4선) 양방향에서 디스크 내압과 신경원성 염증을 진정시킵니다.",
-            "en": "Segmental reflex zone targeting posterolateral annulus fibrosus and sinuvertebral nerve."
+            "ko": "[표적 해부] 파열·팽륜된 L4-L5·L5-S1 추간판 후외측 섬유륜과 후종인대 감각을 지배하는 척추동신경(Sinuvertebral Nerve) 분절 반사구역.\n[촉지 및 시술] 이환 분절 극간인대(제1선) 및 추간공 외측 양방향에서 디스크 내압과 신경원성 염증을 진정시킵니다.",
+            "en": "Segmental reflex zone targeting the posterolateral annulus fibrosus and sinuvertebral nerve."
           }
         },
         {
           "code": "T2",
           "color": "#00f5d4",
-          "x": 53.5,
-          "y": 36.5,
+          "x": 62.8,
+          "y": 25.1,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "심부 근복·근막점",
+            "en": "Deep Myofascial Trigger Point"
           },
           "name": {
-            "ko": "T2: 심층 다열근·회선근(Multifidus & Rotatores) 분절 잠금 이완점 (②번 타깃)",
-            "en": "T2: Deep Multifidus & Rotatores Segmental Unlocking Point (Target 2)"
+            "ko": "T2: 심층 다열근·회선근(Multifidus & Rotatores)",
+            "en": "T2: Deep Multifidus & Rotatores Segmental Unlocking"
           },
           "desc": {
-            "ko": "[표적 해부] 극돌기와 유두돌기를 잇는 최심층 다열근 및 회선근( ②).\n[촉지 및 시술] 디스크 탈출 분절을 위아래로 꽉 조여 추간판 압력을 높이는 심부 다열근 경직을 풀어 디스크 감압 공간을 만듭니다.",
-            "en": "Deepest multifidus and rotatores spanning across the herniated motion segment."
+            "ko": "[표적 해부] 유두돌기·횡돌기에서 기시해 상방 극돌기로 정지하는 최심층 다열근 및 회선근.\n[촉지 및 시술] 디스크 탈출 분절을 위아래로 꽉 조여 추간판 내압을 높이는 심부 다열근 경직을 풀어 디스크 감압 공간을 확보합니다.",
+            "en": "Deepest multifidus and rotatores spanning across the herniated motion segment to unlock disc compression."
           }
         },
         {
           "code": "T3",
           "color": "#ff9f43",
-          "x": 50.5,
-          "y": 42.5,
+          "x": 54.8,
+          "y": 44.5,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "제2선 추궁판·골막점",
+            "en": "Lumbar Line 2 Lamina Target"
           },
           "name": {
-            "ko": "T3: 요추 제2선: 추궁판(Lamina) 및 상관절돌기 기저부 골막 부착점 (③번 타깃)",
-            "en": "T3: Lumbar Line 2: Lamina & Superior Articular Process Periosteal Contact (Target 3)"
+            "ko": "T3: 요추 제2선: 추궁판(Lamina) & 상관절돌기 기저부",
+            "en": "T3: Lumbar Line 2 · Lamina & SAP Base"
           },
           "desc": {
-            "ko": "[표적 해부] 정중선 외측 1.5~2cm 추궁판(Lamina) 골표면 및 상관절돌기 내측 기저부( ③).\n[촉지 및 시술] 황색인대 외측 추궁판 골막에 정확한 골막 접촉 자극을 전달하여 척수강 주위 정맥총 울혈을 해소합니다.",
+            "ko": "[표적 해부] 정중선 외측 1.5~2cm 추궁판(Lamina) 골표면 및 상관절돌기(SAP) 내측 기저부.\n[촉지 및 시술] 황색인대 외측 추궁판 골막에 정밀 통전을 전달하여 척수강 주위 정맥총 울혈과 분절 압박을 해소합니다.",
             "en": "1.5-2cm lateral to spinous process on osseous lamina and base of superior articular process."
           }
         },
         {
           "code": "T4",
           "color": "#38bdf8",
-          "x": 49.5,
-          "y": 49.0,
+          "x": 55.7,
+          "y": 56.9,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "제3선 후관절낭점",
+            "en": "Lumbar Line 3 Facet Capsule"
           },
           "name": {
-            "ko": "T4: 요추 제3선: 후관절낭(Facet Joint Capsule) 염증·부종 감압점 (④번 타깃)",
-            "en": "T4: Lumbar Line 3: Facet Joint Capsule Decompression Point (Target 4)"
+            "ko": "T4: 요추 제3선: 후관절낭(Facet Joint Capsule)",
+            "en": "T4: Lumbar Line 3 · Facet Joint Capsule"
           },
           "desc": {
-            "ko": "[표적 해부] 상관절돌기와 하관절돌기가 만나는 요추 후관절낭( ④).\n[촉지 및 시술] 디스크 높이 감소로 인해 이차적으로 눌린 후관절낭의 염증과 관절통을 동시 제거합니다.",
+            "ko": "[표적 해부] 상관절돌기와 하관절돌기가 만나는 요추 제3선 후관절낭(Facet Joint Capsule).\n[촉지 및 시술] 디스크 높이 감소로 인해 이차적으로 과부하·압박된 후관절낭의 염증과 요추 신전통을 동시에 감압합니다.",
             "en": "Lumbar facet joint capsule overloaded secondary to disc height loss."
           }
         },
         {
           "code": "T5",
           "color": "#a855f7",
-          "x": 46.0,
-          "y": 58.0,
+          "x": 48.9,
+          "y": 54.1,
           "role": {
-            "ko": "후관절·신경근점",
-            "en": "Facet & Nerve Root Target"
+            "ko": "추간공 DRG·신경근점",
+            "en": "Extraforaminal DRG Target"
           },
           "name": {
-            "ko": "T5: 추간공 외측 후근신경절(DRG)·척수신경 후지 내측지 포착점 (⑤번 타깃)",
-            "en": "T5: Intervertebral Foramen DRG & Medial Branch Exit (Target 5)"
+            "ko": "T5: 추간공 외측 후근신경절(DRG) · 후지 내측지",
+            "en": "T5: Extraforaminal DRG & Dorsal Ramus Medial Branch"
           },
           "desc": {
-            "ko": "[표적 해부] 추간공 바로 바깥쪽(캄빈 안전삼각 외측) 후근신경절(DRG) 및 횡돌기 기저부를 넘어가는 후지 내측지(HP-LDR-01, ⑤).\n[촉지 및 시술] 다리와 발가락까지 뻗치는 신경근 방사통과 저림을 직접 차단하는 핵심 신경 타깃입니다.",
-            "en": "Intervertebral foramen exit targeting the inflamed dorsal root ganglion (DRG) and medial branch."
+            "ko": "[표적 해부] 추간공 바로 바깥쪽(안전삼각 외측) 후근신경절(DRG) 및 횡돌기 기저부를 넘어가는 척수신경 후지 내측지(HP-LDR-01).\n[촉지 및 시술] 엉덩이·종아리·발가락까지 전기가 흐르듯 뻗치는 신경근 방사통과 저림을 직접 차단하는 핵심 신경 타깃입니다.",
+            "en": "Extraforaminal dorsal root ganglion (DRG) and dorsal ramus medial branch exit."
           }
         }
       ]
